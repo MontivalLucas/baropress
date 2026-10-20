@@ -1,0 +1,61 @@
+BAROPRESS - QUESTIONÁRIO DA PASTA QUESTIONNAIRES INTEGRADO
+Data: 07/10/2026
+Versão: 0.2.7
+Status: IMPLEMENTAÇÃO, TESTES AUTOMÁTICOS E EMPACOTAMENTO CONCLUÍDOS
+
+PEDIDO
+Adicionar os questionários da pasta questionnaires ao programa.
+
+FONTE ENCONTRADA
+docs/questionnaires/anamnese-baropodometrica.json
+docs/questionnaires/ANAMNESE_BAROPODOMETRICA.md
+Os dois arquivos representam um único modelo de anamnese v1: 40 perguntas
+em 7 grupos. Não foram criados dois modelos duplicados para JSON e Markdown.
+
+IMPLEMENTADO
+- JSON incluído no executável pelo backend, sem depender da pasta externa
+  no computador onde o instalador for usado.
+- Primeira abertura de Questionários inclui o modelo no banco após login.
+- Registro transacional de modelo/perguntas e marcador de inclusão v1.
+- Reabrir/atualizar a lista não duplica nem sobrescreve personalizações.
+- Modelo renomeado ou desativado mantém essas escolhas; marcador acompanha
+  o ID. Se já existir um modelo com o mesmo nome, ele é preservado e adotado.
+- Texto, ordem, opções, obrigatoriedade e grupos originais preservados.
+- Responder, editar e histórico de respostas usam os fluxos já existentes.
+- Perguntas condicionais continuam opcionais; não são respondidas ou
+  ocultadas automaticamente. Não foi criada pontuação ou decisão clínica.
+- Lista mostra carregamento e permite Atualizar lista em caso de falha.
+- Atualizar lista fica indisponível durante resposta/edição para não
+  limpar um formulário ainda não salvo pelo efeito de atualização.
+- Sem nova migração de esquema, novo comando IPC ou mudança de autenticação.
+- Preferências/marcador são incluídos no backup completo já existente.
+
+VERIFICAÇÃO ATUAL
+- TypeScript aprovado.
+- 9 testes específicos Rust aprovados, incluindo 5 novos casos.
+- Fidelidade testada comparando o modelo gravado com o JSON original,
+  retirando apenas os IDs gerados pelo banco.
+- Testados não duplicar, preservar edição/inativação, adotar modelo local,
+  reverter inclusão se falhar o marcador e manter respostas/snapshot.
+- Suíte frontend: 160 testes aprovados em 19 arquivos.
+- Suíte Rust completa: 89 testes aprovados.
+- TypeScript e frontend de produção aprovados no estado final.
+- Executável release e instalador NSIS x64 gerados com sucesso.
+- Testes em bancos isolados; banco pessoal não foi aberto nesta execução.
+- Conferência visual manual pendente.
+
+ARTEFATOS
+Executável 0.2.7: src-tauri/target/visualizacao/release/baropress.exe.
+Instalador: src-tauri/target/release/bundle/nsis/BAROPRESS_0.2.7_x64-setup.exe.
+Versão do executável e igualdade da cópia do instalador verificadas.
+
+PENDENTE
+Conferir visualmente em paciente sintético as 40 perguntas, sete grupos,
+opções, obrigatoriedade, edição, desativação e histórico após reabrir o app.
+O modelo autoral continua com a descrição/revisão clínica definida na fonte.
+
+COMO USAR
+Instalar/abrir 0.2.7, entrar e abrir Questionários.
+Anamnese para avaliação baropodométrica — v1 aparece automaticamente.
+Selecionar paciente e Responder; usar Editar para personalizar o modelo.
+As respostas são salvas por paciente/data e preservam a cópia do modelo.

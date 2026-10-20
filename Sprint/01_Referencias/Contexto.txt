@@ -1,0 +1,367 @@
+================================================================================
+CONTEXTO TÉCNICO COMPLETO DO PROJETO: ESTEIRA DE PRESSÃO TÁTIL (BAROPODOMETRIA)
+MATRIZ 15x15 COM VELOSTAT, ESP32 E MULTIPLEXADORES CD74HC4067
+================================================================================
+
+1. VISÃO GERAL DO PROJETO
+--------------------------------------------------------------------------------
+- Objetivo: Sistema de baropodometria e mapeamento de pressão plantar em tempo 
+  real utilizando uma matriz piezorresistiva de 15 linhas por 15 colunas 
+  (225 sensels / pontos de medição).
+- Referência Base: Projeto "O-mat" (Instructables), originalmente projetado para 
+  Arduino de 5V, adaptado e otimizado para o microcontrolador ESP32 (lógica 3.3V).
+- Princípio Físico: 
+  * Duas camadas ortogonais de fitas condutoras de cobre (15 fitas horizontais 
+    na base e 15 fitas verticais no topo).
+  * Uma folha contínua de Velostat prensada entre as camadas condutoras.
+  * O Velostat diminui sua resistência elétrica conforme a pressão mecânica é 
+    aplicada sobre cada interseção (efeito piezorresistivo).
+  * Cada interseção forma um divisor de tensão com um resistor fixo de pull-down.
+
+2. COMPONENTES E ESPECIFICAÇÕES DE HARDWARE
+--------------------------------------------------------------------------------
+- Microcontrolador: 
+  * Placa: ESP32 Dev Module / NodeMCU-32S (Chip ESP32-D0WD-V3, ESP-WROOM-32).
+  * Tensão Lógica Operacional: 3.3V estrita (pinos toleram até 3.3V).
+  * ADC Utilizado: ADC1 (Canal 6 no pino D34 / GPIO 34), livre de conflitos com 
+    Wi-Fi e Bluetooth.
+- Multiplexadores (2 unidades):
+  * Modelo: CD74HC4067 (Multiplexador / Demultiplexador analógico de 16 canais).
+  * MUX 1 (Linhas / Excitação / Rows): Atua como injetor digital. Alimenta com 
+    3.3V apenas a linha ativa no instante da varredura.
+  * MUX 2 (Colunas / Leitura / Columns): Atua como seletor analógico. Conecta a 
+    coluna ativa diretamente ao conversor analógico-digital (ADC) do ESP32.
+- Divisores de Tensão / Resistores de Pull-down:
+  * 15 resistores de 1 kΩ a 10 kΩ.
+  * Conexão: Um resistor dedicado em cada canal C0 a C14 do MUX 2 indo para o GND.
+  * Função: Referenciar a coluna em 0V quando em repouso e limitar a corrente.
+- Alimentação Autônoma:
+  * O ESP32 pode ser alimentado via porta USB (computador), Power Bank de 5V ou 
+    fonte 5V externa conectada ao pino VIN/V5.
+
+3. MAPA COMPLETO DE LIGAÇÕES E PINAGEM (PINOUT)
+--------------------------------------------------------------------------------
+Barramento Comum:
+  - VCC de ambos os MUX: Conectado ao pino '3V3' do ESP32 (NUNCA usar 5V).
+  - GND de ambos os MUX: Conectado ao pino 'GND' do ESP32.
+  - EN (Enable) de ambos os MUX: Conectado ao 'GND' (ativo em nível lógico LOW).
+
+MUX 1 — Linhas / Excitação Digital (Lado Esquerdo da Placa):
+  - SIG  --> ESP32 Pino D12 (GPIO 12)  [Sinal de 3.3V injetado na linha]
+  - S0   --> ESP32 Pino D25 (GPIO 25)  [Seleção canal bit 0 - LSB]
+  - S1   --> ESP32 Pino D26 (GPIO 26)  [Seleção canal bit 1]
+  - S2   --> ESP32 Pino D27 (GPIO 27)  [Seleção canal bit 2]
+  - S3   --> ESP32 Pino D14 (GPIO 14)  [Seleção canal bit 3 - MSB]
+  - C0 a C14 --> Conectados às 15 fitas de cobre das LINHAS (horizontal).
+  - C15  --> Desconectado (canal extra de 16 vias não utilizado).
+
+MUX 2 — Colunas / Leitura Analógica (Lado Direito da Placa):
+  - SIG  --> ESP32 Pino D34 (GPIO 34)  [Entrada Analógica ADC1 - Input Only]
+  - S0   --> ESP32 Pino D18 (GPIO 18)  [Seleção canal bit 0 - LSB]
+  - S1   --> ESP32 Pino D19 (GPIO 19)  [Seleção canal bit 1]
+  - S2   --> ESP32 Pino D21 (GPIO 21)  [Seleção canal bit 2]
+  - S3   --> ESP32 Pino D22 (GPIO 22)  [Seleção canal bit 3 - MSB]
+             *NOTA:* Pular os pinos RX0 e TX0 que ficam entre D21 e D22!
+  - C0 a C14 --> Conectados às 15 fitas das COLUNAS + 1 resistor pull-down p/ GND.
+  - C15  --> Desconectado.
+
+4. FIRMWARE ESP32 (ARDUINO C++)
+--------------------------------------------------------------------------------
+Características implementadas:
+- Varredura matricial com multiplexação 15x15.
+- Transmissão simultânea via Serial USB (UART a 115200 baud) e Bluetooth Serial 
+  SPP ("Esteira_Pressao_ESP32").
+- Dreno de carga capacitiva do ADC (Dummy Read de 10µs) para evitar ghosting.
+- Delay de acomodação de 60µs após o chaveamento dos multiplexadores.
+- Formato de saída: 225 valores inteiros (0 a 4095) separados por vírgula em 
+  linha única finalizada por quebra de linha (\n), a ~30 FPS.
+
+Código C++:
+```cpp
+#include "BluetoothSerial.h"
+
+#if !defined(CONFIG_BT_ENABLED) || !defined(CONFIG_BLUEDROID_ENABLED)
+#error Bluetooth nao habilitado!
+#endif
+
+BluetoothSerial SerialBT;
+
+const int s0 = 18;
+const int s1 = 19;
+const int s2 = 21;
+const int s3 = 22;
+const int SIG_pin = 34;
+
+const int w0 = 25;
+const int w1 = 26;
+const int w2 = 27;
+const int w3 = 14;
+const int OUT_pin = 12;
+
+const int ROWS = 15;
+const int COLS = 15;
+
+inline void setMuxChannel(int channel, int p0, int p1, int p2, int p3) {
+  digitalWrite(p0, bitRead(channel, 0));
+  digitalWrite(p1, bitRead(channel, 1));
+  digitalWrite(p2, bitRead(channel, 2));
+  digitalWrite(p3, bitRead(channel, 3));
+}
+
+void setup() {
+  Serial.begin(115200);
+  SerialBT.begin("Esteira_Pressao_ESP32");
+
+  pinMode(s0, OUTPUT);
+  pinMode(s1, OUTPUT);
+  pinMode(s2, OUTPUT);
+  pinMode(s3, OUTPUT);
+
+  pinMode(w0, OUTPUT);
+  pinMode(w1, OUTPUT);
+  pinMode(w2, OUTPUT);
+  pinMode(w3, OUTPUT);
+
+  pinMode(OUT_pin, OUTPUT);
+  digitalWrite(OUT_pin, HIGH);
+
+  pinMode(SIG_pin, INPUT);
+  delay(500);
+}
+
+void loop() {
+  for (int r = 0; r < ROWS; r++) {
+    setMuxChannel(r, w0, w1, w2, w3);
+
+    for (int c = 0; c < COLS; c++) {
+      setMuxChannel(c, s0, s1, s2, s3);
+      delayMicroseconds(60);
+
+      // Leitura de descarte (drena capacitor de amostragem do ADC)
+      analogRead(SIG_pin);
+      delayMicroseconds(10);
+
+      int val = analogRead(SIG_pin);
+
+      SerialBT.print(val);
+      Serial.print(val);
+
+      if (!(r == ROWS - 1 && c == COLS - 1)) {
+        SerialBT.print(",");
+        Serial.print(",");
+      }
+    }
+  }
+  SerialBT.println();
+  Serial.println();
+  delay(30);
+}
+SOFTWARE DE PROCESSAMENTO E VISUALIZAÇÃO (PYTHON)
+
+Características implementadas:
+
+Bibliotecas: pyserial, numpy, matplotlib.
+
+Comunicação: Funciona via cabo USB ('COM4') ou porta Bluetooth Serial SPP
+(ex.: 'COM5', porta de Saída / Outgoing pareada no Windows).
+
+Anti-Lag: Dreno do buffer serial antes de processar o frame para exibir sempre
+o quadro mais recente.
+
+Inversão Horizontal: Aplicação de np.fliplr() na matriz 15x15 para espelhamento
+correto (lado direito da esteira = lado direito da tela).
+
+Tara Automática (Baseline): Coleta a linha de base estática nos primeiros frames
+para subtrair a tensão mecânica residual do Velostat.
+
+Sliders Interativos (Tempo Real):
+
+'Escala Máx' (VMAX): Saturação de cor entre 500 e 4000 ADC (ideal: ~2000-2200).
+
+'Limiar' (Threshold): Zona morta entre 0 e 500 para cortar ruídos e crosstalk.
+
+'Gama' (Curva): Expoente não-linear entre 0.5 e 2.5 (ideal: ~1.3) para linearizar
+a resposta de carga do Velostat e refinar as bordas anatômicas.
+
+Botão 'Zerar Tara': Reinicia o cálculo da linha de base sem fechar o programa.
+
+Métricas Clínicas: Cálculo em tempo real da distribuição de peso entre os pés:
+
+Pé Esquerdo: Colunas 0 a 6 (índices 0..6).
+
+Pé Direito: Colunas 8 a 14 (índices 8..14).
+
+Código Python (mapa_calor.py):
+
+Python
+import serial
+import time
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+from matplotlib.widgets import Slider, Button
+
+# Configuração da Porta Serial (USB ou Bluetooth SPP Outgoing)
+PORTA_SERIAL = 'COM5'  # Alterar conforme o ambiente ('COM4' USB ou 'COM5' Bluetooth)
+BAUD_RATE = 115200
+ROWS, COLS = 15, 15
+
+try:
+    ser = serial.Serial(PORTA_SERIAL, BAUD_RATE, timeout=0.05)
+    time.sleep(2)
+    ser.reset_input_buffer()
+    print(f"Conectado com sucesso em {PORTA_SERIAL}!")
+except Exception as e:
+    print(f"Erro ao abrir a porta {PORTA_SERIAL}: {e}")
+    exit()
+
+data_matrix = np.zeros((ROWS, COLS))
+baseline_matrix = None
+calibrating = True
+calib_samples = []
+
+fig, ax = plt.subplots(figsize=(8, 9))
+plt.subplots_adjust(bottom=0.28, top=0.92)
+fig.canvas.manager.set_window_title("Baropodometria 15x15 - ESP32")
+
+cax = ax.imshow(data_matrix, cmap='turbo', vmin=0, vmax=2200, interpolation='bicubic')
+cbar = fig.colorbar(cax, ax=ax, fraction=0.046, pad=0.04)
+cbar.set_label('Pressão (ADC)', rotation=270, labelpad=15)
+ax.axis('off')
+title_obj = ax.set_title("Calibrando Tara... Mantenha a esteira livre", fontsize=12, fontweight='bold')
+
+# Sliders e Botão de Interface
+ax_color = '#e0e0e0'
+ax_vmax = plt.axes([0.18, 0.17, 0.55, 0.025], facecolor=ax_color)
+s_vmax = Slider(ax_vmax, 'Escala Máx', 500, 4000, valinit=2200, valstep=50)
+
+ax_thresh = plt.axes([0.18, 0.12, 0.55, 0.025], facecolor=ax_color)
+s_thresh = Slider(ax_thresh, 'Limiar', 0, 500, valinit=150, valstep=10)
+
+ax_gamma = plt.axes([0.18, 0.07, 0.55, 0.025], facecolor=ax_color)
+s_gamma = Slider(ax_gamma, 'Gama', 0.5, 2.5, valinit=1.3, valstep=0.1)
+
+ax_button = plt.axes([0.78, 0.07, 0.14, 0.125])
+btn_tara = Button(ax_button, 'Zerar\nTara', color='#cce5ff', hovercolor='#99ccff')
+
+def acionar_tara(event):
+    global calibrating, baseline_matrix, calib_samples
+    calib_samples = []
+    baseline_matrix = None
+    calibrating = True
+    title_obj.set_text("Recalibrando... Mantenha a esteira livre")
+
+btn_tara.on_clicked(acionar_tara)
+
+def update(frame):
+    global data_matrix, baseline_matrix, calibrating, calib_samples
+    latest_line = None
+
+    while ser.in_waiting > 0:
+        raw_line = ser.readline().decode('utf-8', errors='ignore').strip()
+        if raw_line:
+            latest_line = raw_line
+
+    if latest_line:
+        parts = latest_line.split(',')
+        if len(parts) == ROWS * COLS:
+            try:
+                raw_vals = np.array([float(p) for p in parts]).reshape((ROWS, COLS))
+                current_matrix = np.fliplr(raw_vals)  # Inversão horizontal
+
+                if calibrating:
+                    calib_samples.append(current_matrix)
+                    if len(calib_samples) >= 25:
+                        baseline_matrix = np.max(np.array(calib_samples), axis=0)
+                        calibrating = False
+                        title_obj.set_text("Monitoramento Ativo")
+                    data_matrix = np.zeros((ROWS, COLS))
+                else:
+                    vmax_val = s_vmax.val
+                    thresh_val = s_thresh.val
+                    gamma_val = s_gamma.val
+
+                    clean_matrix = current_matrix - baseline_matrix
+                    clean_matrix[clean_matrix < thresh_val] = 0
+                    clean_matrix = np.clip(clean_matrix, 0, vmax_val)
+
+                    normalized = clean_matrix / vmax_val
+                    data_matrix = (normalized ** gamma_val) * vmax_val
+                    cax.set_clim(vmin=0, vmax=vmax_val)
+
+                    # Cálculo percentual de distribuição do peso
+                    peso_esq = np.sum(data_matrix[:, 0:7])
+                    peso_dir = np.sum(data_matrix[:, 8:15])
+                    total = peso_esq + peso_dir
+
+                    if total > 500:
+                        pct_esq = (peso_esq / total) * 100
+                        pct_dir = (peso_dir / total) * 100
+                        pico = np.max(data_matrix)
+                        title_obj.set_text(f"Pé Esq: {pct_esq:.0f}%  |  Pé Dir: {pct_dir:.0f}%  (Pico: {pico:.0f} ADC)")
+            except ValueError:
+                pass
+
+    cax.set_data(data_matrix)
+    return [cax, title_obj]
+
+ani = animation.FuncAnimation(fig, update, interval=33, blit=False)
+plt.show()
+ser.close()
+PROBLEMAS ENFRENTADOS E SOLUÇÕES ENCONTRADAS (TROUBLESHOOTING)
+
+Erro DFU no Upload (Exit Status 74):
+
+Causa: Placa errada selecionada na Arduino IDE ("Arduino Nano ESP32" aciona dfu-util).
+
+Solução: Configurar a placa como "ESP32 Dev Module" com upload via UART/esptool.
+
+Faixas Horizontais Contínuas (Colunas 0 a 7 lendo em bloco):
+
+Causa 1: Aterramento partido. O barramento de GND da protoboard estava dividido
+ao meio; os resistores de pull-down das colunas 1 a 8 não estavam aterrados,
+deixando as entradas flutuantes.
+
+Solução: Interligar o barramento de GND com jumper direto até o ESP32.
+
+Causa 2: Deslocamento de pinos de seleção no ESP32. O pino S3 do MUX 2 havia sido
+ligado no RX0 em vez do D22 (devido ao espaçamento RX0/TX0 entre D21 e D22).
+
+Solução: Posicionar S0=D18, S1=D19, S2=D21, pular RX0 e TX0, e ligar S3=D22.
+
+Imagem Espelhada (Pisar na Direita mostrava na Esquerda):
+
+Causa: Orientação do cabo flat invertida em relação aos eixos cartesianos da tela.
+
+Solução: Aplicar np.fliplr() na matriz antes do processamento e renderização.
+
+Imagem Predominantemente Azul (Falta de Contraste Quente):
+
+Causa: Escala máxima (VMAX) configurada para 3500 ADC, mas a força exercida
+pelo peso corporal atinge picos de 1800 a 2200 ADC.
+
+Solução: Reduzir VMAX para ~2100 e aplicar correção gama de ~1.3 via sliders.
+
+Bluetooth Mostra Apenas "Emparelhado" no Windows:
+
+Causa: Comportamento nativo do perfil SPP (Serial Port Profile). Dispositivos
+seriais não mantêm conexão ativa se nenhuma aplicação estiver consumindo dados.
+
+Solução: Descobrir a porta de Saída (Outgoing) nas configurações de Bluetooth
+do Windows (ex.: COM5) e abrir pelo Python. A conexão passa para "Conectado"
+automaticamente durante a execução do script.
+
+ESTADO ATUAL E PRÓXIMOS PASSOS
+
+Status Atual: Sistema 100% calibrado, funcional e sem fios via Bluetooth. A
+silhueta plantar de ambos os pés é exibida de forma anatômica e nítida,
+mostrando claramente antepé, arco e retropé com métricas de balanço de carga.
+
+Próximos Passos Possíveis:
+
+Cálculo dinâmico do Centro de Pressão (CoP - Center of Pressure) para avaliar
+oscilação postural / equilíbrio estático.
+
+Gravação de sessões em arquivos CSV ou bancos de dados SQLite para análise histórica.
+
+Exportação de laudos clínicos automatizados em PDF com capturas do mapa de calor.

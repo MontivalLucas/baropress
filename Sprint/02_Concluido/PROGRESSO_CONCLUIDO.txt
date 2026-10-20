@@ -1,0 +1,251 @@
+BAROPRESS - TRABALHO CONCLUÍDO
+Atualizado: 09/10/2026
+
+BASE EXISTENTE NO PROJETO
+Fase 1: estrutura React/Tauri, autenticação local, dashboard e temas.
+Fase 2: cadastro, busca, edição, arquivamento e histórico de pacientes.
+Fase 2.5: estrutura de empacotamento e instalador Windows.
+Fase 3: aquisição serial, simulador 15x15, parser, buffer e tara.
+Fase 4: mapa contínuo, métricas, CoP e ajustes da visualização.
+Fase 5: fluxo de exame estático, listagem, detalhes e gravação SQLite.
+Fase 6: visualização, impressão e exportação de relatórios PDF.
+Esta lista descreve os módulos presentes no código; não representa homologação de hardware.
+
+ENTREGA ATUAL - CORREÇÃO DA FASE 5
+- Relógio de preparação e coleta independente dos renders React.
+- Coleta de quadros novos diretamente do dispositivo, independente do FPS visual.
+- Duração padrão de 10 segundos, com opções existentes de 5 e 15 segundos.
+- Início da contagem somente após o dispositivo estar conectado e adquirindo.
+- Detecção de interrupção, cancelamento e ausência de quadros válidos.
+- Resultado preservado em caso de falha ao salvar; nova tentativa disponível.
+- Aba Configurações do exame antes de iniciar a aquisição.
+- Gamma, VMAX, threshold, suavização, FPS visual, resolução, Auto/Manual e CoP.
+- Prévia ao vivo e controles de tara antes do exame.
+- Últimos ajustes compartilhados entre Análise e Novo Exame; a fase 11 acrescentou
+  persistência das preferências no SQLite entre sessões.
+- Configurações fixas durante a coleta e armazenadas com o exame.
+- Reabertura e relatórios usam as configurações salvas.
+- Migração SQLite compatível com registros anteriores.
+- Leitura do resultado dentro da transação antes de confirmar a gravação.
+- Organização da Sprint por referência, status, histórico e modelos.
+- Arquitetura movida para docs; logs antigos preservados na Sprint.
+
+VALIDAÇÃO
+Fase 7 concluída: comparação e evolução, trajetória de CoP nas novas coletas.
+98 testes frontend, 26 backend e build aprovados. Registro 2026-10-06_02.
+Fase 8 concluída: agenda, profissionais, consultas e conflito de horários.
+101 testes frontend, 30 backend e build aprovados. Registro 2026-10-06_03.
+Fase 9 concluída: modelos, grupos, respostas e histórico com snapshots.
+104 testes frontend, 34 backend e build aprovados. Registro 2026-10-06_04.
+Fase 10 concluída: backup completo/individual, importação e exportação de exames.
+106 testes frontend, 41 backend e build aprovados. Registro 2026-10-06_05.
+Fase 11 concluída no código, testes e empacotamento: preferências persistentes,
+logs, teclado, desempenho, revisão de fluxos e versão 0.2.0.
+113 testes frontend e 44 backend aprovados, incluindo o fluxo integrado.
+TypeScript, build frontend, executável release e instalador NSIS x64 aprovados.
+Instalador: src-tauri/target/release/bundle/nsis/BAROPRESS_0.2.0_x64-setup.exe.
+Homologação visual, instalação/desinstalação e ESP32 físico permanecem pendentes.
+Consultar 05_Historico/2026-10-06_01_correcao_fase5.txt para comandos, resultados e limites.
+
+AUDITORIA 0.2.1 - 07/10/2026
+Login/cadastro/recuperação/troca implementados com sessão protegida no backend.
+Correções de dados, fluxos, SQLite, PDF e UX registradas em docs/audit.
+132 testes frontend e 63 backend, typecheck, build e instalador NSIS aprovados.
+Histórico: 2026-10-07_02_auditoria_login_qualidade.txt. Homologação manual pendente.
+
+VISUALIZAÇÃO DO EXAME 0.2.3 - 07/10/2026
+Mesmos controles da Análise antes da coleta e no resultado, incluindo
+Gamma, VMAX, suavização, FPS visual, resolução e marcador de CoP.
+Botão Ajustar VMAX ao pico e aviso de saturação presentes nas duas telas.
+Configuração inicial acompanha a Análise; parâmetros ficam fixos na coleta.
+Aparência do resultado pode ser ajustada e salva sem alterar métricas,
+matriz, trajetória, perfil de calibração ou quadros brutos.
+Threshold fica fixo no resultado. Histórico salvo permanece preservado.
+149 testes frontend e 83 backend aprovados; TypeScript, build e NSIS aprovados.
+Instalador: src-tauri/target/release/bundle/nsis/BAROPRESS_0.2.3_x64-setup.exe.
+Executável: src-tauri/target/visualizacao/release/baropress.exe.
+Registro: 05_Historico/2026-10-07_03_uniformizacao_visualizacao_exame.txt.
+Conferência visual e ensaio no ESP32 físico continuam pendentes.
+
+EXAMES SEM ABA RELATÓRIOS 0.2.4 - 07/10/2026
+Removida a aba Relatórios e sua listagem duplicada. Uma única lista em Exames.
+Botões Relatório da lista e dos detalhes abrem o documento dentro de Exames.
+PDF, observações, impressão e retorno ao histórico mantidos.
+149 testes frontend, TypeScript, build e instalador NSIS x64 aprovados.
+Não há mudança de lógica do backend nem do banco de dados nesta entrega.
+Instalador: src-tauri/target/release/bundle/nsis/BAROPRESS_0.2.4_x64-setup.exe.
+Registro: 05_Historico/2026-10-07_04_exames_sem_aba_relatorios.txt.
+
+ARDUINO EM CONFIGURAÇÕES E CONEXÃO AUTOMÁTICA 0.2.5 - 07/10/2026
+Aba Aquisição removida; controles completos em Configurações > Arduino.
+Conexão automática após login e preferências, com porta/baud salvos,
+detecção de porta única, espera pelo USB e respeito à desconexão manual.
+Simulação escolhida é preservada; nova instalação usa Hardware Real.
+Atalhos de Dashboard/calibração atualizados. Nenhum exame ou tara automático.
+160 testes frontend e 84 Rust aprovados; TypeScript, build e NSIS aprovados.
+Instalador: src-tauri/target/release/bundle/nsis/BAROPRESS_0.2.5_x64-setup.exe.
+Registro: 05_Historico/2026-10-07_05_arduino_configuracoes_conexao_automatica.txt.
+Layout e ESP32 físico continuam pendentes de homologação manual.
+
+CONFIGURAÇÕES SEM MAPA DE CALOR 0.2.6 - 07/10/2026
+Removido o painel de ajustes do mapa de Configurações; guia renomeada Sistema.
+Controles visuais continuam na Análise e em Novo Exame.
+TypeScript, build frontend, executável release e instalador NSIS aprovados.
+Instalador: src-tauri/target/release/bundle/nsis/BAROPRESS_0.2.6_x64-setup.exe.
+Registro: 05_Historico/2026-10-07_06_configuracoes_sem_mapa_calor.txt.
+
+ANAMNESE DA PASTA QUESTIONNAIRES INTEGRADA 0.2.7 - 07/10/2026
+Incluída Anamnese para avaliação baropodométrica — v1: 40 perguntas/7 grupos.
+JSON e Markdown são um único modelo; JSON incluído no executável.
+Cadastro automático na primeira abertura de Questionários, sem duplicar,
+preservando modelo editado/inativo e histórico das respostas.
+160 testes frontend e 89 Rust aprovados; TypeScript, build e NSIS aprovados.
+Instalador: src-tauri/target/release/bundle/nsis/BAROPRESS_0.2.7_x64-setup.exe.
+Registro: 05_Historico/2026-10-07_07_questionario_anamnese_integrado.txt.
+
+BACKUP/LOGS EM CONFIGURAÇÕES E HISTÓRICO DE EXAMES 0.2.8 - 07/10/2026
+Itens separados removidos do menu lateral; guias Backup e Logs em Configurações.
+Permissões e funções mantidas; troca de guias bloqueada durante operação de backup.
+Exames renomeado Histórico de Exames no menu, título, atalhos e retornos.
+160 testes frontend, TypeScript, build e instalador NSIS aprovados.
+Sem alteração de esquema ou lógica do backend.
+Instalador: src-tauri/target/release/bundle/nsis/BAROPRESS_0.2.8_x64-setup.exe.
+Registro: 05_Historico/2026-10-07_08_configuracoes_logs_backup_historico_exames.txt.
+
+CHECK-UP DE DESEMPENHO E LIMPEZA 0.2.9 - 07/10/2026
+Fila de comandos fora da janela, paginação/busca, detalhes sob demanda,
+seletores de estado, interpolação equivalente e polling sem acúmulo.
+Fontes sem uso e polling de frames removidos; ~14 GB de artefatos antigos limpos.
+166 testes frontend, 94 Rust, TypeScript, frontend de produção e NSIS aprovados.
+Medição sintética: interpolação 5,09-5,79x e ~99,5% menos bytes por página.
+Instalador: src-tauri/target/release/bundle/nsis/BAROPRESS_0.2.9_x64-setup.exe.
+Relatório: ../docs/performance/CHECKUP_0.2.9.md.
+Registro: 05_Historico/2026-10-07_09_checkup_desempenho_limpeza.txt.
+
+REVISÃO DE ARQUITETURA E UX/UI - 07/10/2026
+Revisão do código e navegação de leitura nas 10 entradas do menu, 7 áreas
+de calibração e 4 guias de Configurações; detalhes/documento/comparação abertos.
+TypeScript aprovado nesta revisão. Nenhuma alteração funcional ou nova versão.
+Melhorias e inconsistências registradas, sem modificar prontuários.
+Relatório: ../docs/review/REVISAO_ARQUITETURA_UX_0.2.9.md.
+Registro: 05_Historico/2026-10-07_10_revisao_arquitetura_ux_funcionalidades.txt.
+
+CORREÇÕES IMPLEMENTADAS 0.2.10 - 07/10/2026
+Fila serial separada, retry com backoff/pausa, formatos de altura/tara/idade,
+proteção de saída/fechamento, vigilância de quadros e aviso de limiar zero.
+Observações salvas no exame com auditoria; migração 7 guarda dados demográficos
+no salvamento, mantém ausências e avisa nos antigos. Backup 5/6 compatível.
+Comparação ampliada/paginada por paciente, busca limitada no Novo Exame,
+cache por domínio e atualização explícita; rodapés e acessos ajustados.
+179 testes frontend, 99 Rust, TypeScript e empacotamento NSIS aprovados.
+Instalador: src-tauri/target/release/bundle/nsis/BAROPRESS_0.2.10_x64-setup.exe.
+Identificação/SHA256: docs/corrections/artifacts-0.2.10.json.
+Registro: 05_Historico/2026-10-07_11_correcoes_arquitetura_ux.txt.
+Relatório: ../docs/corrections/CORRECOES_0.2.10.md.
+Concluído aqui refere-se à implementação/testes, não à homologação real.
+
+CALIBRAÇÃO SIMPLIFICADA 0.2.11 - 08/10/2026
+Cinco etapas explicadas, ajuda por campo, detalhes recolhidos e referência
+condicionada ao tipo de coleta. Medidas documentadas carregadas por padrão,
+resumo legível e opção de alteração; preservação de montagem já cadastrada.
+181 testes frontend e TypeScript aprovados. Sem alteração das fórmulas/backend.
+Registro: 05_Historico/2026-10-08_12_calibracao_simplificada_ajudas.txt.
+Build/instalador: docs/corrections/artifacts-0.2.11.json.
+
+ALINHAMENTO VISUAL DA FAIXA ESQUERDA - 08/10/2026 (REVERTIDO; VER REGISTRO 14)
+Ajuste inicial +1 coluna, regulável de 0 a 3 nos ajustes avançados de mapas REAL.
+Dados e métricas originais preservados; marcador visual acompanha o desenho.
+Preferências/exames/PNG/PDF coerentes. Visualizadores Python também ajustados.
+185 testes frontend, 100 nativos, Python, TypeScript, build e NSIS aprovados.
+Registro: 05_Historico/2026-10-08_13_alinhamento_faixa_esquerda.txt.
+Pacote: docs/corrections/artifacts-alinhamento-0.2.11.json.
+Conferência com a plataforma real após atualização permanece pendente.
+
+ROLLBACK DA FAIXA ESQUERDA - 08/10/2026
+A tentativa do registro 13 foi revertida a pedido do usuário. Código, visualizadores
+Python e instalação restaurados à versão anterior. Controle de alinhamento removido.
+181 testes frontend, TypeScript e build aprovados. Instalador original reinstalado.
+Registro: 05_Historico/2026-10-08_14_rollback_faixa_esquerda.txt.
+
+PLANEJAMENTO BAROSYS CONCLUÍDO - 09/10/2026 (SOMENTE DOCUMENTAÇÃO)
+Criados plano F00 a F09 e prompts por fase, com dependências, blocos,
+critérios, verificações, preservação dos exames e instrução de retomada.
+Ensaios físicos separados de desenvolvimento; 3D/dinâmica como extensões.
+Plano: 04_Futuro/PLANO_MELHORIAS_BASEADAS_NO_BAROSYS.txt.
+Prompts: 04_Futuro/PROMPTS_MELHORIAS_BAROSYS_CODEX.txt.
+Registro: 05_Historico/2026-10-09_01_plano_melhorias_barosys.txt.
+Não significa funcionalidades implementadas, ensaios feitos ou nova versão.
+
+EXECUÇÃO SEQUENCIAL BAROSYS - 09/10/2026
+F00-F05 e F08 concluídos no software; F06-A preparado; F07 verificado no
+escopo sintético/navegador e consolidado, homologação nativa/física pendente.
+F09-A documentado, medição real pendente; F09-B permanece condicional.
+Usuário autorizou concluir software e executar testes reais juntos depois.
+Não instalaram/substituíram versão de uso nem ativaram perfil. Sem banco pessoal.
+Quadro vigente: 04_Futuro/PLANO_MELHORIAS_BASEADAS_NO_BAROSYS.txt.
+Checkpoints: 05_Historico/2026-10-09_02_barosys_F00.txt até _11_barosys_F09.txt.
+Métodos/evidências: ../docs/barosys/METODO_E_LIMITES.md e VALIDACAO_E_DEMONSTRACAO.txt.
+
+USUÁRIOS E ACESSO - ENTREGAS PARCIAIS - 09/10/2026
+Planejamento inicial e IAM-01 a IAM-04 implementados/verificados: RA/schema9,
+permissões Rust/interface, Usuários admin, sessão versionada, secretaria com
+Agenda de criação/consulta, resultados e dados cadastrais de pacientes.
+197 testes frontend e 120 Rust aprovados; 1 benchmark ignorado. TypeScript,
+build e compilação desktop debug aprovados. Sem mudança na instalação/banco.
+IAM-05 recuperação com RA e IAM-06 pacote/homologação continuam pendentes.
+Plano: 04_Futuro/PLANO_USUARIOS_LOGIN_ACESSO.txt.
+Relatório: ../docs/corrections/USUARIOS_LOGIN_ACESSO.md.
+Não declarar o conjunto finalizado nem homologado no aplicativo instalado.
+
+ENTREGA USUÁRIOS E ACESSO 0.2.12 - 09/10/2026
+IAM-01 a IAM-06 concluídos no software e pacote. Recuperação e-mail + RA,
+código como alternativa, três perfis/Usuários admin e secretaria com Agenda.
+198 testes frontend, 123 Rust aprovados/1 benchmark ignorado; TypeScript,
+build e NSIS aprovados. Executável confirmado 0.2.12, esquema9.
+Instalador: ../src-tauri/target/visualizacao/release/bundle/nsis/BAROPRESS_0.2.12_x64-setup.exe
+Registro: 05_Historico/2026-10-09_13_entrega_usuarios_acesso_0.2.12.txt.
+Manifesto: ../docs/corrections/iam-artifacts-0.2.12.json.
+Relatório: ../docs/corrections/USUARIOS_LOGIN_ACESSO.md.
+Homologação nativa/Arduino/migração de cópia real/instalação de uso: pendentes.
+Roteiro: 04_Futuro/PENDENCIAS_USUARIOS_LOGIN_ACESSO.txt.
+Sem instalação automática ou mudança no banco pessoal; original0.2.11 preservado.
+
+PRIMEIRO ACESSO E CADASTRO 0.2.13 - 09/10/2026
+Jornada inicial explícita: pessoa cadastra nome/e-mail/RA/senha/confirmação na
+própria tela de login, primeira conta sempre Administrador. Depois, admin cria
+outros usuários pela aba Usuários. Segundo cadastro público não é reaberto.
+198 frontend e 123 Rust aprovados; 1 benchmark ignorado. TypeScript/build, fmt,
+NSIS aprovados e versão do binário0.2.13 confirmada. Esquema9 preservado.
+Instalador: ../src-tauri/target/visualizacao/release/bundle/nsis/BAROPRESS_0.2.13_x64-setup.exe
+Registro: 05_Historico/2026-10-09_14_primeiro_acesso_cadastro.txt.
+Manifesto: ../docs/corrections/artifacts-0.2.13.json.
+Sem instalação/cadastro real/banco pessoal. Homologação nativa/Arduino pendente.
+
+
+AQUISICAO E MODALIDADES - 14/10/2026
+AQ-01 a AQ-04 implementados na ordem: 30/45 s, modalidades/sequencia, trajeto ao vivo, historico/relatorios.
+210 testes frontend e 126 Rust aprovados, 1 benchmark ignorado; TypeScript/build aprovados.
+Homologacao visual/nativa e ESP32 real pendentes; navegador de teste nao conectou. Sem novo instalador.
+Plano: 04_Futuro/PLANO_AQUISICAO_30_45_MODALIDADES.txt.
+Registro: 05_Historico/2026-10-14_01_aquisicao_modalidades_trajeto.txt.
+
+
+SIMPLIFICACAO NOVO EXAME - 14/10/2026
+Calibracao fisica e painel Condicoes planejadas da coleta retirados do Novo Exame.
+Condicao visual e Apoio externo ficam dentro de Paciente e protocolo.
+TypeScript/build aprovados; conferencia visual pendente.
+Registro: 05_Historico/2026-10-14_02_simplificacao_novo_exame.txt.
+
+
+TESTES CONDICOES SIMPLIFICADAS - 14/10/2026
+Navegador recuperado: campos/abas, coleta Mock de 30 s (909 quadros), salvar/reabrir e relatorio aprovados.
+217 testes frontend, TypeScript e 9 testes de integracao Rust/SQLite aprovados.
+Hardware fisico e WebView nativo ainda pendentes.
+Registro: 05_Historico/2026-10-14_03_testes_condicoes_simplificadas.txt.
+
+
+ENTREGA 0.2.14 - 14/10/2026
+Executavel x64 e instalador NSIS gerados em entrega/.
+217 testes frontend e 127 backend aprovados, 1 benchmark ignorado; build final aprovado.
+Programa com ProductVersion 0.2.14; hashes das copias conferidos. Sem instalacao automatica.
+Registro: 05_Historico/2026-10-14_04_exe_0.2.14.txt.

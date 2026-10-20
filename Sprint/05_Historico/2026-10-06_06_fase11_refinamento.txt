@@ -1,0 +1,33 @@
+BAROPRESS - FASE 11: REFINAMENTO E BUILD FINAL
+Data: 06/10/2026
+Continuação: 07/10/2026
+Status: CONCLUÍDO NO CÓDIGO, TESTES E EMPACOTAMENTO
+
+PASSO 1 - REQUISITOS
+UX, desempenho, acessibilidade, testes, documentação e build final.
+
+PASSO 2 - IMPLEMENTAÇÃO
+Preferências persistentes no SQLite, fila de gravação aguardada antes de restore,
+logs de operações/erros sem argumentos pessoais, telas sob demanda e chunks UI/PDF.
+Foco por teclado, Tab e Escape em diálogos; recuperação de sessão inválida e
+falhas de tela. Mensagens de erro na busca de exames e status real no dashboard.
+Correção de peso/altura no IMC do prontuário/relatórios e horários UTC do SQLite.
+Gráficos com fusos distintos e indicação de CoP ausente por falta de contato.
+Versões package/Tauri/Cargo alinhadas em 0.2.0.
+
+PASSO 3 - VALIDAÇÃO
+Frontend: 113 testes aprovados em 12 arquivos na execução completa final.
+Backend: 44 testes aprovados, incluindo fluxo completo com os cinco tipos de
+resposta, exames, agenda, preferências e restauração do backup.
+Build frontend e TypeScript aprovados; nenhum chunk acima de 500 kB.
+Build desktop release aprovado: src-tauri/target/release/baropress.exe, versão 0.2.0.
+Instalador: primeira tentativa falhou por DNS ao baixar NSIS 3.11.
+A nova tentativa com acesso à rede concluiu o empacotamento em 07/10/2026.
+Arquivo: src-tauri/target/release/bundle/nsis/BAROPRESS_0.2.0_x64-setup.exe.
+Tamanho informado pelo empacotador: 3,29 MiB. Arquitetura x64.
+Comando: npm.cmd run tauri:build -- --ci --bundles nsis -- --offline
+
+PASSO 4 - CONCLUSÃO
+As fases 7 a 11 foram implementadas sequencialmente e registradas por fase.
+Homologação visual, instalação/desinstalação e ESP32 físico não executadas.
+Nenhum dado de pacientes reais foi alterado/restaurado.

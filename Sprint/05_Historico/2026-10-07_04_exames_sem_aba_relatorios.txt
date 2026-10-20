@@ -1,0 +1,42 @@
+BAROPRESS - EXAMES E RELATÓRIOS NA MESMA ÁREA
+Data: 07/10/2026
+Versão: 0.2.4
+Status: IMPLEMENTAÇÃO, VERIFICAÇÃO AUTOMÁTICA E EMPACOTAMENTO CONCLUÍDOS
+
+PEDIDO
+Remover a aba Relatórios, mantendo somente Exames, pois as listas repetiam
+praticamente o mesmo conteúdo.
+
+ALTERAÇÕES
+- Removido Relatórios do menu lateral e da lista de páginas do aplicativo.
+- Removida a tela ReportsPage e sua listagem duplicada de exames.
+- Botão Relatório em Exames abre o documento na própria área Exames.
+- A ação dos detalhes do exame também direciona para Exames.
+- Mantidos prévia A4, observações, exportação PDF e impressão do ReportViewer.
+- Voltar retorna à única lista de Exames, preservando a busca quando o
+  documento foi aberto nessa lista. Menu Exames abre novamente a listagem.
+- Carregamento do documento tem retorno, erro, nova tentativa e proteção
+  contra respostas que chegam depois de sair ou mudar o exame selecionado.
+- Nenhuma mudança de banco, matriz, configurações ou calibração física.
+
+VERIFICAÇÃO
+- npm test: 149 testes frontend aprovados em 18 arquivos, incluindo
+  geração de PDF, dados salvos, observações longas e calibração.
+- npm run build: TypeScript e frontend de produção aprovados.
+- Busca no código: nenhuma rota reports ou referência à ReportsPage restante.
+- ReportViewer é carregado sob demanda dentro de Exames.
+- Build desktop release e instalador NSIS x64 aprovados na pasta target/visualizacao,
+  pois o executável release normal continua aberto.
+- Suíte Rust não repetida: não há alteração de lógica do backend nesta tarefa.
+Homologação visual manual continua pendente.
+
+ARTEFATOS
+Executável: src-tauri/target/visualizacao/release/baropress.exe (0.2.4).
+Instalador: src-tauri/target/release/bundle/nsis/BAROPRESS_0.2.4_x64-setup.exe.
+A cópia original também está em target/visualizacao/release/bundle/nsis/.
+Versão do executável e igualdade das cópias do instalador verificadas.
+O aplicativo que estava aberto continua na versão anterior até atualização.
+
+COMO USAR
+Exames > botão Relatório na linha do exame > visualizar, imprimir ou PDF.
+No documento, Voltar retorna ao histórico de Exames.

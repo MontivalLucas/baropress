@@ -1,0 +1,2086 @@
+# PROJETO TCC — SISTEMA DE BAROPODOMETRIA 15×15 COM ESP32
+
+## 1. PAPEL
+
+Você é um engenheiro de software sênior especializado em:
+
+* aplicações desktop modernas;
+* React + TypeScript;
+* Tauri;
+* bancos de dados locais;
+* processamento de sinais;
+* visualização científica;
+* sistemas de aquisição de dados em tempo real;
+* comunicação Serial/Bluetooth;
+* UX/UI para sistemas profissionais;
+* geração de relatórios PDF;
+* arquitetura de software escalável e testável.
+
+Sua missão é desenvolver o **sistema completo de software do meu projeto de TCC de baropodometria**, utilizando como referência funcional o conceito e os fluxos apresentados no manual do BaroScan/BaroSys, porém criando uma implementação própria.
+
+IMPORTANTE:
+
+Não copie código, identidade visual, logotipo, textos proprietários ou interface visual do BaroScan.
+
+Use o BaroScan apenas como **referência de funcionalidades, fluxo de trabalho e organização de um sistema profissional de baropodometria**.
+
+O sistema deverá possuir identidade visual própria, moderna e tecnológica.
+
+---
+
+# 2. CONTEXTO DO HARDWARE
+
+O projeto possui uma esteira/plataforma de pressão plantar baseada em:
+
+* ESP32 Dev Module / NodeMCU-32S;
+* matriz resistiva 15 × 15;
+* 225 pontos de medição;
+* Velostat;
+* fitas condutoras de cobre;
+* dois multiplexadores CD74HC4067;
+* ADC do ESP32;
+* comunicação USB Serial;
+* comunicação Bluetooth Serial SPP.
+
+A matriz possui:
+
+225 sensels = 15 linhas × 15 colunas.
+
+O Velostat apresenta comportamento piezorresistivo: sua resistência diminui conforme a pressão aplicada.
+
+O sistema atual já consegue:
+
+* realizar varredura 15×15;
+* receber 225 valores;
+* transmitir via USB;
+* transmitir via Bluetooth;
+* trabalhar a aproximadamente 30 FPS;
+* realizar tara automática;
+* aplicar threshold;
+* aplicar escala máxima;
+* aplicar correção gama;
+* exibir mapa de calor;
+* calcular distribuição de pressão entre pé esquerdo e direito.
+
+---
+
+# 3. PINAGEM REAL DO ESP32
+
+NÃO altere esses pinos sem necessidade.
+
+## MUX 2 — leitura analógica
+
+SIG → GPIO 34 / D34
+
+S0 → GPIO 18 / D18
+
+S1 → GPIO 19 / D19
+
+S2 → GPIO 21 / D21
+
+S3 → GPIO 22 / D22
+
+GPIO 34 é utilizado como entrada ADC.
+
+## MUX 1 — excitação das linhas
+
+SIG → GPIO 12 / D12
+
+S0 → GPIO 25 / D25
+
+S1 → GPIO 26 / D26
+
+S2 → GPIO 27 / D27
+
+S3 → GPIO 14 / D14
+
+## Matriz
+
+ROWS = 15
+
+COLS = 15
+
+Total = 225 sensores.
+
+---
+
+# 4. PROTOCOLO ATUAL DO ESP32
+
+O ESP32 envia uma linha contendo:
+
+225 valores inteiros separados por vírgula.
+
+Exemplo:
+
+123,125,127,130,...,500
+
+A linha termina com:
+
+\n
+
+Baud rate:
+
+115200
+
+Nome Bluetooth atual:
+
+Esteira_Pressao_ESP32
+
+O software deve ser capaz de receber esse protocolo.
+
+NÃO altere o firmware existente inicialmente.
+
+Crie a aplicação de forma que ela consiga funcionar com o protocolo atual.
+
+No futuro poderemos criar um protocolo versionado.
+
+---
+
+# 5. PROCESSAMENTO ATUAL
+
+O processamento atual utiliza:
+
+1. aquisição dos 225 valores;
+2. conversão para matriz 15×15;
+3. inversão horizontal da matriz quando necessário;
+4. calibração/tara;
+5. subtração da linha de base;
+6. threshold;
+7. clipping;
+8. normalização;
+9. correção gama;
+10. renderização do mapa de calor.
+
+A lógica atual utiliza aproximadamente:
+
+VMAX padrão: 2200
+
+Threshold padrão: 150
+
+Gamma padrão: 1.3
+
+Esses valores devem ser CONFIGURÁVEIS.
+
+Não considere esses valores como calibração universal ou medida física de pressão.
+
+O sistema deve deixar claro que os valores ADC são dados relativos do sensor enquanto não existir uma calibração física validada.
+
+---
+
+# 6. OBJETIVO DO SOFTWARE
+
+Criar um sistema desktop profissional chamado provisoriamente:
+
+## BAROPRESS
+
+Nome poderá ser alterado posteriormente.
+
+O sistema deve permitir:
+
+* conexão com a esteira;
+* monitoramento em tempo real;
+* calibração;
+* cadastro de pacientes;
+* cadastro de profissionais;
+* cadastro de clínicas;
+* agenda;
+* anamnese/questionário;
+* realização de exames;
+* armazenamento dos exames;
+* análise dos exames;
+* comparação de exames;
+* geração de relatórios;
+* exportação;
+* backup;
+* restauração;
+* configurações;
+* histórico do paciente.
+
+---
+
+# 7. STACK OBRIGATÓRIA
+
+Utilize preferencialmente:
+
+Frontend:
+
+* React
+* TypeScript
+* Vite
+* Tailwind CSS
+* shadcn/ui
+
+Desktop:
+
+* Tauri 2
+
+Banco:
+
+* SQLite
+
+Arquitetura:
+
+* modular;
+* componentizada;
+* tipada;
+* escalável;
+* testável.
+
+Evite dependências desnecessárias.
+
+Não utilize Electron se Tauri puder atender ao requisito.
+
+---
+
+# 8. PRINCÍPIO FUNDAMENTAL
+
+NÃO criar um protótipo visual.
+
+Quero um sistema funcional.
+
+Todos os botões importantes devem executar ações reais.
+
+Não utilizar:
+
+* TODO falso;
+* alert("em breve");
+* botões sem função;
+* dados falsos permanentes;
+* páginas que apenas simulam funcionamento;
+* APIs inexistentes;
+* funções vazias.
+
+Quando alguma funcionalidade ainda não puder ser implementada por depender de hardware que não está conectado, criar uma camada de abstração real e um modo de simulação claramente identificado.
+
+---
+
+# 9. ARQUITETURA
+
+Organize o projeto aproximadamente assim:
+
+src/
+
+components/
+
+pages/
+
+features/
+
+patients/
+
+professionals/
+
+clinics/
+
+exams/
+
+acquisition/
+
+analysis/
+
+agenda/
+
+questionnaires/
+
+reports/
+
+settings/
+
+backup/
+
+services/
+
+serial/
+
+bluetooth/
+
+acquisition/
+
+processing/
+
+reports/
+
+database/
+
+export/
+
+hooks/
+
+lib/
+
+types/
+
+utils/
+
+stores/
+
+backend/
+
+database/
+
+tests/
+
+Não coloque toda a aplicação em um único arquivo.
+
+---
+
+# 10. BANCO DE DADOS
+
+Criar banco SQLite real.
+
+Criar migrations.
+
+Criar relacionamentos.
+
+O banco deverá conter no mínimo:
+
+## users
+
+* id
+* name
+* email
+* password_hash
+* role
+* active
+* created_at
+* updated_at
+
+## clinics
+
+* id
+* name
+* document
+* phone
+* email
+* address
+* city
+* state
+* created_at
+* updated_at
+
+## professionals
+
+* id
+* clinic_id
+* name
+* email
+* phone
+* profession
+* registration
+* active
+* created_at
+* updated_at
+
+## patients
+
+* id
+* name
+* social_name
+* birth_date
+* sex
+* cpf
+* phone
+* email
+* address
+* profession
+* height
+* weight
+* shoe_size
+* observations
+* created_at
+* updated_at
+
+## appointments
+
+* id
+* patient_id
+* professional_id
+* clinic_id
+* date
+* start_time
+* end_time
+* type
+* status
+* notes
+* created_at
+* updated_at
+
+## questionnaires
+
+* id
+* name
+* description
+* active
+* created_at
+
+## questionnaire_questions
+
+* id
+* questionnaire_id
+* question
+* type
+* options
+* required
+* order_index
+
+## questionnaire_answers
+
+* id
+* questionnaire_id
+* patient_id
+* question_id
+* answer
+* created_at
+
+## exams
+
+* id
+* patient_id
+* professional_id
+* clinic_id
+* type
+* status
+* started_at
+* finished_at
+* duration
+* acquisition_frequency
+* sensor_rows
+* sensor_columns
+* threshold
+* vmax
+* gamma
+* baseline_data
+* notes
+* created_at
+* updated_at
+
+## exam_frames
+
+* id
+* exam_id
+* frame_number
+* timestamp
+* matrix_data
+* created_at
+
+A matriz deve poder ser armazenada de forma eficiente.
+
+Avaliar armazenamento como JSON comprimido ou BLOB, mantendo uma estrutura que permita posteriormente reconstruir os frames.
+
+## exam_metrics
+
+* id
+* exam_id
+* frame_id
+* left_pressure
+* right_pressure
+* left_percentage
+* right_percentage
+* max_pressure
+* average_pressure
+* contact_area_left
+* contact_area_right
+* cop_x
+* cop_y
+* created_at
+
+## reports
+
+* id
+* exam_id
+* type
+* file_path
+* created_at
+
+---
+
+# 11. PACIENTES
+
+Criar uma tela moderna de pacientes.
+
+Funcionalidades:
+
+* listar;
+* pesquisar;
+* filtrar;
+* criar;
+* editar;
+* visualizar;
+* arquivar;
+* excluir com confirmação;
+* abrir histórico.
+
+Pesquisa por:
+
+* nome;
+* CPF;
+* telefone;
+* e-mail.
+
+Ao abrir um paciente:
+
+Mostrar:
+
+* dados pessoais;
+* informações antropométricas;
+* histórico de exames;
+* consultas;
+* questionários;
+* relatórios;
+* evolução.
+
+Criar uma visão semelhante a um prontuário moderno.
+
+---
+
+# 12. DASHBOARD
+
+Criar dashboard inicial.
+
+Mostrar:
+
+* pacientes cadastrados;
+* exames realizados;
+* exames recentes;
+* consultas do dia;
+* status da esteira;
+* último exame;
+* atalhos rápidos.
+
+Exemplo:
+
+[Novo Paciente]
+
+[Novo Exame]
+
+[Agenda]
+
+[Pacientes]
+
+[Conectar Esteira]
+
+---
+
+# 13. STATUS DA ESTEIRA
+
+Criar indicador global de conexão.
+
+Estados:
+
+🔴 Desconectada
+
+🟡 Conectando
+
+🟢 Conectada
+
+⚠️ Erro
+
+Mostrar:
+
+* USB/Bluetooth;
+* porta;
+* baud rate;
+* FPS aproximado;
+* último frame recebido;
+* quantidade de sensores;
+* latência.
+
+Criar tela de configuração da conexão.
+
+Permitir:
+
+* detectar portas;
+* selecionar porta;
+* conectar;
+* desconectar;
+* reconectar automaticamente;
+* escolher USB ou Bluetooth;
+* alterar baud rate;
+* testar comunicação.
+
+---
+
+# 14. CAMADA DE HARDWARE
+
+Criar uma interface:
+
+SensorDevice
+
+Com métodos:
+
+connect()
+
+disconnect()
+
+getStatus()
+
+readFrame()
+
+startAcquisition()
+
+stopAcquisition()
+
+calibrate()
+
+getDeviceInfo()
+
+Criar implementação:
+
+Esp32SerialDevice
+
+Futuramente:
+
+Esp32BluetoothDevice
+
+Também criar:
+
+MockSensorDevice
+
+para testes.
+
+Isso permitirá executar o sistema mesmo sem o hardware conectado.
+
+---
+
+# 15. AQUISIÇÃO EM TEMPO REAL
+
+Criar tela:
+
+## NOVO EXAME
+
+Passo 1:
+
+Selecionar:
+
+* paciente;
+* profissional;
+* clínica;
+* tipo de exame.
+
+Tipos:
+
+* Estático;
+* Dinâmico;
+* Dinâmico + vídeo, quando implementado.
+
+Inicialmente priorizar:
+
+## EXAME ESTÁTICO
+
+Configurar:
+
+* duração;
+* frequência;
+* threshold;
+* VMAX;
+* gamma;
+* tara.
+
+---
+
+# 16. CALIBRAÇÃO / TARA
+
+Antes do exame:
+
+Mostrar:
+
+"Mantenha a plataforma livre."
+
+Executar aquisição de baseline.
+
+Utilizar a lógica atual de coleta de frames.
+
+Permitir:
+
+[Calibrar]
+
+[Recalibrar]
+
+[Zerar Tara]
+
+Mostrar progresso.
+
+Nunca permitir iniciar exame se o sistema estiver em estado inválido.
+
+---
+
+# 17. MAPA DE PRESSÃO
+
+Criar visualização central grande.
+
+Mapa 15×15.
+
+Utilizar renderização suave/interpolada para visualização.
+
+Mostrar escala de cores.
+
+Possibilitar:
+
+* zoom;
+* fullscreen;
+* grade;
+* eixos;
+* COP;
+* pontos máximos;
+* informações dos pés;
+* porcentagens;
+* escala;
+* controles de visualização.
+
+A matriz original deve permanecer preservada.
+
+Não modificar os dados apenas para visualização.
+
+---
+
+# 18. MAPA DE CALOR
+
+Criar um componente:
+
+PressureMap
+
+Recebe:
+
+matrix: number[][]
+
+e configurações:
+
+* vmax;
+* threshold;
+* gamma;
+* interpolation;
+* colorScale;
+* showGrid;
+* showAxes;
+* showCOP;
+* showMaxPoints.
+
+Permitir diferentes escalas de cores.
+
+Criar pelo menos:
+
+* Turbo;
+* Inferno;
+* Viridis;
+* Grayscale.
+
+Permitir configurar a escala.
+
+---
+
+# 19. MÉTRICAS EM TEMPO REAL
+
+Durante o exame mostrar:
+
+## Pressão
+
+* máxima;
+* média;
+* soma relativa.
+
+## Distribuição
+
+* pé esquerdo;
+* pé direito;
+* percentual esquerdo;
+* percentual direito.
+
+## Contato
+
+* área relativa esquerda;
+* área relativa direita;
+* área total.
+
+## COP
+
+* X;
+* Y.
+
+## Sistema
+
+* FPS;
+* frames recebidos;
+* tempo de aquisição.
+
+IMPORTANTE:
+
+Como o hardware atual possui 225 sensores e não uma calibração física validada equivalente à do BaroScan, não apresentar automaticamente valores em kgf/cm².
+
+Utilizar inicialmente:
+
+* ADC;
+* intensidade relativa;
+* percentual;
+* unidades relativas.
+
+Criar arquitetura preparada para futura calibração física.
+
+---
+
+# 20. CENTRO DE PRESSÃO — COP
+
+Implementar cálculo do centro de pressão.
+
+Para uma matriz:
+
+P[i][j]
+
+Calcular:
+
+COPx = Σ(x * P) / ΣP
+
+COPy = Σ(y * P) / ΣP
+
+Aplicar threshold antes do cálculo.
+
+Se a soma de pressão for insuficiente:
+
+COP = null
+
+Evitar divisão por zero.
+
+Mostrar COP visualmente sobre o mapa.
+
+---
+
+# 21. ESTABILOMETRIA
+
+Criar módulo preparado para análise temporal do COP.
+
+Mostrar:
+
+* trajetória do COP;
+* deslocamento X;
+* deslocamento Y;
+* distância total percorrida;
+* velocidade média;
+* amplitude X;
+* amplitude Y.
+
+Gráfico:
+
+COP X/Y ao longo do tempo.
+
+Não inventar métricas clínicas que não sejam calculáveis pelos dados existentes.
+
+---
+
+# 22. ANÁLISE DO EXAME ESTÁTICO
+
+Após finalizar o exame:
+
+Mostrar uma tela profissional com abas:
+
+### Visão Geral
+
+### Distribuição
+
+### COP
+
+### Estabilometria
+
+### Frames
+
+### Dados
+
+### Anotações
+
+### Relatório
+
+---
+
+# 23. FRAMES
+
+Permitir:
+
+* frame atual;
+* primeiro frame;
+* último frame;
+* frame máximo;
+* frame médio.
+
+Criar timeline.
+
+Permitir navegar pelo exame.
+
+Mostrar timestamp.
+
+Permitir salvar o frame selecionado.
+
+---
+
+# 24. FRAME MÁXIMO
+
+Calcular:
+
+maxMatrix[x][y] = máximo valor daquele sensor durante o exame.
+
+Exibir mapa máximo.
+
+---
+
+# 25. FRAME MÉDIO
+
+Calcular média por sensor.
+
+Exibir:
+
+averageMatrix[x][y]
+
+---
+
+# 26. COMPARAÇÃO DE EXAMES
+
+Permitir selecionar até 4 exames do mesmo paciente.
+
+Criar tela:
+
+## COMPARAR EXAMES
+
+Mostrar:
+
+Exame 1
+
+Exame 2
+
+Exame 3
+
+Exame 4
+
+Possibilitar comparação:
+
+* mapas;
+* pressão máxima;
+* pressão média;
+* distribuição esquerda/direita;
+* COP;
+* área de contato;
+* trajetória do COP;
+* evolução temporal.
+
+Utilizar gráficos comparativos.
+
+---
+
+# 27. HISTÓRICO DO PACIENTE
+
+No perfil do paciente:
+
+Timeline:
+
+2026-10-01
+Exame estático
+
+2026-10-15
+Exame estático
+
+2026-11-02
+Exame estático
+
+Permitir abrir cada exame.
+
+Mostrar evolução.
+
+---
+
+# 28. AGENDA
+
+Criar calendário moderno.
+
+Visualizações:
+
+* dia;
+* semana;
+* mês.
+
+Permitir:
+
+* criar consulta;
+* editar;
+* excluir;
+* alterar status;
+* associar paciente;
+* associar profissional;
+* adicionar observações.
+
+Status:
+
+* agendado;
+* confirmado;
+* realizado;
+* cancelado.
+
+---
+
+# 29. QUESTIONÁRIO / ANAMNESE
+
+Criar sistema configurável.
+
+Permitir criar:
+
+* grupos;
+* perguntas;
+* perguntas abertas;
+* seleção única;
+* múltipla seleção;
+* campos numéricos;
+* sim/não.
+
+Permitir ativar/desativar perguntas.
+
+Questionários respondidos devem ficar vinculados ao paciente e à data.
+
+---
+
+# 30. RELATÓRIOS PDF
+
+Criar geração de relatório PDF profissional.
+
+Relatório deve conter:
+
+* nome do paciente;
+* data;
+* profissional;
+* clínica;
+* identificação do exame;
+* mapa plantar;
+* mapa máximo;
+* mapa médio;
+* distribuição esquerda/direita;
+* COP;
+* métricas;
+* observações;
+* gráficos;
+* espaço para assinatura;
+* rodapé.
+
+Criar:
+
+## Relatório padrão
+
+E arquitetura para:
+
+## Relatório personalizado
+
+Nunca gerar diagnóstico médico automaticamente.
+
+Adicionar no relatório uma observação apropriada indicando que os dados são destinados à avaliação profissional.
+
+---
+
+# 31. EXPORTAÇÃO
+
+Permitir exportar:
+
+* exame PDF;
+* imagem PNG do mapa;
+* CSV;
+* dados brutos;
+* dados processados.
+
+CSV deve permitir reconstruir os dados.
+
+---
+
+# 32. BACKUP
+
+Criar:
+
+### Exportar Backup
+
+Gerar arquivo contendo:
+
+* banco;
+* pacientes;
+* exames;
+* frames;
+* configurações;
+* questionários.
+
+Criar:
+
+### Importar Backup
+
+Antes de substituir dados:
+
+mostrar confirmação clara.
+
+Criar também:
+
+### Backup de paciente
+
+Exportar apenas os dados daquele paciente.
+
+---
+
+# 33. CONFIGURAÇÕES
+
+Criar página de configurações.
+
+Seções:
+
+### Sistema
+
+* idioma;
+* formato de data;
+* unidade;
+* diretório de backup.
+
+### Aquisição
+
+* duração;
+* FPS;
+* threshold;
+* VMAX;
+* gamma.
+
+### Visualização
+
+* escala de cores;
+* interpolação;
+* mostrar grade;
+* mostrar COP.
+
+### Hardware
+
+* porta;
+* USB/Bluetooth;
+* baud rate;
+* reconexão automática.
+
+---
+
+# 34. AUTENTICAÇÃO
+
+Criar login local.
+
+Campos:
+
+* e-mail;
+* senha.
+
+Utilizar hash seguro.
+
+Não armazenar senha em texto puro.
+
+Criar:
+
+* login;
+* logout;
+* sessão;
+* usuário atual.
+
+---
+
+# 35. UX/UI
+
+A interface precisa parecer um software profissional moderno.
+
+Não quero aparência de sistema administrativo antigo.
+
+Referências de linguagem visual:
+
+* Apple;
+* Linear;
+* Vercel;
+* Stripe;
+* softwares médicos modernos.
+
+Características:
+
+* sidebar elegante;
+* cards;
+* tabelas modernas;
+* espaços bem definidos;
+* tipografia limpa;
+* ícones consistentes;
+* dark mode;
+* light mode;
+* animações discretas;
+* feedback visual;
+* skeleton loading;
+* empty states;
+* estados de erro;
+* tooltips;
+* confirmações.
+
+Não exagerar em efeitos.
+
+Priorizar:
+
+clareza > decoração.
+
+---
+
+# 36. RESPONSIVIDADE
+
+Embora seja uma aplicação desktop, a interface precisa se adaptar a diferentes resoluções.
+
+Testar pelo menos:
+
+1280×720
+
+1366×768
+
+1920×1080
+
+2560×1440
+
+Evitar elementos que ultrapassem a tela.
+
+A tela de exame deve priorizar o mapa plantar.
+
+---
+
+# 37. ACESSIBILIDADE
+
+Implementar:
+
+* navegação por teclado;
+* foco visível;
+* contraste adequado;
+* labels;
+* aria quando necessário;
+* botões com tamanho adequado;
+* mensagens de erro claras.
+
+---
+
+# 38. TRATAMENTO DE ERROS
+
+Criar sistema centralizado.
+
+Erros possíveis:
+
+* ESP32 desconectado;
+* porta ocupada;
+* Bluetooth indisponível;
+* frame inválido;
+* menos de 225 valores;
+* dados corrompidos;
+* banco indisponível;
+* erro de PDF;
+* erro de backup.
+
+Nunca deixar a aplicação simplesmente quebrar.
+
+---
+
+# 39. PROTEÇÃO CONTRA FRAME INVÁLIDO
+
+Antes de processar:
+
+verificar:
+
+length === 225
+
+Todos os valores devem ser numéricos.
+
+Limitar valores ao intervalo válido.
+
+Descartar frame inválido.
+
+Registrar erro no log.
+
+Não travar a interface.
+
+---
+
+# 40. PERFORMANCE
+
+O sistema precisa funcionar em tempo real.
+
+Evitar:
+
+* re-renderização completa da aplicação a cada frame;
+* atualizar React state excessivamente;
+* criar milhares de componentes por frame;
+* recalcular dados históricos desnecessariamente.
+
+Separar:
+
+aquisição
+
+↓
+
+processamento
+
+↓
+
+visualização
+
+↓
+
+persistência.
+
+A aquisição não deve travar por causa do banco ou da interface.
+
+Utilizar buffers quando necessário.
+
+---
+
+# 41. ARMAZENAMENTO DOS EXAMES
+
+Não salvar necessariamente todos os frames diretamente através do React.
+
+Criar pipeline:
+
+ESP32
+
+↓
+
+Serial Service
+
+↓
+
+Frame Buffer
+
+↓
+
+Processing Worker
+
+↓
+
+Metrics
+
+↓
+
+UI
+
+↓
+
+Persistence
+
+Para exames longos, utilizar estratégia eficiente de armazenamento.
+
+---
+
+# 42. WEB WORKER / WORKER
+
+Avaliar utilização de Web Worker para:
+
+* processamento das matrizes;
+* cálculo de máximos;
+* cálculo de médias;
+* COP;
+* métricas.
+
+Não bloquear a UI.
+
+---
+
+# 43. MODO DEMONSTRAÇÃO
+
+Criar:
+
+## Modo Simulação
+
+Caso o ESP32 não esteja conectado.
+
+Gerar uma matriz 15×15 simulando:
+
+* pé esquerdo;
+* pé direito;
+* antepé;
+* arco;
+* retropé.
+
+Permitir:
+
+* caminhar;
+* distribuir peso;
+* gerar COP;
+* alterar pressão.
+
+IMPORTANTE:
+
+Mostrar claramente:
+
+"Modo Simulação"
+
+Não misturar dados simulados com exames reais.
+
+---
+
+# 44. DADOS REAIS X SIMULADOS
+
+Todo exame deve possuir:
+
+source:
+
+REAL
+
+ou
+
+SIMULATION
+
+Isso deve aparecer no banco e na interface.
+
+---
+
+# 45. LOG DO SISTEMA
+
+Criar logs técnicos.
+
+Registrar:
+
+* conexão;
+* desconexão;
+* erro serial;
+* frames inválidos;
+* início do exame;
+* fim do exame;
+* backup;
+* restauração;
+* erros críticos.
+
+Criar visualizador de logs para desenvolvimento/administração.
+
+---
+
+# 46. SEGURANÇA
+
+Como o sistema trabalha com dados pessoais:
+
+* não deixar senha em texto puro;
+* evitar exposição desnecessária de CPF;
+* usar prepared statements;
+* validar entradas;
+* proteger arquivos;
+* não expor banco via internet;
+* não enviar dados para serviços externos sem autorização.
+
+O sistema deve funcionar localmente.
+
+---
+
+# 47. PRIVACIDADE
+
+Não enviar dados dos pacientes para APIs externas.
+
+O processamento deve ocorrer localmente sempre que possível.
+
+---
+
+# 48. IDENTIDADE VISUAL
+
+Criar identidade própria.
+
+Sugestão:
+
+Nome:
+
+BAROPRESS
+
+Conceito:
+
+tecnologia + biomecânica + precisão.
+
+Paleta inicial:
+
+fundo claro:
+
+#F7F8FA
+
+fundo escuro:
+
+#0B0F14
+
+cor primária:
+
+#2563EB
+
+sucesso:
+
+#16A34A
+
+alerta:
+
+#F59E0B
+
+erro:
+
+#DC2626
+
+Não precisa seguir exatamente essas cores se houver uma solução visual melhor.
+
+---
+
+# 49. SIDEBAR
+
+Criar:
+
+Dashboard
+
+Pacientes
+
+Agenda
+
+Exames
+
+Novo Exame
+
+Relatórios
+
+Questionários
+
+Configurações
+
+Backup
+
+Logs
+
+---
+
+# 50. FLUXO PRINCIPAL
+
+O fluxo principal deve ser:
+
+Login
+
+↓
+
+Dashboard
+
+↓
+
+Paciente
+
+↓
+
+Novo Exame
+
+↓
+
+Conectar Esteira
+
+↓
+
+Calibrar
+
+↓
+
+Preview em tempo real
+
+↓
+
+Iniciar Exame
+
+↓
+
+Aquisição
+
+↓
+
+Processamento
+
+↓
+
+Resultado
+
+↓
+
+Salvar
+
+↓
+
+Análise
+
+↓
+
+Relatório
+
+↓
+
+Histórico do Paciente
+
+---
+
+# 51. NOVO EXAME — UX
+
+A tela deve mostrar claramente:
+
+PACIENTE
+
+PROFISSIONAL
+
+TIPO DE EXAME
+
+DURAÇÃO
+
+FREQUÊNCIA
+
+STATUS DO HARDWARE
+
+CALIBRAÇÃO
+
+PREVIEW
+
+MÉTRICAS
+
+Botão principal:
+
+INICIAR EXAME
+
+Durante aquisição:
+
+PAUSAR
+
+FINALIZAR
+
+CANCELAR
+
+---
+
+# 52. DURANTE O EXAME
+
+Mostrar:
+
+00:03 / 00:10
+
+● AQUISIÇÃO
+
+FPS: 29.8
+
+Sensores: 225/225
+
+Hardware: conectado
+
+E ao lado:
+
+mapa de pressão em tempo real.
+
+---
+
+# 53. RESULTADO
+
+Após finalizar:
+
+"Exame concluído."
+
+Mostrar:
+
+Pressão máxima
+
+Pressão média
+
+Distribuição
+
+COP
+
+Área
+
+Quantidade de frames
+
+Duração
+
+Botões:
+
+SALVAR EXAME
+
+DESCARTAR
+
+GERAR RELATÓRIO
+
+---
+
+# 54. TESTES
+
+Criar testes automatizados para:
+
+* parser serial;
+* validação de 225 sensores;
+* matriz;
+* threshold;
+* gamma;
+* baseline;
+* COP;
+* máximo;
+* média;
+* distribuição esquerda/direita;
+* banco;
+* criação de paciente;
+* criação de exame;
+* exportação;
+* importação.
+
+Criar testes com dados conhecidos.
+
+Exemplo:
+
+Uma matriz onde apenas o sensor central possui pressão.
+
+O COP deve corresponder ao centro.
+
+---
+
+# 55. TESTE DO PROTOCOLO SERIAL
+
+Criar um mock que envia:
+
+225 valores.
+
+Verificar:
+
+frame recebido.
+
+Criar teste com:
+
+224 valores.
+
+Resultado esperado:
+
+frame inválido.
+
+Criar teste com:
+
+226 valores.
+
+Resultado esperado:
+
+frame inválido.
+
+Criar teste com valores não numéricos.
+
+Resultado esperado:
+
+frame inválido.
+
+---
+
+# 56. DOCUMENTAÇÃO
+
+Criar:
+
+README.md
+
+ARCHITECTURE.md
+
+DATABASE.md
+
+HARDWARE.md
+
+SERIAL_PROTOCOL.md
+
+TESTING.md
+
+USER_GUIDE.md
+
+---
+
+# 57. README
+
+Explicar:
+
+* objetivo;
+* arquitetura;
+* instalação;
+* desenvolvimento;
+* build;
+* conexão ESP32;
+* banco;
+* testes;
+* geração do instalador.
+
+---
+
+# 58. HARDWARE.md
+
+Documentar:
+
+ESP32
+
+MUX 1
+
+MUX 2
+
+GPIOs
+
+matriz 15×15
+
+protocolo serial
+
+Bluetooth
+
+calibração
+
+---
+
+# 59. NÃO INVENTAR DADOS CLÍNICOS
+
+Muito importante:
+
+Este é um projeto acadêmico de baropodometria.
+
+Não implementar diagnóstico automático.
+
+Não escrever:
+
+"Paciente possui fascite plantar."
+
+"Paciente possui pronação patológica."
+
+"Paciente possui doença X."
+
+O sistema deve apresentar dados e métricas para interpretação profissional.
+
+---
+
+# 60. REFERÊNCIA FUNCIONAL DO BAROSCAN
+
+Use como referência conceitual as seguintes funcionalidades observadas no manual:
+
+* cadastro de clínicas;
+* cadastro de profissionais;
+* cadastro de profissões;
+* questionários;
+* backup;
+* configurações;
+* pacientes;
+* agenda;
+* novo exame;
+* exame estático;
+* estabilometria;
+* vídeo;
+* 3D;
+* exame dinâmico;
+* gráfico de força;
+* áreas de estudo;
+* comparação de exames;
+* relatórios.
+
+Porém:
+
+NÃO copie a interface.
+
+NÃO copie textos.
+
+NÃO copie código.
+
+NÃO copie identidade visual.
+
+Crie uma experiência própria e moderna.
+
+---
+
+# 61. PRIORIZAÇÃO
+
+Não tente implementar tudo superficialmente de uma vez.
+
+Implementar nesta ordem:
+
+## FASE 1 — FUNDAÇÃO
+
+* projeto;
+* Tauri;
+* React;
+* TypeScript;
+* SQLite;
+* layout;
+* sidebar;
+* tema;
+* banco;
+* autenticação.
+
+## FASE 2 — PACIENTES
+
+* CRUD;
+* pesquisa;
+* perfil;
+* histórico.
+
+## FASE 3 — HARDWARE
+
+* Serial;
+* Bluetooth;
+* parser;
+* conexão;
+* status;
+* frames reais.
+
+## FASE 4 — MAPA
+
+* matriz 15×15;
+* tara;
+* threshold;
+* gamma;
+* mapa de calor;
+* FPS;
+* COP.
+
+## FASE 5 — EXAME
+
+* novo exame;
+* aquisição;
+* armazenamento;
+* análise;
+* métricas.
+
+## FASE 6 — RELATÓRIOS
+
+* PDF;
+* imagens;
+* CSV.
+
+## FASE 7 — COMPARAÇÃO
+
+* comparação de exames;
+* evolução.
+
+## FASE 8 — AGENDA
+
+* calendário;
+* consultas.
+
+## FASE 9 — QUESTIONÁRIO
+
+* editor;
+* respostas;
+* histórico.
+
+## FASE 10 — BACKUP
+
+* exportação;
+* importação;
+* backup individual.
+
+## FASE 11 — REFINAMENTO
+
+* UX;
+* performance;
+* acessibilidade;
+* testes;
+* documentação;
+* build final.
+
+---
+
+# 62. REGRA FUNDAMENTAL DE IMPLEMENTAÇÃO
+
+A cada etapa:
+
+1. implementar;
+2. testar;
+3. corrigir;
+4. verificar build;
+5. verificar TypeScript;
+6. verificar testes;
+7. somente então avançar.
+
+Não acumular dezenas de funcionalidades quebradas.
+
+---
+
+# 63. CRITÉRIO DE CONCLUSÃO
+
+Não considere o projeto concluído porque a interface está bonita.
+
+O projeto só poderá ser considerado funcional quando for possível:
+
+1. abrir o programa;
+2. fazer login;
+3. cadastrar paciente;
+4. abrir paciente;
+5. conectar o ESP32;
+6. receber os 225 valores;
+7. visualizar os dados em tempo real;
+8. realizar tara;
+9. iniciar exame;
+10. capturar frames;
+11. processar;
+12. calcular métricas;
+13. finalizar;
+14. salvar no SQLite;
+15. fechar o programa;
+16. abrir novamente;
+17. encontrar o paciente;
+18. abrir o exame salvo;
+19. visualizar o resultado;
+20. gerar PDF;
+21. exportar dados;
+22. realizar backup;
+23. restaurar backup.
+
+---
+
+# 64. PRIMEIRA TAREFA
+
+Antes de escrever código:
+
+Analise todo este requisito.
+
+Depois:
+
+1. proponha a arquitetura;
+2. proponha a estrutura de pastas;
+3. proponha o schema SQLite;
+4. proponha os módulos;
+5. identifique riscos técnicos;
+6. explique como Tauri irá conversar com o ESP32;
+7. explique como os 225 frames serão processados;
+8. explique como evitar travamento da UI;
+9. explique como os exames serão armazenados;
+10. explique como o PDF será gerado.
+
+Depois dessa análise, comece a implementar.
+
+NÃO fique apenas explicando.
+
+Comece a criar o projeto.
+
+---
+
+# 65. REGRA CONTRA CÓDIGO FALSO
+
+Se uma funcionalidade ainda não estiver implementada:
+
+não fingir que está.
+
+Se houver dependência externa:
+
+documentar.
+
+Se depender do ESP32:
+
+usar MockSensorDevice para permitir testes.
+
+Mas deixar claramente separado:
+
+REAL
+
+SIMULATION
+
+---
+
+# 66. OBJETIVO FINAL
+
+O resultado deve ser um software desktop de baropodometria acadêmico/profissional, moderno, rápido, responsivo e funcional, capaz de trabalhar com a plataforma real de pressão 15×15 baseada em ESP32.
+
+A experiência deve lembrar a robustez funcional de softwares profissionais de baropodometria, como referência o fluxo do BaroScan/BaroSys, mas a implementação, identidade visual e arquitetura devem ser próprias.
+
+O sistema deve ser desenvolvido pensando desde o início em futuras expansões:
+
+* matriz maior;
+* calibração física;
+* sensores adicionais;
+* vídeo;
+* exame dinâmico;
+* análise temporal;
+* 3D;
+* múltiplos profissionais;
+* múltiplas clínicas;
+* sincronização;
+* novos tipos de hardware.
+
+Prioridades absolutas:
+
+1. FUNCIONAMENTO REAL
+2. INTEGRIDADE DOS DADOS
+3. PERFORMANCE
+4. USABILIDADE
+5. ARQUITETURA
+6. DESIGN
+
+Não sacrificar funcionamento por estética.
+
+Comece agora pela arquitetura e implementação da FASE 1.

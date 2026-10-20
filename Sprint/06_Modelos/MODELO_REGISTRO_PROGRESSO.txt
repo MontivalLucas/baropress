@@ -1,0 +1,26 @@
+BAROPRESS - REGISTRO DE PROGRESSO
+Data: DD/MM/AAAA
+Assunto:
+Fase:
+Status: EM ANDAMENTO / CONCLUÍDO / FUTURO
+
+SOLICITAÇÃO
+Descrever o problema ou a funcionalidade solicitada.
+
+DIAGNÓSTICO
+Registrar a causa encontrada e as evidências.
+
+ALTERAÇÕES REALIZADAS
+Listar o comportamento alterado e os arquivos relevantes.
+
+VALIDAÇÃO
+Comandos executados:
+Resultados:
+Teste visual:
+Teste em hardware real:
+
+PENDÊNCIAS
+Registrar limitações e dependências ainda não resolvidas.
+
+PRÓXIMOS PASSOS
+Descrever as próximas ações e atualizar os arquivos de status.

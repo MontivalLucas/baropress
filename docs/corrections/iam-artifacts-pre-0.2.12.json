@@ -1,0 +1,74 @@
+{
+  "date": "2026-10-09",
+  "sourceVersion": "0.2.11",
+  "schema": 9,
+  "kind": "development-debug-no-installer",
+  "frontendTests": {
+    "passed": 197,
+    "files": 26
+  },
+  "rustTests": {
+    "passed": 120,
+    "ignoredBenchmark": 1,
+    "failed": 0
+  },
+  "personalDatabaseModified": false,
+  "installed": false,
+  "pending": [
+    "IAM-05 recovery flow decision/implementation",
+    "versioned final installer",
+    "native/hardware homologation"
+  ],
+  "artifacts": [
+    {
+      "path": "src-tauri/target/visualizacao/debug/baropress.exe",
+      "bytes": 223602176,
+      "sha256": "56263df7fa17a28e1e41655fa0d2b006a8323e0ecf5b13bfa405456ba1132c2f"
+    },
+    {
+      "path": "src-tauri/migrations/0009_user_access.sql",
+      "bytes": 454,
+      "sha256": "cb9e191d278897bff056f8b0584f467373b45c23d8cf12fbd44968646536b494"
+    },
+    {
+      "path": "docs/corrections/iam-frontend-tests.log",
+      "bytes": 328,
+      "sha256": "62f39937df1ccfdaf5965afed075e61353111e120338d8aabc993fc7f5455568"
+    },
+    {
+      "path": "docs/corrections/iam-frontend-build.log",
+      "bytes": 2909,
+      "sha256": "44d7cc0a51d4a15e54e2460bf1ed5c50b4a2e59981c0300b78676dd03c6a3fea"
+    },
+    {
+      "path": "docs/corrections/iam-backend-tests.log",
+      "bytes": 10601,
+      "sha256": "25ccdb5532e9cc9efd9b854d346a326339209cff7403a03000bb52b13454dfa2"
+    },
+    {
+      "path": "docs/corrections/iam-desktop-build.log",
+      "bytes": 3769,
+      "sha256": "9e6f85a4d1c951f44674fa6c6c21f340eb175405d966bee0483f01780c2da5ff"
+    },
+    {
+      "path": "docs/corrections/iam-desktop-final-build.log",
+      "bytes": 204,
+      "sha256": "b360a1cde3f16e4608bd18dce1ff68dc5ae1c0b1f9b8287671c86e766cfad99b"
+    },
+    {
+      "path": "docs/corrections/iam-secretaria-agenda.jpg",
+      "bytes": 30761,
+      "sha256": "3588edbc016afda7a4dc2e21226d0d94bf084f957f530e28f99d790909e49b76"
+    },
+    {
+      "path": "docs/corrections/USUARIOS_LOGIN_ACESSO.md",
+      "bytes": 6853,
+      "sha256": "c144c4e2ea9a5ceb6960a3ab887ea391b0455b60de090681b4de056a4d7e7f88"
+    },
+    {
+      "path": "Sprint/04_Futuro/PLANO_USUARIOS_LOGIN_ACESSO.txt",
+      "bytes": 7516,
+      "sha256": "eba8044575fda94e8e23e3b397709df8fa092cd00c5b1628eee2ca69d69901f8"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+BAROPRESS - REVISÃO DE ARQUITETURA, INTERFACE E FUNCIONALIDADES
+Data: 07/10/2026
+Referência: versão instalada 0.2.9 e fontes presentes no workspace.
+Estado: REVISÃO CONCLUÍDA; MELHORIAS PROPOSTAS, NÃO IMPLEMENTADAS
+
+SOLICITAÇÃO
+Revisar a arquitetura, percorrer a interface e apresentar melhorias de UX/UI,
+funcionalidade e ajustes, com prioridades e registro do progresso.
+
+ESCOPO
+Inspeção do código e navegação de leitura no aplicativo instalado.
+Não aplicar redesenho, criar exames ou modificar prontuários nesta revisão.
+Login feito manualmente pelo usuário. Não registrar dados pessoais no relatório.
+
+COBERTURA DA INTERFACE
+Dashboard; Pacientes/lista/prontuário/cadastro vazio; Testes e calibração:
+Tapete, Diagnóstico, Ensaios, Curvas, Validação, Perfis, Protocolo;
+Análise/barra/painel avançado; Agenda/semana/formulário vazio;
+Histórico/detalhes/documento de duas páginas; Novo Exame/seleção/confirmar/
+configurações antes da coleta; Comparação de dois registros/mapas/tabela/
+trajetória/início dos gráficos; Questionários/modelo/formulário sem resposta;
+Configurações: Sistema, Arduino, Backup e Logs. App deixado no Dashboard.
+
+PRINCIPAIS EVIDÊNCIAS
+1. Falha repetida de abertura da COM5; I/O serial usa a fila FIFO de comandos.
+   Pode atrasar consultas; perfil de duração por comando não foi feito.
+2. Detalhes mostram 175 m para altura cadastrada em cm. Documento mostra cm.
+3. Documento chama tara de Ativa (Calibrada), embora sem calibração física.
+4. Dados demográficos de exames antigos vêm do cadastro atual (código).
+5. Sidebar não protege saída durante coleta; formulários não têm guarda global.
+6. Questionários: Atualizar lista JÁ É PROTEGIDO com formulário aberto.
+   Pendência é troca de paciente, Responder novamente e navegação sem rascunho.
+7. Observações no documento são apenas para PDF/impressão, conforme aviso na UI.
+8. Dois mapas de comparação ocupam metade da tela e deixam legenda apertada.
+9. Ações da preparação/consulta exigem rolagem; Sistema abre primeiro troca de senha.
+10. Fontes atuais têm cache de consultas mais recente que o executável instalado.
+    Não considerar fontes e pacote idênticos sem identificação do build.
+
+VERIFICAÇÃO
+TypeScript: npm run typecheck concluído sem erros nesta revisão.
+Suites anteriores não repetidas. Não houve build nem nova versão do programa.
+Inspeção visual em tema escuro, largura ~1360/1366 e altura 720/768.
+Navegação de leitura concluída; não equivale a teste de todos os controles.
+Sem alteração de prontuários, exames, respostas ou restauração de backups.
+Autenticação feita manualmente pelo usuário. Nenhum dado pessoal no relatório.
+
+LIMITES
+Sem coleta ESP32, PDF exportado, impressão, restore, tema claro, leitor de tela,
+resolução mínima ou medição de CPU/memória nesta revisão. Perfis físicos sem
+dados disponíveis foram inspecionados no estado vazio; processamento pelo código.
+
+ARTEFATO
+docs/review/REVISAO_ARQUITETURA_UX_0.2.9.md: arquitetura, cobertura, evidências,
+11 prioridades, melhorias por tela, proposta de navegação e critérios de aceite.
+
+PRÓXIMAS ETAPAS PROPOSTAS
+1. Confiabilidade: fila de serial, unidades/tara/datas e regra de contato zero.
+2. Preservação: rascunhos, guarda de saída, contexto e qualidade da coleta.
+3. UX/UI: Início, menu agrupado, rodapés fixos e comparação ampliada.
+4. Histórico/documentos: snapshots, responsável, texto salvo e revisões.
+5. Escala/manutenção: seletores, cache/Atualizar, contratos, logs e testes UI.

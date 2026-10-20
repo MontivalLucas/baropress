@@ -1,0 +1,28 @@
+BAROPRESS - CONFIGURAÇÕES SEM AJUSTE DE MAPA DE CALOR
+Data: 07/10/2026
+Versão: 0.2.6
+Status: IMPLEMENTAÇÃO, VERIFICAÇÃO E EMPACOTAMENTO CONCLUÍDOS
+
+PEDIDO
+Remover o ajuste do mapa de calor das Configurações.
+
+ALTERAÇÕES
+- Removido o painel do mapa de calor de Configurações e seus imports/estado.
+- Guia Sistema e visualização renomeada para Sistema.
+- Layout usa uma única coluna, sem espaço vazio do antigo painel.
+- Ajustes visuais continuam acessíveis na Análise e em Novo Exame.
+- Preferências visuais persistentes, exames, PDF e Arduino preservados.
+- Sem alteração de banco ou de lógica do backend.
+
+VERIFICAÇÃO
+- TypeScript e frontend de produção aprovados via npm run build.
+- Executável release e instalador NSIS x64 gerados com sucesso.
+Não foram adicionados testes para a simples remoção deste painel.
+As suítes anteriores não foram repetidas: não houve mudança funcional no
+processamento, conexão automática, persistência ou backend.
+Conferência visual manual pendente.
+
+ARTEFATOS
+Executável: src-tauri/target/visualizacao/release/baropress.exe (0.2.6).
+Instalador: src-tauri/target/release/bundle/nsis/BAROPRESS_0.2.6_x64-setup.exe.
+Versão do executável e igualdade da cópia do instalador verificadas.

@@ -1,0 +1,25 @@
+BAROPRESS - EXECUTAVEL E INSTALADOR 0.2.14
+Data: 14/10/2026
+Status: CONCLUIDO
+
+SOLICITACAO
+Gerar o novo EXE com as alteracoes de aquisicao, modalidades, trajeto e formulario simplificado.
+
+ENTREGA
+entrega/BAROPRESS_0.2.14_x64-setup.exe
+entrega/BAROPRESS_0.2.14/baropress.exe (com WebView2Loader.dll e libunwind.dll na mesma pasta)
+Entregue tambem LEIA_ME_0.2.14.txt.
+Binarios originais em src-tauri/target/visualizacao/release e bundle/nsis.
+Versao 0.2.13 preservada em baropress-0.2.13-preservado.exe e no instalador anterior.
+
+VALIDACAO
+217 testes frontend aprovados na verificacao anterior; TypeScript/frontend recompilados pelo build final.
+cargo test: 127 aprovados, 1 benchmark ignorado; testes do binario/documentacao sem falhas.
+Tauri release x64 e instalador NSIS aprovados, comando encerrado com codigo zero.
+ProductVersion do programa 0.2.14, cabecalho PE x64 e hashes das copias conferidos.
+Manifesto de tamanho, versao e SHA256: docs/corrections/artifacts-0.2.14.json.
+Logs: acquisition-backend-tests-0.2.14.log e acquisition-installer-build-0.2.14.log.
+
+LIMITES
+Nenhuma instalacao automatica ou execucao do novo aplicativo contra o banco pessoal.
+Navegador/Mock verificado no registro anterior; Tauri instalado e ESP32 fisico permanecem pendentes.

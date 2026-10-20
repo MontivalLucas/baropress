@@ -1,0 +1,48 @@
+BAROPRESS - BACKUP E LOGS EM CONFIGURAÇÕES; HISTÓRICO DE EXAMES
+Data: 07/10/2026
+Versão: 0.2.8
+Status: IMPLEMENTAÇÃO, TESTES AUTOMÁTICOS E EMPACOTAMENTO CONCLUÍDOS
+
+PEDIDO
+Mover Backup e Logs para Configurações e renomear Exames para Histórico de Exames.
+
+IMPLEMENTADO
+- Menu lateral sem os itens separados Backup e Logs.
+- Configurações com guias Sistema, Arduino, Backup e Logs.
+- Backup e Logs carregados sob demanda dentro de Configurações.
+- Títulos e espaçamento adaptados para os painéis internos.
+- Troca de guias indisponível enquanto uma operação de backup está em curso.
+- Backup mantém acesso de administrador, exportação completa/individual,
+  prévia, confirmação, cópia de segurança e bloqueio durante exame ativo.
+- Logs mantêm filtro, atualização, exportação e registros de aquisição.
+- Histórico de Exames no menu, título, atalho do Dashboard e retornos.
+- Listagem, detalhes, relatório, impressão e PDF mantidos no mesmo fluxo.
+- Sem alteração de esquema do banco ou lógica do backend.
+
+VERIFICAÇÃO
+- Suíte frontend: 160 testes aprovados em 19 arquivos.
+- TypeScript aprovado.
+- TypeScript e frontend de produção aprovados.
+- Executável release e instalador NSIS x64 gerados com sucesso.
+- ProductVersion 0.2.8 e igualdade SHA-256 da cópia do instalador verificadas.
+- Suíte Rust não repetida: nenhuma lógica do backend foi alterada.
+- Banco pessoal não foi aberto para esta verificação.
+Conferência visual manual pendente.
+
+ARTEFATOS
+Executável: src-tauri/target/visualizacao/release/baropress.exe.
+Instalador: src-tauri/target/release/bundle/nsis/BAROPRESS_0.2.8_x64-setup.exe.
+
+COMO USAR
+Instalar/abrir 0.2.8 e entrar.
+Configurações > Backup: exportar, conferir prévia e restaurar com administrador.
+Configurações > Logs: filtrar, atualizar e exportar eventos.
+Histórico de Exames: listar, abrir detalhes e emitir relatório/PDF.
+
+VALIDAÇÃO MANUAL PENDENTE
+- Conferir menu e quatro guias em temas claro/escuro e janela pequena.
+- Conferir filtros, atualização e exportação em Configurações > Logs.
+- Testar backup completo/individual, prévia, confirmação e restauração
+  somente em banco isolado, incluindo bloqueio durante exame ativo.
+- Conferir acesso ao backup com conta administradora e profissional.
+- Conferir retorno dos documentos ao Histórico de Exames e emissão de PDF.

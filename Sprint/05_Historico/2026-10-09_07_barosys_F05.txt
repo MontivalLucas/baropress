@@ -1,0 +1,27 @@
+BAROPRESS - F05 - RELATÓRIO E COMPARAÇÃO
+Data: 09/10/2026. Estado: CONCLUÍDO NO SOFTWARE.
+Solicitação: execução sequencial do plano BAROSYS, preservando instalação e dados.
+
+COMPORTAMENTO / DECISÃO
+Condições/qualidade/regiões e oscilação em prévia, PDF/impressão; seções selecionáveis. Cálculos compartilhados de dados salvos. Série e metadados JSON formato 1. Comparação de 2/4 com origem/condições/métodos, escala comum ADC; deltas indisponíveis quando equivalência não estabelecida. Comparação regional exige modo médio/máscaras/método iguais. Rótulos ADC/contato por sensores/cor corrigidos sem alterar métricas históricas.
+
+ARQUIVOS PRINCIPAIS
+src/features/reports/{ReportViewer,reportPdfGenerator}.tsx/.ts; src/features/comparison/{ComparisonPage,comparisonUtils}.tsx/.ts; src/features/exams/{ExamDetailsModal,NewExamPage,ExamExportActions}.tsx; src/services/examAnalysis/report.ts
+
+CONTRATOS E COMPATIBILIDADE
+baropress-static-v1; esquema SQLite 8; backup formato 1; exportação de série 1.
+Legado sem metadados permanece indisponível; matriz/indicadores originais preservados.
+Rollback da faixa esquerda mantido. Perfis físicos e critérios existentes preservados.
+
+VERIFICAÇÃO E LIMITES
+PDF sintético de 4 páginas e legado de 2 páginas renderizados e inspecionados; gráficos mostram ausência e evento. Testes existentes incluem observações longas/ausência de dados. Temas/resoluções e comparação 2/4 na fixture visual. Conferência de impressão nativa/WebView2 e documento físico real pendentes.
+Verificações finais comuns estão nos logs de docs/barosys e em
+VALIDACAO_E_DEMONSTRACAO.txt. As contagens são de uma suíte integrada, não
+de execuções independentes repetidas em cada registro de fase.
+
+EVIDÊNCIA VISUAL / ENSAIO
+PNG/PDF sintéticos em docs/barosys quando aplicável. Não são exames pessoais.
+Ensaio real pendente conforme decisão do usuário; sem ativação/instalação automática.
+
+RETOMADA
+F06-A / protocolo preparado; F07 / integração.

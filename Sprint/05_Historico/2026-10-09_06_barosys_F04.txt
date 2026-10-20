@@ -1,0 +1,27 @@
+BAROPRESS - F04 - OSCILAÇÃO TEMPORAL
+Data: 09/10/2026. Estado: CONCLUÍDO NO SOFTWARE.
+Solicitação: execução sequencial do plano BAROSYS, preservando instalação e dados.
+
+COMPORTAMENTO / DECISÃO
+Trajetória/X(t)/Y(t), eventos, ausência de contato, seleção de trecho e quadro alinhado com o reprodutor. Comprimento, duração contínua, velocidades por intervalo/tempo, amplitude e desvio populacional sem filtro. Lacuna técnica min(2000,3*intervalo médio), mínimo numérico 1 ms, explicitada. Legado apresenta pontos com precisão/continuidade desconhecida.
+
+ARQUIVOS PRINCIPAIS
+src/services/examAnalysis/calculations.ts; src/features/exams/{AnalysisGraphs,AnalysisReview}.tsx; src/tests/exam-analysis.test.ts
+
+CONTRATOS E COMPATIBILIDADE
+baropress-static-v1; esquema SQLite 8; backup formato 1; exportação de série 1.
+Legado sem metadados permanece indisponível; matriz/indicadores originais preservados.
+Rollback da faixa esquerda mantido. Perfis físicos e critérios existentes preservados.
+
+VERIFICAÇÃO E LIMITES
+Linha 3-4-5 com duração 3 s: comprimento 10 células, velocidade temporal 10/3 células/s, média por intervalo 3,75 células/s. Ausência, dt zero, lacuna e trecho vazio separados. Sem conversão para CoP físico nem elipse comercial.
+Verificações finais comuns estão nos logs de docs/barosys e em
+VALIDACAO_E_DEMONSTRACAO.txt. As contagens são de uma suíte integrada, não
+de execuções independentes repetidas em cada registro de fase.
+
+EVIDÊNCIA VISUAL / ENSAIO
+PNG/PDF sintéticos em docs/barosys quando aplicável. Não são exames pessoais.
+Ensaio real pendente conforme decisão do usuário; sem ativação/instalação automática.
+
+RETOMADA
+F05 / documentos.

@@ -1,0 +1,28 @@
+BAROPRESS - TESTE DAS CONDICOES SIMPLIFICADAS
+Data: 14/10/2026
+Status: APROVADO NO SOFTWARE E NA PREVIA SINTETICA
+
+TESTE VISUAL/FUNCIONAL NO NAVEGADOR
+Previa: scripts/acquisition-preview.html, dispositivo MOCK e armazenamento de exames em memoria.
+A conexao inicial com o navegador deu timeout; a aba foi recuperada e o teste realizado.
+- Paciente e protocolo: apenas Condicao visual e Apoio externo; painel antigo e seletor de calibracao ausentes.
+- Selecao: olhos fechados e com apoio externo.
+- Troca para Configuracoes do exame e retorno: escolhas preservadas.
+- Preparacao separada, aquisicao real no relogio de 30 segundos: 909 quadros validos.
+- Salvamento sintetico e reabertura do resultado: escolhas preservadas.
+- Relatorio: escolhas presentes.
+- Logs do navegador: nenhum erro de execucao.
+Evidencias: docs/corrections/novo-exame-condicoes-teste.png e novo-exame-aquisicao-teste.png.
+
+TESTES AUTOMATIZADOS
+npm test: 217 testes aprovados, em 28 arquivos.
+7 novos testes: renderizacao dos campos, escolhas selecionadas, bloqueio durante coleta e preservacao no payload salvo.
+Renderizacao de codigo usa estado corrente sintetico (o snapshot inicial SSR de Zustand foi adaptado apenas no teste).
+npm run typecheck: aprovado.
+cargo test --manifest-path src-tauri/Cargo.toml --lib exam_analysis_tests: 9 aprovados.
+Novo teste SQLite: 9 combinacoes de visao e apoio sao gravadas e lidas novamente com seus valores intactos, sem perfil fisico.
+
+LIMITES
+Previa do navegador usa memoria; a gravacao SQLite foi testada separadamente com banco isolado em memoria.
+Nenhum banco pessoal acessado, novo instalador gerado ou teste no ESP32/tapete fisico realizado.
+Teste nativo do Tauri e aquisicao fisica continuam pendentes.

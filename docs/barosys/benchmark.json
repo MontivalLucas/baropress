@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-09",
+  "node": "v24.19.0",
+  "platform": "win32",
+  "arch": "x64",
+  "frames": 10000,
+  "sensors": 225,
+  "jsonBytes": 11022637,
+  "heapDeltaMiB": 18.553749084472656,
+  "peakRssMiB": 167.14453125,
+  "qualityMs": 91.25520000000006,
+  "maximumMs": 30.81989999999996,
+  "temporalMs": 41.321300000000065,
+  "totalMs": 473.48529999999994,
+  "validFrames": 10000,
+  "max": 4095,
+  "length": 69.02795902162286
+}

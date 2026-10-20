@@ -1,0 +1,108 @@
+BAROPRESS - PENDÊNCIAS APÓS AS CORREÇÕES 0.2.10
+Data: 07/10/2026
+Estado: PLANEJADO. Nenhum item abaixo deve ser considerado homologado.
+Base: docs/corrections/CORRECOES_0.2.10.md e revisão de arquitetura 0.2.9.
+
+ATUALIZAÇÃO 08/10/2026 - 0.2.11: calibração organizada em etapas, ajudas nos
+campos e medidas documentadas carregadas por padrão já implementadas.
+Não refazer esses itens. Conferir a versão nova em HOM-01; demais itens abaixo
+continuam pendentes. Registro: 05_Historico/2026-10-08_12_calibracao_simplificada_ajudas.txt.
+
+REGRA PARA A PRÓXIMA EXECUÇÃO
+Trabalhar um item de cada vez, na ordem indicada. Registrar em TXT na pasta
+05_Historico: objetivo, arquivos/versão, resultado, verificações, limitações,
+estado e próximo item. Atualizar os agregados e o índice. Só marcar CONCLUÍDO
+quando o critério de aceite for atendido; registrar PARCIAL se faltarem ensaios.
+Não sobrescrever registros antigos nem confundir implementação com homologação.
+
+1. HOM-01 - PRIORIDADE ALTA - Homologar 0.2.10 em instalação de teste
+Dependência: instalar o pacote novo em ambiente/banco isolado; acesso humano.
+Conferir: alterar formulário e navegar/cancelar/fechar; operação em andamento;
+questionário com resposta Não/0/texto e troca de paciente/modelo; resultado de
+exame sem salvar; salvar observações/reabrir; editar cadastro e reabrir exame;
+comparação de 2 e 4 exames; botões em tela baixa; PDF e impressão.
+Incluir tema claro/escuro, 1100x640, 1366x768 e escala do Windows; Tab/Escape
+e foco. Não gravar exemplos ou restaurar backup sobre os prontuários pessoais.
+Aceite: jornadas passam e evidências registradas, sem perda silenciosa.
+
+2. HW-01 / PERF-01 - PRIORIDADE ALTA - COM5 e desempenho real
+Dependência: Arduino/ESP32, USB e porta disponível; firmware identificado.
+Verificar cabo, porta selecionada/ocupada, driver e timeout observado na revisão.
+Testar ausência, porta inválida, conexão e leitura ativa; pausar/retomar tentativas.
+Medir tempo das listas/navegação, fila, CPU e memória em sessão prolongada.
+Aceite: conexão reproduzível, coleta completa e tempos documentados; listar
+causa e solução do erro COM5. Separar filas não comprova correção do driver.
+
+3. BAK-01 - PRIORIDADE ALTA - Restauração no aplicativo isolado
+Dependência: HOM-01 e cópias de teste dos esquemas 5, 6 e 7.
+Os testes automáticos passaram; conferir fluxo nativo de prévia/importação,
+cópia antes da migração, questionários, exames, calibração e novo login.
+Aceite: dados/IDs e permissões preservados; exames antigos sem cópia histórica
+continuam com aviso, sem inventar dados; registrar versão e contagens.
+
+4. SCI-01 - PRIORIDADE ALTA - Definir contato quando o limiar é zero
+Dependência: decisão explícita do responsável pelo protocolo e documentação.
+Atual: regra valor >= limiar mantida; interface avisa que zeros são incluídos.
+Definir contato em matriz zerada/ruído/pressão; aplicar a regra igualmente a
+métricas, mapa, coleta e validação Rust/TS; versionar interpretação histórica.
+Aceite: casos de referência e testes definidos, sem reescrever exames antigos.
+
+5. EXAM-01 - PRIORIDADE ALTA - Qualidade e cobertura temporal
+Dependência: definir requisitos técnicos do protocolo com o responsável.
+Atual: ausência total e lacuna >2s bloqueiam; isso não garante qualidade clínica.
+Mostrar quadros válidos/inválidos, cobertura, maior lacuna e estado da conexão.
+Definir critérios de aceite para frequências/perdas sem inventar taxa clínica.
+Aceite: perda parcial/reconexão/quadros inválidos cobertos e resultado explicado.
+
+6. FLOW-02 / QST-02 - PRIORIDADE MÉDIA - Rascunhos persistentes e contexto
+Atual: confirmação de descarte e resultado em memória, sem recuperação após
+reiniciar. Implementar rascunhos por paciente/modelo e observações, recuperação
+e descarte explícito; não persistir senhas/códigos em rascunhos.
+Integrar Agenda/Prontuário -> Questionário -> Novo exame com paciente no contexto.
+Aceite: reiniciar e retomar com identificação clara, sem misturar pacientes;
+distinguir rascunho, resultado não salvo e exame final.
+
+7. DOC-02 - PRIORIDADE MÉDIA - Responsável, revisão e assinatura
+Atual: observações persistem, com auditoria, mas substituem o texto anterior;
+não há histórico de versões. Nome cadastrado é copiado quando o exame é salvo.
+Vincular responsável/registro profissional explícito; versão com data/autoria,
+documento revisado separado da amostra original e equivalência PDF/impressão.
+Aceite: recuperar versões, identificar responsável e preservar matriz/métricas.
+Exames antigos sem dados históricos não podem ser reconstruídos retroativamente.
+
+8. UX-02 - PRIORIDADE MÉDIA - Refinamento de interface
+Adicionar edição numérica precisa de Gamma/VMAX e presets nomeados; manter
+barra compartilhada, limites e travamento do limiar do resultado.
+Agrupar menu visualmente; padrão de títulos/botões/alertas/tabelas, português,
+gráficos com datas/eixos, abas por teclado, contraste e textos secundários.
+Questionários: etapas/grupos, progresso, validação junto ao campo e regras
+condicionais revisadas pelo responsável. Agenda: filtros e Abrir atendimento.
+Aceite: jornadas, temas e resoluções com evidências; sem duplicar Relatórios,
+Aquisição ou ajustes de mapa dentro de Configurações.
+
+9. PERF-02 / CACHE-02 - PRIORIDADE MÉDIA - Bases extensas e seletores
+Atual: Novo Exame limitado e Comparação paginada; Agenda, Questionários,
+Backup e seletor de paciente da Comparação ainda consultam a lista completa.
+Expandir busca/paginação e histórico do prontuário; filtros período/origem.
+Verificar cache em virada de dia e duas instâncias; Atualizar e invalidação.
+Aceite: base sintética extensa, ausência de truncamento silencioso e tempos.
+
+10. OPS-01 / SEC-02 - PRIORIDADE MÉDIA - Administração e dados
+Definir retenção de logs, filtros legíveis, duração/código de operação sem dados
+pessoais; política de backup periódico e confirmação de destino/cópia externa.
+Definir cifragem, recuperação de chave e permissões por atividade antes de
+migrar; login local não cifra SQLite/JSON. Equipe e dados da clínica integrados.
+Aceite: política definida, testes de recuperação e restauração em banco isolado.
+
+11. TECH-02 - PRIORIDADE MÉDIA - Manutenção e medições
+Revisar cadeia Tailwind/PostCSS (7 alertas registrados no check-up 0.2.9) e
+8 avisos de estilo Clippy. Esses números são históricos; refazer diagnóstico
+antes de propor atualização e conferir layout após ela.
+Extrair componentes extensos onde reduzir acoplamento; contratos/unidades e
+versões de cálculo; observabilidade das filas e operações pesadas.
+Aceite: dependências avaliadas, testes e build aprovados, sem alterar geometria,
+autorização ou interpretação dos exames para apenas reduzir tamanho de código.
+
+PRÓXIMO ITEM RECOMENDADO: HOM-01, seguido de HW-01 e BAK-01.
+Itens SCI-01/EXAM-01 dependem da definição do protocolo; continuar os demais
+enquanto essa decisão não existir. Nunca marcar como resolvido apenas pelo aviso.

@@ -1,0 +1,723 @@
+BAROPRESS — DOCUMENTAÇÃO DO PROTÓTIPO E DOS TESTES PILOTO
+Estudo de desenvolvimento e teste piloto de dispositivo baropodométrico
+Data de elaboração: 07/10/2026 — horário de referência: America/Sao_Paulo
+Versão documental: 1.0
+Extração dos dados: 07/10/2026 21:17:56 (São Paulo)
+Software identificado no projeto: BAROPRESS 0.2.10
+
+======================================================================
+1. OBJETIVO, FONTES E GRAU DE COMPROVAÇÃO
+======================================================================
+
+Esta documentação reúne o que está descrito no projeto e os resultados
+encontrados no banco local do BAROPRESS. As informações ausentes são
+identificadas como pendentes; não foram inventadas dimensões ou medições.
+
+Classificação das informações:
+- REGISTRO EXPERIMENTAL: valor extraído dos ensaios armazenados. Massa,
+  posição e instrumento são informações cadastradas pelo operador, não
+  verificadas presencialmente por quem elaborou este documento.
+- CADASTRO DA MONTAGEM: dimensão ou característica informada no sistema;
+  exige confirmação por foto, medição ou ficha de fabricação.
+- REFERÊNCIA TÉCNICA: descrição antiga de hardware/firmware, sem comprovação
+  de que todos os detalhes correspondem à última montagem física.
+- IMPLEMENTADO EM SOFTWARE: recurso identificado no código atual.
+- PENDENTE: dado ou evidência não localizado nas fontes consultadas.
+
+Foram consultados arquivos do repositório e as tabelas de calibração do
+banco em %APPDATA%/br.com.baropress.app/baropress.db. A consulta usou uma
+cópia temporária do banco e do WAL, com verificação de estabilidade por
+SHA-256 e quick_check SQLite. O banco original não foi modificado.
+Arquivos temporários no projeto foram removidos após a leitura.
+
+Não foram exportados nomes, CPF, contatos, prontuários, usuários ou
+identificadores de participantes. Os cinco exames adicionais receberam
+rótulos E01 a E05 apenas neste relatório.
+
+Síntese da evidência encontrada:
+Há uma revisão de tapete cadastrada, 35 ensaios marcados REAL, um perfil
+candidato de força total, uma validação registrada e nenhum perfil ativo.
+Os dados mostram uma avaliação piloto de bancada, com referências de
+massa aplicadas no centro da plataforma. Não demonstram calibração local
+de pressão nem validação para carga corporal, movimento ou uso clínico.
+
+======================================================================
+2. TAPETE: CONSTRUÇÃO, EVA E MONTAGEM
+======================================================================
+
+2.1 Tamanho
+CADASTRO DA MONTAGEM: região de medição de 300 x 300 mm (30 x 30 cm).
+Não confundir essa região com o tamanho externo final do tapete completo.
+
+PENDENTE — tamanho final do conjunto:
+Comprimento: __________________ mm.
+Largura: ______________________ mm.
+Espessura total: ______________ mm.
+Margens entre região sensora e bordas: ________________________________.
+Método/instrumento de medição: ________________________________________.
+Data e responsável pela medição: ______________________________________.
+
+2.2 Material e espessura do EVA
+O pedido de documentação menciona EVA, mas não foram localizados no
+projeto registros suficientes para caracterizar o EVA utilizado.
+
+PENDENTE:
+Tipo/composição ou identificação comercial: ___________________________.
+Fabricante/marca: ____________________________________________________.
+Espessura de cada camada: _________________________________________ mm.
+Quantidade de camadas: _______________________________________________.
+Densidade/dureza, se conhecida: _______________________________________.
+Função: base / cobertura / proteção / acabamento / outra: ______________.
+Forma de união: encaixe / cola / fita / outra: _________________________ .
+Superfície de apoio e revestimento: ___________________________________.
+
+2.3 Quantidade de módulos
+Há UMA revisão de unidade sensora cadastrada no banco. Isso não confirma
+quantos módulos de EVA ou quantas partes desmontáveis formam o tapete.
+
+PENDENTE:
+Quantidade total de módulos do tapete: ________________________________.
+Medidas de cada módulo: _______________________________________________.
+Quantidade de módulos com placa sensora: ______________________________.
+Quantidade de módulos com sinalização: ________________________________.
+Forma de encaixe/identificação de cada módulo: _________________________ .
+
+2.4 Como a placa foi colocada no tapete
+PENDENTE: posição física, encaixe, recorte, fixação, proteção superior,
+passagem de cabos e acesso à eletrônica não estão documentados por fotos.
+
+Preencher:
+Posição da região sensora no conjunto: ________________________________.
+Rebaixo/recorte e suas dimensões: _____________________________________.
+Sequência de camadas, de baixo para cima: ______________________________.
+Modo de fixação e nivelamento: ________________________________________.
+Proteção contra deslocamento e esforços sobre os fios: ________________.
+Onde ficam ESP32, multiplexadores e resistores: ________________________.
+Cabos expostos/protegidos, saída e acesso de manutenção: _______________.
+
+2.5 Marcações e sinalizações funcionais
+Não foram encontradas fotografias do tapete ou das marcações funcionais
+nos arquivos de evidência do projeto. Ícones do aplicativo e imagens de
+prévia da interface não são fotografias do protótipo físico.
+
+PENDENTE: registrar quais marcações realmente existem, sua finalidade,
+posição, tamanho, material e legibilidade. Não presumir setas, pegadas,
+cores, módulos de exercício ou outras sinalizações não documentadas.
+
+======================================================================
+3. PLACA BAROPODOMÉTRICA E ELEMENTOS SENSORES
+======================================================================
+
+3.1 Quantidade e disposição
+REFERÊNCIA TÉCNICA + IMPLEMENTADO EM SOFTWARE:
+Matriz de 15 linhas e 15 colunas, totalizando 225 pontos de leitura.
+São cruzamentos de condutores em um material sensível contínuo, não
+necessariamente 225 sensores discretos comprados individualmente.
+
+CADASTRO DA MONTAGEM:
+- Região de medição: 300 x 300 mm.
+- Largura das fitas de cobre: 10 mm.
+- Passo entre centros: 20 mm em X e Y.
+- Vão livre informado entre fitas adjacentes: 10 mm.
+- Todos os 225 pontos estão marcados como habilitados no cadastro.
+- Coordenadas físicas e áreas individuais das células não foram preenchidas.
+
+PENDENTE: dimensões externas da placa/base, margens, comprimento das fitas,
+espessuras, dimensões exatas do Velostat e comprovação fotográfica.
+Os 300 x 300 mm são uma medida cadastrada da região sensora, não medição
+independente realizada nesta documentação.
+
+3.2 Modelo/tipo dos sensores
+REFERÊNCIA TÉCNICA: matriz piezorresistiva com folha de Velostat entre
+duas camadas ortogonais de fitas de cobre. A pressão mecânica altera a
+resistência elétrica no conjunto; a eletrônica lê uma resposta em ADC.
+
+PENDENTE: fornecedor/lote, espessura da folha, confirmação do material
+da montagem final e eventual substituição do material durante o desenvolvimento.
+
+3.3 O que cada ponto consegue medir
+Cada posição fornece uma leitura elétrica digital relativa associada à
+solicitação mecânica local e ao comportamento elétrico da matriz.
+O parser aceita inteiros de 0 a 4095 por ponto.
+
+Essa escala representa contagens do ADC, não quilogramas, newtons ou
+pressão física por si só. Os pontos não têm calibração local comprovada.
+Resposta mecânica/eléctrica nos vizinhos também pode afetar a distribuição.
+
+3.4 Faixa/capacidade de carga
+Faixa digital contratada pelo software: 0 a 4095 ADC.
+Capacidade mecânica máxima do conjunto: PENDENTE.
+Faixa de força/pressão validada: NÃO ESTABELECIDA nos ensaios disponíveis.
+Maior massa total cadastrada nos ensaios aceitos de bancada: 4,518 kg,
+equivalente a uma referência de 44,306445 N usando gravidade padrão.
+Isso é a maior referência ensaiada encontrada, não capacidade máxima,
+limite seguro do tapete nem faixa de precisão aprovada.
+
+3.5 Unidades e forma de apresentação
+IMPLEMENTADO EM SOFTWARE:
+- Matriz ADC, mapa de calor interpolado, intensidade máxima/média relativa.
+- CoP relativo e distribuição entre metades da matriz, em percentuais.
+- Percentual de pontos em contato, que não é área física em cm² sem geometria.
+- Séries temporais, médias, dispersão e registros brutos na calibração.
+- Histórico de exames, exportações e relatórios PDF locais.
+- Conversão opcional por perfil: força em N/kgf; pressão em kPa/kgf/cm²;
+  área em cm² e CoP em mm, conforme escopo e compatibilidade.
+
+ESTADO EXPERIMENTAL: existe somente um perfil TOTAL_FORCE_ONLY candidato,
+não aprovado e não ativo. Ele não calibra pressão por sensor. O mapa
+local continua relativo. Exibir unidades físicas no código não significa
+que já existam medições locais fisicamente validadas no protótipo.
+
+======================================================================
+4. PARTE ELETRÔNICA E SOFTWARE
+======================================================================
+
+4.1 Microcontrolador
+REFERÊNCIA TÉCNICA: ESP32 Dev Module / NodeMCU-32S, descrito com
+ESP-WROOM-32 / ESP32-D0WD-V3, lógica de 3,3 V e leitura no GPIO 34 (ADC1).
+PENDENTE: foto da placa efetivamente usada, identificação do módulo,
+versão do firmware carregado e confirmação do circuito final.
+No cadastro atual, o firmware aparece como não identificado.
+
+4.2 Conexão dos sensores
+REFERÊNCIA TÉCNICA: dois multiplexadores CD74HC4067 de 16 canais,
+utilizando 15 canais de cada um para varrer linhas e colunas.
+São descritos 15 resistores de pull-down; valor final de resistência
+por canal não confirmado (referência antiga cita faixa de 1 a 10 kohm).
+
+Pinagem descrita, a confirmar na montagem:
+MUX de linhas: SIG GPIO12; S0 GPIO25; S1 GPIO26; S2 GPIO27; S3 GPIO14.
+MUX de colunas: SIG GPIO34; S0 GPIO18; S1 GPIO19; S2 GPIO21; S3 GPIO22.
+VCC: 3,3 V; GND comum; EN ligado a GND; canais C0..C14 utilizados.
+
+PENDENTE: esquema elétrico final, soldagem/protoboard, valores dos
+resistores, conectores, alimentação e fixação/proteção da eletrônica.
+
+4.3 Comunicação
+IMPLEMENTADO EM SOFTWARE: comunicação por porta serial USB e por porta
+serial Bluetooth SPP; dados CSV com 225 valores por quadro.
+REFERÊNCIA TÉCNICA: Bluetooth com nome Esteira_Pressao_ESP32.
+REGISTRO EXPERIMENTAL: todos os 35 ensaios trazem transporte SERIAL,
+porta COM5 e taxa de 115200 baud.
+COM5 pode corresponder a USB ou a uma porta Bluetooth virtual. O cadastro
+SERIAL/COM5 isolado não comprova qual conexão física foi usada.
+Não foi localizado fluxo de aquisição por Wi-Fi no código consultado.
+
+4.4 Programas utilizados
+REFERÊNCIA TÉCNICA: firmware Arduino C++ e visualização inicial em Python
+com pyserial, NumPy e Matplotlib.
+IMPLEMENTADO ATUALMENTE: aplicativo BAROPRESS 0.2.10, com Tauri 2,
+React, TypeScript, backend Rust e banco SQLite local.
+O nome "Arduino" na aba de configurações não significa que a placa seja
+Arduino Uno; a descrição de hardware disponível é ESP32.
+
+4.5 Frequência de leitura
+REGISTRO EXPERIMENTAL: aproximadamente 12,21 a 12,81 quadros/s nas
+janelas dos ensaios de bancada, com 122 a 128 quadros por janela.
+Um quadro contém 225 leituras; os pontos são multiplexados e não lidos
+todos simultaneamente. A taxa interna por canal não foi medida.
+Os horários são de recepção no computador, não timestamps individuais do ADC.
+O valor antigo de aproximadamente 30 FPS não foi confirmado nesses ensaios.
+Baud rate, FPS de renderização e taxa de aquisição são grandezas distintas.
+
+======================================================================
+5. TESTES PILOTO ENCONTRADOS NO BANCO
+======================================================================
+
+5.1 Inventário
+Data das coletas: 07/10/2026, aproximadamente 12:06 a 13:20 (São Paulo).
+Protocolo cadastrado: bancada-v1.
+Origem cadastrada: REAL nos 35 registros; não houve execução presencial
+para confirmar externamente a correspondência entre cada arquivo e montagem.
+
+- 1 coleta de repouso/zero, aceita.
+- 1 ensaio com celular de 199 g, ainda em revisão.
+- 18 ensaios de carga aceitos para ajuste, distribuídos em seis condições.
+- 9 ensaios de validação aceitos, em três condições com três repetições cada.
+- 6 ensaios rejeitados por "peso errado", preservados como evidência.
+Total: 35; aceitos: 28; em revisão: 1; rejeitados: 6.
+
+São preservados 6.570 quadros completos, incluindo a acomodação.
+As janelas de análise contêm 4.389 quadros, com 225 valores por quadro.
+As médias gravadas foram confrontadas com o bruto e não apresentaram
+divergência numérica acima de 1e-7 ADC na verificação executada.
+
+5.2 Condições e duração
+Todos os ensaios registram carga mantida (HOLD), acomodação de 5 s e
+coleta programada de 10 s. O intervalo entre primeiro/último quadro das
+janelas foi de aproximadamente 9,732 a 9,980 s.
+O cadastro de 5 s indica o tempo de acomodação programado, não prova que
+o sinal realmente tenha estabilizado nesse prazo.
+
+Posições registradas: centro da placa para as cargas; tapete inteiro
+sem carga para o zero. O celular foi descrito como deitado no centro.
+Não há ensaios localizados em bordas/cantos ou em posições alternativas.
+Não há área de contato preenchida em nenhum dos 35 ensaios.
+Por isso, não é possível calcular pressão de referência local confiável.
+
+5.3 Massas e repetições
+O nome do grupo não substitui a referência numérica. Em algumas condições
+foi acrescentado um aplicador/caderno de 0,438 kg à massa principal.
+Não foi adicionada essa massa retrospectivamente onde o cadastro diz zero.
+
+Grupo | Finalidade | Repetições | Massa total (kg) | N
+----------------------------------------------------------------------------------------------------
+3060g-centro | FIT | 1/2/3 | 3,060 | 3
+1020g-centro | FIT | 7/8/9 | 1,458 | 3
+2040g-centro | FIT | 1/2/3 | 2,478 | 3
+3060g-centro | FIT | 4/5/6 | 3,498 | 3
+438g-centro | FIT | 1/2/3 | 0,438 | 3
+4080g-centro | FIT | 1/2/3 | 4,518 | 3
+validacao-caderno-438g-01 | VALIDATION | 1/2/3 | 0,438 | 3
+validacao-caderno-2040g-01 | VALIDATION | 1/2/3 | 2,478 | 3
+validacao-caderno-4080g-01 | VALIDATION | 1/2/3 | 4,518 | 3
+celular-199g | FIT (REVIEW) | 1 | 0,199 | 1
+1020g-centro | FIT (REJECTED) | 1 a 6 | cadastro inválido | 6
+zero-01 | CHARACTERIZATION | 1 | 0,000 | 1
+
+O grupo 3060g-centro inclui dois subconjuntos distintos: 3,060 kg sem
+aplicador e 3,498 kg com aplicador de 0,438 kg. Não misturar suas médias.
+As notas das repetições iniciais dizem "sem suporte adicional"; as últimas
+registram "+caderno". O perfil usa somente as últimas nesse nível.
+
+Instrumento: a coleta do celular descreve balança digital, sem modelo.
+Nos demais ensaios de carga o campo instrumento contém "0", insuficiente
+para identificar a referência. A resolução foi cadastrada como 1, mas
+a unidade dessa resolução precisa ser confirmada. Incerteza não informada.
+
+5.4 Estático e movimento
+Os ensaios de calibração encontrados são de bancada, com carga mantida.
+Não há ensaios PERSON, LOCAL ou UNIFORM nessa base.
+Não há protocolo de caminhada, velocidade, pisada ou referência dinâmica.
+O relato antigo menciona pés na plataforma, mas não documenta participantes,
+massas, repetições ou séries numéricas por teste.
+
+Existem também cinco exames estáticos concluídos e marcados REAL, descritos
+na seção 8. Não é possível estabelecer que sejam cinco pessoas ou cinco
+repetições independentes de um mesmo teste piloto.
+
+======================================================================
+6. RESULTADOS POR REPETIÇÃO E VARIABILIDADE
+======================================================================
+
+Definição do indicador da tabela:
+S = média temporal da soma dos 225 pontos corrigidos pelo baseline e
+pelo piso de ruído do perfil candidato: soma(max(0, ADC_i-b_i-n_i)).
+O algoritmo usa n_i = max(1, 3*DP_zero_i + abs(deriva_zero_i)).
+S é um indicador agregado em contagens ADC, não pressão nem força física.
+
+As médias por ponto, mínimos, máximos e desvios estão no anexo
+Evidencias/MEDIAS_POR_SENSOR.txt. O bruto completo está no JSON anexo.
+Uma amostra temporal não é uma repetição independente do carregamento.
+
+Registro | Grupo | Rep. | Estado | Entrada + aplicador | Quadros | S médio ADC
+----------------------------------------------------------------------------------------------------
+1 | zero-01 | 1 | ACCEPTED | 0 kg + 0 kg | 128 | 0,000
+2 | celular-199g | 1 | REVIEW | 199 g + 0 kg | 128 | 3,297
+3 | 3060g-centro | 1 | ACCEPTED | 3060 g + 0 kg | 124 | 12162,371
+4 | 3060g-centro | 2 | ACCEPTED | 3060 g + 0 kg | 127 | 13172,811
+5 | 3060g-centro | 3 | ACCEPTED | 3060 g + 0 kg | 124 | 11658,556
+6 | 1020g-centro | 1 | REJECTED | 1020 kg + 0 kg | 126 | 4674,198
+7 | 1020g-centro | 2 | REJECTED | 1020 kg + 0 kg | 126 | 3358,944
+8 | 1020g-centro | 3 | REJECTED | 1020 kg + 0 kg | 122 | 3411,500
+9 | 1020g-centro | 4 | REJECTED | 1020 kg + 438 kg | 125 | 7532,800
+10 | 1020g-centro | 5 | REJECTED | 1020 kg + 438 kg | 126 | 7746,230
+11 | 1020g-centro | 6 | REJECTED | 1020 kg + 438 kg | 125 | 7948,776
+12 | 1020g-centro | 7 | ACCEPTED | 1020 g + 0.438 kg | 126 | 9229,246
+13 | 1020g-centro | 8 | ACCEPTED | 1020 g + 0.438 kg | 124 | 8315,121
+14 | 1020g-centro | 9 | ACCEPTED | 1020 g + 0.438 kg | 123 | 8921,902
+15 | 2040g-centro | 1 | ACCEPTED | 2040 g + 0.438 kg | 123 | 13482,472
+16 | 2040g-centro | 2 | ACCEPTED | 2040 g + 0.438 kg | 123 | 14441,049
+17 | 2040g-centro | 3 | ACCEPTED | 2040 g + 0.438 kg | 125 | 13056,240
+18 | 3060g-centro | 4 | ACCEPTED | 3060 g + 0.438 kg | 127 | 16784,370
+19 | 3060g-centro | 5 | ACCEPTED | 3060 g + 0.438 kg | 127 | 16162,126
+20 | 3060g-centro | 6 | ACCEPTED | 3060 g + 0.438 kg | 125 | 16955,864
+21 | 438g-centro | 1 | ACCEPTED | 438 g + 0 kg | 126 | 3120,849
+22 | 438g-centro | 2 | ACCEPTED | 438 g + 0 kg | 125 | 1766,512
+23 | 438g-centro | 3 | ACCEPTED | 438 g + 0 kg | 126 | 2283,444
+24 | 4080g-centro | 1 | ACCEPTED | 4080 g + 0.438 kg | 125 | 21944,712
+25 | 4080g-centro | 2 | ACCEPTED | 4080 g + 0.438 kg | 125 | 22945,864
+26 | 4080g-centro | 3 | ACCEPTED | 4080 g + 0.438 kg | 126 | 23904,476
+27 | validacao-caderno-438g-01 | 1 | ACCEPTED | 438 g + 0 kg | 127 | 2659,638
+28 | validacao-caderno-438g-01 | 2 | ACCEPTED | 438 g + 0 kg | 127 | 2576,024
+29 | validacao-caderno-438g-01 | 3 | ACCEPTED | 438 g + 0 kg | 127 | 2663,693
+30 | validacao-caderno-2040g-01 | 1 | ACCEPTED | 2040 g + 0.438 kg | 125 | 14047,376
+31 | validacao-caderno-2040g-01 | 2 | ACCEPTED | 2040 g + 0.438 kg | 124 | 15779,315
+32 | validacao-caderno-2040g-01 | 3 | ACCEPTED | 2040 g + 0.438 kg | 125 | 16127,456
+33 | validacao-caderno-4080g-01 | 1 | ACCEPTED | 4080 g + 0.438 kg | 126 | 22268,698
+34 | validacao-caderno-4080g-01 | 2 | ACCEPTED | 4080 g + 0.438 kg | 125 | 23653,264
+35 | validacao-caderno-4080g-01 | 3 | ACCEPTED | 4080 g + 0.438 kg | 126 | 24878,040
+
+Valores mostrados arredondados; precisão completa nos anexos.
+Os seis ensaios rejeitados mantêm suas leituras, mas não entram na análise
+de calibração. As repetições 1 a 3 foram cadastradas como 1020 kg, e as
+4 a 6 como 1020 kg mais 438 kg de aplicador. O próprio banco registra
+"peso errado". Esses números não são cargas físicas comprovadamente usadas.
+As repetições posteriores usam 1020 g e aplicador de 0,438 kg.
+Não foi corrigido o conteúdo original do banco.
+
+6.1 Médias e diferenças entre repetições aceitas
+DP: desvio padrão amostral entre médias das repetições (n-1).
+Amplitude: maior média menos menor média de S.
+CV: 100*DP/média de S; descreve variabilidade do sinal, não precisão física.
+
+Grupo | Finalidade | Massa kg | S médio ADC | DP ADC | Amplitude ADC | CV
+----------------------------------------------------------------------------------------------------
+3060g-centro | FIT | 3,060 | 12331,246 | 771,123 | 1514,255 | 6,25%
+1020g-centro | FIT | 1,458 | 8822,090 | 465,165 | 914,125 | 5,27%
+2040g-centro | FIT | 2,478 | 13659,920 | 709,253 | 1384,809 | 5,19%
+3060g-centro | FIT | 3,498 | 16634,120 | 417,656 | 793,738 | 2,51%
+438g-centro | FIT | 0,438 | 2390,269 | 683,459 | 1354,337 | 28,59%
+4080g-centro | FIT | 4,518 | 22931,684 | 979,959 | 1959,764 | 4,27%
+validacao-caderno-438g-01 | VALIDATION | 0,438 | 2633,118 | 49,487 | 87,669 | 1,88%
+validacao-caderno-2040g-01 | VALIDATION | 2,478 | 15318,049 | 1114,117 | 2080,080 | 7,27%
+validacao-caderno-4080g-01 | VALIDATION | 4,518 | 23600,001 | 1305,486 | 2609,341 | 5,53%
+
+A variabilidade do ajuste com 0,438 kg chegou a CV de aproximadamente
+28,59%. Não é possível atribuir a causa somente ao sensor: reposicionamento,
+acomodação, contato, eletrônica e protocolo precisam ser investigados.
+
+6.2 Zero, saturação e cobertura espacial
+Na única coleta de zero, todos os 225 pontos transmitidos foram iguais
+a zero: médias, DP e deriva gravados iguais a zero.
+Esse resultado não comprova ausência de ruído analógico. Pode refletir a
+faixa de resposta ou processamento no firmware, que não foi identificado.
+
+Nas janelas dos 35 ensaios, o maior ADC bruto observado foi 1589.
+Não foram encontrados valores >=4090, o critério técnico de saturação
+usado no diagnóstico atual. Isso vale para essas janelas e cargas, não
+para todos os usos ou para carga corporal.
+
+Nos ensaios TOTAL aceitos, 77 pontos apresentaram valor não nulo pelo
+menos uma vez. Os outros 148 não tiveram ativação registrada nessas
+janelas com carga central. Isso não prova falha: não houve cobertura de
+teste de todos os pontos. Todos permanecem habilitados no cadastro.
+
+Não foram encontrados gaps ou duplicatas no resumo das janelas. Como a
+sequência atual é de recepção, isso não prova ausência de perdas anteriores
+à recepção no computador.
+
+======================================================================
+7. CALIBRAÇÃO DE FORÇA TOTAL E VALIDAÇÃO REGISTRADA
+======================================================================
+
+Perfil candidato: c622d5ba-2927-421f-b9a2-0f35df92d10d.
+Escopo: TOTAL_FORCE_ONLY, origem REAL, algoritmo piecewise-v1.
+Estado salvo: ADJUSTED; nenhum perfil selecionado como ativo.
+Construído com 15 ensaios, cinco níveis de carga, três repetições por nível.
+As três coletas de 3,060 kg sem suporte não pertencem a esse ajuste.
+Critério cadastrado: máximo erro absoluto de 1 N.
+Mínimo cadastrado de grupos de validação: 3.
+
+Curva candidata por trechos — S agregado para força de referência:
+S médio ADC (nó) | Força de referência N
+----------------------------------------------------------------------------------------------------
+0,000000 | 0,000000
+2390,268550 | 4,295313
+8822,089813 | 14,298096
+13659,920108 | 24,300879
+16634,120021 | 34,303662
+22931,684063 | 44,306445
+
+Essa curva não define força individual nem pressão local para os sensores.
+Conversão de massa em referência de força: F = massa_kg * 9,80665 N.
+A massa do aplicador entra uma vez; o nome do grupo pode conter só a massa
+principal. Não interpretar valores em kg como se fossem kgf.
+
+7.1 Resultado de validação salvo em 07/10/2026, aproximadamente 13:48
+Estado: FAILED (reprovado).
+Foram selecionados 9 ensaios de validação. Em 7 havia estimativa completa;
+nos outros 2 a estimativa ficou indisponível.
+
+Grupo | Rep. | Referência N | Estimativa N | Erro N | Erro %
+----------------------------------------------------------------------------------------------------
+validacao-caderno-438g-01 | 1 | 4,295313 | 4,714236 | 0,418924 | 9,75%
+validacao-caderno-438g-01 | 2 | 4,295313 | 4,584199 | 0,288887 | 6,73%
+validacao-caderno-438g-01 | 3 | 4,295313 | 4,720543 | 0,425230 | 9,90%
+validacao-caderno-2040g-01 | 1 | 24,300879 | 25,604057 | 1,303178 | 5,36%
+validacao-caderno-2040g-01 | 2 | 24,300879 | 31,428793 | 7,127914 | 29,33%
+validacao-caderno-2040g-01 | 3 | 24,300879 | 32,599657 | 8,298778 | 34,15%
+validacao-caderno-4080g-01 | 1 | 44,306445 | 43,253386 | -1,053058 | -2,38%
+validacao-caderno-4080g-01 | 2 | 44,306445 | indisponível | indisponível | indisponível
+validacao-caderno-4080g-01 | 3 | 44,306445 | indisponível | indisponível | indisponível
+
+Métricas gravadas sobre as SETE estimativas disponíveis:
+MAE = 2,702281 N.
+RMSE = 4,190531 N.
+Viés médio = +2,401408 N.
+Maior erro absoluto = 8,298778 N.
+
+Não excluir silenciosamente os dois ensaios indisponíveis ao avaliar o
+desempenho: fazem parte dos nove selecionados e impediram aprovação.
+No reprocessamento documental, essas duas janelas apresentam 125/125 e
+126/126 quadros com sinal acima do último nó da curva, respectivamente.
+Não houve saturação ADC; a indisponibilidade nesse caso é de domínio da curva.
+
+O erro maior ocorreu com referência de 2,478 kg: aproximadamente +34,15%.
+Os valores em N apresentados aqui são estimativas do perfil candidato
+comparadas às referências, não medições físicas aprovadas do dispositivo.
+
+7.2 Limites de conclusão
+Esses resultados não estabelecem faixa calibrada aprovada, precisão para
+adultos ou equivalência com BaroScan/BaroSys. O piloto não caracteriza
+pressão local, contato em cm², histerese em ciclos crescentes/decrescentes,
+diferenças entre pontos ou estabilidade entre dias.
+O banco registra somente um zero para o bloco; repetição de zero e
+condições ambientais também precisam ser documentadas em novos ensaios.
+
+======================================================================
+8. CINCO EXAMES ADICIONAIS: RESULTADOS PROCESSADOS EM ADC
+======================================================================
+
+Foram encontrados cinco exames estáticos concluídos, marcados REAL.
+Os valores abaixo são resultados já processados e salvos, não quadros
+brutos. Não há quadros nas tabelas exam_frames ou exam_raw_chunks para
+esses exames. Sua matriz de 225 valores está preservada em anexo.
+
+Exame | Duração s | Quadros | FPS salvo | Máxima ADC | Média ADC | Pontos contato | Metade E | Metade D
+----------------------------------------------------------------------------------------------------
+E01 | 10,0 | 125 | 12,5 | 1626,7 | 618,5 | 113 | 45,9% | 54,1%
+E02 | 10,0 | 113 | 11,3 | 1842,6 | 1131,8 | 101 | 45,0% | 55,0%
+E03 | 15,0 | 169 | 11,3 | 1941,7 | 1116,0 | 100 | 45,3% | 54,7%
+E04 | 10,0 | 122 | 12,2 | 1300,5 | 732,1 | 89 | 44,9% | 55,1%
+E05 | 10,0 | 158 | 15,8 | 1473,3 | 802,0 | 56 | 34,9% | 65,1%
+
+As metades E/D são percentuais relativos do processamento ADC salvo.
+Não são forças por pé em newtons nem pesagem em quilogramas. O código
+relativo soma colunas 0..6 e 8..14; a coluna 7 é excluída desse percentual.
+Isso pressupõe posicionamento adequado e não identifica os pés por si só.
+
+Sem ficha de condições, referência de massa e associação aos participantes,
+os cinco exames não devem ser apresentados como validação de precisão.
+Tampouco podem ser reprocessados como se houvesse uma série temporal bruta.
+
+======================================================================
+9. AJUSTES, FALHAS E DIFICULDADES DOCUMENTADAS
+======================================================================
+
+9.1 Histórico de hardware — relatos na referência antiga
+Estes registros não incluem data, fotos antes/depois ou medições por
+repetição; devem ser confirmados com os responsáveis pela construção.
+
+A. Falha de upload DFU/exit status 74:
+Relato: seleção inadequada de placa na Arduino IDE.
+Ajuste descrito: selecionar ESP32 Dev Module e upload UART/esptool.
+
+B. Faixas contínuas/colunas respondendo em bloco:
+Relato: barramento GND da protoboard dividido, com pull-down sem aterramento.
+Ajuste descrito: interligar o GND com jumper ao ESP32.
+Outro relato: S3 do multiplexador de colunas conectado ao RX0.
+Ajuste descrito: reposicionar S3 no GPIO22, preservando os demais seletores.
+Esses relatos não comprovam que sensores específicos tenham sido danificados.
+
+C. Mapa espelhado:
+Relato: apoio à direita aparecia à esquerda na tela.
+Ajuste descrito: inversão horizontal da matriz; transformação existente
+também no software atual. Confirmar orientação física por carga localizada.
+
+D. Mapa com pouco contraste:
+Relato: VMAX de 3500 ADC acima dos picos observados, citados como
+aproximadamente 1800 a 2200 ADC em apoio corporal.
+Ajuste descrito: VMAX em torno de 2100 e gamma em torno de 1,3.
+Essa faixa antiga é relato qualitativo; não há séries por repetição.
+Gamma e VMAX ajustam apresentação e não calibram pressão física.
+
+E. Bluetooth aparecia somente como emparelhado:
+Relato: identificação/abertura da porta SPP de saída no Windows.
+Ajuste descrito: abrir a porta pelo software. Confirmar transporte nos
+ensaios atuais; COM5 não identifica sozinho a conexão.
+
+9.2 Ocorrências comprovadas no registro piloto atual
+- Seis ensaios rejeitados por erro de cadastro de peso/unidade.
+- Ensaio com celular de 199 g ainda em REVIEW, não aceito para ajuste.
+- Identificação de instrumento incompleta em grande parte dos ensaios.
+- Firmware, área efetiva e coordenadas dos pontos sem identificação completa.
+- Dispersão entre repetições do mesmo nível e posição.
+- Perfil de força total reprovado; dois ensaios de validação fora do domínio.
+- Ausência de teste localizado dos 225 pontos, bordas/cantos e movimento.
+
+Falha física definitiva de sensor: NÃO COMPROVADA pelos registros consultados.
+Ajustes físicos posteriores ao bloco de bancada: PENDENTE DE INFORMAÇÃO.
+Não atribuir a reprovação a defeito de um componente sem ensaio diagnóstico.
+
+9.3 Verificações de software
+Os logs da entrega 0.2.10 registram 179 testes frontend aprovados e
+99 testes Rust aprovados, com 1 benchmark ignorado.
+São testes automatizados de software, com dados sintéticos e bancos de
+teste; não são repetições experimentais do dispositivo físico.
+Esses testes não foram executados novamente para elaborar este documento.
+O registro antigo de "100% calibrado" não é sustentado por esses logs nem
+pela validação física reprovada; deve ser interpretado como relato de
+ajuste funcional/visual, sem comprovação metrológica.
+
+======================================================================
+10. FOTOGRAFIAS E ANOTAÇÕES A ANEXAR
+======================================================================
+
+Pasta reservada: Fotos/ nesta documentação.
+Ainda sem fotografias recebidas do protótipo. Não foram geradas imagens
+artificiais para representar a construção real.
+
+F01 — Tapete completo, vista superior, com régua/trena e orientação.
+Arquivo: ____________________ Data: __________ Responsável: ____________.
+Legenda: _____________________________________________________________ .
+
+F02 — Tapete completo, lateral, mostrando espessura e acabamento do EVA.
+Arquivo: ____________________ Medidas visíveis: ________________________.
+
+F03 — Módulo da placa sensora instalado no tapete, com cabos e fixação.
+Arquivo: ____________________ Posição/revisão: _________________________ .
+
+F04 — Placa/matriz aberta, mostrando cobre, material sensível e camadas.
+Arquivo: ____________________ Dimensões: _______________________________.
+
+F05 — Eletrônica: identificação ESP32, multiplexadores, resistores e conexões.
+Arquivo: ____________________ Revisão/esquema correspondente: ___________.
+
+F06 — Marcações/sinalizações funcionais, com detalhe e vista de localização.
+Arquivo: ____________________ Função de cada marca: ____________________.
+
+F07 — Montagem de teste: carga, aplicador, área de contato e sua posição.
+Arquivo: ____________________ Grupo/repetição vinculados: _______________.
+
+F08 — Pesagem de referência, com valor/unidade e balança identificáveis.
+Arquivo: ____________________ Ensaio correspondente: ___________________.
+
+F09 — Tela do teste com identificação, origem, unidade e resultado.
+Arquivo: ____________________ ID do ensaio: ____________________________.
+
+A01 — Folha de anotações original ou fotografia legível de caderno de bancada.
+Arquivo: ____________________ Data/grupo/repetições: ___________________.
+
+Preservar os originais e relacionar cada imagem a uma revisão e a um
+ensaio. Uma fotografia isolada do mapa não informa automaticamente a
+referência de carga, tempo de coleta ou valor de cada sensor.
+
+======================================================================
+11. PENDÊNCIAS PARA CONCLUIR A DESCRIÇÃO DO QUE FOI CONSTRUÍDO
+======================================================================
+
+[ ] Tamanho final externo do tapete, distinto da região sensora.
+[ ] Material, identificação e espessura de cada camada de EVA.
+[ ] Quantidade e dimensões dos módulos, montagem e modo de fixação.
+[ ] Fotos do conjunto, placa, eletrônica e marcações funcionais.
+[ ] Confirmar Velostat e dimensões/espessuras das camadas reais.
+[ ] Confirmar pinagem, resistores e revisão do firmware efetivamente usada.
+[ ] Identificar balança, unidade da resolução cadastrada e pesagem de cada carga.
+[ ] Confirmar que 0,438 kg corresponde ao aplicador/caderno e como ele tocava a placa.
+[ ] Documentar área real de contato de cada referência.
+[ ] Confirmar se COM5 corresponde a USB ou Bluetooth nas coletas.
+[ ] Relacionar exames E01..E05 a fichas de teste sem expor participantes.
+[ ] Registrar testes fora do banco, valores anotados e fotos originais.
+[ ] Informar reaplicação/reposicionamento entre repetições e datas de ajustes.
+[ ] Medir capacidade mecânica conforme a construção e caracterizar faixa útil.
+[ ] Registrar dificuldade operacional e falha por posição, sem inferir defeitos.
+
+Campos para ensaios adicionais já realizados e ainda não digitalizados:
+ID/data: _____________________________________________________________ .
+Revisão do protótipo: _________________________________________________ .
+Tipo: estático / movimento / outro: ___________________________________.
+Carga de referência e unidade: ________________________________________ .
+Instrumento/área/posição: ______________________________________________ .
+Tempo aplicado e número de reaplicações: _______________________________.
+Repetição 1 e unidade: _________________________________________________ .
+Repetição 2 e unidade: _________________________________________________ .
+Repetição 3 e unidade: _________________________________________________ .
+Demais repetições: ____________________________________________________ .
+Média/DP, se calculados, e método: _____________________________________ .
+Falha/ajuste/dificuldade: ______________________________________________ .
+Foto ou anotação de origem: ___________________________________________ .
+
+======================================================================
+12. TEXTO BASE PARA A DESCRIÇÃO DO ESTUDO
+======================================================================
+
+Foi desenvolvido um sistema de aquisição e visualização baropodométrica
+com matriz de 15 x 15 pontos de leitura, totalizando 225 posições. A
+documentação técnica descreve o uso de Velostat entre condutores de cobre
+e varredura por ESP32 com dois multiplexadores CD74HC4067. A região sensora
+foi cadastrada com dimensões de 300 x 300 mm, fitas de 10 mm e passo de
+20 mm. Os detalhes finais do tapete em EVA e da montagem devem ser
+complementados por medições e fotografias do protótipo.
+
+Na base consultada foram identificados 35 registros experimentais de
+bancada, marcados como dados reais. As coletas utilizaram cargas mantidas
+no centro da placa, com acomodação programada de 5 segundos e janela de
+10 segundos. Foram preservados os quadros de 225 leituras e os resultados
+por repetição. As referências cadastradas nos ensaios aceitos abrangeram
+massas totais entre 0,438 e 4,518 kg; um ensaio de 0,199 kg permaneceu em
+revisão e seis registros foram rejeitados por erro de cadastro da carga.
+
+Foi construído um perfil candidato de força total a partir de cinco
+níveis de carga, com três repetições por nível. A validação selecionou nove
+ensaios: sete produziram estimativas completas e dois ficaram fora do
+domínio da curva. O maior erro absoluto registrado foi 8,30 N, superior
+ao critério cadastrado de 1 N. O perfil não foi aprovado nem ativado.
+Os achados demonstram resposta elétrica a cargas de bancada e a necessidade
+de aperfeiçoar a caracterização e a calibração; não estabelecem pressão
+local validada, precisão em carga corporal ou desempenho durante movimento.
+
+Antes de utilizar este texto no TCC, a equipe deve confirmar dimensões,
+referências de carga, condições de montagem e correspondência das coletas.
+
+======================================================================
+13. ANEXOS E RASTREABILIDADE
+======================================================================
+
+Evidencias/DADOS_BRUTOS_CALIBRACAO.json:
+35 ensaios, especificações cadastradas, resumos e todos os 6.570 quadros,
+com 225 leituras cada. Inclui acomodação e registros rejeitados. Para
+reproduzir o resumo, selecionar receivedMs entre settleSeconds*1000 e
+(settleSeconds+durationSeconds)*1000, inclusive.
+
+Evidencias/RESULTADOS_POR_REPETICAO.txt:
+Tabela de cada registro com referência, unidade, estado, repetições,
+contagem, duração, FPS, somas ADC e estimativa do perfil candidato.
+Referências rejeitadas são preservadas como digitadas, sem correção automática.
+
+Evidencias/MEDIAS_POR_SENSOR.txt:
+Média, DP amostral, mínimo e máximo dos 225 pontos em cada janela.
+Índice bruto de 0 a 224; linhas/colunas de 1 a 15 antes do espelhamento.
+Fórmula do índice: i = (linha-1)*15 + (coluna-1).
+
+Evidencias/PERFIL_E_VALIDACAO_REGISTRADOS.json:
+Coeficientes, baseline, piso de ruído, perfil candidato e resultado de
+validação persistido, sem ativar ou editar os objetos originais.
+
+Evidencias/EXAMES_ADC_SEM_IDENTIFICADORES.json:
+Cinco resultados e matrizes processadas de exames adicionais, sem nomes,
+identificadores de pacientes ou notas clínicas. Não contém quadros brutos.
+
+Evidencias/RESUMO_ANALITICO.json:
+Contagens e cálculos documentais por repetição/grupo, com maior precisão
+numérica que as tabelas arredondadas deste relatório.
+
+Evidencias/MANIFESTO.json:
+Data de extração, schema, método, tamanho e SHA-256 das evidências.
+O hash serve para rastrear integridade; não comprova precisão metrológica.
+
+extrair_evidencias.py:
+Script de reprodução da extração técnica. Reexecutar gera novos anexos
+com a base então disponível e sobrescreve os arquivos de evidência.
+Preservar a versão documental anterior antes de reexecutar. O script
+não atualiza automaticamente as tabelas/textos deste relatório.
+
+Fontes locais principais:
+F1 — Sprint/01_Referencias/Contexto.txt: descrição e relatos antigos.
+F2 — Cadastro calibration_mats: geometria informada da revisão.
+F3 — calibration_trials e calibration_frame_chunks: bruto e condições.
+F4 — calibration_profiles e calibration_validations: curva e erro salvo.
+F5 — src/services/acquisition/types.ts e src-tauri/src/acquisition.rs:
+     contrato de 225 valores ADC e comunicação serial.
+F6 — src/services/calibration/math.ts e src-tauri/src/calibration.rs:
+     transformação, domínio, métricas e critério de validação.
+F7 — src/services/baropodometry/metrics.ts e src/features/exams/:
+     processamento relativo e fluxo de exame estático.
+F8 — README.md e src-tauri/tauri.conf.json: software e versão.
+F9 — docs/corrections/ e Sprint/Treinamento/PROGRESSO_TESTES_E_CALIBRACAO.txt:
+     entregas/testes de software e pendências de homologação.
+
+Não foram usados valores de outros dispositivos para preencher a capacidade
+ou a precisão deste protótipo. Informações ausentes permanecem pendentes.
+
+FIM DA DOCUMENTAÇÃO

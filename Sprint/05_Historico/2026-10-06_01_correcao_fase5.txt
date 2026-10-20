@@ -1,0 +1,59 @@
+BAROPRESS - REGISTRO DE PROGRESSO
+Data: 06/10/2026 (America/Sao_Paulo)
+Assunto: Correção da fase 5, configurações antes do exame e organização do projeto
+Status: CONCLUÍDO no código e testes; homologação em ESP32 pendente
+
+SOLICITAÇÃO
+Corrigir o exame que não completava os 10 segundos e não chegava ao salvamento.
+Adicionar uma aba para configurar os parâmetros de visualização antes da coleta.
+Organizar a pasta Sprint e criar registros TXT de progresso.
+
+DIAGNÓSTICO
+Os efeitos React recriavam os intervalos quando os valores dos sensores ou o
+objeto completo do store mudavam. Os frames atualizavam antes de o intervalo
+de 1 segundo disparar, impedindo o countdown de avançar.
+A coleta também repetia valores da UI e alterava a lista de frames diretamente.
+No erro de salvamento, a ação global Tentar novamente retornava à confirmação
+em vez de repetir a gravação do resultado já processado.
+
+ALTERAÇÕES
+src/features/exams/examRuntime.ts: relógio independente e assinatura de frames.
+src/features/exams/examStore.ts: início assíncrono, coleta, cancelamento e salvamento.
+src/features/exams/NewExamPage.tsx: abas, cronômetro, conexão e tentativa de gravação.
+src/features/exams/ExamSettingsTab.tsx: ajustes, prévia, modo automático e tara.
+src/stores/visualization.ts: ajustes compartilhados com a tela de Análise.
+src/features/exams/examProcessing.ts: parâmetros completos no payload do exame.
+src/types/index.ts: configurações completas opcionais para compatibilidade.
+src-tauri/migrations/0003_exam_visualization.sql: ajustes em JSON por exame.
+src-tauri/src/exams.rs: escrita e leitura dos ajustes dentro da transação.
+src-tauri/src/db.rs: registro da migração e teste de preservação de registros antigos.
+Detalhes do exame e relatórios: reaplicação dos parâmetros armazenados.
+src/tests/exams.test.ts: regressão do relógio, conexão, cancelamento e salvamento.
+
+ORGANIZAÇÃO
+Referências originais preservadas em Sprint/01_Referencias.
+Arquitetura movida para docs/ARCHITECTURE.md.
+Logs antigos da raiz movidos para Sprint/99_Logs_Antigos.
+Código, dependências e pastas de build mantidos em suas posições técnicas.
+Adicionados resumos de concluído, em andamento, futuro e modelo para novos registros.
+
+VALIDAÇÃO
+npm test: 93 testes aprovados em 6 arquivos.
+npm run build: TypeScript e build Vite aprovados.
+cargo build --offline --manifest-path src-tauri/Cargo.toml: compilação desktop
+de desenvolvimento aprovada; executável de desenvolvimento atualizado.
+Teste integrado: 5s de preparação + 10s de coleta; 303 frames do simulador,
+mesmo com a atualização visual artificialmente limitada a cada 250ms.
+Teste de falha de salvamento: amostra preservada e gravada na segunda tentativa.
+Testes Rust: 26 testes aprovados, incluindo gravação, reabertura do banco,
+recuperação dos ajustes completos, migração de registros anteriores e compatibilidade
+com exames sem o novo campo de configuração.
+Conferência visual: tentativa em navegador isolado sem acesso ao servidor local
+(ERR_CONNECTION_TIMED_OUT). Nenhuma validação visual foi declarada como concluída.
+O arquivo temporário de verificação foi removido após a tentativa.
+Avisos não bloqueantes: chunk do frontend acima de 500 kB e uso de cópia no
+cache incremental Rust porque o ambiente não permitiu hard links.
+
+PENDÊNCIAS
+Teste visual final e homologação em ESP32 real.
+Novo instalador Windows ainda não gerado nesta tarefa.

@@ -1,0 +1,27 @@
+BAROPRESS - F02 - QUADROS E REPRODUÇÃO
+Data: 09/10/2026. Estado: CONCLUÍDO NO SOFTWARE.
+Solicitação: execução sequencial do plano BAROSYS, preservando instalação e dados.
+
+COMPORTAMENTO / DECISÃO
+Bruto canônico relativo ou físico em exam_raw_chunks; metadados na migração 0008. Salvamento transacional, validação da média/qualidade no Rust, leitura sob demanda paginada na revisão, exportação formato 1 e backup/restore dos esquemas 5..8. Média, máximos por sensor, quadro, tempo real, avançar/voltar e reprodução sem COM.
+
+ARQUIVOS PRINCIPAIS
+src-tauri/migrations/0008_exam_analysis.sql; src-tauri/src/{db,exams,exam_analysis,backup,lib}.rs; src/types/index.ts; src/services/database/api.ts; src/features/exams/{AnalysisReview,ExamExportActions}.tsx
+
+CONTRATOS E COMPATIBILIDADE
+baropress-static-v1; esquema SQLite 8; backup formato 1; exportação de série 1.
+Legado sem metadados permanece indisponível; matriz/indicadores originais preservados.
+Rollback da faixa esquerda mantido. Perfis físicos e critérios existentes preservados.
+
+VERIFICAÇÃO E LIMITES
+Teste de banco isolado cria/reabre, lê posição, exporta/restaura completo e individual, recusa série parcial/qualidade divergente/armazenamento duplicado e desfaz restore incompleto. 10.000 quadros é teto novo; bruto físico antigo mantém seu contrato/limite legado. Sem eliminação automática.
+Verificações finais comuns estão nos logs de docs/barosys e em
+VALIDACAO_E_DEMONSTRACAO.txt. As contagens são de uma suíte integrada, não
+de execuções independentes repetidas em cada registro de fase.
+
+EVIDÊNCIA VISUAL / ENSAIO
+PNG/PDF sintéticos em docs/barosys quando aplicável. Não são exames pessoais.
+Ensaio real pendente conforme decisão do usuário; sem ativação/instalação automática.
+
+RETOMADA
+F03 / regiões.

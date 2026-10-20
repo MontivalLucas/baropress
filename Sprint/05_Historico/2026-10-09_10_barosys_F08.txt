@@ -1,0 +1,27 @@
+BAROPRESS - F08 - VISTA 3D
+Data: 09/10/2026. Estado: CONCLUÍDO NO SOFTWARE.
+Solicitação: execução sequencial do plano BAROSYS, preservando instalação e dados.
+
+COMPORTAMENTO / DECISÃO
+SVG discreto com 225 barras, altura ADC/VMAX, paleta/Gamma do 2D, limiar neutro, rotação/zoom por sliders acessíveis e retorno 2D. Sem biblioteca nova e sem modificação de dados/regiões/métricas.
+
+ARQUIVOS PRINCIPAIS
+src/features/exams/SensorMap3D.tsx; src/features/exams/AnalysisReview.tsx; docs/barosys/ui-*-3d.png
+
+CONTRATOS E COMPATIBILIDADE
+baropress-static-v1; esquema SQLite 8; backup formato 1; exportação de série 1.
+Legado sem metadados permanece indisponível; matriz/indicadores originais preservados.
+Rollback da faixa esquerda mantido. Perfis físicos e critérios existentes preservados.
+
+VERIFICAÇÃO E LIMITES
+Conferência visual efetiva em ambos os temas e resoluções; sem overflow horizontal. 3D relativo ADC; não reconstrói anatomia e não produz modelo físico novo.
+Verificações finais comuns estão nos logs de docs/barosys e em
+VALIDACAO_E_DEMONSTRACAO.txt. As contagens são de uma suíte integrada, não
+de execuções independentes repetidas em cada registro de fase.
+
+EVIDÊNCIA VISUAL / ENSAIO
+PNG/PDF sintéticos em docs/barosys quando aplicável. Não são exames pessoais.
+Ensaio real pendente conforme decisão do usuário; sem ativação/instalação automática.
+
+RETOMADA
+F09-A / estudo; viabilidade real pendente.

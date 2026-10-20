@@ -1,0 +1,84 @@
+BAROPRESS - PROTOCOLO DE BANCADA F06-A
+Data: 09/10/2026. Versão: 1. Estado: PREPARADO / ENSAIOS REAIS PENDENTES.
+Uso: estudo experimental do protótipo. Não estabelece equivalência com BAROSYS.
+Em 09/10/2026 o responsável autorizou deixar os testes reais para execução
+conjunta após o restante do software. Exames existentes são referências;
+não foram reutilizados como fixtures nem reinterpretados nesta execução.
+
+FONTES E CONTINUIDADE
+Reutilizar Sprint/Treinamento/COMO_USAR_TESTES_E_CALIBRACAO.txt e a aba
+Testes e calibração: baseline, ensaios FIT/VALIDATION, aceitação, perfis e
+validação independente já existem. Não cadastrar outro sistema de calibração.
+DOCUMENTACAO_PROTOTIPO_E_TESTE_PILOTO.txt registra em 07/10 uma montagem,
+35 ensaios marcados REAL, candidato de força total e nenhuma ativação.
+Essa é evidência documental histórica, não uma consulta nova ao banco.
+Padrões atuais: 15 x 15; região informada 300 x 300 mm; passo informado 20 mm;
+fita 10 mm. Conferir montagem/revisão. Não inferir área efetiva pelo passo.
+
+DEPENDÊNCIAS A CONFIRMAR ANTES DA BANCADA
+1. Identidade/revisão do tapete, foto da montagem, camadas, resistores,
+   multiplexadores, proteção mecânica, esquema e condições ambientais.
+2. Firmware e hash/arquivo fonte; baud, formato serial, relógio/sequência
+   disponíveis no dispositivo. A sequência atual é de recepção no computador.
+3. Centros e áreas efetivas de cada célula; orientação RAW_FLIP_X conferida
+   com carga em posição conhecida; capacidade mecânica verificada.
+4. Instrumentos, resolução, incerteza, certificado ou método de verificação;
+   massas reais, área do aplicador, massa do próprio aplicador e uniformidade.
+5. Objetivo técnico, domínio e tolerância justificável pela referência e
+   aplicação; aprovar antes de ajustar/analisar. maxError/minFitLevels e
+   minValidationTrials continuam os critérios explícitos do módulo existente.
+Campo sem evidência: NÃO INFORMADO. Não ativar perfil por preencher uma tela.
+Carga corporal depende de capacidade verificada suficiente; sem isso não
+incluir ensaio com pessoa. Identificar participantes por códigos P01/P02.
+
+DESENHO E IDENTIFICADORES
+Protocolo BP-BANCADA-v1. Separar grupos A (ajuste) e B (validação), com
+reaplicações independentes, não quadros do mesmo apoio tratados como ensaios.
+Identificar sessão Sxx, dia Dxx, carga Lxx, posição Pxx, ciclo Cxx, repetição
+Rxx, direção UP/DOWN/HOLD e finalidade CHARACTERIZATION/FIT/VALIDATION.
+Definir quantidade de níveis/repetições/dias após conferir referências e
+domínio útil; cumprir os mínimos configurados, sem reduzir critérios.
+
+SEQUÊNCIA OPERACIONAL
+A. Sem carga: registrar baseline bruto em cada sessão; ruído e deriva após
+   estabilização definida e anotada. Tara visual é independente do baseline físico.
+B. Caracterizar cargas no centro, cantos e regiões selecionadas: acompanhar
+   vizinhos e limites ADC. Subida/descida usam os mesmos níveis identificados.
+C. Ajuste A: aplicar referências dentro da capacidade/domínio, acomodar,
+   coletar todos os quadros, retirar e reaplicar; registrar perdas/eventos.
+D. Validação B: referências e aplicações independentes, incluindo posições
+   e sessões reservadas; não usar quadros separados de A como validação B.
+E. LOCAL/UNIFORM: somente área conhecida cobrindo células inteiras e pressão
+   uniforme confirmada. Massa corporal não calibra pressão local.
+F. Revisar bruto/qualidade e aceitar/rejeitar explicitamente com motivo.
+G. Ajustar candidato; avaliar B sem extrapolar. Ativar perfil REAL somente
+   após validações existentes e ação explícita do administrador autorizado.
+
+REGISTRO PARA CADA ENSAIO (COPIAR E PREENCHER)
+ID / protocolo / sessão / grupo / repetição / direção / finalidade:
+Tapete / revisão / firmware / operador / data e hora / origem REAL:
+Referência / instrumento / resolução / incerteza / unidade / aplicador:
+Região / centros / áreas / orientação / posicionamento / condições:
+Capacidade verificada / domínio planejado / acomodação / duração:
+Arquivo bruto / checksum / sequência e origem / tempos e origem:
+Baseline / perfil candidato / evento / aceito-rejeitado e motivo:
+Tolerância técnica e justificativa definidas ANTES da análise:
+Grupo reservado independente para validação / decisão / pendências:
+
+ANÁLISE QUANDO HOUVER DADOS REAIS
+Preservar bruto e hashes. Revisar taxa/intervalos, maior lacuna, saturação,
+ruído por célula, deriva entre início/fim, histerese UP/DOWN e cobertura.
+Reutilizar MAE = média |estimado-referência|; RMSE = raiz da média dos erros
+quadráticos; viés = média do erro; erro máximo = maior valor absoluto.
+Usar N no escopo TOTAL_FORCE_ONLY e kPa no escopo LOCAL_PRESSURE. Incerteza
+não determinada deve continuar explícita. Decisão APROVADO/REPROVADO/
+INCONCLUSIVO exige referência, independência, domínio e critério documentados.
+Comparação comercial: parear protocolo, condições visuais/postura/apoio,
+posição/orientação, modo temporal, região e unidade. Registrar coleta
+sequencial como limitação; solicitar numéricos brutos quando disponíveis.
+PDF e cores não reconstituem sensores. Não forçar concordância por normalização.
+
+PONTO DE RETOMADA F06-B
+Executar bancada juntos; informar caminhos dos arquivos brutos e registros.
+Conferir dependências acima, analisar com o módulo existente e registrar
+resultados reais sem substituir o histórico nem aprovar por teste sintético.

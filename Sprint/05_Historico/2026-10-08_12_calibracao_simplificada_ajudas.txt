@@ -1,0 +1,67 @@
+BAROPRESS - CALIBRAÇÃO SIMPLIFICADA E AJUDAS - 0.2.11
+Data: 08/10/2026
+Solicitação: simplificar a calibração e explicar os campos em balões de ajuda.
+
+IMPLEMENTAÇÃO
+Etapas visíveis: 1. Tapete; 2. Coletas; 3. Criar curva; 4. Conferir curva;
+5. Usar calibração. Diagnóstico e Guia de bancada permanecem disponíveis.
+Cada etapa explica sua função e o que fazer em seguida.
+Formulário organizado por escolha, identificação, referência e tempo.
+Zero sem carga esconde campos de carga que não se aplicam. Referências,
+área/células e condições com pessoa aparecem conforme o tipo de coleta.
+Detalhes do protocolo/instrumento, montagem e JSON ficam recolhidos.
+Cadastro de outra revisão fica recolhido quando há uma montagem selecionada.
+Campos obrigatórios marcados; rodapé mostra espera + coleta e botão acessível.
+
+MEDIDAS PADRÃO - COMPLEMENTO PEDIDO DURANTE A IMPLEMENTAÇÃO
+Região sensora 300 x 300 mm, fitas 10 mm e passo X/Y 20 mm; matriz 15 x 15.
+Fonte: Sprint/Documentacao_TCC/DOCUMENTACAO_PROTOTIPO_E_TESTE_PILOTO.txt,
+seções 2.1 e 3.1, e resumo analítico do cadastro existente.
+Primeiro cadastro já preenchido; edição recolhida em Alterar medidas e montagem.
+Montagem cadastrada tem prioridade, com sua geometria preservada numa cópia.
+Áreas/centros não determinados e capacidade desconhecida continuam vazios.
+Não há cadastro automático no banco; Salvar gera nova revisão, sem reescrever
+ensaios e curvas anteriores.
+
+AJUDAS
+Ícone de interrogação junto aos campos. Abre com mouse ou clique; Tab e
+Enter/Espaço permitem usar o teclado. Escape, clique fora ou saída de foco
+fecham o balão aberto. Ajuda não envia formulário nem inicia coleta.
+Textos explicam finalidade, unidade e preenchimento, com exemplos de identificação.
+Incluem montagem, dimensões, áreas, referência, instrumento, zero, grupos,
+repetições, tempos, curva, critérios, revisão e correção de classificação.
+Medidas desconhecidas continuam vazias; exemplos não estabelecem precisão.
+Trocar tipo/unidade limpa parâmetros dependentes para evitar massa duplicada
+ou condições locais/pessoais usadas no tipo errado.
+
+REGRAS PRESERVADAS
+Sem alteração das fórmulas, dados brutos, migrações, backend ou autorização.
+Zero aceito necessário; dados reais/simulação separados; ajuste e validação
+independentes; perfil só ativável pelas regras existentes de cobertura/aprovação.
+Não foram preenchidas áreas, capacidade ou tolerâncias por estimativa.
+
+VERIFICAÇÃO
+TypeScript aprovado; 181 testes aprovados em 24 arquivos.
+Dois testes novos conferem padrões documentados e preservação da montagem.
+Build/pacote e conferência da prévia: consultar artifacts-0.2.11.json e
+build-0.2.11.log em docs/corrections para o resultado final.
+Prévia utiliza montagem sintética e não acessa o banco pessoal.
+Prévia compilada conferida: clique/Enter, Escape/Tab, campos de força/local/pessoa
+e valores de primeiro cadastro 300/300/20/20/10 com edição recolhida.
+Captura: docs/corrections/calibracao-ajuda-0.2.11.jpg.
+Build e NSIS aprovados; binário identificado como 0.2.11, pacote copiado e
+SHA256 verificado. Metadados em docs/corrections/artifacts-0.2.11.json.
+Homologação de calibração física e uso no WebView2 instalado permanecem pendentes.
+
+ARQUIVOS PRINCIPAIS
+src/features/calibration/CalibrationPage.tsx
+src/features/calibration/CalibrationHelp.tsx
+src/features/calibration/fieldHelp.ts
+src/features/calibration/ClassificationCorrection.tsx
+src/features/calibration/matDefaults.ts
+src/tests/calibration-defaults.test.ts
+
+CONTINUAÇÃO
+Instalar a versão nova e conferir os balões na resolução/escala usada.
+Demais pendências: Sprint/04_Futuro/PENDENCIAS_POS_CORRECOES_0.2.10.txt.
+Esta entrega atende a simplificação/ajudas; não conclui toda a evolução UX.

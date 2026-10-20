@@ -1,0 +1,1026 @@
+[
+  {
+    "path": "vite.config.ts",
+    "hash": "DFD5CCB7D6D51202DFE00D32108974870F89245F3BD53226CD8EC833E60F7397"
+  },
+  {
+    "path": "tsconfig.json",
+    "hash": "D626F8B92F7A6B1EDF3F6861100D2E7107A8221EDE2D547858B202B53815926F"
+  },
+  {
+    "path": "tailwind.config.js",
+    "hash": "A473F3BD373B9679F9AD1C49BAF2744FDA14613587E633E334F527374FEE5079"
+  },
+  {
+    "path": "package-lock.json",
+    "hash": "357EFD784C6D290A78878C6F6BEC58348490EDD9019D016F75E32E95840D2035"
+  },
+  {
+    "path": ".gitignore",
+    "hash": "BAEE0891EA27C8CFD6CD682136E4BDDA0D9FA1B3398F6DB2389E8FE64A5EA941"
+  },
+  {
+    "path": "src-tauri\\tauri.conf.json",
+    "hash": "3005E8E856EEBF73E0CDBBC58104E9AD968AFA075AA9C0C0DAE5F9EECDE27829"
+  },
+  {
+    "path": "src-tauri\\build.rs",
+    "hash": "487059EAF8A947B80F20A9AACAC038A5047B2AD69D2401B827376C67D6FE847F"
+  },
+  {
+    "path": "src-tauri\\bin_deps\\WebView2Loader.dll",
+    "hash": "86545B66CDB0603BC26B626FB9AD610CB6E71F28D468F5EA66DF23B03DDA96D5"
+  },
+  {
+    "path": "src-tauri\\bin_deps\\libunwind.dll",
+    "hash": "8D9F60801F50C0A6CB7BEB7FD2E121F98BF39EBE40E6C7E07A8A39FCCB817C03"
+  },
+  {
+    "path": "docs\\FASES_7_A_11.md",
+    "hash": "A72774F3613A637164318C7DEC88684F17409AFA41E50192B01F5A958789880B"
+  },
+  {
+    "path": "docs\\BUILD_WINDOWS.md",
+    "hash": "404B2492CA12D2D5371ACE17CA4635E1DB4F2555E43BBB58FB955BFF2DF23704"
+  },
+  {
+    "path": "docs\\BAROPODOMETRY.md",
+    "hash": "76F828ADE5ADD7F0F96E83AE76D1C18E3B72F24238A81E0030B6B4B4C7566460"
+  },
+  {
+    "path": "docs\\audit\\RESULTADOS_TESTES.md",
+    "hash": "4F1AB37BE0BAD4197AA52D0CAE5A503A9D0139A0722D27B56742226FD8B2E5F2"
+  },
+  {
+    "path": "docs\\audit\\REDUNDANCIAS_E_UX.md",
+    "hash": "BBACE7841178762DB4FADEF0D90E6C08E59A7DB85A0B90D1197A77A810338EB2"
+  },
+  {
+    "path": "docs\\audit\\PROBLEMAS_ENCONTRADOS.md",
+    "hash": "53BB12857602B5EB7790BFE0A71311B2480F9C0008B2F5264E8A57BDB5919012"
+  },
+  {
+    "path": "docs\\audit\\PLANO_DE_CORRECOES.md",
+    "hash": "B6349F5156FA1DA20CA9AE100232B2C1846F7208B302370DF262F8F664EBBFC6"
+  },
+  {
+    "path": "docs\\audit\\PENDENCIAS_E_RECOMENDACOES.md",
+    "hash": "C55216CF0832247C5873317009BD2850E76C8F32B348135C7B1557DDEE2FB63D"
+  },
+  {
+    "path": "src-tauri\\src\\workflow_tests.rs",
+    "hash": "DCDD79A9C2171685BD917F8B12B655ACF78904FF500AC1F854F6FDBE2FABB82A"
+  },
+  {
+    "path": "src-tauri\\src\\support.rs",
+    "hash": "7B92D2E96181F07F0D42A166185B635984996FFF3B4C44767F1AF35FFC616616"
+  },
+  {
+    "path": "src-tauri\\src\\questionnaires.rs",
+    "hash": "D5475D37652129EC0ED07119FEBB1C9731D34C32E80A3B7092A8EF18B15D0E7B"
+  },
+  {
+    "path": "src-tauri\\src\\patients.rs",
+    "hash": "4A3E17689A8360DF35392A3E53BF873F4D405FEBA4067AE9E9B9532D543D3700"
+  },
+  {
+    "path": "src-tauri\\src\\main.rs",
+    "hash": "EC20B1943DA039C867738A42855FC60BF66E334EB8478E845A5C4D66033A52E2"
+  },
+  {
+    "path": "src-tauri\\src\\lib.rs",
+    "hash": "837B7568DE91A9F804B420302249020BBBEE4631327AD4673EC10DB552A9CB4E"
+  },
+  {
+    "path": "src-tauri\\src\\exams.rs",
+    "hash": "5C632E1AEECDF2E14A8B7A118E8C54A41BB90B56F25BB7AEEF93225FE4F1B80A"
+  },
+  {
+    "path": "src-tauri\\src\\db.rs",
+    "hash": "F6FE798ABC38C17E52238FCAD23A45E93AFE13AD5C6F36DAC182F5C774123AEE"
+  },
+  {
+    "path": "src-tauri\\src\\calibration.rs",
+    "hash": "5982A349A514A70099D0D51C931CD2AF9CFDEC628174FBFA594E799A9BED8749"
+  },
+  {
+    "path": "src-tauri\\src\\backup.rs",
+    "hash": "BBFD3A933401F8747F2133C674D1DEEDDBB054325BB0DF845A3CD3B63697C043"
+  },
+  {
+    "path": "src-tauri\\src\\auth_tests.rs",
+    "hash": "AA70AF3894CFA7D49630BDCEF6DE6DF7102DED0A0CE20666C0CB29542769E14F"
+  },
+  {
+    "path": "src-tauri\\src\\auth.rs",
+    "hash": "632EEF2C958FF2C699D115A70AAD09A791CF166C0BCB75E2FC22E4AC94A9DFE5"
+  },
+  {
+    "path": "src-tauri\\src\\agenda.rs",
+    "hash": "955CD7239991207E04D834C35AAB626FCB27598D104F2BCA2EFEC200071F049C"
+  },
+  {
+    "path": "src-tauri\\src\\acquisition.rs",
+    "hash": "03D98903CEE0C3BFA7F5056762A06D4291C91A28B39491C507B8D6C8ABE037DE"
+  },
+  {
+    "path": "src\\types\\index.ts",
+    "hash": "0A9D4A194BC188AF7BB200168DC056031836C2900C65FB69A505066121B1E5B1"
+  },
+  {
+    "path": "iniciar_baropress.bat",
+    "hash": "EF556D31A8C57234046FE82DCE802B54B413CC3935313339C9D5977F38B60730"
+  },
+  {
+    "path": "index.html",
+    "hash": "819BE287B7E79E94D30DFF30B96523255EDA19CC82E1F26992A66F80536393D4"
+  },
+  {
+    "path": "src-tauri\\migrations\\0006_calibration.sql",
+    "hash": "6C7600AFBB09E095C44674228BCDBEA6E744DBB2778C0429AC8FCE7408DBE360"
+  },
+  {
+    "path": "src-tauri\\migrations\\0005_questionnaire_sessions.sql",
+    "hash": "E2A9ADDC28D921E832C90883ACA315E8584FBF34A2DC025C51E91115C6E79805"
+  },
+  {
+    "path": "src-tauri\\migrations\\0004_exam_trajectory.sql",
+    "hash": "948DA4D01632606B759DE85FD9FB3673446BBF5457B0C041506C6DE835EB8F29"
+  },
+  {
+    "path": "src-tauri\\migrations\\0003_exam_visualization.sql",
+    "hash": "3F6A56CAC82F7FDB621B10F598E5EACE7BEA20B74043CD53A219B668415CE2C7"
+  },
+  {
+    "path": "src-tauri\\migrations\\0002_exams_phase5.sql",
+    "hash": "00C32CA2BB193D75C1DCFF797AF3F2A34A5CB13EA222FFB567863D8BB9936CF3"
+  },
+  {
+    "path": "src-tauri\\migrations\\0001_init.sql",
+    "hash": "B6BD2490845B53B1750B729E0234A331B457C0C871E331E415C409169CFB16CF"
+  },
+  {
+    "path": "src-tauri\\installerHooks.nsh",
+    "hash": "542997E63356B5703968FACD4883DBF8289981F4C3AFB67D1DAA565380A44E2D"
+  },
+  {
+    "path": "docs\\audit\\logs\\typecheck.log",
+    "hash": "C39B4D3CAB230CA4410066E814B26570FF41843C91633D41539E5F2F60269242"
+  },
+  {
+    "path": "docs\\audit\\logs\\tauri-bundle-final.log",
+    "hash": "2F5EF922F666E74D340EC0B441CF687D9F98A86966637634ACA50E8F83F8DD19"
+  },
+  {
+    "path": "docs\\audit\\logs\\tauri-build.log",
+    "hash": "42A11CEDC9CF09992CE3D672C05E6CAA2385B50AFE7FA0E1C8AB528B75698826"
+  },
+  {
+    "path": "docs\\audit\\logs\\tauri-build-retry.log",
+    "hash": "6C42AF21EA4A165ED739CC98BDEAAF35FCF22EEA194568E3EE1B22100EBA236F"
+  },
+  {
+    "path": "docs\\audit\\logs\\rust-tests.log",
+    "hash": "59709CBD595594289A6EA66973F9563388DB1C06017EA6D9B543CF55F876CD2F"
+  },
+  {
+    "path": "docs\\audit\\logs\\results.json",
+    "hash": "B4444FA9B7B9B709DC207B2C868FAD87DB08A6132D88F23F3BA0B8597C865034"
+  },
+  {
+    "path": "docs\\audit\\logs\\frontend-tests.log",
+    "hash": "0064D3AA10AC9FD2D46D4536022917C21FB3283E9F9F57C444464AFB5673447A"
+  },
+  {
+    "path": "docs\\audit\\logs\\frontend-build.log",
+    "hash": "89A8714CCDE9AC34EF24284AAD77EFB839417BC3AE41C662AD9B1FB4187D22F1"
+  },
+  {
+    "path": "docs\\audit\\logs\\artifacts.json",
+    "hash": "2664CF8994DD0836E1638E80AE56DA744B7984349F313F98DC2C7F5ACCC8D9D9"
+  },
+  {
+    "path": "docs\\audit\\INVENTARIO_FUNCIONAL.md",
+    "hash": "525C80BC3438B94C1587181868DD533E1393B7D6806A91894F11ED6368B110BB"
+  },
+  {
+    "path": "docs\\audit\\inventario.json",
+    "hash": "D1E10D9B95696239CD855CA9AA7E77C37C508A073945D861521E24681375AFF3"
+  },
+  {
+    "path": "docs\\audit\\CHECKLIST_MANUAL.md",
+    "hash": "59DA2A73E5614B863DA0BD42E08D41AC53EA40D7E3E60193FEF69F8C0281DFD3"
+  },
+  {
+    "path": "docs\\audit\\AUDITORIA_FINAL.md",
+    "hash": "AF8B1939D2DD5F0599D16943B43E9A06D09097EEDBB638F59AACF1840247D6FD"
+  },
+  {
+    "path": "docs\\audit\\ALTERACOES_APLICADAS.md",
+    "hash": "191C7A27925AF2CBE40642F8B020E24120D610B0C859BA9FA0415EF537E96867"
+  },
+  {
+    "path": "docs\\ARCHITECTURE.md",
+    "hash": "6A8F689E03453D5B6CE6743DEE27E29DB19A71AD43364DA8DD6CF182BA7A958B"
+  },
+  {
+    "path": "src\\tests\\reports.test.ts",
+    "hash": "15412DFBE778C06BA171D4C4DDA642355F012C43697CD3D4333A25FCDA90AF0D"
+  },
+  {
+    "path": "src\\tests\\questionnaires.test.ts",
+    "hash": "DA4CD12E14C22CA306B8043F00175D5EC3EF3936CEA6CB600B373C6A72AAFC11"
+  },
+  {
+    "path": "src\\tests\\preferences.test.ts",
+    "hash": "9B5F411EEC07CA5029940884CF06828BF057BB04FDD634EA07A617F4FF9A6CAA"
+  },
+  {
+    "path": "src\\tests\\patients.test.ts",
+    "hash": "3666CAB2CB6A34B58714EB13360B0DF57271ADBFE579F9F7AF0D40A91C23B2CA"
+  },
+  {
+    "path": "src\\tests\\exams.test.ts",
+    "hash": "A4AC75519F7855CEE496D358566CA3C9AC2A04061EA277F377DC37A74ACBF19A"
+  },
+  {
+    "path": "src\\tests\\database-api.test.ts",
+    "hash": "B1D403546A642149597C8B917E3C187DDF70D32251AED3F95E8843F92B5779BF"
+  },
+  {
+    "path": "src\\tests\\comparison.test.ts",
+    "hash": "91E563D7FEA14C9AE194265862FF0BBE7332EB4DBD55CA852669588163B0ECBE"
+  },
+  {
+    "path": "src\\tests\\calibration.test.ts",
+    "hash": "7F1D7F7867230679956DF62B8ABC964EE50F62F05CA139CF31749E34A7D941CA"
+  },
+  {
+    "path": "src\\tests\\baropodometry.test.ts",
+    "hash": "4227620A8550C3A7AB5F5283ECEC9F1030636979F76682D4362EABCC049637C2"
+  },
+  {
+    "path": "src\\tests\\baropodometry-settings.test.ts",
+    "hash": "212511666BD201E0871FA9F19DC3CC5DF19FA845DD59BCDF8651510813E2FDDF"
+  },
+  {
+    "path": "src\\tests\\backup.test.ts",
+    "hash": "FF4F616310299FDE20215107DF2B6946F4ABFDAFF1DAC64283E882E94D30879F"
+  },
+  {
+    "path": "src\\tests\\auth.test.ts",
+    "hash": "A9F788C11561BF98FAE482490E34C17F84B00267BF33FD5FFBB318F4234534A2"
+  },
+  {
+    "path": "src\\tests\\audit-session.test.ts",
+    "hash": "AC86FAC24FEB29EC6FDA34D9E86646514E9256C2EAD49A556FE7A53F02E3B186"
+  },
+  {
+    "path": "src\\tests\\audit-science.test.ts",
+    "hash": "E4426C10DEAC60E366E29FB01CD85C236DBEEDC99497094D6AB7580FAB1AED1B"
+  },
+  {
+    "path": "src\\tests\\audit-reports.test.ts",
+    "hash": "77D5A74C972406F0AD3142357B32BC1F8153060EA49D47A0C5139259DD59ED54"
+  },
+  {
+    "path": "src\\tests\\audit-acquisition.test.ts",
+    "hash": "F22717E76C8A77B63564D9FA99D200A17C920E3A74B9F7E05504AC98559E988E"
+  },
+  {
+    "path": "src\\tests\\agenda.test.ts",
+    "hash": "490CB2CC9034E11CCE0623D1D37C1D4654DF6DB5025A0AC3EC0F02FA7831DCCB"
+  },
+  {
+    "path": "src\\tests\\acquisition.test.ts",
+    "hash": "B9C07164635EECAABECB4347B6E55E98F2CFAF733EA41B68B9BF58C96102DDE6"
+  },
+  {
+    "path": "src-tauri\\icons\\StoreLogo.png",
+    "hash": "1EDC07BA22E02B017CC57309DC3E3CDD2A932E8E30A8897C34FF460E61073AAF"
+  },
+  {
+    "path": "src-tauri\\icons\\Square89x89Logo.png",
+    "hash": "6B28C38F80C67387F20329EF674EB28F7442719FB56E608E9961F309C59A89C4"
+  },
+  {
+    "path": "src-tauri\\icons\\Square71x71Logo.png",
+    "hash": "EB8D1116FDA0DCA12755C38102794C2CAEEC8F358A5363ACD924EC6319637F88"
+  },
+  {
+    "path": "src-tauri\\icons\\Square44x44Logo.png",
+    "hash": "60602774007B50E8B431D43A70617A120DE6ECB2DD4D832065949C3F6F5A0694"
+  },
+  {
+    "path": "src-tauri\\icons\\Square310x310Logo.png",
+    "hash": "8EEF3C6A25567A58A3CB6F25A642B09B3FD523DF47686A405E35D465B865431D"
+  },
+  {
+    "path": "src-tauri\\icons\\Square30x30Logo.png",
+    "hash": "1DCC39294F3807A71156F46FC6D877036819F405105D35FEFE1916ED1C8F0DCB"
+  },
+  {
+    "path": "src-tauri\\icons\\Square284x284Logo.png",
+    "hash": "2688A29CA8AFFF467CC1965C38ADABF15A6C906E18CDFA5AFC1FDABAEDB125E4"
+  },
+  {
+    "path": "src-tauri\\icons\\Square150x150Logo.png",
+    "hash": "3BDE26585F842A33F2262075D9A45F9D5AB2669EEECFF109A254C909EF044D2C"
+  },
+  {
+    "path": "src-tauri\\icons\\Square142x142Logo.png",
+    "hash": "DA8D5C21EC2369C2C2284967C2AEA1E02DD6F8D28AAA2A6CE2931800B278B238"
+  },
+  {
+    "path": "src-tauri\\icons\\Square107x107Logo.png",
+    "hash": "0A318EE6AF643D97742D55BEA46265FB3CA11A1578D04B19E698992BFFC8C833"
+  },
+  {
+    "path": "src\\stores\\visualization.ts",
+    "hash": "315E2070B72FF29CC457699E6950144BA5EFCCC69F9B4A2195FB7AAD68B26475"
+  },
+  {
+    "path": "src\\stores\\session.ts",
+    "hash": "CECDC537F9F5A019016A9C66F3A5C7A161A05B2F9D615D534892B0F6E48CF29D"
+  },
+  {
+    "path": "src\\stores\\preferences.ts",
+    "hash": "F7C1AE6B6183AA77ADD55474A61C439693C598FBABBCE5AEF22B70B81A9FF179"
+  },
+  {
+    "path": "src\\stores\\calibration.ts",
+    "hash": "4F35B0B41FCE491DA666E6E2D4BF810B6E4F18042D136860EDF0EFDB7154AC09"
+  },
+  {
+    "path": "src\\stores\\acquisition.ts",
+    "hash": "231B253CD52E531B015EA7352EFD590FBE5201C5C6DF8B653FDFAAEF1DE014BD"
+  },
+  {
+    "path": "src-tauri\\icons\\ios\\AppIcon-83.5x83.5@2x.png",
+    "hash": "F00E4F9478085AD18DABC0C86B752625E359517D4B059D90CFEB1836A338D3CC"
+  },
+  {
+    "path": "src-tauri\\icons\\ios\\AppIcon-76x76@2x.png",
+    "hash": "4DF048CFC22254A8A10F51F3FE132710E9E53F2471FE3CC0C8D827FBAA38DE22"
+  },
+  {
+    "path": "src-tauri\\icons\\ios\\AppIcon-76x76@1x.png",
+    "hash": "FACD22BD4AB23F3AF0998EB2F4C584B317CB395312F07817D672F4FAF9C860AF"
+  },
+  {
+    "path": "src-tauri\\icons\\ios\\AppIcon-60x60@3x.png",
+    "hash": "B22704E6173F4417067EBA2F877C0F3D2AACF69FC2836A4BF2ACFBC6F92471BD"
+  },
+  {
+    "path": "src-tauri\\icons\\ios\\AppIcon-60x60@2x.png",
+    "hash": "97B5358BCBE7E54CAE759E6F056DD610471212BFDA8CEB4A7D6D970EFAE8D54A"
+  },
+  {
+    "path": "src-tauri\\icons\\ios\\AppIcon-512@2x.png",
+    "hash": "484FE2D35C414F5676C036FEF1D7E3844E6C6E6ACFDBD559CBD52772C8D0454B"
+  },
+  {
+    "path": "src-tauri\\icons\\ios\\AppIcon-40x40@3x.png",
+    "hash": "97B5358BCBE7E54CAE759E6F056DD610471212BFDA8CEB4A7D6D970EFAE8D54A"
+  },
+  {
+    "path": "src-tauri\\icons\\ios\\AppIcon-40x40@2x.png",
+    "hash": "767B94EF58C29106B9DC86C1CBA7C8AF637C202AC6E77A54715980A4751B13E9"
+  },
+  {
+    "path": "src-tauri\\icons\\ios\\AppIcon-40x40@2x-1.png",
+    "hash": "767B94EF58C29106B9DC86C1CBA7C8AF637C202AC6E77A54715980A4751B13E9"
+  },
+  {
+    "path": "src-tauri\\icons\\ios\\AppIcon-40x40@1x.png",
+    "hash": "413F878AC452D6219971DC44429E44FF8139051EB3F121E37816931B25D8549F"
+  },
+  {
+    "path": "src-tauri\\icons\\ios\\AppIcon-29x29@3x.png",
+    "hash": "14BFD08765A220D9DBAF9C474E13DEFF1431BECCE9C08FCA42955566947ADE76"
+  },
+  {
+    "path": "src-tauri\\icons\\ios\\AppIcon-29x29@2x.png",
+    "hash": "DA02059D7C575247B4FFC00DD2BF7A7C9D2729C9F5BDCE48773D89F83F5C80A1"
+  },
+  {
+    "path": "src-tauri\\icons\\ios\\AppIcon-29x29@2x-1.png",
+    "hash": "DA02059D7C575247B4FFC00DD2BF7A7C9D2729C9F5BDCE48773D89F83F5C80A1"
+  },
+  {
+    "path": "src-tauri\\icons\\ios\\AppIcon-29x29@1x.png",
+    "hash": "C11D2E5D757719B2B8EAF9A0D5A29C4B48DB41CB6FB8857CEB9ABE10E4BA3116"
+  },
+  {
+    "path": "src-tauri\\icons\\ios\\AppIcon-20x20@3x.png",
+    "hash": "960688ADB294158A0C484E2C8E8AEF87823E786DA88988BA1271EFAA0C36EBA7"
+  },
+  {
+    "path": "src-tauri\\icons\\ios\\AppIcon-20x20@2x.png",
+    "hash": "413F878AC452D6219971DC44429E44FF8139051EB3F121E37816931B25D8549F"
+  },
+  {
+    "path": "src-tauri\\icons\\ios\\AppIcon-20x20@2x-1.png",
+    "hash": "413F878AC452D6219971DC44429E44FF8139051EB3F121E37816931B25D8549F"
+  },
+  {
+    "path": "src-tauri\\icons\\ios\\AppIcon-20x20@1x.png",
+    "hash": "DC15EB9D4F2E9BEBA55136B15323688068A45E28132911697325CCE55DAEBA40"
+  },
+  {
+    "path": "src-tauri\\icons\\icon.png",
+    "hash": "ED2C1883C74A358F7B9B25C245BFDE836493B499F4BB52EFF5AB8757699EC9AA"
+  },
+  {
+    "path": "src-tauri\\icons\\icon.ico",
+    "hash": "7E14CFCC0C3E63A96BB1945DC3A27464BEF4CC88B417B24D3F630C6FBD2491C7"
+  },
+  {
+    "path": "src-tauri\\icons\\icon.icns",
+    "hash": "C43D984535DA99414066F8F53CDE6D3A7E646D1BB91DB238B32C1B1B4C4D6A94"
+  },
+  {
+    "path": "src\\services\\usePreferencesSync.ts",
+    "hash": "AD0F40CC77283C715D59EB28C8A4276CEBF5E0B358796E688BA985B92658F2D3"
+  },
+  {
+    "path": "src\\services\\sessionStorage.ts",
+    "hash": "B7E0FF983C7E272BAE52296BB097430CDAC7A11313E242BE6BA919F03D905BE9"
+  },
+  {
+    "path": "src\\services\\serialWriter.ts",
+    "hash": "019137551B95912A562409D505B99B44461274534943AB9297D5E97C84A543EA"
+  },
+  {
+    "path": "src\\features\\auth\\sessionActions.ts",
+    "hash": "A7A414092D6E556FF1655E80EEFB0FC87BA58E9BE5F9FE7BEF36D4A4D0E8A0E8"
+  },
+  {
+    "path": "src\\features\\auth\\RecoveryReceipt.tsx",
+    "hash": "17F859E37F05F8EF4F27CD5F5E178D7A51EBDD5DD96E1744C6DF590B204E311E"
+  },
+  {
+    "path": "src\\features\\auth\\PasswordField.tsx",
+    "hash": "BC98FD63364EF7E7D92A5EDB7DE32EBE8AC60E9EB1D669CB646E2537B500683E"
+  },
+  {
+    "path": "src\\features\\auth\\LoginPage.tsx",
+    "hash": "3E3BB3FD72C9C70F15C9DB25F6727CD513E0B9F435AE14964AFAAF64002FDD1C"
+  },
+  {
+    "path": "src\\features\\auth\\authValidation.ts",
+    "hash": "FF47BCF6840AA608F4882F4663A1453704109C4328900D5159F2E92CCB745A7F"
+  },
+  {
+    "path": "src\\features\\auth\\AccountSettings.tsx",
+    "hash": "21FB0ADCF5E09F44151CDCD519D27BE2806AF8AC75B277250186D2006445CF2D"
+  },
+  {
+    "path": "src\\features\\reports\\savedValues.ts",
+    "hash": "8391A72641053787260B9E410A6944BBA3CC74475D09148DF10C57D3E4BF2510"
+  },
+  {
+    "path": "src\\features\\reports\\ReportViewer.tsx",
+    "hash": "07BB910DF57D6DA340B05A41C2023A7341A786D2D3218C5042745758FEB4B2B3"
+  },
+  {
+    "path": "src\\features\\reports\\reportUtils.ts",
+    "hash": "4801C57FA94FBAA4EFA709ACDA43942894E4713B6434E069BB307BDEEB690A67"
+  },
+  {
+    "path": "src\\features\\reports\\ReportsPage.tsx",
+    "hash": "3B7E5D40DA3BE0F215D046B904215CDD270518BA04C7963C2A9AEA849DA5978D"
+  },
+  {
+    "path": "src\\features\\reports\\reportPdfGenerator.ts",
+    "hash": "9E230F74E3A8B6223AD222DFFD6C0E14D0F2F80ADCDD675AE7E79DADA06727A4"
+  },
+  {
+    "path": "src-tauri\\icons\\android\\values\\ic_launcher_background.xml",
+    "hash": "B1C42868A1777ED1CF61108B506FFC91D0A826318D8516E36CF8F76FAB8C4CED"
+  },
+  {
+    "path": "src\\features\\questionnaires\\questionnaireUtils.ts",
+    "hash": "EC967964BFAC4417C8F1CD807C6F90CB60A8FC98F185AB20E1F9FED49621AFEF"
+  },
+  {
+    "path": "src\\features\\questionnaires\\QuestionnairesPage.tsx",
+    "hash": "D9AA453FFC705CE71DB2259CCF9C37C96CEC32BD03CFACF8B5FD01D4B781CFAF"
+  },
+  {
+    "path": "src\\features\\questionnaires\\QuestionnaireHistory.tsx",
+    "hash": "30892617EB34F228489E8CDD58A675B0590E3006433F8330D14AC19931F06ACA"
+  },
+  {
+    "path": "src-tauri\\icons\\android\\mipmap-xxxhdpi\\ic_launcher_round.png",
+    "hash": "5EF3C8DABA2C2C6CD73141EDD6EAAEF362326AB5B0388AE8A4C5230AAD720E96"
+  },
+  {
+    "path": "src-tauri\\icons\\android\\mipmap-xxxhdpi\\ic_launcher_foreground.png",
+    "hash": "20594FDFB779DCCC1F314D6C57877B08F97574BF91403BF3D70C9D3EE881E570"
+  },
+  {
+    "path": "src-tauri\\icons\\android\\mipmap-xxxhdpi\\ic_launcher.png",
+    "hash": "C810343428C8D623F3F33F5797455997BDFA0A046D3BE63340233835336B1E53"
+  },
+  {
+    "path": "src\\features\\agenda\\calendarUtils.ts",
+    "hash": "9460A45B57A3F19408A70BE84EE473D49B0B4F310DF79494CAFD2B2944EFA1C2"
+  },
+  {
+    "path": "src\\features\\agenda\\AgendaPage.tsx",
+    "hash": "7844950C42362AB0F6A51374280027C63B824092E273D534D1430597980FAA9A"
+  },
+  {
+    "path": "src\\services\\preferences.ts",
+    "hash": "904A2B407CF661E306458BF5A5BD9F9B2217CEE6665BBD5CFA054B9EAEF67EC7"
+  },
+  {
+    "path": "src-tauri\\icons\\android\\mipmap-xxhdpi\\ic_launcher_round.png",
+    "hash": "ED7B6E2C040A60C928B63E8C2CD49BF3F996B35B4C4C0528463A276DD18F8BD5"
+  },
+  {
+    "path": "src-tauri\\icons\\android\\mipmap-xxhdpi\\ic_launcher_foreground.png",
+    "hash": "508D9EDC75A63ACB562D45515E6995D2C5BCE4CFEF83D6342C92DD86CDF42642"
+  },
+  {
+    "path": "src-tauri\\icons\\android\\mipmap-xxhdpi\\ic_launcher.png",
+    "hash": "5270C7921FBDA3252009BE06E1BF5D17C7AC3BF2F17F6248EAAF4CC1FE777C39"
+  },
+  {
+    "path": "src\\features\\acquisition\\MatrixPreview15x15.tsx",
+    "hash": "ADE279D7B82D5FA79F43BE7C0D6670AA8F847E8F291E710202C77985FDAE8BAE"
+  },
+  {
+    "path": "src\\features\\acquisition\\AcquisitionPage.tsx",
+    "hash": "4F3BBFDDA64FDFB6B4DF65F0AB6BB28496F6BB27B413D9682FA8467095CA4417"
+  },
+  {
+    "path": "src\\features\\patients\\patientUtils.ts",
+    "hash": "8B77F5879B894B74268529B481C15F6952D2885F55BAA431FBA75CB2F1439FAF"
+  },
+  {
+    "path": "src\\features\\patients\\PatientsPage.tsx",
+    "hash": "2CBA79501B99782686AACE41C84AE888697E5728B59D8E9159157DB1E1BCA298"
+  },
+  {
+    "path": "src\\features\\patients\\PatientList.tsx",
+    "hash": "9229CB645CB153EA97889948E5B5BC893FE05C47F0521804F54809749BFC7710"
+  },
+  {
+    "path": "src\\features\\patients\\PatientForm.tsx",
+    "hash": "A5BF832A6138363478BC6798E408D88DDEBE437CCF7741A1B0B3475202C27C29"
+  },
+  {
+    "path": "src\\features\\patients\\PatientDetails.tsx",
+    "hash": "B76C9F38C59C8F5B65074915E0500CC324589AD8A18027F3D714E64BBBE23111"
+  },
+  {
+    "path": "src\\features\\patients\\PatientCareHistory.tsx",
+    "hash": "E52196ADE4BEA8E06F3DCB75C7DB9ACD4954BFBA823749D32AD2D333373C29ED"
+  },
+  {
+    "path": "src-tauri\\icons\\android\\mipmap-xhdpi\\ic_launcher_round.png",
+    "hash": "19C95A6F16A81B6F9486D91EC660FD09F6A2FAD4BF8CC02BED8FD6D21DA79AB3"
+  },
+  {
+    "path": "src-tauri\\icons\\android\\mipmap-xhdpi\\ic_launcher_foreground.png",
+    "hash": "579A17625E43214B6CBF1449426BD4A166CF33514A02F941A191F3D24CD9EFC1"
+  },
+  {
+    "path": "src-tauri\\icons\\android\\mipmap-xhdpi\\ic_launcher.png",
+    "hash": "02597D33A92722B9C57A4B75399032646DEAACFECD6357AC45E2D8A21C114FA5"
+  },
+  {
+    "path": "src\\services\\database\\api.ts",
+    "hash": "F81C76E0995B05B7F84094A4952BDAB91EA5B6EB429B322F4D572E5DAC1851E8"
+  },
+  {
+    "path": "src\\features\\logs\\LogsPage.tsx",
+    "hash": "5BF658EDFFA440249F2F42671C2145ED2DB6D4D1A9A2F45E24300C050B0949AC"
+  },
+  {
+    "path": "src-tauri\\icons\\android\\mipmap-mdpi\\ic_launcher_round.png",
+    "hash": "02D3D2F02B9E887CC590B179188A6B040D811DA30256F18716FCB4694AECFC2B"
+  },
+  {
+    "path": "src-tauri\\icons\\android\\mipmap-mdpi\\ic_launcher_foreground.png",
+    "hash": "87EBFF0621BBD40ECB06D9BAB5AB48BC67538E52DAD0F78207F5EE5AD2D39CA2"
+  },
+  {
+    "path": "src-tauri\\icons\\android\\mipmap-mdpi\\ic_launcher.png",
+    "hash": "01B69978546DE725A04CCCE2BFC9981597966A74B55FC207B565D80A4C349F7C"
+  },
+  {
+    "path": "src\\components\\ui\\useDialogFocus.ts",
+    "hash": "22A9614F9E94172F36BC6D780F60DD28AC38DDBFEF3168E5147FD671E44FF828"
+  },
+  {
+    "path": "src\\components\\ui\\Logo.tsx",
+    "hash": "CAE918176616C67171A4738EB8142865872855D3C112982A6CA51D608C1A1A26"
+  },
+  {
+    "path": "src\\components\\ui\\controls.tsx",
+    "hash": "F930CD77F6B1D499855270A327E53AFF9072DFF595927CE902042D7E0BE466B6"
+  },
+  {
+    "path": "src\\components\\Sidebar.tsx",
+    "hash": "24A69FD05E9372C66740824E06737D80FCF0A6CB24DF01A9017E3D9C2C0B6772"
+  },
+  {
+    "path": "src\\components\\ErrorBoundary.tsx",
+    "hash": "3047060994BEB8359D265AD7F0A6CE81BB156F3024259B99A5911F64D8BE6364"
+  },
+  {
+    "path": "src\\App.tsx",
+    "hash": "2A8ED571FFF44163B345BBD17640A2317C4B8B40AAA9FE6752367C308BEB56DE"
+  },
+  {
+    "path": "src\\services\\calibration\\types.ts",
+    "hash": "F8D873DE524D223209815A35DF56C604493BADC48939F3D7FBC527EDA01A5B00"
+  },
+  {
+    "path": "src\\services\\calibration\\recorder.ts",
+    "hash": "373DD439FD75F2B1355FAD44E47B8D464CE8838346D26C7D5307D99F3112609A"
+  },
+  {
+    "path": "src\\services\\calibration\\math.ts",
+    "hash": "0699E2F99D33DA923D5150D19E80EDE5760BD0C8F6426530DE3E66837B071229"
+  },
+  {
+    "path": "src\\services\\calibration\\formatting.ts",
+    "hash": "FBFCFEBAD90C322224C8FE1286229A191E05CE31F7B5243262A773F820F46DDB"
+  },
+  {
+    "path": "src\\services\\calibration\\characterization.ts",
+    "hash": "AF58D3894403574EC02B61CA9013089182826E62FFD68E84646BD5BCFFD05BF8"
+  },
+  {
+    "path": "src\\features\\exams\\NewExamPage.tsx",
+    "hash": "EE7DA32BAF67F7A1F7A4DFD447E77D18F918669C034D3D4E4CCF7BD21EB59AB1"
+  },
+  {
+    "path": "src\\features\\exams\\examStore.ts",
+    "hash": "332EAB467CD4E9EC276D2899BB3EBD59DE2BCEC2C4903270A7C55A47835A7C7C"
+  },
+  {
+    "path": "src\\features\\exams\\ExamsPage.tsx",
+    "hash": "FCD28F7ACB9AA7AB84FE71FF7038C5D4061E483913DFD9E5355C9271FFE05B3E"
+  },
+  {
+    "path": "src\\features\\exams\\ExamSettingsTab.tsx",
+    "hash": "A026519B99A9E2E48405EC74D01CAF5AD8516474307B422EB0B60FAF977683E6"
+  },
+  {
+    "path": "src\\features\\exams\\examRuntime.ts",
+    "hash": "5057C2698443CBE35D07DFDF1CB74B7C867624944B1046822F693596FA64C43F"
+  },
+  {
+    "path": "src\\features\\exams\\examProcessing.ts",
+    "hash": "A78E55CB12A8EBA7F7B459E8436277B80FED2CB29FA40BE2AFAA92FFDBFBFAA8"
+  },
+  {
+    "path": "src\\features\\exams\\ExamExportActions.tsx",
+    "hash": "9756F01D352BCDFFFCD6590DA6CC291E8DC30B2BF514EA42FCEF406BBD23CD30"
+  },
+  {
+    "path": "src\\features\\exams\\ExamDetailsModal.tsx",
+    "hash": "8DBB595EB8DE4132804B466B15EF979D2D874F694A87463EA00922855B986BC8"
+  },
+  {
+    "path": "src\\features\\exams\\CancelExamDialog.tsx",
+    "hash": "4EB34D15A13DD503158C87E6923355FA0C7AE5F1ACF9A4935D3BD37B404B585A"
+  },
+  {
+    "path": "src-tauri\\icons\\android\\mipmap-hdpi\\ic_launcher_round.png",
+    "hash": "E4109DC8CE6F6F482061E74B4DC489C86BDC1EC4D0051DE4371300AA83471A09"
+  },
+  {
+    "path": "src-tauri\\icons\\android\\mipmap-hdpi\\ic_launcher_foreground.png",
+    "hash": "8A1333BB438B0E5B238CFAB55E355478BB289751122B2613C172332647A062E3"
+  },
+  {
+    "path": "src-tauri\\icons\\android\\mipmap-hdpi\\ic_launcher.png",
+    "hash": "3853FD36DC9E0E9BC6BB32DE50265B505FFC0367BECAEE8E61B76C1E343B257E"
+  },
+  {
+    "path": "src\\features\\comparison\\comparisonUtils.ts",
+    "hash": "AED0587899B7B4FD05F85D300EE1394EBF3FE230846731B8687AF1E1DEDE30AB"
+  },
+  {
+    "path": "src\\features\\comparison\\ComparisonPage.tsx",
+    "hash": "995D7EF68987FDF452D85EC179C5A4DF0468773F0952BB815A0856224E08530C"
+  },
+  {
+    "path": "src-tauri\\icons\\android\\mipmap-anydpi-v26\\ic_launcher.xml",
+    "hash": "760D4B8A06BF7163DD010C33AD2CAC9E4A75FA0177AFABA042F83E311EEF0C3E"
+  },
+  {
+    "path": "src-tauri\\icons\\64x64.png",
+    "hash": "20C4FAE3021080B6FD76DAB778E2AE4147E4443144ED11752E6F66766C95552F"
+  },
+  {
+    "path": "src-tauri\\icons\\32x32.png",
+    "hash": "1FC4E9FF714A0621EF406AF3439A326EB58982DDD3F53C7D38504C2300D2F166"
+  },
+  {
+    "path": "src-tauri\\icons\\128x128@2x.png",
+    "hash": "BA4EE3A4DC5AA127A4292A01D672BA00A46283D4C79ACFDF16C3C4495E08C1D9"
+  },
+  {
+    "path": "src-tauri\\icons\\128x128.png",
+    "hash": "2750F3E9CAF582AE715EDBE1606BA964D92DE32972E52702D5FD2B5FBD1DB6C4"
+  },
+  {
+    "path": "Sprint\\Treinamento\\PROGRESSO_TESTES_E_CALIBRACAO.txt",
+    "hash": "33763DB3787A454200C49A89B2E08B7FECA68B4BF66254A863D54E98F9FF316F"
+  },
+  {
+    "path": "Sprint\\Treinamento\\CORRIGIR_CONJUNTO_DE_ENSAIOS.txt",
+    "hash": "769E241A219F2D6FB4E817F8D76A001A80C29EA5FC75950CBEF32466A1CFA746"
+  },
+  {
+    "path": "Sprint\\Treinamento\\COMO_USAR_TESTES_E_CALIBRACAO.txt",
+    "hash": "D3E5D6BBC2CF2E297EDDB78468245549E045E89FD4213177D5D52F023E31BFE2"
+  },
+  {
+    "path": "Sprint\\Treinamento\\BAROPRESS_TESTES_E_CALIBRACAO_GUIA_CODEX.txt",
+    "hash": "FA6773162D1ADCFA37211469448B12BCA4BCE91888E615A3568EF8C04DCE0B5F"
+  },
+  {
+    "path": "Sprint\\BAROPRESS_AUDITORIA_CORRECAO_LOGIN_CODEX.txt",
+    "hash": "D20503A244B7CA5C67DEA0B98E490F14EF19351AE87726A372E08F640F85666F"
+  },
+  {
+    "path": "src\\services\\baropodometry\\types.ts",
+    "hash": "1FDFE6DA1992E91480B22EF3C4DA85231FFF1B86E3BCDAAC4CF2CBAA821643EB"
+  },
+  {
+    "path": "src\\services\\baropodometry\\settings.ts",
+    "hash": "94E0A961EF4059F03202221341B2BBDFA3FBEB9D31920650B88B2227C5927B8B"
+  },
+  {
+    "path": "src\\services\\baropodometry\\normalization.ts",
+    "hash": "864DB078AD2338E4FFE4BDF8E0485719B4C4FC6CE95191F83B5C16902330733D"
+  },
+  {
+    "path": "src\\services\\baropodometry\\metrics.ts",
+    "hash": "60D6BE5D214F9426B62ADA93581D70334BCFAC118CC14796BE22365A7A1628C7"
+  },
+  {
+    "path": "src\\services\\baropodometry\\interpolation.ts",
+    "hash": "AA7AD5CF09818F210EE5205991B992422E42BEC2EBA1C30158B1ED3F307137D1"
+  },
+  {
+    "path": "src\\services\\baropodometry\\index.ts",
+    "hash": "8B93B7F819019CAD9130F6B16339091C063756030A1A5D35883BA44529C97CCC"
+  },
+  {
+    "path": "src\\services\\baropodometry\\heatmap.ts",
+    "hash": "1E3437B4B1591C540992F421CA4F589E025E5C93B7388FE16C77F97D5B26A0D9"
+  },
+  {
+    "path": "src\\services\\baropodometry\\cop.ts",
+    "hash": "749725FF34EFF7890E0A99A7F1501038B1AE1DCBCA85C2F9F15A0DDA2AD4725F"
+  },
+  {
+    "path": "src\\services\\baropodometry\\autoAdjustment.ts",
+    "hash": "474A49AE26743FE5AE991CEB968CEC8C539B8D08A9E39E0F176E2DDDE9A0062C"
+  },
+  {
+    "path": "Sprint\\99_Logs_Antigos\\startup.log",
+    "hash": "814A9DFFC767A86A2B92A926EFA1BB581F9B6CD8CEF1660352544A86FD8AD3A6"
+  },
+  {
+    "path": "Sprint\\99_Logs_Antigos\\out.txt",
+    "hash": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+  },
+  {
+    "path": "Sprint\\99_Logs_Antigos\\err.txt",
+    "hash": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+  },
+  {
+    "path": "src\\features\\calibration\\PhysicalResults.tsx",
+    "hash": "F83FEE5854B64A0E4BE4095220FA43639E09BD49C7AF69B32D8D1642357AA897"
+  },
+  {
+    "path": "src\\features\\calibration\\ClassificationCorrection.tsx",
+    "hash": "82B4DF75F041FC7D9513F9F3759FE1EB07D0F6A1F7427E405421D8CCA6B194F0"
+  },
+  {
+    "path": "src\\features\\calibration\\CalibrationPage.tsx",
+    "hash": "496ADDDDEB4B279854382C9517A0DB75F76E323EB2C4902ACF551550007B1CC1"
+  },
+  {
+    "path": "src\\services\\acquisition\\types.ts",
+    "hash": "834CA71D2B3E660178E2F6AA0245533F9C662FDE448D30F28C3002390569497B"
+  },
+  {
+    "path": "src\\services\\acquisition\\tare.ts",
+    "hash": "18E969743D7B553DE568BE750EC99C97AFC78A8ECD5FC0C52CD92A3691EF4370"
+  },
+  {
+    "path": "src\\services\\acquisition\\SerialSensorDevice.ts",
+    "hash": "8F5D6A9AF494D3EAD84EC0ED6D56FCBCD4CA213B118BE58B3806030359960AD9"
+  },
+  {
+    "path": "src\\services\\acquisition\\SensorDevice.ts",
+    "hash": "FFC0C4A0373A40F800CBB0E40444BEE22436914C5D99EB67B4A13DE42B0FAD5D"
+  },
+  {
+    "path": "src\\services\\acquisition\\rawStream.ts",
+    "hash": "02E5216076CB9F0A29BDCAFF8784DFE40A356559D332182C88988DE125D6C0C7"
+  },
+  {
+    "path": "src\\services\\acquisition\\parser.ts",
+    "hash": "567E09C7E1C4235A26C3BE3D2C0EF8F69658E6CA7298D90336E3EEE624D00678"
+  },
+  {
+    "path": "src\\services\\acquisition\\MockSensorDevice.ts",
+    "hash": "19E47FC31CBFE7D4477BB5E09C6BCD2FDA11332702F3200AB93796F69B799439"
+  },
+  {
+    "path": "src\\services\\acquisition\\index.ts",
+    "hash": "21CF3DA4CF97600E0A3941F140A9505A8189AC3E788BD2FE79CB33C8DD25CE16"
+  },
+  {
+    "path": "src\\services\\acquisition\\buffer.ts",
+    "hash": "4522ED42978B39F0D316B793EBCA24940794B6553FB4EE690E9C6D49C498A7DE"
+  },
+  {
+    "path": "src-tauri\\gen\\schemas\\windows-schema.json",
+    "hash": "4A946FE48FBB0C7C535EA53E6070BD8276F3F3D74F96EFBAA6D85BD7B53B0F05"
+  },
+  {
+    "path": "src-tauri\\gen\\schemas\\desktop-schema.json",
+    "hash": "4A946FE48FBB0C7C535EA53E6070BD8276F3F3D74F96EFBAA6D85BD7B53B0F05"
+  },
+  {
+    "path": "src-tauri\\gen\\schemas\\capabilities.json",
+    "hash": "DC668D0869488D6ACF6BA9C68F46B331E439E95B80545F291ACDC48D9152357A"
+  },
+  {
+    "path": "src-tauri\\gen\\schemas\\acl-manifests.json",
+    "hash": "BDC3CED2AE416F11B23BC9C9B62341A3A59AA7BB5322F04F197BB08CB610409F"
+  },
+  {
+    "path": "src-tauri\\Cargo.toml",
+    "hash": "B8F494C60618300FA202B168F27A2B3B053511D3740FC4F4AA5FD438D637B220"
+  },
+  {
+    "path": "src-tauri\\Cargo.lock",
+    "hash": "BC9B796022866BFDC0032FCFFCB759FB2194D30F86B5BBAD8F0CBAD97DFF0380"
+  },
+  {
+    "path": "Sprint\\06_Modelos\\MODELO_REGISTRO_PROGRESSO.txt",
+    "hash": "A9EA1A735E78DF1E5B5CC9A4B7B224354DCC88FEE5F5758BED2788891825FEF6"
+  },
+  {
+    "path": "src\\features\\baropodometry\\PressureLegend.tsx",
+    "hash": "9F033C14C7DAFF9C9C0EEF163319A4A330B18B9521E14FB81883CD2A86094727"
+  },
+  {
+    "path": "src\\features\\baropodometry\\ParameterBar.tsx",
+    "hash": "A59350AF2C972CF4408E1A7B903559A962E10D47937E1A7CFE19F5487E1106C8"
+  },
+  {
+    "path": "src\\features\\baropodometry\\MetricsPanel.tsx",
+    "hash": "02EC321E7661E2D3F901DB13D07145029824F9E63C18A163BC93D18E8815687D"
+  },
+  {
+    "path": "src\\features\\baropodometry\\HeatmapSettingsPanel.tsx",
+    "hash": "303387C9B41C2B79961729B968052A1B984B1F956308E9ADA0067D6F9C310E80"
+  },
+  {
+    "path": "src\\features\\baropodometry\\CopMarker.tsx",
+    "hash": "03A4948270CE82335886ED430C2A9AC3DD949D3C23F167F9FF1992BE742F5516"
+  },
+  {
+    "path": "src\\features\\baropodometry\\BaropodometryPage.tsx",
+    "hash": "AEF66F8F54E0DDD4F0C59B90A9907E1902D96D7D1B70BD9A250E9EDC1815549E"
+  },
+  {
+    "path": "src\\features\\baropodometry\\BaropodometricHeatmap.tsx",
+    "hash": "8DEEA7FC1B40280F04934A0F6CB730BAB62896DE61C7C00E303496A23455D568"
+  },
+  {
+    "path": "src\\pages\\Settings.tsx",
+    "hash": "F22695CB1BF5D23FFD4B8AE068D9F4D82FBA82590681BB309D023EC1B667D399"
+  },
+  {
+    "path": "src\\pages\\Dashboard.tsx",
+    "hash": "EFDD84758FB460A6477E7650D25A756549E569326A41A85DDB1F5C851474FABC"
+  },
+  {
+    "path": "src\\main.tsx",
+    "hash": "644D64A93C8BA0FCA34F51926AA4B25118855D77C4C51B8922B26E8F7876D105"
+  },
+  {
+    "path": "src-tauri\\capabilities\\default.json",
+    "hash": "80F93F062866BE26773C62260016C664230DF56EEC34F448B19603786FCED5F2"
+  },
+  {
+    "path": "Sprint\\00_LEIA_PRIMEIRO.txt",
+    "hash": "F7F58BF7466C5DF9FA739E900B6E1173752CA5CE34F648BB73A55CA83E707B60"
+  },
+  {
+    "path": "src\\features\\backup\\exportUtils.ts",
+    "hash": "547AB9E6CDB88CC5DA1B3A0D39E1C9E524B1154B6FC8212A1462ED2CC9AD5DBE"
+  },
+  {
+    "path": "src\\features\\backup\\BackupPage.tsx",
+    "hash": "C54866F277B96265671B06ADBBDC4B88FE1B9BF6BC66D5BF6E33857A245E1331"
+  },
+  {
+    "path": "Sprint\\05_Historico\\2026-10-07_02_auditoria_login_qualidade.txt",
+    "hash": "4F3097711D3C2AF446E8330C7CC9752A035E8B3A9F8FB59707E91A688C987D0E"
+  },
+  {
+    "path": "Sprint\\05_Historico\\2026-10-07_01_resumo_fases7_a11.txt",
+    "hash": "3BDFF49B98C89C329CE1DA7FA2EC971C057D7F94DFCD1FE092CFACCA4397C33B"
+  },
+  {
+    "path": "Sprint\\05_Historico\\2026-10-06_06_fase11_refinamento.txt",
+    "hash": "2CC47F6B6C23CBAFB556CB8430C4F182E58529CCB456BCB10EDCC6678F3F5AA2"
+  },
+  {
+    "path": "Sprint\\05_Historico\\2026-10-06_05_fase10_backup.txt",
+    "hash": "138ABD83626125BA2F5E53C82B1E6F53973494E626FFC64EF521F9D622E77AED"
+  },
+  {
+    "path": "Sprint\\05_Historico\\2026-10-06_04_fase9_questionarios.txt",
+    "hash": "E73EDED13CC34A05B08FC51A0EECCFFA52EC3EBF0449E66AE76241C5A1F66D8F"
+  },
+  {
+    "path": "Sprint\\05_Historico\\2026-10-06_03_fase8_agenda.txt",
+    "hash": "2638862478BB58E8CCA6CB9AFEB104EC6247BBD91B407112F2530EC8D7036467"
+  },
+  {
+    "path": "Sprint\\05_Historico\\2026-10-06_02_fase7_comparacao.txt",
+    "hash": "60BAF1490FFED20C3F4F98C9429D7915607E20FD0BF821FC1412E3BB8FC58467"
+  },
+  {
+    "path": "Sprint\\05_Historico\\2026-10-06_01_correcao_fase5.txt",
+    "hash": "DECB2A7D31F9749C47111291097D68EDB903BDC5432A5664FA0DB04E3AA2BFBA"
+  },
+  {
+    "path": "src\\index.css",
+    "hash": "87131CA575BD5EFEAFCE2D0E7C3FCCF00057DC2B1A54E6F604A71600EE5B54FC"
+  },
+  {
+    "path": "postcss.config.js",
+    "hash": "08910CE1D5CD87D2167E9C78B77262BF985B3F07DC5037FF745ECD6A759FD0C0"
+  },
+  {
+    "path": "package.json",
+    "hash": "B77A17457B69F074D59481040BA2EB7881BC50E72881F8206461DE2E6783FD00"
+  },
+  {
+    "path": "README.md",
+    "hash": "8DB7B1B1E6B18E13F2739ABFF33697B8C17CAD1144941C8605F6F343C6B44133"
+  },
+  {
+    "path": "scripts\\set_version.cjs",
+    "hash": "CF0582A6E6FA98A7B4069F8D413FFDAC8A41CE94BD4959C546C2D43121BE303B"
+  },
+  {
+    "path": "scripts\\format_sources.cjs",
+    "hash": "84BC70D74F7595771B0C047BB3D76C6CC7FECF361CDF274AD57412C07AE7C481"
+  },
+  {
+    "path": "scripts\\calibration-preview.tsx",
+    "hash": "9A1B4BF47FB716BF9D8C847665DC399C7C7584E461B5F118AADB0FD0DC81C0FD"
+  },
+  {
+    "path": "scripts\\calibration-preview.html",
+    "hash": "77ADAD478C24119A3EAD562FB3B4FB03229DEFC69ECF9443C44D25C4074DC1FF"
+  },
+  {
+    "path": "scripts\\audit_verify.ps1",
+    "hash": "5DD746EB7CD69E7E83440C3DDB5F7A57DACFD8E14067E7142AF71F7367C5FFBC"
+  },
+  {
+    "path": "scripts\\audit_inventory.cjs",
+    "hash": "503287A6FA295DB72BB93C37F0079991E7998148C3DBD1B1E48BC28BC4C550A2"
+  },
+  {
+    "path": "Sprint\\04_Futuro\\PROGRESSO_FUTURO.txt",
+    "hash": "0B05101364F11B70D3282F798024646D9DC6C902A75A1F01B13949274CEDBEBF"
+  },
+  {
+    "path": "Sprint\\02_Concluido\\PROGRESSO_CONCLUIDO.txt",
+    "hash": "043BAA663EDA8D9669EA85F7A0E79F3258D9E2D423F434092F47A9124BD7AE5F"
+  },
+  {
+    "path": "Sprint\\03_Em_Andamento\\PROGRESSO_EM_ANDAMENTO.txt",
+    "hash": "F98CC89597438C5F3FFB67AD4A62C6DA0CFDAA42510C63DA1691300054CF7E6F"
+  },
+  {
+    "path": "Sprint\\01_Referencias\\PROJETO TCC - FASES.txt",
+    "hash": "5C681858A630B57294656BE8E11AE7C444EB1C3BFED33F7646506E444B37B416"
+  },
+  {
+    "path": "Sprint\\01_Referencias\\Contexto.txt",
+    "hash": "B9812DC6FF5B27BA3EE71CFE936D1691F0E6E9D7695493D17908CFF084B56EA8"
+  }
+]

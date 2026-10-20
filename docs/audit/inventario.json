@@ -1,0 +1,5417 @@
+{
+  "date": "2026-10-07",
+  "version": "0.2.1",
+  "routes": [
+    {
+      "id": "dashboard",
+      "label": "Dashboard"
+    },
+    {
+      "id": "patients",
+      "label": "Pacientes"
+    },
+    {
+      "id": "acquisition",
+      "label": "Aquisição"
+    },
+    {
+      "id": "baropodometry",
+      "label": "Análise"
+    },
+    {
+      "id": "agenda",
+      "label": "Agenda"
+    },
+    {
+      "id": "exams",
+      "label": "Exames"
+    },
+    {
+      "id": "new-exam",
+      "label": "Novo exame"
+    },
+    {
+      "id": "comparison",
+      "label": "Comparação"
+    },
+    {
+      "id": "reports",
+      "label": "Relatórios"
+    },
+    {
+      "id": "questionnaires",
+      "label": "Questionários"
+    },
+    {
+      "id": "backup",
+      "label": "Backup"
+    },
+    {
+      "id": "logs",
+      "label": "Logs"
+    },
+    {
+      "id": "settings",
+      "label": "Configurações"
+    }
+  ],
+  "controls": [
+    {
+      "id": "C001",
+      "file": "src/components/ErrorBoundary.tsx",
+      "line": 16,
+      "tag": "Button",
+      "label": "Voltar ao dashboard",
+      "type": "",
+      "handler": "{() => useSession.getState().go('dashboard')}",
+      "disabled": "",
+      "attributes": {
+        "onClick": "{() => useSession.getState().go('dashboard')}"
+      }
+    },
+    {
+      "id": "C002",
+      "file": "src/components/Sidebar.tsx",
+      "line": 40,
+      "tag": "button",
+      "label": "{label} {off && <span className=\"text-xs text-mute\">Fase {phase}</span>}",
+      "type": "",
+      "handler": "{() => go(id)}",
+      "disabled": "{off}",
+      "attributes": {
+        "key": "{id}",
+        "disabled": "{off}",
+        "onClick": "{() => go(id)}",
+        "aria-current": "{page === id ? \"page\" : undefined}",
+        "className": "{clsx(\"w-full h-10 px-3 rounded-lg flex items-center gap-3 text-sm text-left transition-colors\", page === id ? \"bg-brand/10 text-brand font-medium\" : \"hover:bg-line/50\", off && \"opacity-45 cursor-not-allowed hover:bg-transparent\")}"
+      }
+    },
+    {
+      "id": "C003",
+      "file": "src/components/Sidebar.tsx",
+      "line": 52,
+      "tag": "button",
+      "label": "{dark ? \"Tema claro\" : \"Tema escuro\"}",
+      "type": "",
+      "handler": "{toggleTheme}",
+      "disabled": "",
+      "attributes": {
+        "onClick": "{toggleTheme}",
+        "aria-label": "{dark ? \"Tema claro\" : \"Tema escuro\"}",
+        "title": "\"Alternar tema\"",
+        "className": "\"size-9 grid place-items-center rounded-lg hover:bg-line/50\""
+      }
+    },
+    {
+      "id": "C004",
+      "file": "src/components/Sidebar.tsx",
+      "line": 53,
+      "tag": "button",
+      "label": "\"Sair\"",
+      "type": "",
+      "handler": "{async () => { setLeaving(true); setError(\"\"); try { await logout(); } catch (e) { setError((e as Error).message); } finally { setLeaving(false); } }}",
+      "disabled": "{leaving}",
+      "attributes": {
+        "disabled": "{leaving}",
+        "onClick": "{async () => { setLeaving(true); setError(\"\"); try { await logout(); } catch (e) { setError((e as Error).message); } finally { setLeaving(false); } }}",
+        "aria-label": "\"Sair\"",
+        "title": "\"Sair\"",
+        "className": "\"size-9 grid place-items-center rounded-lg hover:bg-line/50\""
+      }
+    },
+    {
+      "id": "C005",
+      "file": "src/components/ui/controls.tsx",
+      "line": 6,
+      "tag": "button",
+      "label": "button",
+      "type": "\"button\"",
+      "handler": "",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "className": "{clsx(\"h-10 px-4 rounded-lg text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed\", variant === \"primary\" ? \"bg-brand text-brand-fg hover:brightness-110\" : \"border border-line hover:bg-line/40\", className)}"
+      }
+    },
+    {
+      "id": "C006",
+      "file": "src/components/ui/controls.tsx",
+      "line": 17,
+      "tag": "input",
+      "label": "{id}",
+      "type": "",
+      "handler": "",
+      "disabled": "",
+      "attributes": {
+        "id": "{id}",
+        "aria-invalid": "{!!error}",
+        "aria-describedby": "{error ? `${id}-error` : p[\"aria-describedby\"]}",
+        "className": "\"w-full h-10 px-3 rounded-lg border border-line bg-surface text-sm placeholder:text-mute\""
+      }
+    },
+    {
+      "id": "C007",
+      "file": "src/features/acquisition/AcquisitionPage.tsx",
+      "line": 148,
+      "tag": "button",
+      "label": "Hardware Real",
+      "type": "\"button\"",
+      "handler": "{() => setDeviceType(\"SERIAL\")}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{() => setDeviceType(\"SERIAL\")}",
+        "className": "{clsx( \"py-2 px-3 rounded-md text-xs font-medium flex items-center justify-center gap-2 transition-colors\", deviceType === \"SERIAL\" ? \"bg-brand text-brand-fg shadow-sm\" : \"text-mute hover:text-foreground hover:bg-surface\" )}"
+      }
+    },
+    {
+      "id": "C008",
+      "file": "src/features/acquisition/AcquisitionPage.tsx",
+      "line": 160,
+      "tag": "button",
+      "label": "Simulador (Mock)",
+      "type": "\"button\"",
+      "handler": "{() => setDeviceType(\"MOCK\")}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{() => setDeviceType(\"MOCK\")}",
+        "className": "{clsx( \"py-2 px-3 rounded-md text-xs font-medium flex items-center justify-center gap-2 transition-colors\", deviceType === \"MOCK\" ? \"bg-brand text-brand-fg shadow-sm\" : \"text-mute hover:text-foreground hover:bg-surface\" )}"
+      }
+    },
+    {
+      "id": "C009",
+      "file": "src/features/acquisition/AcquisitionPage.tsx",
+      "line": 180,
+      "tag": "button",
+      "label": "\"Atualizar lista de portas\"",
+      "type": "\"button\"",
+      "handler": "{refreshPorts}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{refreshPorts}",
+        "className": "\"text-xs text-brand hover:underline flex items-center gap-1\"",
+        "title": "\"Atualizar lista de portas\""
+      }
+    },
+    {
+      "id": "C010",
+      "file": "src/features/acquisition/AcquisitionPage.tsx",
+      "line": 189,
+      "tag": "select",
+      "label": "{availablePorts.length === 0 ? ( <option value=\"\">Nenhuma porta detectada</option> ) : ( availablePorts.map((p) => ( <option key={p.name} value={p.name}> {p.name} {p.isBluetooth ? \"— (Bluetooth SPP)\" : \"\"} {p.manufacture",
+      "type": "",
+      "handler": "{(e) => setSelectedPort(e.target.value)}",
+      "disabled": "{status.connected}",
+      "attributes": {
+        "value": "{selectedPort}",
+        "onChange": "{(e) => setSelectedPort(e.target.value)}",
+        "disabled": "{status.connected}",
+        "className": "\"w-full h-9 px-3 rounded-lg bg-canvas border border-line text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-brand disabled:opacity-50\""
+      }
+    },
+    {
+      "id": "C011",
+      "file": "src/features/acquisition/AcquisitionPage.tsx",
+      "line": 209,
+      "tag": "select",
+      "label": "{BAUD_RATES.map((b) => ( <option key={b} value={b}> {b} baud {b === 115200 ? \"(Padrão ESP32)\" : \"\"} </option> ))}",
+      "type": "",
+      "handler": "{(e) => setSelectedBaud(Number(e.target.value))}",
+      "disabled": "{status.connected}",
+      "attributes": {
+        "value": "{selectedBaud}",
+        "onChange": "{(e) => setSelectedBaud(Number(e.target.value))}",
+        "disabled": "{status.connected}",
+        "className": "\"w-full h-9 px-3 rounded-lg bg-canvas border border-line text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-brand disabled:opacity-50\""
+      }
+    },
+    {
+      "id": "C012",
+      "file": "src/features/acquisition/AcquisitionPage.tsx",
+      "line": 231,
+      "tag": "button",
+      "label": "{p.label} {p.desc}",
+      "type": "\"button\"",
+      "handler": "{() => setMockPattern(p.id)}",
+      "disabled": "",
+      "attributes": {
+        "key": "{p.id}",
+        "type": "\"button\"",
+        "onClick": "{() => setMockPattern(p.id)}",
+        "className": "{clsx( \"p-2.5 rounded-lg border text-left transition-colors\", mockPattern === p.id ? \"bg-brand/10 border-brand text-brand\" : \"bg-surface-hover/50 border-line hover:border-brand/40 text-foreground\" )}"
+      }
+    },
+    {
+      "id": "C013",
+      "file": "src/features/acquisition/AcquisitionPage.tsx",
+      "line": 252,
+      "tag": "button",
+      "label": "{status.connected ? ( <> <Square size={16} /> Desconectar Dispositivo </> ) : ( <> <Play size={16} /> Conectar Dispositivo </> )}",
+      "type": "\"button\"",
+      "handler": "{handleConnectToggle}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{handleConnectToggle}",
+        "className": "{clsx( \"w-full h-10 rounded-lg text-sm font-semibold flex items-center justify-center gap-2 transition-colors\", status.connected ? \"bg-rose-500/10 text-rose-500 border border-rose-500/30 hover:bg-rose-500/20\" : \"bg-brand text-brand-fg hover:opacity-90 shadow-sm\" )}"
+      }
+    },
+    {
+      "id": "C014",
+      "file": "src/features/acquisition/AcquisitionPage.tsx",
+      "line": 274,
+      "tag": "button",
+      "label": "{status.acquiring ? ( <> <Square size={16} /> Pausar Aquisição </> ) : ( <> <Activity size={16} /> Iniciar Aquisição Contínua </> )}",
+      "type": "\"button\"",
+      "handler": "{handleAcquisitionToggle}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{handleAcquisitionToggle}",
+        "className": "{clsx( \"w-full h-10 rounded-lg text-sm font-semibold flex items-center justify-center gap-2 transition-colors\", status.acquiring ? \"bg-amber-500/10 text-amber-500 border border-amber-500/30 hover:bg-amber-500/20\" : \"bg-emerald-600 text-white hover:bg-emerald-700 shadow-sm\" )}"
+      }
+    },
+    {
+      "id": "C015",
+      "file": "src/features/acquisition/AcquisitionPage.tsx",
+      "line": 317,
+      "tag": "button",
+      "label": "{tareState.isZeroing ? `Zerando (${tareState.zeroingProgress}%)…` : \"Zerar Tara (20 frames)\"}",
+      "type": "\"button\"",
+      "handler": "{startZeroing}",
+      "disabled": "{!status.acquiring || tareState.isZeroing}",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{startZeroing}",
+        "disabled": "{!status.acquiring || tareState.isZeroing}",
+        "className": "\"flex-1 h-9 rounded-lg bg-surface-hover hover:bg-line border border-line text-xs font-semibold flex items-center justify-center gap-1.5 disabled:opacity-50 transition-colors\""
+      }
+    },
+    {
+      "id": "C016",
+      "file": "src/features/acquisition/AcquisitionPage.tsx",
+      "line": 327,
+      "tag": "button",
+      "label": "{tareState.active ? \"Tara: Ativa\" : \"Tara: Inativa\"}",
+      "type": "\"button\"",
+      "handler": "{toggleTareActive}",
+      "disabled": "{!tareState.baseline}",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{toggleTareActive}",
+        "disabled": "{!tareState.baseline}",
+        "className": "{clsx( \"px-3 h-9 rounded-lg text-xs font-semibold border transition-colors disabled:opacity-40\", tareState.active ? \"bg-brand/10 text-brand border-brand/30\" : \"bg-surface-hover text-mute border-line hover:text-foreground\" )}"
+      }
+    },
+    {
+      "id": "C017",
+      "file": "src/features/acquisition/AcquisitionPage.tsx",
+      "line": 342,
+      "tag": "button",
+      "label": "\"Limpar Baseline de Tara\"",
+      "type": "\"button\"",
+      "handler": "{clearTare}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{clearTare}",
+        "className": "\"size-9 rounded-lg grid place-items-center bg-surface-hover hover:bg-rose-500/15 hover:text-rose-500 border border-line text-mute transition-colors\"",
+        "title": "\"Limpar Baseline de Tara\""
+      }
+    },
+    {
+      "id": "C018",
+      "file": "src/features/acquisition/AcquisitionPage.tsx",
+      "line": 365,
+      "tag": "button",
+      "label": "Limpar",
+      "type": "\"button\"",
+      "handler": "{clearLogs}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{clearLogs}",
+        "className": "\"text-xs text-mute hover:text-foreground transition-colors\""
+      }
+    },
+    {
+      "id": "C019",
+      "file": "src/features/agenda/AgendaPage.tsx",
+      "line": 79,
+      "tag": "Button",
+      "label": "Novo profissional",
+      "type": "",
+      "handler": "{() => { setProfessionalForm(true); setFormError(\"\"); }}",
+      "disabled": "",
+      "attributes": {
+        "variant": "\"ghost\"",
+        "onClick": "{() => { setProfessionalForm(true); setFormError(\"\"); }}"
+      }
+    },
+    {
+      "id": "C020",
+      "file": "src/features/agenda/AgendaPage.tsx",
+      "line": 79,
+      "tag": "Button",
+      "label": "Nova consulta",
+      "type": "",
+      "handler": "{() => open(date)}",
+      "disabled": "",
+      "attributes": {
+        "onClick": "{() => open(date)}"
+      }
+    },
+    {
+      "id": "C021",
+      "file": "src/features/agenda/AgendaPage.tsx",
+      "line": 81,
+      "tag": "Button",
+      "label": "\"Período anterior\"",
+      "type": "",
+      "handler": "{() => setDate(shiftCalendar(date, view, -1))}",
+      "disabled": "",
+      "attributes": {
+        "variant": "\"ghost\"",
+        "onClick": "{() => setDate(shiftCalendar(date, view, -1))}",
+        "aria-label": "\"Período anterior\""
+      }
+    },
+    {
+      "id": "C022",
+      "file": "src/features/agenda/AgendaPage.tsx",
+      "line": 81,
+      "tag": "Button",
+      "label": "Hoje",
+      "type": "",
+      "handler": "{() => setDate(localDate())}",
+      "disabled": "",
+      "attributes": {
+        "variant": "\"ghost\"",
+        "onClick": "{() => setDate(localDate())}"
+      }
+    },
+    {
+      "id": "C023",
+      "file": "src/features/agenda/AgendaPage.tsx",
+      "line": 81,
+      "tag": "Button",
+      "label": "\"Próximo período\"",
+      "type": "",
+      "handler": "{() => setDate(shiftCalendar(date, view, 1))}",
+      "disabled": "",
+      "attributes": {
+        "variant": "\"ghost\"",
+        "onClick": "{() => setDate(shiftCalendar(date, view, 1))}",
+        "aria-label": "\"Próximo período\""
+      }
+    },
+    {
+      "id": "C024",
+      "file": "src/features/agenda/AgendaPage.tsx",
+      "line": 81,
+      "tag": "input",
+      "label": "\"Data da agenda\"",
+      "type": "\"date\"",
+      "handler": "{(e) => { if (e.target.value) setDate(e.target.value); }}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"date\"",
+        "aria-label": "\"Data da agenda\"",
+        "value": "{date}",
+        "onChange": "{(e) => { if (e.target.value) setDate(e.target.value); }}",
+        "className": "\"p-2 bg-surface border border-line rounded-lg\""
+      }
+    },
+    {
+      "id": "C025",
+      "file": "src/features/agenda/AgendaPage.tsx",
+      "line": 84,
+      "tag": "Button",
+      "label": "{label}",
+      "type": "",
+      "handler": "{() => setView(id)}",
+      "disabled": "",
+      "attributes": {
+        "key": "{id}",
+        "variant": "{view === id ? \"primary\" : \"ghost\"}",
+        "aria-pressed": "{view === id}",
+        "onClick": "{() => setView(id)}"
+      }
+    },
+    {
+      "id": "C026",
+      "file": "src/features/agenda/AgendaPage.tsx",
+      "line": 87,
+      "tag": "button",
+      "label": "{`Nova consulta em ${day}`}",
+      "type": "",
+      "handler": "{() => open(day)}",
+      "disabled": "",
+      "attributes": {
+        "className": "\"w-full text-left text-sm font-semibold pb-2 hover:text-brand\"",
+        "onClick": "{() => open(day)}",
+        "aria-label": "{`Nova consulta em ${day}`}"
+      }
+    },
+    {
+      "id": "C027",
+      "file": "src/features/agenda/AgendaPage.tsx",
+      "line": 88,
+      "tag": "button",
+      "label": "{a.startTime}–{a.endTime ?? '—'} {a.patientName} {a.professionalName ?? 'Sem profissional'} {appointmentStatuses[a.status]}",
+      "type": "",
+      "handler": "{() => open(day, a)}",
+      "disabled": "",
+      "attributes": {
+        "key": "{a.id}",
+        "onClick": "{() => open(day, a)}",
+        "className": "{`w-full text-left border border-line rounded-lg p-2 text-xs hover:bg-line/40 ${a.status === 'cancelled' ? 'opacity-60' : ''}`}"
+      }
+    },
+    {
+      "id": "C028",
+      "file": "src/features/agenda/AgendaPage.tsx",
+      "line": 93,
+      "tag": "select",
+      "label": "Selecione {patients.map((p) => <option key={p.id} value={p.id}>{p.name}</option>)}",
+      "type": "",
+      "handler": "{(e) => setForm({ ...form, patientId: Number(e.target.value) })}",
+      "disabled": "{busy}",
+      "attributes": {
+        "required": "true",
+        "disabled": "{busy}",
+        "className": "{selectClass}",
+        "value": "{form.patientId}",
+        "onChange": "{(e) => setForm({ ...form, patientId: Number(e.target.value) })}"
+      }
+    },
+    {
+      "id": "C029",
+      "file": "src/features/agenda/AgendaPage.tsx",
+      "line": 94,
+      "tag": "select",
+      "label": "Não informado {professionals.map((p) => <option key={p.id} value={p.id}>{p.name}{p.registration ? ` · ${p.registration}` : ''}</option>)}",
+      "type": "",
+      "handler": "{(e) => setForm({ ...form, professionalId: Number(e.target.value) || null })}",
+      "disabled": "{busy}",
+      "attributes": {
+        "disabled": "{busy}",
+        "className": "{selectClass}",
+        "value": "{form.professionalId ?? 0}",
+        "onChange": "{(e) => setForm({ ...form, professionalId: Number(e.target.value) || null })}"
+      }
+    },
+    {
+      "id": "C030",
+      "file": "src/features/agenda/AgendaPage.tsx",
+      "line": 95,
+      "tag": "Field",
+      "label": "\"Data\"",
+      "type": "\"date\"",
+      "handler": "{(e) => setForm({ ...form, date: e.target.value })}",
+      "disabled": "{busy}",
+      "attributes": {
+        "label": "\"Data\"",
+        "type": "\"date\"",
+        "required": "true",
+        "disabled": "{busy}",
+        "value": "{form.date}",
+        "onChange": "{(e) => setForm({ ...form, date: e.target.value })}"
+      }
+    },
+    {
+      "id": "C031",
+      "file": "src/features/agenda/AgendaPage.tsx",
+      "line": 95,
+      "tag": "Field",
+      "label": "\"Início\"",
+      "type": "\"time\"",
+      "handler": "{(e) => setForm({ ...form, startTime: e.target.value })}",
+      "disabled": "{busy}",
+      "attributes": {
+        "label": "\"Início\"",
+        "type": "\"time\"",
+        "required": "true",
+        "disabled": "{busy}",
+        "value": "{form.startTime}",
+        "onChange": "{(e) => setForm({ ...form, startTime: e.target.value })}"
+      }
+    },
+    {
+      "id": "C032",
+      "file": "src/features/agenda/AgendaPage.tsx",
+      "line": 95,
+      "tag": "Field",
+      "label": "\"Término\"",
+      "type": "\"time\"",
+      "handler": "{(e) => setForm({ ...form, endTime: e.target.value })}",
+      "disabled": "{busy}",
+      "attributes": {
+        "label": "\"Término\"",
+        "type": "\"time\"",
+        "required": "true",
+        "disabled": "{busy}",
+        "value": "{form.endTime}",
+        "onChange": "{(e) => setForm({ ...form, endTime: e.target.value })}"
+      }
+    },
+    {
+      "id": "C033",
+      "file": "src/features/agenda/AgendaPage.tsx",
+      "line": 96,
+      "tag": "Field",
+      "label": "\"Tipo da consulta\"",
+      "type": "",
+      "handler": "{(e) => setForm({ ...form, type: e.target.value })}",
+      "disabled": "{busy}",
+      "attributes": {
+        "label": "\"Tipo da consulta\"",
+        "required": "true",
+        "maxLength": "{120}",
+        "disabled": "{busy}",
+        "value": "{form.type}",
+        "onChange": "{(e) => setForm({ ...form, type: e.target.value })}"
+      }
+    },
+    {
+      "id": "C034",
+      "file": "src/features/agenda/AgendaPage.tsx",
+      "line": 97,
+      "tag": "select",
+      "label": "{Object.entries(appointmentStatuses).map(([id, label]) => <option key={id} value={id}>{label}</option>)}",
+      "type": "",
+      "handler": "{(e) => setForm({ ...form, status: e.target.value as AppointmentInput['status'] })}",
+      "disabled": "{busy}",
+      "attributes": {
+        "className": "{selectClass}",
+        "disabled": "{busy}",
+        "value": "{form.status}",
+        "onChange": "{(e) => setForm({ ...form, status: e.target.value as AppointmentInput['status'] })}"
+      }
+    },
+    {
+      "id": "C035",
+      "file": "src/features/agenda/AgendaPage.tsx",
+      "line": 98,
+      "tag": "textarea",
+      "label": "textarea",
+      "type": "",
+      "handler": "{(e) => setForm({ ...form, notes: e.target.value })}",
+      "disabled": "{busy}",
+      "attributes": {
+        "disabled": "{busy}",
+        "maxLength": "{10000}",
+        "className": "{selectClass}",
+        "value": "{form.notes ?? ''}",
+        "onChange": "{(e) => setForm({ ...form, notes: e.target.value })}"
+      }
+    },
+    {
+      "id": "C036",
+      "file": "src/features/agenda/AgendaPage.tsx",
+      "line": 100,
+      "tag": "Button",
+      "label": "{deleteConfirm ? 'Confirmar exclusão' : 'Excluir consulta'}",
+      "type": "\"button\"",
+      "handler": "{() => { if (deleteConfirm) void remove(); else setDeleteConfirm(true); }}",
+      "disabled": "{busy}",
+      "attributes": {
+        "type": "\"button\"",
+        "variant": "\"ghost\"",
+        "disabled": "{busy}",
+        "onClick": "{() => { if (deleteConfirm) void remove(); else setDeleteConfirm(true); }}"
+      }
+    },
+    {
+      "id": "C037",
+      "file": "src/features/agenda/AgendaPage.tsx",
+      "line": 105,
+      "tag": "Button",
+      "label": "Cancelar",
+      "type": "\"button\"",
+      "handler": "{() => setForm(null)}",
+      "disabled": "{busy}",
+      "attributes": {
+        "type": "\"button\"",
+        "variant": "\"ghost\"",
+        "disabled": "{busy}",
+        "onClick": "{() => setForm(null)}"
+      }
+    },
+    {
+      "id": "C038",
+      "file": "src/features/agenda/AgendaPage.tsx",
+      "line": 105,
+      "tag": "Button",
+      "label": "{busy ? 'Salvando...' : 'Salvar consulta'}",
+      "type": "\"submit\"",
+      "handler": "",
+      "disabled": "{busy}",
+      "attributes": {
+        "type": "\"submit\"",
+        "disabled": "{busy}"
+      }
+    },
+    {
+      "id": "C039",
+      "file": "src/features/agenda/AgendaPage.tsx",
+      "line": 123,
+      "tag": "Field",
+      "label": "{{ name: 'Nome', profession: 'Profissão', registration: 'Registro profissional' }[key]}",
+      "type": "",
+      "handler": "{(e) => setNewProfessional({ ...newProfessional, [key]: e.target.value })}",
+      "disabled": "{busy}",
+      "attributes": {
+        "key": "{key}",
+        "label": "{{ name: 'Nome', profession: 'Profissão', registration: 'Registro profissional' }[key]}",
+        "required": "{key === 'name'}",
+        "maxLength": "{120}",
+        "disabled": "{busy}",
+        "value": "{newProfessional[key]}",
+        "onChange": "{(e) => setNewProfessional({ ...newProfessional, [key]: e.target.value })}"
+      }
+    },
+    {
+      "id": "C040",
+      "file": "src/features/agenda/AgendaPage.tsx",
+      "line": 123,
+      "tag": "Button",
+      "label": "Cancelar",
+      "type": "\"button\"",
+      "handler": "{() => setProfessionalForm(false)}",
+      "disabled": "{busy}",
+      "attributes": {
+        "type": "\"button\"",
+        "variant": "\"ghost\"",
+        "disabled": "{busy}",
+        "onClick": "{() => setProfessionalForm(false)}"
+      }
+    },
+    {
+      "id": "C041",
+      "file": "src/features/agenda/AgendaPage.tsx",
+      "line": 123,
+      "tag": "Button",
+      "label": "Salvar profissional",
+      "type": "\"submit\"",
+      "handler": "",
+      "disabled": "{busy}",
+      "attributes": {
+        "type": "\"submit\"",
+        "disabled": "{busy}"
+      }
+    },
+    {
+      "id": "C042",
+      "file": "src/features/auth/AccountSettings.tsx",
+      "line": 41,
+      "tag": "Button",
+      "label": "Alterar senha",
+      "type": "",
+      "handler": "{() => switchMode(\"change\")}",
+      "disabled": "{busy}",
+      "attributes": {
+        "variant": "\"ghost\"",
+        "disabled": "{busy}",
+        "onClick": "{() => switchMode(\"change\")}"
+      }
+    },
+    {
+      "id": "C043",
+      "file": "src/features/auth/AccountSettings.tsx",
+      "line": 41,
+      "tag": "Button",
+      "label": "Gerar código de recuperação",
+      "type": "",
+      "handler": "{() => switchMode(\"recovery\")}",
+      "disabled": "{busy}",
+      "attributes": {
+        "variant": "\"ghost\"",
+        "disabled": "{busy}",
+        "onClick": "{() => switchMode(\"recovery\")}"
+      }
+    },
+    {
+      "id": "C044",
+      "file": "src/features/auth/AccountSettings.tsx",
+      "line": 41,
+      "tag": "Button",
+      "label": "Cadastrar usuário",
+      "type": "",
+      "handler": "{() => switchMode(\"register\")}",
+      "disabled": "{busy}",
+      "attributes": {
+        "variant": "\"ghost\"",
+        "disabled": "{busy}",
+        "onClick": "{() => switchMode(\"register\")}"
+      }
+    },
+    {
+      "id": "C045",
+      "file": "src/features/auth/AccountSettings.tsx",
+      "line": 43,
+      "tag": "Field",
+      "label": "\"Nome do usuário\"",
+      "type": "",
+      "handler": "{(e) => setName(e.target.value)}",
+      "disabled": "{busy}",
+      "attributes": {
+        "label": "\"Nome do usuário\"",
+        "value": "{name}",
+        "onChange": "{(e) => setName(e.target.value)}",
+        "minLength": "{2}",
+        "maxLength": "{120}",
+        "required": "true",
+        "disabled": "{busy}"
+      }
+    },
+    {
+      "id": "C046",
+      "file": "src/features/auth/AccountSettings.tsx",
+      "line": 43,
+      "tag": "Field",
+      "label": "\"E-mail do usuário\"",
+      "type": "\"email\"",
+      "handler": "{(e) => setEmail(e.target.value)}",
+      "disabled": "{busy}",
+      "attributes": {
+        "label": "\"E-mail do usuário\"",
+        "type": "\"email\"",
+        "value": "{email}",
+        "onChange": "{(e) => setEmail(e.target.value)}",
+        "maxLength": "{254}",
+        "required": "true",
+        "disabled": "{busy}"
+      }
+    },
+    {
+      "id": "C047",
+      "file": "src/features/auth/AccountSettings.tsx",
+      "line": 43,
+      "tag": "select",
+      "label": "Profissional Assistente",
+      "type": "",
+      "handler": "{(e) => setRole(e.target.value as typeof role)}",
+      "disabled": "{busy}",
+      "attributes": {
+        "disabled": "{busy}",
+        "className": "\"block w-full p-2 bg-surface border border-line rounded-lg\"",
+        "value": "{role}",
+        "onChange": "{(e) => setRole(e.target.value as typeof role)}"
+      }
+    },
+    {
+      "id": "C048",
+      "file": "src/features/auth/AccountSettings.tsx",
+      "line": 43,
+      "tag": "PasswordField",
+      "label": "\"Senha atual\"",
+      "type": "",
+      "handler": "{setPassword}",
+      "disabled": "{busy}",
+      "attributes": {
+        "label": "\"Senha atual\"",
+        "value": "{password}",
+        "onChange": "{setPassword}",
+        "autoComplete": "\"current-password\"",
+        "disabled": "{busy}"
+      }
+    },
+    {
+      "id": "C049",
+      "file": "src/features/auth/AccountSettings.tsx",
+      "line": 44,
+      "tag": "PasswordField",
+      "label": "\"Nova senha\"",
+      "type": "",
+      "handler": "{setNext}",
+      "disabled": "{busy}",
+      "attributes": {
+        "label": "\"Nova senha\"",
+        "value": "{next}",
+        "onChange": "{setNext}",
+        "disabled": "{busy}"
+      }
+    },
+    {
+      "id": "C050",
+      "file": "src/features/auth/AccountSettings.tsx",
+      "line": 44,
+      "tag": "PasswordField",
+      "label": "\"Confirmar nova senha\"",
+      "type": "",
+      "handler": "{setConfirm}",
+      "disabled": "{busy}",
+      "attributes": {
+        "label": "\"Confirmar nova senha\"",
+        "value": "{confirm}",
+        "onChange": "{setConfirm}",
+        "disabled": "{busy}"
+      }
+    },
+    {
+      "id": "C051",
+      "file": "src/features/auth/AccountSettings.tsx",
+      "line": 48,
+      "tag": "Button",
+      "label": "{busy ? \"Aguarde...\" : operation === \"register\" ? \"Criar conta\" : operation === \"recovery\" ? \"Gerar novo código\" : \"Alterar senha e sair\"}",
+      "type": "\"submit\"",
+      "handler": "",
+      "disabled": "{busy || activeExam}",
+      "attributes": {
+        "type": "\"submit\"",
+        "disabled": "{busy || activeExam}"
+      }
+    },
+    {
+      "id": "C052",
+      "file": "src/features/auth/LoginPage.tsx",
+      "line": 40,
+      "tag": "Button",
+      "label": "Tentar novamente",
+      "type": "",
+      "handler": "{() => setRetry(retry + 1)}",
+      "disabled": "",
+      "attributes": {
+        "onClick": "{() => setRetry(retry + 1)}"
+      }
+    },
+    {
+      "id": "C053",
+      "file": "src/features/auth/LoginPage.tsx",
+      "line": 40,
+      "tag": "Button",
+      "label": "Voltar para entrar",
+      "type": "",
+      "handler": "{() => switchMode(\"login\")}",
+      "disabled": "",
+      "attributes": {
+        "onClick": "{() => switchMode(\"login\")}"
+      }
+    },
+    {
+      "id": "C054",
+      "file": "src/features/auth/LoginPage.tsx",
+      "line": 41,
+      "tag": "Field",
+      "label": "\"Nome\"",
+      "type": "",
+      "handler": "{(e) => setName(e.target.value)}",
+      "disabled": "{busy}",
+      "attributes": {
+        "label": "\"Nome\"",
+        "value": "{name}",
+        "onChange": "{(e) => setName(e.target.value)}",
+        "minLength": "{2}",
+        "maxLength": "{120}",
+        "required": "true",
+        "disabled": "{busy}"
+      }
+    },
+    {
+      "id": "C055",
+      "file": "src/features/auth/LoginPage.tsx",
+      "line": 42,
+      "tag": "Field",
+      "label": "\"E-mail\"",
+      "type": "\"email\"",
+      "handler": "{(e) => setEmail(e.target.value)}",
+      "disabled": "{busy}",
+      "attributes": {
+        "label": "\"E-mail\"",
+        "type": "\"email\"",
+        "autoComplete": "\"username\"",
+        "value": "{email}",
+        "onChange": "{(e) => setEmail(e.target.value)}",
+        "maxLength": "{254}",
+        "required": "true",
+        "disabled": "{busy}"
+      }
+    },
+    {
+      "id": "C056",
+      "file": "src/features/auth/LoginPage.tsx",
+      "line": 43,
+      "tag": "Field",
+      "label": "\"Código de recuperação\"",
+      "type": "",
+      "handler": "{(e) => setCode(e.target.value)}",
+      "disabled": "{busy}",
+      "attributes": {
+        "label": "\"Código de recuperação\"",
+        "value": "{code}",
+        "onChange": "{(e) => setCode(e.target.value)}",
+        "autoComplete": "\"off\"",
+        "maxLength": "{100}",
+        "required": "true",
+        "disabled": "{busy}"
+      }
+    },
+    {
+      "id": "C057",
+      "file": "src/features/auth/LoginPage.tsx",
+      "line": 44,
+      "tag": "PasswordField",
+      "label": "{mode === \"recover\" ? \"Nova senha\" : \"Senha\"}",
+      "type": "",
+      "handler": "{setPassword}",
+      "disabled": "{busy}",
+      "attributes": {
+        "label": "{mode === \"recover\" ? \"Nova senha\" : \"Senha\"}",
+        "value": "{password}",
+        "onChange": "{setPassword}",
+        "autoComplete": "{mode === \"login\" ? \"current-password\" : \"new-password\"}",
+        "disabled": "{busy}"
+      }
+    },
+    {
+      "id": "C058",
+      "file": "src/features/auth/LoginPage.tsx",
+      "line": 45,
+      "tag": "PasswordField",
+      "label": "\"Confirmar senha\"",
+      "type": "",
+      "handler": "{setConfirmation}",
+      "disabled": "{busy}",
+      "attributes": {
+        "label": "\"Confirmar senha\"",
+        "value": "{confirmation}",
+        "onChange": "{setConfirmation}",
+        "disabled": "{busy}"
+      }
+    },
+    {
+      "id": "C059",
+      "file": "src/features/auth/LoginPage.tsx",
+      "line": 47,
+      "tag": "Button",
+      "label": "{busy ? \"Aguarde...\" : mode === \"register\" ? \"Criar conta\" : mode === \"recover\" ? \"Redefinir senha\" : \"Entrar\"}",
+      "type": "\"submit\"",
+      "handler": "",
+      "disabled": "{busy}",
+      "attributes": {
+        "type": "\"submit\"",
+        "className": "\"w-full\"",
+        "disabled": "{busy}"
+      }
+    },
+    {
+      "id": "C060",
+      "file": "src/features/auth/LoginPage.tsx",
+      "line": 49,
+      "tag": "button",
+      "label": "Voltar para entrar",
+      "type": "\"button\"",
+      "handler": "{() => switchMode(\"login\")}",
+      "disabled": "{busy || !!firstRun}",
+      "attributes": {
+        "type": "\"button\"",
+        "disabled": "{busy || !!firstRun}",
+        "className": "\"text-brand underline disabled:opacity-50\"",
+        "onClick": "{() => switchMode(\"login\")}"
+      }
+    },
+    {
+      "id": "C061",
+      "file": "src/features/auth/LoginPage.tsx",
+      "line": 49,
+      "tag": "button",
+      "label": "Criar conta / Cadastrar usuário",
+      "type": "\"button\"",
+      "handler": "{() => switchMode(\"register\")}",
+      "disabled": "{busy}",
+      "attributes": {
+        "type": "\"button\"",
+        "disabled": "{busy}",
+        "className": "\"text-brand underline\"",
+        "onClick": "{() => switchMode(\"register\")}"
+      }
+    },
+    {
+      "id": "C062",
+      "file": "src/features/auth/LoginPage.tsx",
+      "line": 49,
+      "tag": "button",
+      "label": "Esqueci minha senha?",
+      "type": "\"button\"",
+      "handler": "{() => switchMode(\"recover\")}",
+      "disabled": "{busy}",
+      "attributes": {
+        "type": "\"button\"",
+        "disabled": "{busy}",
+        "className": "\"text-brand underline\"",
+        "onClick": "{() => switchMode(\"recover\")}"
+      }
+    },
+    {
+      "id": "C063",
+      "file": "src/features/auth/PasswordField.tsx",
+      "line": 5,
+      "tag": "Field",
+      "label": "{label}",
+      "type": "{visible ? \"text\" : \"password\"}",
+      "handler": "{(e) => onChange(e.target.value)}",
+      "disabled": "{disabled}",
+      "attributes": {
+        "label": "{label}",
+        "type": "{visible ? \"text\" : \"password\"}",
+        "value": "{value}",
+        "onChange": "{(e) => onChange(e.target.value)}",
+        "autoComplete": "{autoComplete}",
+        "maxLength": "{512}",
+        "required": "true",
+        "disabled": "{disabled}"
+      }
+    },
+    {
+      "id": "C064",
+      "file": "src/features/auth/PasswordField.tsx",
+      "line": 5,
+      "tag": "button",
+      "label": "{`${visible ? \"Ocultar\" : \"Mostrar\"} ${label.toLowerCase()}`}",
+      "type": "\"button\"",
+      "handler": "{() => setVisible(!visible)}",
+      "disabled": "{disabled}",
+      "attributes": {
+        "type": "\"button\"",
+        "disabled": "{disabled}",
+        "aria-label": "{`${visible ? \"Ocultar\" : \"Mostrar\"} ${label.toLowerCase()}`}",
+        "aria-pressed": "{visible}",
+        "className": "\"text-xs text-brand underline\"",
+        "onClick": "{() => setVisible(!visible)}"
+      }
+    },
+    {
+      "id": "C065",
+      "file": "src/features/auth/RecoveryReceipt.tsx",
+      "line": 5,
+      "tag": "input",
+      "label": "input",
+      "type": "\"checkbox\"",
+      "handler": "{(e) => setSaved(e.target.checked)}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"checkbox\"",
+        "checked": "{saved}",
+        "onChange": "{(e) => setSaved(e.target.checked)}"
+      }
+    },
+    {
+      "id": "C066",
+      "file": "src/features/auth/RecoveryReceipt.tsx",
+      "line": 5,
+      "tag": "Button",
+      "label": "Continuar",
+      "type": "",
+      "handler": "{onDone}",
+      "disabled": "{!saved}",
+      "attributes": {
+        "disabled": "{!saved}",
+        "onClick": "{onDone}"
+      }
+    },
+    {
+      "id": "C067",
+      "file": "src/features/backup/BackupPage.tsx",
+      "line": 108,
+      "tag": "Button",
+      "label": "Exportar backup completo",
+      "type": "",
+      "handler": "{() => void exportBackup(false)}",
+      "disabled": "{busy || examinationActive}",
+      "attributes": {
+        "disabled": "{busy || examinationActive}",
+        "onClick": "{() => void exportBackup(false)}"
+      }
+    },
+    {
+      "id": "C068",
+      "file": "src/features/backup/BackupPage.tsx",
+      "line": 108,
+      "tag": "select",
+      "label": "Selecione o paciente {patients.map((p) => <option key={p.id} value={p.id}>{p.name}</option>)}",
+      "type": "",
+      "handler": "{(e) => setPatientId(Number(e.target.value))}",
+      "disabled": "{busy}",
+      "attributes": {
+        "className": "\"block w-full border border-line rounded-lg bg-surface p-2\"",
+        "disabled": "{busy}",
+        "value": "{patientId}",
+        "onChange": "{(e) => setPatientId(Number(e.target.value))}"
+      }
+    },
+    {
+      "id": "C069",
+      "file": "src/features/backup/BackupPage.tsx",
+      "line": 108,
+      "tag": "Button",
+      "label": "Exportar dados deste paciente",
+      "type": "",
+      "handler": "{() => void exportBackup(true)}",
+      "disabled": "{busy || !patientId || examinationActive}",
+      "attributes": {
+        "variant": "\"ghost\"",
+        "disabled": "{busy || !patientId || examinationActive}",
+        "onClick": "{() => void exportBackup(true)}"
+      }
+    },
+    {
+      "id": "C070",
+      "file": "src/features/backup/BackupPage.tsx",
+      "line": 109,
+      "tag": "input",
+      "label": "input",
+      "type": "\"file\"",
+      "handler": "{(e) => { const file = e.target.files?.[0]; e.target.value = ''; if (file) void inspect(file); }}",
+      "disabled": "{busy || examinationActive}",
+      "attributes": {
+        "type": "\"file\"",
+        "accept": "\".json,.baropress.json\"",
+        "disabled": "{busy || examinationActive}",
+        "className": "\"block mt-2 w-full text-sm\"",
+        "onChange": "{(e) => { const file = e.target.files?.[0]; e.target.value = ''; if (file) void inspect(file); }}"
+      }
+    },
+    {
+      "id": "C071",
+      "file": "src/features/backup/BackupPage.tsx",
+      "line": 115,
+      "tag": "input",
+      "label": "input",
+      "type": "\"checkbox\"",
+      "handler": "{(e) => setConfirmed(e.target.checked)}",
+      "disabled": "{busy}",
+      "attributes": {
+        "type": "\"checkbox\"",
+        "checked": "{confirmed}",
+        "disabled": "{busy}",
+        "onChange": "{(e) => setConfirmed(e.target.checked)}"
+      }
+    },
+    {
+      "id": "C072",
+      "file": "src/features/backup/BackupPage.tsx",
+      "line": 116,
+      "tag": "Button",
+      "label": "Pausar aquisição",
+      "type": "",
+      "handler": "{() => void acq.stopAcquisition()}",
+      "disabled": "{busy || examinationActive}",
+      "attributes": {
+        "variant": "\"ghost\"",
+        "disabled": "{busy || examinationActive}",
+        "onClick": "{() => void acq.stopAcquisition()}"
+      }
+    },
+    {
+      "id": "C073",
+      "file": "src/features/backup/BackupPage.tsx",
+      "line": 117,
+      "tag": "Button",
+      "label": "{busy ? 'Processando...' : preview?.kind === 'patient' ? 'Importar paciente' : 'Restaurar backup completo'}",
+      "type": "",
+      "handler": "{() => void restore()}",
+      "disabled": "{busy || !preview || !confirmed || examinationActive || acq.status.acquiring}",
+      "attributes": {
+        "disabled": "{busy || !preview || !confirmed || examinationActive || acq.status.acquiring}",
+        "onClick": "{() => void restore()}"
+      }
+    },
+    {
+      "id": "C074",
+      "file": "src/features/baropodometry/BaropodometryPage.tsx",
+      "line": 148,
+      "tag": "button",
+      "label": "\"Capturar baseline sem carga sobre a esteira\"",
+      "type": "\"button\"",
+      "handler": "{startZeroing}",
+      "disabled": "{!status.acquiring || tareState.isZeroing}",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{startZeroing}",
+        "disabled": "{!status.acquiring || tareState.isZeroing}",
+        "className": "\"h-7 px-2.5 rounded-lg bg-surface hover:bg-surface-hover border border-line text-[11px] font-medium flex items-center gap-1 disabled:opacity-50 transition-colors shadow-xs\"",
+        "title": "\"Capturar baseline sem carga sobre a esteira\""
+      }
+    },
+    {
+      "id": "C075",
+      "file": "src/features/baropodometry/BaropodometryPage.tsx",
+      "line": 160,
+      "tag": "button",
+      "label": "{status.acquiring ? ( <> <Square size={12} /> Pausar </> ) : ( <> <Play size={12} /> Iniciar </> )}",
+      "type": "\"button\"",
+      "handler": "{handleAcquisitionToggle}",
+      "disabled": "{actionBusy}",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{handleAcquisitionToggle}",
+        "disabled": "{actionBusy}",
+        "className": "{clsx( \"h-7 px-3 rounded-lg text-[11px] font-semibold flex items-center gap-1 transition-colors shadow-xs\", status.acquiring ? \"bg-amber-500/10 text-amber-500 border border-amber-500/30 hover:bg-amber-500/20\" : \"bg-brand text-brand-fg hover:opacity-90\" )}"
+      }
+    },
+    {
+      "id": "C076",
+      "file": "src/features/baropodometry/BaropodometryPage.tsx",
+      "line": 183,
+      "tag": "button",
+      "label": "\"Ajustes Avançados do Mapa (Resolução e Painel Flutuante)\"",
+      "type": "\"button\"",
+      "handler": "{() => setShowAdvancedSettings((v) => !v)}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{() => setShowAdvancedSettings((v) => !v)}",
+        "className": "{clsx( \"size-7 rounded-lg grid place-items-center border transition-colors shadow-xs\", showAdvancedSettings ? \"bg-brand text-brand-fg border-brand\" : \"bg-surface border-line text-mute hover:text-foreground hover:bg-surface-hover\" )}",
+        "title": "\"Ajustes Avançados do Mapa (Resolução e Painel Flutuante)\""
+      }
+    },
+    {
+      "id": "C077",
+      "file": "src/features/baropodometry/BaropodometryPage.tsx",
+      "line": 244,
+      "tag": "button",
+      "label": "{p.label}",
+      "type": "\"button\"",
+      "handler": "{() => setMockPattern(p.id)}",
+      "disabled": "",
+      "attributes": {
+        "key": "{p.id}",
+        "type": "\"button\"",
+        "onClick": "{() => setMockPattern(p.id)}",
+        "className": "{clsx( \"px-2 py-0.5 rounded text-[11px] font-semibold border transition-all leading-tight\", mockPattern === p.id ? \"bg-brand text-brand-fg border-brand shadow-xs\" : \"bg-surface border-line text-mute hover:text-foreground hover:bg-surface-hover\" )}"
+      }
+    },
+    {
+      "id": "C078",
+      "file": "src/features/baropodometry/HeatmapSettingsPanel.tsx",
+      "line": 45,
+      "tag": "button",
+      "label": "{`Ajuda sobre ${title}`}",
+      "type": "\"button\"",
+      "handler": "{(e) => { e.stopPropagation(); onToggle(id); }}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "id": "{`tooltip-btn-${id}`}",
+        "aria-label": "{`Ajuda sobre ${title}`}",
+        "aria-expanded": "{isOpen}",
+        "onClick": "{(e) => { e.stopPropagation(); onToggle(id); }}",
+        "onKeyDown": "{(e) => { if (e.key === \"Escape\" && isOpen) onToggle(id); }}",
+        "aria-describedby": "{isOpen ? `tooltip-content-${id}` : undefined}",
+        "className": "{clsx( \"size-4 rounded-full flex items-center justify-center text-[10px] font-bold transition-colors ml-1 focus:outline-none focus:ring-1 focus:ring-brand\", isOpen ? \"bg-brand text-brand-fg ring-1 ring-brand\" : \"text-mute hover:text-foreground hover:bg-surface-hover\" )}"
+      }
+    },
+    {
+      "id": "C079",
+      "file": "src/features/baropodometry/HeatmapSettingsPanel.tsx",
+      "line": 158,
+      "tag": "button",
+      "label": "\"Fechar painel de ajustes\"",
+      "type": "\"button\"",
+      "handler": "{onClose}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{onClose}",
+        "aria-label": "\"Fechar painel de ajustes\"",
+        "className": "\"size-7 rounded-lg text-mute hover:text-foreground hover:bg-surface-hover grid place-items-center transition-colors\""
+      }
+    },
+    {
+      "id": "C080",
+      "file": "src/features/baropodometry/HeatmapSettingsPanel.tsx",
+      "line": 170,
+      "tag": "button",
+      "label": "Automático",
+      "type": "\"button\"",
+      "handler": "{() => handleModeChange(\"AUTO\")}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{() => handleModeChange(\"AUTO\")}",
+        "className": "{clsx( \"flex-1 py-1.5 px-3 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition-all\", settings.mode === \"AUTO\" ? \"bg-brand text-brand-fg shadow-sm\" : \"text-mute hover:text-foreground\" )}"
+      }
+    },
+    {
+      "id": "C081",
+      "file": "src/features/baropodometry/HeatmapSettingsPanel.tsx",
+      "line": 183,
+      "tag": "button",
+      "label": "Manual",
+      "type": "\"button\"",
+      "handler": "{() => handleModeChange(\"MANUAL\")}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{() => handleModeChange(\"MANUAL\")}",
+        "className": "{clsx( \"flex-1 py-1.5 px-3 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition-all\", settings.mode === \"MANUAL\" ? \"bg-surface text-foreground border border-line shadow-sm\" : \"text-mute hover:text-foreground\" )}"
+      }
+    },
+    {
+      "id": "C082",
+      "file": "src/features/baropodometry/HeatmapSettingsPanel.tsx",
+      "line": 205,
+      "tag": "TooltipTrigger",
+      "label": "\"Gamma Visual\"",
+      "type": "",
+      "handler": "{handleTooltipToggle}",
+      "disabled": "",
+      "attributes": {
+        "id": "\"gamma\"",
+        "title": "\"Gamma Visual\"",
+        "text": "\"Controla como os níveis de pressão aparecem visualmente. Valores menores realçam regiões de pressão mais baixa. Valores maiores concentram mais o contraste nos valores altos. Isso altera somente a aparência do mapa.\"",
+        "activeId": "{activeTooltip}",
+        "onToggle": "{handleTooltipToggle}"
+      }
+    },
+    {
+      "id": "C083",
+      "file": "src/features/baropodometry/HeatmapSettingsPanel.tsx",
+      "line": 217,
+      "tag": "input",
+      "label": "\"Gamma Visual\"",
+      "type": "\"range\"",
+      "handler": "{(e) => handleSliderChange({ gamma: parseFloat(e.target.value) })}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"range\"",
+        "aria-label": "\"Gamma Visual\"",
+        "min": "{SETTINGS_LIMITS.gamma.min}",
+        "max": "{SETTINGS_LIMITS.gamma.max}",
+        "step": "{SETTINGS_LIMITS.gamma.step}",
+        "value": "{settings.gamma}",
+        "onChange": "{(e) => handleSliderChange({ gamma: parseFloat(e.target.value) })}",
+        "className": "\"w-full accent-brand cursor-pointer h-2 bg-line rounded-lg\""
+      }
+    },
+    {
+      "id": "C084",
+      "file": "src/features/baropodometry/HeatmapSettingsPanel.tsx",
+      "line": 234,
+      "tag": "TooltipTrigger",
+      "label": "\"Escala Máxima (VMAX)\"",
+      "type": "",
+      "handler": "{handleTooltipToggle}",
+      "disabled": "",
+      "attributes": {
+        "id": "\"vmax\"",
+        "title": "\"Escala Máxima (VMAX)\"",
+        "text": "\"Define qual valor relativo de ADC representa a intensidade máxima da escala. Diminuir aumenta o contraste. Aumentar reduz a saturação. Não altera os valores reais dos sensores.\"",
+        "activeId": "{activeTooltip}",
+        "onToggle": "{handleTooltipToggle}"
+      }
+    },
+    {
+      "id": "C085",
+      "file": "src/features/baropodometry/HeatmapSettingsPanel.tsx",
+      "line": 246,
+      "tag": "input",
+      "label": "\"Escala Máxima VMAX\"",
+      "type": "\"range\"",
+      "handler": "{(e) => handleSliderChange({ vmax: parseInt(e.target.value, 10) })}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"range\"",
+        "aria-label": "\"Escala Máxima VMAX\"",
+        "min": "{SETTINGS_LIMITS.vmax.min}",
+        "max": "{SETTINGS_LIMITS.vmax.max}",
+        "step": "{SETTINGS_LIMITS.vmax.step}",
+        "value": "{settings.vmax}",
+        "onChange": "{(e) => handleSliderChange({ vmax: parseInt(e.target.value, 10) })}",
+        "className": "\"w-full accent-brand cursor-pointer h-2 bg-line rounded-lg\""
+      }
+    },
+    {
+      "id": "C086",
+      "file": "src/features/baropodometry/HeatmapSettingsPanel.tsx",
+      "line": 263,
+      "tag": "TooltipTrigger",
+      "label": "\"Threshold (Limiar de Contato)\"",
+      "type": "",
+      "handler": "{handleTooltipToggle}",
+      "disabled": "",
+      "attributes": {
+        "id": "\"threshold\"",
+        "title": "\"Threshold (Limiar de Contato)\"",
+        "text": "\"Define o valor mínimo considerado como contato. Valores abaixo dele são tratados como ausência de contato. Também influencia a área de contato e o cálculo do Centro de Pressão.\"",
+        "activeId": "{activeTooltip}",
+        "onToggle": "{handleTooltipToggle}"
+      }
+    },
+    {
+      "id": "C087",
+      "file": "src/features/baropodometry/HeatmapSettingsPanel.tsx",
+      "line": 275,
+      "tag": "input",
+      "label": "\"Threshold de Contato\"",
+      "type": "\"range\"",
+      "handler": "{(e) => handleSliderChange({ threshold: parseInt(e.target.value, 10) })}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"range\"",
+        "aria-label": "\"Threshold de Contato\"",
+        "min": "{SETTINGS_LIMITS.threshold.min}",
+        "max": "{SETTINGS_LIMITS.threshold.max}",
+        "step": "{SETTINGS_LIMITS.threshold.step}",
+        "value": "{settings.threshold}",
+        "onChange": "{(e) => handleSliderChange({ threshold: parseInt(e.target.value, 10) })}",
+        "className": "\"w-full accent-brand cursor-pointer h-2 bg-line rounded-lg\""
+      }
+    },
+    {
+      "id": "C088",
+      "file": "src/features/baropodometry/HeatmapSettingsPanel.tsx",
+      "line": 292,
+      "tag": "TooltipTrigger",
+      "label": "\"Suavização / Bordas\"",
+      "type": "",
+      "handler": "{handleTooltipToggle}",
+      "disabled": "",
+      "attributes": {
+        "id": "\"smoothing\"",
+        "title": "\"Suavização / Bordas\"",
+        "text": "\"Controla o quanto a distribuição entre os sensores é suavizada. Valores baixos deixam as regiões mais definidas e com bordas nítidas. Valores altos deixam as transições mais suaves. Evite valores muito altos para não espalhar artificialmente a pressão.\"",
+        "activeId": "{activeTooltip}",
+        "onToggle": "{handleTooltipToggle}"
+      }
+    },
+    {
+      "id": "C089",
+      "file": "src/features/baropodometry/HeatmapSettingsPanel.tsx",
+      "line": 304,
+      "tag": "input",
+      "label": "\"Suavização de Bordas\"",
+      "type": "\"range\"",
+      "handler": "{(e) => handleSliderChange({ smoothing: parseFloat(e.target.value) })}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"range\"",
+        "aria-label": "\"Suavização de Bordas\"",
+        "min": "{SETTINGS_LIMITS.smoothing.min}",
+        "max": "{SETTINGS_LIMITS.smoothing.max}",
+        "step": "{SETTINGS_LIMITS.smoothing.step}",
+        "value": "{settings.smoothing}",
+        "onChange": "{(e) => handleSliderChange({ smoothing: parseFloat(e.target.value) })}",
+        "className": "\"w-full accent-brand cursor-pointer h-2 bg-line rounded-lg\""
+      }
+    },
+    {
+      "id": "C090",
+      "file": "src/features/baropodometry/HeatmapSettingsPanel.tsx",
+      "line": 321,
+      "tag": "TooltipTrigger",
+      "label": "\"Atualização Visual (FPS)\"",
+      "type": "",
+      "handler": "{handleTooltipToggle}",
+      "disabled": "",
+      "attributes": {
+        "id": "\"renderFps\"",
+        "title": "\"Atualização Visual (FPS)\"",
+        "text": "\"Define quantas vezes por segundo o mapa visual é redesenhado no Canvas. Isso não altera a taxa de aquisição serial do ESP32.\"",
+        "activeId": "{activeTooltip}",
+        "onToggle": "{handleTooltipToggle}"
+      }
+    },
+    {
+      "id": "C091",
+      "file": "src/features/baropodometry/HeatmapSettingsPanel.tsx",
+      "line": 333,
+      "tag": "input",
+      "label": "\"Atualização Visual FPS\"",
+      "type": "\"range\"",
+      "handler": "{(e) => handleSliderChange({ renderFps: parseInt(e.target.value, 10) })}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"range\"",
+        "aria-label": "\"Atualização Visual FPS\"",
+        "min": "{SETTINGS_LIMITS.renderFps.min}",
+        "max": "{SETTINGS_LIMITS.renderFps.max}",
+        "step": "{SETTINGS_LIMITS.renderFps.step}",
+        "value": "{settings.renderFps}",
+        "onChange": "{(e) => handleSliderChange({ renderFps: parseInt(e.target.value, 10) })}",
+        "className": "\"w-full accent-brand cursor-pointer h-2 bg-line rounded-lg\""
+      }
+    },
+    {
+      "id": "C092",
+      "file": "src/features/baropodometry/HeatmapSettingsPanel.tsx",
+      "line": 350,
+      "tag": "TooltipTrigger",
+      "label": "\"Resolução da Superfície\"",
+      "type": "",
+      "handler": "{handleTooltipToggle}",
+      "disabled": "",
+      "attributes": {
+        "id": "\"resolution\"",
+        "title": "\"Resolução da Superfície\"",
+        "text": "\"Define a resolução usada para interpolar e desenhar o mapa. Resoluções maiores deixam o mapa mais detalhado, mas podem consumir mais processamento.\"",
+        "activeId": "{activeTooltip}",
+        "onToggle": "{handleTooltipToggle}"
+      }
+    },
+    {
+      "id": "C093",
+      "file": "src/features/baropodometry/HeatmapSettingsPanel.tsx",
+      "line": 364,
+      "tag": "button",
+      "label": "{p.label}",
+      "type": "\"button\"",
+      "handler": "{() => handleSliderChange({ resolution: p.value })}",
+      "disabled": "",
+      "attributes": {
+        "key": "{p.value}",
+        "type": "\"button\"",
+        "onClick": "{() => handleSliderChange({ resolution: p.value })}",
+        "className": "{clsx( \"py-1.5 px-2 rounded-lg text-xs font-medium border text-center transition-all\", settings.resolution === p.value ? \"bg-brand/10 text-brand border-brand font-semibold shadow-sm\" : \"bg-surface border-line text-mute hover:text-foreground hover:bg-surface-hover\" )}"
+      }
+    },
+    {
+      "id": "C094",
+      "file": "src/features/baropodometry/HeatmapSettingsPanel.tsx",
+      "line": 385,
+      "tag": "TooltipTrigger",
+      "label": "\"Marcador de CoP\"",
+      "type": "",
+      "handler": "{handleTooltipToggle}",
+      "disabled": "",
+      "attributes": {
+        "id": "\"showCop\"",
+        "title": "\"Marcador de CoP\"",
+        "text": "\"Exibe o Centro de Pressão (baricentro de carga) em tempo real sobre a esteira de pressão.\"",
+        "activeId": "{activeTooltip}",
+        "onToggle": "{handleTooltipToggle}"
+      }
+    },
+    {
+      "id": "C095",
+      "file": "src/features/baropodometry/HeatmapSettingsPanel.tsx",
+      "line": 393,
+      "tag": "button",
+      "label": "{settings.showCop ? <Eye size={12} /> : <EyeOff size={12} />} {settings.showCop ? \"Visível\" : \"Oculto\"}",
+      "type": "\"button\"",
+      "handler": "{() => handleSliderChange({ showCop: !settings.showCop })}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{() => handleSliderChange({ showCop: !settings.showCop })}",
+        "className": "{clsx( \"h-7 px-2.5 rounded-lg text-xs font-medium border flex items-center gap-1.5 transition-colors\", settings.showCop ? \"bg-brand/10 text-brand border-brand/30\" : \"bg-surface-hover text-mute border-line\" )}"
+      }
+    },
+    {
+      "id": "C096",
+      "file": "src/features/baropodometry/HeatmapSettingsPanel.tsx",
+      "line": 411,
+      "tag": "button",
+      "label": "Restaurar padrão",
+      "type": "\"button\"",
+      "handler": "{handleReset}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{handleReset}",
+        "className": "\"text-xs text-mute hover:text-brand flex items-center gap-1.5 transition-colors py-1 px-2 rounded hover:bg-surface-hover\""
+      }
+    },
+    {
+      "id": "C097",
+      "file": "src/features/baropodometry/HeatmapSettingsPanel.tsx",
+      "line": 420,
+      "tag": "button",
+      "label": "Concluir",
+      "type": "\"button\"",
+      "handler": "{onClose}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{onClose}",
+        "className": "\"text-xs font-semibold px-3 py-1.5 rounded-lg bg-surface hover:bg-surface-hover border border-line text-foreground transition-colors\""
+      }
+    },
+    {
+      "id": "C098",
+      "file": "src/features/baropodometry/MetricsPanel.tsx",
+      "line": 165,
+      "tag": "button",
+      "label": "\"Informações sobre calibração\"",
+      "type": "\"button\"",
+      "handler": "{() => setShowInfo((v) => !v)}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "aria-label": "\"Informações sobre calibração\"",
+        "onClick": "{() => setShowInfo((v) => !v)}",
+        "className": "\"text-mute hover:text-brand transition-colors ml-1 p-0.5 rounded focus:outline-none\""
+      }
+    },
+    {
+      "id": "C099",
+      "file": "src/features/baropodometry/MetricsPanel.tsx",
+      "line": 185,
+      "tag": "button",
+      "label": "Fechar",
+      "type": "\"button\"",
+      "handler": "{() => setShowInfo(false)}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{() => setShowInfo(false)}",
+        "className": "\"text-brand font-semibold hover:underline\""
+      }
+    },
+    {
+      "id": "C100",
+      "file": "src/features/baropodometry/ParameterBar.tsx",
+      "line": 41,
+      "tag": "button",
+      "label": "{`Ajuda sobre ${title}`}",
+      "type": "\"button\"",
+      "handler": "{(e) => { e.stopPropagation(); onToggle(id); }}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "id": "{`param-tooltip-btn-${id}`}",
+        "aria-label": "{`Ajuda sobre ${title}`}",
+        "aria-expanded": "{isOpen}",
+        "onClick": "{(e) => { e.stopPropagation(); onToggle(id); }}",
+        "onKeyDown": "{(e) => { if (e.key === \"Escape\" && isOpen) onToggle(id); }}",
+        "aria-describedby": "{isOpen ? `param-tooltip-content-${id}` : undefined}",
+        "className": "{clsx( \"size-3.5 rounded-full flex items-center justify-center text-[9px] font-bold transition-colors ml-0.5 focus:outline-none focus:ring-1 focus:ring-brand\", isOpen ? \"bg-brand text-brand-fg ring-1 ring-brand\" : \"text-mute hover:text-foreground hover:bg-surface-hover\" )}"
+      }
+    },
+    {
+      "id": "C101",
+      "file": "src/features/baropodometry/ParameterBar.tsx",
+      "line": 134,
+      "tag": "MiniTooltip",
+      "label": "\"Threshold (Corte)\"",
+      "type": "",
+      "handler": "{handleTooltipToggle}",
+      "disabled": "",
+      "attributes": {
+        "id": "\"threshold\"",
+        "title": "\"Threshold (Corte)\"",
+        "text": "\"Define o valor mínimo de ADC para contato. Leituras abaixo deste limiar são ausência de carga. Afeta o CoP e a área de contato.\"",
+        "activeId": "{activeTooltip}",
+        "onToggle": "{handleTooltipToggle}"
+      }
+    },
+    {
+      "id": "C102",
+      "file": "src/features/baropodometry/ParameterBar.tsx",
+      "line": 146,
+      "tag": "input",
+      "label": "\"Threshold\"",
+      "type": "\"range\"",
+      "handler": "{(e) => handleSliderChange({ threshold: parseInt(e.target.value, 10) }) }",
+      "disabled": "",
+      "attributes": {
+        "type": "\"range\"",
+        "aria-label": "\"Threshold\"",
+        "min": "{SETTINGS_LIMITS.threshold.min}",
+        "max": "{SETTINGS_LIMITS.threshold.max}",
+        "step": "{SETTINGS_LIMITS.threshold.step}",
+        "value": "{settings.threshold}",
+        "onChange": "{(e) => handleSliderChange({ threshold: parseInt(e.target.value, 10) }) }",
+        "className": "\"w-full accent-brand cursor-pointer h-1.5 bg-line rounded-lg\""
+      }
+    },
+    {
+      "id": "C103",
+      "file": "src/features/baropodometry/ParameterBar.tsx",
+      "line": 165,
+      "tag": "MiniTooltip",
+      "label": "\"VMAX (Escala Máxima)\"",
+      "type": "",
+      "handler": "{handleTooltipToggle}",
+      "disabled": "",
+      "attributes": {
+        "id": "\"vmax\"",
+        "title": "\"VMAX (Escala Máxima)\"",
+        "text": "\"Valor ADC que atinge o vermelho máximo da escala térmica. Diminuir aumenta o contraste; aumentar reduz a saturação.\"",
+        "activeId": "{activeTooltip}",
+        "onToggle": "{handleTooltipToggle}"
+      }
+    },
+    {
+      "id": "C104",
+      "file": "src/features/baropodometry/ParameterBar.tsx",
+      "line": 177,
+      "tag": "input",
+      "label": "\"VMAX\"",
+      "type": "\"range\"",
+      "handler": "{(e) => handleSliderChange({ vmax: parseInt(e.target.value, 10) }) }",
+      "disabled": "",
+      "attributes": {
+        "type": "\"range\"",
+        "aria-label": "\"VMAX\"",
+        "min": "{SETTINGS_LIMITS.vmax.min}",
+        "max": "{SETTINGS_LIMITS.vmax.max}",
+        "step": "{SETTINGS_LIMITS.vmax.step}",
+        "value": "{settings.vmax}",
+        "onChange": "{(e) => handleSliderChange({ vmax: parseInt(e.target.value, 10) }) }",
+        "className": "\"w-full accent-brand cursor-pointer h-1.5 bg-line rounded-lg\""
+      }
+    },
+    {
+      "id": "C105",
+      "file": "src/features/baropodometry/ParameterBar.tsx",
+      "line": 196,
+      "tag": "MiniTooltip",
+      "label": "\"Gamma Visual\"",
+      "type": "",
+      "handler": "{handleTooltipToggle}",
+      "disabled": "",
+      "attributes": {
+        "id": "\"gamma\"",
+        "title": "\"Gamma Visual\"",
+        "text": "\"Controle não-linear do contraste visual (visual = normalizado ^ gamma). Não altera métricas numéricas nem o CoP.\"",
+        "activeId": "{activeTooltip}",
+        "onToggle": "{handleTooltipToggle}"
+      }
+    },
+    {
+      "id": "C106",
+      "file": "src/features/baropodometry/ParameterBar.tsx",
+      "line": 208,
+      "tag": "input",
+      "label": "\"Gamma\"",
+      "type": "\"range\"",
+      "handler": "{(e) => handleSliderChange({ gamma: parseFloat(e.target.value) }) }",
+      "disabled": "",
+      "attributes": {
+        "type": "\"range\"",
+        "aria-label": "\"Gamma\"",
+        "min": "{SETTINGS_LIMITS.gamma.min}",
+        "max": "{SETTINGS_LIMITS.gamma.max}",
+        "step": "{SETTINGS_LIMITS.gamma.step}",
+        "value": "{settings.gamma}",
+        "onChange": "{(e) => handleSliderChange({ gamma: parseFloat(e.target.value) }) }",
+        "className": "\"w-full accent-brand cursor-pointer h-1.5 bg-line rounded-lg\""
+      }
+    },
+    {
+      "id": "C107",
+      "file": "src/features/baropodometry/ParameterBar.tsx",
+      "line": 227,
+      "tag": "MiniTooltip",
+      "label": "\"Suavização / Bordas\"",
+      "type": "",
+      "handler": "{handleTooltipToggle}",
+      "disabled": "",
+      "attributes": {
+        "id": "\"smoothing\"",
+        "title": "\"Suavização / Bordas\"",
+        "text": "\"Controla o filtro binomial espacial. Em 0.00 as bordas são nítidas sem halos; em 1.00 as transições são aveludadas.\"",
+        "activeId": "{activeTooltip}",
+        "onToggle": "{handleTooltipToggle}"
+      }
+    },
+    {
+      "id": "C108",
+      "file": "src/features/baropodometry/ParameterBar.tsx",
+      "line": 239,
+      "tag": "input",
+      "label": "\"Suavização\"",
+      "type": "\"range\"",
+      "handler": "{(e) => handleSliderChange({ smoothing: parseFloat(e.target.value) }) }",
+      "disabled": "",
+      "attributes": {
+        "type": "\"range\"",
+        "aria-label": "\"Suavização\"",
+        "min": "{SETTINGS_LIMITS.smoothing.min}",
+        "max": "{SETTINGS_LIMITS.smoothing.max}",
+        "step": "{SETTINGS_LIMITS.smoothing.step}",
+        "value": "{settings.smoothing}",
+        "onChange": "{(e) => handleSliderChange({ smoothing: parseFloat(e.target.value) }) }",
+        "className": "\"w-full accent-brand cursor-pointer h-1.5 bg-line rounded-lg\""
+      }
+    },
+    {
+      "id": "C109",
+      "file": "src/features/baropodometry/ParameterBar.tsx",
+      "line": 258,
+      "tag": "MiniTooltip",
+      "label": "\"Atualização Visual\"",
+      "type": "",
+      "handler": "{handleTooltipToggle}",
+      "disabled": "",
+      "attributes": {
+        "id": "\"renderFps\"",
+        "title": "\"Atualização Visual\"",
+        "text": "\"Taxa de redesenho do Canvas em FPS. Não altera a frequência física de amostragem serial do ESP32.\"",
+        "activeId": "{activeTooltip}",
+        "onToggle": "{handleTooltipToggle}"
+      }
+    },
+    {
+      "id": "C110",
+      "file": "src/features/baropodometry/ParameterBar.tsx",
+      "line": 270,
+      "tag": "input",
+      "label": "\"Atualização Visual\"",
+      "type": "\"range\"",
+      "handler": "{(e) => handleSliderChange({ renderFps: parseInt(e.target.value, 10) }) }",
+      "disabled": "",
+      "attributes": {
+        "type": "\"range\"",
+        "aria-label": "\"Atualização Visual\"",
+        "min": "{SETTINGS_LIMITS.renderFps.min}",
+        "max": "{SETTINGS_LIMITS.renderFps.max}",
+        "step": "{SETTINGS_LIMITS.renderFps.step}",
+        "value": "{settings.renderFps}",
+        "onChange": "{(e) => handleSliderChange({ renderFps: parseInt(e.target.value, 10) }) }",
+        "className": "\"w-full accent-brand cursor-pointer h-1.5 bg-line rounded-lg\""
+      }
+    },
+    {
+      "id": "C111",
+      "file": "src/features/baropodometry/ParameterBar.tsx",
+      "line": 289,
+      "tag": "MiniTooltip",
+      "label": "\"Marcador de CoP\"",
+      "type": "",
+      "handler": "{handleTooltipToggle}",
+      "disabled": "",
+      "attributes": {
+        "id": "\"showCop\"",
+        "title": "\"Marcador de CoP\"",
+        "text": "\"Exibe o Centro de Pressão sobre a superfície do mapa em tempo real.\"",
+        "activeId": "{activeTooltip}",
+        "onToggle": "{handleTooltipToggle}"
+      }
+    },
+    {
+      "id": "C112",
+      "file": "src/features/baropodometry/ParameterBar.tsx",
+      "line": 301,
+      "tag": "button",
+      "label": "{settings.showCop ? \"Visível\" : \"Oculto\"}",
+      "type": "\"button\"",
+      "handler": "{() => handleSliderChange({ showCop: !settings.showCop })}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{() => handleSliderChange({ showCop: !settings.showCop })}",
+        "className": "{clsx( \"h-6 px-2 rounded-lg text-[11px] font-semibold border flex items-center justify-center gap-1 transition-colors w-full\", settings.showCop ? \"bg-brand/10 text-brand border-brand/40 hover:bg-brand/20\" : \"bg-surface-hover text-mute border-line hover:text-foreground\" )}"
+      }
+    },
+    {
+      "id": "C113",
+      "file": "src/features/baropodometry/ParameterBar.tsx",
+      "line": 318,
+      "tag": "button",
+      "label": "{ settings.mode === \"AUTO\" ? \"Modo Automático ativo (clique para fixar em Manual)\" : \"Modo Manual ativo (clique para ativar Automático)\" }",
+      "type": "\"button\"",
+      "handler": "{toggleMode}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{toggleMode}",
+        "className": "{clsx( \"h-7 px-2 rounded-lg text-[11px] font-semibold flex items-center gap-1 border transition-all flex-1 lg:flex-none justify-center\", settings.mode === \"AUTO\" ? \"bg-amber-500/10 text-amber-500 border-amber-500/30 hover:bg-amber-500/20\" : \"bg-surface border-line text-mute hover:text-foreground hover:bg-surface-hover\" )}",
+        "title": "{ settings.mode === \"AUTO\" ? \"Modo Automático ativo (clique para fixar em Manual)\" : \"Modo Manual ativo (clique para ativar Automático)\" }"
+      }
+    },
+    {
+      "id": "C114",
+      "file": "src/features/baropodometry/ParameterBar.tsx",
+      "line": 346,
+      "tag": "button",
+      "label": "\"Restaurar padrões de fábrica\"",
+      "type": "\"button\"",
+      "handler": "{handleReset}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{handleReset}",
+        "className": "\"size-7 rounded-lg border border-line text-mute hover:text-brand hover:bg-surface-hover grid place-items-center transition-colors\"",
+        "title": "\"Restaurar padrões de fábrica\""
+      }
+    },
+    {
+      "id": "C115",
+      "file": "src/features/comparison/ComparisonPage.tsx",
+      "line": 112,
+      "tag": "select",
+      "label": "\"Paciente para comparação\"",
+      "type": "",
+      "handler": "{(e) => setPatientId(Number(e.target.value))}",
+      "disabled": "{busy}",
+      "attributes": {
+        "aria-label": "\"Paciente para comparação\"",
+        "disabled": "{busy}",
+        "value": "{patientId}",
+        "onChange": "{(e) => setPatientId(Number(e.target.value))}",
+        "className": "\"block w-full max-w-xl border border-line rounded-lg p-2 bg-surface\""
+      }
+    },
+    {
+      "id": "C116",
+      "file": "src/features/comparison/ComparisonPage.tsx",
+      "line": 113,
+      "tag": "input",
+      "label": "input",
+      "type": "\"checkbox\"",
+      "handler": "{() => { setIds((prev) => prev.includes(e.id) ? prev.filter((id) => id !== e.id) : [...prev, e.id]); setExams([]); }}",
+      "disabled": "{busy || (!ids.includes(e.id) && ids.length >= 4)}",
+      "attributes": {
+        "type": "\"checkbox\"",
+        "checked": "{ids.includes(e.id)}",
+        "disabled": "{busy || (!ids.includes(e.id) && ids.length >= 4)}",
+        "onChange": "{() => { setIds((prev) => prev.includes(e.id) ? prev.filter((id) => id !== e.id) : [...prev, e.id]); setExams([]); }}"
+      }
+    },
+    {
+      "id": "C117",
+      "file": "src/features/comparison/ComparisonPage.tsx",
+      "line": 115,
+      "tag": "Button",
+      "label": "{busy ? \"Carregando...\" : `Comparar ${ids.length} exames`}",
+      "type": "",
+      "handler": "{compare}",
+      "disabled": "{busy || ids.length < 2}",
+      "attributes": {
+        "onClick": "{compare}",
+        "disabled": "{busy || ids.length < 2}"
+      }
+    },
+    {
+      "id": "C118",
+      "file": "src/features/comparison/ComparisonPage.tsx",
+      "line": 118,
+      "tag": "input",
+      "label": "input",
+      "type": "\"checkbox\"",
+      "handler": "{(e) => setCommonScale(e.target.checked)}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"checkbox\"",
+        "checked": "{commonScale}",
+        "onChange": "{(e) => setCommonScale(e.target.checked)}"
+      }
+    },
+    {
+      "id": "C119",
+      "file": "src/features/exams/CancelExamDialog.tsx",
+      "line": 39,
+      "tag": "button",
+      "label": "Continuar exame",
+      "type": "\"button\"",
+      "handler": "{onClose}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{onClose}",
+        "className": "\"px-4 py-2 rounded-xl text-sm font-medium border border-line bg-surface hover:bg-surface-hover text-foreground transition-colors\""
+      }
+    },
+    {
+      "id": "C120",
+      "file": "src/features/exams/CancelExamDialog.tsx",
+      "line": 46,
+      "tag": "button",
+      "label": "Cancelar exame",
+      "type": "\"button\"",
+      "handler": "{onConfirm}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{onConfirm}",
+        "className": "\"px-4 py-2 rounded-xl text-sm font-semibold bg-rose-500/15 text-rose-500 hover:bg-rose-500/25 border border-rose-500/30 transition-colors\""
+      }
+    },
+    {
+      "id": "C121",
+      "file": "src/features/exams/ExamDetailsModal.tsx",
+      "line": 135,
+      "tag": "button",
+      "label": "\"Fechar\"",
+      "type": "\"button\"",
+      "handler": "{onClose}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{onClose}",
+        "className": "\"size-8 rounded-lg grid place-items-center text-mute hover:text-foreground hover:bg-line/50 transition-colors\"",
+        "title": "\"Fechar\""
+      }
+    },
+    {
+      "id": "C122",
+      "file": "src/features/exams/ExamDetailsModal.tsx",
+      "line": 318,
+      "tag": "button",
+      "label": "\"Emitir relatório em padrão A4, exportar PDF e imprimir\"",
+      "type": "\"button\"",
+      "handler": "{() => { if (exam?.id) { openReport(exam.id); onClose(); } }}",
+      "disabled": "{!exam}",
+      "attributes": {
+        "type": "\"button\"",
+        "disabled": "{!exam}",
+        "onClick": "{() => { if (exam?.id) { openReport(exam.id); onClose(); } }}",
+        "title": "\"Emitir relatório em padrão A4, exportar PDF e imprimir\"",
+        "className": "\"px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-sky-500/15 hover:bg-sky-500/25 text-sky-400 border border-sky-500/30 flex items-center gap-1.5 transition-colors disabled:opacity-50\""
+      }
+    },
+    {
+      "id": "C123",
+      "file": "src/features/exams/ExamDetailsModal.tsx",
+      "line": 333,
+      "tag": "button",
+      "label": "Fechar",
+      "type": "\"button\"",
+      "handler": "{onClose}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{onClose}",
+        "className": "\"px-4 py-1.5 rounded-lg text-xs font-semibold bg-brand text-brand-fg hover:opacity-90 transition-opacity\""
+      }
+    },
+    {
+      "id": "C124",
+      "file": "src/features/exams/ExamExportActions.tsx",
+      "line": 38,
+      "tag": "Button",
+      "label": "CSV da matriz média",
+      "type": "",
+      "handler": "{() => run('csv')}",
+      "disabled": "",
+      "attributes": {
+        "variant": "\"ghost\"",
+        "onClick": "{() => run('csv')}"
+      }
+    },
+    {
+      "id": "C125",
+      "file": "src/features/exams/ExamExportActions.tsx",
+      "line": 38,
+      "tag": "Button",
+      "label": "Imagem PNG",
+      "type": "",
+      "handler": "{() => run('png')}",
+      "disabled": "",
+      "attributes": {
+        "variant": "\"ghost\"",
+        "onClick": "{() => run('png')}"
+      }
+    },
+    {
+      "id": "C126",
+      "file": "src/features/exams/ExamExportActions.tsx",
+      "line": 38,
+      "tag": "Button",
+      "label": "Dados processados JSON",
+      "type": "",
+      "handler": "{() => run('json')}",
+      "disabled": "",
+      "attributes": {
+        "variant": "\"ghost\"",
+        "onClick": "{() => run('json')}"
+      }
+    },
+    {
+      "id": "C127",
+      "file": "src/features/exams/ExamSettingsTab.tsx",
+      "line": 36,
+      "tag": "button",
+      "label": "{isStarting ? \"Conectando...\" : status.acquiring ? \"Prévia ao vivo ativa\" : \"Ativar prévia ao vivo\"}",
+      "type": "\"button\"",
+      "handler": "{() => { void startPreview().catch(() => {}); }}",
+      "disabled": "{isStarting || status.acquiring}",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{() => { void startPreview().catch(() => {}); }}",
+        "disabled": "{isStarting || status.acquiring}",
+        "className": "\"px-3 py-2 rounded-lg bg-brand text-brand-fg text-xs font-semibold disabled:opacity-50\""
+      }
+    },
+    {
+      "id": "C128",
+      "file": "src/features/exams/ExamSettingsTab.tsx",
+      "line": 40,
+      "tag": "button",
+      "label": "{tareState.isZeroing ? `Tara: ${tareState.zeroingProgress}%` : \"Zerar tara\"}",
+      "type": "\"button\"",
+      "handler": "{startZeroing}",
+      "disabled": "{!status.acquiring || tareState.isZeroing || isStarting}",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{startZeroing}",
+        "disabled": "{!status.acquiring || tareState.isZeroing || isStarting}",
+        "className": "\"px-3 py-2 rounded-lg border border-line text-xs disabled:opacity-50\""
+      }
+    },
+    {
+      "id": "C129",
+      "file": "src/features/exams/ExamSettingsTab.tsx",
+      "line": 44,
+      "tag": "button",
+      "label": "Tara {tareState.active ? \"ativada\" : \"desativada\"}",
+      "type": "\"button\"",
+      "handler": "{toggleTareActive}",
+      "disabled": "{tareState.isZeroing || isStarting || !tareState.baseline}",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{toggleTareActive}",
+        "disabled": "{tareState.isZeroing || isStarting || !tareState.baseline}",
+        "className": "\"px-3 py-2 rounded-lg border border-line text-xs disabled:opacity-50\""
+      }
+    },
+    {
+      "id": "C130",
+      "file": "src/features/exams/ExamsPage.tsx",
+      "line": 53,
+      "tag": "button",
+      "label": "\"Atualizar lista de exames\"",
+      "type": "\"button\"",
+      "handler": "{() => setRevision((r)=>r+1)}",
+      "disabled": "{loading}",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{() => setRevision((r)=>r+1)}",
+        "disabled": "{loading}",
+        "className": "\"size-9 rounded-xl border border-line bg-surface hover:bg-surface-hover grid place-items-center text-mute hover:text-foreground transition-colors\"",
+        "title": "\"Atualizar lista de exames\""
+      }
+    },
+    {
+      "id": "C131",
+      "file": "src/features/exams/ExamsPage.tsx",
+      "line": 63,
+      "tag": "button",
+      "label": "Novo Exame",
+      "type": "\"button\"",
+      "handler": "{() => go(\"new-exam\")}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{() => go(\"new-exam\")}",
+        "className": "\"h-9 px-4 rounded-xl text-xs font-semibold bg-brand text-brand-fg hover:opacity-90 flex items-center gap-1.5 shadow-xs transition-opacity\""
+      }
+    },
+    {
+      "id": "C132",
+      "file": "src/features/exams/ExamsPage.tsx",
+      "line": 79,
+      "tag": "input",
+      "label": "\"Pesquisar por paciente ou CPF...\"",
+      "type": "\"text\"",
+      "handler": "{(e) => setSearch(e.target.value)}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"text\"",
+        "placeholder": "\"Pesquisar por paciente ou CPF...\"",
+        "value": "{search}",
+        "onChange": "{(e) => setSearch(e.target.value)}",
+        "className": "\"w-full pl-10 pr-4 py-2 rounded-xl bg-surface border border-line text-sm text-foreground focus:outline-none focus:border-brand shadow-xs\""
+      }
+    },
+    {
+      "id": "C133",
+      "file": "src/features/exams/ExamsPage.tsx",
+      "line": 130,
+      "tag": "button",
+      "label": "Realizar Primeiro Exame",
+      "type": "\"button\"",
+      "handler": "{() => go(\"new-exam\")}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{() => go(\"new-exam\")}",
+        "className": "\"px-4 py-2 rounded-xl text-xs font-semibold bg-brand text-brand-fg hover:opacity-90 inline-flex items-center gap-1.5\""
+      }
+    },
+    {
+      "id": "C134",
+      "file": "src/features/exams/ExamsPage.tsx",
+      "line": 220,
+      "tag": "button",
+      "label": "\"Visualizar mapa de calor e resultados\"",
+      "type": "\"button\"",
+      "handler": "{() => setSelectedExamId(exam.id)}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{() => setSelectedExamId(exam.id)}",
+        "className": "\"px-2.5 py-1 rounded-lg text-xs font-semibold bg-brand/10 hover:bg-brand/20 text-brand border border-brand/20 flex items-center gap-1 transition-colors\"",
+        "title": "\"Visualizar mapa de calor e resultados\""
+      }
+    },
+    {
+      "id": "C135",
+      "file": "src/features/exams/ExamsPage.tsx",
+      "line": 230,
+      "tag": "button",
+      "label": "\"Emitir relatório em PDF e impressão\"",
+      "type": "\"button\"",
+      "handler": "{() => openReport(exam.id)}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{() => openReport(exam.id)}",
+        "className": "\"px-2.5 py-1 rounded-lg text-xs font-semibold bg-sky-500/10 hover:bg-sky-500/20 text-sky-400 border border-sky-500/25 flex items-center gap-1 transition-colors\"",
+        "title": "\"Emitir relatório em PDF e impressão\""
+      }
+    },
+    {
+      "id": "C136",
+      "file": "src/features/exams/ExamsPage.tsx",
+      "line": 240,
+      "tag": "button",
+      "label": "\"Comparar exames deste paciente\"",
+      "type": "\"button\"",
+      "handler": "{() => openComparison(exam.patientId)}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{() => openComparison(exam.patientId)}",
+        "className": "\"p-1 rounded-lg text-brand hover:bg-brand/10\"",
+        "title": "\"Comparar exames deste paciente\""
+      }
+    },
+    {
+      "id": "C137",
+      "file": "src/features/exams/NewExamPage.tsx",
+      "line": 73,
+      "tag": "button",
+      "label": "Recarregar pacientes",
+      "type": "\"button\"",
+      "handler": "{() => setPatientsRevision((r) => r + 1)}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "className": "\"underline\"",
+        "onClick": "{() => setPatientsRevision((r) => r + 1)}"
+      }
+    },
+    {
+      "id": "C138",
+      "file": "src/features/exams/NewExamPage.tsx",
+      "line": 77,
+      "tag": "button",
+      "label": "\"Voltar para a lista de exames\"",
+      "type": "\"button\"",
+      "handler": "{() => { if (examStore.isSaving) return; if (examStore.step === \"ACQUIRING\" || examStore.step === \"PREPARING\" || examStore.isStarting) { examStore.openCancelModal(); } else { go(\"exams\"); } }}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{() => { if (examStore.isSaving) return; if (examStore.step === \"ACQUIRING\" || examStore.step === \"PREPARING\" || examStore.isStarting) { examStore.openCancelModal(); } else { go(\"exams\"); } }}",
+        "className": "\"size-8 rounded-lg grid place-items-center hover:bg-line/50 text-mute hover:text-foreground transition-colors\"",
+        "title": "\"Voltar para a lista de exames\""
+      }
+    },
+    {
+      "id": "C139",
+      "file": "src/features/exams/NewExamPage.tsx",
+      "line": 123,
+      "tag": "button",
+      "label": "Tentar novamente",
+      "type": "\"button\"",
+      "handler": "{() => { if (examStore.step === \"RESULT\") void examStore.saveExam().catch(() => {}); else if (examStore.selectedPatient) void examStore.startPreview().catch(() => {}); }}",
+      "disabled": "{examStore.isSaving || examStore.isStarting}",
+      "attributes": {
+        "type": "\"button\"",
+        "disabled": "{examStore.isSaving || examStore.isStarting}",
+        "onClick": "{() => { if (examStore.step === \"RESULT\") void examStore.saveExam().catch(() => {}); else if (examStore.selectedPatient) void examStore.startPreview().catch(() => {}); }}",
+        "className": "\"text-xs underline hover:opacity-80\""
+      }
+    },
+    {
+      "id": "C140",
+      "file": "src/features/exams/NewExamPage.tsx",
+      "line": 152,
+      "tag": "input",
+      "label": "\"Pesquisar por nome ou CPF...\"",
+      "type": "\"text\"",
+      "handler": "{(e) => setSearch(e.target.value)}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"text\"",
+        "placeholder": "\"Pesquisar por nome ou CPF...\"",
+        "value": "{search}",
+        "onChange": "{(e) => setSearch(e.target.value)}",
+        "className": "\"w-full pl-10 pr-4 py-2.5 rounded-xl bg-surface border border-line text-sm text-foreground focus:outline-none focus:border-brand shadow-xs\"",
+        "autoFocus": "true"
+      }
+    },
+    {
+      "id": "C141",
+      "file": "src/features/exams/NewExamPage.tsx",
+      "line": 196,
+      "tag": "button",
+      "label": "Selecionar",
+      "type": "\"button\"",
+      "handler": "",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "className": "\"px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-brand text-brand-fg group-hover:opacity-100 opacity-90 transition-opacity\""
+      }
+    },
+    {
+      "id": "C142",
+      "file": "src/features/exams/NewExamPage.tsx",
+      "line": 216,
+      "tag": "button",
+      "label": "{label}",
+      "type": "\"button\"",
+      "handler": "{() => setConfirmTab(id)}",
+      "disabled": "",
+      "attributes": {
+        "key": "{id}",
+        "type": "\"button\"",
+        "role": "\"tab\"",
+        "id": "{`exam-tab-${id}`}",
+        "aria-controls": "{`exam-panel-${id}`}",
+        "aria-selected": "{confirmTab === id}",
+        "onClick": "{() => setConfirmTab(id)}",
+        "className": "{clsx(\"px-4 py-2 rounded-xl text-sm font-semibold\", confirmTab === id ? \"bg-brand text-brand-fg\" : \"text-mute hover:bg-surface-hover\")}"
+      }
+    },
+    {
+      "id": "C143",
+      "file": "src/features/exams/NewExamPage.tsx",
+      "line": 238,
+      "tag": "button",
+      "label": "Trocar paciente",
+      "type": "\"button\"",
+      "handler": "{examStore.clearPatient}",
+      "disabled": "{examStore.isStarting}",
+      "attributes": {
+        "type": "\"button\"",
+        "disabled": "{examStore.isStarting}",
+        "onClick": "{examStore.clearPatient}",
+        "className": "\"text-xs text-mute hover:text-foreground underline\""
+      }
+    },
+    {
+      "id": "C144",
+      "file": "src/features/exams/NewExamPage.tsx",
+      "line": 285,
+      "tag": "button",
+      "label": "{sec} s",
+      "type": "\"button\"",
+      "handler": "{() => examStore.setDurationSeconds(sec)}",
+      "disabled": "",
+      "attributes": {
+        "key": "{sec}",
+        "type": "\"button\"",
+        "onClick": "{() => examStore.setDurationSeconds(sec)}",
+        "className": "{clsx( \"px-2.5 py-1 rounded-lg text-xs font-semibold border transition-colors\", examStore.durationSeconds === sec ? \"bg-brand text-brand-fg border-brand\" : \"bg-surface border-line text-mute hover:text-foreground\" )}"
+      }
+    },
+    {
+      "id": "C145",
+      "file": "src/features/exams/NewExamPage.tsx",
+      "line": 303,
+      "tag": "button",
+      "label": "Regular Gamma, VMAX e visualização antes do exame",
+      "type": "\"button\"",
+      "handler": "{() => setConfirmTab(\"settings\")}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{() => setConfirmTab(\"settings\")}",
+        "className": "\"text-sm text-brand underline\""
+      }
+    },
+    {
+      "id": "C146",
+      "file": "src/features/exams/NewExamPage.tsx",
+      "line": 311,
+      "tag": "button",
+      "label": "Cancelar",
+      "type": "\"button\"",
+      "handler": "{examStore.clearPatient}",
+      "disabled": "{examStore.isStarting}",
+      "attributes": {
+        "type": "\"button\"",
+        "disabled": "{examStore.isStarting}",
+        "onClick": "{examStore.clearPatient}",
+        "className": "\"px-4 py-2 rounded-xl text-sm font-medium border border-line bg-surface hover:bg-surface-hover transition-colors\""
+      }
+    },
+    {
+      "id": "C147",
+      "file": "src/features/exams/NewExamPage.tsx",
+      "line": 319,
+      "tag": "button",
+      "label": "{examStore.isStarting ? \"Conectando dispositivo...\" : \"Iniciar Exame\"}",
+      "type": "\"button\"",
+      "handler": "{examStore.startPreparation}",
+      "disabled": "{examStore.isStarting || acqStore.tareState.isZeroing}",
+      "attributes": {
+        "type": "\"button\"",
+        "disabled": "{examStore.isStarting || acqStore.tareState.isZeroing}",
+        "onClick": "{examStore.startPreparation}",
+        "className": "\"px-5 py-2 rounded-xl text-sm font-semibold bg-brand text-brand-fg hover:opacity-90 flex items-center gap-2 shadow-xs transition-opacity\""
+      }
+    },
+    {
+      "id": "C148",
+      "file": "src/features/exams/NewExamPage.tsx",
+      "line": 379,
+      "tag": "button",
+      "label": "Cancelar Exame",
+      "type": "\"button\"",
+      "handler": "{examStore.openCancelModal}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{examStore.openCancelModal}",
+        "className": "\"px-4 py-2 rounded-xl text-xs font-semibold text-mute hover:text-foreground border border-line\""
+      }
+    },
+    {
+      "id": "C149",
+      "file": "src/features/exams/NewExamPage.tsx",
+      "line": 386,
+      "tag": "button",
+      "label": "Pular e Iniciar Agora",
+      "type": "\"button\"",
+      "handler": "{examStore.startAcquisition}",
+      "disabled": "{examStore.isStarting}",
+      "attributes": {
+        "type": "\"button\"",
+        "disabled": "{examStore.isStarting}",
+        "onClick": "{examStore.startAcquisition}",
+        "className": "\"px-5 py-2 rounded-xl text-xs font-bold bg-brand text-brand-fg hover:opacity-90 flex items-center gap-1.5\""
+      }
+    },
+    {
+      "id": "C150",
+      "file": "src/features/exams/NewExamPage.tsx",
+      "line": 493,
+      "tag": "button",
+      "label": "Cancelar Exame (Descartar Coleta)",
+      "type": "\"button\"",
+      "handler": "{examStore.openCancelModal}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{examStore.openCancelModal}",
+        "className": "\"w-full py-2.5 rounded-xl text-xs font-semibold text-rose-500 bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/25 transition-colors\""
+      }
+    },
+    {
+      "id": "C151",
+      "file": "src/features/exams/NewExamPage.tsx",
+      "line": 626,
+      "tag": "button",
+      "label": "{examStore.isSaving ? \"Salvando no banco...\" : \"Salvar Exame no Banco\"}",
+      "type": "\"button\"",
+      "handler": "{() => { void examStore.saveExam().catch(() => {}); }}",
+      "disabled": "{examStore.isSaving}",
+      "attributes": {
+        "type": "\"button\"",
+        "disabled": "{examStore.isSaving}",
+        "onClick": "{() => { void examStore.saveExam().catch(() => {}); }}",
+        "className": "\"w-full py-2.5 rounded-xl text-sm font-bold bg-brand text-brand-fg hover:opacity-90 flex items-center justify-center gap-2 shadow-xs transition-opacity disabled:opacity-50\""
+      }
+    },
+    {
+      "id": "C152",
+      "file": "src/features/exams/NewExamPage.tsx",
+      "line": 636,
+      "tag": "button",
+      "label": "Repetir Aquisição",
+      "type": "\"button\"",
+      "handler": "{examStore.startPreparation}",
+      "disabled": "{examStore.isSaving}",
+      "attributes": {
+        "type": "\"button\"",
+        "disabled": "{examStore.isSaving}",
+        "onClick": "{examStore.startPreparation}",
+        "className": "\"flex-1 py-1.5 rounded-xl text-xs font-medium border border-line bg-surface hover:bg-surface-hover text-mute hover:text-foreground flex items-center justify-center gap-1.5\""
+      }
+    },
+    {
+      "id": "C153",
+      "file": "src/features/exams/NewExamPage.tsx",
+      "line": 645,
+      "tag": "button",
+      "label": "Descartar",
+      "type": "\"button\"",
+      "handler": "{examStore.resetExam}",
+      "disabled": "{examStore.isSaving}",
+      "attributes": {
+        "type": "\"button\"",
+        "disabled": "{examStore.isSaving}",
+        "onClick": "{examStore.resetExam}",
+        "className": "\"py-1.5 px-3 rounded-xl text-xs font-medium text-rose-400 hover:bg-rose-500/10\""
+      }
+    },
+    {
+      "id": "C154",
+      "file": "src/features/exams/NewExamPage.tsx",
+      "line": 700,
+      "tag": "button",
+      "label": "Visualizar Exame Salvo",
+      "type": "\"button\"",
+      "handler": "{() => setInspectModalOpen(true)}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{() => setInspectModalOpen(true)}",
+        "className": "\"w-full py-2.5 rounded-xl text-sm font-semibold bg-brand text-brand-fg hover:opacity-90 transition-opacity\""
+      }
+    },
+    {
+      "id": "C155",
+      "file": "src/features/exams/NewExamPage.tsx",
+      "line": 708,
+      "tag": "button",
+      "label": "Novo Exame",
+      "type": "\"button\"",
+      "handler": "{examStore.resetExam}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{examStore.resetExam}",
+        "className": "\"flex-1 py-2 rounded-xl text-xs font-semibold border border-line bg-surface hover:bg-surface-hover transition-colors\""
+      }
+    },
+    {
+      "id": "C156",
+      "file": "src/features/exams/NewExamPage.tsx",
+      "line": 715,
+      "tag": "button",
+      "label": "Lista de Exames",
+      "type": "\"button\"",
+      "handler": "{() => go(\"exams\")}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{() => go(\"exams\")}",
+        "className": "\"flex-1 py-2 rounded-xl text-xs font-semibold border border-line bg-surface hover:bg-surface-hover transition-colors\""
+      }
+    },
+    {
+      "id": "C157",
+      "file": "src/features/logs/LogsPage.tsx",
+      "line": 31,
+      "tag": "select",
+      "label": "\"Nível dos logs\"",
+      "type": "",
+      "handler": "{(e) => setLevel(e.target.value)}",
+      "disabled": "",
+      "attributes": {
+        "aria-label": "\"Nível dos logs\"",
+        "className": "\"p-2 border border-line bg-surface rounded-lg\"",
+        "value": "{level}",
+        "onChange": "{(e) => setLevel(e.target.value)}"
+      }
+    },
+    {
+      "id": "C158",
+      "file": "src/features/logs/LogsPage.tsx",
+      "line": 31,
+      "tag": "Button",
+      "label": "Atualizar",
+      "type": "",
+      "handler": "{() => setRevision((r) => r + 1)}",
+      "disabled": "{loading}",
+      "attributes": {
+        "variant": "\"ghost\"",
+        "disabled": "{loading}",
+        "onClick": "{() => setRevision((r) => r + 1)}"
+      }
+    },
+    {
+      "id": "C159",
+      "file": "src/features/logs/LogsPage.tsx",
+      "line": 31,
+      "tag": "Button",
+      "label": "Exportar eventos exibidos",
+      "type": "",
+      "handler": "{() => downloadTextFile(JSON.stringify(logs, null, 2), 'BAROPRESS_logs.json')}",
+      "disabled": "{!logs.length || loading}",
+      "attributes": {
+        "variant": "\"ghost\"",
+        "disabled": "{!logs.length || loading}",
+        "onClick": "{() => downloadTextFile(JSON.stringify(logs, null, 2), 'BAROPRESS_logs.json')}"
+      }
+    },
+    {
+      "id": "C160",
+      "file": "src/features/logs/LogsPage.tsx",
+      "line": 31,
+      "tag": "summary",
+      "label": "Aquisição nesta sessão ( {acquisition.length} )",
+      "type": "",
+      "handler": "",
+      "disabled": "",
+      "attributes": {
+        "className": "\"cursor-pointer\""
+      }
+    },
+    {
+      "id": "C161",
+      "file": "src/features/patients/PatientCareHistory.tsx",
+      "line": 26,
+      "tag": "summary",
+      "label": "Consultas ( {appointments.length} )",
+      "type": "",
+      "handler": "",
+      "disabled": "",
+      "attributes": {
+        "className": "\"cursor-pointer\""
+      }
+    },
+    {
+      "id": "C162",
+      "file": "src/features/patients/PatientDetails.tsx",
+      "line": 122,
+      "tag": "Button",
+      "label": "Voltar para a lista",
+      "type": "",
+      "handler": "{onBack}",
+      "disabled": "",
+      "attributes": {
+        "variant": "\"ghost\"",
+        "onClick": "{onBack}",
+        "className": "\"flex items-center gap-2 mx-auto\""
+      }
+    },
+    {
+      "id": "C163",
+      "file": "src/features/patients/PatientDetails.tsx",
+      "line": 137,
+      "tag": "button",
+      "label": "Voltar para lista de pacientes",
+      "type": "\"button\"",
+      "handler": "{onBack}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{onBack}",
+        "className": "\"inline-flex items-center gap-2 text-sm text-mute hover:text-ink transition-colors w-fit\""
+      }
+    },
+    {
+      "id": "C164",
+      "file": "src/features/patients/PatientDetails.tsx",
+      "line": 147,
+      "tag": "Button",
+      "label": "Editar cadastro",
+      "type": "",
+      "handler": "{() => onEdit(patient.id)}",
+      "disabled": "",
+      "attributes": {
+        "variant": "\"ghost\"",
+        "onClick": "{() => onEdit(patient.id)}",
+        "className": "\"flex items-center gap-1.5\""
+      }
+    },
+    {
+      "id": "C165",
+      "file": "src/features/patients/PatientDetails.tsx",
+      "line": 156,
+      "tag": "Button",
+      "label": "Arquivar paciente",
+      "type": "",
+      "handler": "{() => setConfirmArchive(true)}",
+      "disabled": "",
+      "attributes": {
+        "variant": "\"ghost\"",
+        "onClick": "{() => setConfirmArchive(true)}",
+        "className": "\"flex items-center gap-1.5 text-rose-600 dark:text-rose-400 hover:bg-rose-500/10 hover:border-rose-500/30\""
+      }
+    },
+    {
+      "id": "C166",
+      "file": "src/features/patients/PatientDetails.tsx",
+      "line": 378,
+      "tag": "Button",
+      "label": "Comparar e ver evolução",
+      "type": "",
+      "handler": "{() => openComparison(patientId)}",
+      "disabled": "{exams.filter((e) => e.status === \"completed\").length < 2}",
+      "attributes": {
+        "variant": "\"ghost\"",
+        "disabled": "{exams.filter((e) => e.status === \"completed\").length < 2}",
+        "onClick": "{() => openComparison(patientId)}"
+      }
+    },
+    {
+      "id": "C167",
+      "file": "src/features/patients/PatientDetails.tsx",
+      "line": 448,
+      "tag": "button",
+      "label": "Visualizar",
+      "type": "\"button\"",
+      "handler": "{() => setSelectedExamId(exam.id)}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{() => setSelectedExamId(exam.id)}",
+        "className": "\"px-2.5 py-1 rounded-lg text-xs font-semibold bg-brand/10 hover:bg-brand/20 text-brand border border-brand/20 inline-flex items-center gap-1 transition-colors\""
+      }
+    },
+    {
+      "id": "C168",
+      "file": "src/features/patients/PatientDetails.tsx",
+      "line": 496,
+      "tag": "Button",
+      "label": "Cancelar",
+      "type": "",
+      "handler": "{() => setConfirmArchive(false)}",
+      "disabled": "{archiving}",
+      "attributes": {
+        "variant": "\"ghost\"",
+        "onClick": "{() => setConfirmArchive(false)}",
+        "disabled": "{archiving}"
+      }
+    },
+    {
+      "id": "C169",
+      "file": "src/features/patients/PatientDetails.tsx",
+      "line": 503,
+      "tag": "Button",
+      "label": "{archiving ? \"Arquivando…\" : \"Arquivar\"}",
+      "type": "",
+      "handler": "{handleArchiveConfirm}",
+      "disabled": "{archiving}",
+      "attributes": {
+        "onClick": "{handleArchiveConfirm}",
+        "disabled": "{archiving}",
+        "className": "\"bg-rose-600 hover:bg-rose-700 text-white\""
+      }
+    },
+    {
+      "id": "C170",
+      "file": "src/features/patients/PatientForm.tsx",
+      "line": 145,
+      "tag": "button",
+      "label": "\"Voltar para a lista\"",
+      "type": "\"button\"",
+      "handler": "{onCancel}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{onCancel}",
+        "aria-label": "\"Voltar para a lista\"",
+        "className": "\"size-9 rounded-lg border border-line hover:bg-line/40 grid place-items-center text-mute hover:text-ink transition-colors\""
+      }
+    },
+    {
+      "id": "C171",
+      "file": "src/features/patients/PatientForm.tsx",
+      "line": 166,
+      "tag": "Button",
+      "label": "Cancelar",
+      "type": "",
+      "handler": "{onCancel}",
+      "disabled": "{busy}",
+      "attributes": {
+        "variant": "\"ghost\"",
+        "onClick": "{onCancel}",
+        "disabled": "{busy}"
+      }
+    },
+    {
+      "id": "C172",
+      "file": "src/features/patients/PatientForm.tsx",
+      "line": 169,
+      "tag": "Button",
+      "label": "{busy ? \"Salvando…\" : isEditing ? \"Salvar alterações\" : \"Salvar paciente\"}",
+      "type": "",
+      "handler": "{handleSubmit}",
+      "disabled": "{busy}",
+      "attributes": {
+        "onClick": "{handleSubmit}",
+        "disabled": "{busy}",
+        "className": "\"flex items-center gap-2 shadow-sm\""
+      }
+    },
+    {
+      "id": "C173",
+      "file": "src/features/patients/PatientForm.tsx",
+      "line": 208,
+      "tag": "input",
+      "label": "\"Ex: João Silva de Alencar\"",
+      "type": "\"text\"",
+      "handler": "{(e) => { setName(e.target.value); if (fieldErrors.name) setFieldErrors((p) => ({ ...p, name: \"\" })); }}",
+      "disabled": "",
+      "attributes": {
+        "id": "\"patient-name\"",
+        "type": "\"text\"",
+        "required": "true",
+        "value": "{name}",
+        "onChange": "{(e) => { setName(e.target.value); if (fieldErrors.name) setFieldErrors((p) => ({ ...p, name: \"\" })); }}",
+        "placeholder": "\"Ex: João Silva de Alencar\"",
+        "aria-invalid": "{Boolean(fieldErrors.name)}",
+        "aria-describedby": "{fieldErrors.name ? \"patient-name-err\" : undefined}",
+        "className": "\"w-full h-10 px-3 rounded-lg border border-line bg-surface text-sm placeholder:text-mute focus:border-brand transition-colors\""
+      }
+    },
+    {
+      "id": "C174",
+      "file": "src/features/patients/PatientForm.tsx",
+      "line": 233,
+      "tag": "input",
+      "label": "\"Opcional\"",
+      "type": "\"text\"",
+      "handler": "{(e) => setSocialName(e.target.value)}",
+      "disabled": "",
+      "attributes": {
+        "id": "\"patient-social-name\"",
+        "type": "\"text\"",
+        "value": "{socialName}",
+        "onChange": "{(e) => setSocialName(e.target.value)}",
+        "placeholder": "\"Opcional\"",
+        "className": "\"w-full h-10 px-3 rounded-lg border border-line bg-surface text-sm placeholder:text-mute focus:border-brand transition-colors\""
+      }
+    },
+    {
+      "id": "C175",
+      "file": "src/features/patients/PatientForm.tsx",
+      "line": 248,
+      "tag": "input",
+      "label": "\"patient-birth\"",
+      "type": "\"date\"",
+      "handler": "{(e) => setBirthDate(e.target.value)}",
+      "disabled": "",
+      "attributes": {
+        "id": "\"patient-birth\"",
+        "type": "\"date\"",
+        "value": "{birthDate}",
+        "onChange": "{(e) => setBirthDate(e.target.value)}",
+        "className": "\"w-full h-10 px-3 rounded-lg border border-line bg-surface text-sm placeholder:text-mute focus:border-brand transition-colors\""
+      }
+    },
+    {
+      "id": "C176",
+      "file": "src/features/patients/PatientForm.tsx",
+      "line": 261,
+      "tag": "select",
+      "label": "Selecione… Masculino Feminino Outro Não informado",
+      "type": "",
+      "handler": "{(e) => setSex(e.target.value)}",
+      "disabled": "",
+      "attributes": {
+        "id": "\"patient-sex\"",
+        "value": "{sex}",
+        "onChange": "{(e) => setSex(e.target.value)}",
+        "className": "\"w-full h-10 px-3 rounded-lg border border-line bg-surface text-sm focus:border-brand transition-colors\""
+      }
+    },
+    {
+      "id": "C177",
+      "file": "src/features/patients/PatientForm.tsx",
+      "line": 290,
+      "tag": "input",
+      "label": "\"000.000.000-00\"",
+      "type": "\"text\"",
+      "handler": "{handleCpfChange}",
+      "disabled": "",
+      "attributes": {
+        "id": "\"patient-cpf\"",
+        "type": "\"text\"",
+        "inputMode": "\"numeric\"",
+        "value": "{cpf}",
+        "onChange": "{handleCpfChange}",
+        "placeholder": "\"000.000.000-00\"",
+        "maxLength": "{14}",
+        "aria-invalid": "{Boolean(fieldErrors.cpf)}",
+        "aria-describedby": "{fieldErrors.cpf ? \"patient-cpf-err\" : undefined}",
+        "className": "\"w-full h-10 px-3 rounded-lg border border-line bg-surface text-sm placeholder:text-mute focus:border-brand transition-colors font-mono\""
+      }
+    },
+    {
+      "id": "C178",
+      "file": "src/features/patients/PatientForm.tsx",
+      "line": 313,
+      "tag": "input",
+      "label": "\"(00) 00000-0000\"",
+      "type": "\"tel\"",
+      "handler": "{handlePhoneChange}",
+      "disabled": "",
+      "attributes": {
+        "id": "\"patient-phone\"",
+        "type": "\"tel\"",
+        "value": "{phone}",
+        "onChange": "{handlePhoneChange}",
+        "placeholder": "\"(00) 00000-0000\"",
+        "maxLength": "{15}",
+        "className": "\"w-full h-10 px-3 rounded-lg border border-line bg-surface text-sm placeholder:text-mute focus:border-brand transition-colors font-mono\""
+      }
+    },
+    {
+      "id": "C179",
+      "file": "src/features/patients/PatientForm.tsx",
+      "line": 328,
+      "tag": "input",
+      "label": "\"paciente@exemplo.com\"",
+      "type": "\"email\"",
+      "handler": "{(e) => { setEmail(e.target.value); if (fieldErrors.email) setFieldErrors((p) => ({ ...p, email: \"\" })); }}",
+      "disabled": "",
+      "attributes": {
+        "id": "\"patient-email\"",
+        "type": "\"email\"",
+        "value": "{email}",
+        "onChange": "{(e) => { setEmail(e.target.value); if (fieldErrors.email) setFieldErrors((p) => ({ ...p, email: \"\" })); }}",
+        "placeholder": "\"paciente@exemplo.com\"",
+        "aria-invalid": "{Boolean(fieldErrors.email)}",
+        "aria-describedby": "{fieldErrors.email ? \"patient-email-err\" : undefined}",
+        "className": "\"w-full h-10 px-3 rounded-lg border border-line bg-surface text-sm placeholder:text-mute focus:border-brand transition-colors\""
+      }
+    },
+    {
+      "id": "C180",
+      "file": "src/features/patients/PatientForm.tsx",
+      "line": 364,
+      "tag": "input",
+      "label": "\"Ex: 175\"",
+      "type": "\"number\"",
+      "handler": "{(e) => { setHeight(e.target.value); if (fieldErrors.height) setFieldErrors((p) => ({ ...p, height: \"\" })); }}",
+      "disabled": "",
+      "attributes": {
+        "id": "\"patient-height\"",
+        "type": "\"number\"",
+        "step": "\"any\"",
+        "min": "\"30\"",
+        "max": "\"260\"",
+        "value": "{height}",
+        "onChange": "{(e) => { setHeight(e.target.value); if (fieldErrors.height) setFieldErrors((p) => ({ ...p, height: \"\" })); }}",
+        "placeholder": "\"Ex: 175\"",
+        "aria-invalid": "{Boolean(fieldErrors.height)}",
+        "aria-describedby": "{fieldErrors.height ? \"patient-height-err\" : undefined}",
+        "className": "\"w-full h-10 px-3 rounded-lg border border-line bg-surface text-sm placeholder:text-mute focus:border-brand transition-colors tabular-nums\""
+      }
+    },
+    {
+      "id": "C181",
+      "file": "src/features/patients/PatientForm.tsx",
+      "line": 391,
+      "tag": "input",
+      "label": "\"Ex: 72.5\"",
+      "type": "\"number\"",
+      "handler": "{(e) => { setWeight(e.target.value); if (fieldErrors.weight) setFieldErrors((p) => ({ ...p, weight: \"\" })); }}",
+      "disabled": "",
+      "attributes": {
+        "id": "\"patient-weight\"",
+        "type": "\"number\"",
+        "step": "\"any\"",
+        "min": "\"1\"",
+        "max": "\"350\"",
+        "value": "{weight}",
+        "onChange": "{(e) => { setWeight(e.target.value); if (fieldErrors.weight) setFieldErrors((p) => ({ ...p, weight: \"\" })); }}",
+        "placeholder": "\"Ex: 72.5\"",
+        "aria-invalid": "{Boolean(fieldErrors.weight)}",
+        "aria-describedby": "{fieldErrors.weight ? \"patient-weight-err\" : undefined}",
+        "className": "\"w-full h-10 px-3 rounded-lg border border-line bg-surface text-sm placeholder:text-mute focus:border-brand transition-colors tabular-nums\""
+      }
+    },
+    {
+      "id": "C182",
+      "file": "src/features/patients/PatientForm.tsx",
+      "line": 418,
+      "tag": "input",
+      "label": "\"Ex: 40\"",
+      "type": "\"number\"",
+      "handler": "{(e) => { setShoeSize(e.target.value); if (fieldErrors.shoeSize) setFieldErrors((p) => ({ ...p, shoeSize: \"\" })); }}",
+      "disabled": "",
+      "attributes": {
+        "id": "\"patient-shoesize\"",
+        "type": "\"number\"",
+        "step": "\"any\"",
+        "min": "\"15\"",
+        "max": "\"55\"",
+        "value": "{shoeSize}",
+        "onChange": "{(e) => { setShoeSize(e.target.value); if (fieldErrors.shoeSize) setFieldErrors((p) => ({ ...p, shoeSize: \"\" })); }}",
+        "placeholder": "\"Ex: 40\"",
+        "aria-invalid": "{Boolean(fieldErrors.shoeSize)}",
+        "aria-describedby": "{fieldErrors.shoeSize ? \"patient-shoesize-err\" : undefined}",
+        "className": "\"w-full h-10 px-3 rounded-lg border border-line bg-surface text-sm placeholder:text-mute focus:border-brand transition-colors tabular-nums\""
+      }
+    },
+    {
+      "id": "C183",
+      "file": "src/features/patients/PatientForm.tsx",
+      "line": 445,
+      "tag": "input",
+      "label": "\"Ex: Professor\"",
+      "type": "\"text\"",
+      "handler": "{(e) => setProfession(e.target.value)}",
+      "disabled": "",
+      "attributes": {
+        "id": "\"patient-profession\"",
+        "type": "\"text\"",
+        "value": "{profession}",
+        "onChange": "{(e) => setProfession(e.target.value)}",
+        "placeholder": "\"Ex: Professor\"",
+        "className": "\"w-full h-10 px-3 rounded-lg border border-line bg-surface text-sm placeholder:text-mute focus:border-brand transition-colors\""
+      }
+    },
+    {
+      "id": "C184",
+      "file": "src/features/patients/PatientForm.tsx",
+      "line": 468,
+      "tag": "input",
+      "label": "\"Rua, número, complemento, bairro, cidade - UF\"",
+      "type": "\"text\"",
+      "handler": "{(e) => setAddress(e.target.value)}",
+      "disabled": "",
+      "attributes": {
+        "id": "\"patient-address\"",
+        "type": "\"text\"",
+        "value": "{address}",
+        "onChange": "{(e) => setAddress(e.target.value)}",
+        "placeholder": "\"Rua, número, complemento, bairro, cidade - UF\"",
+        "className": "\"w-full h-10 px-3 rounded-lg border border-line bg-surface text-sm placeholder:text-mute focus:border-brand transition-colors\""
+      }
+    },
+    {
+      "id": "C185",
+      "file": "src/features/patients/PatientForm.tsx",
+      "line": 482,
+      "tag": "textarea",
+      "label": "\"Anotações sobre queixas de dor, calosidades, cirurgias prévias ou objetivos da avaliação baropodométrica…\"",
+      "type": "",
+      "handler": "{(e) => setObservations(e.target.value)}",
+      "disabled": "",
+      "attributes": {
+        "id": "\"patient-obs\"",
+        "rows": "{4}",
+        "value": "{observations}",
+        "onChange": "{(e) => setObservations(e.target.value)}",
+        "placeholder": "\"Anotações sobre queixas de dor, calosidades, cirurgias prévias ou objetivos da avaliação baropodométrica…\"",
+        "className": "\"w-full p-3 rounded-lg border border-line bg-surface text-sm placeholder:text-mute focus:border-brand transition-colors resize-y\""
+      }
+    },
+    {
+      "id": "C186",
+      "file": "src/features/patients/PatientForm.tsx",
+      "line": 496,
+      "tag": "Button",
+      "label": "Cancelar",
+      "type": "\"button\"",
+      "handler": "{onCancel}",
+      "disabled": "{busy}",
+      "attributes": {
+        "variant": "\"ghost\"",
+        "type": "\"button\"",
+        "onClick": "{onCancel}",
+        "disabled": "{busy}"
+      }
+    },
+    {
+      "id": "C187",
+      "file": "src/features/patients/PatientForm.tsx",
+      "line": 499,
+      "tag": "Button",
+      "label": "{busy ? \"Salvando…\" : isEditing ? \"Salvar alterações\" : \"Cadastrar paciente\"}",
+      "type": "\"submit\"",
+      "handler": "",
+      "disabled": "{busy}",
+      "attributes": {
+        "type": "\"submit\"",
+        "disabled": "{busy}",
+        "className": "\"flex items-center gap-2 shadow-sm\""
+      }
+    },
+    {
+      "id": "C188",
+      "file": "src/features/patients/PatientList.tsx",
+      "line": 46,
+      "tag": "input",
+      "label": "\"Buscar por nome, CPF ou telefone…\"",
+      "type": "\"search\"",
+      "handler": "{(e) => onSearchChange(e.target.value)}",
+      "disabled": "",
+      "attributes": {
+        "id": "{searchInputId}",
+        "type": "\"search\"",
+        "value": "{search}",
+        "onChange": "{(e) => onSearchChange(e.target.value)}",
+        "placeholder": "\"Buscar por nome, CPF ou telefone…\"",
+        "className": "\"w-full h-10 pl-10 pr-9 rounded-lg border border-line bg-surface text-sm placeholder:text-mute focus:border-brand transition-colors\""
+      }
+    },
+    {
+      "id": "C189",
+      "file": "src/features/patients/PatientList.tsx",
+      "line": 55,
+      "tag": "button",
+      "label": "\"Limpar busca\"",
+      "type": "\"button\"",
+      "handler": "{() => onSearchChange(\"\")}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{() => onSearchChange(\"\")}",
+        "aria-label": "\"Limpar busca\"",
+        "className": "\"absolute right-3 top-1/2 -translate-y-1/2 text-mute hover:text-ink p-0.5 rounded\""
+      }
+    },
+    {
+      "id": "C190",
+      "file": "src/features/patients/PatientList.tsx",
+      "line": 67,
+      "tag": "Button",
+      "label": "Novo paciente",
+      "type": "",
+      "handler": "{onNewPatient}",
+      "disabled": "",
+      "attributes": {
+        "onClick": "{onNewPatient}",
+        "className": "\"flex items-center justify-center gap-2 shrink-0 shadow-sm\""
+      }
+    },
+    {
+      "id": "C191",
+      "file": "src/features/patients/PatientList.tsx",
+      "line": 86,
+      "tag": "Button",
+      "label": "Tentar novamente",
+      "type": "",
+      "handler": "{onRetry}",
+      "disabled": "",
+      "attributes": {
+        "variant": "\"ghost\"",
+        "onClick": "{onRetry}",
+        "className": "\"h-8 px-3 text-xs\""
+      }
+    },
+    {
+      "id": "C192",
+      "file": "src/features/patients/PatientList.tsx",
+      "line": 129,
+      "tag": "Button",
+      "label": "Cadastrar paciente",
+      "type": "",
+      "handler": "{onNewPatient}",
+      "disabled": "",
+      "attributes": {
+        "onClick": "{onNewPatient}",
+        "className": "\"flex items-center gap-2 mx-auto\""
+      }
+    },
+    {
+      "id": "C193",
+      "file": "src/features/patients/PatientList.tsx",
+      "line": 148,
+      "tag": "Button",
+      "label": "Limpar busca",
+      "type": "",
+      "handler": "{() => onSearchChange(\"\")}",
+      "disabled": "",
+      "attributes": {
+        "variant": "\"ghost\"",
+        "onClick": "{() => onSearchChange(\"\")}",
+        "className": "\"text-xs\""
+      }
+    },
+    {
+      "id": "C194",
+      "file": "src/features/patients/PatientList.tsx",
+      "line": 236,
+      "tag": "button",
+      "label": "{`Visualizar paciente ${p.name}`}",
+      "type": "\"button\"",
+      "handler": "{() => onSelectPatient(p.id)}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{() => onSelectPatient(p.id)}",
+        "className": "\"h-8 px-2.5 rounded-lg border border-line hover:bg-line/40 text-xs font-medium text-ink flex items-center gap-1.5 transition-colors\"",
+        "title": "\"Visualizar prontuário\"",
+        "aria-label": "{`Visualizar paciente ${p.name}`}"
+      }
+    },
+    {
+      "id": "C195",
+      "file": "src/features/patients/PatientList.tsx",
+      "line": 246,
+      "tag": "button",
+      "label": "{`Editar paciente ${p.name}`}",
+      "type": "\"button\"",
+      "handler": "{() => onEditPatient(p.id)}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{() => onEditPatient(p.id)}",
+        "className": "\"h-8 px-2.5 rounded-lg border border-line hover:bg-line/40 text-xs font-medium text-ink flex items-center gap-1.5 transition-colors\"",
+        "title": "\"Editar paciente\"",
+        "aria-label": "{`Editar paciente ${p.name}`}"
+      }
+    },
+    {
+      "id": "C196",
+      "file": "src/features/patients/PatientsPage.tsx",
+      "line": 98,
+      "tag": "button",
+      "label": "\"Fechar notificação\"",
+      "type": "\"button\"",
+      "handler": "{() => setNotification(null)}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{() => setNotification(null)}",
+        "className": "\"ml-2 hover:opacity-80 p-0.5 rounded\"",
+        "aria-label": "\"Fechar notificação\""
+      }
+    },
+    {
+      "id": "C197",
+      "file": "src/features/questionnaires/QuestionnaireHistory.tsx",
+      "line": 7,
+      "tag": "summary",
+      "label": "{s.questionnaire.name} · {formatDateTime(s.answeredAt)}",
+      "type": "",
+      "handler": "",
+      "disabled": "",
+      "attributes": {
+        "className": "\"cursor-pointer font-medium\""
+      }
+    },
+    {
+      "id": "C198",
+      "file": "src/features/questionnaires/QuestionnairesPage.tsx",
+      "line": 102,
+      "tag": "Button",
+      "label": "Novo modelo",
+      "type": "",
+      "handler": "{() => { setEditor({ id: null, name: '', description: '', active: true, questions: [blankQuestion()] }); setError(''); setMessage(''); }}",
+      "disabled": "{busy}",
+      "attributes": {
+        "disabled": "{busy}",
+        "onClick": "{() => { setEditor({ id: null, name: '', description: '', active: true, questions: [blankQuestion()] }); setError(''); setMessage(''); }}"
+      }
+    },
+    {
+      "id": "C199",
+      "file": "src/features/questionnaires/QuestionnairesPage.tsx",
+      "line": 105,
+      "tag": "Field",
+      "label": "\"Nome do questionário\"",
+      "type": "",
+      "handler": "{(e) => setEditor({ ...editor, name: e.target.value })}",
+      "disabled": "{busy}",
+      "attributes": {
+        "label": "\"Nome do questionário\"",
+        "required": "true",
+        "maxLength": "{120}",
+        "disabled": "{busy}",
+        "value": "{editor.name}",
+        "onChange": "{(e) => setEditor({ ...editor, name: e.target.value })}"
+      }
+    },
+    {
+      "id": "C200",
+      "file": "src/features/questionnaires/QuestionnairesPage.tsx",
+      "line": 105,
+      "tag": "Field",
+      "label": "\"Descrição\"",
+      "type": "",
+      "handler": "{(e) => setEditor({ ...editor, description: e.target.value })}",
+      "disabled": "{busy}",
+      "attributes": {
+        "label": "\"Descrição\"",
+        "maxLength": "{5000}",
+        "disabled": "{busy}",
+        "value": "{editor.description ?? ''}",
+        "onChange": "{(e) => setEditor({ ...editor, description: e.target.value })}"
+      }
+    },
+    {
+      "id": "C201",
+      "file": "src/features/questionnaires/QuestionnairesPage.tsx",
+      "line": 105,
+      "tag": "input",
+      "label": "input",
+      "type": "\"checkbox\"",
+      "handler": "{(e) => setEditor({ ...editor, active: e.target.checked })}",
+      "disabled": "{busy}",
+      "attributes": {
+        "type": "\"checkbox\"",
+        "disabled": "{busy}",
+        "checked": "{editor.active}",
+        "onChange": "{(e) => setEditor({ ...editor, active: e.target.checked })}"
+      }
+    },
+    {
+      "id": "C202",
+      "file": "src/features/questionnaires/QuestionnairesPage.tsx",
+      "line": 106,
+      "tag": "input",
+      "label": "input",
+      "type": "",
+      "handler": "{(e) => updateQuestion(index, { groupName: e.target.value })}",
+      "disabled": "{busy}",
+      "attributes": {
+        "className": "{control}",
+        "disabled": "{busy}",
+        "maxLength": "{120}",
+        "required": "true",
+        "value": "{q.groupName}",
+        "onChange": "{(e) => updateQuestion(index, { groupName: e.target.value })}"
+      }
+    },
+    {
+      "id": "C203",
+      "file": "src/features/questionnaires/QuestionnairesPage.tsx",
+      "line": 106,
+      "tag": "select",
+      "label": "{Object.entries(questionTypes).map(([id, label]) => <option key={id} value={id}>{label}</option>)}",
+      "type": "",
+      "handler": "{(e) => updateQuestion(index, { type: e.target.value as Question['type'] })}",
+      "disabled": "{busy}",
+      "attributes": {
+        "className": "{control}",
+        "disabled": "{busy}",
+        "value": "{q.type}",
+        "onChange": "{(e) => updateQuestion(index, { type: e.target.value as Question['type'] })}"
+      }
+    },
+    {
+      "id": "C204",
+      "file": "src/features/questionnaires/QuestionnairesPage.tsx",
+      "line": 106,
+      "tag": "input",
+      "label": "input",
+      "type": "",
+      "handler": "{(e) => updateQuestion(index, { question: e.target.value })}",
+      "disabled": "{busy}",
+      "attributes": {
+        "className": "{control}",
+        "required": "true",
+        "disabled": "{busy}",
+        "maxLength": "{2000}",
+        "value": "{q.question}",
+        "onChange": "{(e) => updateQuestion(index, { question: e.target.value })}"
+      }
+    },
+    {
+      "id": "C205",
+      "file": "src/features/questionnaires/QuestionnairesPage.tsx",
+      "line": 107,
+      "tag": "textarea",
+      "label": "textarea",
+      "type": "",
+      "handler": "{(e) => updateQuestion(index, { options: e.target.value.split('\\n') })}",
+      "disabled": "{busy}",
+      "attributes": {
+        "className": "{control}",
+        "disabled": "{busy}",
+        "value": "{q.options.join('\\n')}",
+        "onChange": "{(e) => updateQuestion(index, { options: e.target.value.split('\\n') })}"
+      }
+    },
+    {
+      "id": "C206",
+      "file": "src/features/questionnaires/QuestionnairesPage.tsx",
+      "line": 108,
+      "tag": "input",
+      "label": "input",
+      "type": "\"checkbox\"",
+      "handler": "{(e) => updateQuestion(index, { required: e.target.checked })}",
+      "disabled": "{busy}",
+      "attributes": {
+        "disabled": "{busy}",
+        "type": "\"checkbox\"",
+        "checked": "{q.required}",
+        "onChange": "{(e) => updateQuestion(index, { required: e.target.checked })}"
+      }
+    },
+    {
+      "id": "C207",
+      "file": "src/features/questionnaires/QuestionnairesPage.tsx",
+      "line": 108,
+      "tag": "input",
+      "label": "input",
+      "type": "\"checkbox\"",
+      "handler": "{(e) => updateQuestion(index, { active: e.target.checked })}",
+      "disabled": "{busy}",
+      "attributes": {
+        "disabled": "{busy}",
+        "type": "\"checkbox\"",
+        "checked": "{q.active}",
+        "onChange": "{(e) => updateQuestion(index, { active: e.target.checked })}"
+      }
+    },
+    {
+      "id": "C208",
+      "file": "src/features/questionnaires/QuestionnairesPage.tsx",
+      "line": 108,
+      "tag": "Button",
+      "label": "Remover do modelo",
+      "type": "\"button\"",
+      "handler": "{() => setEditor({ ...editor, questions: editor.questions.filter((_, i) => i !== index) })}",
+      "disabled": "{busy || editor.questions.length <= 1}",
+      "attributes": {
+        "type": "\"button\"",
+        "variant": "\"ghost\"",
+        "disabled": "{busy || editor.questions.length <= 1}",
+        "onClick": "{() => setEditor({ ...editor, questions: editor.questions.filter((_, i) => i !== index) })}"
+      }
+    },
+    {
+      "id": "C209",
+      "file": "src/features/questionnaires/QuestionnairesPage.tsx",
+      "line": 109,
+      "tag": "Button",
+      "label": "Adicionar pergunta",
+      "type": "\"button\"",
+      "handler": "{() => setEditor({ ...editor, questions: [...editor.questions, blankQuestion()] })}",
+      "disabled": "{busy || editor.questions.length >= 200}",
+      "attributes": {
+        "type": "\"button\"",
+        "variant": "\"ghost\"",
+        "disabled": "{busy || editor.questions.length >= 200}",
+        "onClick": "{() => setEditor({ ...editor, questions: [...editor.questions, blankQuestion()] })}"
+      }
+    },
+    {
+      "id": "C210",
+      "file": "src/features/questionnaires/QuestionnairesPage.tsx",
+      "line": 109,
+      "tag": "Button",
+      "label": "Cancelar",
+      "type": "\"button\"",
+      "handler": "{() => setEditor(null)}",
+      "disabled": "{busy}",
+      "attributes": {
+        "type": "\"button\"",
+        "variant": "\"ghost\"",
+        "disabled": "{busy}",
+        "onClick": "{() => setEditor(null)}"
+      }
+    },
+    {
+      "id": "C211",
+      "file": "src/features/questionnaires/QuestionnairesPage.tsx",
+      "line": 109,
+      "tag": "Button",
+      "label": "{busy ? 'Salvando...' : 'Salvar modelo'}",
+      "type": "\"submit\"",
+      "handler": "",
+      "disabled": "{busy}",
+      "attributes": {
+        "type": "\"submit\"",
+        "disabled": "{busy}"
+      }
+    },
+    {
+      "id": "C212",
+      "file": "src/features/questionnaires/QuestionnairesPage.tsx",
+      "line": 111,
+      "tag": "Button",
+      "label": "Editar",
+      "type": "",
+      "handler": "{() => { setEditor(structuredClone(q)); setError(''); setMessage(''); }}",
+      "disabled": "{busy}",
+      "attributes": {
+        "variant": "\"ghost\"",
+        "disabled": "{busy}",
+        "onClick": "{() => { setEditor(structuredClone(q)); setError(''); setMessage(''); }}"
+      }
+    },
+    {
+      "id": "C213",
+      "file": "src/features/questionnaires/QuestionnairesPage.tsx",
+      "line": 111,
+      "tag": "Button",
+      "label": "Responder",
+      "type": "",
+      "handler": "{() => { setSelected(q); setAnswers({}); setError(''); setMessage(''); }}",
+      "disabled": "{!q.active || busy || !q.questions.some((p) => p.active)}",
+      "attributes": {
+        "disabled": "{!q.active || busy || !q.questions.some((p) => p.active)}",
+        "onClick": "{() => { setSelected(q); setAnswers({}); setError(''); setMessage(''); }}"
+      }
+    },
+    {
+      "id": "C214",
+      "file": "src/features/questionnaires/QuestionnairesPage.tsx",
+      "line": 112,
+      "tag": "select",
+      "label": "\"Paciente do questionário\"",
+      "type": "",
+      "handler": "{(e) => { setPatientId(Number(e.target.value)); setMessage(''); }}",
+      "disabled": "{busy}",
+      "attributes": {
+        "aria-label": "\"Paciente do questionário\"",
+        "className": "{control}",
+        "disabled": "{busy}",
+        "value": "{patientId}",
+        "onChange": "{(e) => { setPatientId(Number(e.target.value)); setMessage(''); }}"
+      }
+    },
+    {
+      "id": "C215",
+      "file": "src/features/questionnaires/QuestionnairesPage.tsx",
+      "line": 118,
+      "tag": "textarea",
+      "label": "{`answer-${id}`}",
+      "type": "",
+      "handler": "{(e) => setAnswers({ ...answers, [id]: e.target.value })}",
+      "disabled": "{busy}",
+      "attributes": {
+        "id": "{`answer-${id}`}",
+        "className": "{control}",
+        "disabled": "{busy}",
+        "required": "{q.required}",
+        "maxLength": "{10000}",
+        "value": "{typeof value === 'string' ? value : ''}",
+        "onChange": "{(e) => setAnswers({ ...answers, [id]: e.target.value })}"
+      }
+    },
+    {
+      "id": "C216",
+      "file": "src/features/questionnaires/QuestionnairesPage.tsx",
+      "line": 118,
+      "tag": "input",
+      "label": "{`answer-${id}`}",
+      "type": "\"number\"",
+      "handler": "{(e) => setAnswers({ ...answers, [id]: e.target.value === '' ? null : Number(e.target.value) })}",
+      "disabled": "{busy}",
+      "attributes": {
+        "id": "{`answer-${id}`}",
+        "className": "{control}",
+        "type": "\"number\"",
+        "step": "\"any\"",
+        "disabled": "{busy}",
+        "required": "{q.required}",
+        "value": "{typeof value === 'number' ? value : ''}",
+        "onChange": "{(e) => setAnswers({ ...answers, [id]: e.target.value === '' ? null : Number(e.target.value) })}"
+      }
+    },
+    {
+      "id": "C217",
+      "file": "src/features/questionnaires/QuestionnairesPage.tsx",
+      "line": 118,
+      "tag": "select",
+      "label": "Selecione {q.type === 'yesno' ? <><option value=\"true\">Sim</option><option value=\"false\">Não</option></> : q.options.map((o) => <option key={o} value={o}>{o}</option>)}",
+      "type": "",
+      "handler": "{(e) => setAnswers({ ...answers, [id]: e.target.value === '' ? null : q.type === 'yesno' ? e.target.value === 'true' : e.target.value })}",
+      "disabled": "{busy}",
+      "attributes": {
+        "id": "{`answer-${id}`}",
+        "className": "{control}",
+        "required": "{q.required}",
+        "disabled": "{busy}",
+        "value": "{value == null ? '' : String(value)}",
+        "onChange": "{(e) => setAnswers({ ...answers, [id]: e.target.value === '' ? null : q.type === 'yesno' ? e.target.value === 'true' : e.target.value })}"
+      }
+    },
+    {
+      "id": "C218",
+      "file": "src/features/questionnaires/QuestionnairesPage.tsx",
+      "line": 118,
+      "tag": "input",
+      "label": "input",
+      "type": "\"checkbox\"",
+      "handler": "{() => { const prev = Array.isArray(value) ? value : []; setAnswers({ ...answers, [id]: prev.includes(o) ? prev.filter((v) => v !== o) : [...prev, o] }); }}",
+      "disabled": "{busy}",
+      "attributes": {
+        "type": "\"checkbox\"",
+        "disabled": "{busy}",
+        "checked": "{Array.isArray(value) && value.includes(o)}",
+        "onChange": "{() => { const prev = Array.isArray(value) ? value : []; setAnswers({ ...answers, [id]: prev.includes(o) ? prev.filter((v) => v !== o) : [...prev, o] }); }}"
+      }
+    },
+    {
+      "id": "C219",
+      "file": "src/features/questionnaires/QuestionnairesPage.tsx",
+      "line": 120,
+      "tag": "Button",
+      "label": "Cancelar",
+      "type": "\"button\"",
+      "handler": "{() => setSelected(null)}",
+      "disabled": "{busy}",
+      "attributes": {
+        "type": "\"button\"",
+        "variant": "\"ghost\"",
+        "disabled": "{busy}",
+        "onClick": "{() => setSelected(null)}"
+      }
+    },
+    {
+      "id": "C220",
+      "file": "src/features/questionnaires/QuestionnairesPage.tsx",
+      "line": 120,
+      "tag": "Button",
+      "label": "{busy ? 'Salvando...' : 'Salvar respostas'}",
+      "type": "\"submit\"",
+      "handler": "",
+      "disabled": "{busy || !patientId}",
+      "attributes": {
+        "type": "\"submit\"",
+        "disabled": "{busy || !patientId}"
+      }
+    },
+    {
+      "id": "C221",
+      "file": "src/features/reports/ReportsPage.tsx",
+      "line": 112,
+      "tag": "button",
+      "label": "\"Atualizar lista de exames\"",
+      "type": "\"button\"",
+      "handler": "{() => fetchExams(search)}",
+      "disabled": "{loading}",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{() => fetchExams(search)}",
+        "disabled": "{loading}",
+        "className": "\"size-9 rounded-xl border border-line bg-surface hover:bg-surface-hover grid place-items-center text-mute hover:text-foreground transition-colors self-start sm:self-auto\"",
+        "title": "\"Atualizar lista de exames\""
+      }
+    },
+    {
+      "id": "C222",
+      "file": "src/features/reports/ReportsPage.tsx",
+      "line": 133,
+      "tag": "input",
+      "label": "\"Pesquisar por paciente ou CPF...\"",
+      "type": "\"text\"",
+      "handler": "{(e) => setSearch(e.target.value)}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"text\"",
+        "placeholder": "\"Pesquisar por paciente ou CPF...\"",
+        "value": "{search}",
+        "onChange": "{(e) => setSearch(e.target.value)}",
+        "className": "\"w-full pl-10 pr-4 py-2 rounded-xl bg-surface border border-line text-sm text-foreground focus:outline-none focus:border-brand shadow-xs\""
+      }
+    },
+    {
+      "id": "C223",
+      "file": "src/features/reports/ReportsPage.tsx",
+      "line": 243,
+      "tag": "button",
+      "label": "Visualizar relatório",
+      "type": "\"button\"",
+      "handler": "{() => handleSelectExam(item.id)}",
+      "disabled": "{loadingExam}",
+      "attributes": {
+        "type": "\"button\"",
+        "disabled": "{loadingExam}",
+        "onClick": "{() => handleSelectExam(item.id)}",
+        "className": "\"px-3 py-1.5 rounded-lg text-xs font-semibold bg-brand/10 hover:bg-brand/20 text-brand border border-brand/25 inline-flex items-center gap-1.5 transition-colors disabled:opacity-50\""
+      }
+    },
+    {
+      "id": "C224",
+      "file": "src/features/reports/ReportViewer.tsx",
+      "line": 97,
+      "tag": "button",
+      "label": "\"Voltar para a listagem\"",
+      "type": "\"button\"",
+      "handler": "{onBack}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{onBack}",
+        "className": "\"size-8 rounded-lg grid place-items-center hover:bg-line/50 text-mute hover:text-foreground transition-colors\"",
+        "title": "\"Voltar para a listagem\""
+      }
+    },
+    {
+      "id": "C225",
+      "file": "src/features/reports/ReportViewer.tsx",
+      "line": 131,
+      "tag": "button",
+      "label": "\"Imprimir documento formatado A4\"",
+      "type": "\"button\"",
+      "handler": "{handlePrint}",
+      "disabled": "",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{handlePrint}",
+        "className": "\"h-8 px-3 rounded-lg text-xs font-semibold border border-line bg-surface hover:bg-surface-hover text-foreground flex items-center gap-1.5 transition-colors shadow-xs\"",
+        "title": "\"Imprimir documento formatado A4\""
+      }
+    },
+    {
+      "id": "C226",
+      "file": "src/features/reports/ReportViewer.tsx",
+      "line": 141,
+      "tag": "button",
+      "label": "\"Exportar documento como arquivo PDF vetorial\"",
+      "type": "\"button\"",
+      "handler": "{handleExportPdf}",
+      "disabled": "{exporting}",
+      "attributes": {
+        "type": "\"button\"",
+        "onClick": "{handleExportPdf}",
+        "disabled": "{exporting}",
+        "className": "\"h-8 px-3.5 rounded-lg text-xs font-semibold bg-brand text-brand-fg hover:opacity-90 flex items-center gap-1.5 shadow-xs transition-opacity disabled:opacity-50\"",
+        "title": "\"Exportar documento como arquivo PDF vetorial\""
+      }
+    },
+    {
+      "id": "C227",
+      "file": "src/features/reports/ReportViewer.tsx",
+      "line": 461,
+      "tag": "textarea",
+      "label": "\"Observações adicionais do relatório\"",
+      "type": "",
+      "handler": "{(e) => setObservations(e.target.value)}",
+      "disabled": "",
+      "attributes": {
+        "aria-label": "\"Observações adicionais do relatório\"",
+        "maxLength": "{10000}",
+        "value": "{observations}",
+        "onChange": "{(e) => setObservations(e.target.value)}",
+        "placeholder": "\"Insira as observações clínicas do paciente aqui...\"",
+        "rows": "{5}",
+        "className": "\"no-print w-full text-xs p-3 rounded-lg border border-slate-300 bg-white text-slate-900 focus:outline-none focus:border-sky-500 leading-relaxed resize-none shadow-xs\""
+      }
+    },
+    {
+      "id": "C228",
+      "file": "src/pages/Settings.tsx",
+      "line": 18,
+      "tag": "Button",
+      "label": "Alternar tema",
+      "type": "",
+      "handler": "{toggleTheme}",
+      "disabled": "",
+      "attributes": {
+        "variant": "\"ghost\"",
+        "onClick": "{toggleTheme}"
+      }
+    },
+    {
+      "id": "C229",
+      "file": "src/pages/Settings.tsx",
+      "line": 18,
+      "tag": "Field",
+      "label": "\"Duração padrão do exame (segundos)\"",
+      "type": "\"number\"",
+      "handler": "{(e) => prefs.setDuration(Number(e.target.value))}",
+      "disabled": "",
+      "attributes": {
+        "label": "\"Duração padrão do exame (segundos)\"",
+        "type": "\"number\"",
+        "min": "{3}",
+        "max": "{60}",
+        "value": "{prefs.durationSeconds}",
+        "onChange": "{(e) => prefs.setDuration(Number(e.target.value))}"
+      }
+    },
+    {
+      "id": "C230",
+      "file": "src/pages/Settings.tsx",
+      "line": 18,
+      "tag": "select",
+      "label": "Simulação ESP32 Serial / Bluetooth SPP",
+      "type": "",
+      "handler": "{(e) => acq.setDeviceType(e.target.value as 'MOCK' | 'SERIAL')}",
+      "disabled": "{acq.status.connected}",
+      "attributes": {
+        "className": "\"w-full p-2 border border-line rounded-lg bg-surface\"",
+        "disabled": "{acq.status.connected}",
+        "value": "{acq.deviceType}",
+        "onChange": "{(e) => acq.setDeviceType(e.target.value as 'MOCK' | 'SERIAL')}"
+      }
+    },
+    {
+      "id": "C231",
+      "file": "src/pages/Settings.tsx",
+      "line": 18,
+      "tag": "Field",
+      "label": "\"Porta serial\"",
+      "type": "",
+      "handler": "{(e) => acq.setSelectedPort(e.target.value)}",
+      "disabled": "{acq.status.connected}",
+      "attributes": {
+        "label": "\"Porta serial\"",
+        "disabled": "{acq.status.connected}",
+        "value": "{acq.selectedPort}",
+        "placeholder": "\"COM3\"",
+        "onChange": "{(e) => acq.setSelectedPort(e.target.value)}"
+      }
+    },
+    {
+      "id": "C232",
+      "file": "src/pages/Settings.tsx",
+      "line": 18,
+      "tag": "select",
+      "label": "{[9600, 19200, 38400, 57600, 115200, 230400, 460800, 921600].map((v) => <option key={v}>{v}</option>)}",
+      "type": "",
+      "handler": "{(e) => acq.setSelectedBaud(Number(e.target.value))}",
+      "disabled": "{acq.status.connected}",
+      "attributes": {
+        "className": "\"w-full p-2 border border-line rounded-lg bg-surface\"",
+        "disabled": "{acq.status.connected}",
+        "value": "{acq.selectedBaud}",
+        "onChange": "{(e) => acq.setSelectedBaud(Number(e.target.value))}"
+      }
+    },
+    {
+      "id": "C233",
+      "file": "src/pages/Settings.tsx",
+      "line": 18,
+      "tag": "Button",
+      "label": "Gerenciar conexão",
+      "type": "",
+      "handler": "{() => go('acquisition')}",
+      "disabled": "",
+      "attributes": {
+        "variant": "\"ghost\"",
+        "onClick": "{() => go('acquisition')}"
+      }
+    },
+    {
+      "id": "C234",
+      "file": "src/pages/Settings.tsx",
+      "line": 18,
+      "tag": "Button",
+      "label": "{busy ? 'Salvando...' : 'Salvar configurações agora'}",
+      "type": "",
+      "handler": "{async () => { setBusy(true); setMessage(''); try { await saveCurrentPreferences(); await api.logs.add('settings', 'Configurações salvas.'); setMessage('Configurações salvas no banco local.'); } catch (e) { usePreferencesStore.setState({ error: (e as Error).message }); } finally { setBusy(false); } }}",
+      "disabled": "{busy}",
+      "attributes": {
+        "disabled": "{busy}",
+        "onClick": "{async () => { setBusy(true); setMessage(''); try { await saveCurrentPreferences(); await api.logs.add('settings', 'Configurações salvas.'); setMessage('Configurações salvas no banco local.'); } catch (e) { usePreferencesStore.setState({ error: (e as Error).message }); } finally { setBusy(false); } }}"
+      }
+    }
+  ],
+  "views": [
+    {
+      "file": "src/features/agenda/AgendaPage.tsx",
+      "line": 86,
+      "tag": "section",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/features/agenda/AgendaPage.tsx",
+      "line": 91,
+      "tag": "div",
+      "role": "\"dialog\"",
+      "title": "\"appointment-title\""
+    },
+    {
+      "file": "src/features/agenda/AgendaPage.tsx",
+      "line": 91,
+      "tag": "form",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/features/agenda/AgendaPage.tsx",
+      "line": 107,
+      "tag": "div",
+      "role": "\"dialog\"",
+      "title": "\"professional-title\""
+    },
+    {
+      "file": "src/features/agenda/AgendaPage.tsx",
+      "line": 107,
+      "tag": "form",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/features/auth/AccountSettings.tsx",
+      "line": 39,
+      "tag": "section",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/features/auth/AccountSettings.tsx",
+      "line": 42,
+      "tag": "form",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/features/auth/LoginPage.tsx",
+      "line": 34,
+      "tag": "section",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/features/auth/LoginPage.tsx",
+      "line": 40,
+      "tag": "form",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/features/auth/RecoveryReceipt.tsx",
+      "line": 5,
+      "tag": "section",
+      "role": "\"region\"",
+      "title": "\"Código de recuperação\""
+    },
+    {
+      "file": "src/features/backup/BackupPage.tsx",
+      "line": 108,
+      "tag": "section",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/features/backup/BackupPage.tsx",
+      "line": 109,
+      "tag": "section",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/features/baropodometry/BaropodometryPage.tsx",
+      "line": 200,
+      "tag": "section",
+      "role": "",
+      "title": "\"Parâmetros de Visualização\""
+    },
+    {
+      "file": "src/features/baropodometry/BaropodometryPage.tsx",
+      "line": 207,
+      "tag": "section",
+      "role": "",
+      "title": "\"Mapa de Calor Plantar\""
+    },
+    {
+      "file": "src/features/baropodometry/BaropodometryPage.tsx",
+      "line": 228,
+      "tag": "section",
+      "role": "",
+      "title": "\"Painel de Métricas\""
+    },
+    {
+      "file": "src/features/baropodometry/HeatmapSettingsPanel.tsx",
+      "line": 128,
+      "tag": "div",
+      "role": "\"dialog\"",
+      "title": "\"settings-panel-title\""
+    },
+    {
+      "file": "src/features/comparison/ComparisonPage.tsx",
+      "line": 32,
+      "tag": "section",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/features/comparison/ComparisonPage.tsx",
+      "line": 121,
+      "tag": "section",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/features/exams/CancelExamDialog.tsx",
+      "line": 21,
+      "tag": "div",
+      "role": "\"dialog\"",
+      "title": "\"cancel-exam-title\""
+    },
+    {
+      "file": "src/features/exams/ExamDetailsModal.tsx",
+      "line": 99,
+      "tag": "div",
+      "role": "\"dialog\"",
+      "title": "\"exam-details-title\""
+    },
+    {
+      "file": "src/features/exams/NewExamPage.tsx",
+      "line": 214,
+      "tag": "div",
+      "role": "\"tablist\"",
+      "title": "\"Preparação do exame\""
+    },
+    {
+      "file": "src/features/exams/NewExamPage.tsx",
+      "line": 216,
+      "tag": "button",
+      "role": "\"tab\"",
+      "title": ""
+    },
+    {
+      "file": "src/features/logs/LogsPage.tsx",
+      "line": 31,
+      "tag": "details",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/features/patients/PatientCareHistory.tsx",
+      "line": 26,
+      "tag": "section",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/features/patients/PatientCareHistory.tsx",
+      "line": 26,
+      "tag": "details",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/features/patients/PatientDetails.tsx",
+      "line": 168,
+      "tag": "section",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/features/patients/PatientDetails.tsx",
+      "line": 233,
+      "tag": "section",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/features/patients/PatientDetails.tsx",
+      "line": 288,
+      "tag": "section",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/features/patients/PatientDetails.tsx",
+      "line": 345,
+      "tag": "section",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/features/patients/PatientDetails.tsx",
+      "line": 372,
+      "tag": "section",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/features/patients/PatientDetails.tsx",
+      "line": 469,
+      "tag": "div",
+      "role": "\"dialog\"",
+      "title": "\"archive-title\""
+    },
+    {
+      "file": "src/features/patients/PatientForm.tsx",
+      "line": 195,
+      "tag": "form",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/features/patients/PatientForm.tsx",
+      "line": 197,
+      "tag": "section",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/features/patients/PatientForm.tsx",
+      "line": 279,
+      "tag": "section",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/features/patients/PatientForm.tsx",
+      "line": 351,
+      "tag": "section",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/features/patients/PatientForm.tsx",
+      "line": 458,
+      "tag": "section",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/features/questionnaires/QuestionnaireHistory.tsx",
+      "line": 7,
+      "tag": "details",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/features/questionnaires/QuestionnairesPage.tsx",
+      "line": 104,
+      "tag": "form",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/features/questionnaires/QuestionnairesPage.tsx",
+      "line": 106,
+      "tag": "fieldset",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/features/questionnaires/QuestionnairesPage.tsx",
+      "line": 111,
+      "tag": "section",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/features/questionnaires/QuestionnairesPage.tsx",
+      "line": 113,
+      "tag": "form",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/features/questionnaires/QuestionnairesPage.tsx",
+      "line": 114,
+      "tag": "fieldset",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/features/questionnaires/QuestionnairesPage.tsx",
+      "line": 122,
+      "tag": "section",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/features/reports/ReportViewer.tsx",
+      "line": 195,
+      "tag": "section",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/features/reports/ReportViewer.tsx",
+      "line": 390,
+      "tag": "section",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/features/reports/ReportViewer.tsx",
+      "line": 439,
+      "tag": "section",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/features/reports/ReportViewer.tsx",
+      "line": 452,
+      "tag": "section",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/features/reports/ReportViewer.tsx",
+      "line": 473,
+      "tag": "section",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/features/reports/ReportViewer.tsx",
+      "line": 495,
+      "tag": "section",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/pages/Dashboard.tsx",
+      "line": 20,
+      "tag": "section",
+      "role": "",
+      "title": "\"Indicadores\""
+    },
+    {
+      "file": "src/pages/Dashboard.tsx",
+      "line": 28,
+      "tag": "section",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/pages/Settings.tsx",
+      "line": 18,
+      "tag": "section",
+      "role": "",
+      "title": ""
+    },
+    {
+      "file": "src/pages/Settings.tsx",
+      "line": 18,
+      "tag": "section",
+      "role": "",
+      "title": ""
+    }
+  ],
+  "backend": [
+    {
+      "file": "src-tauri/src/acquisition.rs",
+      "command": "acquisition_list_ports"
+    },
+    {
+      "file": "src-tauri/src/acquisition.rs",
+      "command": "acquisition_connect"
+    },
+    {
+      "file": "src-tauri/src/acquisition.rs",
+      "command": "acquisition_disconnect"
+    },
+    {
+      "file": "src-tauri/src/acquisition.rs",
+      "command": "acquisition_start"
+    },
+    {
+      "file": "src-tauri/src/acquisition.rs",
+      "command": "acquisition_stop"
+    },
+    {
+      "file": "src-tauri/src/acquisition.rs",
+      "command": "acquisition_get_status"
+    },
+    {
+      "file": "src-tauri/src/acquisition.rs",
+      "command": "acquisition_poll_frames"
+    },
+    {
+      "file": "src-tauri/src/agenda.rs",
+      "command": "appointments_list"
+    },
+    {
+      "file": "src-tauri/src/agenda.rs",
+      "command": "appointments_save"
+    },
+    {
+      "file": "src-tauri/src/agenda.rs",
+      "command": "appointments_delete"
+    },
+    {
+      "file": "src-tauri/src/agenda.rs",
+      "command": "professionals_list"
+    },
+    {
+      "file": "src-tauri/src/agenda.rs",
+      "command": "professionals_create"
+    },
+    {
+      "file": "src-tauri/src/auth.rs",
+      "command": "auth_has_users"
+    },
+    {
+      "file": "src-tauri/src/auth.rs",
+      "command": "auth_register_first"
+    },
+    {
+      "file": "src-tauri/src/auth.rs",
+      "command": "auth_register_user"
+    },
+    {
+      "file": "src-tauri/src/auth.rs",
+      "command": "auth_login"
+    },
+    {
+      "file": "src-tauri/src/auth.rs",
+      "command": "auth_current"
+    },
+    {
+      "file": "src-tauri/src/auth.rs",
+      "command": "auth_logout"
+    },
+    {
+      "file": "src-tauri/src/auth.rs",
+      "command": "auth_provision_recovery"
+    },
+    {
+      "file": "src-tauri/src/auth.rs",
+      "command": "auth_change_password"
+    },
+    {
+      "file": "src-tauri/src/auth.rs",
+      "command": "auth_recover"
+    },
+    {
+      "file": "src-tauri/src/backup.rs",
+      "command": "backups_export"
+    },
+    {
+      "file": "src-tauri/src/backup.rs",
+      "command": "backups_preview"
+    },
+    {
+      "file": "src-tauri/src/backup.rs",
+      "command": "backups_import"
+    },
+    {
+      "file": "src-tauri/src/exams.rs",
+      "command": "exams_list"
+    },
+    {
+      "file": "src-tauri/src/exams.rs",
+      "command": "exams_get"
+    },
+    {
+      "file": "src-tauri/src/exams.rs",
+      "command": "exams_create"
+    },
+    {
+      "file": "src-tauri/src/exams.rs",
+      "command": "exams_delete"
+    },
+    {
+      "file": "src-tauri/src/lib.rs",
+      "command": "dashboard_stats"
+    },
+    {
+      "file": "src-tauri/src/patients.rs",
+      "command": "patients_list"
+    },
+    {
+      "file": "src-tauri/src/patients.rs",
+      "command": "patients_get"
+    },
+    {
+      "file": "src-tauri/src/patients.rs",
+      "command": "patients_create"
+    },
+    {
+      "file": "src-tauri/src/patients.rs",
+      "command": "patients_update"
+    },
+    {
+      "file": "src-tauri/src/patients.rs",
+      "command": "patients_archive"
+    },
+    {
+      "file": "src-tauri/src/patients.rs",
+      "command": "patients_exam_history"
+    },
+    {
+      "file": "src-tauri/src/questionnaires.rs",
+      "command": "questionnaires_list"
+    },
+    {
+      "file": "src-tauri/src/questionnaires.rs",
+      "command": "questionnaires_save"
+    },
+    {
+      "file": "src-tauri/src/questionnaires.rs",
+      "command": "questionnaires_answer"
+    },
+    {
+      "file": "src-tauri/src/questionnaires.rs",
+      "command": "questionnaires_history"
+    },
+    {
+      "file": "src-tauri/src/support.rs",
+      "command": "app_settings_get"
+    },
+    {
+      "file": "src-tauri/src/support.rs",
+      "command": "app_settings_save"
+    },
+    {
+      "file": "src-tauri/src/support.rs",
+      "command": "system_logs_add"
+    },
+    {
+      "file": "src-tauri/src/support.rs",
+      "command": "system_logs_list"
+    }
+  ],
+  "dependencies": [
+    {
+      "file": "src/App.tsx",
+      "source": "clsx"
+    },
+    {
+      "file": "src/App.tsx",
+      "source": "react"
+    },
+    {
+      "file": "src/App.tsx",
+      "source": "@/services/database/api"
+    },
+    {
+      "file": "src/App.tsx",
+      "source": "@/features/auth/sessionActions"
+    },
+    {
+      "file": "src/App.tsx",
+      "source": "@/stores/session"
+    },
+    {
+      "file": "src/App.tsx",
+      "source": "@/features/auth/LoginPage"
+    },
+    {
+      "file": "src/App.tsx",
+      "source": "@/components/Sidebar"
+    },
+    {
+      "file": "src/App.tsx",
+      "source": "@/pages/Dashboard"
+    },
+    {
+      "file": "src/App.tsx",
+      "source": "@/services/usePreferencesSync"
+    },
+    {
+      "file": "src/App.tsx",
+      "source": "@/stores/preferences"
+    },
+    {
+      "file": "src/App.tsx",
+      "source": "@/components/ErrorBoundary"
+    },
+    {
+      "file": "src/components/ErrorBoundary.tsx",
+      "source": "react"
+    },
+    {
+      "file": "src/components/ErrorBoundary.tsx",
+      "source": "./ui/controls"
+    },
+    {
+      "file": "src/components/ErrorBoundary.tsx",
+      "source": "@/services/database/api"
+    },
+    {
+      "file": "src/components/ErrorBoundary.tsx",
+      "source": "@/stores/session"
+    },
+    {
+      "file": "src/components/Sidebar.tsx",
+      "source": "clsx"
+    },
+    {
+      "file": "src/components/Sidebar.tsx",
+      "source": "lucide-react"
+    },
+    {
+      "file": "src/components/Sidebar.tsx",
+      "source": "@/stores/session"
+    },
+    {
+      "file": "src/components/Sidebar.tsx",
+      "source": "./ui/Logo"
+    },
+    {
+      "file": "src/components/Sidebar.tsx",
+      "source": "@/types"
+    },
+    {
+      "file": "src/components/Sidebar.tsx",
+      "source": "react"
+    },
+    {
+      "file": "src/components/Sidebar.tsx",
+      "source": "@/features/auth/sessionActions"
+    },
+    {
+      "file": "src/components/ui/controls.tsx",
+      "source": "clsx"
+    },
+    {
+      "file": "src/components/ui/controls.tsx",
+      "source": "react"
+    },
+    {
+      "file": "src/features/acquisition/AcquisitionPage.tsx",
+      "source": "react"
+    },
+    {
+      "file": "src/features/acquisition/AcquisitionPage.tsx",
+      "source": "clsx"
+    },
+    {
+      "file": "src/features/acquisition/AcquisitionPage.tsx",
+      "source": "lucide-react"
+    },
+    {
+      "file": "src/features/acquisition/AcquisitionPage.tsx",
+      "source": "@/stores/acquisition"
+    },
+    {
+      "file": "src/features/acquisition/AcquisitionPage.tsx",
+      "source": "./MatrixPreview15x15"
+    },
+    {
+      "file": "src/features/acquisition/AcquisitionPage.tsx",
+      "source": "@/services/acquisition"
+    },
+    {
+      "file": "src/features/acquisition/MatrixPreview15x15.tsx",
+      "source": "react"
+    },
+    {
+      "file": "src/features/acquisition/MatrixPreview15x15.tsx",
+      "source": "clsx"
+    },
+    {
+      "file": "src/features/acquisition/MatrixPreview15x15.tsx",
+      "source": "@/services/acquisition"
+    },
+    {
+      "file": "src/features/agenda/AgendaPage.tsx",
+      "source": "react"
+    },
+    {
+      "file": "src/features/agenda/AgendaPage.tsx",
+      "source": "@/services/database/api"
+    },
+    {
+      "file": "src/features/agenda/AgendaPage.tsx",
+      "source": "@/components/ui/controls"
+    },
+    {
+      "file": "src/features/agenda/AgendaPage.tsx",
+      "source": "@/types"
+    },
+    {
+      "file": "src/features/agenda/AgendaPage.tsx",
+      "source": "./calendarUtils"
+    },
+    {
+      "file": "src/features/agenda/AgendaPage.tsx",
+      "source": "@/components/ui/useDialogFocus"
+    },
+    {
+      "file": "src/features/auth/AccountSettings.tsx",
+      "source": "react"
+    },
+    {
+      "file": "src/features/auth/AccountSettings.tsx",
+      "source": "@/services/database/api"
+    },
+    {
+      "file": "src/features/auth/AccountSettings.tsx",
+      "source": "@/stores/session"
+    },
+    {
+      "file": "src/features/auth/AccountSettings.tsx",
+      "source": "@/stores/acquisition"
+    },
+    {
+      "file": "src/features/auth/AccountSettings.tsx",
+      "source": "@/features/exams/examStore"
+    },
+    {
+      "file": "src/features/auth/AccountSettings.tsx",
+      "source": "@/components/ui/controls"
+    },
+    {
+      "file": "src/features/auth/AccountSettings.tsx",
+      "source": "./PasswordField"
+    },
+    {
+      "file": "src/features/auth/AccountSettings.tsx",
+      "source": "./RecoveryReceipt"
+    },
+    {
+      "file": "src/features/auth/AccountSettings.tsx",
+      "source": "./authValidation"
+    },
+    {
+      "file": "src/features/auth/AccountSettings.tsx",
+      "source": "./sessionActions"
+    },
+    {
+      "file": "src/features/auth/LoginPage.tsx",
+      "source": "react"
+    },
+    {
+      "file": "src/features/auth/LoginPage.tsx",
+      "source": "@/services/database/api"
+    },
+    {
+      "file": "src/features/auth/LoginPage.tsx",
+      "source": "@/stores/session"
+    },
+    {
+      "file": "src/features/auth/LoginPage.tsx",
+      "source": "@/components/ui/controls"
+    },
+    {
+      "file": "src/features/auth/LoginPage.tsx",
+      "source": "@/components/ui/Logo"
+    },
+    {
+      "file": "src/features/auth/LoginPage.tsx",
+      "source": "./PasswordField"
+    },
+    {
+      "file": "src/features/auth/LoginPage.tsx",
+      "source": "./RecoveryReceipt"
+    },
+    {
+      "file": "src/features/auth/LoginPage.tsx",
+      "source": "./authValidation"
+    },
+    {
+      "file": "src/features/auth/LoginPage.tsx",
+      "source": "@/types"
+    },
+    {
+      "file": "src/features/auth/PasswordField.tsx",
+      "source": "react"
+    },
+    {
+      "file": "src/features/auth/PasswordField.tsx",
+      "source": "@/components/ui/controls"
+    },
+    {
+      "file": "src/features/auth/RecoveryReceipt.tsx",
+      "source": "react"
+    },
+    {
+      "file": "src/features/auth/RecoveryReceipt.tsx",
+      "source": "@/components/ui/controls"
+    },
+    {
+      "file": "src/features/backup/BackupPage.tsx",
+      "source": "react"
+    },
+    {
+      "file": "src/features/backup/BackupPage.tsx",
+      "source": "@/services/database/api"
+    },
+    {
+      "file": "src/features/backup/BackupPage.tsx",
+      "source": "@/components/ui/controls"
+    },
+    {
+      "file": "src/features/backup/BackupPage.tsx",
+      "source": "@/stores/session"
+    },
+    {
+      "file": "src/features/backup/BackupPage.tsx",
+      "source": "@/stores/acquisition"
+    },
+    {
+      "file": "src/features/backup/BackupPage.tsx",
+      "source": "@/features/exams/examStore"
+    },
+    {
+      "file": "src/features/backup/BackupPage.tsx",
+      "source": "@/types"
+    },
+    {
+      "file": "src/features/backup/BackupPage.tsx",
+      "source": "@/features/patients/patientUtils"
+    },
+    {
+      "file": "src/features/backup/BackupPage.tsx",
+      "source": "./exportUtils"
+    },
+    {
+      "file": "src/features/backup/BackupPage.tsx",
+      "source": "@/stores/preferences"
+    },
+    {
+      "file": "src/features/backup/BackupPage.tsx",
+      "source": "@/services/usePreferencesSync"
+    },
+    {
+      "file": "src/features/baropodometry/BaropodometricHeatmap.tsx",
+      "source": "react"
+    },
+    {
+      "file": "src/features/baropodometry/BaropodometricHeatmap.tsx",
+      "source": "clsx"
+    },
+    {
+      "file": "src/features/baropodometry/BaropodometricHeatmap.tsx",
+      "source": "@/services/baropodometry"
+    },
+    {
+      "file": "src/features/baropodometry/BaropodometryPage.tsx",
+      "source": "react"
+    },
+    {
+      "file": "src/features/baropodometry/BaropodometryPage.tsx",
+      "source": "clsx"
+    },
+    {
+      "file": "src/features/baropodometry/BaropodometryPage.tsx",
+      "source": "lucide-react"
+    },
+    {
+      "file": "src/features/baropodometry/BaropodometryPage.tsx",
+      "source": "@/stores/acquisition"
+    },
+    {
+      "file": "src/features/baropodometry/BaropodometryPage.tsx",
+      "source": "./BaropodometricHeatmap"
+    },
+    {
+      "file": "src/features/baropodometry/BaropodometryPage.tsx",
+      "source": "./MetricsPanel"
+    },
+    {
+      "file": "src/features/baropodometry/BaropodometryPage.tsx",
+      "source": "./PressureLegend"
+    },
+    {
+      "file": "src/features/baropodometry/BaropodometryPage.tsx",
+      "source": "./ParameterBar"
+    },
+    {
+      "file": "src/features/baropodometry/BaropodometryPage.tsx",
+      "source": "./HeatmapSettingsPanel"
+    },
+    {
+      "file": "src/features/baropodometry/BaropodometryPage.tsx",
+      "source": "@/services/baropodometry"
+    },
+    {
+      "file": "src/features/baropodometry/BaropodometryPage.tsx",
+      "source": "@/services/acquisition"
+    },
+    {
+      "file": "src/features/baropodometry/BaropodometryPage.tsx",
+      "source": "@/stores/visualization"
+    },
+    {
+      "file": "src/features/baropodometry/CopMarker.tsx",
+      "source": "react"
+    },
+    {
+      "file": "src/features/baropodometry/HeatmapSettingsPanel.tsx",
+      "source": "react"
+    },
+    {
+      "file": "src/features/baropodometry/HeatmapSettingsPanel.tsx",
+      "source": "clsx"
+    },
+    {
+      "file": "src/features/baropodometry/HeatmapSettingsPanel.tsx",
+      "source": "lucide-react"
+    },
+    {
+      "file": "src/features/baropodometry/HeatmapSettingsPanel.tsx",
+      "source": "@/services/baropodometry"
+    },
+    {
+      "file": "src/features/baropodometry/MetricsPanel.tsx",
+      "source": "react"
+    },
+    {
+      "file": "src/features/baropodometry/MetricsPanel.tsx",
+      "source": "lucide-react"
+    },
+    {
+      "file": "src/features/baropodometry/MetricsPanel.tsx",
+      "source": "@/services/baropodometry"
+    },
+    {
+      "file": "src/features/baropodometry/ParameterBar.tsx",
+      "source": "react"
+    },
+    {
+      "file": "src/features/baropodometry/ParameterBar.tsx",
+      "source": "clsx"
+    },
+    {
+      "file": "src/features/baropodometry/ParameterBar.tsx",
+      "source": "lucide-react"
+    },
+    {
+      "file": "src/features/baropodometry/ParameterBar.tsx",
+      "source": "@/services/baropodometry"
+    },
+    {
+      "file": "src/features/baropodometry/PressureLegend.tsx",
+      "source": "react"
+    },
+    {
+      "file": "src/features/baropodometry/PressureLegend.tsx",
+      "source": "clsx"
+    },
+    {
+      "file": "src/features/baropodometry/PressureLegend.tsx",
+      "source": "@/services/baropodometry"
+    },
+    {
+      "file": "src/features/comparison/ComparisonPage.tsx",
+      "source": "react"
+    },
+    {
+      "file": "src/features/comparison/ComparisonPage.tsx",
+      "source": "@/services/database/api"
+    },
+    {
+      "file": "src/features/comparison/ComparisonPage.tsx",
+      "source": "@/components/ui/controls"
+    },
+    {
+      "file": "src/features/comparison/ComparisonPage.tsx",
+      "source": "@/features/baropodometry/BaropodometricHeatmap"
+    },
+    {
+      "file": "src/features/comparison/ComparisonPage.tsx",
+      "source": "@/features/baropodometry/PressureLegend"
+    },
+    {
+      "file": "src/features/comparison/ComparisonPage.tsx",
+      "source": "@/services/baropodometry"
+    },
+    {
+      "file": "src/features/comparison/ComparisonPage.tsx",
+      "source": "@/features/patients/patientUtils"
+    },
+    {
+      "file": "src/features/comparison/ComparisonPage.tsx",
+      "source": "@/types"
+    },
+    {
+      "file": "src/features/comparison/ComparisonPage.tsx",
+      "source": "./comparisonUtils"
+    },
+    {
+      "file": "src/features/exams/CancelExamDialog.tsx",
+      "source": "react"
+    },
+    {
+      "file": "src/features/exams/CancelExamDialog.tsx",
+      "source": "lucide-react"
+    },
+    {
+      "file": "src/features/exams/CancelExamDialog.tsx",
+      "source": "@/components/ui/useDialogFocus"
+    },
+    {
+      "file": "src/features/exams/ExamDetailsModal.tsx",
+      "source": "@/features/reports/savedValues"
+    },
+    {
+      "file": "src/features/exams/ExamDetailsModal.tsx",
+      "source": "react"
+    },
+    {
+      "file": "src/features/exams/ExamDetailsModal.tsx",
+      "source": "lucide-react"
+    },
+    {
+      "file": "src/features/exams/ExamDetailsModal.tsx",
+      "source": "@/services/baropodometry"
+    },
+    {
+      "file": "src/features/exams/ExamDetailsModal.tsx",
+      "source": "@/features/baropodometry/BaropodometricHeatmap"
+    },
+    {
+      "file": "src/features/exams/ExamDetailsModal.tsx",
+      "source": "@/features/baropodometry/PressureLegend"
+    },
+    {
+      "file": "src/features/exams/ExamDetailsModal.tsx",
+      "source": "@/services/database/api"
+    },
+    {
+      "file": "src/features/exams/ExamDetailsModal.tsx",
+      "source": "@/stores/session"
+    },
+    {
+      "file": "src/features/exams/ExamDetailsModal.tsx",
+      "source": "@/features/patients/patientUtils"
+    },
+    {
+      "file": "src/features/exams/ExamDetailsModal.tsx",
+      "source": "@/types"
+    },
+    {
+      "file": "src/features/exams/ExamDetailsModal.tsx",
+      "source": "./ExamExportActions"
+    },
+    {
+      "file": "src/features/exams/ExamDetailsModal.tsx",
+      "source": "@/components/ui/useDialogFocus"
+    },
+    {
+      "file": "src/features/exams/ExamExportActions.tsx",
+      "source": "react"
+    },
+    {
+      "file": "src/features/exams/ExamExportActions.tsx",
+      "source": "@/components/ui/controls"
+    },
+    {
+      "file": "src/features/exams/ExamExportActions.tsx",
+      "source": "@/services/baropodometry"
+    },
+    {
+      "file": "src/features/exams/ExamExportActions.tsx",
+      "source": "@/features/reports/reportUtils"
+    },
+    {
+      "file": "src/features/exams/ExamExportActions.tsx",
+      "source": "@/features/backup/exportUtils"
+    },
+    {
+      "file": "src/features/exams/ExamExportActions.tsx",
+      "source": "@/types"
+    },
+    {
+      "file": "src/features/exams/ExamExportActions.tsx",
+      "source": "@/features/reports/reportUtils"
+    },
+    {
+      "file": "src/features/exams/ExamSettingsTab.tsx",
+      "source": "react"
+    },
+    {
+      "file": "src/features/exams/ExamSettingsTab.tsx",
+      "source": "@/features/baropodometry/BaropodometricHeatmap"
+    },
+    {
+      "file": "src/features/exams/ExamSettingsTab.tsx",
+      "source": "@/features/baropodometry/HeatmapSettingsPanel"
+    },
+    {
+      "file": "src/features/exams/ExamSettingsTab.tsx",
+      "source": "@/features/baropodometry/PressureLegend"
+    },
+    {
+      "file": "src/features/exams/ExamSettingsTab.tsx",
+      "source": "@/services/baropodometry"
+    },
+    {
+      "file": "src/features/exams/ExamSettingsTab.tsx",
+      "source": "@/stores/acquisition"
+    },
+    {
+      "file": "src/features/exams/ExamSettingsTab.tsx",
+      "source": "./examStore"
+    },
+    {
+      "file": "src/features/exams/ExamsPage.tsx",
+      "source": "react"
+    },
+    {
+      "file": "src/features/exams/ExamsPage.tsx",
+      "source": "lucide-react"
+    },
+    {
+      "file": "src/features/exams/ExamsPage.tsx",
+      "source": "@/services/database/api"
+    },
+    {
+      "file": "src/features/exams/ExamsPage.tsx",
+      "source": "@/stores/session"
+    },
+    {
+      "file": "src/features/exams/ExamsPage.tsx",
+      "source": "@/features/patients/patientUtils"
+    },
+    {
+      "file": "src/features/exams/ExamsPage.tsx",
+      "source": "@/types"
+    },
+    {
+      "file": "src/features/exams/ExamsPage.tsx",
+      "source": "./ExamDetailsModal"
+    },
+    {
+      "file": "src/features/exams/NewExamPage.tsx",
+      "source": "react"
+    },
+    {
+      "file": "src/features/exams/NewExamPage.tsx",
+      "source": "lucide-react"
+    },
+    {
+      "file": "src/features/exams/NewExamPage.tsx",
+      "source": "clsx"
+    },
+    {
+      "file": "src/features/exams/NewExamPage.tsx",
+      "source": "@/features/baropodometry/BaropodometricHeatmap"
+    },
+    {
+      "file": "src/features/exams/NewExamPage.tsx",
+      "source": "@/features/baropodometry/PressureLegend"
+    },
+    {
+      "file": "src/features/exams/NewExamPage.tsx",
+      "source": "@/services/database/api"
+    },
+    {
+      "file": "src/features/exams/NewExamPage.tsx",
+      "source": "@/stores/acquisition"
+    },
+    {
+      "file": "src/features/exams/NewExamPage.tsx",
+      "source": "@/stores/session"
+    },
+    {
+      "file": "src/features/exams/NewExamPage.tsx",
+      "source": "@/features/patients/patientUtils"
+    },
+    {
+      "file": "src/features/exams/NewExamPage.tsx",
+      "source": "@/types"
+    },
+    {
+      "file": "src/features/exams/NewExamPage.tsx",
+      "source": "./CancelExamDialog"
+    },
+    {
+      "file": "src/features/exams/NewExamPage.tsx",
+      "source": "./ExamDetailsModal"
+    },
+    {
+      "file": "src/features/exams/NewExamPage.tsx",
+      "source": "./examStore"
+    },
+    {
+      "file": "src/features/exams/NewExamPage.tsx",
+      "source": "./examRuntime"
+    },
+    {
+      "file": "src/features/exams/NewExamPage.tsx",
+      "source": "./ExamSettingsTab"
+    },
+    {
+      "file": "src/features/exams/NewExamPage.tsx",
+      "source": "@/services/baropodometry"
+    },
+    {
+      "file": "src/features/exams/NewExamPage.tsx",
+      "source": "@/services/preferences"
+    },
+    {
+      "file": "src/features/logs/LogsPage.tsx",
+      "source": "react"
+    },
+    {
+      "file": "src/features/logs/LogsPage.tsx",
+      "source": "@/services/database/api"
+    },
+    {
+      "file": "src/features/logs/LogsPage.tsx",
+      "source": "@/components/ui/controls"
+    },
+    {
+      "file": "src/features/logs/LogsPage.tsx",
+      "source": "@/stores/acquisition"
+    },
+    {
+      "file": "src/features/logs/LogsPage.tsx",
+      "source": "@/features/patients/patientUtils"
+    },
+    {
+      "file": "src/features/logs/LogsPage.tsx",
+      "source": "@/features/backup/exportUtils"
+    },
+    {
+      "file": "src/features/logs/LogsPage.tsx",
+      "source": "@/types"
+    },
+    {
+      "file": "src/features/patients/PatientCareHistory.tsx",
+      "source": "react"
+    },
+    {
+      "file": "src/features/patients/PatientCareHistory.tsx",
+      "source": "@/services/database/api"
+    },
+    {
+      "file": "src/features/patients/PatientCareHistory.tsx",
+      "source": "@/types"
+    },
+    {
+      "file": "src/features/patients/PatientCareHistory.tsx",
+      "source": "@/features/questionnaires/QuestionnaireHistory"
+    },
+    {
+      "file": "src/features/patients/PatientCareHistory.tsx",
+      "source": "@/features/agenda/calendarUtils"
+    },
+    {
+      "file": "src/features/patients/PatientCareHistory.tsx",
+      "source": "./patientUtils"
+    },
+    {
+      "file": "src/features/patients/PatientDetails.tsx",
+      "source": "react"
+    },
+    {
+      "file": "src/features/patients/PatientDetails.tsx",
+      "source": "lucide-react"
+    },
+    {
+      "file": "src/features/patients/PatientDetails.tsx",
+      "source": "@/types"
+    },
+    {
+      "file": "src/features/patients/PatientDetails.tsx",
+      "source": "./patientUtils"
+    },
+    {
+      "file": "src/features/patients/PatientDetails.tsx",
+      "source": "@/services/database/api"
+    },
+    {
+      "file": "src/features/patients/PatientDetails.tsx",
+      "source": "@/components/ui/controls"
+    },
+    {
+      "file": "src/features/patients/PatientDetails.tsx",
+      "source": "@/features/exams/ExamDetailsModal"
+    },
+    {
+      "file": "src/features/patients/PatientDetails.tsx",
+      "source": "@/stores/session"
+    },
+    {
+      "file": "src/features/patients/PatientDetails.tsx",
+      "source": "./PatientCareHistory"
+    },
+    {
+      "file": "src/features/patients/PatientDetails.tsx",
+      "source": "@/components/ui/useDialogFocus"
+    },
+    {
+      "file": "src/features/patients/PatientForm.tsx",
+      "source": "react"
+    },
+    {
+      "file": "src/features/patients/PatientForm.tsx",
+      "source": "lucide-react"
+    },
+    {
+      "file": "src/features/patients/PatientForm.tsx",
+      "source": "@/types"
+    },
+    {
+      "file": "src/features/patients/PatientForm.tsx",
+      "source": "./patientUtils"
+    },
+    {
+      "file": "src/features/patients/PatientForm.tsx",
+      "source": "@/components/ui/controls"
+    },
+    {
+      "file": "src/features/patients/PatientList.tsx",
+      "source": "react"
+    },
+    {
+      "file": "src/features/patients/PatientList.tsx",
+      "source": "lucide-react"
+    },
+    {
+      "file": "src/features/patients/PatientList.tsx",
+      "source": "@/types"
+    },
+    {
+      "file": "src/features/patients/PatientList.tsx",
+      "source": "./patientUtils"
+    },
+    {
+      "file": "src/features/patients/PatientList.tsx",
+      "source": "@/components/ui/controls"
+    },
+    {
+      "file": "src/features/patients/PatientsPage.tsx",
+      "source": "react"
+    },
+    {
+      "file": "src/features/patients/PatientsPage.tsx",
+      "source": "lucide-react"
+    },
+    {
+      "file": "src/features/patients/PatientsPage.tsx",
+      "source": "@/types"
+    },
+    {
+      "file": "src/features/patients/PatientsPage.tsx",
+      "source": "@/services/database/api"
+    },
+    {
+      "file": "src/features/patients/PatientsPage.tsx",
+      "source": "./PatientList"
+    },
+    {
+      "file": "src/features/patients/PatientsPage.tsx",
+      "source": "./PatientForm"
+    },
+    {
+      "file": "src/features/patients/PatientsPage.tsx",
+      "source": "./PatientDetails"
+    },
+    {
+      "file": "src/features/questionnaires/QuestionnaireHistory.tsx",
+      "source": "@/types"
+    },
+    {
+      "file": "src/features/questionnaires/QuestionnaireHistory.tsx",
+      "source": "@/features/patients/patientUtils"
+    },
+    {
+      "file": "src/features/questionnaires/QuestionnaireHistory.tsx",
+      "source": "./questionnaireUtils"
+    },
+    {
+      "file": "src/features/questionnaires/QuestionnairesPage.tsx",
+      "source": "react"
+    },
+    {
+      "file": "src/features/questionnaires/QuestionnairesPage.tsx",
+      "source": "@/services/database/api"
+    },
+    {
+      "file": "src/features/questionnaires/QuestionnairesPage.tsx",
+      "source": "@/components/ui/controls"
+    },
+    {
+      "file": "src/features/questionnaires/QuestionnairesPage.tsx",
+      "source": "@/types"
+    },
+    {
+      "file": "src/features/questionnaires/QuestionnairesPage.tsx",
+      "source": "./questionnaireUtils"
+    },
+    {
+      "file": "src/features/questionnaires/QuestionnairesPage.tsx",
+      "source": "./QuestionnaireHistory"
+    },
+    {
+      "file": "src/features/reports/ReportsPage.tsx",
+      "source": "react"
+    },
+    {
+      "file": "src/features/reports/ReportsPage.tsx",
+      "source": "lucide-react"
+    },
+    {
+      "file": "src/features/reports/ReportsPage.tsx",
+      "source": "@/services/database/api"
+    },
+    {
+      "file": "src/features/reports/ReportsPage.tsx",
+      "source": "@/features/patients/patientUtils"
+    },
+    {
+      "file": "src/features/reports/ReportsPage.tsx",
+      "source": "@/types"
+    },
+    {
+      "file": "src/features/reports/ReportsPage.tsx",
+      "source": "./ReportViewer"
+    },
+    {
+      "file": "src/features/reports/ReportViewer.tsx",
+      "source": "./savedValues"
+    },
+    {
+      "file": "src/features/reports/ReportViewer.tsx",
+      "source": "react"
+    },
+    {
+      "file": "src/features/reports/ReportViewer.tsx",
+      "source": "lucide-react"
+    },
+    {
+      "file": "src/features/reports/ReportViewer.tsx",
+      "source": "@/features/baropodometry/BaropodometricHeatmap"
+    },
+    {
+      "file": "src/features/reports/ReportViewer.tsx",
+      "source": "@/features/baropodometry/PressureLegend"
+    },
+    {
+      "file": "src/features/reports/ReportViewer.tsx",
+      "source": "@/services/baropodometry"
+    },
+    {
+      "file": "src/features/reports/ReportViewer.tsx",
+      "source": "@/features/patients/patientUtils"
+    },
+    {
+      "file": "src/features/reports/ReportViewer.tsx",
+      "source": "@/types"
+    },
+    {
+      "file": "src/features/reports/ReportViewer.tsx",
+      "source": "./reportPdfGenerator"
+    },
+    {
+      "file": "src/main.tsx",
+      "source": "react"
+    },
+    {
+      "file": "src/main.tsx",
+      "source": "react-dom/client"
+    },
+    {
+      "file": "src/main.tsx",
+      "source": "./App"
+    },
+    {
+      "file": "src/main.tsx",
+      "source": "./index.css"
+    },
+    {
+      "file": "src/pages/Dashboard.tsx",
+      "source": "react"
+    },
+    {
+      "file": "src/pages/Dashboard.tsx",
+      "source": "@/services/database/api"
+    },
+    {
+      "file": "src/pages/Dashboard.tsx",
+      "source": "@/types"
+    },
+    {
+      "file": "src/pages/Dashboard.tsx",
+      "source": "@/stores/acquisition"
+    },
+    {
+      "file": "src/pages/Dashboard.tsx",
+      "source": "@/features/patients/patientUtils"
+    },
+    {
+      "file": "src/pages/Settings.tsx",
+      "source": "react"
+    },
+    {
+      "file": "src/pages/Settings.tsx",
+      "source": "@/stores/session"
+    },
+    {
+      "file": "src/pages/Settings.tsx",
+      "source": "@/stores/visualization"
+    },
+    {
+      "file": "src/pages/Settings.tsx",
+      "source": "@/stores/preferences"
+    },
+    {
+      "file": "src/pages/Settings.tsx",
+      "source": "@/stores/acquisition"
+    },
+    {
+      "file": "src/pages/Settings.tsx",
+      "source": "@/components/ui/controls"
+    },
+    {
+      "file": "src/pages/Settings.tsx",
+      "source": "@/features/baropodometry/HeatmapSettingsPanel"
+    },
+    {
+      "file": "src/pages/Settings.tsx",
+      "source": "@/services/usePreferencesSync"
+    },
+    {
+      "file": "src/pages/Settings.tsx",
+      "source": "@/services/database/api"
+    },
+    {
+      "file": "src/pages/Settings.tsx",
+      "source": "@/features/auth/AccountSettings"
+    }
+  ]
+}

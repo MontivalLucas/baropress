@@ -1,0 +1,54 @@
+{
+  "provenance": {
+    "extractedAtUtc": "2026-10-08T00:17:56.381758+00:00",
+    "timezoneForDisplay": "America/Sao_Paulo",
+    "databaseSchema": 7,
+    "sourceFiles": [
+      {
+        "file": "baropress.db",
+        "bytes": 5472256,
+        "sha256": "bbfb90090dbe1b0476d2c8f9ba4a9579cf5ce17e43187a18de72cc53da5d2e9f"
+      },
+      {
+        "file": "baropress.db-wal",
+        "bytes": 4128272,
+        "sha256": "08cb24100945f06bc1a97a52d1c51a2aeedd84411b17f03e72a735e7d1285334"
+      }
+    ],
+    "method": "stable DB+WAL copy; SQLite read-only; quick_check ok",
+    "privacy": "Only calibration tables; no patient/user records; participant identifiers omitted",
+    "originalDatabaseModified": false
+  },
+  "files": [
+    {
+      "file": "DADOS_BRUTOS_CALIBRACAO.json",
+      "bytes": 5603922,
+      "sha256": "e47898d4e466b62d3c0fbf644756a508363748ab5e8f6296c084d0869fc393b1"
+    },
+    {
+      "file": "EXAMES_ADC_SEM_IDENTIFICADORES.json",
+      "bytes": 21176,
+      "sha256": "8b0ca32314508bcf4391c7d27ee345292c7455dff498caeff87326401a345f6c"
+    },
+    {
+      "file": "MEDIAS_POR_SENSOR.txt",
+      "bytes": 571015,
+      "sha256": "550929d54bcb542fb4e38d5e9e162d7533b4bf38555ce583ea475a8bf8c38a94"
+    },
+    {
+      "file": "PERFIL_E_VALIDACAO_REGISTRADOS.json",
+      "bytes": 49699,
+      "sha256": "6c09380d3bb1de6250fb805ffdce51ebdd56eb48cea74b7c22fde8548eb7bbaf"
+    },
+    {
+      "file": "RESULTADOS_POR_REPETICAO.txt",
+      "bytes": 6488,
+      "sha256": "1c0b7a932aed103ba0fe82016430d2fa161ff7c2373150f3b001c621ea774911"
+    },
+    {
+      "file": "RESUMO_ANALITICO.json",
+      "bytes": 95318,
+      "sha256": "49c1952a8fd728cd80d9bfdc813edc3e90403aec6a6634da6569e7f78dd46974"
+    }
+  ]
+}

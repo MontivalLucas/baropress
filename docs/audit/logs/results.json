@@ -1,0 +1,44 @@
+[
+  {
+    "name": "typecheck",
+    "command": "npm.cmd run typecheck",
+    "exitCode": 0,
+    "elapsedSeconds": 8.57,
+    "log": "logs/typecheck.log"
+  },
+  {
+    "name": "frontend-tests",
+    "command": "npm.cmd test",
+    "exitCode": 0,
+    "elapsedSeconds": 9.72,
+    "log": "logs/frontend-tests.log"
+  },
+  {
+    "name": "frontend-build",
+    "command": "npm.cmd run build",
+    "exitCode": 0,
+    "elapsedSeconds": 24.34,
+    "log": "logs/frontend-build.log"
+  },
+  {
+    "name": "rust-tests",
+    "command": "cargo test --manifest-path src-tauri/Cargo.toml --offline",
+    "exitCode": 0,
+    "elapsedSeconds": 31.22,
+    "log": "logs/rust-tests.log"
+  },
+  {
+    "name": "tauri-build",
+    "command": "npm.cmd run tauri:build -- --ci --bundles nsis -- --offline",
+    "exitCode": 1,
+    "elapsedSeconds": 145.96,
+    "log": "logs/tauri-build.log"
+  },
+  {
+    "name": "tauri-bundle-final",
+    "command": "npm.cmd run tauri -- bundle --ci --bundles nsis",
+    "exitCode": 0,
+    "toolElapsedSeconds": 8.53,
+    "log": "logs/tauri-bundle-final.log"
+  }
+]

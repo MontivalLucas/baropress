@@ -1,0 +1,202 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 11649,
+    "sha256": "C7D2E6946352DDBB7238B0DEA19A796479C618ABFB23A124583F2D8405913CD9"
+  },
+  {
+    "path": "scripts/barosys-fixture.ts",
+    "bytes": 2782,
+    "sha256": "4DB5A0158744FD64513F64EE97D6FC445F7A51938568F8410D0B417D161D46A7"
+  },
+  {
+    "path": "scripts/barosys-preview.html",
+    "bytes": 292,
+    "sha256": "CBC662719F0A9BA6AD4D4D427F98AF0001EFB456BD7A1364119ABD80ABCB29F6"
+  },
+  {
+    "path": "scripts/barosys-preview.tsx",
+    "bytes": 2879,
+    "sha256": "A997574B4D6D6AC7D147CAAA6AA8B7520CD9B70025B9CE4ACE378AE38B193474"
+  },
+  {
+    "path": "scripts/benchmark_barosys.cjs",
+    "bytes": 2078,
+    "sha256": "48DD9E71339D139BB4131E24DFBB8126E75097AB922344EF164AF3A1DFB7584B"
+  },
+  {
+    "path": "scripts/check_barosys_ui.cjs",
+    "bytes": 5103,
+    "sha256": "810A5FE2AE432F4BFA108084274856C09BDA5B4756F48BA5A74C0C622F59A3EC"
+  },
+  {
+    "path": "src-tauri/migrations/0008_exam_analysis.sql",
+    "bytes": 49,
+    "sha256": "29C9C08F8E308091D500EC0F3B6E30F1F29EDC528DE281C3AD5585007D2DAA8A"
+  },
+  {
+    "path": "src-tauri/src/acquisition.rs",
+    "bytes": 14961,
+    "sha256": "77D7E126A8471A99312DF6A9010FC9559DCA504EC9226BC411D0B68D2112826B"
+  },
+  {
+    "path": "src-tauri/src/backup.rs",
+    "bytes": 30094,
+    "sha256": "79E2AAC1015D1B69DE0D751F14E824B932FC89B16DB9B2936FB796C3801AAD65"
+  },
+  {
+    "path": "src-tauri/src/calibration.rs",
+    "bytes": 93399,
+    "sha256": "64EF30965667AE081E2D2014EE843C89D2AC7EBB292F7B837F637B748A8D5EFA"
+  },
+  {
+    "path": "src-tauri/src/db.rs",
+    "bytes": 8025,
+    "sha256": "86A03F1819588736A9780B1BEF9CDD6665D55264C05303500C8350433440F349"
+  },
+  {
+    "path": "src-tauri/src/exam_analysis_tests.rs",
+    "bytes": 6330,
+    "sha256": "12FF8C267FDE72DEF7A6D4D3A0032EBAE2219A0F042897995DADB53264D067CB"
+  },
+  {
+    "path": "src-tauri/src/exam_analysis.rs",
+    "bytes": 11162,
+    "sha256": "09C442CA4932541FEED89008FEB44B1FD6941D73D7464F379EEBFB4BDA9CC331"
+  },
+  {
+    "path": "src-tauri/src/exams.rs",
+    "bytes": 40115,
+    "sha256": "D03343B76233662281BFF8763CC6EFC8F3F0AFA2AE4531A4C9723152CBE08513"
+  },
+  {
+    "path": "src-tauri/src/lib.rs",
+    "bytes": 6791,
+    "sha256": "8D00515C09D6D662E7277E9A00F2C8C9450DF491130110473C8A396E8CE1F969"
+  },
+  {
+    "path": "src/features/comparison/ComparisonPage.tsx",
+    "bytes": 11636,
+    "sha256": "704A71DC691E8EB76C92352AD337CA78D2E87731C8C6A1B2142592A065CBEDBF"
+  },
+  {
+    "path": "src/features/comparison/comparisonUtils.ts",
+    "bytes": 3419,
+    "sha256": "EC13C9E0D409D96D0605E189DA893C705E5991262210C8CCB4C6B44C597A646B"
+  },
+  {
+    "path": "src/features/exams/AnalysisGraphs.tsx",
+    "bytes": 3887,
+    "sha256": "0B33B659117E492437CEC4A7CFC51E9B96A003BA4DEE2B40C5D41F30B79ACC88"
+  },
+  {
+    "path": "src/features/exams/AnalysisReview.tsx",
+    "bytes": 13369,
+    "sha256": "7092B38CABB7D0261187DDD44733D40666563E07B19BD934B546226D52BFF364"
+  },
+  {
+    "path": "src/features/exams/ExamConditionsForm.tsx",
+    "bytes": 4025,
+    "sha256": "D0DCB7C4957E3135D761A8046B82370554D9B511FCCB2D1B01F3A16BC8F2503C"
+  },
+  {
+    "path": "src/features/exams/ExamDetailsModal.tsx",
+    "bytes": 16679,
+    "sha256": "AB60BB538DE258E83136B4092E97CCAD4C34912B17B5278782D9739864309C22"
+  },
+  {
+    "path": "src/features/exams/ExamExportActions.tsx",
+    "bytes": 3814,
+    "sha256": "AAC10B2D18DC83A972E9AF55F7891E5E15D1624916AD856BA2E4E31478CDEBE5"
+  },
+  {
+    "path": "src/features/exams/examRuntime.ts",
+    "bytes": 3986,
+    "sha256": "79A10FE6E39E7E536CDBA635ADFA648C62BE4D7A68FB108A5262345C337BDFD9"
+  },
+  {
+    "path": "src/features/exams/examStore.ts",
+    "bytes": 16482,
+    "sha256": "E0755049459A932360DBC22EB46C9AEEE8E9CEEFFC748F38A3AAC8FBC626DC02"
+  },
+  {
+    "path": "src/features/exams/NewExamPage.tsx",
+    "bytes": 38117,
+    "sha256": "85D237242E329D91B534D951198FC2B453BFE0923F048B13034CC9B91C7F7672"
+  },
+  {
+    "path": "src/features/exams/SensorMap3D.tsx",
+    "bytes": 1922,
+    "sha256": "919C50A792F4FDDEF8A16507EB9608651D49806FE9931F894E490A1407514C0B"
+  },
+  {
+    "path": "src/features/reports/reportPdfGenerator.ts",
+    "bytes": 26839,
+    "sha256": "93568E182520B5D5A9EB7E308A2CC7AF7DAEBAF67866EE24E1E8BEBB957A42FF"
+  },
+  {
+    "path": "src/features/reports/ReportViewer.tsx",
+    "bytes": 30464,
+    "sha256": "4AB6A623404A34E6FC10348D47076F0E28075671491160E279027797A0044623"
+  },
+  {
+    "path": "src/index.css",
+    "bytes": 1748,
+    "sha256": "10583D98D4D756272319B0FDA60F288A1E45C39915BDFEA6E47ACA4E020B4660"
+  },
+  {
+    "path": "src/services/acquisition/rawStream.ts",
+    "bytes": 1551,
+    "sha256": "0E7A0A9C97C2FFF2539858E41D53251CCBF1E9DA770D831813FD7A4C22458A73"
+  },
+  {
+    "path": "src/services/acquisition/SerialSensorDevice.ts",
+    "bytes": 6928,
+    "sha256": "19F114FB489C59FC3F4BE27D589F31AB1B1A092BBB2371D588E3419BE2D1A187"
+  },
+  {
+    "path": "src/services/database/api.ts",
+    "bytes": 10462,
+    "sha256": "996C531A14E320748DB46457E674ACA0AB719DD66C9CFBBAD192DB7384D23A0A"
+  },
+  {
+    "path": "src/services/examAnalysis\\calculations.ts",
+    "bytes": 8938,
+    "sha256": "3BDB9A817BC7B747421638A8E617EA737118F05C1C309EF3727DC86AC357DDCF"
+  },
+  {
+    "path": "src/services/examAnalysis\\report.ts",
+    "bytes": 5449,
+    "sha256": "C6009AC08DD4E47EA30AED7094AD0EDA63198907AAC40533CE7D715CD7474846"
+  },
+  {
+    "path": "src/services/examAnalysis\\types.ts",
+    "bytes": 2655,
+    "sha256": "9D0E70490A9EE0B99A4523035AE26A1DE9A307185CA1BE2EC4BC55DA8AFFFC93"
+  },
+  {
+    "path": "src/tests/exam-analysis.test.ts",
+    "bytes": 6127,
+    "sha256": "0BCBF7F1B458C00AFDA7C83D11616F46D70C98380002534E153F8E74339DD890"
+  },
+  {
+    "path": "src/tests/exams.test.ts",
+    "bytes": 22473,
+    "sha256": "7D5187186B983CBEF3C0EBF6A6461B3F33099E4F05718AC3C9B3D03EFF4F727B"
+  },
+  {
+    "path": "src/tests/serial-status.test.ts",
+    "bytes": 4174,
+    "sha256": "5BA7D3BAFDEB1B67AF849B3382990F20F6532022D9BAC6D781F829AC76641E9F"
+  },
+  {
+    "path": "src/types/index.ts",
+    "bytes": 6378,
+    "sha256": "FF3682BCA006F70326C85E4BF21E33CF5B6DDC88254021C0572429F8E487546A"
+  },
+  {
+    "path": "scripts/refresh_barosys_pdf.cjs",
+    "bytes": 1229,
+    "sha256": "1F1C865AF2A28DB84C5AB578C4B8F0D04E1AF06676B9960452F863FF90190F78"
+  }
+]

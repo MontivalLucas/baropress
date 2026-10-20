@@ -1,0 +1,24 @@
+node_modules
+dist
+src-tauri/target
+src-tauri/gen
+
+# Arquivos locais, dados e credenciais
+.env
+.env.*
+!.env.example
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.sqlite3-*
+*.pem
+*.key
+*.pfx
+*.log
+
+# Entregas compiladas e arquivos temporários
+/entrega/
+/.evento-build/
+*.tsbuildinfo
+__pycache__/

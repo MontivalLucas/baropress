@@ -1,0 +1,159 @@
+BAROPRESS — PROGRESSO DE TESTES E CALIBRAÇÃO — 07/10/2026
+
+ENTREGA DE SOFTWARE
+O roteiro foi executado em sequência. Módulo e integrações implementados
+no código. Nenhum dado experimental real foi fabricado nem foi declarado
+que o tapete já esteja fisicamente calibrado.
+
+ETAPA 0 — TESTADA EM SOFTWARE
+Auditoria: sem Git nesta pasta; nenhuma instrução AGENTS.md localizada.
+Baseline anterior: typecheck, 132 testes TypeScript e 63 Rust aprovados.
+onFrame usa Set; distribuidor central não abre segunda conexão COM.
+Exames existentes já tinham runtime por eventos e matriz média ADC.
+Autorização central em lib.rs; ativar/retirar perfil exige administrador.
+Migração aditiva 0006 e snapshot pré-migração; exames legados preservados.
+
+ETAPA 1 — TESTADA EM SOFTWARE
+Menu Testes e calibração; seções Tapete, Diagnóstico, Ensaios, Curvas,
+Validação, Perfis e Protocolo. Identidade, revisão, firmware, medidas,
+camadas, capacidade, células com áreas/coordenadas e motivos de exclusão.
+Geometria regular exige confirmação; personalizada por JSON.
+Desconhecidos permanecem desconhecidos; revisão salva é imutável.
+
+ETAPA 2 — TESTADA EM SOFTWARE
+Tabelas de tapetes, ensaios, lotes brutos, perfis, validações e seleção ativa.
+Protocolo, sessão, baseline, referências e condições na especificação do
+ensaio. O zero é um ensaio próprio, com todos os quadros e estatísticas.
+Origem REAL/SIMULATION, operador, datas e proveniência da importação.
+Validações de contrato no Rust. Lotes idempotentes de até 60 quadros,
+20.000 por ensaio; metadados evitam reanalisar toda a série a cada escrita.
+Backup integral inclui tabelas/bruto; schema anterior 5 é atualizado.
+Importação individual de ensaio/zero mantém origem e bruto, identifica
+IMPORTADO, verifica estatísticas/relações/conflitos e não ativa perfil.
+Perfis avulsos sem seus dados não são aceitos para ativação.
+Limite atual de importação: 64 MB por arquivo. Sem remoção automática.
+
+ETAPA 3 — TESTADA EM SOFTWARE
+Quadros brutos distribuídos antes de RAF, tara e orientação.
+Gravador independente da página, fila limitada e lotes assíncronos.
+Relógio encerra janela; não amostra o último quadro por temporizador.
+Duplicatas, troca de fonte/dispositivo, parada, erro ou overflow interrompem.
+Coleta e exame têm bloqueio mútuo; configuração e tara congeladas.
+Fechamento inesperado deixa ensaio interrompido na próxima abertura.
+Sequência do protocolo atual é de recepção e não prova perdas anteriores.
+
+ETAPA 4 — TESTADA EM SOFTWARE / AGUARDANDO ENSAIO FÍSICO
+Matriz ADC discreta, ponto selecionável, série visual e série salva.
+Média, desvio, min/max, deriva, saturação, gaps e intervalos medidos.
+Baseline experimental separado da tara visual; vizinhos visíveis sob carga.
+Não há classificação definitiva de defeito/ghosting sem caracterização.
+
+ETAPA 5 — TESTADA EM SOFTWARE / AGUARDANDO ENSAIO FÍSICO
+Assistente de referência, acomodação, captura e aceitação/rejeição.
+Tipos BASELINE, TOTAL, LOCAL, UNIFORM e PERSON; FIT/VALIDATION separados.
+kg/g/N/kPa/kgf/cm²; massa do aplicador somada uma vez.
+Região e uniformidade requeridas para pressão local. Modelo inicial usa
+contato integral em células conhecidas, não referência de contato parcial.
+Histórico, busca, condições, gráficos, importação e exportação completas.
+
+ETAPA 6 — IMPLEMENTADA / AGUARDANDO ENSAIO FÍSICO
+Protocolo na aba e arquivo COMO_USAR_TESTES_E_CALIBRACAO.txt.
+Planejamento de zero, cargas, reaplicações, posições, subida/descida e dias.
+Durações e quantidades iniciais são planejamento exploratório, não norma.
+Pesos, geometria e capacidade não foram preenchidos automaticamente.
+
+ETAPA 7 — TESTADA EM SOFTWARE / AGUARDANDO ENSAIO FÍSICO
+Ajuste Rust por trechos, referências ordenadas e monotonicidade verificadas.
+TOTAL_FORCE_ONLY separado de LOCAL_PRESSURE. Cobertura e domínio visíveis.
+Baseline/piso de ruído congelados; sem tara dupla ou extrapolação.
+Não há cópia silenciosa de curvas dos vizinhos.
+
+ETAPA 8 — TESTADA EM SOFTWARE / AGUARDANDO ENSAIO FÍSICO
+Validação independente por grupo, critérios pré-definidos e imutáveis.
+MAE, RMSE, viés, máximo absoluto e erros por referência/ponto.
+Cobertura/grupos/faixa insuficientes ou simulação ficam inconclusivos.
+Reaplicações, histerese absoluta e deriva ADC apresentadas separadamente.
+Nova reprovação/inconclusão retira seleção ativa do perfil.
+Dados importados e validações são recalculados a partir do bruto.
+Tolerância numérica explícita cobre apenas arredondamento de serialização.
+
+ETAPA 9 — TESTADA EM SOFTWARE / AGUARDANDO ENSAIO FÍSICO
+PERSON usa código, massa medida em kg, instrumento e postura confirmada.
+Capacidade mecânica cadastrada precisa comportar a massa.
+Verificação estática, sem ajustar pressão local por peso corporal.
+Não há normalização da soma para o peso do cadastro.
+Data/hora de pesagem diferente da coleta deve constar nas observações.
+
+ETAPA 10 — TESTADA EM SOFTWARE / AGUARDANDO ENSAIO FÍSICO
+Perfis imutáveis, validações separadas e ativação explícita/atômica.
+Perfil simulado, incompleto ou inconclusivo não ativa conversão real.
+Uso exige confirmação de tapete/revisão/firmware pelo operador; serial
+atual não identifica a montagem física independentemente da confirmação.
+Restauração retira seleção ativa; reativação revalida os dados preservados.
+
+ETAPA 11 — TESTADA EM SOFTWARE / AGUARDANDO ENSAIO FÍSICO
+kPa/N/mm/mm² internos; apresentação kgf/cm², kgf e cm².
+Conversão quadro a quadro antes da média, inclusive em curva não linear.
+Força por pressão x área; CoP ponderado por força; pressão média por área.
+Sem contato, fora de faixa, saturação, deriva e inválido separados.
+Pontos desconhecidos não viram zero nem total/CoP completo.
+Pico temporal distinto do pico discreto do mapa médio.
+Prévia física instantânea na Análise com confirmação de perfil ativo.
+Mapa principal ADC identificado; sem segmentação automática de pés nem
+pressão local inferida de perfil somente de força total.
+
+ETAPA 12 — TESTADA EM SOFTWARE / AGUARDANDO ENSAIO FÍSICO
+Exame físico opcional; campos ADC e exames legados preservados.
+Backend calcula resultado usando bruto e snapshot do perfil do exame.
+Bruto em lotes, exportável; detalhes e PDF mostram resultados físicos
+separados dos relativos. PDF acrescenta anexo com mapa discreto quando local.
+Exame antigo não é recalibrado automaticamente. Backup individual mantém
+snapshot físico sem depender do perfil ativo no computador de destino.
+
+ETAPA 13 — TESTADA EM SOFTWARE; CONFERÊNCIA VISUAL MANUAL PENDENTE
+Executados e aprovados:
+- npm run typecheck.
+- npm test: 145 testes, incluindo 13 de calibração.
+- npm run build no estado final, módulo incluído em dist.
+- cargo check.
+- cargo test --manifest-path src-tauri/Cargo.toml: 78 testes, incluindo
+  15 de calibração e suas integrações.
+Fixtures sintéticas e bancos isolados/em memória; sem dados pessoais.
+Cobertura: grandezas, áreas, CoP, não linearidade, domínio, filas, falhas,
+origem, perfis simulados, corrupção/importação, backups, snapshots,
+exame físico, preservação de ADC e compatibilidade com backup anterior.
+Aviso do ambiente: Rust usou cópia em vez de hard links no cache incremental;
+isso não impediu compilação ou testes.
+Visual não concluída: ferramenta Windows interrompeu acesso por não
+identificar a URL com segurança; navegador remoto não alcançou localhost.
+Conferir manualmente Tauri, tema, janelas, PDF e USB/Bluetooth real.
+Prévia opcional scripts/calibration-preview.html usa só simulação em memória.
+Nenhum novo instalador foi gerado; banco pessoal não foi aberto/migrado por
+aplicativo nesta execução. A migração será aplicada ao abrir a nova versão.
+
+ETAPA 14 — AGUARDANDO ENSAIO FÍSICO
+Não há base real coletada nesta execução. Nenhum perfil físico validado
+foi ativado e nenhuma precisão experimental foi declarada.
+Depois da coleta, analisar referência, faixa, posições, dias, histerese,
+saturação e resultados independentes conforme o guia principal.
+
+PRÓXIMO PASSO
+Abrir npm run tauri:dev, cadastrar revisão/medidas, capturar zero e coletar
+cargas reais conhecidas e validação independente. Consultar
+COMO_USAR_TESTES_E_CALIBRACAO.txt nesta mesma pasta.
+
+
+ATUALIZACAO 0.2.2 — CORRECAO DE CONJUNTO (07/10/2026)
+Implementada correção transacional de Ajuste para Validação independente,
+com seleção em lote, motivo, confirmação de finalidade e histórico por
+ensaio. Leituras, referências, estatísticas, grupos e curva preservados.
+Bloqueia coletas anteriores à curva, registros já utilizados, grupo do
+ajuste, origem/tapete/baseline divergentes e grupos parcialmente escolhidos.
+Não há migração de esquema SQLite. Exportação mantém a rastreabilidade.
+Verificação: typecheck e build da interface aprovados; 145 testes TypeScript
+e 83 Rust passaram, incluindo cinco novos testes de correção.
+Instruções: CORRIGIR_CONJUNTO_DE_ENSAIOS.txt.
+Empacotamento 0.2.2 concluído: executável release e instalador NSIS gerados
+com sucesso após fechar o BAROPRESS que bloqueava os arquivos.
+Instalador: src-tauri/target/release/bundle/nsis/BAROPRESS_0.2.2_x64-setup.exe.
+Nenhum ensaio do banco pessoal foi alterado automaticamente nesta sessão.

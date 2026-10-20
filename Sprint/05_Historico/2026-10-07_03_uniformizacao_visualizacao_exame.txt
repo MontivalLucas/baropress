@@ -1,0 +1,75 @@
+BAROPRESS - UNIFORMIZAÇÃO DA VISUALIZAÇÃO DO EXAME
+Data: 07/10/2026
+Versão: 0.2.3
+Status: IMPLEMENTAÇÃO, TESTES AUTOMÁTICOS E EMPACOTAMENTO CONCLUÍDOS
+
+PEDIDO
+Permitir regular Gamma no exame, como na Análise, e uniformizar os ajustes.
+
+DIAGNÓSTICO
+Nas imagens fornecidas, Novo Exame usava VMAX 500, threshold 110,
+Gamma 1,1 e suavização 0. Análise usava VMAX 1150, threshold 480,
+Gamma 1,25 e suavização 0,35. Valores acima do VMAX já viram intensidade
+máxima antes da aplicação de Gamma. Alterar somente Gamma não recupera
+a gradação desses valores saturados. As imagens também representam
+amostra média temporal no exame e quadro instantâneo na Análise.
+
+IMPLEMENTADO
+1. Mesma ParameterBar antes do exame e no resultado, com os mesmos limites
+   da Análise: Gamma, VMAX, suavização, FPS visual e marcador de CoP.
+2. Painel avançado compartilhado com resolução e restauração de padrões.
+3. Botão Ajustar VMAX ao pico em Análise, prévia e resultado. Ele calcula
+   uma escala a partir do pico ADC em contato, limitada a 500-4095 ADC,
+   e altera somente VMAX e modo Manual. Não é calibração física.
+4. Aviso de sensores que atingem a intensidade máxima da escala.
+5. Configuração ainda em CONFIRM acompanha alterações feitas na Análise,
+   inclusive quando o usuário retorna a um exame já iniciado na interface.
+6. Durante preparação e coleta os parâmetros permanecem fixos.
+7. No resultado os controles visuais são editáveis antes do salvamento.
+   Threshold e modo adaptativo automático ficam bloqueados para preservar
+   contato, métricas ADC e trajetória calculados na aquisição.
+8. Salvamento mantém coerência entre Gamma/VMAX/suavização em colunas e
+   visualizationSettings. Matriz, métricas, timestamps, trajetória de CoP,
+   perfil físico e quadros brutos permanecem os mesmos.
+9. Ajustes visuais passam a ser usados pela Análise e próximos exames.
+   O limiar global dos próximos exames é preservado quando se ajusta
+   somente a aparência de um resultado. Histórico salvo não é alterado.
+10. Controles são bloqueados durante conexão e salvamento.
+
+VERIFICAÇÃO FINAL
+- Testes específicos: 41 aprovados em exams e baropodometry-settings.
+- Suite frontend: 149 testes aprovados em 18 arquivos.
+- TypeScript e build de produção aprovados (npm run build).
+- cargo test --manifest-path src-tauri/Cargo.toml --offline: 83 aprovados.
+- Build desktop release e instalador NSIS x64 aprovados.
+- Empacotamento usa src-tauri/target/visualizacao para permitir compilar
+  enquanto o executável release anterior está aberto.
+- A ferramenta de navegador retornou timeout ao obter o estado inicial.
+  Conferência visual interativa não foi concluída nesta execução.
+- Não foram abertos nem alterados dados pessoais nesta verificação.
+
+ARTEFATOS
+Executável 0.2.3:
+src-tauri/target/visualizacao/release/baropress.exe
+Instalador 0.2.3:
+src-tauri/target/release/bundle/nsis/BAROPRESS_0.2.3_x64-setup.exe
+A cópia original do instalador também está em
+src-tauri/target/visualizacao/release/bundle/nsis/.
+O executável anterior que estava aberto continua sendo a versão anterior.
+O iniciar_baropress.bat usa o código atualizado em modo desenvolvimento.
+Aviso do empacotador: identificador termina com .app (recomendação para
+macOS); o empacotamento Windows foi concluído sem erro.
+
+COMO USAR
+Antes da aquisição: Novo Exame > Configurações do exame.
+Depois da aquisição: controles acima do mapa, antes de Salvar Exame.
+Se estiver muito vermelho: aumentar VMAX ou Ajustar VMAX ao pico.
+Gamma regula intensidades intermediárias. Suavização regula as bordas.
+Para comparação entre exames, usar uma escala manual comum e manter
+os mesmos ajustes. Escalas individuais pelo pico não equivalem a uma
+escala fixa para comparação de intensidades entre pessoas ou sessões.
+
+PENDENTE
+- Homologar layout e coleta com ESP32 físico na aplicação desktop.
+- Conferir mudança de Gamma/VMAX no resultado, salvamento e reabertura
+  com paciente sintético, incluindo um exame com perfil físico em teste.

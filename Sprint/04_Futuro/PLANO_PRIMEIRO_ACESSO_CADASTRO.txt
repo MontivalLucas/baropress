@@ -1,0 +1,19 @@
+BAROPRESS - PRIMEIRO ACESSO E CADASTRO NA TELA DE LOGIN
+Data: 09/10/2026. Pedido: permitir cadastro no primeiro acesso, primeiro usuário admin.
+A base já tinha cadastro inicial na 0.2.12; explicitar a jornada e reforçar a regra.
+1. Sem contas neste computador, abrir cadastro com nome/e-mail/RA/senha/confirmar.
+   Explicar Administrador/acesso completo e como informar RA; botão Cadastrar.
+2. Backend sempre atribui admin à primeira conta, mesmo se função interna receber
+   outro perfil. Banco verifica em transação se cadastro inicial ainda está aberto.
+3. Depois do primeiro cadastro, fechar criação pública. Admin cria as demais
+   contas em Usuários. Conta desativada/excluída não reabre o cadastro inicial.
+4. Confirmar hash, sessão autenticada, RA/zeros, acesso a Usuários e bloqueio de
+   segundo cadastro. TypeScript/testes/build, gerar instalador 0.2.13 e registrar.
+5. Cada computador tem instalação/banco próprio; registrar limites de homologação.
+Sem alterar banco pessoal, criar conta real ou instalar automaticamente.
+
+ESTADO FINAL: etapas1 a4 concluídas; 198 frontend e 123 Rust aprovados,
+1 benchmark ignorado. TypeScript/build e NSIS 0.2.13 aprovados. Etapa5 documentada;
+conferência visual nativa/Arduino segue pendente, sem dados reais modificados.
+Registro: ../05_Historico/2026-10-09_14_primeiro_acesso_cadastro.txt.
+Relatório: ../../docs/corrections/PRIMEIRO_ACESSO_0.2.13.md.

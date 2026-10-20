@@ -1,0 +1,27 @@
+BAROPRESS - F07 - CONSOLIDAÇÃO E VERIFICAÇÃO
+Data: 09/10/2026. Estado: CONCLUÍDO NO SOFTWARE / HOMOLOGAÇÃO NATIVA E FÍSICA PENDENTE.
+Solicitação: execução sequencial do plano BAROSYS, preservando instalação e dados.
+
+COMPORTAMENTO / DECISÃO
+Jornadas sintéticas frontend/backend, migração/restore, legado/novos, comparação/PDF, temas e resoluções; medições da maior série planejada, documentação e demonstração. Escopo exato e pendências em docs/barosys/VALIDACAO_E_DEMONSTRACAO.txt.
+
+ARQUIVOS PRINCIPAIS
+README.md; docs/barosys/*; Sprint/04_Futuro/PLANO_MELHORIAS_BASEADAS_NO_BAROSYS.txt; agregados Sprint; scripts/barosys-{fixture,preview}.ts/.tsx/.html; scripts/check_barosys_ui.cjs; scripts/benchmark_barosys.cjs
+
+CONTRATOS E COMPATIBILIDADE
+baropress-static-v1; esquema SQLite 8; backup formato 1; exportação de série 1.
+Legado sem metadados permanece indisponível; matriz/indicadores originais preservados.
+Rollback da faixa esquerda mantido. Perfis físicos e critérios existentes preservados.
+
+VERIFICAÇÃO E LIMITES
+Não confundir fixture visual com jornada nativa integrada ao SQLite; contratos e transações verificados separadamente em Rust. Escala OS/impressora, instalação, uso prolongado WebView2 e hardware pendentes. Nenhum pacote/instalação solicitado ou gerado.
+Verificações finais comuns estão nos logs de docs/barosys e em
+VALIDACAO_E_DEMONSTRACAO.txt. As contagens são de uma suíte integrada, não
+de execuções independentes repetidas em cada registro de fase.
+
+EVIDÊNCIA VISUAL / ENSAIO
+PNG/PDF sintéticos em docs/barosys quando aplicável. Não são exames pessoais.
+Ensaio real pendente conforme decisão do usuário; sem ativação/instalação automática.
+
+RETOMADA
+Homologar desktop isolado e bancada juntos; manter instalação de uso intacta.

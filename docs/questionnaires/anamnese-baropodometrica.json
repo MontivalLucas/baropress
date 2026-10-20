@@ -1,0 +1,475 @@
+{
+  "id": null,
+  "name": "Anamnese para avaliação baropodométrica — v1",
+  "description": "Entrevista inicial sobre sintomas, saúde dos pés, antecedentes e mobilidade. Modelo autoral para revisão pelo responsável clínico; não é escala validada nem gera diagnóstico ou liberação automática do exame. Dados cadastrais permanecem no prontuário. Perguntas 'Se sim' podem ficar em branco quando não se aplicarem.",
+  "active": true,
+  "questions": [
+    {
+      "id": null,
+      "groupName": "Queixa e objetivo",
+      "question": "Qual é o principal motivo da avaliação?",
+      "type": "text",
+      "options": [],
+      "required": true,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Queixa e objetivo",
+      "question": "O que você espera melhorar com o atendimento?",
+      "type": "text",
+      "options": [],
+      "required": false,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Dor e sintomas",
+      "question": "Você sente dor atualmente?",
+      "type": "single",
+      "options": [
+        "Não",
+        "Sim",
+        "Não sei informar"
+      ],
+      "required": true,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Dor e sintomas",
+      "question": "Onde sente dor? Marque os locais e descreva outros abaixo.",
+      "type": "multi",
+      "options": [
+        "Pé esquerdo",
+        "Pé direito",
+        "Tornozelo esquerdo",
+        "Tornozelo direito",
+        "Joelhos",
+        "Quadris",
+        "Coluna",
+        "Outro"
+      ],
+      "required": false,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Dor e sintomas",
+      "question": "Se houver dor, descreva a região exata, o lado e quando começou.",
+      "type": "text",
+      "options": [],
+      "required": false,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Dor e sintomas",
+      "question": "Qual é a intensidade da dor agora? 0 = nenhuma dor; 10 = pior dor imaginável.",
+      "type": "single",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10"
+      ],
+      "required": false,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Dor e sintomas",
+      "question": "Quando a dor aparece ou piora?",
+      "type": "multi",
+      "options": [
+        "Ao levantar ou dar os primeiros passos",
+        "Ao caminhar",
+        "Ao correr",
+        "Ao ficar em pé",
+        "Em repouso",
+        "À noite",
+        "Outro"
+      ],
+      "required": false,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Dor e sintomas",
+      "question": "O que melhora ou piora os sintomas?",
+      "type": "text",
+      "options": [],
+      "required": false,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Dor e sintomas",
+      "question": "Apresenta formigamento, dormência, queimação ou redução da sensibilidade nos pés?",
+      "type": "single",
+      "options": [
+        "Não",
+        "Sim",
+        "Não sei informar"
+      ],
+      "required": true,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Dor e sintomas",
+      "question": "Se sim, descreva os sintomas, o lado e há quanto tempo ocorrem.",
+      "type": "text",
+      "options": [],
+      "required": false,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Histórico de saúde",
+      "question": "Algum profissional já diagnosticou alguma das condições abaixo? Marque apenas os diagnósticos conhecidos; use o campo seguinte para outras condições.",
+      "type": "multi",
+      "options": [
+        "Diabetes",
+        "Neuropatia",
+        "Doença vascular ou circulatória",
+        "Hipertensão",
+        "Artrite ou artrose",
+        "Osteoporose",
+        "Doença neurológica"
+      ],
+      "required": false,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Histórico de saúde",
+      "question": "Descreva outras condições ou esclareça se não possui diagnóstico conhecido ou não sabe informar.",
+      "type": "text",
+      "options": [],
+      "required": false,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Histórico de saúde",
+      "question": "Já teve fratura, entorse importante, cirurgia ou amputação nos pés, pernas, quadris ou coluna?",
+      "type": "single",
+      "options": [
+        "Não",
+        "Sim",
+        "Não sei informar"
+      ],
+      "required": true,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Histórico de saúde",
+      "question": "Se sim, informe o local, o lado, a data aproximada e possíveis restrições atuais.",
+      "type": "text",
+      "options": [],
+      "required": false,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Histórico de saúde",
+      "question": "Quais medicamentos usa atualmente? Informe nome, dose se souber e uso recente de analgésicos. Se não usa, escreva 'Nenhum'.",
+      "type": "text",
+      "options": [],
+      "required": false,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Histórico de saúde",
+      "question": "Possui alergias relevantes ao atendimento? Se sim, quais?",
+      "type": "text",
+      "options": [],
+      "required": false,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Histórico de saúde",
+      "question": "Há alguma orientação profissional para restringir esforço ou apoio de peso?",
+      "type": "single",
+      "options": [
+        "Não",
+        "Sim",
+        "Não sei informar"
+      ],
+      "required": true,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Histórico de saúde",
+      "question": "Se sim, descreva a restrição e quem orientou.",
+      "type": "text",
+      "options": [],
+      "required": false,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Saúde dos pés",
+      "question": "Há ferida, bolha aberta, úlcera, secreção ou lesão nos pés atualmente?",
+      "type": "single",
+      "options": [
+        "Não",
+        "Sim",
+        "Não sei informar"
+      ],
+      "required": true,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Saúde dos pés",
+      "question": "Percebeu vermelhidão, calor, inchaço ou mudança recente de cor nos pés?",
+      "type": "single",
+      "options": [
+        "Não",
+        "Sim",
+        "Não sei informar"
+      ],
+      "required": true,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Saúde dos pés",
+      "question": "Se houver lesão ou alteração, descreva o local, o lado e há quanto tempo.",
+      "type": "text",
+      "options": [],
+      "required": false,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Saúde dos pés",
+      "question": "Já teve úlcera nos pés ou lesão de difícil cicatrização?",
+      "type": "single",
+      "options": [
+        "Não",
+        "Sim",
+        "Não sei informar"
+      ],
+      "required": false,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Saúde dos pés",
+      "question": "Possui calos dolorosos, joanete ou outra alteração dos pés? Descreva; diferencie percepção pessoal de diagnóstico profissional.",
+      "type": "text",
+      "options": [],
+      "required": false,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Mobilidade e equilíbrio",
+      "question": "Como você se locomove habitualmente?",
+      "type": "single",
+      "options": [
+        "Sem auxílio",
+        "Com bengala",
+        "Com muletas",
+        "Com andador",
+        "Com cadeira de rodas",
+        "Com ajuda de outra pessoa",
+        "Outro"
+      ],
+      "required": true,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Mobilidade e equilíbrio",
+      "question": "Consegue permanecer em pé para a avaliação?",
+      "type": "single",
+      "options": [
+        "Sim, sem apoio",
+        "Sim, com apoio",
+        "Não",
+        "Não sei informar"
+      ],
+      "required": true,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Mobilidade e equilíbrio",
+      "question": "Caiu nos últimos 12 meses?",
+      "type": "single",
+      "options": [
+        "Não",
+        "Sim",
+        "Não sei informar"
+      ],
+      "required": true,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Mobilidade e equilíbrio",
+      "question": "Se caiu, quantas vezes aproximadamente? Houve lesão, desmaio ou necessidade de atendimento?",
+      "type": "text",
+      "options": [],
+      "required": false,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Mobilidade e equilíbrio",
+      "question": "Sente desequilíbrio, tontura ao levantar ou medo de cair?",
+      "type": "single",
+      "options": [
+        "Não",
+        "Sim",
+        "Não sei informar"
+      ],
+      "required": false,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Mobilidade e equilíbrio",
+      "question": "Quais atividades estão limitadas pelos sintomas?",
+      "type": "multi",
+      "options": [
+        "Caminhar",
+        "Subir ou descer escadas",
+        "Ficar em pé",
+        "Correr",
+        "Trabalhar",
+        "Atividades domésticas",
+        "Praticar esportes"
+      ],
+      "required": false,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Rotina, calçados e tratamentos",
+      "question": "Como é sua rotina de trabalho ou estudo? Informe tempo aproximado sentado, em pé e caminhando.",
+      "type": "text",
+      "options": [],
+      "required": false,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Rotina, calçados e tratamentos",
+      "question": "Pratica atividade física? Informe modalidade, frequência e duração, ou escreva 'Não'.",
+      "type": "text",
+      "options": [],
+      "required": false,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Rotina, calçados e tratamentos",
+      "question": "Quais calçados usa com mais frequência? Há desconforto ou desgaste que tenha percebido?",
+      "type": "text",
+      "options": [],
+      "required": false,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Rotina, calçados e tratamentos",
+      "question": "Usa palmilha, órtese ou calçado adaptado?",
+      "type": "single",
+      "options": [
+        "Não",
+        "Sim",
+        "Não sei informar"
+      ],
+      "required": false,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Rotina, calçados e tratamentos",
+      "question": "Se sim, informe tipo, tempo de uso, indicação e resposta percebida.",
+      "type": "text",
+      "options": [],
+      "required": false,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Rotina, calçados e tratamentos",
+      "question": "Já realizou fisioterapia, avaliação dos pés ou exame baropodométrico? Descreva quando e os resultados percebidos.",
+      "type": "text",
+      "options": [],
+      "required": false,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Registro do profissional",
+      "question": "Quem forneceu as informações?",
+      "type": "single",
+      "options": [
+        "Paciente",
+        "Responsável ou acompanhante",
+        "Paciente e acompanhante"
+      ],
+      "required": true,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Registro do profissional",
+      "question": "Identificação do profissional responsável pelo registro.",
+      "type": "text",
+      "options": [],
+      "required": true,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Registro do profissional",
+      "question": "Observações da entrevista e inspeção dos pés; registrar achados examinados separadamente das informações relatadas.",
+      "type": "text",
+      "options": [],
+      "required": false,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Registro do profissional",
+      "question": "Após avaliação profissional, qual foi a decisão sobre a coleta?",
+      "type": "single",
+      "options": [
+        "Prosseguir conforme protocolo",
+        "Adaptar a coleta conforme avaliação",
+        "Adiar a coleta e avaliar ou encaminhar",
+        "Decisão pendente"
+      ],
+      "required": true,
+      "active": true
+    },
+    {
+      "id": null,
+      "groupName": "Registro do profissional",
+      "question": "Descreva adaptações, motivo de adiamento, orientações ou encaminhamentos, quando aplicável.",
+      "type": "text",
+      "options": [],
+      "required": false,
+      "active": true
+    }
+  ]
+}

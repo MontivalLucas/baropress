@@ -1,0 +1,84 @@
+BAROPRESS - F07 - VERIFICAÇÃO E ROTEIRO DE DEMONSTRAÇÃO
+Data: 09/10/2026. Estado: CONCLUÍDO NO SOFTWARE NO ESCOPO ABAIXO.
+Homologação nativa/experimental: PENDENTE. F06-B e F09 real: PENDENTES.
+
+AMBIENTE E ESCOPO
+Windows x64, Node v24.19.0, Vite 6.4.3, Vitest 4.1.11, Edge existente via
+Playwright em modo headless. Viewports 1100x640 e 1366x768, escala de teste 1.
+Fixture PARTICIPANTE-SINTÉTICO-01 / OPERADOR-TESTE. Sem prontuários pessoais.
+Rust usa SQLite in-memory; navegador usa API de fixture sem acesso ao SQLite.
+Não equivale à jornada nativa integrada no WebView2 nem à escala do Windows.
+Nenhum executável/instalador novo foi gerado, instalado ou publicado.
+
+VERIFICAÇÕES REALMENTE EXECUTADAS
+Baseline: npm test -> 181 testes em 24 arquivos aprovados.
+Baseline: cargo test --manifest-path src-tauri/Cargo.toml -> 99 aprovados,
+1 ignorado explicitamente. Targets main/doc contêm 0 testes, não somados.
+Final frontend: npm test -> 192 testes em 25 arquivos aprovados.
+Final Rust: cargo test --manifest-path src-tauri/Cargo.toml -> 104 aprovados,
+1 ignorado explicitamente (benchmark existente), 0 falhas.
+npm run typecheck aprovado. npm run build aprovado; compilação web de produção.
+Logs: baseline-frontend.log, baseline-rust.log, final-frontend.log,
+final-rust.log e final-build.log. Após a revisão final de rótulos/margens,
+14 testes de PDF também passaram (final-reports.log); não somados aos 192. Falhas intermediárias de fixtures foram
+corrigidas; testes não removidos/desativados para esconder incompatibilidades.
+
+Bancos isolados: criar/reabrir série relativa sem perfil; leitura por posição;
+restauração completa e individual preservando condições/qualidade/série;
+legado esquemas 5/6/7; recusa de série parcial, dupla representação, média
+ou qualidade divergentes; restauração incompleta desfeita; regiões com
+sobreposição ou quadro fora da série recusadas. Exame físico existente
+continua com exigência de perfil REAL validado e protocolo static.
+Casos matemáticos: tara antes do flip, média/máximos/quadro, taxas irregulares,
+contador reiniciado, coluna central/denominadores, áreas desiguais, pressão
+ponderada por área, ausência de contato, dt zero/lacuna/trecho vazio.
+
+VISUAL E PDF
+node scripts/check_barosys_ui.cjs -> ambos os temas e os dois viewports,
+3D/retorno 2D, modos, posição por tempo, gráficos, condições, relatório,
+comparação 2 e 4; sem erros JavaScript ou overflow horizontal na fixture.
+ui-results.json e ui-*.png registram evidências. Inspeção efetiva dos PNGs
+de 3D, regiões, gráficos e PDF. Conteúdo de revisão usa linguagem técnica ADC.
+report-synthetic.pdf: 4 páginas; report-legacy.pdf: 2 páginas.
+Poppler pdftoppm renderizou as páginas em pdf-synthetic-*.png e pdf-legacy-*.png.
+Páginas novas sem cortes/overlap; ausência de contato separa gráficos.
+Avisos Poppler de fontes Symbol/ArialUnicode não impediram a renderização;
+a inspeção não detectou cortes nos anexos novos.
+Impressora física e diálogo de impressão WebView2 não testados.
+Computer Use browser incorporado retornou timeout; não usado como aprovação.
+A evidência efetiva é o teste local Edge e a inspeção dos arquivos produzidos.
+
+DESEMPENHO / RETENÇÃO
+Máximo novo: 10.000 quadros * 225 sensores. Sem limpeza automática.
+node scripts/benchmark_barosys.cjs: 11.022.637 bytes JSON (10,51 MiB);
+18,55 MiB de aumento de heap para alocar o bruto; RSS observado do processo
+167,14 MiB incluindo runtime/transpilação/cálculos. Qualidade 91,26 ms;
+máximos 30,82 ms; trajetória/métricas 41,32 ms. Medição sintética única;
+não constitui limite garantido ou consumo exclusivo do módulo.
+Na fixture Edge: 10.000 quadros lidos em páginas de 600 e último quadro
+selecionado em 727 ms. Heap informado pelo navegador: 53403491 ->
+70574678 bytes. Reprodução/pausa funcionaram; sem overflow horizontal.
+Não mediu COM, firmware, CPU/uso prolongado ou consumo no WebView2.
+
+ROTEIRO DE DEMONSTRAÇÃO (SEM DADOS REAIS)
+1. npm run dev -- --host 127.0.0.1 --port 1431.
+2. Abrir /scripts/barosys-preview.html; banner indica fixture isolada.
+3. Condições e qualidade -> conferir denominadores/limites/versão.
+4. Quadros e regiões -> Carregar série -> Média/Máximos/Quadro; tempo/pausa.
+5. Selecionar células/retângulo; salvar revisão; conferir parcela não atribuída.
+6. Vista 3D -> rotação/zoom por teclado -> Voltar ao 2D.
+7. Oscilação -> trecho, evento, quadro selecionado -> Mostrar quadro no mapa.
+8. ?page=report -> carregar prévia -> selecionar seções -> exportar PDF.
+9. ?page=comparison -> escolher 2 e 4 -> métodos/condições/máscaras/deltas.
+10. ?volume=10000 -> carregar série -> último quadro / reprodução / pausa.
+O entrypoint de produção não importa a fixture; não existe rota extra no app.
+
+PRÓXIMA HOMOLOGAÇÃO EM DESKTOP ISOLADO
+Criar banco próprio sintético e conta de teste; condições -> aquisição Mock ->
+eventos -> regiões -> gráficos -> salvar -> reiniciar/reabrir -> comparar ->
+PDF/impressão -> backup/restauração -> verificar novo login/IDs/permissões.
+Conferir Tab/Escape/foco/modal, escala OS, 1100x640/1366x768 e temas no WebView2.
+Somente depois executar protocolo F06 de bancada junto com o usuário.
+Não abrir a versão fonte nova sobre banco pessoal para fazer uma demonstração:
+migração 8 torna essa base incompatível com executável antigo. db::open mantém
+cópia pré-migração, mas isso não substitui usar ambiente isolado primeiro.

@@ -1,0 +1,57 @@
+BAROPRESS 0.2.2 — CORRIGIR AJUSTE PARA VALIDACAO INDEPENDENTE
+
+Objetivo
+Corrigir coletas feitas depois da curva candidata que foram destinadas à
+validação, mas ficaram com o campo Conjunto = Ajuste por engano.
+Esta opção não corrige massas ou unidades e não transforma dados usados
+na construção da curva em validação independente.
+
+1. Instale a versão 0.2.2 e faça login.
+2. Abra Testes e calibração > Ensaios e clique em Limpar seleção.
+3. Selecione as nove coletas novas dos grupos:
+   validacao-caderno-438g-01
+   validacao-caderno-2040g-01
+   validacao-caderno-4080g-01
+   Selecione todas as repetições de cada grupo; não selecione o zero ou
+   os ensaios que foram usados para gerar a curva.
+4. Clique em Corrigir conjunto dos selecionados.
+5. Escolha o perfil Força total — bancada com caderno — v1.
+6. Confira a lista de grupos e repetições apresentada.
+7. Escreva o motivo, por exemplo:
+   Coletas destinadas à validação e realizadas após gerar a curva;
+   o campo Conjunto permaneceu em Ajuste por engano.
+8. Confirme a declaração somente se as coletas não influenciaram a
+   escolha ou o ajuste da curva. Clique em Salvar correção para validação.
+9. O histórico passa a mostrar Validação independente · CORRIGIDO.
+   Leituras, referências, grupos, datas da coleta, estatísticas e estado
+   REVIEW/ACCEPTED permanecem iguais. Se o estado for REVIEW, faça a
+   revisão e aceite somente se a coleta foi executada corretamente.
+10. Os nove ensaios corrigidos continuam selecionados. Abra Validação,
+    escolha o mesmo perfil e execute a validação independente.
+11. Preserve todos os resultados, incluindo erros ou fora de faixa.
+    O limite do perfil continua em 1 N; a correção não aumenta esse limite.
+12. Exporte os ensaios corrigidos e o resultado; o histórico de correção
+    fica em Referência e condições completas e no JSON exportado.
+
+Bloqueios
+- Coletas anteriores ou simultâneas à criação da curva candidata.
+- Ensaios utilizados em ajuste, baseline ou validação de qualquer perfil.
+- Grupo utilizado no ajuste da curva escolhida ou protocolo diferente.
+- Mudanças de origem, tapete ou baseline.
+- Coletas importadas: corrija no computador onde foram registradas.
+- Coleta ativa, zero, registros rejeitados/interrompidos, correção repetida.
+- Seleção parcial que dividiria o grupo entre Ajuste e Validação.
+- Perfil já validado ou ativo.
+
+Rastreabilidade
+A correção é transacional: se um registro não puder ser corrigido, nenhum
+registro do lote é alterado. São registrados conjunto anterior e novo,
+motivo, perfil candidato, data e usuário autenticado. Nenhum quadro bruto
+é editado e nenhuma curva ou validação já existente é recalculada.
+Não há alteração do esquema SQLite: bancos e ensaios antigos permanecem
+compatíveis com a nova versão.
+
+Limite do experimento atual
+Curva de força total com apoio e posições ensaiadas, até a faixa coletada.
+Este teste não comprova pressão local, uso com pessoas ou equivalência
+com um equipamento comercial.

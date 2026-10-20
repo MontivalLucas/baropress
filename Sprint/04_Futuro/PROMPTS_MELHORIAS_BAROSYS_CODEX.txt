@@ -1,0 +1,173 @@
+BAROPRESS - PROMPTS PARA EXECUTAR O PLANO NO CODEX
+Data: 09/10/2026
+Estado: modelos de instrução preservados. Execução sequencial solicitada
+pelo usuário em 09/10/2026; consultar o quadro vigente e registros 02..11.
+Plano: Sprint/04_Futuro/PLANO_MELHORIAS_BASEADAS_NO_BAROSYS.txt
+
+COMO USAR
+Copiar somente o prompt da fase desejada para o Codex, na pasta do projeto.
+Os prompts usam caminhos relativos à raiz do BAROPRESS; os detalhes de
+escopo, dependências, evidências e critérios estão no plano principal.
+Nenhum prompt manda executar todas as fases, instalar ou ativar perfil real.
+Se o código evoluir, o Codex deve atualizar o diagnóstico antes de implementar.
+
+======================================================================
+PROMPT F00 - AUDITORIA E CONTRATOS
+======================================================================
+Leia Sprint/04_Futuro/PLANO_MELHORIAS_BASEADAS_NO_BAROSYS.txt e os registros
+recentes da Sprint. Execute somente F00. Confirme versão, arquitetura,
+contratos de exames/quadros/calibração, retenção e backup existentes; respeite
+o rollback da faixa esquerda. Cruze com as pendências do plano 0.2.10 e não
+refaça entregas existentes. Faça o baseline apropriado e documente contratos,
+unidades, tempos, migrações propostas e próximos blocos em TXT na Sprint.
+Preserve o programa e os dados pessoais; não inicie F01 nem gere instalador.
+Registre verificações reais, limitações e checkpoint de continuação.
+
+======================================================================
+PROMPT F01 - CONDIÇÕES E QUALIDADE
+======================================================================
+Leia Sprint/04_Futuro/PLANO_MELHORIAS_BASEADAS_NO_BAROSYS.txt e o checkpoint
+de F00. Execute somente F01, em seus blocos de condições e qualidade. Adicione
+condições estruturadas, eventos e qualidade técnica da coleta com persistência,
+reabertura e backup. Separe aquisição de atualização visual e limite de cor
+de saturação ADC/fora de faixa. Preserve watchdogs, origem, dados legados e
+parâmetros históricos. Não invente limite clínico nem fatos ausentes; critérios
+novos precisam de justificativa do protocolo. Use banco isolado, verifique
+casos de perda/intervalos/legado e atualize a Sprint. Não avance para F02.
+
+======================================================================
+PROMPT F02 - QUADROS E REPRODUÇÃO
+======================================================================
+Leia Sprint/04_Futuro/PLANO_MELHORIAS_BASEADAS_NO_BAROSYS.txt e os checkpoints
+de F00/F01. Execute somente F02, começando por contrato/persistência e depois
+reprodução. Permita guardar e revisar a série de novos exames relativos sem
+enfraquecer a exigência de perfil para exames físicos. Reutilize o armazenamento
+existente, preserve os tempos e a transformação histórica e evite duplicação.
+Integre backup/exportação, leitura sob demanda, limites de memória e falhas.
+Implemente quadro individual, média e máximos por sensor, reprodução e pausa,
+sem alterar as métricas originais nem reconstruir quadros de exames antigos.
+Verifique casos conhecidos e legado; registre o checkpoint. Não inicie F03.
+
+======================================================================
+PROMPT F03 - REGIÕES E RESULTADOS POR PÉ
+======================================================================
+Leia Sprint/04_Futuro/PLANO_MELHORIAS_BASEADAS_NO_BAROSYS.txt e confirme F00
+a F02 no estado atual. Execute somente F03. Implemente seleção ajustável e
+conferida de células para cada pé e região anterior/posterior, incluindo
+coluna central, parcela não atribuída e prevenção de dupla contagem. Não
+desloque a faixa esquerda e não altere a matriz original. Calcule indicadores
+discretos, com modo e denominador claros, separando área, ADC e força/pressão
+calibradas. Mantenha legado e análises derivadas versionadas. Verifique regiões
+vazias, deslocadas, áreas diferentes, sobreposição e reabertura; atualize a
+Sprint. Não implemente reconhecimento automático nem avance para F04.
+
+======================================================================
+PROMPT F04 - OSCILAÇÃO TEMPORAL
+======================================================================
+Leia Sprint/04_Futuro/PLANO_MELHORIAS_BASEADAS_NO_BAROSYS.txt e os checkpoints
+anteriores. Execute somente F04. Reutilize trajetória e série existentes para
+X(t), Y(t), trajetória, eventos e seleção de trecho, com tempos reais, lacunas
+e unidades explícitas. Defina e documente comprimento, velocidade e dispersão;
+não una segmentos sem contato. Diferencie centro ADC relativo de CoP físico
+e não invente precisão temporal em exames antigos. Elipse somente se seu
+método estiver definido e verificável, sem alegar reproduzir a fórmula BaroSYS.
+Use casos de referência independentes, confira integração visual e registre
+resultados/limites na Sprint. Não inicie F05.
+
+======================================================================
+PROMPT F05 - DOCUMENTOS E COMPARAÇÃO
+======================================================================
+Leia Sprint/04_Futuro/PLANO_MELHORIAS_BASEADAS_NO_BAROSYS.txt e confirme as
+entregas de F01 a F04. Execute somente F05. Integre condições, qualidade,
+regiões e gráficos ao relatório, PDF e comparação existentes em Histórico
+de Exames. Use resultados e parâmetros salvos, unidades e versões de cálculo
+claras, escalas compatíveis e avisos de diferenças de condição. Preserve
+observações, legado e REAL/SIMULATION. Verifique equivalência dos valores,
+reabertura, 2/4 exames, impressão/PDF e layout; não crie uma aba Relatórios
+duplicada. Atualize a Sprint e pare ao concluir a fase; não gere instalação.
+
+======================================================================
+PROMPT F06-A - PREPARAR OS ENSAIOS
+======================================================================
+Leia Sprint/04_Futuro/PLANO_MELHORIAS_BASEADAS_NO_BAROSYS.txt, F00/F01 e os
+documentos de Sprint/Treinamento e Sprint/Documentacao_TCC. Execute somente
+o bloco A de F06: preparar um protocolo experimental versionado e o modelo
+de registro, aproveitando a calibração já implementada. Identifique montagem,
+referências, geometria, capacidade, grupos de ajuste/validação, reaplicações,
+posições e critérios técnicos justificados. Deixe desconhecidos explícitos
+e peça apenas informações indispensáveis; conclua a documentação independente.
+Não fabrique resultados, não altere critérios do backend e não ative perfil.
+Registre o que está pronto e o que depende da bancada na Sprint.
+
+======================================================================
+PROMPT F06-B - ANALISAR ENSAIOS REAIS QUANDO FORNECIDOS
+======================================================================
+Leia Sprint/04_Futuro/PLANO_MELHORIAS_BASEADAS_NO_BAROSYS.txt e o protocolo
+produzido em F06-A. Execute somente o bloco B de F06 usando os arquivos reais
+que eu indicar. Verifique origem, referências, bruto, condições e independência
+antes de avaliar erro/ruído/deriva/histerese/faixa/cobertura. Reutilize a
+calibração existente; separe força total e pressão local e registre faltas
+como inconclusivas. Não normalize pelo peso para forçar concordância, não
+derive sensores pelas cores do PDF e não ative um perfil automaticamente.
+Produza resultados reproduzíveis e discussão dos limites, com fonte de cada
+ensaio e registro na Sprint. Se faltarem arquivos/dados essenciais, mantenha
+a parte experimental pendente e conclua as verificações possíveis.
+
+======================================================================
+PROMPT F07 - HOMOLOGAR E DOCUMENTAR A ENTREGA
+======================================================================
+Leia Sprint/04_Futuro/PLANO_MELHORIAS_BASEADAS_NO_BAROSYS.txt e os checkpoints
+de F00 a F06. Execute somente F07: verifique integração de condições, aquisição,
+regiões, gráficos, persistência, comparação, documentos e backup em base
+isolada; confira legado, memória, temas, teclado e resoluções previstas.
+Corrija regressões encontradas no escopo e registre verificações efetivamente
+executadas. Atualize README, cálculo e Sprint; prepare evidências e roteiro
+da demonstração com participantes codificados. Distinga software, conferência
+visual e ensaio real. Sem hardware ou F06 concluída, deixe essas validações
+pendentes. Não instale/substitua a versão de uso como ação automática.
+
+======================================================================
+PROMPT F08 - 3D OPCIONAL
+======================================================================
+Leia Sprint/04_Futuro/PLANO_MELHORIAS_BASEADAS_NO_BAROSYS.txt e confirme F02/F05.
+Execute somente F08: acrescente vista 3D baseada nos dados e modos existentes,
+com unidade/escala iguais ao 2D, rotação/zoom e alternativa 2D. Priorize
+compatibilidade e desempenho; justifique novas dependências se necessárias.
+Não reconstrua anatomia, não altere métricas nem desloque sensores. Verifique
+coerência e desempenho, documente os limites e atualize a Sprint. Não inicie
+o exame dinâmico nem gere um instalador sem escopo de entrega correspondente.
+
+======================================================================
+PROMPT F09-A - VIABILIDADE DA DINÂMICA
+======================================================================
+Leia Sprint/04_Futuro/PLANO_MELHORIAS_BASEADAS_NO_BAROSYS.txt e os checkpoints
+de F01/F02/F06. Execute somente o bloco A de F09: avalie a viabilidade do
+exame dinâmico exploratório com taxa/intervalos reais, resolução, resposta
+sob carga, referências e condições mecânicas documentadas. Não use FPS visual
+como taxa do sensor nem trate calibração estática como validação dinâmica.
+Sem medições, prepare o roteiro e mantenha a conclusão pendente. Documente
+regras propostas de contato/E-D e limites do estudo; não implemente F09-B
+nem altere o contrato físico estático para contornar sua validação.
+
+======================================================================
+PROMPT F09-B - IMPLEMENTAR DINÂMICA SE VIÁVEL
+======================================================================
+Leia Sprint/04_Futuro/PLANO_MELHORIAS_BASEADAS_NO_BAROSYS.txt e a avaliação
+documentada em F09-A. Execute somente F09-B se as condições necessárias
+estiverem demonstradas; caso contrário, registre a dependência e conclua
+o planejamento independente. Crie fluxo exploratório dedicado com início/fim
+de contato, E/D, rejeição de passos, retenção de quadros/tempos, reprodução
+e resultados por passo. Mostre ADC/contato como relativos; força/pressão
+exigem validação aplicável à dinâmica. Preserve o estático e suas proteções,
+integre backup/exportação e verifique passos conhecidos e reais identificados.
+Não adicione câmera sincronizada nesta subfase; registre evidências e limites.
+
+======================================================================
+PROMPT DE RETOMADA DE UMA FASE INTERROMPIDA
+======================================================================
+Leia Sprint/04_Futuro/PLANO_MELHORIAS_BASEADAS_NO_BAROSYS.txt e o registro mais
+recente da fase que está em andamento. Confira o código e retome o próximo
+bloco incompleto dessa fase, sem repetir trabalho concluído e sem avançar
+automaticamente para outras fases. Preserve decisões aceitas e dados salvos.
+Conclua o trabalho autorizado que não depender de informação ausente;
+registre verificações, limitações e novo checkpoint na Sprint.

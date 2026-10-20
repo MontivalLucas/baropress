@@ -1,0 +1,466 @@
+BAROPRESS - PLANO DE MELHORIAS BASEADAS NO BAROSYS
+Data: 09/10/2026
+Versão deste plano: 1
+Estado: núcleo de software executado em 09/10/2026; ensaios reais e
+homologação nativa pendentes. Registros 02 a 11 preservam os checkpoints.
+Base de software consultada: 0.2.11, após o rollback da faixa esquerda.
+
+OBJETIVO
+Evoluir a análise estática, a qualidade dos dados, a revisão dos exames e a
+documentação experimental do TCC, usando a visita ao BAROSCAN/BAROSYS como
+referência de funcionalidades. Adaptar os recursos à matriz do protótipo e
+aos dados realmente disponíveis, sem prometer equivalência entre equipamentos.
+
+COMO USAR NO CODEX
+1. Ler este plano, os registros atuais da Sprint e as instruções locais.
+2. Usar o prompt correspondente em PROMPTS_MELHORIAS_BAROSYS_CODEX.txt.
+3. Executar apenas a fase solicitada, verificando suas dependências no código
+   atual. A versão descrita aqui é uma referência, não prova do estado futuro.
+4. Dividir fases grandes nos blocos indicados; finalizar cada bloco com um
+   resultado verificável e registrar o ponto de retomada.
+5. Preservar trabalhos existentes. Não recriar calibração, agenda, pacientes,
+   questionários, comparação ou relatórios que já funcionam.
+6. Registrar arquivos alterados, verificações, evidências, limites e próximo
+   passo em Sprint/05_Historico; atualizar os agregados e este quadro de status.
+7. Quando faltar hardware, referência física ou condição de um exame, concluir
+   o trabalho de software independente e deixar a validação física PENDENTE.
+   Perguntar somente pelo dado necessário; nunca preencher a ausência por suposição.
+8. Não instalar, publicar ou substituir a versão de uso como consequência
+   automática da implementação de uma fase. A entrega solicitada deve definir isso.
+
+FONTES E CONTEXTO
+- Visita realizada em 08/10/2026, com uma professora de fisioterapia.
+- Pasta original: C:\Users\Montival Nunes\Desktop\Baroscan\testes
+- Análise da visita:
+  C:\Users\Montival Nunes\Desktop\Baroscan\analise_2026-10-08\ANALISE_BAROSCAN_E_BAROPRESS.md
+- A análise contém 9 exames estáticos, 7 dinâmicos, duas imagens captadas,
+  manual e revisão visual por amostragem das duas gravações. Áudio não analisado.
+- O usuário confirmou que a parte gravada do BAROPRESS lia nosso protótipo.
+- Condições dos três exames estáticos de Montival ainda não informadas.
+- Sprint/Documentacao_TCC/DOCUMENTACAO_PROTOTIPO_E_TESTE_PILOTO.txt
+- Sprint/Treinamento/PROGRESSO_TESTES_E_CALIBRACAO.txt
+- Sprint/Treinamento/COMO_USAR_TESTES_E_CALIBRACAO.txt
+- Sprint/04_Futuro/PENDENCIAS_POS_CORRECOES_0.2.10.txt
+- Sprint/05_Historico/2026-10-08_12_calibracao_simplificada_ajudas.txt
+- Sprint/05_Historico/2026-10-08_14_rollback_faixa_esquerda.txt
+- docs/corrections/CALIBRACAO_SIMPLIFICADA_0.2.11.md
+
+O QUE JÁ EXISTE NA BASE CONSULTADA
+- Matriz de 225 valores, tara, normalização de orientação e mapa interpolado.
+- Novo Exame estático, média temporal e trajetória relativa do CoP salva.
+- Métricas ADC por metades fixas; coluna central não entra na soma bilateral.
+- Comparação de exames, observações persistidas, PDF e exportações.
+- Módulo de calibração física com perfis, ensaios, validação e resultados físicos.
+- Quadros brutos coletados durante o exame; persistência física condicionada
+  ao perfil. O backend rejeita rawFrames sem perfil no contrato atual.
+- Proteções de ausência de quadros, conexão, saída e origens REAL/SIMULATION.
+- Interface de calibração simplificada em cinco etapas na 0.2.11.
+- Campo dynamic nos contratos, mas processamento normal cria exame static.
+
+REGRAS DE CÁLCULO E PRESERVAÇÃO
+- Calcular indicadores nos sensores discretos; interpolação, Gamma e VMAX
+  são apresentação. Não calcular área ou picos a partir dos pixels coloridos.
+- Não reintroduzir o deslocamento da faixa esquerda revertido no registro 14.
+  Selecionar regiões não autoriza deslocar dados, deformar mapas ou corrigir
+  resultados para ficarem parecidos com o equipamento comercial.
+- Preservar matriz, métricas, parâmetros, origem e perfil históricos. Uma
+  análise derivada nova precisa de versão/proveniência e não substitui o original.
+- Separar leitura ADC, pressão, força, contato e os percentuais respectivos.
+  Nos relatórios comerciais, percentual de Superfície não é distribuição de pressão.
+- ADC pondera um centro relativo. Converter coordenadas para mm não transforma
+  esse centro em CoP físico validado. Unidades físicas exigem o escopo correto
+  do perfil, geometria conhecida, cobertura e processamento por força apropriado.
+- Área de contato depende das áreas efetivas das células, não apenas do passo
+  ou da dimensão externa do tapete. Desconhecido não deve virar zero.
+- Perfis de força total não autorizam pressão local. Usar e validar o módulo
+  existente; tara de zero não equivale a calibração física.
+- Cálculo máximo do mapa médio, mapa de máximos por sensor e pico temporal
+  são resultados diferentes; nomear o modo e registrar sua definição.
+- Fonte, tempo e tratamento dos quadros devem ser rastreáveis. Sequência de
+  recepção no computador não comprova ausência de perda no firmware/transporte.
+- Não criar limite clínico, classificação de pés, diagnóstico ou promessa de
+  acurácia para completar uma interface. Critérios técnicos precisam de método.
+- Exames antigos sem quadros/condições devem mostrar indisponibilidade.
+- Migrações aditivas e versionadas; backup/restauração devem acompanhar novos
+  dados. Conferir a próxima migração existente, sem presumir um número fixo.
+- Testar com base isolada e dados sintéticos. Não usar prontuários pessoais
+  como fixtures nem restaurar dados sobre o banco de uso.
+
+ORDEM E DEPENDÊNCIAS
+Núcleo de software: F00 -> F01 -> F02 -> F03 -> F04 -> F05 -> F07.
+Frente experimental: F06 começa após F00/F01 e acompanha as demais fases.
+F03/F04/F05 podem avançar em modo relativo sem aguardar os ensaios de F06.
+F07 distingue conclusão de software e conclusão experimental.
+Extensões opcionais: F08 após F05; F09 após F02 e avaliação real de aquisição.
+F09 não depende de terminar F08.
+
+PACOTES DE ENTREGA
+A. Fundação: F00/F01/F02 - condições, qualidade e série temporal confiável.
+B. Resultado estático: F03/F04/F05 - regiões, gráficos e relatório integrado.
+C. Evidência do TCC: F06/F07 - ensaios, resultados e homologação documentados.
+D. Extensões: F08/F09 - 3D e dinâmica, fora do núcleo mínimo.
+
+QUADRO DE STATUS - ATUALIZAR SEM APAGAR O HISTÓRICO
+F00 - Auditoria e contratos                 : CONCLUÍDO NO SOFTWARE
+F01 - Condições e qualidade                 : CONCLUÍDO NO SOFTWARE
+F02 - Quadros, modos e reprodução           : CONCLUÍDO NO SOFTWARE
+F03 - Regiões e indicadores por pé          : CONCLUÍDO NO SOFTWARE
+F04 - Oscilação e análise temporal          : CONCLUÍDO NO SOFTWARE
+F05 - Relatórios e comparação               : CONCLUÍDO NO SOFTWARE
+F06 - Calibração e ensaios do TCC            : PARCIAL; A PREPARADO / B PENDENTE
+F07 - Homologação e consolidação            : CONCLUÍDO NO SOFTWARE; NATIVO/REAL PENDENTE
+F08 - Vista 3D                              : CONCLUÍDO NO SOFTWARE
+F09 - Exame dinâmico exploratório           : PARCIAL; ESTUDO A / MEDIÇÃO PENDENTE
+
+Atualização de 09/10/2026: usuário solicitou execução sequencial e autorizou
+deixar ensaios reais para execução conjunta. Conferência em navegador com
+dados sintéticos não homologa escala do Windows, instalação ou impressão
+nativa. F09-B continua condicional; sem evidência física não foi implementado.
+Histórico original do planejamento: registro 2026-10-09_01. Execução: 02..11.
+
+Separar por fase: implementação, testes automatizados, conferência visual,
+ensaio físico e documentação. Estados permitidos: PLANEJADO, EM ANDAMENTO,
+PARCIAL, CONCLUÍDO NO SOFTWARE, HOMOLOGADO NO ESCOPO REGISTRADO.
+Uma fase não vira HOMOLOGADA apenas por passar testes sintéticos.
+
+======================================================================
+F00 - AUDITORIA DA BASE, CONTRATOS E PLANO DE MIGRAÇÃO
+Prioridade: alta. Esforço relativo: pequeno. Dependência: nenhuma fase nova.
+======================================================================
+Objetivo: confirmar o estado atual e reduzir retrabalho antes das alterações.
+
+Tarefas:
+1. Ler os registros recentes, identificar versão e preservar o rollback.
+2. Mapear aquisição, relógios, quadros brutos/corrigidos, trajetória, tara,
+   dados físicos, banco, backup e exportação; identificar retenção existente.
+3. Reconciliar com HOM-01/HW-01/BAK-01/SCI-01/EXAM-01 do plano 0.2.10.
+   Registrar sobreposição; executar verificações no software atual, não refazer
+   mudanças entregues nem tratar todos os itens antigos como pré-requisito.
+4. Executar baseline apropriado e registrar contagens atuais, sem copiar
+   números de testes ou resultados dos registros anteriores.
+5. Documentar contratos propostos para condições, qualidade, série temporal,
+   regiões e versão do cálculo; definir unidades e origem de cada tempo.
+6. Planejar mudanças compatíveis com os exames legados e o backup.
+
+Pontos de partida: src/types/index.ts; src/services/acquisition/rawStream.ts;
+src/features/exams/{examRuntime,examStore,examProcessing}.ts;
+src-tauri/src/{exams,calibration,backup,db}.rs; src-tauri/migrations/.
+Os caminhos são orientação inicial: conferir existência e arquitetura atual.
+
+Entregável: diagnóstico e contratos em TXT na Sprint, com decisões e próximo bloco.
+Aceite: fluxo rastreável, sobreposições identificadas, baseline com resultado
+real e nenhuma alteração de dados/versão de uso para fazer o diagnóstico.
+
+======================================================================
+F01 - CONDIÇÕES DO EXAME E QUALIDADE DA AQUISIÇÃO
+Prioridade: alta. Esforço relativo: médio. Dependência: F00.
+======================================================================
+Objetivo: dar contexto aos resultados e explicitar a qualidade técnica da coleta.
+
+Bloco A - Condições e persistência:
+- Adicionar campos estruturados de condição visual, postura, apoio externo,
+  posicionamento/orientação, protocolo/versão e observações pertinentes.
+- Usar opções desconhecido/não informado; não preencher fatos históricos.
+- Permitir registro de evento/movimento percebido e quem forneceu a informação.
+- Congelar condições planejadas ao iniciar; registrar correção ou evento
+  posterior separadamente, sem reescrever silenciosamente o contexto inicial.
+
+Bloco B - Qualidade:
+- Medir quadros válidos/inválidos da sessão, janela planejada/observada,
+  intervalos, maior lacuna e taxa real; documentar cada denominador.
+- Distinguir frequência de aquisição e atualização visual.
+- Separar limite de cor (valor >= VMAX), limite ADC e fora de faixa do perfil.
+- Mostrar avisos claros de coleta insuficiente/interrompida e qualidade desconhecida.
+- Preservar proteções existentes. Limites técnicos novos devem ter justificativa
+  registrada; não inventar aprovação clínica por FPS ou percentual.
+- Qualidade deve acompanhar o exame e suas exportações; mudança de Gamma/VMAX
+  no resultado não muda retroativamente a qualidade da aquisição.
+
+Integração: SCI-01/EXAM-01; examRuntime/examStore; stores/acquisition;
+tipos, validação Rust, migrações, backup e detalhes do exame.
+
+Verificação: intervalos irregulares, pausa, desconexão, contador reiniciado,
+quadros inválidos e sessão anterior; antigo sem condições; salvar/reabrir.
+Aceite: métricas técnicas reproduzíveis, sem confundir ausência com zero e
+sem vazamento de condições entre pacientes. Roteiro real registrado se pendente.
+
+======================================================================
+F02 - RETENÇÃO DE QUADROS, MODOS DE MAPA E REPRODUÇÃO
+Prioridade: alta. Esforço relativo: grande. Dependência: F00/F01.
+======================================================================
+Objetivo: permitir revisão temporal dos novos exames sem reconstruir a série
+a partir de uma média e sem tornar o banco lento ou duplicar o bruto físico.
+
+Bloco A - Dados:
+- Estender o contrato para série temporal de exames relativos, separada da
+  exigência de perfil físico. Não remover a proteção do exame físico.
+- Reutilizar armazenamento em lotes e leitura sob demanda quando apropriado.
+- Manter tempo, origem, sequência, orientação, tara/baseline, limiar e versão
+  suficientes para reproduzir a transformação realizada na coleta.
+- Escolher e documentar representação canônica; evitar duplicar séries iguais.
+- Definir retenção, limite de tamanho e estimativa de armazenamento. Nenhuma
+  limpeza automática de exames existentes faz parte desta fase.
+- Salvamento transacional da série/metadados; falha ou lote incompleto não
+  deve produzir um exame apresentado como completo.
+- Integrar backup, restauração e exportação com versão de formato.
+
+Bloco B - Resultado:
+- Implementar quadro individual, média e máximos por sensor com nomes claros.
+- Reproduzir/pausar, voltar/avançar e selecionar posição pelo tempo real.
+- Desenho deve usar transformação histórica e respeitar orientação/escala.
+- Reprodução não inicia aquisição, não ocupa a COM e não altera a amostra.
+- Alterar modo visual não sobrescreve a matriz média ou métricas antigas.
+- Sem série em exame antigo: mostrar a limitação, preservando mapa e relatório.
+
+Verificação: série conhecida, tempos irregulares, ausência de contato, lotes
+incompletos/duplicados, restauração, exame físico e relativo, memória limitada.
+Aceite: quadro exibido corresponde ao registro; os três modos têm resultado
+esperado; legado funciona; retenção não permite apagar dados silenciosamente.
+
+======================================================================
+F03 - REGIÕES AJUSTÁVEIS E INDICADORES POR PÉ
+Prioridade: alta. Esforço relativo: médio/grande. Dependência: F00/F01/F02.
+======================================================================
+Objetivo: distinguir os pés e regiões sem depender apenas da metade do tapete.
+
+Bloco A - Seleção:
+- Mostrar a matriz discreta/orientação e permitir seleção conferida de células
+  para pé esquerdo/direito e parte anterior/posterior de cada pé.
+- Usar regiões geométricas ajustáveis; não chamar a divisão de segmentação
+  anatômica validada. Identificação automática fica fora do escopo inicial.
+- Tratar coluna central, células sem região, regiões vazias e sobreposição.
+  Impedir dupla contagem e não repartir uma célula parcialmente sem um método.
+- Salvar definição, operador, origem, modo temporal e versão das regiões.
+- Separar revisão posterior de regiões da amostra original e seus indicadores.
+
+Bloco B - Indicadores:
+- Máximo/média ADC, número de células em contato e soma relativa por região.
+- Percentual por pé com denominador explícito: total atribuído ou total geral;
+  mostrar parcela não atribuída. Zero denominador retorna indisponível.
+- Distribuição anterior/posterior global e dentro de cada pé, com denominadores.
+- Área estimada em cm² somente com áreas de células conhecidas e método de
+  contato declarado; separar proporção de área da proporção de leitura/força.
+- Indicadores físicos somente com perfil compatível/cobertura suficiente.
+  Não ponderar pressão média por número de células se as áreas diferirem.
+- Manter resultados relativos legados como calculados; novos campos são
+  análise derivada versionada, sem mudança silenciosa do histórico.
+
+Integração: services/baropodometry/{metrics,cop,types}; serviços físicos;
+exame, detalhe, banco e snapshot da análise derivada; exportação/backup.
+Verificação: pés deslocados, região central, áreas diferentes, contato vazio,
+parcela não atribuída, sobreposição e denominadores conhecidos.
+Aceite: máscaras identificáveis e indicadores rastreáveis; interface informa
+unidades/modo/denominador; nenhum deslocamento da faixa esquerda reintroduzido.
+
+======================================================================
+F04 - OSCILAÇÃO E ANÁLISE TEMPORAL DO CENTRO DE PRESSÃO
+Prioridade: alta. Esforço relativo: médio/grande. Dependência: F01/F02/F03.
+======================================================================
+Objetivo: apresentar o movimento ao longo do exame com definição matemática.
+
+Bloco A - Gráficos:
+- Trajetória relativa, X(t), Y(t) e marcação de eventos/ausência de contato.
+- Seleção de trecho, indicação da duração válida e alinhamento com o reprodutor.
+- Usar tempos reais monotônicos da aquisição. Diferenciar séries antigas com
+  timestamps estimados; não lhes atribuir precisão temporal comprovada.
+- Exames só com trajetória podem ter gráficos; recursos que exigem quadros,
+  regiões ou perfil devem permanecer indisponíveis quando esses dados faltarem.
+
+Bloco B - Métricas:
+- Definir comprimento como soma das distâncias entre pontos consecutivos
+  válidos dentro de segmentos contínuos; registrar duração válida e lacunas.
+- Definir velocidade por distância/intervalo positivo; distinguir média por
+  intervalo, média ponderada no tempo e outras estatísticas.
+- Definir amplitude e dispersão; documentar filtro, unidade e versão.
+- Não unir pontos através de lacunas ou ausência de contato. Não suavizar
+  séries para esconder eventos nem alterar os quadros originais.
+- Centro relativo em coordenadas da matriz deve permanecer identificado.
+  Conversão geométrica de centro ADC para mm, se oferecida, continua relativa.
+  CoP físico exige processamento por força e perfil de escopo adequado.
+- Elipse é extensão deste bloco: documentar algoritmo e cobertura escolhida.
+  Só implementar com definição e casos verificáveis, sem alegar que reproduz
+  a área ou a "velocidade média quad." do BAROSYS, cuja fórmula não conhecemos.
+
+Verificação: trajetória imóvel, linha/distância conhecida, tempos irregulares,
+intervalo zero, lacuna, trecho vazio, retorno ao contato e áreas não uniformes.
+Aceite: unidades e método explícitos, gráficos coerentes com a série e eventos,
+resultados reproduzíveis e série original preservada.
+
+======================================================================
+F05 - RELATÓRIO E COMPARAÇÃO INTEGRADOS
+Prioridade: alta. Esforço relativo: médio. Dependência: F01 a F04.
+======================================================================
+Objetivo: comunicar os novos resultados no fluxo existente de Histórico de Exames.
+
+Tarefas:
+- Acrescentar condições, qualidade, regiões e gráficos à prévia e ao PDF.
+- Mostrar modo médio/máximos/quadro, escala/unidade e versões de cálculo.
+- Selecionar seções e evitar páginas vazias; não copiar as cinco/sete páginas
+  do software comercial só para reproduzir o tamanho do relatório.
+- Reutilizar fórmulas/componentes e os dados salvos; PDF, detalhes e comparação
+  devem usar os mesmos valores, sem consultar cadastro/perfil atual como passado.
+- Comparar apenas resultados com modo, unidade, domínio/região e método
+  conhecidos; sinalizar diferenças de condição e outros limites de comparação.
+- Escala comum para grandezas compatíveis; não usar a mesma escala numérica
+  para ADC e pressão. Deltas devem declarar base e unidade.
+- Preservar observações e origem REAL/SIMULATION; manter avisos de legado.
+- Exportar metadados/derivações com proveniência. Não ampliar para histórico
+  de assinatura/revisão completo do DOC-02 sem necessidade ou solicitação.
+
+Pontos de partida: features/reports/{ReportViewer,reportPdfGenerator,savedValues};
+features/comparison/ComparisonPage; features/exams/ExamExportActions.
+
+Verificação: curto/longo, antigo/novo, relativo/físico, ausência de série,
+2 e 4 exames, observações longas, temas, impressão e PDF renderizado.
+Aceite: números correspondem ao exame salvo, documento legível sem cortes,
+compatibilidade explicada e ações mantidas em Histórico de Exames.
+
+======================================================================
+F06 - CALIBRAÇÃO FÍSICA E ENSAIOS DOCUMENTADOS DO TCC
+Prioridade: alta. Esforço: depende da bancada. Dependência inicial: F00/F01.
+======================================================================
+Objetivo: produzir evidência experimental usando a calibração já implementada.
+Esta frente pode acompanhar F02 a F05. Não é execução autônoma de ensaio físico.
+
+Bloco A - Preparar protocolo e registro:
+- Reutilizar o guia de Treinamento e os registros piloto; identificar lacunas.
+- Confirmar montagem, revisão, firmware, geometria efetiva, capacidade e
+  instrumentos/referências disponíveis. Padrões documentados não comprovam
+  áreas efetivas, capacidade mecânica ou calibração.
+- Planejar zero, cargas, posições, reaplicações, subida/descida e sessões.
+- Definir referências e critérios técnicos antes da análise; justificar
+  tolerâncias pelo objetivo/referência, sem inventar uma norma ou aprovação clínica.
+- Separar ajuste e validação por grupos independentes; preservar cada bruto.
+
+Bloco B - Realizar/analisar quando houver dados reais:
+- Operador executa a bancada. Codex auxilia registros e análise dos arquivos.
+- Examinar ruído, deriva, histerese, saturação, taxa e cobertura dos sensores.
+- Usar MAE/RMSE/viés/erro máximo já previstos, conforme unidade e escopo.
+- Não ajustar pressão local pelo peso corporal e não normalizar leituras
+  para forçar coincidência com os relatórios comerciais.
+- Para comparação comercial, parear condições, participante codificado,
+  grandezas, geometria/regiões, modo temporal e processamento compatíveis.
+- Registrar as limitações da comparação sequencial e obter dados numéricos
+  além dos PDFs quando disponíveis; não reconstruir sensores pelas cores.
+- Ativação de perfil real exige os critérios existentes e ação explícita
+  autorizada. Não reduzir critérios para fazer a interface exibir kgf/cm².
+
+Entregáveis: protocolo versionado, planilha/registro quando solicitado,
+dados rastreáveis, resultados e discussão do TCC, distinção de dado real/sintético.
+Aceite do bloco A: protocolo e dependências definidos; sem validação fabricada.
+Aceite do bloco B: ensaios reais identificados, cálculos reproduzíveis,
+independência documentada e resultado aprovado/reprovado/inconclusivo justificado.
+
+======================================================================
+F07 - HOMOLOGAÇÃO, DESEMPENHO E CONSOLIDAÇÃO DO TCC
+Prioridade: alta para entrega. Esforço: médio. Dependência: núcleo F00 a F05.
+======================================================================
+Objetivo: verificar a integração e documentar exatamente o que foi entregue.
+
+Tarefas:
+- Executar jornadas em banco isolado: condições -> aquisição -> regiões ->
+  gráficos -> salvar -> reabrir -> comparar -> PDF -> backup/restauração.
+- Conferir 1100x640 e 1366x768, escala do Windows, temas, teclado, botões e ajuda.
+- Verificar consumo de memória, leitura sob demanda, reprodução e navegação
+  com a maior série planejada; registrar ambiente e medidas, não só impressões.
+- Conferir contratos Rust/TS, migrações, legados, origem e ausência de dados.
+- Fazer ensaio no protótipo quando disponível, preservando resultado técnico
+  e separado da validação física de F06.
+- Atualizar README, documentação de cálculo e Sprint sem ocultar pendências.
+- Preparar imagens e um roteiro de demonstração; versões de circulação do
+  TCC devem usar códigos de participantes e dados pertinentes ao projeto.
+- Empacotamento/instalação apenas quando fizerem parte da entrega solicitada.
+
+Aceite de software: jornadas e verificações concluídas com evidências,
+sem regressão observada no escopo testado; limitações remanescentes listadas.
+Aceite experimental: F06 e ensaios relevantes efetivamente concluídos.
+Sem hardware disponível, registrar CONCLUÍDO NO SOFTWARE / ENSAIO PENDENTE,
+sem tratar essa declaração como homologação integral do TCC.
+
+======================================================================
+F08 - VISTA 3D DO MAPA (EXTENSÃO OPCIONAL)
+Prioridade: média/baixa. Esforço: médio. Dependência: F02/F05.
+======================================================================
+Objetivo: complementar a apresentação dos picos sem inventar geometria do pé.
+
+Tarefas:
+- Altura representa leitura/pressão; manter unidade, modo e escala de cores.
+- Oferecer rotação/zoom e retorno ao 2D; preservar acesso por teclado e alternativa.
+- Reutilizar série/mapa existentes, preferindo solução compatível com a base.
+  Avaliar custo de uma nova biblioteca antes de adicioná-la.
+- Não alterar células, regiões, CoP ou métricas para ajustar a vista.
+- Mostrar que é representação dos sensores, não reconstrução anatômica.
+
+Aceite: dados e escala coerentes com 2D, desempenho documentado e 2D funcional
+quando 3D não estiver disponível. Não é requisito para concluir o núcleo do TCC.
+
+======================================================================
+F09 - EXAME DINÂMICO EXPLORATÓRIO (EXTENSÃO CONDICIONAL)
+Prioridade: futura. Esforço: grande. Dependência: F01/F02 e avaliação real da coleta.
+======================================================================
+Objetivo: estudar a evolução de uma pisada com limites do hardware explícitos.
+
+Bloco A - Viabilidade:
+- Medir taxa/intervalos reais, resolução espacial, faixa útil e comportamento
+  sob variação de carga; confirmar viabilidade mecânica e condições do ensaio.
+- Definir uso exploratório e critérios técnicos antes de implementar um modo
+  apresentado como exame de marcha. FPS visual ou mapa suave não prova viabilidade.
+- Validar regras de início/fim de contato e identificação do lado.
+
+Bloco B - Implementação se o bloco A sustentar o objetivo:
+- Criar fluxo dedicado para passos, orientação E/D, seleção e rejeição explícita
+  de passos incompletos; retenção de todos os quadros e tempos relevantes.
+- Tempo de contato, mapa médio/máximos e reprodução por passo.
+- Séries de contato/ADC relativas; força e pressão somente com calibração
+  aplicável à condição dinâmica. Calibração estática não comprova resposta dinâmica.
+- Separar o novo protocolo das regras atuais de exame físico static no backend;
+  não remover validações existentes apenas para aceitar type dynamic.
+- Relatório próprio e dados exportáveis; não copiar horários fictícios das
+  miniaturas nem extrapolar taxa entre quadros para criar informação ausente.
+- Vídeo auxiliar sincronizado é subfase futura; não requisito deste primeiro bloco.
+
+Aceite: contato detectado em dados reais/sintéticos identificados, revisão de
+passos reproduzível, erros/limites apresentados e nenhum prejuízo ao estático.
+Sem evidência de viabilidade: concluir somente o estudo, manter implementação futura.
+
+======================================================================
+VERIFICAÇÕES POR TIPO DE ALTERAÇÃO
+======================================================================
+- Documentação pura: conferir caminhos, datas, fase/estado e preservação do histórico.
+  Não executar build/testes do aplicativo apenas por editar um TXT.
+- Fórmulas/contratos: testes de referência independentes, bordas e unidades;
+  não criar testes que só repetem a mesma fórmula sem caso conhecido.
+- Frontend: testes pertinentes e npm run typecheck; build para mudanças
+  integradas. Novo teste somente quando cobrir comportamento relevante.
+- Rust/banco/serial: testes pertinentes; cargo test --manifest-path
+  src-tauri/Cargo.toml e verificação de migração/backup quando afetados.
+- Checkpoint de fase com código: executar o conjunto adequado, registrar o
+  comando real e resultado. Baseline/final integração podem usar npm test,
+  npm run typecheck, npm run build e cargo test conforme áreas afetadas.
+- Interface/PDF: inspeção visual efetiva; falha de ferramenta ou ausência de
+  acesso deve ser registrada como pendência, não como aprovação.
+- Hardware/calibração: ensaios reais identificados; fixture sintética não
+  substitui medição física. Não reutilizar contagens históricas como teste novo.
+- Ampliar/repetir verificações somente por mudança, falha ou dúvida relevante.
+
+MODELO DE CHECKPOINT PARA CADA BLOCO
+Data e fase/bloco:
+Estado da implementação:
+Objetivo e comportamento entregue:
+Arquivos alterados:
+Versão dos contratos/cálculos e compatibilidade:
+Verificações executadas e resultados:
+Evidência visual:
+Ensaio real e referências:
+Limitações / decisão necessária:
+Próximo bloco e instrução de retomada:
+
+INSTRUÇÃO PARA CONTINUAÇÃO APÓS PAUSA OU COMPACTAÇÃO
+Ler o último checkpoint e o quadro de status. Conferir o código antes de
+executar. Retomar o próximo bloco incompleto, preservando as decisões aceitas.
+Não repetir implantação, migração, ensaio ou pacote já concluído sem motivo.
+Informar ao usuário o resultado, o que foi verificado e a limitação material.
+
+PRÓXIMA RETOMADA: homologação nativa isolada de F07, bancada F06-B e medição F09-A.
+O planejamento não autoriza iniciar automaticamente F00 nem executar todas
+as fases: usar o prompt da fase que o usuário solicitar na ocasião.

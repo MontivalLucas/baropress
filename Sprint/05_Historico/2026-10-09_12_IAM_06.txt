@@ -1,0 +1,36 @@
+BAROPRESS - IAM-06 - CONSOLIDAÇÃO FINAL 0.2.12
+Data: 09/10/2026. Estado: IMPLEMENTAÇÃO, VERIFICAÇÃO TÉCNICA E PACOTE CONCLUÍDOS.
+Homologação nativa/Arduino/atualização da instalação de uso: PENDENTES EM HOM-IAM.
+IAM-05 concluído conforme pedido: e-mail + RA; código é alternativa para legado.
+RA é reutilizável e permite redefinição a quem conhece e-mail/RA, inclusive admin.
+198 testes frontend em 26 arquivos; 123 Rust aprovados, 1 benchmark ignorado,
+zero erros. TypeScript/build final, cargo fmt --check e NSIS 0.2.12 aprovados.
+Versão do executável de produção confirmada como 0.2.12. Esquema9.
+Instalador: ../../src-tauri/target/visualizacao/release/bundle/nsis/BAROPRESS_0.2.12_x64-setup.exe
+Tamanho/hash: ../../docs/corrections/iam-artifacts-0.2.12.json
+Instalador original 0.2.11 conferido por hash e preservado.
+
+COBERTURA
+Comandos com regra explícita, três perfis/rotas/campos, RA/legado/migração,
+último admin e própria conta, exclusão lógica, confirmação de senha, bloqueio,
+recuperação RA/código, contas inválidas/inativas/excluídas, sessões simultâneas,
+backup antigo/individual/completo e rollback, restauração revoga outras janelas,
+histórico concluído paginado e Agenda para secretaria (criar/consultar, sem
+editar/cancelar/concluir). Worker serial interrompe após revogação da sessão.
+
+EVIDÊNCIAS FINAIS
+../../docs/corrections/iam-frontend-tests-0.2.12.log
+../../docs/corrections/iam-backend-tests-0.2.12.log
+../../docs/corrections/iam-installer-final-build-0.2.12.log
+Relatório: ../../docs/corrections/USUARIOS_LOGIN_ACESSO.md
+Visual anterior IAM-04: ../../docs/corrections/iam-secretaria-agenda.jpg
+Nova captura da recuperação não obtida: navegador integrado falhou ao anexar
+webview em duas tentativas. Não declarar conferência visual da tela nova.
+Prévia isolada compilada; servidor auxiliar encerrado após as tentativas.
+Sem credenciais/contas/consultas reais gravadas; testes em banco descartável.
+
+PRÓXIMO TRABALHO
+HOM-IAM-01 a HOM-IAM-05 no roteiro
+../04_Futuro/PENDENCIAS_USUARIOS_LOGIN_ACESSO.txt.
+Não instalaram automaticamente, abriram banco pessoal ou ativaram perfil físico.
+Não executar rollback do esquema9 apenas substituindo o executável.

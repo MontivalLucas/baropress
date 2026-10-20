@@ -1,0 +1,848 @@
+BAROPRESS — GUIA DE IMPLEMENTAÇÃO DE TESTES E CALIBRAÇÃO DO TAPETE
+Roteiro por etapas para executar no Codex
+Data: 07/10/2026
+
+======================================================================
+COMO USAR ESTE ARQUIVO
+======================================================================
+
+Este arquivo especifica um novo módulo do BAROPRESS. Não significa que o
+módulo já esteja implementado nem que o tapete já esteja calibrado.
+
+Execute uma etapa por vez. Leia as regras gerais antes de iniciar. Copie
+o comando inicial abaixo para o Codex e informe a etapa desejada. Cada
+etapa apresenta objetivo, requisitos, entregas e critérios de aceite.
+O Codex deve ler também as dependências e as regras gerais deste TXT.
+
+COMANDO INICIAL PARA O CODEX:
+"Leia Sprint/Treinamento/BAROPRESS_TESTES_E_CALIBRACAO_GUIA_CODEX.txt.
+Implemente a ETAPA por Etapa respeitando as regras gerais e as etapas
+anteriores. Inspecione primeiro o código atual e as instruções AGENTS.md
+aplicáveis. Não presuma que os arquivos ou recursos continuam iguais aos
+descritos no roteiro. Preserve os dados existentes. Entregue a etapa
+funcional, execute as verificações pertinentes e atualize o registro de
+progresso com o que foi implementado, testado e ainda depende de ensaios
+físicos. Não invente medições nem declare validação experimental sem dados."
+
+Crie durante a etapa 0 um arquivo de progresso nesta mesma pasta:
+PROGRESSO_TESTES_E_CALIBRACAO.txt.
+Use estados: NÃO INICIADA, EM IMPLEMENTAÇÃO, IMPLEMENTADA, TESTADA EM
+SOFTWARE, AGUARDANDO ENSAIO FÍSICO, VALIDADA NO ESCOPO EXPERIMENTAL.
+Não use o estado "validada" apenas porque testes automatizados passaram.
+
+As etapas de software podem avançar com dados simulados claramente
+identificados. A ativação de uma calibração física exige dados reais,
+referências documentadas e validação independente.
+
+======================================================================
+OBJETIVO E LIMITES DO PROJETO
+======================================================================
+
+Criar uma aba "Testes e calibração" para:
+- Inspecionar a matriz física 15 x 15, com 225 pontos.
+- Coletar séries temporais brutas do ESP32, com referências de carga.
+- Caracterizar ruído, repetibilidade, acomodação, histerese e saturação.
+- Investigar interferência entre pontos e diferenças de sensibilidade.
+- Construir curvas com cargas e áreas conhecidas.
+- Validar as curvas com ensaios que não participaram do ajuste.
+- Versionar perfis e aplicar a conversão nos exames e relatórios.
+- Mostrar pressão em kPa e kgf/cm², força em N e kgf, área em cm² e
+  centro de pressão em coordenadas físicas, quando houver suporte válido.
+
+O objetivo é produzir estimativas físicas com erro experimental conhecido.
+Ter as mesmas unidades de um equipamento comercial não comprova a mesma
+precisão, resolução, frequência, faixa de pressão ou adequação clínica.
+
+O manual BaroScan V1.12 consultado informa pressão em kgf/cm², matriz de
+4.096 sensores e aquisição até 200 frames/s. Esses números pertencem ao
+BaroScan, não devem ser atribuídos ao BAROPRESS nem copiados como limites
+do tapete. Seu uso aqui é referência de unidades e apresentação.
+
+======================================================================
+REGRAS GERAIS OBRIGATÓRIAS PARA TODAS AS ETAPAS
+======================================================================
+
+1. Preserve o funcionamento de login, aquisição, pacientes, exames,
+   relatórios, backup e demais módulos presentes no código atual.
+2. Não transforme colunas ADC existentes em pressão física silenciosamente.
+   Exames antigos continuam com sua unidade original e sem perfil físico.
+3. Separe origem REAL/SIMULATION de estado de calibração. Dado REAL pode
+   estar NÃO CALIBRADO. SIMULATION nunca vira calibração física válida.
+4. Não use massa do paciente para obrigar cada exame a fechar no seu peso.
+   A massa medida é referência independente de validação da carga total.
+5. Não divida o peso da pessoa igualmente pelos sensores ativos para
+   criar referências locais. A distribuição plantar é desconhecida.
+6. Não estime a pressão local somente pela soma ADC e pelo peso total.
+   Uma curva global pode estimar carga total, sem calibrar o mapa local.
+7. Não assuma resposta linear do Velostat, uniformidade da matriz ou
+   equivalência entre área da fita e área representada pelo sensor.
+8. Use os dados discretos para métricas. Interpolação, gamma, cores e
+   suavização são recursos visuais, não novas medições físicas.
+9. Não preencha sensor defeituoso com zero e declare total completo.
+   Dados incompletos devem produzir qualidade incompleta e métricas
+   indisponíveis ou parciais explicitamente identificadas.
+10. Não extrapole automaticamente além da faixa validada. Diferencie
+    SEM CONTATO, VÁLIDO, FORA DA FAIXA, SATURADO e INVÁLIDO.
+11. Frequência real vem de quadros recebidos e timestamps, não de FPS
+    visual, de setInterval ou do objetivo nominal de 30 FPS.
+12. Preserve amostras, parâmetros, referência, baseline e versão do
+    processamento para permitir reprodução das conclusões.
+13. Não substitua a calibração ativa ao gerar uma curva. Ativação é uma
+    ação explícita na interface, sujeita à verificação de compatibilidade.
+14. Alterações na montagem, cobertura, eletrônica, firmware, orientação
+    ou geometria devem ser rastreadas e podem invalidar compatibilidade.
+15. Defina limites de aceite experimental antes de analisar o conjunto
+    de validação. Não aumente tolerâncias depois para fazer o perfil passar.
+16. Não invente dimensões, massas, carga máxima segura, área efetiva,
+    temperatura ou precisão da balança. Campos desconhecidos permanecem
+    desconhecidos e bloqueiam somente a função que depende deles.
+17. Operações de banco devem ter validação e autorização no backend,
+    conforme os padrões atuais. Desabilitar um botão não é autorização.
+18. Falta de dados físicos não impede desenvolver interface, persistência,
+    coleta e testes; impede declarar conversão validada.
+
+======================================================================
+REFERÊNCIAS DO CÓDIGO ATUAL E ARQUITETURA PROPOSTA
+======================================================================
+
+Pontos a inspecionar antes de editar:
+- src/App.tsx: seleção das páginas.
+- src/components/Sidebar.tsx: navegação.
+- src/types/index.ts: tipos de página, exame e DTOs.
+- src/stores/session.ts: sessão, navegação e preferências.
+- src/stores/acquisition.ts: dispositivo, eventos e displayValues.
+- src/services/acquisition/: SensorDevice, parser, buffer, tara e serial.
+- src/services/baropodometry/: orientação, CoP, métricas e renderização.
+- src/features/exams/: fluxo, processamento e persistência de exames.
+- src/features/reports/: visualização e exportação PDF.
+- src/services/database/api.ts: fronteira de chamadas Tauri.
+- src-tauri/src/acquisition.rs: recepção serial e validação de quadros.
+- src-tauri/src/db.rs e src-tauri/migrations/: migrações versionadas.
+- src-tauri/src/exams.rs, backup.rs, auth.rs e lib.rs.
+- src/tests/ e testes Rust: infraestrutura de verificação.
+
+Observação importante: o store possui valores brutos de SensorFrame e
+displayValues após tara/orientação e atualização visual. Não use
+displayValues como fonte primária dos ensaios de calibração.
+
+Estrutura sugerida, adaptável ao padrão existente:
+- src/features/calibration/: páginas, assistente de ensaio, gráficos.
+- src/services/calibration/: tipos, unidades, qualidade, ajuste,
+  conversão, métricas físicas e importação/exportação.
+- src/stores/calibration.ts: estado da sessão de coleta.
+- src-tauri/src/calibration.rs: comandos e persistência.
+- Migração nova com o próximo número disponível; não altere as antigas.
+- Testes novos focados em aquisição, unidades, modelo e compatibilidade.
+
+Fluxo proposto:
+ESP32 -> quadro bruto validado -> distribuidor de eventos de aquisição
+  -> gravador de ensaio, independente da renderização
+  -> pipeline físico versionado, quando houver perfil compatível
+  -> métricas discretas -> mapa e relatórios com unidade explícita.
+
+Não abra uma segunda conexão COM para a aba. Reutilize o gerenciador de
+aquisição e distribua os quadros para os consumidores necessários.
+
+======================================================================
+ETAPA 0 — AUDITORIA E PLANO DE INTEGRAÇÃO
+======================================================================
+
+Objetivo: identificar o estado real do projeto e planejar a implementação.
+
+Instruções:
+1. Leia as instruções do repositório e inspecione os módulos relacionados.
+2. Identifique migrações, permissões, backups e estruturas de exame atuais.
+3. Verifique como onFrame funciona: uma assinatura nova pode substituir
+   a anterior? Planeje um distribuidor central com cancelamento seguro.
+4. Localize onde tara e orientação são aplicadas, evitando aplicação dupla.
+5. Verifique sequência, timestamps, origem e comportamento na desconexão.
+6. Registre o estado inicial com typecheck e testes disponíveis. Falhas
+   preexistentes devem ser distinguidas das introduzidas pelo trabalho.
+7. Crie o arquivo de progresso com dependências e informações físicas
+   faltantes. Não instale dependências sem necessidade concreta.
+
+Entrega: mapa de integração e progresso inicial; ainda sem conversão.
+Aceite: cada ponto de alteração está identificado e os dados existentes
+têm uma estratégia de preservação e migração compatível.
+
+Pedido ao Codex:
+"Execute a etapa 0. Inspecione a implementação atual e registre o plano
+de integração e as informações físicas faltantes nesta pasta."
+
+======================================================================
+ETAPA 1 — ABA E CONFIGURAÇÃO DA GEOMETRIA DO TAPETE
+======================================================================
+
+Objetivo: abrir o novo módulo e registrar a montagem física.
+
+Instruções:
+1. Adicione "Testes e calibração" ao menu e à navegação tipada.
+2. Crie seções: Tapete, Diagnóstico, Ensaios, Curvas, Validação e Perfis.
+3. Permita cadastrar uma identificação própria do tapete; porta COM não
+   é identidade permanente. Registre firmware e revisão da montagem.
+4. Cadastre linhas/colunas, comprimento/largura ativos em mm, centros dos
+   pontos, espaçamento X/Y, largura das fitas e camadas da montagem.
+5. Diferencie área elétrica de cruzamento, área de aplicação da carga e
+   área representada por cada célula para integração de força.
+6. Não suponha que a superfície ativa seja dividida em 225 áreas iguais.
+   Ofereça geometria regular somente quando confirmada pelo operador;
+   centros e áreas de borda devem respeitar a geometria definida.
+7. Permita máscara de pontos indisponíveis, com motivo e data. Não invente
+   medidas para eles. Documente o efeito na cobertura e nas métricas.
+8. Mostre origem, conexão, unidade atual e perfil ativo de forma visível.
+9. Desenhe células clicáveis com linha/coluna e coordenadas físicas.
+   Mantenha a correspondência índice bruto <-> posição anatômica.
+
+Entrega: módulo navegável e configuração persistida/versionada.
+Aceite: dados desconhecidos não viram valores padrão supostamente reais;
+orientação e áreas podem ser verificadas antes de gerar pressão local.
+
+Pedido ao Codex:
+"Implemente a etapa 1 com navegação, configuração versionada e matriz
+clicável. Não habilite ainda uma conversão física sem calibração."
+
+======================================================================
+ETAPA 2 — PERSISTÊNCIA E CONTRATO DOS DADOS EXPERIMENTAIS
+======================================================================
+
+Objetivo: armazenar ensaios reproduzíveis sem misturar ADC e pressão.
+
+Modelo conceitual de tabelas, adaptável após a auditoria:
+- mats / mat_revisions: identidade, geometria e montagem versionadas.
+- calibration_sessions: protocolo, operador, dispositivo e condições.
+- calibration_baselines: 225 médias, dispersões, data e duração.
+- calibration_trials: referência, posição, área, repetição e finalidade.
+- calibration_frame_chunks: lotes de quadros brutos com metadados.
+- calibration_profiles: versão, algoritmo, domínio e estado.
+- calibration_sensor_models: curvas por ponto e faixa suportada.
+- calibration_validation_runs: dados independentes e resultados.
+
+Cada sessão registra:
+identificador, origem REAL/SIMULATION, revisão do tapete, firmware,
+transporte, baseline, versão de protocolo, operador e horários.
+
+Cada ensaio registra:
+- Finalidade: CHARACTERIZATION, FIT ou VALIDATION.
+- Referência: massa conhecida, força medida ou pressão conhecida.
+- Massa total aplicada, incluindo aplicador/acessórios quando relevantes.
+- Área de contato e sua unidade; forma, posição e método de aplicação.
+- Identificação da balança, célula de carga ou pesos e resolução conhecida.
+- Incerteza informada, ou estado "não determinada".
+- Sentido de carga: subida, descida ou carga mantida.
+- Repetição, ciclo, janela de acomodação, janela aceita e observações.
+- Critérios de qualidade, exclusões e motivo de interrupção.
+- Referências aos quadros brutos, baseline e orientação usados.
+
+Cada quadro registra:
+225 inteiros brutos de 0 a 4095, sequência quando disponível, timestamp
+monotônico de recepção, origem e sessão. Timestamp de recepção não deve
+ser apresentado como horário exato da leitura do ADC no ESP32.
+
+Instruções:
+1. Use migrações aditivas com transação e preserve o backup pré-migração.
+2. Valide quantidade, finitude, unidades, domínio, origem e relações no Rust.
+3. Defina armazenamento em lotes limitado por bytes/tempo, sem JSON gigante
+   por ensaio nem escrita bloqueante por quadro na thread serial.
+4. Registre sessão incompleta após fechamento inesperado. Não finalize
+   automaticamente um ensaio interrompido como válido.
+5. Guarde versões de schema, algoritmo e arquivos/objetos exportados.
+6. Defina política de tamanho e retenção, com exportação antes da remoção.
+7. Ajuste backup/importação para incluir as relações e os lotes novos.
+
+Entrega: migração, DTOs, comandos Tauri e testes de persistência.
+Aceite: ensaio exportado/importado mantém os mesmos dados e associações;
+banco antigo abre sem perder exames; importações inválidas são rejeitadas.
+
+Pedido ao Codex:
+"Implemente a etapa 2, incluindo banco versionado, DTOs, comandos
+autorizados, lotes de amostras e compatibilidade com backup."
+
+======================================================================
+ETAPA 3 — COLETA BRUTA INDEPENDENTE DA TELA
+======================================================================
+
+Objetivo: gravar cada quadro recebido uma única vez, mesmo sem redesenho.
+
+Instruções:
+1. Crie um ponto central de distribuição dos quadros válidos, antes de
+   requestAnimationFrame, tara, interpolação e alterações visuais.
+2. A sessão experimental assina esse fluxo e cancela a assinatura ao parar.
+3. Não copie repetidamente "o último quadro" usando temporizadores.
+   Esse método pode duplicar leituras e omitir quadros intermediários.
+4. Use sequência do firmware se existir. Sem sequência de origem, numere
+   os recebimentos e não prometa detectar perdas anteriores à recepção.
+5. Guarde duração medida, intervalos, quadros válidos/inválidos e perdas
+   conhecidas. Mostre FPS medido e variabilidade dos intervalos.
+6. Use fila limitada para persistência e sinalize overflow. Se perder
+   dados, registre quantos e impeça aceite silencioso do ensaio.
+7. Interrompa de forma rastreável em desconexão, troca de origem,
+   mudança de tapete ou falha de gravação.
+8. Congele baseline/configuração durante a coleta; mudanças exigem nova
+   sessão ou nova revisão explicitamente registrada.
+9. Não permita captura experimental simultânea com um novo exame que
+   possa alterar o dispositivo ou o protocolo.
+
+Verificação da taxa:
+O protocolo atual envia 225 valores em CSV a 115200 baud. Em 8N1,
+115200/10 = 11520 bytes/s teóricos. Um quadro com 225 valores de quatro
+dígitos, vírgulas e LF possui aproximadamente 1125 bytes; portanto, nessa
+condição, o teto teórico é cerca de 10,2 quadros/s antes de outros custos.
+O tamanho depende dos valores e CRLF. Não declare 30 FPS garantidos.
+Meça a taxa. Mudança de baud ou protocolo binário deve ser outra tarefa,
+com firmware compatível, verificação de integridade e versão registrada.
+
+Entrega: captura event-driven, limitada e rastreável.
+Aceite: reduzir FPS visual ou ocultar a página não muda a contagem de
+quadros recebidos; duplicatas e descarte são detectados quando observáveis.
+
+Pedido ao Codex:
+"Implemente a etapa 3 usando quadros de aquisição, nunca temporizadores
+de tela como amostragem. Teste duplicação, interrupção e overflow."
+
+======================================================================
+ETAPA 4 — DIAGNÓSTICO, ZERO E QUALIDADE DOS 225 PONTOS
+======================================================================
+
+Objetivo: descobrir limitações do tapete antes de ajustar curvas.
+
+Instruções:
+1. Mostrar matriz ADC sem suavização; permitir selecionar um ponto e
+   visualizar ADC bruto ao longo do tempo.
+2. Capturar repouso sem carga com janela configurável e suficiente para
+   calcular média, desvio padrão, amplitude e deriva por ponto.
+3. Registrar baseline experimental próprio. Não confundir com simples
+   mudança do botão de tara do módulo de análise.
+4. Comparar carga aplicada e retirada: tempo de acomodação e retorno ao zero.
+5. Detectar sinais de saturação próximos ao limite ADC com critério
+   configurado; não confundir platô elétrico com pressão constante real.
+6. Investigar pontos constantes, ruidosos ou sem resposta. Constância sem
+   carga não basta para declarar sensor defeituoso.
+7. Ao carregar um local, mostrar resposta nos vizinhos e fora da região
+   esperada. Produzir indicador descritivo de interferência, sem assumir
+   que todo sinal vizinho é ghosting: pode haver transmissão mecânica.
+8. Exportar diagnóstico com posição, baseline, dispersão e observações.
+
+Entrega: mapa de qualidade e relatório de caracterização.
+Aceite: é possível identificar posição e condição de cada anomalia;
+exclusão automática exige regra documentada e mantém dados originais.
+
+Pedido ao Codex:
+"Implemente a etapa 4 com diagnóstico ADC, baseline, gráficos de ponto,
+saturação e resposta espacial, preservando as amostras originais."
+
+======================================================================
+ETAPA 5 — ASSISTENTE DE ENSAIOS COM REFERÊNCIA CONHECIDA
+======================================================================
+
+Objetivo: guiar o operador e construir a base de ajuste.
+
+Máquina de estados sugerida:
+CONFIGURAR -> VERIFICAR ZERO -> POSICIONAR APLICADOR -> ACOMODAR
+-> CAPTURAR -> REVISAR QUALIDADE -> SALVAR ou REJEITAR.
+Estados adicionais: INTERROMPIDO, FALHA DE GRAVAÇÃO e CANCELADO.
+
+Instruções:
+1. Informar referência e montagem antes de capturar; não exigir nome de
+   paciente para um ensaio com pesos.
+2. Selecionar modo: carga total, aplicação localizada ou pressão uniforme.
+3. Aceitar massa em kg/g, força em N ou pressão em kPa/kgf/cm², convertendo
+   para unidades internas e preservando a entrada original.
+4. Calcular pressão de referência apenas se a área e a condição de
+   distribuição forem conhecidas e adequadas.
+5. Mostrar instrução de incluir a massa do aplicador e de não duplicar
+   sua massa caso a força total já seja medida por uma célula de carga.
+6. Não rotular uma placa como uniformizadora só porque é rígida. Para
+   referência local, documentar o contato real e a uniformidade obtida.
+7. Duração de acomodação/coleta configurável. Oferecer um ponto de partida
+   experimental, sem chamar uma duração arbitrária de norma validada.
+8. Ao final, mostrar médias, dispersão, deriva, saturação, perdas e área
+   observada. Operador pode rejeitar com motivo, sem apagar o bruto.
+9. Agrupar repetições e ciclos de um mesmo carregamento. Todos os quadros
+   desse grupo devem pertencer ao mesmo conjunto de ajuste ou validação.
+10. Permitir ensaio local com região marcada, mas não atribuir pressão
+    conhecida aos demais pontos sem contato de referência comprovado.
+
+Entrega: assistente completo e histórico pesquisável de ensaios.
+Aceite: é possível coletar, interromper, revisar, rejeitar e reabrir
+ensaios; dados simulados permanecem identificados em todas as telas.
+
+Pedido ao Codex:
+"Implemente a etapa 5 com o assistente de coleta e revisão. Bloqueie
+referências locais sem área/distribuição justificadas e preserve bruto."
+
+======================================================================
+ETAPA 6 — PROTOCOLO EXPERIMENTAL PARA O OPERADOR
+======================================================================
+
+Objetivo: orientar os ensaios físicos, sem inventar resultados.
+
+Pré-requisitos:
+- Dimensões e montagem medidas e registradas.
+- Tapete apoiado em base plana e estável; integridade mecânica verificada.
+- Pesos conferidos em balança e aplicadores com área medida.
+- Faixa de carga definida conforme a capacidade real da montagem.
+- Mesmas camadas de cobertura e apoio usadas nos exames.
+
+Protocolo inicial proposto, ajustável após caracterização:
+A. Registrar repouso e obter baseline antes de cada bloco de ensaios.
+B. Fazer ciclos preliminares de acomodação dentro da faixa segura da
+   montagem e observar repetibilidade. Não copiar sobrecargas indicadas
+   para outros produtos como regra para este tapete de Velostat.
+C. Escolher zero e vários níveis de carga na faixa de interesse; começar
+   com pelo menos cinco níveis não nulos como planejamento exploratório.
+   A suficiência depende da resposta obtida, não desse número isolado.
+D. Fazer inicialmente três repetições independentes por condição,
+   retirando/reaplicando a carga. Aumentar se a dispersão exigir.
+E. Registrar carga crescente, carga decrescente e carga mantida.
+F. Começar com centro, bordas e cantos para estudar uniformidade. Essa
+   amostragem inicial não valida os 225 pontos; ampliar antes de afirmar
+   cobertura completa de pressão local.
+G. Repetir em outra sessão/dia para verificar deriva entre sessões.
+H. Separar antecipadamente cargas/posições/sessões para validação.
+
+Aplicação localizada:
+- Usar aplicador com face de contato conhecida e posicionamento registrado.
+- Garantir que não haja outro caminho de sustentação da carga.
+- Investigar alinhamento, contato parcial e acionamento de vizinhos.
+- Um aplicador pode cobrir vários pontos; isso precisa entrar no modelo
+  de referência. Não colocar a força inteira em cada ponto coberto.
+
+Aplicação uniforme:
+- Exige dispositivo que produza distribuição conhecida, como sistema
+  pneumático adequado ou outra montagem caracterizada.
+- A pressão média massa/área de uma placa não prova uniformidade local.
+- Se uniformidade não for demonstrada, classificar como ensaio de carga
+  total, e não como referência de pressão igual em todos os pontos.
+
+Entrega: protocolo dentro da aba, ficha exportável e registro de execução.
+Aceite: a interface explica o que medir e quais condições tornam a
+referência válida; conclusões só aparecem após coleta real.
+
+Pedido ao Codex:
+"Implemente a etapa 6 como instruções de bancada, fichas de ensaio e
+revisões de protocolo. Não invente massas, capacidades ou medições."
+
+======================================================================
+ETAPA 7 — AJUSTE DE CURVAS E COBERTURA DE CALIBRAÇÃO
+======================================================================
+
+Objetivo: relacionar sinais e referências com modelo reproduzível.
+
+Tipos de perfil:
+TOTAL_FORCE_ONLY: estima força total; não libera pressão local em unidade
+física, nem área ou CoP baseados em supostos valores locais calibrados.
+LOCAL_PRESSURE: converte pontos com referências locais e áreas válidas.
+Um mapa ADC pode coexistir com força total calibrada, com rótulos distintos.
+
+Instruções:
+1. Agrupar ensaios por revisão de montagem, baseline/protocolo, origem,
+   condições de carga e finalidade FIT. Não misturar revisões incompatíveis.
+2. Caracterizar não linearidade, subida/descida e deriva antes de escolher
+   um modelo. Mostrar diferenças entre as repetições.
+3. Começar com interpolação linear por trechos de pontos de referência,
+   em ordem monotônica, quando os dados sustentarem essa ordem.
+4. Inversões significativas da curva não devem ser escondidas por ordenar
+   ADC e eliminar observações. Sinalizar inconsistência e revisar ensaio.
+5. Se usar regressão isotônica para pequenas inversões compatíveis com
+   ruído, preservar originais, método e magnitude da correção.
+6. Não usar polinômios de grau alto só para obter R² elevado.
+7. Ajustar por ponto quando as referências sustentarem isso. Curva única
+   só é aceitável com uniformidade experimentalmente demonstrada.
+8. Não preencher pontos sem curva copiando vizinhos silenciosamente.
+   Exibir cobertura e bloquear pretensão de validação completa.
+9. Mostrar faixa ADC/pressão de cada curva, amostras, resíduos e modelo.
+10. Separar a faixa adquirida da faixa efetivamente validada.
+11. Para carga total, testar se o modelo permanece válido para outras
+    distribuições e posições. Não assumir soma ADC universal.
+12. Se resposta depender fortemente dos vizinhos, histórico ou posição,
+    registrar limitação. Correção espacial exige modelo identificável e
+    validação própria; software não garante resolver falhas da montagem.
+
+Baseline e entrada do modelo:
+- Armazenar explicitamente se a curva recebe ADC absoluto, diferença de
+  baseline ou outra transformação, com versão e parâmetros.
+- Uma opção inicial é x_i = raw_i - baseline_de_referencia_i, preservando
+  diferença assinada para diagnóstico e tratando sem contato separado.
+- A convenção adotada na coleta deve ser exatamente a da aplicação.
+- Não subtrair tara duas vezes. Em modelos não lineares, f(raw-baseline)
+  e f(raw)-f(baseline) não são equivalentes.
+- Novo zero pode compensar pequeno deslocamento apenas se essa política
+  for validada; mudança grande de zero/sensibilidade exige revisão.
+
+Entrega: ajuste versionado, curvas individuais e mapa de cobertura.
+Aceite: nenhuma curva é gerada para ponto sem referência suficiente;
+dados e parâmetros permitem reproduzir o ajuste fora da interface.
+
+Pedido ao Codex:
+"Implemente a etapa 7 separando TOTAL_FORCE_ONLY de LOCAL_PRESSURE,
+com curvas por trechos, cobertura, domínio e baseline explícitos."
+
+======================================================================
+ETAPA 8 — VALIDAÇÃO INDEPENDENTE E ERRO EXPERIMENTAL
+======================================================================
+
+Objetivo: medir a qualidade fora dos dados utilizados para ajustar.
+
+Instruções:
+1. Usar ensaios VALIDATION separados por carregamento/sessão, não quadros
+   aleatórios do mesmo ensaio. Isso evita vazamento entre ajuste e teste.
+2. Registrar critérios do protocolo antes de inspecionar o teste final.
+3. Mostrar referência, previsão e erro assinado/absoluto por condição.
+4. Calcular MAE e RMSE em N ou kPa; viés médio e máximo erro absoluto.
+5. Erro percentual: 100*(estimado-referencia)/referencia. Quando a
+   referência for zero ou muito pequena, usar erro absoluto apropriado.
+6. Quantificar repetibilidade entre reaplicações, diferença subida/descida,
+   deriva no tempo e diferenças entre posições e sessões.
+7. Informar base de cálculo da histerese: diferença absoluta ou relativa
+   à amplitude definida do ensaio. Não misturar denominadores.
+8. R² pode ser auxiliar; não comprova precisão nem ausência de viés.
+9. Registrar resolução/incerteza da referência. Sem avaliação suficiente,
+   apresentar "erro observado nos ensaios" e "incerteza não determinada".
+10. Gerar relatório com condições, número de repetições, cobertura,
+    limitações, exclusões e métricas de aprovação.
+11. Permitir estado INCONCLUSIVO por dados insuficientes, além de
+    APROVADO NO ESCOPO e REPROVADO. Não haver perfil aprovado por ausência
+    de ensaios ou por importação sem resultados verificáveis.
+12. Após usar o teste para revisar o modelo, ele deixa de ser teste final
+    independente; coletar novo conjunto de validação.
+
+Entrega: painel e relatório de validação auditável.
+Aceite: falhas ficam visíveis; tolerâncias não se alteram automaticamente;
+apenas dados reais elegíveis suportam validação física.
+
+Pedido ao Codex:
+"Implemente a etapa 8 com divisão por ensaio, métricas de erro, resultado
+inconclusivo e critérios pré-definidos. Não aprove perfis por R² apenas."
+
+======================================================================
+ETAPA 9 — ENSAIOS ESTÁTICOS COM PESSOAS
+======================================================================
+
+Objetivo: avaliar carga total e repetibilidade em condição de uso.
+
+Instruções de software e operação:
+1. Registrar participante por código; vinculação a paciente é opcional.
+   Não duplicar CPF/nome em arquivos experimentais quando desnecessário.
+2. Registrar massa medida na balança, horário e instrumento. O peso do
+   cadastro pode estar desatualizado e não substitui medição do ensaio.
+3. Garantir base estável e capacidade mecânica antes da participação.
+   Planejar autorização/consentimento e exigências da instituição do TCC
+   para coleta com pessoas, conforme o estudo efetivamente realizado.
+4. Fazer teste estático: dois pés inteiros no tapete, sem apoio externo
+   que sustente parte do peso e após acomodação definida no protocolo.
+5. Comparar força estimada à referência aproximada m*g da postura estática.
+   Registrar movimento, contato fora do tapete ou apoio externo como
+   condições que tornam a comparação inadequada.
+6. Repetir com reposicionamento dos pés e em sessões distintas, mantendo
+   as condições e a identificação dos grupos de ensaio.
+7. Mostrar força total em N/kgf e massa equivalente F/g em kg, com rótulo
+   explícito de massa equivalente; não confundir força e massa.
+8. Não assumir divisão 50/50 entre pés. Para referência independente por
+   pé, seria necessária instrumentação adequada e geometria comparável.
+9. Não mudar curvas para fazer cada participante coincidir com sua massa.
+10. Não usar pisadas dinâmicas para validar força pelo peso corporal:
+    forças variam durante o movimento. Validação dinâmica fica para
+    protocolo futuro com referência temporal e sincronização adequadas.
+
+Entrega: ensaio humano estático e comparação de carga total.
+Aceite: resultado não é usado como verdade local de pressão; força total
+correta não libera automaticamente mapa plantar local validado.
+
+Pedido ao Codex:
+"Implemente a etapa 9 para verificação estática com massa medida,
+sem normalização forçada e sem tratar peso corporal como pressão local."
+
+======================================================================
+ETAPA 10 — PERFIS, ATIVAÇÃO E COMPATIBILIDADE
+======================================================================
+
+Objetivo: controlar quais conversões podem ser aplicadas.
+
+Estados sugeridos:
+RASCUNHO -> AJUSTADO -> VALIDADO_NO_ESCOPO -> ATIVO -> RETIRADO_DE_USO.
+Validação e seleção ativa podem ser representadas separadamente no banco
+para manter histórico consistente. Versão usada em exame é imutável.
+
+Instruções:
+1. Perfil identifica tapete/revisão, geometria, firmware relevante,
+   orientação, protocolo, baseline, modelo, domínio e origem dos dados.
+2. Ativação exige validação real elegível no escopo e cobertura requerida.
+3. Verificar identidade configurada do tapete; COM e nome Bluetooth
+   isoladamente não comprovam que a plataforma é a mesma.
+4. Ter no máximo um perfil selecionado por tapete/escopo compatível;
+   transação impede duas ativações concorrentes inconsistentes.
+5. Verificar compatibilidade antes de cada exame e congelar a versão
+   durante a aquisição. Troca não altera exame em andamento.
+6. Mudança relevante de montagem/área/orientação exige reavaliação.
+7. Mostrar data, versão, responsável, faixa validada e limitações.
+8. Perfis simulados podem servir a testes de software, mas não passar pela
+   ativação física nem gerar relatórios rotulados como medição real.
+9. Permitir retorno a perfil anterior compatível, sem apagar histórico.
+10. Ao importar perfil, validar algoritmo, schema, finitude, geometria,
+    curvas, fonte e dependências. Importação não ativa automaticamente.
+
+Entrega: biblioteca de perfis e regras de aplicação.
+Aceite: backend rejeita ativação incompatível mesmo com chamada direta;
+exame antigo preserva a versão utilizada após criação de novo perfil.
+
+Pedido ao Codex:
+"Implemente a etapa 10 com perfis imutáveis, ativação explícita e
+verificações de origem, cobertura e compatibilidade no backend."
+
+======================================================================
+ETAPA 11 — CONVERSÃO FÍSICA E MÉTRICAS DISCRETAS
+======================================================================
+
+Objetivo: calcular resultados físicos sustentados pela calibração.
+
+Unidades internas sugeridas: pressão em kPa, força em N, coordenadas em
+mm, área em mm². Convertê-las apenas na apresentação/exportação.
+
+Conversões exatas pela gravidade padrão g0 = 9,80665 m/s²:
+F_N = massa_kg * 9,80665
+F_kgf = F_N / 9,80665
+P_kgf_cm2 = P_kPa / 98,0665
+P_kPa = P_kgf_cm2 * 98,0665
+area_cm2 = area_mm2 / 100
+F_i_N = P_i_kPa * area_i_mm2 / 1000
+F_i_N = P_i_kPa * area_i_cm2 / 10
+
+Exemplo de unidade, não de medição do tapete:
+Massa total de 5 kg, com contato uniforme comprovado sobre 25 cm²:
+F = 49,03325 N; P = 0,20 kgf/cm² = 19,6133 kPa.
+
+Pipeline LOCAL_PRESSURE:
+1. Validar quadro/origem e compatibilidade com a revisão do perfil.
+2. Aplicar a transformação de baseline definida, uma única vez.
+3. Converter ponto a ponto dentro do domínio da curva correspondente.
+4. Mapear índices para coordenadas físicas uma única vez.
+5. Classificar contato pela regra física/noise floor validada, separada
+   dos sliders de gamma e escala visual. Registrar sua versão.
+6. Calcular métricas com valores discretos e áreas de célula conhecidas.
+7. Renderizar o mapa físico com legenda e limites correspondentes.
+
+Métricas:
+- Força total: soma das forças das células válidas no escopo.
+- CoP: soma(x_i*F_i)/soma(F_i), idem para Y, em coordenadas físicas.
+- Sem força suficiente ou com cobertura inadequada: CoP indisponível.
+- Pressão média de contato: soma(P_i*A_i)/soma(A_i) das células em
+  contato; áreas iguais reduzem à média aritmética.
+- Área de contato estimada: soma das áreas representadas pelas células
+  classificadas em contato, com limitação de resolução explícita.
+- Pressão máxima: maior valor discreto válido, não pico interpolado.
+- Distribuição por região: força regional/força total elegível.
+
+Separação esquerda/direita:
+Não chamar automaticamente as metades da plataforma de pé esquerdo e
+pé direito. Defina regiões verificáveis ou segmentação validada. A
+coluna central deve ter política explícita: região central, atribuição
+por máscara ou outro método; não descartá-la do total físico.
+
+Qualidade e apresentação:
+- Não saturar a leitura convertida no Vmax da paleta. Saturação de cor
+  é diferente de saturação do ADC e de extrapolação da calibração.
+- Ponto desconhecido mantém estado inválido; não substitua por zero.
+- Se mostrar soma parcial, rotule-a como parcial e exclua comparações
+  que pressupõem total completo. Não estime massa válida automaticamente.
+- Perfil TOTAL_FORCE_ONLY fornece somente o que foi validado para total;
+  o mapa permanece ADC, com legenda distinta da força física.
+
+Processamento temporal:
+Converta cada quadro antes de calcular médias físicas. Em curva não linear,
+f(media_ADC) geralmente não equivale a media(f(ADC)).
+Defina resultados separados para mapa médio, pico temporal e métricas
+instantâneas. "Pico do mapa médio" não é "pico durante o exame".
+Para intervalos irregulares, registre se a média é por quadro ou por
+tempo; pondere pelo tempo quando a métrica exigir e não preencha grandes
+lacunas como se fossem medições válidas.
+
+Entrega: serviço físico puro, tipado e testável, separado do serviço ADC.
+Aceite: exemplos numéricos, não linearidade, geometria e estados inválidos
+são verificados; visualização não muda resultado científico salvo.
+
+Pedido ao Codex:
+"Implemente a etapa 11 com kPa/N/mm internos, conversão quadro a quadro,
+áreas explícitas, CoP por força e métricas discretas com qualidade."
+
+======================================================================
+ETAPA 12 — EXAMES, HISTÓRICO E RELATÓRIOS
+======================================================================
+
+Objetivo: integrar sem alterar o significado de exames existentes.
+
+Instruções:
+1. Adicionar campos versionados de domínio/unidade, perfil e qualidade;
+   preservar os campos ADC e sua interpretação nos exames legados.
+2. Salvar referência a perfil imutável e/ou snapshot suficiente para
+   reprodução, revisão do tapete, baseline, parâmetros e algoritmo.
+3. Preservar bruto dos exames físicos conforme política de tamanho,
+   usando lotes e avisando quando apenas resumos forem preservados.
+4. Nunca rotular antigo exame ADC como calibrado por simplesmente abrir
+   com um perfil ativo hoje.
+5. Se houver reprocessamento histórico, exigir bruto e compatibilidade
+   suficientes; gerar nova versão derivada sem sobrescrever o original.
+   Só matriz média antiga não reproduz toda a análise física não linear.
+6. Exibir unidade explícita em mapa, cards, tabelas, detalhes e PDF.
+7. Relatório informa origem, estado de calibração, perfil, faixa e
+   limitações relevantes. Evitar linguagem de certificação não comprovada.
+8. Mostrar indicadores REAL NÃO CALIBRADO, REAL COM PERFIL VALIDADO NO
+   ESCOPO, SIMULAÇÃO e DADOS PARCIAIS conforme cada caso.
+9. Não comparar números ADC e kPa como se fossem a mesma grandeza.
+   Comparações exigem unidades e escopo compatíveis; perfis diferentes
+   exigem identificação e avaliação de comparabilidade.
+10. PDF e interface compartilham os mesmos resultados salvos. Alterar
+    gamma/Vmax visual não recalcula silenciosamente métricas do exame.
+
+Entrega: aquisição física integrada, persistência e relatórios coerentes.
+Aceite: exame legado mantém sua unidade; exame novo mantém o perfil da
+aquisição; tela/PDF mostram os mesmos valores com qualidade explícita.
+
+Pedido ao Codex:
+"Implemente a etapa 12 preservando exames ADC e adicionando resultados
+físicos versionados no histórico e PDF, sem recalibração retroativa."
+
+======================================================================
+ETAPA 13 — VERIFICAÇÃO DE SOFTWARE E ENTREGA
+======================================================================
+
+Objetivo: demonstrar que os fluxos funcionam e os erros são tratados.
+
+Testes significativos mínimos:
+1. Conversões kPa/kgf/cm² e N/kgf, com exemplo dimensional conhecido.
+2. Correspondência índice bruto, orientação e coordenadas físicas.
+3. Soma de força e pressão média em células com áreas diferentes.
+4. CoP com referências de posição conhecidas; ausência de carga.
+5. Curva não linear: média depois da conversão, diferente de f(media_ADC).
+6. Curva insuficiente/não monotônica, limites de domínio e saturação.
+7. Mesmo quadro recebido uma vez; renderização lenta não perde captura.
+8. Overflow, desconexão, fonte trocada, encerramento e sessão incompleta.
+9. Baseline aplicado uma vez; revisão incompatível impede uso do perfil.
+10. Validação separada por ensaio e aprovação com dados insuficientes
+    resulta em inconclusivo, não aprovação.
+11. Perfil simulado não pode ser ativado como calibração física.
+12. Migração de banco antigo, preservação de exames, backup/restauração
+    e importação malformada sem alterações parciais.
+13. Alteração de perfil atual não muda exame salvo; ativação é atômica.
+14. Sensor inválido não vira zero, total parcial é identificado.
+
+Comandos de verificação, conforme scripts realmente disponíveis:
+npm run typecheck
+npm test
+npm run build
+cargo test --manifest-path src-tauri/Cargo.toml
+
+Use banco de teste isolado conforme a infraestrutura existente, inclusive
+BAROPRESS_TEST_DATA_DIR quando aplicável. Não teste destruição/importação
+sobre o banco pessoal. Falta de ambiente ou ferramenta deve ser relatada,
+sem afirmar que a verificação foi executada.
+
+Verificação manual no Tauri:
+- Abrir aba, configurar tapete e inspecionar matriz.
+- Coletar simulação e observar sua origem em todas as telas.
+- Reabrir ensaio, gerar perfil de teste e verificar bloqueio físico.
+- Desconectar no meio da captura e observar interrupção rastreável.
+- Abrir exame antigo e conferir ADC no mapa, métricas e PDF.
+- Conferir tema, estados vazios, navegação e tamanhos de janela existentes.
+
+Entrega: checklist, resultados e problemas conhecidos registrados.
+Aceite: não há aprovação experimental baseada só em testes de software;
+itens não executados são identificados como pendentes.
+
+Pedido ao Codex:
+"Execute a etapa 13, verifique os fluxos e registre evidências e pendências.
+Distinga aprovação de software de validação experimental do tapete."
+
+======================================================================
+ETAPA 14 — ANALISAR A BASE REAL E REVISAR O PERFIL
+======================================================================
+
+Objetivo: usar os ensaios coletados para alcançar o melhor resultado
+que a montagem realmente suporta, com erro documentado.
+
+Pedido para usar no Codex depois de coletar dados:
+"Analise os ensaios reais do módulo de calibração. Verifique referências,
+áreas, cobertura, saturação, ruído, deriva e interferência espacial.
+Separe FIT e VALIDATION por ensaio/sessão. Compare curvas simples e
+identifique qual modelo é sustentado pelos dados. Apresente erros em
+unidades físicas, faixa de validade e limitações. Não normalize resultados
+para o peso cadastrado, não extrapole e não ative um perfil silenciosamente.
+Se pressão local não puder ser validada, proponha apenas o escopo de carga
+total ou os ajustes físicos necessários, com ensaios adicionais concretos."
+
+Saídas esperadas:
+- Diagnóstico por ponto/região e mapa de cobertura.
+- Curvas e resíduos com indicação de quais dados geraram cada modelo.
+- Relatório independente de validação e resultados inconclusivos.
+- Comparação entre sessões, posicionamentos e pessoas em teste estático.
+- Lista de ensaios adicionais necessários e possíveis ajustes da montagem.
+- Perfil candidato novo, preservando versões anteriores e dados brutos.
+
+Se a montagem for modificada, cadastrar outra revisão e repetir os
+ensaios necessários. Não misturar dados de antes/depois como se a função
+de transferência do tapete fosse a mesma.
+
+======================================================================
+MARCO DE ENTREGA POR BLOCOS
+======================================================================
+
+BLOCO A — Etapas 0 a 5:
+Aba, configuração, armazenamento, aquisição bruta e ensaios funcionais.
+Já permite montar a base experimental; sem promessa de pressão validada.
+
+BLOCO B — Etapas 6 a 10:
+Protocolo, curvas, validação, ensaios estáticos com pessoas e perfis.
+Depende de referências reais para concluir validação física.
+
+BLOCO C — Etapas 11 a 13:
+Conversão sustentada pelos perfis, exames e relatórios, verificação final.
+Pode ser desenvolvido em simulação, mantendo bloqueios de origem.
+
+BLOCO D — Etapa 14:
+Análise das coletas reais, revisão experimental e melhoria contínua.
+
+Não é necessário esperar todas as etapas para coletar. Após o BLOCO A,
+comece os ensaios reais; eles orientam a escolha do modelo no BLOCO B.
+
+======================================================================
+INFORMAÇÕES FÍSICAS A LEVANTAR ANTES DA CALIBRAÇÃO
+======================================================================
+
+[ ] Comprimento/largura da área realmente sensora, em mm.
+[ ] Posição dos centros, largura e espaçamento das fitas de cobre.
+[ ] Área representada por cada ponto, incluindo bordas e regiões mortas.
+[ ] Camadas de cobertura, espessuras e forma de fixação.
+[ ] Valores dos resistores, multiplexação e firmware de aquisição.
+[ ] Capacidade mecânica demonstrada da plataforma e base de apoio.
+[ ] Pesos disponíveis, massa conferida e identificação da balança.
+[ ] Aplicador: formato, área real de contato e massa própria.
+[ ] Possibilidade de referência por célula de carga/pressão uniforme.
+[ ] Ruído, acomodação e retorno ao zero medidos na montagem atual.
+[ ] Faixa de pressão/força de interesse, sem copiar faixa do BaroScan.
+[ ] Critérios de erro e cobertura definidos para o objetivo do TCC.
+
+======================================================================
+FONTES TÉCNICAS E USO CORRETO DAS REFERÊNCIAS
+======================================================================
+
+Manual oficial BaroScan V1.12, referência de unidades e características:
+https://www.baroscan.com/suporte/ManualBaroScanv1.12.pdf
+
+Tekscan: métodos de calibração e importância dos materiais de interface:
+https://www.tekscan.com/blog/pressure-mapping/video-three-easy-ways-calibrate-your-pressure-mapping-system
+
+Tekscan: boas práticas de integração/calibração de sensores FlexiForce:
+https://lp.tekscan.com/hubfs/FLX/FLX-Best-Practice-Electrical-Integration_2.0.pdf
+
+Essas fontes apoiam princípios de ensaio e comparação de unidades.
+Procedimentos, limites e números de sensores comerciais não constituem
+especificação nem validação desta montagem de Velostat.
+
+Ao escrever o TCC, distinguir claramente:
+- método implementado;
+- dados reais coletados;
+- referência utilizada e sua limitação;
+- erro observado e faixa validada;
+- limitações espaciais e temporais;
+- recursos ainda propostos ou simulados.
+
+FIM DO ROTEIRO

@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 247 248 250; --surface: 255 255 255; --line: 226 229 235;
+  --ink: 17 24 39; --mute: 100 110 125; --brand: 37 99 235; --brand-fg: 255 255 255;
+}
+.dark {
+  --bg: 11 15 20; --surface: 18 24 32; --line: 38 47 59;
+  --ink: 234 238 244; --mute: 142 152 168; --brand: 96 150 255; --brand-fg: 11 15 20;
+}
+html, body, #root { height: 100%; }
+body { @apply bg-bg text-ink font-sans antialiased; }
+:focus-visible { outline: 2px solid rgb(var(--brand)); outline-offset: 2px; border-radius: 6px; }
+.input { @apply bg-surface text-ink border border-line rounded px-2 py-1; min-width: 0; }
+.btn { @apply bg-brand text-brand-fg rounded px-3 py-2; }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+@media print {
+  @page { size: A4 portrait; margin: 12mm; }
+  html, body, #root, #root > div, main, .report-viewer {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+  #root > div, main, .report-viewer { display: block !important; }
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  aside,
+  nav,
+  header.no-print,
+  .no-print {
+    display: none !important;
+  }
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: white !important;
+  }
+  .print-page {
+    page-break-after: always;
+    break-after: page;
+    box-shadow: none !important;
+    border: none !important;
+    margin: 0 auto !important;
+    padding: 1.2cm 0.8cm !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+  .print-page:last-child { page-break-after: auto; break-after: auto; }
+  .report-print-notes { display: block !important; }
+}

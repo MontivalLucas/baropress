@@ -1,0 +1,43 @@
+BAROPRESS - REGISTRO DE PROGRESSO
+Data: 09/10/2026
+Assunto: Plano em fases das melhorias inspiradas no BAROSYS
+Fase: Documentação do planejamento
+Status: CONCLUÍDO (DOCUMENTAÇÃO); FASES DE IMPLEMENTAÇÃO PLANEJADAS
+
+SOLICITAÇÃO
+Criar plano separado por fases, otimizado para execução posterior no Codex,
+salvar em TXT na Sprint e manter a documentação registrada para retomada.
+
+DIAGNÓSTICO
+Consultados o índice/agregados da Sprint, o plano de pendências 0.2.10,
+os registros de calibração 0.2.11 e rollback da faixa esquerda, contratos
+e processamento de aquisição/exames. Base de software identificada como
+0.2.11; as próximas execuções devem conferir novamente seu estado.
+O módulo de calibração e a trajetória já existem; exame dinâmico e retenção
+geral para reprodução precisam de desenvolvimento próprio. Qualidade e
+condições cruzam itens SCI-01/EXAM-01 do planejamento anterior.
+
+ALTERAÇÕES REALIZADAS
+- Criado 04_Futuro/PLANO_MELHORIAS_BASEADAS_NO_BAROSYS.txt: F00 a F09,
+  dependências, blocos, critérios, métodos, verificação e estado por fase.
+- Criado 04_Futuro/PROMPTS_MELHORIAS_BAROSYS_CODEX.txt: prompts de uma fase
+  por vez, subfases físicas/dinâmicas e instrução de retomada.
+- Atualizados índice, Futuro, Em Andamento e Concluído com referências,
+  preservando registros históricos e separando documentação de implementação.
+- Nenhuma alteração de código, cálculo, banco, perfil, instalação ou versão.
+
+VALIDAÇÃO
+Conferidos arquivos criados, cabeçalhos, estados iniciais, referências locais,
+fases nos prompts e inclusão dos apontamentos nos agregados.
+Testes/build do aplicativo: não necessários para alteração somente documental.
+Teste visual do aplicativo: não executado nesta tarefa.
+Teste em hardware real: não executado nesta tarefa.
+
+PENDÊNCIAS
+Todas as fases do novo plano permanecem planejadas. Calibração/validação real
+dependem de referência, protocolo e ensaios. 3D é opcional; dinâmica depende
+de estudo de viabilidade. Não reintroduzir o alinhamento revertido em 08/10.
+
+PRÓXIMOS PASSOS
+Quando solicitado, usar PROMPT F00 para confirmar a base e os contratos.
+Não iniciar uma fase automaticamente apenas pela criação desta documentação.

@@ -1,0 +1,21 @@
+BAROPRESS - FASE 8: AGENDA
+Data: 06/10/2026
+Status: CONCLUÍDO NO CÓDIGO E TESTES
+
+PASSO 1 - REQUISITOS
+Calendário dia/semana/mês. Criar, editar e excluir consultas; paciente,
+profissional, observações e status agendado/confirmado/realizado/cancelado.
+
+PASSO 2 - IMPLEMENTAÇÃO
+Agenda dia/semana/mês, navegação por período, criação/edição/exclusão com confirmação,
+quatro status, vínculo ao paciente/profissional, observações e cadastro de profissionais.
+Backend valida datas, horários, vínculos e sobreposição por paciente/profissional.
+
+PASSO 3 - VALIDAÇÃO
+npm test: 101 aprovados. Testes do calendário, mudança de mês, ano bissexto e horários.
+cargo test --offline --manifest-path src-tauri/Cargo.toml: 30 aprovados, incluindo
+CRUD da agenda, validação, filtros, sobreposição e horários adjacentes.
+npm run build: aprovado. Validação visual/manual no desktop pendente.
+
+PASSO 4 - CONCLUSÃO
+Verificações automáticas aprovadas; próxima fase: questionários/anamnese.

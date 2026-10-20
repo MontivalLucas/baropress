@@ -1,0 +1,22 @@
+BAROPRESS - FASE 9: QUESTIONÁRIOS E ANAMNESE
+Data: 06/10/2026
+Status: CONCLUÍDO NO CÓDIGO E TESTES
+
+PASSO 1 - REQUISITOS
+Editor por grupos. Perguntas abertas, seleção única/múltipla, número e sim/não.
+Ativar/desativar perguntas. Respostas vinculadas ao paciente e data; histórico.
+
+PASSO 2 - IMPLEMENTAÇÃO
+Editor por grupos e cinco tipos de perguntas; ativação, obrigatoriedade e opções.
+Respostas vinculadas ao paciente e data, com snapshot do modelo usado.
+Migração 5 preserva o esquema anterior e adiciona sessões e grupos.
+Histórico de consultas e anamnese integrado ao prontuário.
+Backend valida respostas, opções, tipos e obrigatoriedade, incluindo zero e Não.
+
+PASSO 3 - VALIDAÇÃO
+npm test: 104 aprovados. Backend: 34 testes aprovados.
+Testes verificam preservação do snapshot após editar o modelo, validação e inativas.
+npm run build: aprovado. Validação visual/manual no desktop pendente.
+
+PASSO 4 - CONCLUSÃO
+Verificações aprovadas. Próxima fase: backup e restauração.

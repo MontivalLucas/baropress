@@ -1,0 +1,23 @@
+BAROPRESS - FASE 7: COMPARAÇÃO E EVOLUÇÃO
+Data: 06/10/2026
+Status: CONCLUÍDO NO CÓDIGO E TESTES
+
+PASSO 1 - REQUISITOS
+Comparar de 2 a 4 exames completos do mesmo paciente: mapas, pressão máxima/média,
+carga bilateral, área, CoP e evolução por data. Integrar ao histórico do paciente.
+
+PASSO 2 - IMPLEMENTAÇÃO
+Tela Comparação: seleção de 2 a 4 exames, mesmo paciente, tabela e gráficos por
+data, mapas com escala comum opcional e aviso de parâmetros/protocolos diferentes.
+Acesso pela lista de exames e histórico do paciente.
+Novos exames preservam trajetória e tempos reais de captura do CoP (migração 4).
+Exames antigos informam ausência de trajetória.
+
+PASSO 3 - VALIDAÇÃO
+npm test: 98 aprovados; inclui 5 testes de comparação.
+cargo test --offline --manifest-path src-tauri/Cargo.toml: 26 aprovados.
+npm run build: TypeScript e build aprovados.
+Validação visual/manual no desktop: pendente.
+
+PASSO 4 - CONCLUSÃO
+Verificações automáticas aprovadas. Próxima etapa autorizada: fase 8.

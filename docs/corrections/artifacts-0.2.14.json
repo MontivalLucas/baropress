@@ -1,0 +1,43 @@
+{
+  "version": "0.2.14",
+  "date": "2026-10-14",
+  "architecture": "x64",
+  "frontendTestsPassed": 217,
+  "backendTestsPassed": 127,
+  "backendBenchmarkIgnored": 1,
+  "typecheck": "PASS",
+  "frontendBuild": "PASS",
+  "releaseBuild": "PASS",
+  "installerBuild": "PASS",
+  "copyIntegrity": "PASS",
+  "installed": false,
+  "personalDatabaseAccessed": false,
+  "nativeVisualValidation": "PENDING",
+  "hardwareValidation": "PENDING",
+  "artifacts": [
+    {
+      "path": "entrega/BAROPRESS_0.2.14_x64-setup.exe",
+      "bytes": 3844682,
+      "productVersion": "0.2.14",
+      "sha256": "953e1239039735a5276180bfa7ee1691e35cf4a0c6d92772ea84196c10699878"
+    },
+    {
+      "path": "entrega/BAROPRESS_0.2.14/baropress.exe",
+      "bytes": 15180288,
+      "productVersion": "0.2.14",
+      "sha256": "32fcb49ea5d7fe6672c14bc2cfc2e19513b4979a12e8b7e7072fd11258faa3cc"
+    },
+    {
+      "path": "entrega/BAROPRESS_0.2.14/WebView2Loader.dll",
+      "bytes": 160880,
+      "productVersion": "1.0.3800.47",
+      "sha256": "86545b66cdb0603bc26b626fb9ad610cb6e71f28d468f5ea66df23b03dda96d5"
+    },
+    {
+      "path": "entrega/BAROPRESS_0.2.14/libunwind.dll",
+      "bytes": 204288,
+      "productVersion": null,
+      "sha256": "8d9f60801f50c0a6cb7beb7fd2e121f98bf39ebe40e6c7e07a8a39fccb817c03"
+    }
+  ]
+}

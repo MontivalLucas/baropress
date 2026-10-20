@@ -1,0 +1,25 @@
+BAROPRESS - ENTREGA USUÁRIOS, LOGIN E ACESSO 0.2.12
+Data: 09/10/2026. Estado: SOFTWARE E INSTALADOR CONCLUÍDOS.
+Pedido de retomada: "siga com o que falta para concluir".
+IAM-05: recuperação e-mail + RA conforme solicitação original, confirmação da
+nova senha, erro genérico, bloqueio de tentativas e revogação de sessões.
+Código pessoal/temporário permanece como alternativa; não é exigido junto ao RA.
+RA permanece reutilizável: quem conhece e-mail/RA consegue redefinir a senha.
+IAM-06: 198 testes frontend, 123 Rust aprovados, 1 benchmark ignorado, TypeScript,
+build final e instalador NSIS aprovados. Binário identificado como 0.2.12/schema9.
+Aba Usuários admin e permissões dos três perfis; secretaria consulta/cria Agenda,
+pacientes/resultados concluídos, sem exame novo ou controles privilegiados.
+
+Instalador: ../../src-tauri/target/visualizacao/release/bundle/nsis/BAROPRESS_0.2.12_x64-setup.exe
+Manifesto/hash: ../../docs/corrections/iam-artifacts-0.2.12.json
+Relatório: ../../docs/corrections/USUARIOS_LOGIN_ACESSO.md
+Plano: ../04_Futuro/PLANO_USUARIOS_LOGIN_ACESSO.txt
+Roteiro: ../04_Futuro/PENDENCIAS_USUARIOS_LOGIN_ACESSO.txt
+Original 0.2.11 preservado e conferido; sem instalação automática/banco pessoal.
+
+PENDÊNCIAS REAIS (NÃO SÃO IMPLEMENTAÇÃO EM ABERTO)
+Conferência visual nativa e jornadas dos três perfis em banco descartável,
+migração de cópia real, Arduino/exame/encerramento após revogação e atualização
+da instalação de uso após homologação. Nesta retomada não houve captura nova:
+navegador integrado falhou ao anexar a webview. Evidência anterior é sintética.
+Não declarar hardware, calibração física ou instalação de uso homologados.

@@ -1,0 +1,7 @@
+{
+  "version": "0.2.9",
+  "installer": "src-tauri/target/release/bundle/nsis/BAROPRESS_0.2.9_x64-setup.exe",
+  "bytes": 3694100,
+  "sha256": "EB22BCF74586FB8ECF60C6C999072582EABE63790E6449017E55FA98F01C4039",
+  "hashesMatch": true
+}

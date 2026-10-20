@@ -1,0 +1,125 @@
+BAROPRESS — PRIMEIRO USO DO MÓDULO — 07/10/2026
+
+1. Abra a versão em desenvolvimento a partir da pasta baropress:
+   npm run tauri:dev
+   O instalador antigo não recebe mudanças de código automaticamente.
+   Esta execução não reinstalou o aplicativo nem gerou novo instalador.
+
+2. Entre na conta local e abra "Testes e calibração".
+   Em Tapete, cadastre identificação, revisão física, firmware e medidas.
+   Deixe desconhecidos os valores que ainda não foram medidos.
+   A geometria regular exige confirmação de 225 células iguais e dos
+   espaçamentos medidos. A área de cada célula não é automaticamente a
+   área elétrica das fitas nem a área do aplicador.
+
+3. Em Aquisição, configure a origem e conecte o ESP32. A simulação permite
+   explorar o software, mas não gera calibração física ativável.
+   A frequência exibida é medida; não assuma 30 FPS a 115200 baud.
+
+4. Sem carga, abra Ensaios e selecione "Zero sem carga". Informe grupo,
+   protocolo e janelas de acomodação/coleta. Inicie e aguarde concluir.
+   Clique no registro do histórico e revise média, desvio, deriva e
+   saturação. Aceite somente se a condição experimental estiver correta.
+   O baseline experimental é separado da tara visual da Análise.
+
+5. Para cada peso, escolha "Pesos / força total" ou ensaio de pressão
+   localizada/uniforme, conforme a referência que você realmente possui.
+   Registre massa, aplicador, área, posição, instrumento, repetição,
+   sentido de carga, grupo e observações. Se a massa foi medida em outro
+   momento, registre a data/hora dessa medição nas observações.
+   Selecione o baseline aceito e mantenha o protocolo da série.
+
+6. Pressão local exige área e distribuição comprovadas. No modelo inicial,
+   o aplicador deve cobrir integralmente as células selecionadas, e sua
+   área deve coincidir com a soma dessas áreas. Contato parcial não fornece
+   uma referência local adequada para esse modelo.
+
+7. Faça cargas crescentes/decrescentes e reaplicações. Planeje inicialmente
+   cinco níveis não nulos e três reaplicações por condição, ajustando o
+   protocolo conforme o comportamento real. Na tabela de caracterização,
+   confira desvio entre reaplicações e diferença de subida/descida em ADC.
+   O critério inicial de software exige pelo menos 10 quadros e cobertura
+   temporal de 80% da janela, sem gaps/duplicatas observáveis, para revisão.
+   Esse critério técnico não comprova a estabilidade ou precisão do tapete.
+
+8. Separe grupos de ajuste e validação antes da coleta. Nunca distribua
+   quadros do mesmo carregamento entre os dois conjuntos. Referências
+   de validação devem cobrir o limite inferior não nulo e o superior do
+   domínio ajustado. Repetir somente uma carga não valida toda a faixa.
+
+9. Selecione ensaios aceitos de AJUSTE e abra Curvas. Escolha escopo:
+   - Somente força total: resultados em N; mapa continua ADC.
+   - Pressão por ponto: exige geometria e curvas para os 225 pontos.
+   Informe baseline, nome, níveis e erro absoluto aceitável, em N ou kPa.
+   O perfil congela esses critérios; não os aumente para aprovar o teste.
+
+10. Selecione ensaios aceitos de VALIDAÇÃO e execute o teste independente.
+    Confira MAE, RMSE, viés, maior erro, domínio e cobertura. Resultados
+    insuficientes ou simulados são inconclusivos, nunca aprovação física.
+    Dados fora da faixa ou acima do critério reprovam a validação.
+    Uma nova reprovação/inconclusão retira a seleção ativa desse perfil.
+
+11. Em Perfis, administrador pode ativar um perfil REAL completo que tenha
+    validação elegível. Gerar curva ou importar arquivo não ativa perfil.
+    A calibração continua sendo experimental, com incerteza não determinada
+    até uma avaliação metrológica suficiente. Não equivale a certificação
+    ou precisão demonstrada de um equipamento comercial.
+
+12. Para verificar pessoas, use somente postura estática, massa medida em
+    kg e capacidade mecânica previamente verificada e cadastrada. Registre
+    participante por código, instrumento e condições. Sem apoio externo,
+    a força total esperada se aproxima de massa x 9,80665 N.
+    A soma não é normalizada automaticamente para o peso informado.
+    Esse teste não fornece a pressão verdadeira de cada região do pé.
+
+13. Em Novo exame, selecione perfil ativo e confirme identidade, montagem,
+    firmware e geometria. Sem confirmação, o exame continua ADC.
+    Exame físico salva conversão quadro a quadro, perfil e dados brutos.
+    Detalhes e relatório apresentam resultados físicos separados dos
+    indicadores ADC originais. O PDF acrescenta anexo físico.
+    Exames antigos não são recalibrados ao abrir.
+
+14. Na Análise, "Abrir conversão física com perfil ativo" permite prévia
+    instantânea mediante confirmação da montagem. O painel principal
+    continua ADC. A conversão física não foi validada para marcha.
+
+15. Exporte ensaio completo no histórico: o JSON inclui revisão do tapete,
+    ensaio, baseline necessário e quadros brutos. A importação identifica
+    os registros como IMPORTADOS e valida sua estrutura e estatísticas.
+    A importação não confirma por si só a validade da referência física.
+    IDs conflitantes são rejeitados; repetição idêntica não duplica dados.
+    Um perfil avulso sem seus ensaios não é aceito para ativação.
+    Backup integral inclui a base e os perfis; seleção ativa é retirada
+    ao restaurar. A versão anterior de backup (schema 5) é atualizada
+    sem fabricar resultados físicos. Limite atual de importação: 64 MB.
+    Bases maiores podem ser transportadas por ensaios e baseline em
+    arquivos separados; conserve os dados de origem e exporte regularmente.
+
+16. Não há remoção automática de ensaios. Limite por coleta: 20.000
+    quadros. Excesso, erro de gravação, mudança de origem, parada ou perda
+    de conexão interrompem o ensaio. Se o aplicativo fechar durante a
+    captura, o registro é marcado como interrompido na próxima abertura.
+
+17. Campos de pressão local incompletos/saturados/fora da faixa não são
+    substituídos por zero. Força total, CoP e outros indicadores completos
+    ficam indisponíveis nesses casos. Não confunda pico interpolado,
+    pico do mapa médio e pico temporal do exame.
+
+PENDÊNCIAS PARA USO EXPERIMENTAL REAL
+- Medir geometria e capacidade mecânica da montagem.
+- Conferir pesos e aplicador na balança.
+- Coletar baseline e caracterização reais.
+- Coletar ajuste e validação independentes.
+- Conferir manualmente a interface no Tauri e a ligação serial real.
+- Analisar a base real conforme a etapa 14 do guia principal.
+
+Verificação visual desta execução não foi concluída: o controle do
+Windows interrompeu a sessão por não conseguir identificar com segurança
+a URL do navegador. A prévia do navegador remoto também não alcançou
+localhost. Compilação e testes não substituem essa conferência manual.
+
+Prévia visual local opcional, sem banco pessoal:
+npm run dev
+http://localhost:1420/scripts/calibration-preview.html
+Essa página usa apenas dados simulados em memória e não faz parte do
+pacote de produção. Use o Tauri para gravações e ensaios completos.

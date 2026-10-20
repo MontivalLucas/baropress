@@ -1,0 +1,34 @@
+BAROPRESS - F09-A - ESTUDO DE VIABILIDADE DINÂMICA
+Data: 09/10/2026. Estado: DOCUMENTAÇÃO PREPARADA / MEDIÇÃO REAL PENDENTE.
+Decisão atual: não implementar/liberar modo de marcha sem evidência física.
+Usuário autorizou executar os testes reais juntos após o restante do software.
+
+EVIDÊNCIA DISPONÍVEL E LIMITES
+Software retém série de novos exames estáticos, tempos monotônicos de
+recepção, sequência do computador, tara/orientação/limiar e origem.
+Matriz de 15 x 15; passo cadastrado 20 mm é referência a confirmar.
+Testes sintéticos verificam retenção e gráficos; não demonstram resposta
+temporal da montagem, capacidade para pisadas nem transmissão sem perdas.
+Exames estáticos existentes não provam viabilidade mecânica ou dinâmica.
+O backend mantém exigência de protocolo static para exame físico.
+
+MEDIR ANTES DA DECISÃO
+1. Identificar firmware/revisão e capacidade mecânica; sem carga dinâmica
+   humana antes de verificação da capacidade/segurança da montagem.
+2. Registrar bruto REAL com sequência/relógio do dispositivo quando possível;
+   medir intervalos e taxas na variação de carga, lacunas/perdas e saturação.
+3. Medir acomodação/recuperação, histerese/deriva e repetibilidade sob
+   aplicações controladas. Calibração estática não valida resposta dinâmica.
+4. Definir objetivos exploratórios, referência de tempo independente e
+   tolerâncias justificadas antes da análise; não derivar requisitos de FPS visual.
+5. Confrontar tempo típico de contato observado com quantidade/intervalos
+   de quadros reais e resolução espacial; documentar contatos parciais.
+6. Validar regra de entrada/saída de contato e lado E/D conhecido, sem
+   reconhecimento automático alegadamente anatômico. Definir rejeição de passos.
+
+CRITÉRIO DE RETOMADA
+Somente se medições sustentarem o objetivo: criar protocolo separado,
+fluxo dedicado de passos, rejeição explícita, série completa, revisão por
+passo e relatório exploratório. Não afrouxar validações do estático.
+Força/pressão dinâmica dependem de calibração aplicável à resposta dinâmica.
+Sem dados: decisão INCONCLUSIVA, F09-B permanece PLANEJADO / CONDICIONAL.

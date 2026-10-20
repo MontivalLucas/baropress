@@ -1,0 +1,69 @@
+BAROPRESS - CHECK-UP DE DESEMPENHO E LIMPEZA
+Data: 07/10/2026
+Versão: 0.2.9
+Status: CORREÇÕES, TESTES E EMPACOTAMENTO CONCLUÍDOS
+
+PEDIDO
+Investigar lentidão/travamentos e eliminar código morto/arquivos sem utilidade.
+Usuário confirmou lentidão ao navegar, abrir abas e listas.
+
+DIAGNÓSTICO E CORREÇÕES
+- Comandos síncronos/autorizações/locks retirados do caminho da janela;
+  fila em worker dedicado preserva ordem e verificação de acesso.
+- Pacientes e Histórico de Exames: paginação SQLite (50 exibidos/51 buscados),
+  ordem estável com ID, filtros e consultas após 250 ms sem digitação.
+- Detalhes dos exames carregados sob demanda na listagem.
+- Seletores de estado em Dashboard, Conta, Backup e perfil físico; quadros
+  de Novo Exame/calibração assinados apenas nas etapas com prévia ao vivo.
+- Contadores visuais no máximo a cada 250 ms; eventos/coleta completa mantidos.
+- Interpolação separável com buffers reutilizados; mesma superfície anterior.
+- Polling serial sem sobreposição, resposta antiga ignorada e limpeza de
+  listeners parciais na falha de conexão.
+- Removidos CopMarker.tsx, sessionStorage.ts, seu teste obsoleto e
+  format_sources.cjs, endpoint acquisition_poll_frames e fila recent_frames.
+- Auditoria AST: 94 fontes usadas pelo app, 21 arquivos de teste, sem fontes
+  frontend órfãs; todas as sete dependências de runtime têm consumidor.
+- Limpeza nativa Cargo: 7696 artefatos removidos, 13,2 GiB (~14 GB), preservando
+  fontes, dados, histórico, referências e instaladores de produção.
+- Cache separado visualizacao preservado: Cargo recusou limpeza por ausência
+  de CACHEDIR.TAG. A proteção não foi removida/contornada.
+- Vite 6.4.3, Vitest 4.1.11 e plugin React 4.7.0; testes adaptados para
+  restaurar ações do Zustand copiadas de spies e tipar o mock da conexão.
+- README, arquitetura, requisitos de Node e relatório atualizados.
+
+EVIDÊNCIAS
+- Interpolação: 5,09 a 5,79 vezes mais rápida na mediana de 11 execuções,
+  zero diferença em todos os pixels comparados com a fonte anterior.
+- Matriz de referência suavizada mantém o SHA-256 da versão 0.2.8.
+- Cenário sintético de 10 mil pacientes e 10 mil exames: cerca de 99,5%
+  menos bytes transferidos na primeira página, todos os registros acessíveis.
+- 166 testes frontend em 21 arquivos e 94 testes Rust aprovados.
+- Um benchmark ignorado na suíte foi executado à parte com sucesso.
+- Verificados 5s/10s e 303 quadros, cancelamento, desconexão, persistência,
+  preferências, PDF, autenticação, agenda, questionários e restauração isolada.
+- TypeScript, frontend de produção, executável release e NSIS x64 aprovados.
+- ProductVersion 0.2.9 e igualdade SHA-256 da cópia do instalador conferidos.
+- Clippy sem erros, com 8 avisos de estilo já existentes.
+- Npm audit: 13 alertas antes, 7 depois, nenhum crítico ou de produção.
+- Banco pessoal não foi aberto para testes ou limpeza.
+
+LIMITES E PENDÊNCIAS
+Fluidez/CPU/memória prolongada no WebView2 e ESP32 real precisam de homologação.
+Os benchmarks não são uma medição da navegação real nem de FPS no dispositivo.
+Os 7 alertas restantes são da cadeia Tailwind/PostCSS de desenvolvimento;
+planejar migração de CSS com conferência visual. Avisos Clippy são de estilo.
+Seletores antigos de pacientes/comparação ainda usam lista completa;
+expandir paginação/busca nesses fluxos se necessário em bases volumosas.
+
+ARTEFATOS
+Relatório: docs/performance/CHECKUP_0.2.9.md.
+JSONs de importações, benchmarks, dependências, limpeza e instalador:
+docs/performance/.
+Logs frontend/Rust: docs/performance/*-tests-0.2.9.log.
+Executável: src-tauri/target/visualizacao/release/baropress.exe.
+Instalador: src-tauri/target/release/bundle/nsis/BAROPRESS_0.2.9_x64-setup.exe.
+
+COMO CONFERIR
+Atualizar com o instalador 0.2.9; navegar por Pacientes, Histórico de Exames
+ e Configurações, buscar/paginar e abrir detalhes/PDF. Repetir com leitura
+ativa do Arduino. Em paciente de teste: coletar, salvar e reabrir um exame.
