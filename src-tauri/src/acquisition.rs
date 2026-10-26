@@ -1,5 +1,5 @@
 use serde::{Deserialize, Serialize};
-use std::io::{BufRead, BufReader};
+use std::io::{self, BufRead, BufReader};
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::{Arc, Mutex};
 use std::thread::{self, JoinHandle};
@@ -9,6 +9,52 @@ use tauri::{AppHandle, Emitter};
 
 pub const EXPECTED_SENSORS: usize = 225;
 pub const MAX_ADC_VALUE: u16 = 4095;
+// Um quadro de 225 ADCs (ate quatro digitos, virgulas e CRLF) cabe com folga.
+const MAX_FRAME_LINE_BYTES: usize = 4096;
+// O worker verifica cancelamento/sessao entre blocos, mesmo sem nova linha.
+const SERIAL_CHUNK_BYTES: usize = 1024;
+
+#[derive(Debug, PartialEq, Eq)]
+enum FrameLineStatus {
+    Pending,
+    Complete,
+    TooLong,
+    EndOfStream,
+}
+
+/// Processa apenas um bloco pequeno; descarta uma linha excedente ate o LF.
+/// O buffer permanece limitado e sobrevive a timeouts entre fragmentos.
+fn read_bounded_frame_chunk<R: BufRead>(
+    reader: &mut R,
+    line: &mut Vec<u8>,
+    discarding: &mut bool,
+) -> io::Result<FrameLineStatus> {
+    let available = reader.fill_buf()?;
+    if available.is_empty() {
+        return Ok(FrameLineStatus::EndOfStream);
+    }
+    let portion = &available[..available.len().min(SERIAL_CHUNK_BYTES)];
+    let newline = portion.iter().position(|byte| *byte == b'\n');
+    let count = newline.map_or(portion.len(), |index| index + 1);
+    if !*discarding {
+        if line.len().saturating_add(count) > MAX_FRAME_LINE_BYTES {
+            line.clear();
+            *discarding = true;
+        } else {
+            line.extend_from_slice(&portion[..count]);
+        }
+    }
+    reader.consume(count);
+    if newline.is_none() {
+        return Ok(FrameLineStatus::Pending);
+    }
+    if std::mem::take(discarding) {
+        line.clear();
+        Ok(FrameLineStatus::TooLong)
+    } else {
+        Ok(FrameLineStatus::Complete)
+    }
+}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
@@ -282,7 +328,8 @@ pub fn acquisition_start(
         };
 
         let mut reader = BufReader::new(&mut port);
-        let mut line_buffer = String::with_capacity(2048);
+        let mut line_buffer = Vec::with_capacity(2048);
+        let mut discarding_line = false;
         let mut sequence: u64 = 0;
 
         let mut fps_counter: u32 = 0;
@@ -317,14 +364,24 @@ pub fn acquisition_start(
                     break;
                 }
             }
-            line_buffer.clear();
-            match reader.read_line(&mut line_buffer) {
-                Ok(0) => {
+            match read_bounded_frame_chunk(&mut reader, &mut line_buffer, &mut discarding_line) {
+                Ok(FrameLineStatus::EndOfStream) => {
                     // Fim de stream / timeout momentâneo
                     thread::sleep(Duration::from_millis(5));
                 }
-                Ok(_) => {
-                    match parse_csv_frame(&line_buffer) {
+                Ok(FrameLineStatus::Pending) => {}
+                Ok(FrameLineStatus::TooLong) => {
+                    let _ = app.emit("acquisition-invalid-frame", ());
+                    if let Ok(mut l) = inner_arc.lock() {
+                        l.invalid_frames += 1;
+                    }
+                }
+                Ok(FrameLineStatus::Complete) => {
+                    let parsed = std::str::from_utf8(&line_buffer)
+                        .map_err(|_| "Quadro com UTF-8 inválido".to_string())
+                        .and_then(parse_csv_frame);
+                    line_buffer.clear();
+                    match parsed {
                         Ok(values) => {
                             sequence += 1;
                             fps_counter += 1;
@@ -364,7 +421,12 @@ pub fn acquisition_start(
                         }
                     }
                 }
-                Err(ref e) if e.kind() == std::io::ErrorKind::TimedOut => {
+                Err(ref e)
+                    if matches!(
+                        e.kind(),
+                        std::io::ErrorKind::TimedOut | std::io::ErrorKind::WouldBlock
+                    ) =>
+                {
                     // Timeout esperado na ausência de novos dados
                     continue;
                 }
@@ -437,6 +499,134 @@ fn js_sys_time() -> u64 {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use std::io::{BufRead, BufReader, Cursor, Read};
+
+    struct TimeoutOnce<R> {
+        reader: R,
+        calls: usize,
+    }
+
+    impl<R: BufRead> Read for TimeoutOnce<R> {
+        fn read(&mut self, bytes: &mut [u8]) -> io::Result<usize> {
+            self.reader.read(bytes)
+        }
+    }
+
+    impl<R: BufRead> BufRead for TimeoutOnce<R> {
+        fn fill_buf(&mut self) -> io::Result<&[u8]> {
+            self.calls += 1;
+            if self.calls == 3 {
+                return Err(io::Error::new(io::ErrorKind::TimedOut, "sem novos bytes"));
+            }
+            self.reader.fill_buf()
+        }
+
+        fn consume(&mut self, amount: usize) {
+            self.reader.consume(amount);
+        }
+    }
+
+    #[test]
+    fn serial_timeout_between_fragments_does_not_lose_frame() {
+        let frame = (0..EXPECTED_SENSORS)
+            .map(|v| v.to_string())
+            .collect::<Vec<_>>()
+            .join(",");
+        let reader = BufReader::with_capacity(11, Cursor::new(format!("{frame}\n").into_bytes()));
+        let mut reader = TimeoutOnce { reader, calls: 0 };
+        let mut line = Vec::new();
+        let mut discarding = false;
+        let mut timeouts = 0;
+        let mut accepted = 0;
+        loop {
+            match read_bounded_frame_chunk(&mut reader, &mut line, &mut discarding) {
+                Ok(FrameLineStatus::Pending) => {}
+                Ok(FrameLineStatus::Complete) => {
+                    assert_eq!(
+                        parse_csv_frame(std::str::from_utf8(&line).unwrap())
+                            .unwrap()
+                            .len(),
+                        EXPECTED_SENSORS
+                    );
+                    line.clear();
+                    accepted += 1;
+                }
+                Ok(FrameLineStatus::EndOfStream) => break,
+                Err(e) if e.kind() == io::ErrorKind::TimedOut => timeouts += 1,
+                other => panic!("Resultado inesperado: {other:?}"),
+            }
+        }
+        assert_eq!((timeouts, accepted), (1, 1));
+    }
+
+    #[test]
+    fn bounded_serial_line_accepts_fragmented_frame_and_keeps_next_frame() {
+        let frame = (0..EXPECTED_SENSORS)
+            .map(|v| v.to_string())
+            .collect::<Vec<_>>()
+            .join(",");
+        let input = format!("{frame}\r\n{frame}\n");
+        let mut reader = BufReader::with_capacity(17, Cursor::new(input.as_bytes()));
+        let mut line = Vec::new();
+        let mut discarding = false;
+        let mut parsed = 0;
+        loop {
+            match read_bounded_frame_chunk(&mut reader, &mut line, &mut discarding).unwrap() {
+                FrameLineStatus::Pending => assert!(line.len() <= MAX_FRAME_LINE_BYTES),
+                FrameLineStatus::Complete => {
+                    assert_eq!(
+                        parse_csv_frame(std::str::from_utf8(&line).unwrap())
+                            .unwrap()
+                            .len(),
+                        EXPECTED_SENSORS
+                    );
+                    line.clear();
+                    parsed += 1;
+                }
+                FrameLineStatus::EndOfStream => break,
+                FrameLineStatus::TooLong => panic!("Quadro valido rejeitado"),
+            }
+        }
+        assert_eq!(parsed, 2);
+    }
+
+    #[test]
+    fn serial_line_without_delimiter_is_bounded_and_resynchronizes() {
+        let frame = (0..EXPECTED_SENSORS)
+            .map(|v| v.to_string())
+            .collect::<Vec<_>>()
+            .join(",");
+        let input = format!("{}\n{frame}\n", "9".repeat(1_048_576));
+        let mut reader = BufReader::new(Cursor::new(input.as_bytes()));
+        let mut line = Vec::new();
+        let mut discarding = false;
+        let mut too_long = 0;
+        let mut recovered = 0;
+        let mut steps = 0;
+        loop {
+            steps += 1;
+            match read_bounded_frame_chunk(&mut reader, &mut line, &mut discarding).unwrap() {
+                FrameLineStatus::Pending => assert!(line.len() <= MAX_FRAME_LINE_BYTES),
+                FrameLineStatus::TooLong => {
+                    too_long += 1;
+                    assert!(line.is_empty());
+                }
+                FrameLineStatus::Complete => {
+                    recovered += 1;
+                    assert_eq!(
+                        parse_csv_frame(std::str::from_utf8(&line).unwrap())
+                            .unwrap()
+                            .len(),
+                        EXPECTED_SENSORS
+                    );
+                    line.clear();
+                }
+                FrameLineStatus::EndOfStream => break,
+            }
+        }
+        assert!(steps > 1000, "Leitura deve ceder controle entre blocos");
+        assert_eq!((too_long, recovered), (1, 1));
+    }
 
     #[test]
     fn test_parse_valid_225_frame() {
