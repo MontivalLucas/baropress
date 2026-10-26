@@ -37,7 +37,7 @@ import { usePagedSearch } from "@/components/ui/usePagedSearch";
 import { ExamConditionsForm,ExamEventRecorder } from './ExamConditionsForm';
 import { AnalysisReview } from './AnalysisReview';
 import { temporalPoints, temporalGapLimit } from '@/services/examAnalysis/calculations';
-import { FOOT_LABELS, acquisitionLabel, type ExamFoot } from "@/services/examProtocol";
+import { FOOT_LABELS, type ExamFoot } from "@/services/examProtocol";
 const EMPTY_DISPLAY_VALUES = new Array(225).fill(0);
 
 export const NewExamPage: React.FC = () => {
@@ -279,7 +279,23 @@ export const NewExamPage: React.FC = () => {
               </div>
             </div>
 
-            <fieldset className="space-y-2"><legend className="text-sm font-semibold">Modalidade de aquisição</legend><div className="flex flex-wrap gap-2">{(['both', 'left', 'right'] as ExamFoot[]).map(foot => <button type="button" key={foot} disabled={examStore.isStarting} aria-pressed={examStore.foot === foot} onClick={() => examStore.setModality(foot, examStore.separateFeet)} className={clsx('px-3 py-2 rounded-lg border text-sm', examStore.foot === foot ? 'bg-brand text-brand-fg border-brand' : 'border-line')}>{FOOT_LABELS[foot]}</button>)}</div>{examStore.foot !== 'both' && <label className="flex items-center gap-2 text-sm"><input type="checkbox" disabled={examStore.isStarting} checked={examStore.separateFeet} onChange={e => examStore.setModality(examStore.foot, e.target.checked)} />Adquirir também o outro pé na mesma sequência</label>}<p className="text-xs text-mute">{examStore.separateFeet ? 'Ordem: ' + FOOT_LABELS[examStore.foot] + ' → ' + FOOT_LABELS[examStore.foot === 'left' ? 'right' : 'left'] + '. Cada pé tem sua própria coleta; a troca aguarda seu comando.' : 'Uma aquisição da modalidade selecionada.'} Preparação de 5 segundos antes de cada coleta.</p></fieldset>
+            <fieldset className="space-y-2">
+              <legend className="text-sm font-semibold">Modalidade de aquisição</legend>
+              <div className="flex flex-wrap gap-2">
+                {(['both', 'left', 'right'] as ExamFoot[]).map(foot => (
+                  <button type="button" key={foot} disabled={examStore.isStarting} aria-pressed={examStore.foot === foot}
+                    onClick={() => examStore.setModality(foot)}
+                    className={clsx('px-3 py-2 rounded-lg border text-sm', examStore.foot === foot ? 'bg-brand text-brand-fg border-brand' : 'border-line')}>
+                    {foot === 'both' ? 'Ambos os pés juntos' : `Começar pelo ${FOOT_LABELS[foot].toLowerCase()}`}
+                  </button>
+                ))}
+              </div>
+              {examStore.foot !== 'both' && <label className="flex items-center gap-2 text-sm">
+                <input type="checkbox" disabled={examStore.isStarting} checked={!examStore.separateFeet} onChange={event => examStore.setModality(examStore.foot, !event.target.checked)}/>
+                Coletar somente este pé
+              </label>}
+              <p className="text-xs text-mute">{examStore.separateFeet ? 'Um pé de cada vez. As duas coletas serão reunidas no mesmo exame.' : examStore.foot === 'both' ? 'Coleta simultânea dos dois pés.' : 'Uma coleta do pé selecionado.'}</p>
+            </fieldset>
             {/* Configuração do Exame */}
             <ExamConditionsForm />
             <div className="space-y-3 pt-1">
@@ -348,7 +364,19 @@ export const NewExamPage: React.FC = () => {
         </div>
       )}
 
-      {examStore.step === 'NEXT_FOOT' && <section className="p-6 bg-surface border border-line rounded-xl space-y-4"><h2 className="text-lg font-bold">Primeira etapa preservada. Posicione o {FOOT_LABELS[examStore.foot].toLowerCase()}.</h2><p className="text-sm text-mute">A coleta está pausada. Confira o posicionamento antes de iniciar a preparação de 5 segundos e a coleta de {examStore.durationSeconds} segundos.</p><button type="button" disabled={examStore.isStarting} onClick={examStore.startPreparation} className="px-4 py-2 bg-brand text-brand-fg rounded-lg">{examStore.isStarting ? 'Conectando...' : 'Preparar e adquirir segundo pé'}</button><button type="button" onClick={examStore.openCancelModal} className="px-4 py-2 text-rose-400">Descartar sequência</button></section>}
+      {examStore.step === 'NEXT_FOOT' && (
+        <section className="p-6 bg-surface border border-line rounded-xl space-y-4">
+          <p role="status" className="text-sm text-mute">{FOOT_LABELS[examStore.foot === 'left' ? 'right' : 'left']}: aquisição concluída.</p>
+          <h2 className="text-lg font-bold">Troque para o {FOOT_LABELS[examStore.foot].toLowerCase()}</h2>
+          <p className="text-sm text-mute">A primeira coleta está guardada. Posicione o outro pé e inicie quando estiver pronto.</p>
+          <div className="flex flex-wrap gap-3">
+            <button type="button" disabled={examStore.isStarting} onClick={examStore.startPreparation} className="px-4 py-2 bg-brand text-brand-fg rounded-lg disabled:opacity-50">
+              {examStore.isStarting ? 'Conectando...' : `Iniciar ${FOOT_LABELS[examStore.foot].toLowerCase()}`}
+            </button>
+            <button type="button" disabled={examStore.isStarting} onClick={examStore.openCancelModal} className="px-4 py-2 text-rose-400">Descartar exame</button>
+          </div>
+        </section>
+      )}
       {['PREPARING', 'ACQUIRING', 'RESULT'].includes(examStore.step) && <p className="text-sm font-semibold">{FOOT_LABELS[examStore.foot]}{examStore.separateFeet ? ' · etapa ' + (examStore.completedStages.length + 1) + '/2' : ''} · {examStore.durationSeconds} segundos</p>}
       {/* ETAPA 3: PREPARAÇÃO DO EXAME (ESTABILIZAÇÃO) */}
       {examStore.step === "PREPARING" && (
@@ -536,7 +564,7 @@ export const NewExamPage: React.FC = () => {
             <div className="flex items-center justify-between text-xs px-2">
               <span className="font-bold text-foreground uppercase tracking-wider flex items-center gap-2">
                 <CheckCircle2 size={15} className="text-emerald-400" />
-                Amostra Média Estática Representativa (225 Sensores)
+                Mapa médio · {FOOT_LABELS[examStore.foot].toLowerCase()}
               </span>
               <span className="text-xs text-mute font-mono">
                 {examStore.processedResult.examInput.frameCount} quadros processados
@@ -637,7 +665,7 @@ export const NewExamPage: React.FC = () => {
               </div>
 
               {examStore.foot !== 'both' && <p className="text-xs text-mute">As metades pertencem ao tapete. Nesta aquisição individual, não representam a carga entre os dois pés.</p>}
-              {examStore.completedStages.map((r,i) => <div key={i} className="p-3 rounded-lg border border-line text-xs"><strong>{acquisitionLabel(r.examInput.analysis?.acquisition)}</strong><p>{r.examInput.duration} s · {r.examInput.frameCount} quadros · máximo {r.metrics.maxPressure.toFixed(0)} ADC</p><div className="h-40"><BaropodometricHeatmap values={r.averageMatrix} config={r.examInput.visualizationSettings ?? examStore.settings} cop={r.metrics.cop} trajectory={r.examInput.analysis ? temporalPoints(r.examInput.seriesFrames ?? r.examInput.rawFrames ?? [], r.examInput.analysis.series) : r.examInput.copTrajectory} trajectoryGapMs={r.examInput.analysis ? temporalGapLimit(r.examInput.analysis.quality) : undefined} /></div></div>)}
+              {examStore.completedStages.map((r,i) => <div key={i} className="p-3 rounded-lg border border-line text-xs"><strong>{FOOT_LABELS[r.examInput.analysis!.acquisition!.foot]} · primeira coleta</strong><p>{r.examInput.duration} s · {r.examInput.frameCount} quadros · máximo {r.metrics.maxPressure.toFixed(0)} ADC</p><div className="h-40"><BaropodometricHeatmap values={r.averageMatrix} config={r.examInput.visualizationSettings ?? examStore.settings} cop={r.metrics.cop} trajectory={r.examInput.analysis ? temporalPoints(r.examInput.seriesFrames ?? r.examInput.rawFrames ?? [], r.examInput.analysis.series) : r.examInput.copTrajectory} trajectoryGapMs={r.examInput.analysis ? temporalGapLimit(r.examInput.analysis.quality) : undefined} /></div></div>)}
               {/* Parâmetros Utilizados */}
               <div className="text-xs text-mute space-y-1 border-t border-line pt-2">
                 <span className="font-semibold block text-foreground">Configuração aplicada:</span>
@@ -652,6 +680,10 @@ export const NewExamPage: React.FC = () => {
 
             {/* Ações: Salvar ou Repetir */}
             <div className="pt-3 border-t border-line space-y-2">
+              {examStore.foot !== 'both' && !examStore.separateFeet && !examStore.completedStages.length && <button type="button" disabled={examStore.isSaving} onClick={examStore.nextFoot}
+                className="w-full py-2 rounded-xl text-sm font-semibold border border-line hover:bg-surface-hover disabled:opacity-50">
+                Trocar para o {FOOT_LABELS[examStore.foot === 'left' ? 'right' : 'left'].toLowerCase()}
+              </button>}
               <button
                 type="button"
                 disabled={examStore.isSaving}
@@ -659,7 +691,7 @@ export const NewExamPage: React.FC = () => {
                 className="w-full py-2.5 rounded-xl text-sm font-bold bg-brand text-brand-fg hover:opacity-90 flex items-center justify-center gap-2 shadow-xs transition-opacity disabled:opacity-50"
               >
                 <Save size={16} />
-                <span>{examStore.isSaving ? "Salvando no banco..." : examStore.separateFeet && !examStore.completedStages.length ? "Continuar para o outro pé" : examStore.separateFeet ? "Salvar as duas etapas" : "Salvar Exame no Banco"}</span>
+                <span>{examStore.isSaving ? "Salvando..." : examStore.separateFeet && !examStore.completedStages.length ? "Continuar para o outro pé" : examStore.separateFeet ? "Salvar exame com os dois pés" : "Salvar exame"}</span>
               </button>
               <div className="flex gap-2">
                 <button
@@ -698,7 +730,7 @@ export const NewExamPage: React.FC = () => {
                 Exame Salvo com Sucesso!
               </h2>
               <p className="text-xs text-mute">
-                O exame estático foi persistido no banco de dados SQLite local.
+                {examStore.separateFeet ? 'As duas aquisições foram reunidas neste exame.' : 'O resultado está disponível no histórico.'}
               </p>
             </div>
 
@@ -725,7 +757,6 @@ export const NewExamPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="space-y-2">{examStore.savedExams.map(saved => <button key={saved.id} type="button" onClick={() => { useNewExamStore.setState({savedExam: saved}); setInspectModalOpen(true); }} className="block underline text-brand text-xs">{acquisitionLabel(saved.analysis?.acquisition)} · #{saved.id}</button>)}</div>
             <div className="flex flex-col gap-2 pt-2">
               <button
                 type="button"

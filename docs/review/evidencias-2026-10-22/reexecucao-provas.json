@@ -1,0 +1,43 @@
+{
+  "interpolation": [
+    {
+      "resolution": 150,
+      "medianMs": 2.0276000000000067,
+      "minMs": 0.48539999999991323,
+      "maxMs": 8.369400000000041
+    },
+    {
+      "resolution": 300,
+      "medianMs": 1.7819999999999254,
+      "minMs": 1.7421000000000504,
+      "maxMs": 3.273399999999924
+    },
+    {
+      "resolution": 450,
+      "medianMs": 3.953399999999988,
+      "minMs": 3.792500000000018,
+      "maxMs": 8.21589999999992
+    }
+  ],
+  "heatmap": {
+    "inputValues": [
+      100,
+      900
+    ],
+    "timesMs": [
+      100,
+      110
+    ],
+    "observedUntilMs": 1000,
+    "drawnValues": [
+      100
+    ],
+    "latestValueLost": true
+  },
+  "backup": {
+    "rawFramesPerExam": 450,
+    "rawChunkBytesPerExam": 531593,
+    "limitBytes": 67108864,
+    "examsToExceedLimit": 127
+  }
+}

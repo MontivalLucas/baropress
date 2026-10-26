@@ -8,6 +8,10 @@ import { useAcquisitionStore } from '@/stores/acquisition';
 import { api } from '@/services/database/api';
 import type { ExamDetails, PatientSummary } from '@/types';
 
+// Canvas rendering is verified in check_paired_exam.cjs; these SSR assertions
+// exercise the surrounding controls without a browser document.
+vi.mock('@/features/baropodometry/BaropodometricHeatmap', () => ({BaropodometricHeatmap: () => null}));
+
 // The session module initializes browser storage at import; this code-rendering
 // test uses a synthetic operator without mounting the desktop session.
 vi.mock('@/stores/session', () => ({useSession: Object.assign(
@@ -37,6 +41,34 @@ beforeEach(() => {
 afterEach(() => {vi.restoreAllMocks();examStore.getState().resetExam();});
 
 describe('Novo Exame — condições simplificadas', () => {
+  it.each(['left', 'right'] as const)('oferece a troca imediatamente após coletar o pé %s', async foot => {
+    examStore.getState().setModality(foot);
+    await examStore.getState().startAcquisition();
+    const values = new Array(225).fill(1000);
+    examStore.getState().collectFrame(values, 100);
+    examStore.getState().collectRawFrame({values, receivedMs: 100, sequence: 1});
+    examStore.getState().finishAcquisition();
+    const other = foot === 'left' ? 'direito' : 'esquerdo';
+    const html = renderToStaticMarkup(createElement(NewExamPage));
+    expect(html).toContain(`Troque para o pé ${other}`);
+    expect(html).toContain(`Iniciar pé ${other}`);
+    expect(examStore.getState().completedStages).toHaveLength(1);
+    expect(examStore.getState().framesCollected).toHaveLength(0);
+  });
+
+  it('mantém a revisão técnica fechada no resultado', async () => {
+    await examStore.getState().startAcquisition();
+    const values = new Array(225).fill(1000);
+    examStore.getState().collectFrame(values, 100);
+    examStore.getState().collectRawFrame({values, receivedMs: 100, sequence: 1});
+    examStore.getState().finishAcquisition();
+    const html = renderToStaticMarkup(createElement(NewExamPage));
+    expect(html).toContain('Detalhes técnicos</summary>');
+    const details = html.slice(html.indexOf('<details'), html.indexOf('</details>'));
+    expect(details).toContain('Qualidade descritiva');
+    expect(details).not.toMatch(/<details[^>]*\bopen(?:=|\s|>)/);
+  });
+
   it('renderiza os dois campos dentro da aba Paciente e protocolo, sem painel antigo ou seleção de calibração', () => {
     const html=renderToStaticMarkup(createElement(NewExamPage));
     const patientPanel=html.slice(html.indexOf('id="exam-panel-patient"'));

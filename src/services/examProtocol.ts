@@ -9,6 +9,10 @@ export interface ExamAcquisition {
   order: ExamFoot[];
 }
 export const FOOT_LABELS: Record<ExamFoot, string> = { both: 'Ambos os pés', left: 'Pé esquerdo', right: 'Pé direito' };
+export function examModalityLabel(a?: ExamAcquisition | null): string {
+  if (!a) return 'Modalidade não registrada';
+  return a.totalStages === 2 ? 'Dois pés · coletas individuais' : FOOT_LABELS[a.foot];
+}
 export function acquisitionLabel(a?: ExamAcquisition | null): string {
   if (!a) return 'Modalidade não registrada (exame anterior)';
   return `${FOOT_LABELS[a.foot]}${a.totalStages === 2 ? ` · etapa ${a.stage}/2 · ${a.order.map(f => FOOT_LABELS[f]).join(' → ')} · sequência ${a.sequenceId}` : ' · aquisição única'}`;

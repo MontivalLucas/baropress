@@ -41,7 +41,7 @@ fn dashboard_stats(state: tauri::State<AppDb>) -> Result<DashboardStats, String>
     };
     Ok(DashboardStats {
         patients: n("SELECT COUNT(*) FROM patients WHERE archived = 0")?,
-        exams: n("SELECT COUNT(*) FROM exams WHERE status = 'completed'")?,
+        exams: n(&format!("SELECT COUNT(*) FROM exams e WHERE e.status = 'completed' AND {}", exams::HISTORY_ENTRY_FILTER))?,
         appointments_today: n("SELECT COUNT(*) FROM appointments WHERE date = date('now','localtime') AND status <> 'cancelled'")?,
         last_exam_at: c.query_row("SELECT MAX(started_at) FROM exams WHERE status = 'completed'", [], |r| r.get(0)).map_err(|e| e.to_string())?,
     })

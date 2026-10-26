@@ -57,6 +57,23 @@ function createValidExam(overrides?: Partial<ExamDetails>): ExamDetails {
 }
 
 describe("Fase 6 — Utilitários de Relatório e Sanitização", () => {
+  it('reúne as duas aquisições no mesmo PDF com o identificador do exame principal', async () => {
+    const left = structuredClone(fixture);
+    left.id = 111;
+    left.analysis!.acquisition = {foot: 'left', sequenceId: 'paired', stage: 1, totalStages: 2, order: ['left', 'right']};
+    const right = structuredClone(left);
+    right.id = 222;
+    right.analysis!.acquisition = {...left.analysis!.acquisition!, foot: 'right', stage: 2};
+    const doc = await generateExamReportPdf(left, {includeAnalysis: false, includeTemporal: false, acquisitions: [{exam: left}, {exam: right}]});
+    const text = (doc.internal as unknown as {pages: string[][]}).pages.flat().join('\n');
+    expect(doc.getNumberOfPages()).toBe(6);
+    expect(text).toContain('esquerdo');
+    expect(text).toContain('direito');
+    expect(text).toContain('#000111');
+    expect(text).not.toContain('#000222');
+    expect(text).toContain('6 de 6');
+  });
+
   it('inclui pé, ordem, vínculo e duração no PDF mesmo com anexos opcionais desativados', async () => {
     const exam = structuredClone(fixture);
     exam.duration = 45;

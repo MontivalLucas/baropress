@@ -1,0 +1,1 @@
+use std::io::{BufRead, BufReader};fn main(){let bytes=vec![b'1';1024*1024];let mut reader=BufReader::new(&bytes[..]);let mut line=String::with_capacity(2048);let read=reader.read_line(&mut line).unwrap();println!("{{\"initialCapacity\":2048,\"bytesReadWithoutNewline\":{},\"finalCapacity\":{}}}",read,line.capacity());}

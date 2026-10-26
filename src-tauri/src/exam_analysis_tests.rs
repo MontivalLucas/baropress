@@ -85,6 +85,10 @@ fn sequence_rolls_back_first_stage_when_second_write_fails_and_retries_without_d
         2
     );
     let list = exams::list_exams(&c, None).unwrap();
+    assert_eq!(list.len(), 1);
+    assert_eq!(list[0].id, pair[0].id);
+    assert_eq!(crate::patients::patient_exam_history(&c, 1).unwrap().len(), 1);
+    assert_eq!(exams::list_exams_filtered(&c, None, Some(1), Some(1), None).unwrap().len(), 0);
     assert!(list
         .iter()
         .all(|e| e.acquisition.as_ref().unwrap().sequence_id.as_deref()
@@ -96,6 +100,30 @@ fn sequence_rolls_back_first_stage_when_second_write_fails_and_retries_without_d
         2
     );
 }
+#[test]
+fn paired_exam_deletes_both_acquisitions_without_affecting_other_exams() {
+    let mut c = database();
+    let single = exams::create_exam(&mut c, sample()).unwrap();
+    let pair = exams::create_exam_sequence(&mut c, paired_samples()).unwrap();
+    exams::delete_exam(&c, pair[1].id).unwrap();
+    let list = exams::list_exams(&c, None).unwrap();
+    assert_eq!(list.len(), 1);
+    assert_eq!(list[0].id, single.id);
+    assert!(exams::get_exam(&c, pair[0].id).is_err());
+    assert!(exams::get_exam(&c, pair[1].id).is_err());
+    assert_eq!(c.query_row("SELECT count(*) FROM exam_raw_chunks WHERE exam_id IN (?1, ?2)", [pair[0].id, pair[1].id], |r| r.get::<_, i64>(0)).unwrap(), 0);
+}
+
+#[test]
+fn history_keeps_a_remaining_acquisition_visible() {
+    let mut c = database();
+    let pair = exams::create_exam_sequence(&mut c, paired_samples()).unwrap();
+    c.execute("DELETE FROM exams WHERE id=?1", [pair[0].id]).unwrap();
+    let list = exams::list_exams(&c, None).unwrap();
+    assert_eq!(list.len(), 1);
+    assert_eq!(list[0].id, pair[1].id);
+}
+
 #[test]
 fn sequence_rejects_incomplete_mismatched_patient_source_duration_and_order() {
     let mut c = database();
@@ -134,7 +162,7 @@ fn acquisition_metadata_survives_patient_backup_restore_and_old_exams_stay_unkno
     let mut dest = database();
     let patient_id = backup::restore_backup(&mut dest, &parsed).unwrap().unwrap();
     let list = exams::list_exams_filtered(&dest, None, None, None, Some(patient_id)).unwrap();
-    assert_eq!(list.len(), 2);
+    assert_eq!(list.len(), 1);
     assert!(list.iter().all(|e| e.acquisition.is_some()));
     let legacy = exams::create_exam(&mut c, sample()).unwrap();
     assert!(legacy.analysis.unwrap().acquisition.is_none());

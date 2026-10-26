@@ -4,7 +4,7 @@
 
 ## 1. Ponto de partida: o que foi encontrado e o que foi preservado
 
-O diretório histórico original é `C:\Users\Montival Nunes\Desktop\teste arduino\`. O **repositório atual** está em `NOVO PROGRAMA/baropress-fase1/baropress/` dentro dessa pasta. A origem do projeto precede o primeiro commit Git disponível (`25968fe`, de 20/10/2026). A cronologia anterior foi **reconstituída a partir de código e registros**, sem inventar commits ou datas para os protótipos.
+O diretório histórico original é `Desktop/teste arduino/`. O **repositório atual** está em `NOVO PROGRAMA/baropress-fase1/baropress/` dentro dessa pasta. A origem do projeto precede o primeiro commit Git disponível (`25968fe`, de 20/10/2026). A cronologia anterior foi **reconstituída a partir de código e registros**, sem inventar commits ou datas para os protótipos.
 
 | Etapa | Evidência principal | O que mudou |
 | --- | --- | --- |
@@ -88,7 +88,7 @@ Os caminhos de aquisição, tara, renderização e exame são separados: **FPS d
 | [`features/acquisition/`](../src/features/acquisition/), [`pages/Settings.tsx`](../src/pages/Settings.tsx) | Controles de dispositivo e ajustes; o Arduino é acessado em Configurações. |
 | [`features/baropodometry/`](../src/features/baropodometry/) | Painel de leitura e mapa de calor em tempo de execução. |
 | [`features/calibration/`](../src/features/calibration/) | Assistentes, ensaios, perfis e consultas de calibração. |
-| [`features/exams/`](../src/features/exams/) | Novo exame, ciclo de aquisição, revisão, histórico e detalhes; algumas alterações locais em 26/10 estavam **em desenvolvimento**, ainda fora do commit de documentação. |
+| [`features/exams/`](../src/features/exams/) | Novo exame, ciclo de aquisição, revisão, histórico e detalhes; o trabalho 0.2.15 de aquisições por pé é descrito na [correção correspondente](corrections/2026-10-22-exame-pes-individuais.md). |
 | [`services/examAnalysis/`](../src/services/examAnalysis/), [`features/comparison/`](../src/features/comparison/) | Processamento analítico e comparação entre exames. |
 | [`features/reports/`](../src/features/reports/) | Prévia e emissão de documentos; inclui [`reportPdfGenerator.ts`](../src/features/reports/reportPdfGenerator.ts). |
 | [`features/agenda/`](../src/features/agenda/), [`features/questionnaires/`](../src/features/questionnaires/) | Agendamento e aplicação/histórico de questionários. |
@@ -198,8 +198,8 @@ Não publicar bancos `.db`, imagens identificáveis, CPF/nome de paciente, token
 ## 10. Situação de versionamento e procedimentos de atualização
 
 - O primeiro commit Git disponível (`25968fe`) corresponde a um estado já desenvolvido em **20/10/2026**, não ao nascimento do firmware/Python.
-- A branch `codex/documentacao-historica-20261026` guarda a reconstrução histórica (`59c6a26`) e suas atualizações documentais posteriores. A integração na `main` deve ocorrer após revisão do PR.
-- Em 26/10/2026 havia alterações locais **não commitadas** em `src/`, `src-tauri/`, `package*.json`, além de revisões e scripts novos. São trabalho em andamento e **não fazem parte do commit histórico**. O manifesto cobre apenas caminhos rastreados; o código local pode divergir do último commit publicado.
+- A reconstrução histórica (`59c6a26`, mais mapa `877dc21`) foi incorporada à `main` no PR #1 (merge `be2c8c8`) em 26/10/2026.
+- As alterações funcionais da 0.2.15 são tratadas separadamente na branch `codex/exames-pes-individuais-20261026`. O [relatório da correção](corrections/2026-10-22-exame-pes-individuais.md) e a [revisão técnica](review/REVISAO_CODIGO_0.2.15_2026-10-22.md) identificam objetivo, evidências e limitações. O manifesto registra apenas os arquivos rastreados no commit em que foi gerado e precisa ser regenerado após alterações de escopo.
 - Para um novo marco, adicionar evidências com data, versão e identificação da origem; atualizar [linha do tempo](historia/LINHA_DO_TEMPO.md), [decisões](historia/DECISOES_DE_PROJETO.md), este mapa, manifesto e [validação](validacao/ENSAIOS.md).
 - Antes de atualizar no GitHub, usar `git status --short`, inspecionar `git diff`, executar validações pertinentes e fazer `git add` **apenas dos caminhos aprovados**. Revisar `git diff --cached --name-only` e `git diff --cached --check` antes de commitar. Não incluir inadvertidamente trabalho em andamento com `git add .`.
 

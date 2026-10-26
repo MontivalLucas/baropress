@@ -5,7 +5,7 @@
 > Não enumera arquivos locais não rastreados, arquivos externos, dependências ignoradas nem dados privados.
 > Para entender funções e origens, comece pelo [mapa completo](../MAPEAMENTO_COMPLETO_PROJETO.md).
 
-**Total de caminhos:** 513 · **Grupos:** 54.
+**Total de caminhos:** 543 · **Grupos:** 54.
 
 ## Grupos
 
@@ -19,7 +19,7 @@
 | `docs/BAROPODOMETRY.md` | 1 |
 | `docs/barosys` | 25 |
 | `docs/BUILD_WINDOWS.md` | 1 |
-| `docs/corrections` | 27 |
+| `docs/corrections` | 41 |
 | `docs/FASES_7_A_11.md` | 1 |
 | `docs/historia` | 8 |
 | `docs/maintenance` | 2 |
@@ -27,12 +27,12 @@
 | `docs/performance` | 8 |
 | `docs/questionnaires` | 2 |
 | `docs/referencias` | 1 |
-| `docs/review` | 1 |
+| `docs/review` | 15 |
 | `docs/validacao` | 4 |
 | `firmware/esp32` | 3 |
 | `hardware` | 4 |
 | `prototipos/python-heatmap` | 5 |
-| `scripts` | 18 |
+| `scripts` | 19 |
 | `Sprint/00_LEIA_PRIMEIRO.txt` | 1 |
 | `Sprint/01_Referencias` | 2 |
 | `Sprint/02_Concluido` | 1 |
@@ -57,7 +57,7 @@
 | `src-tauri/tauri.conf.json` | 1 |
 | `src/App.tsx` | 1 |
 | `src/components` | 9 |
-| `src/features` | 59 |
+| `src/features` | 60 |
 | `src/index.css` | 1 |
 | `src/main.tsx` | 1 |
 | `src/pages` | 2 |
@@ -157,8 +157,9 @@
 
 - [`docs/BUILD_WINDOWS.md`](../../docs/BUILD_WINDOWS.md)
 
-### `docs/corrections` (27)
+### `docs/corrections` (41)
 
+- [`docs/corrections/2026-10-22-exame-pes-individuais.md`](../../docs/corrections/2026-10-22-exame-pes-individuais.md)
 - [`docs/corrections/alinhamento-faixa-esquerda.png`](../../docs/corrections/alinhamento-faixa-esquerda.png)
 - [`docs/corrections/ALINHAMENTO_FAIXA_ESQUERDA.md`](../../docs/corrections/ALINHAMENTO_FAIXA_ESQUERDA.md)
 - [`docs/corrections/AQUISICAO_30_45_MODALIDADES.md`](../../docs/corrections/AQUISICAO_30_45_MODALIDADES.md)
@@ -177,6 +178,19 @@
 - [`docs/corrections/iam-secretaria-agenda.jpg`](../../docs/corrections/iam-secretaria-agenda.jpg)
 - [`docs/corrections/novo-exame-aquisicao-teste.png`](../../docs/corrections/novo-exame-aquisicao-teste.png)
 - [`docs/corrections/novo-exame-condicoes-teste.png`](../../docs/corrections/novo-exame-condicoes-teste.png)
+- [`docs/corrections/paired-exam/left-after-first-window.png`](../../docs/corrections/paired-exam/left-after-first-window.png)
+- [`docs/corrections/paired-exam/left-dois-pes.pdf`](../../docs/corrections/paired-exam/left-dois-pes.pdf)
+- [`docs/corrections/paired-exam/left-exame-unico.png`](../../docs/corrections/paired-exam/left-exame-unico.png)
+- [`docs/corrections/paired-exam/left-relatorio.png`](../../docs/corrections/paired-exam/left-relatorio.png)
+- [`docs/corrections/paired-exam/left-resultado.png`](../../docs/corrections/paired-exam/left-resultado.png)
+- [`docs/corrections/paired-exam/left-troca.png`](../../docs/corrections/paired-exam/left-troca.png)
+- [`docs/corrections/paired-exam/results.json`](../../docs/corrections/paired-exam/results.json)
+- [`docs/corrections/paired-exam/right-after-first-window.png`](../../docs/corrections/paired-exam/right-after-first-window.png)
+- [`docs/corrections/paired-exam/right-dois-pes.pdf`](../../docs/corrections/paired-exam/right-dois-pes.pdf)
+- [`docs/corrections/paired-exam/right-exame-unico.png`](../../docs/corrections/paired-exam/right-exame-unico.png)
+- [`docs/corrections/paired-exam/right-relatorio.png`](../../docs/corrections/paired-exam/right-relatorio.png)
+- [`docs/corrections/paired-exam/right-resultado.png`](../../docs/corrections/paired-exam/right-resultado.png)
+- [`docs/corrections/paired-exam/right-troca.png`](../../docs/corrections/paired-exam/right-troca.png)
 - [`docs/corrections/PRIMEIRO_ACESSO_0.2.13.md`](../../docs/corrections/PRIMEIRO_ACESSO_0.2.13.md)
 - [`docs/corrections/rollback-faixa-esquerda/baropress-alinhamento.exe.retired`](../../docs/corrections/rollback-faixa-esquerda/baropress-alinhamento.exe.retired)
 - [`docs/corrections/rollback-faixa-esquerda/BAROPRESS_0.2.11_alinhamento_x64-setup.exe.retired`](../../docs/corrections/rollback-faixa-esquerda/BAROPRESS_0.2.11_alinhamento_x64-setup.exe.retired)
@@ -231,9 +245,23 @@
 
 - [`docs/referencias/REFERENCIAS_TECNICAS.md`](../../docs/referencias/REFERENCIAS_TECNICAS.md)
 
-### `docs/review` (1)
+### `docs/review` (15)
 
+- [`docs/review/evidencias-2026-10-22/inventario-fontes.json`](../../docs/review/evidencias-2026-10-22/inventario-fontes.json)
+- [`docs/review/evidencias-2026-10-22/inventario-imports.json`](../../docs/review/evidencias-2026-10-22/inventario-imports.json)
+- [`docs/review/evidencias-2026-10-22/npm-audit-producao.json`](../../docs/review/evidencias-2026-10-22/npm-audit-producao.json)
+- [`docs/review/evidencias-2026-10-22/npm-audit.json`](../../docs/review/evidencias-2026-10-22/npm-audit.json)
+- [`docs/review/evidencias-2026-10-22/prototipo.txt`](../../docs/review/evidencias-2026-10-22/prototipo.txt)
+- [`docs/review/evidencias-2026-10-22/provas-e-benchmark.json`](../../docs/review/evidencias-2026-10-22/provas-e-benchmark.json)
+- [`docs/review/evidencias-2026-10-22/reexecucao-provas.json`](../../docs/review/evidencias-2026-10-22/reexecucao-provas.json)
+- [`docs/review/evidencias-2026-10-22/reproduzir.cjs`](../../docs/review/evidencias-2026-10-22/reproduzir.cjs)
+- [`docs/review/evidencias-2026-10-22/serial_probe.json`](../../docs/review/evidencias-2026-10-22/serial_probe.json)
+- [`docs/review/evidencias-2026-10-22/serial_probe.rs`](../../docs/review/evidencias-2026-10-22/serial_probe.rs)
+- [`docs/review/evidencias-2026-10-22/teste-mutacao.json`](../../docs/review/evidencias-2026-10-22/teste-mutacao.json)
+- [`docs/review/evidencias-2026-10-22/testes-frontend.txt`](../../docs/review/evidencias-2026-10-22/testes-frontend.txt)
+- [`docs/review/evidencias-2026-10-22/testes-rust.txt`](../../docs/review/evidencias-2026-10-22/testes-rust.txt)
 - [`docs/review/REVISAO_ARQUITETURA_UX_0.2.9.md`](../../docs/review/REVISAO_ARQUITETURA_UX_0.2.9.md)
+- [`docs/review/REVISAO_CODIGO_0.2.15_2026-10-22.md`](../../docs/review/REVISAO_CODIGO_0.2.15_2026-10-22.md)
 
 ### `docs/validacao` (4)
 
@@ -263,7 +291,7 @@
 - [`prototipos/python-heatmap/README.md`](../../prototipos/python-heatmap/README.md)
 - [`prototipos/python-heatmap/requirements.txt`](../../prototipos/python-heatmap/requirements.txt)
 
-### `scripts` (18)
+### `scripts` (19)
 
 - [`scripts/acquisition-preview.html`](../../scripts/acquisition-preview.html)
 - [`scripts/acquisition-preview.tsx`](../../scripts/acquisition-preview.tsx)
@@ -277,6 +305,7 @@
 - [`scripts/calibration-preview.html`](../../scripts/calibration-preview.html)
 - [`scripts/calibration-preview.tsx`](../../scripts/calibration-preview.tsx)
 - [`scripts/check_barosys_ui.cjs`](../../scripts/check_barosys_ui.cjs)
+- [`scripts/check_paired_exam.cjs`](../../scripts/check_paired_exam.cjs)
 - [`scripts/check_project.cjs`](../../scripts/check_project.cjs)
 - [`scripts/gerar_manifesto_arquivos.py`](../../scripts/gerar_manifesto_arquivos.py)
 - [`scripts/refresh_barosys_pdf.cjs`](../../scripts/refresh_barosys_pdf.cjs)
@@ -587,7 +616,7 @@
 - [`src/components/ui/usePagedSearch.ts`](../../src/components/ui/usePagedSearch.ts)
 - [`src/components/ui/useUnsavedChanges.ts`](../../src/components/ui/useUnsavedChanges.ts)
 
-### `src/features` (59)
+### `src/features` (60)
 
 - [`src/features/acquisition/ArduinoSettings.tsx`](../../src/features/acquisition/ArduinoSettings.tsx)
 - [`src/features/acquisition/MatrixPreview15x15.tsx`](../../src/features/acquisition/MatrixPreview15x15.tsx)
@@ -632,7 +661,8 @@
 - [`src/features/exams/ExamVisualizationControls.tsx`](../../src/features/exams/ExamVisualizationControls.tsx)
 - [`src/features/exams/NewExamPage.tsx`](../../src/features/exams/NewExamPage.tsx)
 - [`src/features/exams/SensorMap3D.tsx`](../../src/features/exams/SensorMap3D.tsx)
-- [`src/features/exams/SequenceLinks.tsx`](../../src/features/exams/SequenceLinks.tsx)
+- [`src/features/exams/SequenceReview.tsx`](../../src/features/exams/SequenceReview.tsx)
+- [`src/features/exams/useExamSequence.ts`](../../src/features/exams/useExamSequence.ts)
 - [`src/features/exams/useExamTrajectory.ts`](../../src/features/exams/useExamTrajectory.ts)
 - [`src/features/logs/LogsPage.tsx`](../../src/features/logs/LogsPage.tsx)
 - [`src/features/patients/PatientCareHistory.tsx`](../../src/features/patients/PatientCareHistory.tsx)
