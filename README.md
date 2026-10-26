@@ -1,5 +1,27 @@
 # BAROPRESS — Sistema de Baropodometria 15×15 (TCC)
 
+## Do primeiro protótipo ao aplicativo atual
+
+Esta versão do repositório também preserva a **evolução técnica do TCC**: o
+primeiro mapa de calor em Python, sua versão interativa, o algoritmo original
+do ESP32, a construção do tapete e a passagem para o BAROPRESS desktop.
+
+**[Começar pelo índice histórico](docs/historia/README.md)** ·
+[linha do tempo](docs/historia/LINHA_DO_TEMPO.md) ·
+[Python inicial e interativo](prototipos/python-heatmap/README.md) ·
+[firmware ESP32](firmware/esp32/README.md) ·
+[construção do tapete](hardware/README.md) ·
+[algoritmos](docs/algoritmos/AQUISICAO_DADOS.md) ·
+[ensaios e limites](docs/validacao/ENSAIOS.md) ·
+[como manter e publicar no GitHub](docs/historia/GUIA_GITHUB.md).
+
+Os protótipos históricos foram incorporados sem alterar os arquivos-fonte;
+sua origem e os hashes SHA-256 constam em
+[proveniência](docs/historia/ORIGENS_E_INTEGRIDADE.md). A cronologia anterior
+ao primeiro commit foi reconstruída com código e documentos datados, sem
+fabricar datas de criação. O sistema apresenta **leituras ADC relativas**;
+pressão/força clínicas requerem calibração e validação específica.
+
 O plano BAROSYS foi executado no código fonte em 09/10/2026: condições e
 qualidade, retenção de quadros, reprodução, regiões manuais, análise temporal,
 relatórios/comparação e vista 3D. O protocolo de bancada foi preparado;

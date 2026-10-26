@@ -1,0 +1,5 @@
+# Fontes históricos preservados byte a byte: não normalizar terminações de linha.
+prototipos/python-heatmap/heatmap_inicial.py -text -whitespace
+prototipos/python-heatmap/heatmap_interativo.py -text -whitespace
+prototipos/python-heatmap/iniciar_mapa_original.bat -text -whitespace
+firmware/esp32/tapete.ino -text
