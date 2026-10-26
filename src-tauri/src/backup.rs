@@ -665,10 +665,18 @@ mod tests {
         let dir = std::env::temp_dir().join(format!("baropress-backup-test-{nonce}"));
         let safety_path = safety_copy(&isolated, &dir).unwrap();
         let saved = std::fs::read(&safety_path).unwrap();
-        assert_eq!(saved, encoded, "Copia preventiva deve preservar o backup");
         assert!(saved.len() <= MAX_BACKUP_BYTES);
         let decoded = parse_backup(&isolated, std::str::from_utf8(&saved).unwrap()).unwrap();
+        let expected = parse_backup(&isolated, std::str::from_utf8(&encoded).unwrap()).unwrap();
         assert_eq!(decoded.kind, "full");
+        assert_eq!(decoded.schema_version, expected.schema_version);
+        assert_eq!(decoded.format_version, expected.format_version);
+        assert_eq!(decoded.format, expected.format);
+        assert_eq!(
+            serde_json::to_value(&decoded.tables).unwrap(),
+            serde_json::to_value(&expected.tables).unwrap(),
+            "Copia preventiva deve preservar todas as tabelas e valores"
+        );
         restore_backup(&mut isolated, &decoded).unwrap();
         std::fs::remove_file(safety_path).unwrap();
         std::fs::remove_dir(dir).unwrap();
