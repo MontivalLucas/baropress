@@ -5,13 +5,14 @@
 > Não enumera arquivos locais não rastreados, arquivos externos, dependências ignoradas nem dados privados.
 > Para entender funções e origens, comece pelo [mapa completo](../MAPEAMENTO_COMPLETO_PROJETO.md).
 
-**Total de caminhos:** 513 · **Grupos:** 54.
+**Total de caminhos:** 515 · **Grupos:** 55.
 
 ## Grupos
 
 | Área | Quantidade |
 | --- | ---: |
 | `(raiz)` | 11 |
+| `.github` | 1 |
 | `baropress-liquid-glass` | 10 |
 | `docs/algoritmos` | 4 |
 | `docs/ARCHITECTURE.md` | 1 |
@@ -19,7 +20,7 @@
 | `docs/BAROPODOMETRY.md` | 1 |
 | `docs/barosys` | 25 |
 | `docs/BUILD_WINDOWS.md` | 1 |
-| `docs/corrections` | 27 |
+| `docs/corrections` | 28 |
 | `docs/FASES_7_A_11.md` | 1 |
 | `docs/historia` | 8 |
 | `docs/maintenance` | 2 |
@@ -81,6 +82,10 @@
 - [`tailwind.config.js`](../../tailwind.config.js)
 - [`tsconfig.json`](../../tsconfig.json)
 - [`vite.config.ts`](../../vite.config.ts)
+
+### `.github` (1)
+
+- [`.github/workflows/rust-windows.yml`](../../.github/workflows/rust-windows.yml)
 
 ### `baropress-liquid-glass` (10)
 
@@ -157,7 +162,7 @@
 
 - [`docs/BUILD_WINDOWS.md`](../../docs/BUILD_WINDOWS.md)
 
-### `docs/corrections` (27)
+### `docs/corrections` (28)
 
 - [`docs/corrections/alinhamento-faixa-esquerda.png`](../../docs/corrections/alinhamento-faixa-esquerda.png)
 - [`docs/corrections/ALINHAMENTO_FAIXA_ESQUERDA.md`](../../docs/corrections/ALINHAMENTO_FAIXA_ESQUERDA.md)
@@ -183,6 +188,7 @@
 - [`docs/corrections/rollback-faixa-esquerda/heatmap.py.antes-rollback`](../../docs/corrections/rollback-faixa-esquerda/heatmap.py.antes-rollback)
 - [`docs/corrections/rollback-faixa-esquerda/mapa_calor.py.antes-rollback`](../../docs/corrections/rollback-faixa-esquerda/mapa_calor.py.antes-rollback)
 - [`docs/corrections/ROLLBACK_FAIXA_ESQUERDA.md`](../../docs/corrections/ROLLBACK_FAIXA_ESQUERDA.md)
+- [`docs/corrections/SEGURANCA_SERIAL_BACKUP_2026-10-26.md`](../../docs/corrections/SEGURANCA_SERIAL_BACKUP_2026-10-26.md)
 - [`docs/corrections/source-inventory-0.2.10.json`](../../docs/corrections/source-inventory-0.2.10.json)
 - [`docs/corrections/source-inventory-0.2.11.json`](../../docs/corrections/source-inventory-0.2.11.json)
 - [`docs/corrections/USUARIOS_LOGIN_ACESSO.md`](../../docs/corrections/USUARIOS_LOGIN_ACESSO.md)
