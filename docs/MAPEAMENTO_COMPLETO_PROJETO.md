@@ -197,6 +197,14 @@ Não publicar bancos `.db`, imagens identificáveis, CPF/nome de paciente, token
 
 ## 10. Situação de versionamento e procedimentos de atualização
 
+**Revisão de confiabilidade de 26/10/2026:**
+[serial (linhas limitadas) e backup (limite restaurável de 64 MiB)](corrections/SEGURANCA_SERIAL_BACKUP_2026-10-26.md)
+são tratados na branch independente `codex/seguranca-serial-backup-20261026`,
+criada sobre a `main` 0.2.14. A evolução de exames da 0.2.15 permanece no PR
+#2. O backend Rust ganhou execução planejada em GitHub Actions para validar
+em Windows com MSVC, pois a cadeia local não dispõe de `windres`. Esta etapa
+não altera `firmware/esp32/tapete.ino` nem os protótipos em Python.
+
 - O primeiro commit Git disponível (`25968fe`) corresponde a um estado já desenvolvido em **20/10/2026**, não ao nascimento do firmware/Python.
 - A branch `codex/documentacao-historica-20261026` guarda a reconstrução histórica (`59c6a26`) e suas atualizações documentais posteriores. A integração na `main` deve ocorrer após revisão do PR.
 - Em 26/10/2026 havia alterações locais **não commitadas** em `src/`, `src-tauri/`, `package*.json`, além de revisões e scripts novos. São trabalho em andamento e **não fazem parte do commit histórico**. O manifesto cobre apenas caminhos rastreados; o código local pode divergir do último commit publicado.

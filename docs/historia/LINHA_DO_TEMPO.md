@@ -15,6 +15,7 @@ Esta cronologia combina fontes datadas e observação do código. **As etapas Py
 | 20/10/2026 | Auditoria/organização conservadora e primeiro commit visível do repositório atual (`25968fe`) | [auditoria](../maintenance/AUDITORIA_2026-10-20.md) **[REGISTRO]** e histórico Git **[CÓDIGO]** |
 | 22/10/2026 | Revisão técnica da versão 0.2.15, com achados pendentes de correção | [revisão de código](../review/REVISAO_CODIGO_0.2.15_2026-10-22.md) **[REGISTRO]**; arquivo local ainda não rastreado em 26/10 |
 | 26/10/2026 | Organização histórica para GitHub, cópias íntegras dos protótipos e do firmware, documentação consolidada | [proveniência](ORIGENS_E_INTEGRIDADE.md) **[CÓDIGO]**; a publicação dependerá do resultado do versionamento |
+| 26/10/2026 | Endurecimento do receptor serial e limite coerente para exportação, importação e cópia preventiva do banco na base 0.2.14 | [registro técnico](../corrections/SEGURANCA_SERIAL_BACKUP_2026-10-26.md) **[CÓDIGO EM REVISÃO]**; testes Rust locais dependem da ferramenta de recursos Windows |
 
 ## Como ler esta cronologia
 

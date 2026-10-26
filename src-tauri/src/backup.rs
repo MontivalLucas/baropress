@@ -12,6 +12,18 @@ use std::{
 };
 use tauri::{AppHandle, Manager, State};
 
+// Limite atual do IPC de importacao/preview. Exportacao e copia de seguranca
+// precisam obedecer ao mesmo limite ate existir importacao em fluxo.
+const MAX_BACKUP_BYTES: usize = 64 * 1024 * 1024;
+
+fn check_backup_size(bytes: usize) -> Result<(), String> {
+    if bytes > MAX_BACKUP_BYTES {
+        Err("Backup acima de 64 MiB: esta versao nao consegue restaura-lo. Exporte pacientes individualmente ou use uma versao com suporte a arquivos maiores.".into())
+    } else {
+        Ok(())
+    }
+}
+
 const TABLES: &[&str] = &[
     "users",
     "clinics",
@@ -196,9 +208,7 @@ pub fn export_backup(c: &Connection, patient_id: Option<i64>) -> Result<BackupFi
     })
 }
 pub fn parse_backup(c: &Connection, content: &str) -> Result<BackupFile, String> {
-    if content.len() > 64 * 1024 * 1024 {
-        return Err("Arquivo maior que o limite de 64 MB.".into());
-    }
+    check_backup_size(content.len())?;
     let mut backup: BackupFile =
         serde_json::from_str(content).map_err(|e| format!("Arquivo de backup inválido: {e}"))?;
     // Version 5 archives have no calibration tables or physical-result column.
@@ -563,7 +573,9 @@ fn safety_copy(c: &Connection, dir: &Path) -> Result<String, String> {
         .map_err(|e| e.to_string())?
         .as_nanos();
     let path = dir.join(format!("BAROPRESS_antes_restauracao_{nonce}.json"));
-    let content = serde_json::to_vec_pretty(&export_backup(c, None)?).map_err(|e| e.to_string())?;
+    // A restauracao nao pode comecar se a copia preventiva nao puder
+    // ser restaurada pelo proprio programa.
+    let content = serialize_export(c, None)?;
     let mut f = OpenOptions::new()
         .write(true)
         .create_new(true)
@@ -574,10 +586,18 @@ fn safety_copy(c: &Connection, dir: &Path) -> Result<String, String> {
         .map_err(|e| format!("Falha na cópia de segurança: {e}"))?;
     Ok(path.to_string_lossy().into())
 }
+
+fn serialize_export(c: &Connection, patient_id: Option<i64>) -> Result<Vec<u8>, String> {
+    let content =
+        serde_json::to_vec_pretty(&export_backup(c, patient_id)?).map_err(|e| e.to_string())?;
+    check_backup_size(content.len())?;
+    Ok(content)
+}
+
 #[tauri::command]
 pub fn backups_export(db: State<AppDb>, patient_id: Option<i64>) -> Result<String, String> {
     let c = db.0.lock().map_err(|_| "Banco indisponível")?;
-    serde_json::to_string_pretty(&export_backup(&c, patient_id)?).map_err(|e| e.to_string())
+    String::from_utf8(serialize_export(&c, patient_id)?).map_err(|e| e.to_string())
 }
 #[tauri::command]
 pub fn backups_preview(db: State<AppDb>, content: String) -> Result<BackupPreview, String> {
@@ -632,6 +652,15 @@ pub fn backups_import(
 mod tests {
     use super::*;
     use rusqlite::params;
+    #[test]
+    fn export_and_safety_copy_use_restore_size_limit() {
+        assert!(check_backup_size(MAX_BACKUP_BYTES).is_ok());
+        assert!(check_backup_size(MAX_BACKUP_BYTES + 1).is_err());
+        let mut isolated = setup();
+        let encoded = serialize_export(&isolated, None).unwrap();
+        let decoded = parse_backup(&isolated, std::str::from_utf8(&encoded).unwrap()).unwrap();
+        restore_backup(&mut isolated, &decoded).unwrap();
+    }
     #[test]
     fn schema_six_backup_restores_without_inventing_snapshots() {
         let mut c = setup();

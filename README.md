@@ -17,6 +17,11 @@ do ESP32, a construção do tapete e a passagem para o BAROPRESS desktop.
 [ensaios e limites](docs/validacao/ENSAIOS.md) ·
 [como manter e publicar no GitHub](docs/historia/GUIA_GITHUB.md).
 
+Revisão em andamento de robustez da leitura serial e proteção da cópia de
+segurança antes de restauração: [escopo, testes e limite de 64 MiB](docs/corrections/SEGURANCA_SERIAL_BACKUP_2026-10-26.md).
+O pipeline Windows do backend está em `.github/workflows/rust-windows.yml`;
+os testes Rust locais dependem de ferramentas de compilação nativas.
+
 Os protótipos históricos foram incorporados sem alterar os arquivos-fonte;
 sua origem e os hashes SHA-256 constam em
 [proveniência](docs/historia/ORIGENS_E_INTEGRIDADE.md). A cronologia anterior
