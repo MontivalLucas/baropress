@@ -658,8 +658,20 @@ mod tests {
         assert!(check_backup_size(MAX_BACKUP_BYTES + 1).is_err());
         let mut isolated = setup();
         let encoded = serialize_export(&isolated, None).unwrap();
-        let decoded = parse_backup(&isolated, std::str::from_utf8(&encoded).unwrap()).unwrap();
+        let nonce = std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH)
+            .unwrap()
+            .as_nanos();
+        let dir = std::env::temp_dir().join(format!("baropress-backup-test-{nonce}"));
+        let safety_path = safety_copy(&isolated, &dir).unwrap();
+        let saved = std::fs::read(&safety_path).unwrap();
+        assert_eq!(saved, encoded, "Copia preventiva deve preservar o backup");
+        assert!(saved.len() <= MAX_BACKUP_BYTES);
+        let decoded = parse_backup(&isolated, std::str::from_utf8(&saved).unwrap()).unwrap();
+        assert_eq!(decoded.kind, "full");
         restore_backup(&mut isolated, &decoded).unwrap();
+        std::fs::remove_file(safety_path).unwrap();
+        std::fs::remove_dir(dir).unwrap();
     }
     #[test]
     fn schema_six_backup_restores_without_inventing_snapshots() {
