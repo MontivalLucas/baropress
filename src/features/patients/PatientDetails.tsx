@@ -1,4 +1,4 @@
-import { acquisitionLabel, FOOT_LABELS } from '@/services/examProtocol';
+import { acquisitionLabel, examModalityLabel } from '@/services/examProtocol';
 import { isAdmin, isClinical } from "@/features/auth/permissions";
 import { useEffect, useState } from "react";
 import {
@@ -417,7 +417,7 @@ export function PatientDetails({ patientId, onBack, onEdit, onArchived }: Patien
                           {formatDateTime(exam.startedAt)}
                         </td>
                         <td className="py-3 px-3 whitespace-nowrap capitalize">
-                          {exam.type === "static" ? "Estático" : "Dinâmico"}<div title={acquisitionLabel(exam.acquisition)} className="text-xs normal-case">{exam.acquisition ? FOOT_LABELS[exam.acquisition.foot] + (exam.acquisition.totalStages === 2 ? ' · etapa ' + exam.acquisition.stage + '/2' : '') : 'Modalidade não registrada'}</div>
+                          {exam.type === "static" ? "Estático" : "Dinâmico"}<div title={acquisitionLabel(exam.acquisition)} className="text-xs normal-case">{examModalityLabel(exam.acquisition)}</div>
                         </td>
                         <td className="py-3 px-3 whitespace-nowrap">
                           <span

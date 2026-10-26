@@ -514,11 +514,11 @@ pub fn patient_exam_history(
 ) -> Result<Vec<PatientExamItem>, String> {
     let mut stmt = conn
         .prepare(
-            "SELECT e.id, e.type, e.source, e.status, e.started_at, e.duration, pr.name, e.max_pressure, e.contact_area_percent, json_extract(e.analysis_json,'$.acquisition')
+            &format!("SELECT e.id, e.type, e.source, e.status, e.started_at, e.duration, pr.name, e.max_pressure, e.contact_area_percent, json_extract(e.analysis_json,'$.acquisition')
              FROM exams e
              LEFT JOIN professionals pr ON e.professional_id = pr.id
-             WHERE e.patient_id = ?1
-             ORDER BY e.started_at DESC, e.id DESC",
+             WHERE e.patient_id = ?1 AND {}
+             ORDER BY e.started_at DESC, e.id DESC", crate::exams::HISTORY_ENTRY_FILTER),
         )
         .map_err(|e| format!("Erro ao preparar busca de exames: {e}"))?;
 

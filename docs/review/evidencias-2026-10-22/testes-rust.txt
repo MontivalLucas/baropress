@@ -1,0 +1,126 @@
+test auth::tests::backend_guards_every_nonpublic_command_and_admin_backups ... ok
+test auth::tests::change_requires_current_and_invalidates_session ... ok
+test auth::tests::admin_confirmation_cannot_be_forged_and_throttles_password_guesses ... ok
+test auth::tests::credentials_and_recovery_persist_after_database_reopen ... ok
+test auth::tests::database_changes_expiry_and_restart_invalidate_sessions ... ok
+test auth::tests::initial_account_is_admin_hashed_and_no_second_bootstrap ... ok
+test auth::tests::migration_assigns_supplied_ra_only_to_existing_admin_without_elevating_role ... ok
+test auth::tests::duplicate_ra_update_rolls_back_and_disabled_user_cannot_sign_in ... ok
+test auth::tests::password_and_identity_validation ... ok
+test auth::tests::full_backup_preserves_recovery_but_external_hash_change_revokes_session ... ok
+test auth::tests::preference_fields_block_hardware_and_clinical_overwrite ... ok
+test auth::tests::old_argon_account_works_but_storage_cannot_authenticate ... ok
+test auth::tests::legacy_account_without_recovery_cannot_reset_with_email_only ... ok
+test auth::tests::ra_is_required_by_production_registration_unique_and_preserves_zeros ... ok
+test auth::tests::provision_requires_password_and_rotates_old_code ... ok
+test auth::tests::ra_recovery_throttles_and_invalid_new_password_does_not_change_account ... ok
+test auth::tests::role_permissions_block_privileged_and_secretary_clinical_operations ... ok
+test auth::tests::ra_recovery_preserves_zeroes_changes_password_and_revokes_other_sessions ... ok
+test auth::tests::secretary_cannot_change_patient_clinical_fields ... ok
+test auth::tests::recovery_is_one_time_and_generic_for_unknown_or_wrong_code ... ok
+test auth::tests::ra_recovery_denies_inactive_deleted_legacy_and_malformed_accounts_without_writes ... ok
+test auth::tests::throttles_five_failed_attempts_and_restores_after_cooldown ... ok
+test backup::tests::full_restore_session_version_exhaustion_rolls_back ... ok
+test backup::tests::full_round_trip_preserves_blobs_and_ids ... ok
+test backup::tests::malformed_schema_rejected_and_failed_restore_rolls_back ... ok
+test backup::tests::patient_backup_excludes_other_patient_and_accounts ... ok
+test backup::tests::patient_import_preserves_questionnaire_snapshots ... ok
+test backup::tests::patient_import_remaps_ids_without_replacing_existing_patient ... ok
+test backup::tests::rejects_incompatible_version_and_incomplete_tables ... ok
+test backup::tests::restore_without_active_admin_rolls_back_and_schema_eight_adds_unknown_ra ... ok
+test backup::tests::safety_copy_contains_current_data_and_does_not_modify_database ... ok
+test backup::tests::schema_six_backup_restores_without_inventing_snapshots ... ok
+test backup::tests::unsupported_backup_version_is_not_upgraded_as_schema_eight ... ok
+test calibration::tests::baseline_shift_and_partial_sensor_do_not_fake_total ... ok
+test calibration::tests::chunks_retry_without_duplication_and_early_stop_cannot_be_accepted ... ok
+test calibration::tests::classification_correction_preserves_raw_curve_and_reproduces_validation ... ok
+test calibration::tests::classification_correction_rejects_pre_curve_used_and_imported_records ... ok
+test calibration::tests::classification_correction_requires_complete_group_reason_and_unique_ids ... ok
+test calibration::tests::classification_correction_rolls_back_entire_batch_when_group_leaks ... ok
+test calibration::tests::corrected_classification_survives_trial_export_and_import ... ok
+test auth::tests::temporary_recovery_expiry_is_checked_and_personal_provision_removes_expiry ... ok
+test calibration::tests::fit_and_validation_group_cannot_overlap ... ok
+test backup::tests::full_restore_revokes_existing_sessions_even_with_identical_credentials ... ok
+test calibration::tests::corrupted_archive_profile_is_rejected_and_restore_rolls_back ... ok
+test calibration::tests::insufficient_validation_is_inconclusive ... ok
+test calibration::tests::full_backup_roundtrip_keeps_trials_but_deactivates_selection ... ok
+test calibration::tests::independent_validation_and_activation_are_reproducible ... ok
+test calibration::tests::previous_schema_backup_is_upgraded_without_fabricating_physical_results ... ok
+test calibration::tests::raw_statistics_detect_gaps_and_saturation ... ok
+test calibration::tests::rejects_nonmonotonic_reference_and_extrapolation ... ok
+test calibration::tests::local_pressure_reference_converts_each_cell_and_validates_whole_domain ... ok
+test calibration::tests::physical_exam_persists_snapshot_raw_and_legacy_adc_without_reinterpretation ... ok
+test calibration::tests::unit_reference_includes_applicator_once ... ok
+test command_queue::tests::blocked_serial_does_not_delay_database_queue ... ok
+test command_queue::tests::dropping_the_sender_finishes_already_queued_commands ... ok
+test command_queue::tests::slow_command_does_not_block_the_sender_or_reorder_commands ... ok
+test calibration::tests::simulation_cannot_activate_even_when_numerically_perfect ... ok
+test db::tests::legacy_copy_includes_live_wal_rows ... ok
+test db::tests::migration_preserves_existing_exams ... ok
+test db::tests::migrations_apply_on_empty_db ... ok
+test db::tests::refuses_newer_schema_without_modifying_data ... ok
+test calibration::tests::trial_import_preserves_raw_and_source_and_is_idempotent ... ok
+test exam_analysis_tests::incomplete_restore_is_rejected_and_previous_database_preserved ... ok
+test exam_analysis_tests::region_contract_forbids_overlap_and_invalid_frame ... ok
+test exam_analysis_tests::acquisition_metadata_survives_patient_backup_restore_and_old_exams_stay_unknown ... ok
+test exam_analysis_tests::rejects_partial_series_duplicate_storage_and_changed_quality_without_commit ... ok
+test db::tests::existing_database_gets_consistent_snapshot_before_upgrade ... ok
+test exam_analysis_tests::sequence_rejects_incomplete_mismatched_patient_source_duration_and_order ... ok
+test exam_analysis_tests::schema_seven_import_keeps_analysis_absent_and_original_matrix ... ok
+test exam_analysis_tests::relative_series_reopens_and_survives_full_and_patient_restore ... ok
+test exam_analysis_tests::sequence_rolls_back_first_stage_when_second_write_fails_and_retries_without_duplicates ... ok
+test exams::tests::comparison_reads_only_completed_exams_from_selected_patient ... ok
+test exams::tests::rejects_out_of_range_adc_metrics_and_visualization_disagreement ... ok
+test exam_analysis_tests::visual_and_external_support_choices_survive_sqlite_reopen ... ok
+test exams::tests::notes_are_persistent_without_changing_sample_and_reject_invalid_writes ... ok
+test exams::tests::saved_demographics_survive_edit_and_keep_original_nulls ... ok
+test exams::tests::secretary_history_excludes_unfinished_exams_before_pagination ... ok
+test exams::tests::test_create_and_get_exam ... ok
+test exams::tests::test_legacy_input_without_visualization_settings ... ok
+test exams::tests::test_delete_exam ... ok
+test exams::tests::test_list_exams_with_search ... ok
+test exams::tests::test_reject_matrix_size_different_than_225 ... ok
+test exams::tests::test_reject_negative_matrix_value ... ok
+test pagination::tests::benchmark_lists_10000_records ... ignored, Benchmark sintético explícito, não depende do banco pessoal
+test exams::tests::test_reject_nonexistent_patient ... ok
+test pagination::tests::invalid_bounds_do_not_execute_a_query ... ok
+test pagination::tests::exam_pages_preserve_timestamp_ties_filters_and_last_page ... ok
+test patients::tests::rejects_nonfinite_anthropometry_and_cpf_without_digits ... ok
+test pagination::tests::patient_pages_preserve_order_and_all_matches_without_duplicates ... ok
+test exams::tests::test_saved_exam_survives_database_reopen ... ok
+test patients::tests::test_create_and_get_patient ... ok
+test patients::tests::test_archive_patient ... ok
+test patients::tests::test_duplicate_cpf_prevented_on_create ... ok
+test patients::tests::test_duplicate_cpf_prevented_on_update ... ok
+test patients::tests::test_exam_history_empty_and_with_records ... ok
+test patients::tests::test_list_and_search ... ok
+test patients::tests::test_name_required ... ok
+test patients::tests::test_patient_not_found ... ok
+test questionnaires::tests::builtin_customization_and_inactive_state_survive_registration ... ok
+test questionnaires::tests::builtin_registration_rolls_back_if_marker_write_fails ... ok
+test questionnaires::tests::bundled_anamnesis_is_complete_and_registered_once ... ok
+test questionnaires::tests::inactive_questions_are_not_required ... ok
+test questionnaires::tests::bundled_answers_preserve_optional_fields_and_historical_snapshot ... ok
+test questionnaires::tests::manually_imported_template_is_adopted_without_overwriting ... ok
+test questionnaires::tests::rejects_missing_required_and_wrong_type ... ok
+test questionnaires::tests::rejects_duplicate_options_and_foreign_question ... ok
+test questionnaires::tests::snapshot_survives_template_edit ... ok
+test support::tests::hardware_default_and_explicit_simulation_preferences_are_preserved ... ok
+test support::tests::preferences_are_persistent_and_invalid_write_preserves_previous ... ok
+test support::tests::logs_record_without_accepting_invalid_levels ... ok
+test workflow_tests::complete_workflow_survives_full_backup_restore ... ok
+test auth::tests::user_update_revokes_sessions_and_protects_last_admin_and_self ... ok
+
+test result: ok. 127 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 112.17s
+
+     Running unittests src\main.rs (src-tauri\target\debug\deps\baropress-8d329158fbadbb68.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests baropress_lib
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s

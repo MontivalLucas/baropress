@@ -1,5 +1,6 @@
-import { acquisitionLabel } from '@/services/examProtocol';
-import { SequenceLinks } from '@/features/exams/SequenceLinks';
+import { acquisitionLabel, FOOT_LABELS } from '@/services/examProtocol';
+import { SequenceReview } from '@/features/exams/SequenceReview';
+import { useExamSequence } from '@/features/exams/useExamSequence';
 import { isClinical } from "@/features/auth/permissions";
 import { useSession } from "@/stores/session";
 import { AnalysisGraphs } from '@/features/exams/AnalysisGraphs';
@@ -46,6 +47,8 @@ interface ReportViewerProps {
 }
 
 export const ReportViewer: React.FC<ReportViewerProps> = ({ exam, onBack }) => {
+  const sequence = useExamSequence(exam);
+  const [stageFrames, setStageFrames] = useState<Record<number, RawFrame[]>>({});
   const [frames,setFrames]=useState<RawFrame[]|undefined>();
   const [includeAnalysis,setIncludeAnalysis]=useState(true),[includeTemporal,setIncludeTemporal]=useState(true);
   const clinical=useSession(s=>isClinical(s.user?.role));
@@ -96,7 +99,13 @@ export const ReportViewer: React.FC<ReportViewerProps> = ({ exam, onBack }) => {
       const series=includeTemporal && exam.analysis ? frames ?? await api.exams.rawFrames(exam.id) : undefined;
       if(series && series.length!==exam.analysis?.series.frameCount)throw new Error('Série incompleta; exportação interrompida.');
       setFrames(series);
-      const fileName = await downloadExamReportPdf(exam, { observations,frames:series,includeAnalysis,includeTemporal });
+      if (sequence.loading || sequence.error) throw new Error(sequence.error || 'Aguarde o carregamento das duas aquisições.');
+      const acquisitions = sequence.stages.length ? await Promise.all(sequence.stages.map(async stage => {
+        const raw = includeTemporal && stage.analysis ? stage.id === exam.id ? series : await api.exams.rawFrames(stage.id) : undefined;
+        if (raw && raw.length !== stage.analysis?.series.frameCount) throw new Error('Série incompleta; exportação interrompida.');
+        return {exam: stage, frames: raw};
+      })) : undefined;
+      const fileName = await downloadExamReportPdf(exam, { observations,frames:series,includeAnalysis,includeTemporal,acquisitions });
       setExportMessage(`✓ Arquivo exportado com sucesso: ${fileName}`);
     } catch (err) {
       setExportMessage(`Erro ao exportar PDF: ${(err as Error).message}`);
@@ -106,7 +115,22 @@ export const ReportViewer: React.FC<ReportViewerProps> = ({ exam, onBack }) => {
   };
 
   const handlePrint = async () => {
-    setExporting(true);try { if(includeTemporal && exam.analysis && !frames){const series=await api.exams.rawFrames(exam.id);if(series.length!==exam.analysis.series.frameCount)throw new Error('Série incompleta; impressão interrompida.');setFrames(series);}requestAnimationFrame(()=>requestAnimationFrame(()=>window.print())); }catch(e){setExportMessage((e as Error).message);}finally{setExporting(false);}
+    setExporting(true);
+    try {
+      if (sequence.loading || sequence.error) throw new Error(sequence.error || 'Aguarde o carregamento das duas aquisições.');
+      if (includeTemporal) {
+        const acquisitions = await Promise.all((sequence.stages.length ? sequence.stages : [exam]).map(async stage => {
+          if (!stage.analysis) return [stage.id, []] as const;
+          const raw = stageFrames[stage.id] ?? (stage.id === exam.id ? frames : undefined) ?? await api.exams.rawFrames(stage.id);
+          if (raw.length !== stage.analysis.series.frameCount) throw new Error('Série incompleta; impressão interrompida.');
+          return [stage.id, raw] as const;
+        }));
+        const loaded = Object.fromEntries(acquisitions);
+        setStageFrames(loaded); setFrames(loaded[exam.id]);
+      }
+      requestAnimationFrame(()=>requestAnimationFrame(()=>window.print()));
+    } catch(e) { setExportMessage((e as Error).message); }
+    finally { setExporting(false); }
   };
 
   const nowFormatted = new Date().toLocaleString("pt-BR", {
@@ -168,7 +192,7 @@ export const ReportViewer: React.FC<ReportViewerProps> = ({ exam, onBack }) => {
           <button
             type="button"
             onClick={()=>void handlePrint()}
-            disabled={saving || exporting}
+            disabled={saving || exporting || sequence.loading || !!sequence.error}
             className="h-8 px-3 rounded-lg text-xs font-semibold border border-line bg-surface hover:bg-surface-hover text-foreground flex items-center gap-1.5 transition-colors shadow-xs"
             title="Imprimir documento formatado A4"
           >
@@ -179,7 +203,7 @@ export const ReportViewer: React.FC<ReportViewerProps> = ({ exam, onBack }) => {
           <button
             type="button"
             onClick={handleExportPdf}
-            disabled={exporting || saving}
+            disabled={exporting || saving || sequence.loading || !!sequence.error}
             className="h-8 px-3.5 rounded-lg text-xs font-semibold bg-brand text-brand-fg hover:opacity-90 flex items-center gap-1.5 shadow-xs transition-opacity disabled:opacity-50"
             title="Exportar documento como arquivo PDF vetorial"
           >
@@ -278,7 +302,8 @@ export const ReportViewer: React.FC<ReportViewerProps> = ({ exam, onBack }) => {
               )}
             </section>
 
-            <p className="text-xs font-semibold break-words">{acquisitionLabel(exam.analysis?.acquisition)} · {exam.duration ?? "—"} s</p><SequenceLinks exam={exam}/>{exam.analysis?.acquisition?.foot !== "both" && exam.analysis?.acquisition && <p className="text-xs">Aquisição individual: a distribuição representa as metades do tapete.</p>}
+            <SequenceReview {...sequence} onRetry={sequence.retry}/>
+            <p className="text-xs font-semibold break-words">{exam.analysis?.acquisition ? `Dados de ${FOOT_LABELS[exam.analysis.acquisition.foot].toLowerCase()}` : 'Modalidade não registrada'} · {exam.duration ?? "—"} s</p>{exam.analysis?.acquisition?.foot !== "both" && exam.analysis?.acquisition && <p className="text-xs">Aquisição individual: a distribuição representa as metades do tapete.</p>}
             {/* Grade Principal: Mapa de Calor Contínuo + Indicadores */}
             <div className="grid grid-cols-1 md:grid-cols-12 gap-5 items-stretch">
               {/* Mapa de Calor Plantar Contínuo (7 cols) */}
@@ -552,6 +577,12 @@ export const ReportViewer: React.FC<ReportViewerProps> = ({ exam, onBack }) => {
             <span>Página 2 de 2</span>
           </footer>
         </article>
+        {sequence.stages.filter(stage => stage.id !== exam.id).map(stage => <article key={stage.id} className="print-page w-full max-w-[820px] bg-white text-slate-900 p-8 rounded-xl space-y-3">
+          <h2 className="text-lg font-bold">{acquisitionLabel(stage.analysis?.acquisition)}</h2>
+          <PhysicalResults result={stage.physicalResult}/>
+          {includeAnalysis && analysisLines(stage, includeTemporal ? stageFrames[stage.id] : undefined).map((line,i) => <p key={i} className="text-xs break-words">{line}</p>)}
+          {includeTemporal && stage.analysis && stageFrames[stage.id] && <AnalysisGraphs points={temporalPoints(stageFrames[stage.id], stage.analysis.series)} gapLimitMs={temporalGapLimit(stage.analysis.quality)} events={stage.analysis.events}/>}
+        </article>)}
         {includeAnalysis && <article className="print-page w-full max-w-[820px] bg-white text-slate-900 p-8 rounded-xl space-y-2"><h2 className="text-lg font-bold">Condições, qualidade e análise derivada</h2>{analysisLines(exam,includeTemporal?frames:undefined).map((line,i)=><p key={i} className="text-xs break-words">{line}</p>)}</article>}
         {includeTemporal && <article className="print-page w-full max-w-[820px] bg-white text-slate-900 p-8 rounded-xl">{frames && exam.analysis?<AnalysisGraphs points={temporalPoints(frames,exam.analysis.series)} gapLimitMs={temporalGapLimit(exam.analysis.quality)} events={exam.analysis.events}/>:exam.analysis?<p className="text-sm">Carregue a série para exibir os gráficos temporais. PDF e impressão carregam os quadros salvos.</p>:exam.copTrajectory?<AnalysisGraphs points={exam.copTrajectory} gapLimitMs={0} legacy/>:<p className="text-sm">Série temporal indisponível.</p>}</article>}
       </main>

@@ -1,0 +1,861 @@
+{
+  "date": "2026-10-22",
+  "version": "0.2.15",
+  "files": [
+    {
+      "file": "src/App.tsx",
+      "lines": 74,
+      "sha256": "a7ca6b15010014788b7636e2e33bfdf9dbed7732aacf9879efcb1d5f0de3d212"
+    },
+    {
+      "file": "src/components/ErrorBoundary.tsx",
+      "lines": 19,
+      "sha256": "3047060994beb8359d265ad7f0a6ce81bb156f3024259b99a5911f64d8be6364"
+    },
+    {
+      "file": "src/components/NavigationProtection.tsx",
+      "lines": 55,
+      "sha256": "f0349c579f8ae4a34249d72d9b611c8df6316d2c31512bf24e1aa406a1b1d56c"
+    },
+    {
+      "file": "src/components/Sidebar.tsx",
+      "lines": 58,
+      "sha256": "b12024883b65febb8ef63f7ba9a6ff9c278adeaf1c790dbef4f584e456432d26"
+    },
+    {
+      "file": "src/components/ui/controls.tsx",
+      "lines": 23,
+      "sha256": "f930cd77f6b1d499855270a327e53aff9072dff595927ce902042d7e0be466b6"
+    },
+    {
+      "file": "src/components/ui/ListPagination.tsx",
+      "lines": 14,
+      "sha256": "6592db1f416fe282c2dc1bebbcf65c0382f62ae54e3ec97ff746f7fde1b7235d"
+    },
+    {
+      "file": "src/components/ui/Logo.tsx",
+      "lines": 14,
+      "sha256": "cae918176616c67171a4738eb8142865872855d3c112982a6ca51d608c1a1a26"
+    },
+    {
+      "file": "src/components/ui/useDialogFocus.ts",
+      "lines": 53,
+      "sha256": "06af1624640ab848bd3ff6aafce1b242c1b31fd91c3d4e29c5037bc7300672b5"
+    },
+    {
+      "file": "src/components/ui/usePagedSearch.ts",
+      "lines": 20,
+      "sha256": "b0f46fe334a907f8a1b4730a7da617e141346062e84cd6948f788401b5dd32cf"
+    },
+    {
+      "file": "src/components/ui/useUnsavedChanges.ts",
+      "lines": 13,
+      "sha256": "b2583cfaeeccc1aaefb7f70bbc8cc106c1fe25555f8fcbe5ccdd4902eb298f8b"
+    },
+    {
+      "file": "src/features/acquisition/ArduinoSettings.tsx",
+      "lines": 460,
+      "sha256": "25ab4bd96f537ac4a5d6dc3314cb5fa6054f10c9aac7521f751ef318471b1c67"
+    },
+    {
+      "file": "src/features/acquisition/MatrixPreview15x15.tsx",
+      "lines": 185,
+      "sha256": "ade279d7b82d5fa79f43be7c0d6670aa8f847e8f291e710202c77985fdae8bae"
+    },
+    {
+      "file": "src/features/agenda/AgendaPage.tsx",
+      "lines": 134,
+      "sha256": "de6059db40dbf97199419d820f068f1c4fadb0f539c6311d80bbcd3272247651"
+    },
+    {
+      "file": "src/features/agenda/calendarUtils.ts",
+      "lines": 24,
+      "sha256": "9460a45b57a3f19408a70be84ee473d49b0b4f310df79494cafd2b2944efa1c2"
+    },
+    {
+      "file": "src/features/auth/AccountSettings.tsx",
+      "lines": 40,
+      "sha256": "213a7073bb55b6261b8ff4952d9e0c3d7765a629b269591c0645a03c7344c9d7"
+    },
+    {
+      "file": "src/features/auth/authValidation.ts",
+      "lines": 9,
+      "sha256": "ff47bcf6840aa608f4882f4663a1453704109c4328900d5159f2e92ccb745a7f"
+    },
+    {
+      "file": "src/features/auth/LoginPage.tsx",
+      "lines": 56,
+      "sha256": "fd99653a7fb214e490f74d919fc6ab28dd69c5d33d5cde9ac53ceab0c32bf07f"
+    },
+    {
+      "file": "src/features/auth/PasswordField.tsx",
+      "lines": 8,
+      "sha256": "bc98fd63364ef7e7d92a5edb7de32ebe8ac60e9eb1d669cb646e2537b500683e"
+    },
+    {
+      "file": "src/features/auth/permissions.ts",
+      "lines": 12,
+      "sha256": "a0dfddb67a3fe2abcc97e6460c42fe40df18e30e9664c7c6b38cefaead73d570"
+    },
+    {
+      "file": "src/features/auth/RecoveryReceipt.tsx",
+      "lines": 8,
+      "sha256": "17f859e37f05f8ef4f27cd5f5e178d7a51ebdd5dd96e1744c6df590b204e311e"
+    },
+    {
+      "file": "src/features/auth/sessionActions.ts",
+      "lines": 33,
+      "sha256": "7902f90311b7180a66400d34ee68fc90b5515096338a46044945569883a2d875"
+    },
+    {
+      "file": "src/features/auth/UsersPage.tsx",
+      "lines": 79,
+      "sha256": "bbf5a087c151f7456e991ebb61f0e260f19d949a2cf99aba5b4a6797dc0fefd0"
+    },
+    {
+      "file": "src/features/backup/BackupPage.tsx",
+      "lines": 125,
+      "sha256": "e13350bc8fc2ac8215262eb5c9af725273a2a9150bf16b92a5126d47097367a2"
+    },
+    {
+      "file": "src/features/backup/exportUtils.ts",
+      "lines": 18,
+      "sha256": "547ab9e6cdb88cc5da1b3a0d39e1c9e524b1154b6fc8212a1462ed2cc9ad5dbe"
+    },
+    {
+      "file": "src/features/baropodometry/BaropodometricHeatmap.tsx",
+      "lines": 199,
+      "sha256": "e82583a7e7d746cd40c01c985f0434be9e19346e031234c9213683587f4d35d3"
+    },
+    {
+      "file": "src/features/baropodometry/BaropodometryPage.tsx",
+      "lines": 282,
+      "sha256": "73ec27cadacbc93a2ef5ea09781981fb7217e62c02ba0c270728210d7fa3b71e"
+    },
+    {
+      "file": "src/features/baropodometry/HeatmapSettingsPanel.tsx",
+      "lines": 440,
+      "sha256": "0da3b3ab8fd85787b3959e2c69a875f5453ea3f2b9e67e5ce6b52957674f10dc"
+    },
+    {
+      "file": "src/features/baropodometry/MetricsPanel.tsx",
+      "lines": 199,
+      "sha256": "02ec321e7661e2d3f901db13d07145029824f9e63c18a163bc93d18e8815687d"
+    },
+    {
+      "file": "src/features/baropodometry/ParameterBar.tsx",
+      "lines": 390,
+      "sha256": "a0d273910577beffd9d6a335007bc7a40e83eac967dca15406a54a13d8446cc4"
+    },
+    {
+      "file": "src/features/baropodometry/PressureLegend.tsx",
+      "lines": 58,
+      "sha256": "9f033c14c7daff9c9c0eef163319a4a330b18b9521e14fb81883cd2a86094727"
+    },
+    {
+      "file": "src/features/calibration/CalibrationHelp.tsx",
+      "lines": 49,
+      "sha256": "2a70d1d4121ba7aadd34ec991b1ba8f26a87d0aae00e56b3a6ee584a9350569a"
+    },
+    {
+      "file": "src/features/calibration/CalibrationPage.tsx",
+      "lines": 245,
+      "sha256": "89e51967033ec55bff3b296d4ff505f03cd619049be2ed123812ba594416f1e4"
+    },
+    {
+      "file": "src/features/calibration/ClassificationCorrection.tsx",
+      "lines": 80,
+      "sha256": "f64991f7140d11907327be0b85c848b588729804bf02f7de08d5cabea5b5d477"
+    },
+    {
+      "file": "src/features/calibration/fieldHelp.ts",
+      "lines": 44,
+      "sha256": "8b7b08a256fb08bc9d3d9b2a653adbeea96d5d40487d65c15e21ba291a5ac83f"
+    },
+    {
+      "file": "src/features/calibration/matDefaults.ts",
+      "lines": 21,
+      "sha256": "5bc30abe7e47635fcb443652c1a5b180cf6d32132d03ce18ea908590dabeedb4"
+    },
+    {
+      "file": "src/features/calibration/PhysicalResults.tsx",
+      "lines": 41,
+      "sha256": "55a3f76c73aade6d0e3a2493818f6622f6c908b8c4654a93658978b58d9e558a"
+    },
+    {
+      "file": "src/features/comparison/ComparisonPage.tsx",
+      "lines": 140,
+      "sha256": "21726e30fbc85939d0f0696148ed4ab249ab085406329e43a865f57a8c5fb166"
+    },
+    {
+      "file": "src/features/comparison/comparisonUtils.ts",
+      "lines": 46,
+      "sha256": "c4ee509ca353dacb7e5160d47f61d9d90b2a3975d14087dadade13942040139f"
+    },
+    {
+      "file": "src/features/exams/AnalysisGraphs.tsx",
+      "lines": 21,
+      "sha256": "0b33b659117e492437cec4a7cfc51e9b96a003ba4dee2b40c5d41f30b79acc88"
+    },
+    {
+      "file": "src/features/exams/AnalysisReview.tsx",
+      "lines": 51,
+      "sha256": "7092b38cabb7d0261187ddd44733d40666563e07b19bd934b546226d52bff364"
+    },
+    {
+      "file": "src/features/exams/CancelExamDialog.tsx",
+      "lines": 58,
+      "sha256": "5667a804f5c82b1d4436aa630d24242175efc574e9a6a65e6215e06fc01ac06a"
+    },
+    {
+      "file": "src/features/exams/ExamConditionsForm.tsx",
+      "lines": 35,
+      "sha256": "f150ad7527cee63d67adbb3d298cb552f142e3f170942c6585db42d628a5e944"
+    },
+    {
+      "file": "src/features/exams/ExamDetailsModal.tsx",
+      "lines": 375,
+      "sha256": "0b828b04f59cc0698159ad6de86aafa4e32e3c181ed7a473895752dbe595fd79"
+    },
+    {
+      "file": "src/features/exams/ExamExportActions.tsx",
+      "lines": 43,
+      "sha256": "aac10b2d18dc83a972e9af55f7891e5e15d1624916ad856ba2e4e31478cdebe5"
+    },
+    {
+      "file": "src/features/exams/examProcessing.ts",
+      "lines": 114,
+      "sha256": "a78e55cb12a8eba7f7b459e8436277b80fed2cb29fa40be2afaa92ffdbfbfaa8"
+    },
+    {
+      "file": "src/features/exams/ExamReportView.tsx",
+      "lines": 47,
+      "sha256": "04387dbc1eadb6f3a00a17ca70e36f54886d431779bd643b47fecc8d3282cd4c"
+    },
+    {
+      "file": "src/features/exams/examRuntime.ts",
+      "lines": 71,
+      "sha256": "79a10fe6e39e7e536cdba635adfa648c62be4d7a68fb108a5262345c337bdfd9"
+    },
+    {
+      "file": "src/features/exams/ExamSettingsTab.tsx",
+      "lines": 60,
+      "sha256": "8c02b4a31e1a12760dc199d04aa8ac5e450379264f4405ab95693f709b51f3fb"
+    },
+    {
+      "file": "src/features/exams/ExamsPage.tsx",
+      "lines": 282,
+      "sha256": "49d6f26eb65c27e28f66ad3f4da48e714618c68bb9984592e0b8cb7550715acb"
+    },
+    {
+      "file": "src/features/exams/examStore.ts",
+      "lines": 453,
+      "sha256": "fa06a73f497b8cdcdb3f543a9bbd0977ac4dd5a9755353102c85b0f1be1fe453"
+    },
+    {
+      "file": "src/features/exams/ExamVisualizationControls.tsx",
+      "lines": 33,
+      "sha256": "5c34ac0143bfb1e3b94bb1219ad7db45575642200229e5a8c230dc343fd2d866"
+    },
+    {
+      "file": "src/features/exams/NewExamPage.tsx",
+      "lines": 776,
+      "sha256": "64246685710864c35a2a028cfec711fbda55d54059d6ad9f8cd246a10e62ae47"
+    },
+    {
+      "file": "src/features/exams/SensorMap3D.tsx",
+      "lines": 12,
+      "sha256": "919c50a792f4fddef8a16507eb9608651d49806fe9931f894e490a1407514c0b"
+    },
+    {
+      "file": "src/features/exams/SequenceLinks.tsx",
+      "lines": 21,
+      "sha256": "8c2803c6acd3b8f84652111824a9d8c78c38e2ff2200b671736048f9873c6d36"
+    },
+    {
+      "file": "src/features/exams/useExamTrajectory.ts",
+      "lines": 21,
+      "sha256": "18653099efbeeb845150a31970e175bc4bc661b7250b5541abfc72e8b28b5810"
+    },
+    {
+      "file": "src/features/logs/LogsPage.tsx",
+      "lines": 33,
+      "sha256": "81a480349fb5041db50e952759a530f6385fddc2db896e557fdc39cbc279d026"
+    },
+    {
+      "file": "src/features/patients/PatientCareHistory.tsx",
+      "lines": 28,
+      "sha256": "e52196ade4bea8e06f3dcb75c7db9acd4954bfba823749d32ad2d333373c29ed"
+    },
+    {
+      "file": "src/features/patients/PatientDetails.tsx",
+      "lines": 528,
+      "sha256": "c29473b2c95983ac90fac1c24f605fbe8293416bd1ad39eb6a92366c73106de2"
+    },
+    {
+      "file": "src/features/patients/PatientForm.tsx",
+      "lines": 516,
+      "sha256": "7e1f943f796fdb914ecffb0490ddf7f97978f6e8fa1c993ca0ff9fb3f57d9c50"
+    },
+    {
+      "file": "src/features/patients/PatientList.tsx",
+      "lines": 275,
+      "sha256": "9229cb645cb153ea97889948e5b5bc893fe05c47f0521804f54809749bfc7710"
+    },
+    {
+      "file": "src/features/patients/PatientsPage.tsx",
+      "lines": 170,
+      "sha256": "6d230d6c40a62b8537e30f7ee775c810863c8183c1bec7cfb78af4a6bf975ce5"
+    },
+    {
+      "file": "src/features/patients/patientUtils.ts",
+      "lines": 140,
+      "sha256": "fbb0c9f11b81bbf15f26bdaa2e0afa8e0b4c2ea8a662676f1844ba65bc19483f"
+    },
+    {
+      "file": "src/features/questionnaires/QuestionnaireHistory.tsx",
+      "lines": 9,
+      "sha256": "30892617eb34f228489e8cdd58a675b0590e3006433f8330d14ac19931f06aca"
+    },
+    {
+      "file": "src/features/questionnaires/QuestionnairesPage.tsx",
+      "lines": 137,
+      "sha256": "0fe96700e6ac815f8fb403bdc5aadeea532ecf54ef6731a8d7fc0121270145af"
+    },
+    {
+      "file": "src/features/questionnaires/questionnaireUtils.ts",
+      "lines": 25,
+      "sha256": "ec967964bfac4417c8f1cd807c6f90cb60a8fc98f185ab20e1f9fed49621afef"
+    },
+    {
+      "file": "src/features/reports/reportPdfGenerator.ts",
+      "lines": 695,
+      "sha256": "d29e2d8620f5c470ff7dc2b50cdc773ed860950ab06a7d765885047f18f33b0b"
+    },
+    {
+      "file": "src/features/reports/reportUtils.ts",
+      "lines": 204,
+      "sha256": "00b70d83e64e0ffc48bc3cd267463045d6fbdef1bc8d98e0a1ef135498733488"
+    },
+    {
+      "file": "src/features/reports/ReportViewer.tsx",
+      "lines": 561,
+      "sha256": "b82a61dad1db908590ea1b606af0316e186474e2f9b2dc0632d91f488c4f11b3"
+    },
+    {
+      "file": "src/features/reports/savedValues.ts",
+      "lines": 8,
+      "sha256": "8391a72641053787260b9e410a6944bba3cc74475d09148df10c57d3e4bf2510"
+    },
+    {
+      "file": "src/index.css",
+      "lines": 56,
+      "sha256": "10583d98d4d756272319b0fda60f288a1e45c39915bdfea6e47aca4e020b4660"
+    },
+    {
+      "file": "src/main.tsx",
+      "lines": 7,
+      "sha256": "644d64a93c8ba0fca34f51926aa4b25118855d77c4c51b8922b26e8f7876d105"
+    },
+    {
+      "file": "src/pages/Dashboard.tsx",
+      "lines": 59,
+      "sha256": "cf4880c08a53fa99cba10c5c17b09e60ce9fd13cf7915a0da94b8dc2b896e2c1"
+    },
+    {
+      "file": "src/pages/Settings.tsx",
+      "lines": 65,
+      "sha256": "a3c39523db83a69f59442092799d5c6d4b3f5837df2109080a176223a9e99096"
+    },
+    {
+      "file": "src/services/acquisition/automaticConnection.ts",
+      "lines": 81,
+      "sha256": "5b1f252d446ef59424afe6992e40819e67ef54555eb9a9d216248f12d4f4107c"
+    },
+    {
+      "file": "src/services/acquisition/buffer.ts",
+      "lines": 95,
+      "sha256": "4522ed42978b39f0d316b793ebca24940794b6553fb4ee690e9c6d49c498a7de"
+    },
+    {
+      "file": "src/services/acquisition/index.ts",
+      "lines": 8,
+      "sha256": "21cf3da4cf97600e0a3941f140a9505a8189ac3e788bd2fe79cb33c8dd25ce16"
+    },
+    {
+      "file": "src/services/acquisition/MockSensorDevice.ts",
+      "lines": 224,
+      "sha256": "19e47fc31cbfe7d4477bb5e09c6bcd2fda11332702f3200ab93796f69b799439"
+    },
+    {
+      "file": "src/services/acquisition/parser.ts",
+      "lines": 126,
+      "sha256": "567e09c7e1c4235a26c3be3d2c0ef8f69658e6ca7298d90336e3eee624d00678"
+    },
+    {
+      "file": "src/services/acquisition/rawStream.ts",
+      "lines": 34,
+      "sha256": "0e7a0a9c97c2fff2539858e41d53251ccbf1e9da770d831813fd7a4c22458a73"
+    },
+    {
+      "file": "src/services/acquisition/SensorDevice.ts",
+      "lines": 24,
+      "sha256": "ffc0c4a0373a40f800cbb0e40444bee22436914c5d99eb67b4a13de42b0fad5d"
+    },
+    {
+      "file": "src/services/acquisition/SerialSensorDevice.ts",
+      "lines": 239,
+      "sha256": "19f114fb489c59fc3f4be27d589f31ab1b1a092bbb2371d588e3419be2d1a187"
+    },
+    {
+      "file": "src/services/acquisition/tare.ts",
+      "lines": 102,
+      "sha256": "18e969743d7b553de568be750ec99c97afc78a8ecd5fc0c52cd92a3691ef4370"
+    },
+    {
+      "file": "src/services/acquisition/types.ts",
+      "lines": 70,
+      "sha256": "834ca71d2b3e660178e2f6aa0245533f9c662fde448d30f28c3002390569497b"
+    },
+    {
+      "file": "src/services/acquisition/useAutomaticConnection.ts",
+      "lines": 19,
+      "sha256": "df62bd6d3aa0fa62139e4f74960ecc692ac142c38bf3dc3238cca9009f6fdae3"
+    },
+    {
+      "file": "src/services/baropodometry/autoAdjustment.ts",
+      "lines": 112,
+      "sha256": "474a49ae26743fe5ae991ceb968cec8c539b8d08a9e39e0f176e2ddde9a0062c"
+    },
+    {
+      "file": "src/services/baropodometry/cop.ts",
+      "lines": 64,
+      "sha256": "749725ff34eff7890e0a99a7f1501038b1ae1dcbca85c2f9f15a0dda2ad4725f"
+    },
+    {
+      "file": "src/services/baropodometry/heatmap.ts",
+      "lines": 118,
+      "sha256": "1e3437b4b1591c540992f421ca4f589e025e5c93b7388fe16c77f97d5b26a0d9"
+    },
+    {
+      "file": "src/services/baropodometry/index.ts",
+      "lines": 9,
+      "sha256": "8b93b7f819019cad9130f6b16339091c063756030a1a5d35883ba44529c97ccc"
+    },
+    {
+      "file": "src/services/baropodometry/interpolation.ts",
+      "lines": 171,
+      "sha256": "71c42ae34a78a4836e456e4a2e4936fe7e02ba76268168e2bdebc8375fbc7b2d"
+    },
+    {
+      "file": "src/services/baropodometry/metrics.ts",
+      "lines": 79,
+      "sha256": "60d6be5d214f9426b62ada93581d70334bcfac118cc14796be22365a7a1628c7"
+    },
+    {
+      "file": "src/services/baropodometry/normalization.ts",
+      "lines": 51,
+      "sha256": "864db078ad2338e4ffe4bdf8e0485719b4c4fc6ce95191f83b5c16902330733d"
+    },
+    {
+      "file": "src/services/baropodometry/settings.ts",
+      "lines": 92,
+      "sha256": "5c57523dae22dcc2b4d8e6bc5f758847cc48a6a97a7a9c0b1d636655586fd6a4"
+    },
+    {
+      "file": "src/services/baropodometry/trajectory.ts",
+      "lines": 23,
+      "sha256": "025a7756d9d99977467f2b90f1f12a650c5e2269d1a82b0f488e6758f75fa6e8"
+    },
+    {
+      "file": "src/services/baropodometry/types.ts",
+      "lines": 46,
+      "sha256": "a3720c9c411b29b78bb84dba91778084252ebf1cf559d98c0189627752739b2e"
+    },
+    {
+      "file": "src/services/calibration/characterization.ts",
+      "lines": 18,
+      "sha256": "af58d3894403574ec02b61ca9013089182826e62ffd68e84646bd5bcffd05bf8"
+    },
+    {
+      "file": "src/services/calibration/formatting.ts",
+      "lines": 21,
+      "sha256": "fbfcfebad90c322224c8fe1286229a191e05ce31f7b5243262a773f820f46ddb"
+    },
+    {
+      "file": "src/services/calibration/math.ts",
+      "lines": 105,
+      "sha256": "0699e2f99d33da923d5150d19e80ede5760bd0c8f6426530de3e66837b071229"
+    },
+    {
+      "file": "src/services/calibration/recorder.ts",
+      "lines": 51,
+      "sha256": "373dd439fd75f2b1355fad44e47b8d464ce8838346d26c7d5307d99f3112609a"
+    },
+    {
+      "file": "src/services/calibration/types.ts",
+      "lines": 172,
+      "sha256": "f8d873de524d223209815a35df56c604493badc48939f3d7fbc527eda01a5b00"
+    },
+    {
+      "file": "src/services/database/api.ts",
+      "lines": 171,
+      "sha256": "bde5988d90d66504510b52104be3058189371c8e50ebd267757281208406b79a"
+    },
+    {
+      "file": "src/services/examAnalysis/calculations.ts",
+      "lines": 109,
+      "sha256": "3bdb9a817bc7b747421638a8e617ea737118f05c1c309ef3727dc86ac357ddcf"
+    },
+    {
+      "file": "src/services/examAnalysis/report.ts",
+      "lines": 36,
+      "sha256": "93bd2ce6673f8cc85d2f2c1756a796ee8ba57fe593a9d40d0c9ddde06170e9ac"
+    },
+    {
+      "file": "src/services/examAnalysis/types.ts",
+      "lines": 74,
+      "sha256": "892a1a0bb0620086d9b3fcf777ed34e3d1eae42609bba91c039a4adda4ca6576"
+    },
+    {
+      "file": "src/services/examProtocol.ts",
+      "lines": 16,
+      "sha256": "65b2a557c5c20e247c9c70618906fedc161cdaaeeef4d7c8435cd25aac7cc931"
+    },
+    {
+      "file": "src/services/navigationGuard.ts",
+      "lines": 30,
+      "sha256": "74c2db52f4fa8b7b89f56b4c061f14ddcafefc00e96dfac1b8a8fe3b32bd88a4"
+    },
+    {
+      "file": "src/services/preferences.ts",
+      "lines": 17,
+      "sha256": "ef2b1ffeea85a5b6675102f22dce2f2c69a4b3d9b512aef4a2f23c04f2ea268c"
+    },
+    {
+      "file": "src/services/serialWriter.ts",
+      "lines": 9,
+      "sha256": "019137551b95912a562409d505b99b44461274534943ab9297d5e97c84a543ea"
+    },
+    {
+      "file": "src/services/usePreferencesSync.ts",
+      "lines": 73,
+      "sha256": "0653991493c4a3388d1367396db4e2bbfad3b75927d6c35e73becdc42beb8435"
+    },
+    {
+      "file": "src/stores/acquisition.ts",
+      "lines": 309,
+      "sha256": "cbccdf2950874968d0f530ba38d7a3dc76e3620968268de3151a0aa94ac07318"
+    },
+    {
+      "file": "src/stores/calibration.ts",
+      "lines": 107,
+      "sha256": "4f35b0b41fce491da666e6e2d4bf810b6e4f18042d136860edf0efdb7154ac09"
+    },
+    {
+      "file": "src/stores/preferences.ts",
+      "lines": 16,
+      "sha256": "99097e5ebd6608c19fccb2f7460365208e266ef64339034faf352d152413b2dd"
+    },
+    {
+      "file": "src/stores/session.ts",
+      "lines": 54,
+      "sha256": "7248a3b2224ef481647eb903018ac5b4cbe5af8ff137b93f419ecdfc70444800"
+    },
+    {
+      "file": "src/stores/visualization.ts",
+      "lines": 14,
+      "sha256": "315e2070b72ff29cc457699e6950144ba5efccc69f9b4a2195fb7aad68b26475"
+    },
+    {
+      "file": "src/tests/acquisition.test.ts",
+      "lines": 249,
+      "sha256": "b9c07164635eecaabecb4347b6e55e98f2cfaf733ea41b68b9bf58c96102dde6"
+    },
+    {
+      "file": "src/tests/agenda.test.ts",
+      "lines": 8,
+      "sha256": "490cb2cc9034e11cce0623d1d37c1d4654df6db5025a0ac3ec0f02fa7831dccb"
+    },
+    {
+      "file": "src/tests/audit-acquisition.test.ts",
+      "lines": 34,
+      "sha256": "0b2f1825c1a8f9bb612b43b344f18ddf9ebf0f76a568e270aeed4929fa9f4a2a"
+    },
+    {
+      "file": "src/tests/audit-reports.test.ts",
+      "lines": 13,
+      "sha256": "77d5a74c972406f0ad3142357b32bc1f8153060ea49d47a0c5139259dd59ed54"
+    },
+    {
+      "file": "src/tests/audit-science.test.ts",
+      "lines": 18,
+      "sha256": "e4426c10deac60e366e29fb01cd85c236dbeedc99497094d6ab7580fab1aed1b"
+    },
+    {
+      "file": "src/tests/audit-session.test.ts",
+      "lines": 20,
+      "sha256": "c1bbe35ffca5684cefb1d451656e14de3e272330544c7d4267bff1328ff35c9b"
+    },
+    {
+      "file": "src/tests/auth.test.ts",
+      "lines": 11,
+      "sha256": "a9f788c11561bf98fae482490e34c17f84b00267bf33fd5ffbb318f4234534a2"
+    },
+    {
+      "file": "src/tests/automatic-connection.test.ts",
+      "lines": 162,
+      "sha256": "3fc97a1218993096bb40c104a0525720b3ad8ac790f12a4a8efe2d20988a4e3b"
+    },
+    {
+      "file": "src/tests/backup.test.ts",
+      "lines": 8,
+      "sha256": "ff4f616310299fde20215107df2b6946f4abfdaff1dac64283e882e94d30879f"
+    },
+    {
+      "file": "src/tests/baropodometry-settings.test.ts",
+      "lines": 213,
+      "sha256": "51fcb3eb1d9b0b021042e85e91ce9a7096be8cc79cfd1df9a9fcd29abdbbee90"
+    },
+    {
+      "file": "src/tests/baropodometry.test.ts",
+      "lines": 242,
+      "sha256": "4227620a8550c3a7ab5f5283ecec9f1030636979f76682d4362eabcc049637c2"
+    },
+    {
+      "file": "src/tests/calibration-defaults.test.ts",
+      "lines": 25,
+      "sha256": "927ad6ce75bd220a63ccb379ff752564f2cf461a6db0e963b40ead6df5ae71af"
+    },
+    {
+      "file": "src/tests/calibration.test.ts",
+      "lines": 27,
+      "sha256": "7f1d7f7867230679956df62b8abc964ee50f62f05ca139cf31749e34a7d941ca"
+    },
+    {
+      "file": "src/tests/comparison.test.ts",
+      "lines": 33,
+      "sha256": "b0c923b5dbdd0360557bc8ec22fc9640a8828f877b713125fd0e13746ac2e7d1"
+    },
+    {
+      "file": "src/tests/database-api.test.ts",
+      "lines": 31,
+      "sha256": "006984b0a515654df6a4fb4d4a13e3fb277fa82093d408d98c35cdb3a2229218"
+    },
+    {
+      "file": "src/tests/database-cache.test.ts",
+      "lines": 77,
+      "sha256": "bd6b14f397084be459d532d1c3316781501b22d32aefb92739d0f0e292889537"
+    },
+    {
+      "file": "src/tests/exam-analysis.test.ts",
+      "lines": 23,
+      "sha256": "0bcbf7f1b458c00afda7c83d11616f46d70c98380002534e153f8e74339dd890"
+    },
+    {
+      "file": "src/tests/exam-conditions-ui.test.ts",
+      "lines": 78,
+      "sha256": "55e7a1a8d0f6de20800ad486224525a88e2a65c608d8ef353dfbcf1d7abee5f2"
+    },
+    {
+      "file": "src/tests/exam-protocol.test.ts",
+      "lines": 78,
+      "sha256": "d60e42899fcb841f6e2f73da291135b6ce3666d34fe78ea5ba8abc313c217160"
+    },
+    {
+      "file": "src/tests/exams.test.ts",
+      "lines": 500,
+      "sha256": "7402c95360b86394c9b45a533205ea62bffbcea0a1a44f11ecf57b299e5b160b"
+    },
+    {
+      "file": "src/tests/interpolation-performance.test.ts",
+      "lines": 36,
+      "sha256": "5d0755149bd3232d03984e50d641754e105c46868bf67a745201c4aa89af0bdd"
+    },
+    {
+      "file": "src/tests/navigation.test.ts",
+      "lines": 46,
+      "sha256": "cf00647ebd790c9b29fb9a3678baded82bbd6391a87d18be8671752a7557e480"
+    },
+    {
+      "file": "src/tests/patients.test.ts",
+      "lines": 98,
+      "sha256": "7e8504e44f35bf2459dcc817ee081b0aafa603f5c2d941c68922dd36bcb5c565"
+    },
+    {
+      "file": "src/tests/permissions.test.ts",
+      "lines": 20,
+      "sha256": "9fde44f6725fc2c0ac64f53b1da0e196230090b7852a51cd6ea9942726d6c8fd"
+    },
+    {
+      "file": "src/tests/preferences.test.ts",
+      "lines": 8,
+      "sha256": "25bd90c01984d5d78b91a0349415649f444610536bd9698aeaaa0bc590229510"
+    },
+    {
+      "file": "src/tests/questionnaires.test.ts",
+      "lines": 8,
+      "sha256": "da4cd12e14c22ca306b8043f00175d5ec3ef3936cea6cb600b373c6a72aafc11"
+    },
+    {
+      "file": "src/tests/reports.test.ts",
+      "lines": 188,
+      "sha256": "b2364a3223e11526f72479a45872ba2d51759df858799aeb4eeb817bd7539307"
+    },
+    {
+      "file": "src/tests/serial-status.test.ts",
+      "lines": 64,
+      "sha256": "5ba7d3bafdeb1b67af849b3382990f20f6532022d9bac6d781f829ac76641e9f"
+    },
+    {
+      "file": "src/types/index.ts",
+      "lines": 175,
+      "sha256": "7036902b86e0254e1651fbf9c1711f70eec5927401ed3ccc0fcfb5a9d02d97c9"
+    },
+    {
+      "file": "src-tauri/src/acquisition.rs",
+      "lines": 525,
+      "sha256": "4d1cfaa6d879eba3d402189043c0dc51555fdc767c5d52d21e4dc65d500747d1"
+    },
+    {
+      "file": "src-tauri/src/agenda.rs",
+      "lines": 365,
+      "sha256": "e7d18692da99f67e25f024562b61be0a9c7b80dc1aff3ef6cd2cfc7304d66c29"
+    },
+    {
+      "file": "src-tauri/src/auth.rs",
+      "lines": 645,
+      "sha256": "1e6ac4f37e530262e5ff6ac8c30858b50e2e762602c6615d7e39164fb6b21e1c"
+    },
+    {
+      "file": "src-tauri/src/auth_tests.rs",
+      "lines": 872,
+      "sha256": "84342c7d601ff2f4ab301e5d59bcb808913f8703b9c4cc4b812f11e76d4b1e83"
+    },
+    {
+      "file": "src-tauri/src/backup.rs",
+      "lines": 976,
+      "sha256": "9f5e8941b9aa7074f13f94fe6f3a4c8232028b0d826bb807977c037799b3ebfc"
+    },
+    {
+      "file": "src-tauri/src/calibration.rs",
+      "lines": 2527,
+      "sha256": "fb6f9057c834e1c2e2691fdd92603a61fb758b4d1c189f423b1be864a4b1c8d7"
+    },
+    {
+      "file": "src-tauri/src/command_queue.rs",
+      "lines": 107,
+      "sha256": "09188443f6af77072e64a7440bb6d7cd432c044dc5c6d70ed6ed1b7ce375856a"
+    },
+    {
+      "file": "src-tauri/src/db.rs",
+      "lines": 209,
+      "sha256": "fff52c9c90872b673cc8a787b70101d042a5868d95d9a01e37ef7b3581af6cc5"
+    },
+    {
+      "file": "src-tauri/src/exams.rs",
+      "lines": 1263,
+      "sha256": "2d8de74e74b241823b7a571513d07314ea6d93bc8d7ce2735d6b789c9a1cdb08"
+    },
+    {
+      "file": "src-tauri/src/exam_analysis.rs",
+      "lines": 356,
+      "sha256": "c11196a61c1977c2f999fbcbfb5cbf4cf2563099f0ed77ed565dca904fcb363c"
+    },
+    {
+      "file": "src-tauri/src/exam_analysis_tests.rs",
+      "lines": 278,
+      "sha256": "edc4ac9b1a9eb73fc08681b2b60916e25f8faf3b1614ffa405378ba25bca1285"
+    },
+    {
+      "file": "src-tauri/src/lib.rs",
+      "lines": 234,
+      "sha256": "807c65a4c513cb6e1cccb371f6f2429651ccc0d0e66b5b283a060fa9285862a0"
+    },
+    {
+      "file": "src-tauri/src/main.rs",
+      "lines": 5,
+      "sha256": "ec20b1943da039c867738a42855fc60bf66e334eb8478e845a5c4d66033a52e2"
+    },
+    {
+      "file": "src-tauri/src/pagination.rs",
+      "lines": 111,
+      "sha256": "d5d5f99330a5df834d5f575605409f2a6055d4c8e4c26e290d25fba046b4181d"
+    },
+    {
+      "file": "src-tauri/src/patients.rs",
+      "lines": 840,
+      "sha256": "707b6616f2eb01ae68307992c6ff4c2837cda00a96cee66669ada332d77cfb9e"
+    },
+    {
+      "file": "src-tauri/src/permissions.rs",
+      "lines": 69,
+      "sha256": "bd42abcf103d714815ff63c0f93a61a5efcaaa67af3bb18dfb78a0a8c45adfa0"
+    },
+    {
+      "file": "src-tauri/src/questionnaires.rs",
+      "lines": 639,
+      "sha256": "fa2c9feb115061b7b4e731e74287c441891cff94b17876a55a5e15662677278b"
+    },
+    {
+      "file": "src-tauri/src/support.rs",
+      "lines": 247,
+      "sha256": "d18f58cfc9bfce7b5fee1a97c21e2f70264ea5941a83c6407e7251d4c9d5b841"
+    },
+    {
+      "file": "src-tauri/src/users.rs",
+      "lines": 233,
+      "sha256": "0b8c1b31307b9f13fa4bdaddd186f8a355e6da7992d82c2633a82b560a210d71"
+    },
+    {
+      "file": "src-tauri/src/workflow_tests.rs",
+      "lines": 119,
+      "sha256": "fc3ae329edcaca96024374f6b2e922641f882926ffa9ee17cf5bcd8c3e4faf5a"
+    },
+    {
+      "file": "src-tauri/migrations/0001_init.sql",
+      "lines": 74,
+      "sha256": "b6bd2490845b53b1750b729e0234a331b457c0c871e331e415c409169cfb16cf"
+    },
+    {
+      "file": "src-tauri/migrations/0002_exams_phase5.sql",
+      "lines": 18,
+      "sha256": "00c32ca2bb193d75c1dcff797af3f2a34a5cb13ea222ffb567863d8bb9936cf3"
+    },
+    {
+      "file": "src-tauri/migrations/0003_exam_visualization.sql",
+      "lines": 3,
+      "sha256": "3f6a56cac82f7fdb621b10f598e5eace7bea20b74043cd53a219b668415ce2c7"
+    },
+    {
+      "file": "src-tauri/migrations/0004_exam_trajectory.sql",
+      "lines": 2,
+      "sha256": "948da4d01632606b759de85fd9fb3673446bbf5457b0c041506c6de835eb8f29"
+    },
+    {
+      "file": "src-tauri/migrations/0005_questionnaire_sessions.sql",
+      "lines": 11,
+      "sha256": "e2a9addc28d921e832c90883aca315e8584fbf34a2dc025c51e91115c6e79805"
+    },
+    {
+      "file": "src-tauri/migrations/0006_calibration.sql",
+      "lines": 31,
+      "sha256": "6c7600afbb09e095c44674228bcdbea6e744dbb2778c0429ac8fce7408dbe360"
+    },
+    {
+      "file": "src-tauri/migrations/0007_exam_patient_snapshot.sql",
+      "lines": 3,
+      "sha256": "f4688b94ced76b4d6f9b60369cc5d1b9344f0b91509ed6e358be036dd61ac177"
+    },
+    {
+      "file": "src-tauri/migrations/0008_exam_analysis.sql",
+      "lines": 2,
+      "sha256": "29c9c08f8e308091d500ec0f3b6e30f1f29edc528de281c3ad5585007d2daa8a"
+    },
+    {
+      "file": "src-tauri/migrations/0009_user_access.sql",
+      "lines": 6,
+      "sha256": "cb9e191d278897bff056f8b0584f467373b45c23d8cf12fbd44968646536b494"
+    }
+  ]
+}

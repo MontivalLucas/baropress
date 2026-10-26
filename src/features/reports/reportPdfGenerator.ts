@@ -1,4 +1,4 @@
-import { acquisitionLabel } from '@/services/examProtocol';
+import { acquisitionLabel, FOOT_LABELS } from '@/services/examProtocol';
 import { savedNumber, lateralDistribution } from "./savedValues";
 import { physicalLines } from "@/services/calibration/formatting";
 import { analysisLines } from '@/services/examAnalysis/report';
@@ -25,6 +25,7 @@ import {
 } from "./reportUtils";
 
 export interface GeneratePdfOptions {
+  acquisitions?: {exam: ExamDetails; frames?: RawFrame[]}[];
   frames?: RawFrame[];
   includeAnalysis?: boolean;
   includeTemporal?: boolean;
@@ -40,17 +41,33 @@ export async function generateExamReportPdf(
   exam: ExamDetails,
   options?: GeneratePdfOptions
 ): Promise<jsPDF> {
+  const acquisitions = options?.acquisitions ?? [{exam, frames: options?.frames}];
+  if (!acquisitions.length) throw new Error('Nenhuma aquisição disponível para o relatório.');
+  let document: jsPDF | undefined;
+  for (const acquisition of acquisitions) {
+    document = await appendExamReport(acquisition.exam, {...options, frames: acquisition.frames}, document, exam.id);
+  }
+  return document!;
+}
+
+async function appendExamReport(
+  exam: ExamDetails,
+  options: GeneratePdfOptions | undefined,
+  document: jsPDF | undefined,
+  reportExamId: number,
+): Promise<jsPDF> {
   const validation = validateExamForReport(exam);
   if (!validation.valid) {
     throw new Error(validation.error || "Exame inválido para geração de relatório.");
   }
 
-  const doc = new jsPDF({
+  const doc = document ?? new jsPDF({
     orientation: "portrait",
     unit: "mm",
     format: "a4",
     compress: true,
   });
+  if (document) doc.addPage();
 
   const pageWidth = 210;
   const pageHeight = 297;
@@ -126,7 +143,7 @@ export async function generateExamReportPdf(
   doc.setFontSize(8);
   doc.setTextColor(255, 255, 255);
   doc.text(
-    `Exame #${String(exam.id).padStart(6, "0")} • ${formatDate(exam.startedAt)}`,
+    `Exame #${String(reportExamId).padStart(6, "0")} • ${exam.analysis?.acquisition ? FOOT_LABELS[exam.analysis.acquisition.foot] + ' • ' : ''}${formatDate(exam.startedAt)}`,
     pageWidth - margin - 6,
     y + 15,
     { align: "right" }
@@ -444,7 +461,7 @@ export async function generateExamReportPdf(
   doc.setFontSize(7.5);
   doc.setTextColor(148, 163, 184);
   doc.text(
-    `Exame #${String(exam.id).padStart(6, "0")} • Paciente: ${exam.patientName}`,
+    `Exame #${String(reportExamId).padStart(6, "0")} • Paciente: ${exam.patientName}`,
     margin + 5,
     y + 11
   );
@@ -604,7 +621,7 @@ export async function generateExamReportPdf(
     doc.setFont("helvetica", "bold");
     doc.setFontSize(11);
     doc.setTextColor(15, 23, 42);
-    doc.text(`BAROPRESS — Observações (continuação) — Exame #${exam.id}`, margin, 20);
+    doc.text(`BAROPRESS — Observações (continuação) — Exame #${reportExamId}`, margin, 20);
     doc.setFont("helvetica", "normal");
     doc.setFontSize(7.8);
     doc.text(remainingObservations.slice(0, 60), margin + 4, 32);
@@ -637,13 +654,13 @@ export async function generateExamReportPdf(
   doc.setFont('helvetica','normal'); doc.setFontSize(9);
   const modalityLines = [acquisitionLabel(exam.analysis?.acquisition), 'Duracao desta etapa: ' + (exam.duration ?? 'indisponivel') + ' segundos.', 'Trajeto em ciano: centro relativo ponderado pelas leituras ADC.'];
   if (exam.analysis?.acquisition?.foot && exam.analysis.acquisition.foot !== 'both') modalityLines.push('Aquisicao individual. A distribuicao por metades do tapete nao representa a carga entre os dois pes simultaneamente.');
-  if (exam.analysis?.acquisition?.totalStages === 2) modalityLines.push('Esta pagina identifica uma etapa da sequencia. Cada pe possui sua propria matriz, serie temporal e relatorio.');
+  if (exam.analysis?.acquisition?.totalStages === 2) modalityLines.push('Coletas individuais reunidas no mesmo exame. Cada pe preserva sua matriz e serie temporal.');
   let modalityY = 32;
   for (const line of modalityLines) { const wrapped = doc.splitTextToSize(line.replaceAll('→',' / '),contentWidth); doc.text(wrapped,margin,modalityY); modalityY += wrapped.length*5+3; }
   }
   if (options?.includeAnalysis !== false && exam.analysis) {
     doc.addPage(); doc.setFont('helvetica','bold'); doc.setFontSize(12); doc.setTextColor(15,23,42);
-    doc.text(`BAROPRESS - Condicoes e analise - Exame #${exam.id}`,margin,20);
+    doc.text(`BAROPRESS - Condicoes e analise - Exame #${reportExamId}`,margin,20);
     doc.setFont('helvetica','normal'); doc.setFontSize(9); let y=30;
     for(const line of analysisLines(exam,options?.includeTemporal===false?undefined:options?.frames)) {
       const wrapped=doc.splitTextToSize(line.replaceAll('≤','<=').replaceAll('≥','>=').replaceAll('·',' / ').replaceAll('–','-'),contentWidth) as string[];

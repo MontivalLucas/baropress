@@ -1,0 +1,38 @@
+
+ RUN  v4.1.11 <diretorio-do-projeto>
+
+ ✓ src/tests/baropodometry.test.ts (17 tests) 943ms
+     ✓ interpolateGrid deve gerar grade com dimensões solicitadas e sem NaN  921ms
+ ✓ src/tests/exams.test.ts (25 tests) 577ms
+     ✓ conclui 5s de preparação e exatamente 30s de coleta com sensores a 30 FPS  427ms
+ ✓ src/tests/reports.test.ts (15 tests) 243ms
+ ✓ src/tests/audit-session.test.ts (2 tests) 14ms
+ ✓ src/tests/interpolation-performance.test.ts (3 tests) 161ms
+ ✓ src/tests/patients.test.ts (9 tests) 61ms
+ ✓ src/tests/exam-protocol.test.ts (10 tests) 87ms
+ ✓ src/tests/acquisition.test.ts (20 tests) 197ms
+ ✓ src/tests/audit-acquisition.test.ts (3 tests) 63ms
+ ✓ src/tests/automatic-connection.test.ts (13 tests) 46ms
+ ✓ src/tests/calibration.test.ts (13 tests) 31ms
+ ✓ src/tests/serial-status.test.ts (4 tests) 27ms
+ ✓ src/tests/database-cache.test.ts (6 tests) 26ms
+ ✓ src/tests/backup.test.ts (2 tests) 24ms
+ ✓ src/tests/exam-analysis.test.ts (11 tests) 24ms
+ ✓ src/tests/database-api.test.ts (5 tests) 21ms
+ ✓ src/tests/agenda.test.ts (3 tests) 14ms
+ ✓ src/tests/audit-science.test.ts (2 tests) 16ms
+ ✓ src/tests/exam-conditions-ui.test.ts (7 tests) 92ms
+ ✓ src/tests/calibration-defaults.test.ts (2 tests) 12ms
+ ✓ src/tests/baropodometry-settings.test.ts (17 tests) 20ms
+ ✓ src/tests/comparison.test.ts (7 tests) 17ms
+ ✓ src/tests/audit-reports.test.ts (5 tests) 12ms
+ ✓ src/tests/navigation.test.ts (4 tests) 16ms
+ ✓ src/tests/questionnaires.test.ts (3 tests) 9ms
+ ✓ src/tests/permissions.test.ts (3 tests) 12ms
+ ✓ src/tests/preferences.test.ts (2 tests) 11ms
+ ✓ src/tests/auth.test.ts (4 tests) 12ms
+
+ Test Files  28 passed (28)
+      Tests  217 passed (217)
+   Start at  13:50:23
+   Duration  45.46s (transform 5.62s, setup 0ms, import 15.82s, tests 2.79s, environment 9ms)

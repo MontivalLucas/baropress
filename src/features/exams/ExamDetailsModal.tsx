@@ -1,6 +1,7 @@
-import { acquisitionLabel } from '@/services/examProtocol';
 import { useExamTrajectory } from './useExamTrajectory';
-import { SequenceLinks } from './SequenceLinks';
+import { SequenceReview } from './SequenceReview';
+import { useExamSequence } from './useExamSequence';
+import { AnalysisGraphs } from './AnalysisGraphs';
 import { temporalGapLimit } from '@/services/examAnalysis/calculations';
 import { isClinical } from "@/features/auth/permissions";
 import { savedNumber } from "@/features/reports/savedValues";
@@ -52,6 +53,7 @@ export const ExamDetailsModal: React.FC<ExamDetailsModalProps> = ({
   const clinical=useSession(s=>isClinical(s.user?.role));
   const [exam, setExam] = useState<ExamDetails | null>(initialExam || null);
   const trajectory = useExamTrajectory(exam);
+  const sequence = useExamSequence(exam);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -192,7 +194,8 @@ export const ExamDetailsModal: React.FC<ExamDetailsModalProps> = ({
                 </div>
               </div>
 
-              <p className="text-xs font-semibold">{acquisitionLabel(exam.analysis?.acquisition)} · {exam.duration ?? '—'} s</p><SequenceLinks exam={exam} />{trajectory && 'error' in trajectory && trajectory.error && <p className="text-xs">{trajectory.error}</p>}
+              <SequenceReview {...sequence} onRetry={sequence.retry}/>
+              <p className="text-xs font-semibold">Dados de {exam.analysis?.acquisition?.foot === 'right' ? 'pé direito' : exam.analysis?.acquisition?.foot === 'left' ? 'pé esquerdo' : 'ambos os pés'} · {exam.duration ?? '—'} s</p>{trajectory && 'error' in trajectory && trajectory.error && <p className="text-xs">{trajectory.error}</p>}
               {/* Main Analysis Grid */}
               <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-stretch">
                 {/* Left Column: Heatmap (7 cols) */}
@@ -320,6 +323,18 @@ export const ExamDetailsModal: React.FC<ExamDetailsModalProps> = ({
                   </div>
                 </div>
               </div>
+              <section className="border-t border-line pt-4 space-y-3" aria-labelledby="saved-cop-title">
+                <h3 id="saved-cop-title" className="text-sm font-semibold">Oscilação do COP durante o exame</h3>
+                <p className="text-xs text-mute">Registro do movimento do centro relativo de pressão durante a coleta, preservado com o exame.</p>
+                {!trajectory ? <p role="status" className="text-sm text-mute">Carregando trajetória salva...</p>
+                  : 'error' in trajectory && trajectory.error ? <p role="alert" className="text-sm text-danger">{trajectory.error}</p>
+                  : trajectory.points.some(point => point.x !== null && point.y !== null) ? <AnalysisGraphs
+                    points={trajectory.points}
+                    gapLimitMs={exam.analysis ? temporalGapLimit(exam.analysis.quality) : 0}
+                    events={exam.analysis?.events}
+                    legacy={!exam.analysis}
+                  /> : <p className="text-sm text-mute">Este exame não possui trajetória do COP com contato válido.</p>}
+              </section>
             </>
           )}
         </div>

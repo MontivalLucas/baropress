@@ -1,4 +1,4 @@
-import { acquisitionLabel, FOOT_LABELS } from "@/services/examProtocol";
+import { acquisitionLabel, examModalityLabel } from "@/services/examProtocol";
 import { isClinical } from "@/features/auth/permissions";
 import React, { lazy, Suspense, useEffect, useState } from "react";
 import {
@@ -179,7 +179,7 @@ export const ExamsPage: React.FC = () => {
 
                       {/* Tipo */}
                       <td className="py-3 px-4 whitespace-nowrap capitalize text-mute">
-                        {exam.type === "static" ? "Estático" : "Dinâmico"}<div title={acquisitionLabel(exam.acquisition)} className="text-xs normal-case">{exam.acquisition ? FOOT_LABELS[exam.acquisition.foot] + (exam.acquisition.totalStages === 2 ? ' · etapa ' + exam.acquisition.stage + '/2' : '') : 'Modalidade não registrada'} · {exam.duration ?? '—'} s</div>
+                        {exam.type === "static" ? "Estático" : "Dinâmico"}<div title={acquisitionLabel(exam.acquisition)} className="text-xs normal-case">{examModalityLabel(exam.acquisition)} · {exam.duration ?? '—'} s{exam.acquisition?.totalStages === 2 ? ' por pé' : ''}</div>
                       </td>
 
                       {/* Pressão Máxima */}

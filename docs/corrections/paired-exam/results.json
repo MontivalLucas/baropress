@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "feet": [
+      "left",
+      "right"
+    ],
+    "firstCount": 10,
+    "width": 1366,
+    "errors": []
+  },
+  {
+    "id": 1,
+    "feet": [
+      "right",
+      "left"
+    ],
+    "firstCount": 11,
+    "width": 768,
+    "errors": []
+  }
+]

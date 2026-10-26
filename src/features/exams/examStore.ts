@@ -94,15 +94,21 @@ const errorMessage = (err: unknown) => err instanceof Error ? err.message : Stri
 
 export const useNewExamStore = create<NewExamState>((set, get) => ({
   foot: 'both', separateFeet: false, sequenceId: null, completedStages: [], savedExams: [], liveTrajectory: [],
-  setModality: (foot, separateFeet = false) => {
+  setModality: (foot, separateFeet = foot !== 'both') => {
     if (get().step !== 'CONFIRM' || get().isStarting || get().completedStages.length) return;
     set({ foot, separateFeet: foot !== 'both' && separateFeet, sequenceId: null });
   },
   nextFoot: () => {
     const state = get();
-    if (state.step !== 'RESULT' || !state.separateFeet || state.completedStages.length || !state.processedResult || state.isSaving) return;
-    if (state.processedResult.examInput.analysis) state.processedResult.examInput.analysis.events = [...state.events];
-    set({ completedStages: [structuredClone(state.processedResult)], foot: state.foot === 'left' ? 'right' : 'left', step: 'NEXT_FOOT', processedResult: null, framesCollected: [], rawFrames: [], liveTrajectory: [], frameTimestampsMs: [], events: [], error: null });
+    if (state.step !== 'RESULT' || state.foot === 'both' || state.completedStages.length || !state.processedResult || state.isSaving) return;
+    const first = structuredClone(state.processedResult);
+    const otherFoot = state.foot === 'left' ? 'right' : 'left';
+    const sequenceId = state.sequenceId ?? crypto.randomUUID();
+    if (first.examInput.analysis) {
+      first.examInput.analysis.events = [...state.events];
+      first.examInput.analysis.acquisition = { foot: state.foot, sequenceId, stage: 1, totalStages: 2, order: [state.foot, otherFoot] };
+    }
+    set({ separateFeet: true, sequenceId, completedStages: [first], foot: otherFoot, step: 'NEXT_FOOT', processedResult: null, framesCollected: [], rawFrames: [], liveTrajectory: [], frameTimestampsMs: [], events: [], error: null });
   },
   conditions: unknownConditions(), frozenConditions: null, events: [], invalidFrameCount: 0, seriesMetadata: null,
   setConditions: changes => { if (get().step === 'CONFIRM' && !get().isStarting) set(s => ({conditions: {...s.conditions,...changes}})); },
@@ -321,6 +327,7 @@ export const useNewExamStore = create<NewExamState>((set, get) => ({
       processedResult: processed,
       error: null,
     });
+    if (get().separateFeet && !get().completedStages.length) get().nextFoot();
   },
 
   saveExam: async () => {
@@ -339,7 +346,7 @@ export const useNewExamStore = create<NewExamState>((set, get) => ({
       const savedExams = get().separateFeet
         ? await api.exams.createSequence([...get().completedStages.map(r => r.examInput), processedResult.examInput])
         : [await api.exams.create(processedResult.examInput)];
-      const saved = savedExams[savedExams.length - 1];
+      const saved = savedExams[0];
       set({ savedExams });
       set({
         step: "SAVED",

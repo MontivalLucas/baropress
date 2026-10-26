@@ -1,0 +1,29 @@
+OK CSP blocks application connections and form submissions
+OK No backend, device or persistent storage code
+OK Search keeps its accessible label on narrow screens
+OK Compact search keeps its visible icon
+OK Short sidebar heights remain navigable
+OK Reduced motion and opaque surfaces are supported
+OK Page renders: overview
+OK Page renders: patients
+OK Page renders: exams
+OK Page renders: agenda
+OK Page renders: analysis
+OK Page renders: reports
+OK Page renders: settings
+OK Exam search filters the actual example data
+OK Search and status filters work together
+OK Hidden exam search/status never empty the overview
+OK Week includes five illustrative exams
+OK Month includes all six illustrative exams
+OK Lucas exam links to its own report
+OK Report retains the selected example patient
+OK Profile opens only that patient’s examples
+OK Visual flow retains patient selection
+OK Final preview remains explicitly illustrative
+OK Finishing the flow creates no exam
+OK Theme changes only page appearance
+OK Transparency option changes local appearance
+OK Weekend agenda has a meaningful empty state
+
+27 source/logic checks passed. No browser or visual rendering was used.

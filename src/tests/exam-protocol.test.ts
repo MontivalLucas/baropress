@@ -42,12 +42,14 @@ describe('Aquisição de 30/45 segundos e modalidades', () => {
     expect(store.getState().processedResult?.examInput.frameCount).toBe(2);
   });
   it.each(['both','left','right'] as const)('identifica uma coleta única: %s', async foot => {
-    store.getState().setModality(foot); await store.getState().startAcquisition(); collect(900,100); store.getState().tickAcquisition(30000);
+    store.getState().setModality(foot,false); await store.getState().startAcquisition(); collect(900,100); store.getState().tickAcquisition(30000);
     expect(store.getState().processedResult?.examInput.analysis?.acquisition).toMatchObject({foot, stage:1, totalStages:1, order:[foot], sequenceId:null});
   });
   it.each(['left','right'] as const)('preserva e salva as duas etapas iniciando por %s, com retry', async foot => {
-    store.getState().setModality(foot,true); await store.getState().startAcquisition(); collect(1000,100); store.getState().tickAcquisition(30000);
-    await expect(store.getState().saveExam()).rejects.toThrow('segundo pé');
+    store.getState().setModality(foot); await store.getState().startAcquisition(); collect(1000,100); store.getState().tickAcquisition(30000);
+    expect(store.getState().step).toBe('NEXT_FOOT');
+    expect(store.getState().foot).toBe(foot === 'left' ? 'right' : 'left');
+    await expect(store.getState().saveExam()).rejects.toThrow('Nenhum resultado');
     store.getState().nextFoot(); expect(store.getState().step).toBe('NEXT_FOOT');
     const first = store.getState().completedStages[0]; expect(first.averageMatrix[112]).toBe(1000);
     collect(4095,200); expect(store.getState().framesCollected).toHaveLength(0);
@@ -57,11 +59,25 @@ describe('Aquisição de 30/45 segundos e modalidades', () => {
     expect(second.averageMatrix[112]).toBe(2000);
     expect(second.examInput.analysis?.acquisition?.sequenceId).toBe(first.examInput.analysis?.acquisition?.sequenceId);
     expect(second.examInput.analysis?.acquisition?.foot).toBe(foot === 'left' ? 'right' : 'left');
+    expect(first.examInput.seriesFrames?.[0].values[112]).toBe(1000);
+    expect(second.examInput.seriesFrames?.[0].values[112]).toBe(2000);
     const saved = [first,second].map((r,i)=>({...r.examInput,id:i+1,patientName:patient.name})) as ExamDetails[];
     const save = vi.spyOn(api.exams,'createSequence').mockRejectedValueOnce(new Error('Falha SQLite')).mockResolvedValueOnce(saved);
     await expect(store.getState().saveExam()).rejects.toThrow('Falha SQLite'); expect(store.getState().completedStages).toHaveLength(1);
     await store.getState().saveExam(); await store.getState().saveExam();
     expect(save).toHaveBeenCalledTimes(2); expect(store.getState().savedExams).toHaveLength(2);
+    expect(store.getState().savedExam?.id).toBe(saved[0].id);
+    expect(save).toHaveBeenLastCalledWith([first.examInput, second.examInput]);
+  });
+  it.each(['left', 'right'] as const)('permite acrescentar o outro pé a uma aquisição única de %s', async foot => {
+    store.getState().setModality(foot, false);
+    await store.getState().startAcquisition(); collect(1000, 100); store.getState().finishAcquisition();
+    expect(store.getState().step).toBe('RESULT');
+    expect(store.getState().processedResult?.examInput.analysis?.acquisition?.totalStages).toBe(1);
+    store.getState().nextFoot();
+    expect(store.getState().step).toBe('NEXT_FOOT');
+    expect(store.getState().completedStages[0].examInput.analysis?.acquisition).toMatchObject({foot, stage: 1, totalStages: 2, order: [foot, foot === 'left' ? 'right' : 'left']});
+    expect(store.getState().completedStages[0].examInput.seriesFrames?.[0].values[112]).toBe(1000);
   });
   it('desconexão no segundo pé preserva a primeira etapa para repetir; cancelamento descarta tudo', async () => {
     store.getState().setModality('left',true); await store.getState().startAcquisition(); collect(1000,100); store.getState().tickAcquisition(30000); store.getState().nextFoot();

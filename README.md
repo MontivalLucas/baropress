@@ -17,6 +17,8 @@ do ESP32, a construção do tapete e a passagem para o BAROPRESS desktop.
 [ensaios e limites](docs/validacao/ENSAIOS.md) ·
 [como manter e publicar no GitHub](docs/historia/GUIA_GITHUB.md).
 
+**Versão 0.2.15:** [aquisições individuais dos dois pés em um mesmo exame](docs/corrections/2026-10-22-exame-pes-individuais.md), com matriz e série próprias para cada pé, histórico agrupado e relatório PDF conjunto. Consulte a [revisão de código de 22/10/2026](docs/review/REVISAO_CODIGO_0.2.15_2026-10-22.md) para os riscos e limites apontados naquele levantamento; o estado das correções deve ser conferido no código atual.
+
 Os protótipos históricos foram incorporados sem alterar os arquivos-fonte;
 sua origem e os hashes SHA-256 constam em
 [proveniência](docs/historia/ORIGENS_E_INTEGRIDADE.md). A cronologia anterior

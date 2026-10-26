@@ -13,8 +13,8 @@ Esta cronologia combina fontes datadas e observação do código. **As etapas Py
 | 09/10/2026 | Plano e fases de melhorias inspiradas na análise funcional do BaroSys; testes de bancada preparados | `Sprint/05_Historico/2026-10-09_*.txt` e `docs/barosys/` **[REGISTRO]** |
 | 14/10/2026 | Modalidades de exame, trajeto do centro relativo, simplificação do fluxo e distribuição 0.2.14 registrada | `Sprint/05_Historico/2026-10-14_*.txt` **[REGISTRO]** |
 | 20/10/2026 | Auditoria/organização conservadora e primeiro commit visível do repositório atual (`25968fe`) | [auditoria](../maintenance/AUDITORIA_2026-10-20.md) **[REGISTRO]** e histórico Git **[CÓDIGO]** |
-| 22/10/2026 | Revisão técnica da versão 0.2.15, com achados pendentes de correção | [revisão de código](../review/REVISAO_CODIGO_0.2.15_2026-10-22.md) **[REGISTRO]**; arquivo local ainda não rastreado em 26/10 |
-| 26/10/2026 | Organização histórica para GitHub, cópias íntegras dos protótipos e do firmware, documentação consolidada | [proveniência](ORIGENS_E_INTEGRIDADE.md) **[CÓDIGO]**; a publicação dependerá do resultado do versionamento |
+| 22/10/2026 | Revisão técnica da versão 0.2.15 e correção do fluxo de aquisições individuais por pé | [revisão de código](../review/REVISAO_CODIGO_0.2.15_2026-10-22.md) **[REGISTRO]**, [correção e testes sintéticos](../corrections/2026-10-22-exame-pes-individuais.md) **[TESTE]** |
+| 26/10/2026 | Organização histórica para GitHub, cópias íntegras dos protótipos e do firmware, documentação consolidada | [proveniência](ORIGENS_E_INTEGRIDADE.md) **[CÓDIGO]**; incorporação à `main` pelo PR #1 (`be2c8c8`) |
 
 ## Como ler esta cronologia
 

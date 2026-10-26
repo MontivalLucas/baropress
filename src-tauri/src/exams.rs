@@ -4,6 +4,16 @@ use tauri::State;
 
 use crate::AppDb;
 
+// Each foot retains its own matrix and raw series, but a paired acquisition
+// occupies one entry in the history. Keep an orphaned stage visible.
+pub(crate) const HISTORY_ENTRY_FILTER: &str = "NOT EXISTS (
+    SELECT 1 FROM exams first_stage
+    WHERE json_extract(e.analysis_json,'$.acquisition.stage')=2
+      AND json_extract(first_stage.analysis_json,'$.acquisition.stage')=1
+      AND json_extract(first_stage.analysis_json,'$.acquisition.sequenceId')=json_extract(e.analysis_json,'$.acquisition.sequenceId')
+      AND first_stage.patient_id=e.patient_id AND first_stage.status=e.status
+)";
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct CopSample {
@@ -497,7 +507,7 @@ fn list_exams_access(
         LEFT JOIN professionals pr ON e.professional_id = pr.id
     ";
 
-    let mut sql = format!("{base_sql} WHERE (?1 IS NULL OR e.patient_id=?1)");
+    let mut sql = format!("{base_sql} WHERE (?1 IS NULL OR e.patient_id=?1) AND {HISTORY_ENTRY_FILTER}");
     let mut params_vec: Vec<rusqlite::types::Value> = vec![patient_id
         .map(Into::into)
         .unwrap_or(rusqlite::types::Value::Null)];
@@ -695,20 +705,9 @@ pub fn get_exam(conn: &Connection, id: i64) -> Result<ExamDetails, String> {
 }
 
 pub fn delete_exam(conn: &Connection, id: i64) -> Result<(), String> {
-    let exists: bool = conn
-        .query_row(
-            "SELECT COUNT(*) FROM exams WHERE id = ?1",
-            params![id],
-            |r| r.get::<_, i64>(0),
-        )
-        .map(|c| c > 0)
-        .map_err(|e| format!("Erro ao verificar exame: {e}"))?;
-
-    if !exists {
-        return Err("Exame não encontrado.".into());
-    }
-
-    conn.execute("DELETE FROM exams WHERE id = ?1", params![id])
+    let exam = get_exam(conn, id)?;
+    let sequence_id = exam.analysis.as_ref().and_then(|a| a.acquisition.as_ref()).and_then(|a| a.sequence_id.as_deref());
+    conn.execute("DELETE FROM exams WHERE id=?1 OR (patient_id=?2 AND json_extract(analysis_json,'$.acquisition.sequenceId')=?3)", params![id, exam.patient_id, sequence_id])
         .map_err(|e| format!("Erro ao excluir exame: {e}"))?;
 
     Ok(())
