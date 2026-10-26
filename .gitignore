@@ -22,3 +22,18 @@ src-tauri/gen
 /.evento-build/
 *.tsbuildinfo
 __pycache__/
+
+# Ambiente e saídas dos protótipos Python históricos
+.venv/
+venv/
+*.py[cod]
+.pytest_cache/
+
+# Capturas locais, arquivos de participantes e anexos brutos
+*.csv
+*.pcap
+*.pcapng
+*.bak
+*.zip
+*.exe
+*.msi

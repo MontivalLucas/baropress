@@ -1,5 +1,29 @@
 # BAROPRESS — Sistema de Baropodometria 15×15 (TCC)
 
+## Do primeiro protótipo ao aplicativo atual
+
+Esta versão do repositório também preserva a **evolução técnica do TCC**: o
+primeiro mapa de calor em Python, sua versão interativa, o algoritmo original
+do ESP32, a construção do tapete e a passagem para o BAROPRESS desktop.
+
+**[Mapa completo do projeto, pastas e fluxos](docs/MAPEAMENTO_COMPLETO_PROJETO.md)** ·
+[inventário de todos os arquivos versionados](docs/historia/MANIFESTO_ARQUIVOS_VERSIONADOS.md) ·
+[começar pelo índice histórico](docs/historia/README.md) ·
+[linha do tempo](docs/historia/LINHA_DO_TEMPO.md) ·
+[Python inicial e interativo](prototipos/python-heatmap/README.md) ·
+[firmware ESP32](firmware/esp32/README.md) ·
+[construção do tapete](hardware/README.md) ·
+[algoritmos](docs/algoritmos/AQUISICAO_DADOS.md) ·
+[ensaios e limites](docs/validacao/ENSAIOS.md) ·
+[como manter e publicar no GitHub](docs/historia/GUIA_GITHUB.md).
+
+Os protótipos históricos foram incorporados sem alterar os arquivos-fonte;
+sua origem e os hashes SHA-256 constam em
+[proveniência](docs/historia/ORIGENS_E_INTEGRIDADE.md). A cronologia anterior
+ao primeiro commit foi reconstruída com código e documentos datados, sem
+fabricar datas de criação. O sistema apresenta **leituras ADC relativas**;
+pressão/força clínicas requerem calibração e validação específica.
+
 O plano BAROSYS foi executado no código fonte em 09/10/2026: condições e
 qualidade, retenção de quadros, reprodução, regiões manuais, análise temporal,
 relatórios/comparação e vista 3D. O protocolo de bancada foi preparado;
@@ -105,7 +129,7 @@ Depois de revisar o resultado, clique em **Salvar Exame no Banco**. Se houver er
 
 Execute pelo `iniciar_baropress.bat` para usar o código atualizado. Uma instalação
 anterior só recebe as alterações após recompilar e atualizar seu executável.
-Instalador desta entrega: [BAROPRESS 0.2.9](src-tauri/target/release/bundle/nsis/BAROPRESS_0.2.9_x64-setup.exe).
+Instalador histórico desta entrega: `src-tauri/target/release/bundle/nsis/BAROPRESS_0.2.9_x64-setup.exe` (artefato local de build, não versionado no GitHub).
 O executável novo está em `src-tauri/target/visualizacao/release/baropress.exe`;
 o build foi separado porque o executável release anterior estava aberto.
 
@@ -194,8 +218,8 @@ cargo test --manifest-path src-tauri/Cargo.toml
 
 ## Entrega 0.2.14 — 14/10/2026
 
-Instalador Windows x64: [BAROPRESS 0.2.14](entrega/BAROPRESS_0.2.14_x64-setup.exe).
-Aplicativo: [baropress.exe](entrega/BAROPRESS_0.2.14/baropress.exe), com as duas DLLs na mesma pasta.
+Instalador Windows x64 histórico: `entrega/BAROPRESS_0.2.14_x64-setup.exe` (artefato local, não versionado no GitHub).
+Aplicativo histórico: `entrega/BAROPRESS_0.2.14/baropress.exe`, com as duas DLLs na mesma pasta (artefato local, não versionado no GitHub).
 Inclui aquisição de 30/45 s, modalidades e sequência por pé, trajeto ao vivo e formulário simplificado.
 217 testes frontend, 127 backend e build/NSIS aprovados; 1 benchmark ignorado. Pacote gerado sem instalação automática.
 
