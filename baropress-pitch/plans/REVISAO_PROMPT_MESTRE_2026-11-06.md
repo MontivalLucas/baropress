@@ -104,7 +104,8 @@ Commits lógicos:
 3. `4d4f29a` — oportunidade e apresentação experimental.
 4. `0850b43` — demonstrações, hipótese comercial e aceite científico.
 5. `d5d5b83` — referências, controles, responsividade e movimento reduzido.
-6. Documentação final: este relatório, roteiro completo e atualização da autoridade vigente na base de conhecimento.
+6. `38f4d55` — documentação final: este relatório, roteiro completo e atualização da autoridade vigente na base de conhecimento.
+7. Registro de publicação da branch e do PR de revisão.
 
 ### Pendências reais
 
@@ -112,4 +113,6 @@ Commits lógicos:
 2. Fornecer exportação integral anonimizada do relatório caso se deseje substituir a captura parcial existente. A apresentação atual identifica corretamente o trecho.
 3. Realizar ensaio oral cronometrado e teste no projetor utilizado pela banca; os dez minutos são orientação.
 
-Nenhum merge ou deploy de produção foi realizado. A branch de revisão e o PR serão registrados após publicação do código verificado.
+Branch publicada: `codex/pitch-problematica-20261106`.
+
+PR em rascunho para revisão: [MontivalLucas/baropress #4](https://github.com/MontivalLucas/baropress/pull/4). O remoto `main` permaneceu no commit inicial `b10923b`. Nenhum merge ou deploy de produção foi realizado.
