@@ -1,0 +1,4517 @@
+{
+  "date": "2026-11-06",
+  "scope": "C:\\Users\\Montival Nunes\\Documents\\ChatGPT\\TCC - Tapete Baropodômétrico",
+  "excluded_directories": [
+    ".git",
+    "node_modules",
+    ".private"
+  ],
+  "files": [
+    {
+      "path": ".baropress-backup-slide10/App.tsx",
+      "bytes": 82086,
+      "sha256": "ca4c18235fdd7641e009c3eee68a066132a66a118c2355647c5f78fb960f3b10"
+    },
+    {
+      "path": ".baropress-backup-slide10/content.ts",
+      "bytes": 7654,
+      "sha256": "4759de3d4bea2d3a353e8ba6a9728cb3591c29b7c23fd25d9796791eb196d70f"
+    },
+    {
+      "path": "baropress-pitch/.gitignore",
+      "bytes": 44,
+      "sha256": "8192349a17926205933c50f11450ae13463d1c51830b426896b343d605e4e619"
+    },
+    {
+      "path": "baropress-pitch/.impeccable/config.json",
+      "bytes": 21,
+      "sha256": "7ef46a760798af9ae6687c73ad48f440842d94abbddb9a78bb114d3c943cc8c5"
+    },
+    {
+      "path": "baropress-pitch/.impeccable/layout/first-1920.png",
+      "bytes": 165573,
+      "sha256": "8a4b1480c0422da1956cb96bc47855ff00897da557d3724d33e2b27fe0758c3f"
+    },
+    {
+      "path": "baropress-pitch/.impeccable/questions/.gitignore",
+      "bytes": 65,
+      "sha256": "e2674ddf40c47e07f53ff3eb45cadc1da3f1b961d4aa44d0eafb985c3b34b150"
+    },
+    {
+      "path": "baropress-pitch/.impeccable/questions/roll.json",
+      "bytes": 1749,
+      "sha256": "eed14dd18dfc684fa8da3f035abb50b72ccd6f9f837e53dbf2f00738e52cbcfe"
+    },
+    {
+      "path": "baropress-pitch/.impeccable/questions/seeds/67f8066006ce37c9.json",
+      "bytes": 523,
+      "sha256": "9b586c372f602e633117fa352b84f9747fd6842478d6241248cfd83c49a9fd55"
+    },
+    {
+      "path": "baropress-pitch/.impeccable/review/base-desktop.png",
+      "bytes": 17483,
+      "sha256": "7390dc35b9dfa953fa24b463a4bbc052eb47620e3dd1a71ecca224855a0ca468"
+    },
+    {
+      "path": "baropress-pitch/.impeccable/review/desktop.png",
+      "bytes": 122198,
+      "sha256": "df078bbb968603d2b3585fcb268674f0f8cbfe62eb17d5313d38ca5728296bfa"
+    },
+    {
+      "path": "baropress-pitch/.impeccable/review/mobile.png",
+      "bytes": 29095,
+      "sha256": "e551ef33b8dc70b48dfb0a22d69919777a9162385c0ec3d0e329d21be6a1b0e9"
+    },
+    {
+      "path": "baropress-pitch/.impeccable/review/scene-1.png",
+      "bytes": 100750,
+      "sha256": "69fa891854cbe5da3b1385e9e19496ccd43ce1a25b1d4cc6959247be04b24ded"
+    },
+    {
+      "path": "baropress-pitch/.impeccable/review/scene-10.png",
+      "bytes": 82003,
+      "sha256": "32f00e205b8fba407bbecb10a1780eb7f1cda7dda04685e7e5939c692e6429c7"
+    },
+    {
+      "path": "baropress-pitch/.impeccable/review/scene-11.png",
+      "bytes": 116061,
+      "sha256": "c6e7aa60175fca6f293e782515018fc78ebd17d86d772ccbd93a3d9285e872e9"
+    },
+    {
+      "path": "baropress-pitch/.impeccable/review/scene-2.png",
+      "bytes": 149276,
+      "sha256": "5c5c6d6ee9ff31cb802c60c4cc916b51567b047067e74e9f8be2b2e3ee033fd5"
+    },
+    {
+      "path": "baropress-pitch/.impeccable/review/scene-3.png",
+      "bytes": 130404,
+      "sha256": "76adb4e4de4341af29ba8c36e75e0231dc06b59922c782df104f0ac7c6330381"
+    },
+    {
+      "path": "baropress-pitch/.impeccable/review/scene-4.png",
+      "bytes": 158340,
+      "sha256": "389f8751be246afe63f5044df81fa0929d22fe51531fb96bf7a68fd2112010b9"
+    },
+    {
+      "path": "baropress-pitch/.impeccable/review/scene-5.png",
+      "bytes": 100040,
+      "sha256": "1d32d58360d9ce5a2e7713d8d0939aafb9c73aea8b56612f243a9a0dd54d6e0e"
+    },
+    {
+      "path": "baropress-pitch/.impeccable/review/scene-6.png",
+      "bytes": 113863,
+      "sha256": "1ec10664bad6bc9d8f90f596a8977d85e665ca0eb77765ca2a67d94acb5a1cb9"
+    },
+    {
+      "path": "baropress-pitch/.impeccable/review/scene-7.png",
+      "bytes": 206593,
+      "sha256": "e0e7b64ac96a32a712c9fbc82aedbafe0fcb4a804adbeb8a8a9378928a1d27d7"
+    },
+    {
+      "path": "baropress-pitch/.impeccable/review/scene-8.png",
+      "bytes": 139286,
+      "sha256": "cf1621cefa6cf9245ceb3009cf7690aa85462b2980dd0b63b14cc2a86b0e5c96"
+    },
+    {
+      "path": "baropress-pitch/.impeccable/review/scene-9.png",
+      "bytes": 141153,
+      "sha256": "36585c631f5390fa1d4140d74be33f5a9036fa3d45b9a1e97d0b99b331199e8e"
+    },
+    {
+      "path": "baropress-pitch/DIRECTION.md",
+      "bytes": 2456,
+      "sha256": "0f5a0195e1499e931c58f367797b415e2736476c4f7d983335e0ba961855c24b"
+    },
+    {
+      "path": "baropress-pitch/PRODUCT.md",
+      "bytes": 1421,
+      "sha256": "d54ba372e9250661c0089dd0a7524c264bd624730e3915b85cc196845ae95937"
+    },
+    {
+      "path": "baropress-pitch/README.md",
+      "bytes": 3096,
+      "sha256": "819ab019b71675476a75a78a505a8a6d79951fd73900051fb09df8aea32c7684"
+    },
+    {
+      "path": "baropress-pitch/SOURCES.md",
+      "bytes": 2666,
+      "sha256": "03c1d7a6b2e83ef65e14b0be2be50995b9343bbb50ca8d07a55b43fa83d7159b"
+    },
+    {
+      "path": "baropress-pitch/dist/assets/index-5hQS4ZA9.css",
+      "bytes": 15017,
+      "sha256": "3ef6ac52c59f5bee999554b666c9079f61f4ffca05f8af9b3811d1f31936af65"
+    },
+    {
+      "path": "baropress-pitch/dist/assets/index-DvwwOzRx.js",
+      "bytes": 369632,
+      "sha256": "35502aba49be63f03389a240e7a3cfaed40e1ac004eaf7dd0b516351139298fb"
+    },
+    {
+      "path": "baropress-pitch/dist/assets/inter-cyrillic-ext-wght-normal-BOeWTOD4.woff2",
+      "bytes": 25960,
+      "sha256": "ca157063339ac4ad418f214f3abfed119b0798ab4d377386ce5c9e5a7a435ebd"
+    },
+    {
+      "path": "baropress-pitch/dist/assets/inter-cyrillic-wght-normal-DqGufNeO.woff2",
+      "bytes": 18748,
+      "sha256": "71d5ee93cc1e9f1d520a3a8b66456de18c7879d8df09d57fcd2eaff75fef0075"
+    },
+    {
+      "path": "baropress-pitch/dist/assets/inter-greek-ext-wght-normal-DlzME5K_.woff2",
+      "bytes": 11232,
+      "sha256": "6e9e020a25f9b56d418f2c085b1d3c09725a4da23fe693a5b463064606732190"
+    },
+    {
+      "path": "baropress-pitch/dist/assets/inter-greek-wght-normal-CkhJZR-_.woff2",
+      "bytes": 18996,
+      "sha256": "1be3448e292fbf05ffe176fe1e43f135013d50b1e7d324ad1a558f623d3bb6f6"
+    },
+    {
+      "path": "baropress-pitch/dist/assets/inter-latin-ext-wght-normal-DO1Apj_S.woff2",
+      "bytes": 85068,
+      "sha256": "34b9c504cab7a73e37b746343a449132e56cf7b5481af2cb81dc74dcff25c956"
+    },
+    {
+      "path": "baropress-pitch/dist/assets/inter-latin-wght-normal-Dx4kXJAl.woff2",
+      "bytes": 48256,
+      "sha256": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62"
+    },
+    {
+      "path": "baropress-pitch/dist/assets/inter-vietnamese-wght-normal-CBcvBZtf.woff2",
+      "bytes": 10252,
+      "sha256": "5c66f9e07e90c6d4ac4922cc68d60de26c17b1858e677fb5e603fce3952b3ff2"
+    },
+    {
+      "path": "baropress-pitch/dist/assets/report-detail.png",
+      "bytes": 93681,
+      "sha256": "bfa0a9dc94204af8df726f1b7d0baa22d98f647b3845f922efb350049f2dcf07"
+    },
+    {
+      "path": "baropress-pitch/dist/assets/software-0.png",
+      "bytes": 252964,
+      "sha256": "e7a442e74be51c32845d28d8e4ac2723fd68f2bb925c2a3815bf16954d297468"
+    },
+    {
+      "path": "baropress-pitch/dist/assets/software-1.png",
+      "bytes": 75093,
+      "sha256": "3037915a1ba0607d1478b9a644d0d322272ed958361864a364b5efae02721b34"
+    },
+    {
+      "path": "baropress-pitch/dist/assets/software-2.png",
+      "bytes": 292990,
+      "sha256": "a9cb6a0291715a423d5159be584f0685272f2c76bb53a30f799c72b880161d8e"
+    },
+    {
+      "path": "baropress-pitch/dist/assets/software-3.png",
+      "bytes": 131073,
+      "sha256": "ea561c9eb4ed83beeac54acf59ec9b2be755ad51b0b6c80890dde93be6291287"
+    },
+    {
+      "path": "baropress-pitch/dist/assets/software-4.png",
+      "bytes": 194824,
+      "sha256": "f9815001430b3c910ef2162a4afb1491a4eb59a43c8ef875668f44415e48a515"
+    },
+    {
+      "path": "baropress-pitch/dist/index.html",
+      "bytes": 668,
+      "sha256": "336a4af940064f3757d5ed4380b84392002fc7f4fe68cae449380f71dd865e2d"
+    },
+    {
+      "path": "baropress-pitch/index.html",
+      "bytes": 567,
+      "sha256": "fe089494c4faece5ed9343f408684209588a9eb26838898002452858bfc8c253"
+    },
+    {
+      "path": "baropress-pitch/package-lock.json",
+      "bytes": 88534,
+      "sha256": "81ac3b2f4602b2bfb59e78ab4a1766eab7f009c5136b41f26318fc7d22fc78a0"
+    },
+    {
+      "path": "baropress-pitch/package.json",
+      "bytes": 595,
+      "sha256": "aef500e2dba6f2370a15554ceec14d2b0af5b11872d22b5543c6bdc3eaa2a2e1"
+    },
+    {
+      "path": "baropress-pitch/public/assets/report-detail.png",
+      "bytes": 93681,
+      "sha256": "bfa0a9dc94204af8df726f1b7d0baa22d98f647b3845f922efb350049f2dcf07"
+    },
+    {
+      "path": "baropress-pitch/public/assets/software-0.png",
+      "bytes": 252964,
+      "sha256": "e7a442e74be51c32845d28d8e4ac2723fd68f2bb925c2a3815bf16954d297468"
+    },
+    {
+      "path": "baropress-pitch/public/assets/software-1.png",
+      "bytes": 75093,
+      "sha256": "3037915a1ba0607d1478b9a644d0d322272ed958361864a364b5efae02721b34"
+    },
+    {
+      "path": "baropress-pitch/public/assets/software-2.png",
+      "bytes": 292990,
+      "sha256": "a9cb6a0291715a423d5159be584f0685272f2c76bb53a30f799c72b880161d8e"
+    },
+    {
+      "path": "baropress-pitch/public/assets/software-3.png",
+      "bytes": 131073,
+      "sha256": "ea561c9eb4ed83beeac54acf59ec9b2be755ad51b0b6c80890dde93be6291287"
+    },
+    {
+      "path": "baropress-pitch/public/assets/software-4.png",
+      "bytes": 194824,
+      "sha256": "f9815001430b3c910ef2162a4afb1491a4eb59a43c8ef875668f44415e48a515"
+    },
+    {
+      "path": "baropress-pitch/scripts/prepare-assets.ps1",
+      "bytes": 2647,
+      "sha256": "e69941b5793aea6983bf111faed2dc494184f4c1e5870498b9bf78a97d5f4e2c"
+    },
+    {
+      "path": "baropress-pitch/src/App.tsx",
+      "bytes": 16187,
+      "sha256": "a58b3c1d4a5fd4f427f52fe5693dc25bce7aaec03a7954d146e4a22b7ac27a4e"
+    },
+    {
+      "path": "baropress-pitch/src/content.ts",
+      "bytes": 2453,
+      "sha256": "894f56e1de47e6f306e5c956ffad82cbea9ea7d44a705925c31a8ea0f09d2094"
+    },
+    {
+      "path": "baropress-pitch/src/index.css",
+      "bytes": 3936,
+      "sha256": "2afe64bc6f12e866fc6122af8fa054d187547f3dbcf5a8cb5d6c1da9a8691da2"
+    },
+    {
+      "path": "baropress-pitch/src/main.tsx",
+      "bytes": 149,
+      "sha256": "d33c5c2c7d2d10a5f6d56a5ba1f812a3863a551afe9ce918d2f3476521048495"
+    },
+    {
+      "path": "baropress-pitch/src/vite-env.d.ts",
+      "bytes": 38,
+      "sha256": "65996936fbb042915f7b74a200fcdde7e410f32a669b1ab9597cfaa4b0faddb5"
+    },
+    {
+      "path": "baropress-pitch/tests/deck.test.mjs",
+      "bytes": 5085,
+      "sha256": "4d0a98ce0850269854048a008226a1ec8e12e7ae47f2b1250fc69d2d119ef25d"
+    },
+    {
+      "path": "baropress-pitch/tsconfig.json",
+      "bytes": 243,
+      "sha256": "c904f7667b845b93bf5e2a5ffb4c7e5f1c4cfbab768e0f6f53ed6682a84e4d50"
+    },
+    {
+      "path": "baropress-pitch/tsconfig.tsbuildinfo",
+      "bytes": 102,
+      "sha256": "af162f99e360f8f920286450bfa2cf03a5144d9f46c8a53b679d6031056f24b9"
+    },
+    {
+      "path": "baropress-pitch/vite.config.ts",
+      "bytes": 262,
+      "sha256": "7305963d42881edbbe953a612e057e0d5c710add303c8eef0c108b6aff05baa6"
+    },
+    {
+      "path": "baropress-repository/.gitattributes",
+      "bytes": 322,
+      "sha256": "8965e874e1b80b4c704ba5f9c78e6987584b18d35f462c2780124598e8b8c99f"
+    },
+    {
+      "path": "baropress-repository/.github/workflows/rust-windows.yml",
+      "bytes": 697,
+      "sha256": "c59cee7d2a4f1c12e6a43f5236e730c77f209b7222a06ff4f1b4c02077a525a9"
+    },
+    {
+      "path": "baropress-repository/.gitignore",
+      "bytes": 524,
+      "sha256": "80d0fe015c077ccfe341aa764d4659ce284ecda2c9e2f5ae170e59005e631871"
+    },
+    {
+      "path": "baropress-repository/README.md",
+      "bytes": 16551,
+      "sha256": "cd181319d12bf7bfd06fe27fb2e15df8fa99580947f50b18a1c460fd4f81203e"
+    },
+    {
+      "path": "baropress-repository/Sprint/00_LEIA_PRIMEIRO.txt",
+      "bytes": 12278,
+      "sha256": "300b0c92b07bf896259ad92ea3f248bb70e2c9b9118eea52ce248d6f8a6d0e4c"
+    },
+    {
+      "path": "baropress-repository/Sprint/01_Referencias/Contexto.txt",
+      "bytes": 14550,
+      "sha256": "b9812dc6ff5b27ba3ee71cfe936d1691f0e6e9d7695493d17908cff084b56ea8"
+    },
+    {
+      "path": "baropress-repository/Sprint/01_Referencias/PROJETO TCC - FASES.txt",
+      "bytes": 28859,
+      "sha256": "5c681858a630b57294656be8e11ae7c444eb1c3bfed33f7646506e444b37b416"
+    },
+    {
+      "path": "baropress-repository/Sprint/02_Concluido/PROGRESSO_CONCLUIDO.txt",
+      "bytes": 16150,
+      "sha256": "c8e6e3fb90ee452e862e19720e12475379e1750252819be9fa492976bfcaa949"
+    },
+    {
+      "path": "baropress-repository/Sprint/03_Em_Andamento/PROGRESSO_EM_ANDAMENTO.txt",
+      "bytes": 13316,
+      "sha256": "974323fadf5d70ffc0b0856cff95f1ffc935c740e3088c003f057f1dc2ee4e7e"
+    },
+    {
+      "path": "baropress-repository/Sprint/04_Futuro/ESTUDO_DINAMICA_F09_A.txt",
+      "bytes": 2245,
+      "sha256": "12a895d8c98e07d667da2ca459b6af6026b534dba322bd99105371c4897edbc4"
+    },
+    {
+      "path": "baropress-repository/Sprint/04_Futuro/PENDENCIAS_POS_CORRECOES_0.2.10.txt",
+      "bytes": 7264,
+      "sha256": "cff617cb6d45288f1f17210ddd0ded6050f5acd76e63ce7ea596660c5c1716ca"
+    },
+    {
+      "path": "baropress-repository/Sprint/04_Futuro/PENDENCIAS_USUARIOS_LOGIN_ACESSO.txt",
+      "bytes": 3164,
+      "sha256": "bebb6da7963781c90d902604b4a6bdfce1f3f3c51933012f0936052b01f88b7d"
+    },
+    {
+      "path": "baropress-repository/Sprint/04_Futuro/PLANO_AQUISICAO_30_45_MODALIDADES.txt",
+      "bytes": 3002,
+      "sha256": "a0f3bd5001ec92dfa278b216346a04e3ba2c7d74352db60d2743cca749a0a78b"
+    },
+    {
+      "path": "baropress-repository/Sprint/04_Futuro/PLANO_MELHORIAS_BASEADAS_NO_BAROSYS.txt",
+      "bytes": 30011,
+      "sha256": "b5b305f90fe8a13a11e79d3a26e164403dfdb05504a98ad5e1fc7f0e1ec80054"
+    },
+    {
+      "path": "baropress-repository/Sprint/04_Futuro/PLANO_PRIMEIRO_ACESSO_CADASTRO.txt",
+      "bytes": 1446,
+      "sha256": "c6c92e0e174c36a4a1e7f39e526dce205870f7e793b2e1bbe101d2742c075c33"
+    },
+    {
+      "path": "baropress-repository/Sprint/04_Futuro/PLANO_USUARIOS_LOGIN_ACESSO.txt",
+      "bytes": 7724,
+      "sha256": "332db626086aac9a1e1f391be6b53bbc9c40466da22d13807fd9856910e1f1f5"
+    },
+    {
+      "path": "baropress-repository/Sprint/04_Futuro/PROGRESSO_FUTURO.txt",
+      "bytes": 8672,
+      "sha256": "f6ef54ca78d753e382fc28abbc74a14686c1cdf678fb8e74577a3b190671e9a6"
+    },
+    {
+      "path": "baropress-repository/Sprint/04_Futuro/PROMPTS_MELHORIAS_BAROSYS_CODEX.txt",
+      "bytes": 11743,
+      "sha256": "ab174cdf68f69d90ab9045c380f65073f63b1ee5526254bd309644250050b1be"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-06_01_correcao_fase5.txt",
+      "bytes": 3538,
+      "sha256": "93774d62ab5c825b26d43cc5a5a77d5be3cef3214f74990d6076729dede2e93c"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-06_02_fase7_comparacao.txt",
+      "bytes": 1046,
+      "sha256": "cacac6473a640953bfed92ff4e7db093837dcfa327fa78bb2a71cd7198236832"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-06_03_fase8_agenda.txt",
+      "bytes": 1031,
+      "sha256": "5a62319e5238ed0e595f34b730b784bd6d0f96f6cc66f23d3a8212bfe16d40ac"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-06_04_fase9_questionarios.txt",
+      "bytes": 1040,
+      "sha256": "4e4a6cde5201fae332af19d1aaaf21fe10032d534ec8322a23d605d5c8213cc6"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-06_05_fase10_backup.txt",
+      "bytes": 1276,
+      "sha256": "9ea68b1c167c0d9c1746b48100526a6de0a2294f9f6342a73c66cf1d9e1d69ae"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-06_06_fase11_refinamento.txt",
+      "bytes": 1836,
+      "sha256": "91146629ce38e4360a8a3b39664868ec8e3b4d309a321ad95ff4392cfd2d916f"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-07_01_resumo_fases7_a11.txt",
+      "bytes": 1458,
+      "sha256": "3dc547f8ffbdeeb78c195ebe809108cad93f43eabce361b2cb0e3275f03eae5f"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-07_02_auditoria_login_qualidade.txt",
+      "bytes": 3073,
+      "sha256": "1081496182bfb9c9f229482f379d8b36f6b85d7561399d39dee736a93b4df64e"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-07_03_uniformizacao_visualizacao_exame.txt",
+      "bytes": 4168,
+      "sha256": "b674a4d4a19f51777aa952a60367b4afa01b564e4748d616c6b94ec338af02e4"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-07_04_exames_sem_aba_relatorios.txt",
+      "bytes": 2238,
+      "sha256": "e3cd5ca25a97b6026fd4cd7c3fa38e20437543b350b2301f98cf7e7a8f40aea8"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-07_05_arduino_configuracoes_conexao_automatica.txt",
+      "bytes": 4291,
+      "sha256": "9692cca80545a5f75764fc4169deeb8b679f6fcbc42e549ad10b2c25891085b7"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-07_06_configuracoes_sem_mapa_calor.txt",
+      "bytes": 1288,
+      "sha256": "dcf908ab089e6d7c3046b63c63ba172bc0ec2f2ae0836f6073a1b96f134e7e60"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-07_07_questionario_anamnese_integrado.txt",
+      "bytes": 3252,
+      "sha256": "5c00eadb5e1d2a0139e33e7bb0f0ee7c90c43123b06fa33dc07a904492f9fb72"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-07_08_configuracoes_logs_backup_historico_exames.txt",
+      "bytes": 2430,
+      "sha256": "318c1d94aff4d30bb59af9d3bc436548801ca8616890b34cf1a7d3e9b110a190"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-07_09_checkup_desempenho_limpeza.txt",
+      "bytes": 4110,
+      "sha256": "6957043e1b0d24e270c47a8e191426064a3974ac20970e53ba3cde1590d60ddf"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-07_10_revisao_arquitetura_ux_funcionalidades.txt",
+      "bytes": 3641,
+      "sha256": "39f5b39e4bc6a98ba737f010bf8d0269bbe8070e7579b8788f94f059b784c19b"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-07_11_correcoes_arquitetura_ux.txt",
+      "bytes": 3736,
+      "sha256": "017ee6350b6ee05b6a9a21294181239364a6870ac8b2aa5625d66d063647be26"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-07_12_documentacao_prototipo_piloto.txt",
+      "bytes": 2144,
+      "sha256": "a1dccd8b5f171c9b9a7be8a4ab18f0e10c4c6668ce5b8e4568b5befd3f58f328"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-08_12_calibracao_simplificada_ajudas.txt",
+      "bytes": 3897,
+      "sha256": "04743b7fbd09f94b29e5ab8840b946bd22860dba7ad29def3a962c24224e4ba6"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-08_13_alinhamento_faixa_esquerda.txt",
+      "bytes": 2633,
+      "sha256": "ade026ef4af35014e2f6874a086fb92ee4f4efe35307df5d1e7c0fb4683f80da"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-08_14_rollback_faixa_esquerda.txt",
+      "bytes": 1477,
+      "sha256": "be0a9a86c1ab4a7cb52387a0858f792566c68627914173a44a0705bfed133159"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-09_01_plano_melhorias_barosys.txt",
+      "bytes": 2301,
+      "sha256": "f3befa59092c254df9f05289f32cc2533d917b4dc9d0b61fd520419f49fe8bb1"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-09_02_barosys_F00.txt",
+      "bytes": 2621,
+      "sha256": "bf1958c52427377696f9baa05a916733f1fd381f09390c7a10579ac39dcf51b5"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-09_03_barosys_F01.txt",
+      "bytes": 1777,
+      "sha256": "ebc03e30ab3187638a33bcedc7bc36ee83d14b5166f22170b3f5d4d740b8eaaf"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-09_04_barosys_F02.txt",
+      "bytes": 1858,
+      "sha256": "3a89632de56b2151b64b159305c089faf01c00fec276101d959596c364af0932"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-09_05_barosys_F03.txt",
+      "bytes": 1978,
+      "sha256": "95191274d129046562a567af5feccfa7d3dc9f0be1bb0fd9cec254dc68db4ebf"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-09_06_barosys_F04.txt",
+      "bytes": 1744,
+      "sha256": "a3a1c45fca9d7dce4ca21578b4dc71accc64c2eb3394c8222f671f798093f969"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-09_07_barosys_F05.txt",
+      "bytes": 2062,
+      "sha256": "6cd6032b0048c72be167a54b72de600324c810bc62d95cc862de58c17cff6322"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-09_08_barosys_F06.txt",
+      "bytes": 1575,
+      "sha256": "53a47d6ed3a240d215b6d0c46f63528ef3553d759763cba2ac5ef2a84dd21615"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-09_09_barosys_F07.txt",
+      "bytes": 1850,
+      "sha256": "f6b5ad1d09b53d1d48aa4469882fe77fdfb8a473a47d908899f39dbfd952838a"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-09_10_barosys_F08.txt",
+      "bytes": 1487,
+      "sha256": "9fe16ed59d5d3e3b23c177647d3b7b893e07a71be26c37c7a69fa83042977276"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-09_11_barosys_F09.txt",
+      "bytes": 1588,
+      "sha256": "b6e17214c32565202d56d8baea708126d4174f06c9387fec6ac08eec3687e980"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-09_12_IAM_01.txt",
+      "bytes": 733,
+      "sha256": "cd5a2adf158cf00c16afe252f93e58f8748dd2ef033fa235738e93ac8a6b70b8"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-09_12_IAM_02.txt",
+      "bytes": 803,
+      "sha256": "649be0414b0fcf58b3ef7ff4984147e47f1117bfc85c36703015f3636a6a5203"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-09_12_IAM_03.txt",
+      "bytes": 808,
+      "sha256": "ff94db757d85111ac9c42c2250a9ebeb600388f6c6628ccf7a0067a049f54d9f"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-09_12_IAM_04.txt",
+      "bytes": 1018,
+      "sha256": "9e1b98b5dd65a4c1ea272e43a2a0f76d7b64ad834c45e40670446f7a1904a31a"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-09_12_IAM_05.txt",
+      "bytes": 1513,
+      "sha256": "5fffd0b32b3d4201ddbd2bcede33fae861443d92b1a2058413d9a3d7cdae991a"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-09_12_IAM_06.txt",
+      "bytes": 2277,
+      "sha256": "496b98af857be03b3ffda69019a0eb2c26ea6a7d4b3aa87b4987798c4c02df33"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-09_13_entrega_usuarios_acesso_0.2.12.txt",
+      "bytes": 1743,
+      "sha256": "61f882feb25dd25d7b1fd57282ce65624f67d9344bcefee5d3e3a352e46e0e9e"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-09_14_primeiro_acesso_cadastro.txt",
+      "bytes": 1631,
+      "sha256": "ad271ab02f5ab2a127b5baa9a310078d6397ff416b3ab542c7ec040ec58e899c"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-14_01_aquisicao_modalidades_trajeto.txt",
+      "bytes": 3002,
+      "sha256": "a0f3bd5001ec92dfa278b216346a04e3ba2c7d74352db60d2743cca749a0a78b"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-14_02_simplificacao_novo_exame.txt",
+      "bytes": 912,
+      "sha256": "24e6f16dcbd399a6b5bfcfc6d1bed28b0a531160ae58455fee26e8d7a766fde5"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-14_03_testes_condicoes_simplificadas.txt",
+      "bytes": 1752,
+      "sha256": "5eecfe3f25e61765d776acc1e7c5b499dcda8cfdc9d3a7d847ee1842e5ba5f0b"
+    },
+    {
+      "path": "baropress-repository/Sprint/05_Historico/2026-10-14_04_exe_0.2.14.txt",
+      "bytes": 1287,
+      "sha256": "a38bf2f6247860a10c4b937f68ae5caa798254516507f3603afcad51f2bbe4f1"
+    },
+    {
+      "path": "baropress-repository/Sprint/06_Modelos/MODELO_REGISTRO_PROGRESSO.txt",
+      "bytes": 590,
+      "sha256": "20ddbf132e0961e748494842ef08db3f0e5f13874553d9d3837d9583f15b4fc2"
+    },
+    {
+      "path": "baropress-repository/Sprint/99_Logs_Antigos/err.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "baropress-repository/Sprint/99_Logs_Antigos/out.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "baropress-repository/Sprint/BAROPRESS_AUDITORIA_CORRECAO_LOGIN_CODEX.txt",
+      "bytes": 14168,
+      "sha256": "5e42e45b557cec2a892454a9d4f715326151c4c2c132ce352882b947d0fd922e"
+    },
+    {
+      "path": "baropress-repository/Sprint/BAROPRESS_Documentacao_Tecnica_para_Fisioterapia.docx",
+      "bytes": 386458,
+      "sha256": "7ffe80aac4c876cb4da96212c205e904eba1464431cfd6da539b55a262c9a2a0"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/DOCUMENTACAO_PROTOTIPO_E_TESTE_PILOTO.txt",
+      "bytes": 40615,
+      "sha256": "a2cf93099bdd7be6b40b2c317d100615f7084e31727fdf12f27cc4624ee26287"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/BAROPRESS_Documentacao_Tecnica_para_Fisioterapia.docx",
+      "bytes": 386458,
+      "sha256": "7ffe80aac4c876cb4da96212c205e904eba1464431cfd6da539b55a262c9a2a0"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/gerar_documentacao.py",
+      "bytes": 40780,
+      "sha256": "8c63c9120a66e1071b8463cefe134f0ef925beeab1af57eea0ee3bd978268e82"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa/BAROPRESS_Documentacao_Tecnica_para_Fisioterapia.pdf",
+      "bytes": 640867,
+      "sha256": "8df049a2b6271bd59234a0cad2536c1a017de30fef614905d436ec8c1b92cd78"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa/page-1.png",
+      "bytes": 320749,
+      "sha256": "56240be302d577dca85ac6f322781e1a1a9d749681d4283ebfcdb8cda764fd79"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa/page-10.png",
+      "bytes": 338487,
+      "sha256": "910098e2366e8f87f7c3ae6552c6d681140fe40b837ed2c083fe3b2d59f782a9"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa/page-11.png",
+      "bytes": 304550,
+      "sha256": "9130f5a008f479520aa002b986a3d7098f41af243208c0bfee27a41cb11d1152"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa/page-12.png",
+      "bytes": 359546,
+      "sha256": "6b383dfac2ed5cf0acddfdeb3ab6d6cf5b5ad89613bffd5e2dc240c6e47187d9"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa/page-13.png",
+      "bytes": 400660,
+      "sha256": "3169d8a03c2c45a314a1e656ba224b5deec80fd109744b81c5533db28459e603"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa/page-14.png",
+      "bytes": 283993,
+      "sha256": "54dacb4950f6268d1ce3236100faf42621dbc8ae218828268ce7e118a61a5f55"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa/page-15.png",
+      "bytes": 279299,
+      "sha256": "f1f27400b5149181167d3b1ad7cdfa90085cc3799f734490339b5bc6750d8f66"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa/page-16.png",
+      "bytes": 451438,
+      "sha256": "4e0bdd87bfcca28292ac3b5e33c86efde6e66534dfa3db8226fe1946f6e60f1a"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa/page-17.png",
+      "bytes": 318456,
+      "sha256": "b088af41c6f12e12920eff93754c7280ee22fe74d936da0e3a5d9c1fc7029277"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa/page-2.png",
+      "bytes": 308577,
+      "sha256": "ad67a3f409a098f40779da5e7ce6207f8d57e531c94c1ce3bf7e950b6cc27f3f"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa/page-3.png",
+      "bytes": 324888,
+      "sha256": "60860befad99d1c3d9501b7ea78089062502d9614851d5f50f9c89ab9eaa7ff8"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa/page-4.png",
+      "bytes": 373490,
+      "sha256": "bc06979bd5d9a74d5d24116efae7a449efb84bff823d90a14735ea32597aecb3"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa/page-5.png",
+      "bytes": 376633,
+      "sha256": "8c7dad0d03251b253bb0b4272d74b7efb0010ff0faa810f3a10e35f7f37ad731"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa/page-6.png",
+      "bytes": 381782,
+      "sha256": "89f0ab4269a550f8c134d3f9c58f380e17b9bc18d1b81cf9f4821d4782b05181"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa/page-7.png",
+      "bytes": 27559,
+      "sha256": "662a4fa53bd133be12bb0639019796c8a818668c5864bcd94ac8a11da5002467"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa/page-8.png",
+      "bytes": 387065,
+      "sha256": "862fe68c8e87e46a6975282c8898858209164a97785097847ca02e548a193f05"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa/page-9.png",
+      "bytes": 52569,
+      "sha256": "18d36b44df329f2f6f366b695e83b70959794dbfaa83c301b2c13cb01a526186"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa_entrega/BAROPRESS_Documentacao_Tecnica_para_Fisioterapia.pdf",
+      "bytes": 637666,
+      "sha256": "af90c982bc6a9ad95d94ab811f2e9f791215a3fc19aef48eaa6460b033b5ae76"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa_entrega/page-1.png",
+      "bytes": 320008,
+      "sha256": "588072e81d9e2d5cd5140c3c57f1f7ef6c7a4a94fc6caa1eaf4c38a26d710f71"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa_entrega/page-10.png",
+      "bytes": 359397,
+      "sha256": "c164998e368cf4af50b4c6afc7edc256ca5e4b800d6bfa898a279a7a5cf2ea2d"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa_entrega/page-11.png",
+      "bytes": 400315,
+      "sha256": "7001662f39780c7e55e27c4fc4dd8dd92ae8af16c83d6812feb2d15fc6cdb93f"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa_entrega/page-12.png",
+      "bytes": 283043,
+      "sha256": "1681d0e73c86a50bd47a07e5ed2463c74408f7a14816ed97debfeab1a2fd9130"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa_entrega/page-13.png",
+      "bytes": 279046,
+      "sha256": "34cf689b91246f5f4783e8bc390d339c841f2a645a34c0637c5c287a0c4404dc"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa_entrega/page-14.png",
+      "bytes": 449975,
+      "sha256": "e6bc8beb99199e6fe84fa1c25158876489c741e6b1f2af7e25fabe796033ca4e"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa_entrega/page-15.png",
+      "bytes": 317764,
+      "sha256": "2d3469efff78721973e9b4b1d4d7d6b86201e0ec765e8ddb78bd96b6eb0441d9"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa_entrega/page-2.png",
+      "bytes": 307434,
+      "sha256": "f69c0ad1454793fcc76af74acb25f7f3fc1dc5b03971ec12a27630d1820d8029"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa_entrega/page-3.png",
+      "bytes": 324690,
+      "sha256": "32361adb645989ef6b185168c04bdbf0431f14fb560e01082bb7c3343593abe8"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa_entrega/page-4.png",
+      "bytes": 372725,
+      "sha256": "887abef166f2b27ccf31437de0ad0db3d830f5c37877d9862220eede516791eb"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa_entrega/page-5.png",
+      "bytes": 376587,
+      "sha256": "3aa8e3a60356f2cf7c96b26d1566626f75f4ff644ebf5a4a978b206caa82378a"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa_entrega/page-6.png",
+      "bytes": 381595,
+      "sha256": "2313840e2f6be3193014c9f10da421cbb0c111ee0eca5c6c11794d6782e3dfaf"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa_entrega/page-7.png",
+      "bytes": 409646,
+      "sha256": "c32308cda3a0d4682732947260c3755facbcb92bf34fdbe3817b8348c1735bb0"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa_entrega/page-8.png",
+      "bytes": 338366,
+      "sha256": "a114473e83529a61ea377aeea32bb44ab701304dfc549c74f73d6fee7bed9d48"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa_entrega/page-9.png",
+      "bytes": 304550,
+      "sha256": "5ec4bf97609efda0e44053254f92e553bfbfd6c881f9c14c4136249e64e73921"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa_final/BAROPRESS_Documentacao_Tecnica_para_Fisioterapia.pdf",
+      "bytes": 637716,
+      "sha256": "21576c31a0bc3d788becd847ce4c53c535b0d74250f41d7adf4f8d4d75f5cd7d"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa_final/page-1.png",
+      "bytes": 320151,
+      "sha256": "23cc624a88f43e15bc554ab60c86cc3f91963a615bb607ab78e0593e8294e59f"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa_final/page-10.png",
+      "bytes": 359397,
+      "sha256": "c164998e368cf4af50b4c6afc7edc256ca5e4b800d6bfa898a279a7a5cf2ea2d"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa_final/page-11.png",
+      "bytes": 400315,
+      "sha256": "7001662f39780c7e55e27c4fc4dd8dd92ae8af16c83d6812feb2d15fc6cdb93f"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa_final/page-12.png",
+      "bytes": 283043,
+      "sha256": "1681d0e73c86a50bd47a07e5ed2463c74408f7a14816ed97debfeab1a2fd9130"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa_final/page-13.png",
+      "bytes": 279046,
+      "sha256": "34cf689b91246f5f4783e8bc390d339c841f2a645a34c0637c5c287a0c4404dc"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa_final/page-14.png",
+      "bytes": 449975,
+      "sha256": "e6bc8beb99199e6fe84fa1c25158876489c741e6b1f2af7e25fabe796033ca4e"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa_final/page-15.png",
+      "bytes": 317764,
+      "sha256": "2d3469efff78721973e9b4b1d4d7d6b86201e0ec765e8ddb78bd96b6eb0441d9"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa_final/page-2.png",
+      "bytes": 307434,
+      "sha256": "f69c0ad1454793fcc76af74acb25f7f3fc1dc5b03971ec12a27630d1820d8029"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa_final/page-3.png",
+      "bytes": 324690,
+      "sha256": "32361adb645989ef6b185168c04bdbf0431f14fb560e01082bb7c3343593abe8"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa_final/page-4.png",
+      "bytes": 372725,
+      "sha256": "887abef166f2b27ccf31437de0ad0db3d830f5c37877d9862220eede516791eb"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa_final/page-5.png",
+      "bytes": 376587,
+      "sha256": "3aa8e3a60356f2cf7c96b26d1566626f75f4ff644ebf5a4a978b206caa82378a"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa_final/page-6.png",
+      "bytes": 381595,
+      "sha256": "2313840e2f6be3193014c9f10da421cbb0c111ee0eca5c6c11794d6782e3dfaf"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa_final/page-7.png",
+      "bytes": 409646,
+      "sha256": "c32308cda3a0d4682732947260c3755facbcb92bf34fdbe3817b8348c1735bb0"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa_final/page-8.png",
+      "bytes": 338366,
+      "sha256": "a114473e83529a61ea377aeea32bb44ab701304dfc549c74f73d6fee7bed9d48"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/qa_final/page-9.png",
+      "bytes": 304550,
+      "sha256": "5ec4bf97609efda0e44053254f92e553bfbfd6c881f9c14c4136249e64e73921"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/render_with_word.py",
+      "bytes": 1060,
+      "sha256": "36786f138a111912098b3f51d595bb0ade43831d83bc379e35e4510e7d29313a"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Entrega_Fisioterapia/word_export.ps1",
+      "bytes": 742,
+      "sha256": "a30f84265b4f0e68f677acb0a6507b6feb5de7e678bdc09b3f9e06737808a949"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Evidencias/DADOS_BRUTOS_CALIBRACAO.json",
+      "bytes": 5603922,
+      "sha256": "e47898d4e466b62d3c0fbf644756a508363748ab5e8f6296c084d0869fc393b1"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Evidencias/EXAMES_ADC_SEM_IDENTIFICADORES.json",
+      "bytes": 21176,
+      "sha256": "8b0ca32314508bcf4391c7d27ee345292c7455dff498caeff87326401a345f6c"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Evidencias/MANIFESTO.json",
+      "bytes": 1770,
+      "sha256": "5f53906f531d1e39dab95ab8e19e2d4beae80c372a650f81b1ecf016b9998757"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Evidencias/MEDIAS_POR_SENSOR.txt",
+      "bytes": 571015,
+      "sha256": "550929d54bcb542fb4e38d5e9e162d7533b4bf38555ce583ea475a8bf8c38a94"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Evidencias/PERFIL_E_VALIDACAO_REGISTRADOS.json",
+      "bytes": 49699,
+      "sha256": "6c09380d3bb1de6250fb805ffdce51ebdd56eb48cea74b7c22fde8548eb7bbaf"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Evidencias/RESULTADOS_POR_REPETICAO.txt",
+      "bytes": 6488,
+      "sha256": "1c0b7a932aed103ba0fe82016430d2fa161ff7c2373150f3b001c621ea774911"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Evidencias/RESUMO_ANALITICO.json",
+      "bytes": 95318,
+      "sha256": "49c1952a8fd728cd80d9bfdc813edc3e90403aec6a6634da6569e7f78dd46974"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/Fotos/LEIA_ME.txt",
+      "bytes": 301,
+      "sha256": "40eabc6d8c0539dc78bc556b9804e2af4c9f63c09f2ff9d6663bff8ae2529a72"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/PROTOCOLO_BAROSYS_F06_V1.txt",
+      "bytes": 5639,
+      "sha256": "d5b6c500019d24c75ed55cbee31bc4b13754079c5957ead00cf58aeaa7f3ff1b"
+    },
+    {
+      "path": "baropress-repository/Sprint/Documentacao_TCC/extrair_evidencias.py",
+      "bytes": 12937,
+      "sha256": "6729cfd93dcaecb6f31c586faec0d64a78561f35b96f47c0f5f0bff478e85bc9"
+    },
+    {
+      "path": "baropress-repository/Sprint/Treinamento/BAROPRESS_TESTES_E_CALIBRACAO_GUIA_CODEX.txt",
+      "bytes": 47484,
+      "sha256": "5792d802c29020208ba8b8d813bdef94cb1e1888b5ca4474a538c89aee7e3cbe"
+    },
+    {
+      "path": "baropress-repository/Sprint/Treinamento/COMO_USAR_TESTES_E_CALIBRACAO.txt",
+      "bytes": 7432,
+      "sha256": "3ce5201601f5f4c73d213d779c344e0194937782bc42d1c90dbbed9f2146cf02"
+    },
+    {
+      "path": "baropress-repository/Sprint/Treinamento/CORRIGIR_CONJUNTO_DE_ENSAIOS.txt",
+      "bytes": 3126,
+      "sha256": "a53f28be7d4618815714a6dc1f41e87e803ca5d18afc83906adf1246bebfff79"
+    },
+    {
+      "path": "baropress-repository/Sprint/Treinamento/PROGRESSO_TESTES_E_CALIBRACAO.txt",
+      "bytes": 9594,
+      "sha256": "cfaca29300735c620ef19a1bd5dbf3e0b1253bdfc91004b4dd1da49516a54461"
+    },
+    {
+      "path": "baropress-repository/baropress-liquid-glass/README.md",
+      "bytes": 3625,
+      "sha256": "243f175a936b6e41d1892bcf47388dd44df1ded3a037298126f59d0035d1afc0"
+    },
+    {
+      "path": "baropress-repository/baropress-liquid-glass/abrir-preview.bat",
+      "bytes": 39,
+      "sha256": "0edbd8f5b22789c3f11971244871f1b36e23f9e710fdc8b25ca6429165ec81be"
+    },
+    {
+      "path": "baropress-repository/baropress-liquid-glass/app.js",
+      "bytes": 37704,
+      "sha256": "9968ac8c9f096abf25ef7a9b7c2dd989a0e068ab4ac717ee7d179b5eb5160c08"
+    },
+    {
+      "path": "baropress-repository/baropress-liquid-glass/assets/favicon.svg",
+      "bytes": 705,
+      "sha256": "523542d7bfaa2c508cdc96085b35620faca3704e5d8da0dd87af1673b3f113aa"
+    },
+    {
+      "path": "baropress-repository/baropress-liquid-glass/assets/pressure-map.svg",
+      "bytes": 5557,
+      "sha256": "8fd5daf70524c7dd56097024d2fd89c4706a781c09e25d55b0fa66235081768c"
+    },
+    {
+      "path": "baropress-repository/baropress-liquid-glass/index.html",
+      "bytes": 4399,
+      "sha256": "4c2b3969c00baf1de29823fe622e38d7eba3b4ccc01f51660b33e96786050164"
+    },
+    {
+      "path": "baropress-repository/baropress-liquid-glass/original-files.sha256.json",
+      "bytes": 37378,
+      "sha256": "30aeb36fcf86c4c6b97b2f377c84d8d76fb58b84680fefd8beae732ce5df134d"
+    },
+    {
+      "path": "baropress-repository/baropress-liquid-glass/preview.mjs",
+      "bytes": 1774,
+      "sha256": "f6ca22b759907d4b9c4562a1146c193b6b33f9bff79f3f69d205364175fc8eaa"
+    },
+    {
+      "path": "baropress-repository/baropress-liquid-glass/styles.css",
+      "bytes": 37852,
+      "sha256": "bf7a80511be9704e7ba5cf61b196a32c574f2f1070e8e2807013e4817a538a9b"
+    },
+    {
+      "path": "baropress-repository/baropress-liquid-glass/verify.mjs",
+      "bytes": 6683,
+      "sha256": "e74cfb9ff69bd98bf83bda6b117fc72a5ff29a947f0674952cc492b565d38354"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/.gitignore",
+      "bytes": 32,
+      "sha256": "4caaf5e70d50920187209ce6d6c0c3de176eadc455e13e4919ae47780205675b"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/BAROPRESS_PITCH_KNOWLEDGE_BASE.md",
+      "bytes": 17634,
+      "sha256": "dff7ddb08a32cb63c8e62c4028beb7aa20983ee65f460d42b76b425e04386d14"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/README.md",
+      "bytes": 1392,
+      "sha256": "c5835589ddd36cd624e5c40bc9dabfebaf749bcd4255d5c6d439ec440fda2811"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/dist/index.html",
+      "bytes": 475006,
+      "sha256": "08cb06a4997f95a3d80967265119c1f6b42094beb68f309a9ae40237e6f4d6e2"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/dist/shots/arduino.jpg",
+      "bytes": 167734,
+      "sha256": "dde0a293b628884403d90cd9c82ed179ddd37857f6139efb5ad3222e9005aa70"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/dist/shots/artigo-primeira-pagina.png",
+      "bytes": 322206,
+      "sha256": "efbc18c490496492a49c15926e37c7c66198d9725667974428bd19d69d21ad26"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/dist/shots/comparacao-oficial.png",
+      "bytes": 282794,
+      "sha256": "8d7e9162563b6b20275ee9db364cdbda58c942d25dbced702e4884fe09bf9c78"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/dist/shots/comparacao.png",
+      "bytes": 277222,
+      "sha256": "c085c2bc741056266c906832ea4f2095b26206f4084d21f1e17aeeaa44468554"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/dist/shots/evolucao-real.png",
+      "bytes": 271708,
+      "sha256": "18286262c53ef2dd15b99bd1b287cdcd4215f489241957210d7c13a16a9df6d6"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/dist/shots/historico.png",
+      "bytes": 84076,
+      "sha256": "d0df5b0129e8d142c0d433b681c1825c90d73cf146930c91e83d770f9cb7c6f0"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/dist/shots/homecare.png",
+      "bytes": 711117,
+      "sha256": "f4bba8aa6a6112dabd5fe49531f64a222bcc6bb81d64c396161a5f81679cbdcd"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/dist/shots/hw-cobre.png",
+      "bytes": 109363,
+      "sha256": "6851687c85bbdf9573831061745379e57fd6ca9cbd309288f879507d26c882a6"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/dist/shots/hw-esp32.png",
+      "bytes": 106232,
+      "sha256": "4116acbb41a5bd0c0bcf907269e07d3c7ceff5addbca27ab43bf74457112b797"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/dist/shots/hw-mux.png",
+      "bytes": 95011,
+      "sha256": "df3a5f6329e8df977cd4cb5fa8370533a13e6d3c54b1adc9a16e2c2630f7ba00"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/dist/shots/hw-velostat.png",
+      "bytes": 88832,
+      "sha256": "c75cf6da5a3a7c59022375f9661c1e295a3e34b69c6bd467d7b3fc7ed5f52d9f"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/dist/shots/indicadores-novo.png",
+      "bytes": 237417,
+      "sha256": "c26a406bc7a230805fe0f6764cce1e521abf2a90a6d843fe175bddb0f5ef7206"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/dist/shots/indicadores.png",
+      "bytes": 237417,
+      "sha256": "c26a406bc7a230805fe0f6764cce1e521abf2a90a6d843fe175bddb0f5ef7206"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/dist/shots/mapa.png",
+      "bytes": 181837,
+      "sha256": "5c8d8527a631bf26cab80f3784810e5b98806be6158d5e0daaa1ce042b00d7b0"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/dist/shots/matriz.jpg",
+      "bytes": 202970,
+      "sha256": "12b425be1dfe935845211186989468b5016dd63c6d8dc906761b952e0a7a9a51"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/dist/shots/relatorio-a4.png",
+      "bytes": 89241,
+      "sha256": "981004ae282bd5d9c69b060b6abedcd189e53d0251d97da57c86982a33b6f13c"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/dist/shots/relatorio.png",
+      "bytes": 126203,
+      "sha256": "cf37928b89a8de7fb0af1e19cec2e59306acbf623837f6deaa57dadc00e445e8"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/dist/shots/tapete-eletronico.png",
+      "bytes": 2501614,
+      "sha256": "62698ebbf682da50de6200d0fc5fe3a71834a59bab63364f21dc6e94af9a7fbc"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/dist/shots/tapete-isolado.png",
+      "bytes": 1676716,
+      "sha256": "77fd0c2679093e24f13041f680e5fbfc2733dac6ffad26150db9933632343d73"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/dist/shots/tapete-prototipo.jpg",
+      "bytes": 266690,
+      "sha256": "240d5c9325da82d49ee935ba0439e742d301193a913e6b4c934d66c6a2784d0e"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/dist/shots/tapete.jpg",
+      "bytes": 146133,
+      "sha256": "c719bd1bf32da227cf430cb4d03ba11a24b651c7f270a2b95747022311878509"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/dist/shots/velostat.jpg",
+      "bytes": 491843,
+      "sha256": "6fe632ed4aab59bbe90b78764d392d76a164c7f8c3b10de70dbf33848ed68caf"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/index.html",
+      "bytes": 537,
+      "sha256": "beab67c8e03075d2c946a1df6515282d7db2072f85fb03d14e88443f8476c641"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/package-lock.json",
+      "bytes": 58903,
+      "sha256": "dfd8ab979ceef68a892edddf7aa501704a6a4af91dab337d27b313f5c4bb7e7d"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/package.json",
+      "bytes": 450,
+      "sha256": "7a77f89dde53652640d1ae9c3a1371001fb019f4069602161d1489005fe1fbdf"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/plans/REVISAO_APRESENTACAO.md",
+      "bytes": 6278,
+      "sha256": "3eaa7c22a7554546198cdea08715fd37903d67413cbd18c8b1cca496d66e975f"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/plans/REVISAO_FLUIDEZ_2026-11-06.md",
+      "bytes": 6648,
+      "sha256": "74851b99dfbedb1b60f24c523a96ad1d105e0c669a6ae394e182fcd27c7cf155"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/plans/REVISAO_NARRATIVA_2026-11-05.md",
+      "bytes": 7174,
+      "sha256": "a911e21b3c0d18dda90b46042b825902a5e45c60e666b868da2679c2f2fd1f09"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/plans/REVISAO_PROMPT_MESTRE_2026-11-06.md",
+      "bytes": 17418,
+      "sha256": "ce71bdc6a23af498be24828bb55989439ad75b7c2e386be0db5e03526722d41c"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/plans/ROTEIRO_PROMPT_MESTRE_2026-11-06.md",
+      "bytes": 17017,
+      "sha256": "3cfffd76aab0cfa21cdb715e46e449b3b6f8bd71ec29775a4ec1aebbb3bac532"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/public/shots/arduino.jpg",
+      "bytes": 167734,
+      "sha256": "dde0a293b628884403d90cd9c82ed179ddd37857f6139efb5ad3222e9005aa70"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/public/shots/artigo-primeira-pagina.png",
+      "bytes": 322206,
+      "sha256": "efbc18c490496492a49c15926e37c7c66198d9725667974428bd19d69d21ad26"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/public/shots/comparacao-oficial.png",
+      "bytes": 282794,
+      "sha256": "8d7e9162563b6b20275ee9db364cdbda58c942d25dbced702e4884fe09bf9c78"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/public/shots/comparacao.png",
+      "bytes": 277222,
+      "sha256": "c085c2bc741056266c906832ea4f2095b26206f4084d21f1e17aeeaa44468554"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/public/shots/evolucao-real.png",
+      "bytes": 271708,
+      "sha256": "18286262c53ef2dd15b99bd1b287cdcd4215f489241957210d7c13a16a9df6d6"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/public/shots/historico.png",
+      "bytes": 84076,
+      "sha256": "d0df5b0129e8d142c0d433b681c1825c90d73cf146930c91e83d770f9cb7c6f0"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/public/shots/homecare.png",
+      "bytes": 711117,
+      "sha256": "f4bba8aa6a6112dabd5fe49531f64a222bcc6bb81d64c396161a5f81679cbdcd"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/public/shots/hw-cobre.png",
+      "bytes": 109363,
+      "sha256": "6851687c85bbdf9573831061745379e57fd6ca9cbd309288f879507d26c882a6"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/public/shots/hw-esp32.png",
+      "bytes": 106232,
+      "sha256": "4116acbb41a5bd0c0bcf907269e07d3c7ceff5addbca27ab43bf74457112b797"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/public/shots/hw-mux.png",
+      "bytes": 95011,
+      "sha256": "df3a5f6329e8df977cd4cb5fa8370533a13e6d3c54b1adc9a16e2c2630f7ba00"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/public/shots/hw-velostat.png",
+      "bytes": 88832,
+      "sha256": "c75cf6da5a3a7c59022375f9661c1e295a3e34b69c6bd467d7b3fc7ed5f52d9f"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/public/shots/indicadores-novo.png",
+      "bytes": 237417,
+      "sha256": "c26a406bc7a230805fe0f6764cce1e521abf2a90a6d843fe175bddb0f5ef7206"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/public/shots/indicadores.png",
+      "bytes": 237417,
+      "sha256": "c26a406bc7a230805fe0f6764cce1e521abf2a90a6d843fe175bddb0f5ef7206"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/public/shots/mapa.png",
+      "bytes": 181837,
+      "sha256": "5c8d8527a631bf26cab80f3784810e5b98806be6158d5e0daaa1ce042b00d7b0"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/public/shots/matriz.jpg",
+      "bytes": 202970,
+      "sha256": "12b425be1dfe935845211186989468b5016dd63c6d8dc906761b952e0a7a9a51"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/public/shots/relatorio-a4.png",
+      "bytes": 89241,
+      "sha256": "981004ae282bd5d9c69b060b6abedcd189e53d0251d97da57c86982a33b6f13c"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/public/shots/relatorio.png",
+      "bytes": 126203,
+      "sha256": "cf37928b89a8de7fb0af1e19cec2e59306acbf623837f6deaa57dadc00e445e8"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/public/shots/tapete-eletronico.png",
+      "bytes": 2501614,
+      "sha256": "62698ebbf682da50de6200d0fc5fe3a71834a59bab63364f21dc6e94af9a7fbc"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/public/shots/tapete-isolado.png",
+      "bytes": 1676716,
+      "sha256": "77fd0c2679093e24f13041f680e5fbfc2733dac6ffad26150db9933632343d73"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/public/shots/tapete-prototipo.jpg",
+      "bytes": 266690,
+      "sha256": "240d5c9325da82d49ee935ba0439e742d301193a913e6b4c934d66c6a2784d0e"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/public/shots/tapete.jpg",
+      "bytes": 146133,
+      "sha256": "c719bd1bf32da227cf430cb4d03ba11a24b651c7f270a2b95747022311878509"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/public/shots/velostat.jpg",
+      "bytes": 491843,
+      "sha256": "6fe632ed4aab59bbe90b78764d392d76a164c7f8c3b10de70dbf33848ed68caf"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/src/App.tsx",
+      "bytes": 88055,
+      "sha256": "7a2e867186ca31b7ec849c5016f7e53505b64aaaf6e04ee84e0d665ecf9fa722"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/src/content.ts",
+      "bytes": 17099,
+      "sha256": "685a417070d40161faa744eae1406b8e6f674fce5c0c9daa1d4bbdff1ed79b39"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/src/index.css",
+      "bytes": 2259,
+      "sha256": "789cd2157d1d2d3db3d9a73222e23c70db506700b13c850f697e8e2c9d0cfa02"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/src/main.tsx",
+      "bytes": 149,
+      "sha256": "d33c5c2c7d2d10a5f6d56a5ba1f812a3863a551afe9ce918d2f3476521048495"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/src/vite-env.d.ts",
+      "bytes": 38,
+      "sha256": "65996936fbb042915f7b74a200fcdde7e410f32a669b1ab9597cfaa4b0faddb5"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/tsconfig.json",
+      "bytes": 194,
+      "sha256": "0e03a106d770d782675c144879a918555bbbddaa64249be176ad903005549dbd"
+    },
+    {
+      "path": "baropress-repository/baropress-pitch/vite.config.ts",
+      "bytes": 393,
+      "sha256": "15f0968e4d08a6d68423afe93b623735e5e39e5ed8f16de4ce52b07c049ff2a4"
+    },
+    {
+      "path": "baropress-repository/docs/ARCHITECTURE.md",
+      "bytes": 17979,
+      "sha256": "171866a167b6f8153a59beaf4f2d5805c5aba20c1849f5557ac24131376e555b"
+    },
+    {
+      "path": "baropress-repository/docs/BAROPODOMETRY.md",
+      "bytes": 10765,
+      "sha256": "8eeee27839dff02ff4b935c3d4f0b9133214978bff901b781328afb0a1f9d7ab"
+    },
+    {
+      "path": "baropress-repository/docs/BUILD_WINDOWS.md",
+      "bytes": 3452,
+      "sha256": "18bb3259e7ee9ee9ecce45d94ca631ab7009aea77ed17127dac56e73db290213"
+    },
+    {
+      "path": "baropress-repository/docs/FASES_7_A_11.md",
+      "bytes": 5509,
+      "sha256": "fef44880e69df47c0d497e38a312daaf30b79e25e5b3604b4b07ecf27d268ce7"
+    },
+    {
+      "path": "baropress-repository/docs/MAPEAMENTO_COMPLETO_PROJETO.md",
+      "bytes": 24732,
+      "sha256": "b6cc6b3fbe4fd364c146d38f1fd4683acbbd31478d8426f0bb8625522c910efa"
+    },
+    {
+      "path": "baropress-repository/docs/algoritmos/AQUISICAO_DADOS.md",
+      "bytes": 2863,
+      "sha256": "2637b1841eb932f4b523e374ec6bb8ded442bdf2b3c45920be3460bf37352b52"
+    },
+    {
+      "path": "baropress-repository/docs/algoritmos/HEATMAP.md",
+      "bytes": 1697,
+      "sha256": "e4440dfac30d50bfd731a21b355410742366286879931343988880b1ce2652b5"
+    },
+    {
+      "path": "baropress-repository/docs/algoritmos/METRICAS_BAROPODOMETRICAS.md",
+      "bytes": 2146,
+      "sha256": "458f9bf0d9cbeea6ba2df274e4b5be18dfc3c84d24224433204c2fce32236ec2"
+    },
+    {
+      "path": "baropress-repository/docs/algoritmos/PROCESSAMENTO_PYTHON.md",
+      "bytes": 2594,
+      "sha256": "7ef62907f77676ecfb492d6604b6103b3435eb0cc86e4bc97acd76985fbcaa6b"
+    },
+    {
+      "path": "baropress-repository/docs/audit/ALTERACOES_APLICADAS.md",
+      "bytes": 5000,
+      "sha256": "278b7992dd0fa55ffede800ce0eec472e588fa958a37759204827eaab2fb0ffe"
+    },
+    {
+      "path": "baropress-repository/docs/audit/AUDITORIA_FINAL.md",
+      "bytes": 10864,
+      "sha256": "100b97c0092a53e676f7ec1861881f5773c507dff2cbd699f01d14796cee632d"
+    },
+    {
+      "path": "baropress-repository/docs/audit/CHECKLIST_MANUAL.md",
+      "bytes": 8746,
+      "sha256": "8e3356ea4a6d58ff8b5ea8b76f32158f372e494f1a30f701c9c9db54d591e96d"
+    },
+    {
+      "path": "baropress-repository/docs/audit/INVENTARIO_FUNCIONAL.md",
+      "bytes": 51461,
+      "sha256": "01bfccf10584bc68b0d481a7c5ffa83e174c856eba2b4933f5caac2d848aa2ac"
+    },
+    {
+      "path": "baropress-repository/docs/audit/PENDENCIAS_E_RECOMENDACOES.md",
+      "bytes": 2912,
+      "sha256": "4e819f26edd094c1076ba0c27607559be541509562a7b0b3a3f21b7a091ec8d8"
+    },
+    {
+      "path": "baropress-repository/docs/audit/PLANO_DE_CORRECOES.md",
+      "bytes": 2767,
+      "sha256": "d100d9b0048b79d3fa2e1ccb9f556716b35e3ae05ded6ef959d8dd754087e702"
+    },
+    {
+      "path": "baropress-repository/docs/audit/PROBLEMAS_ENCONTRADOS.md",
+      "bytes": 8892,
+      "sha256": "00b6f3348eb4d39040dd72fe1526a4e27fa1f1867fcac1b1fb7a8223c51be0e8"
+    },
+    {
+      "path": "baropress-repository/docs/audit/REDUNDANCIAS_E_UX.md",
+      "bytes": 2843,
+      "sha256": "48003a9b80358fd750742a97a8009953c831a058ed22a1375517b2cc7991cfe8"
+    },
+    {
+      "path": "baropress-repository/docs/audit/RESULTADOS_TESTES.md",
+      "bytes": 5304,
+      "sha256": "58077a33143c5b52d503afba5320cf9e50561a562c276a01e85cbe75fde11050"
+    },
+    {
+      "path": "baropress-repository/docs/audit/inventario.json",
+      "bytes": 181073,
+      "sha256": "f8b1b3060c772e0947d5afe7ecea184a4a6d10267baf6ddc3da6accc2d013a6e"
+    },
+    {
+      "path": "baropress-repository/docs/audit/logs/artifacts.json",
+      "bytes": 630,
+      "sha256": "2664cf8994dd0836e1638e80ae56da744b7984349f313f98dc2c7f5accc8d9d9"
+    },
+    {
+      "path": "baropress-repository/docs/audit/logs/results.json",
+      "bytes": 1104,
+      "sha256": "b4444fa9b7b9b709dc207b2c868fad87db08a6132d88f23f3ba0b8597c865034"
+    },
+    {
+      "path": "baropress-repository/docs/barosys/METODO_E_LIMITES.md",
+      "bytes": 5752,
+      "sha256": "e4f2eab22e1c1c3ee564fc9019ee89118e34b94d2a5897e1440d8719c1cc8bf0"
+    },
+    {
+      "path": "baropress-repository/docs/barosys/VALIDACAO_E_DEMONSTRACAO.txt",
+      "bytes": 5608,
+      "sha256": "6bbd2ab178b95e8837d33a4ded8331316fb33cfc70490fdb5df5c29effe81c3d"
+    },
+    {
+      "path": "baropress-repository/docs/barosys/benchmark.json",
+      "bytes": 442,
+      "sha256": "3f1e4e08e92c82defba54eec37a5abecd05bf538f1b2cf395a115c301459ae88"
+    },
+    {
+      "path": "baropress-repository/docs/barosys/pdf-legacy-1.png",
+      "bytes": 186481,
+      "sha256": "29cf89860a7814e8bcde4b1274172aeb86c18f9e46e381dce173efe17ce56222"
+    },
+    {
+      "path": "baropress-repository/docs/barosys/pdf-legacy-2.png",
+      "bytes": 119501,
+      "sha256": "1a23e8845953fb4947573a104ea6583f32d541e370b2ac291047d2007416756f"
+    },
+    {
+      "path": "baropress-repository/docs/barosys/pdf-synthetic-1.png",
+      "bytes": 182444,
+      "sha256": "00dc0479a5b272815915b3e65f9762b9d09a552e597c79fcea5b437cd14f073e"
+    },
+    {
+      "path": "baropress-repository/docs/barosys/pdf-synthetic-2.png",
+      "bytes": 119596,
+      "sha256": "a95030df07fe842ca444bfdb16fe1c66581b05257ac4679a05282593483f5896"
+    },
+    {
+      "path": "baropress-repository/docs/barosys/pdf-synthetic-3.png",
+      "bytes": 259602,
+      "sha256": "cf2fa64204f4445df6705468bef9b23bad34abe75837f4d04f25716c56d6c73b"
+    },
+    {
+      "path": "baropress-repository/docs/barosys/pdf-synthetic-4.png",
+      "bytes": 41272,
+      "sha256": "2b4fc6d8dbf1fa32143b2a8be5034c9b73287be45ceb7ddd5ec19c06fa6cbdb4"
+    },
+    {
+      "path": "baropress-repository/docs/barosys/report-legacy.pdf",
+      "bytes": 118710,
+      "sha256": "f59b0068441bcb7a723d9b28070a089e237de19fdece43d6ca871da774d921ea"
+    },
+    {
+      "path": "baropress-repository/docs/barosys/report-synthetic.pdf",
+      "bytes": 127172,
+      "sha256": "3a99439b8b0ffe952e67ea0cd92de5e31bfb7e7e585a027e98a3fcf1c36e3779"
+    },
+    {
+      "path": "baropress-repository/docs/barosys/source-inventory.json",
+      "bytes": 6473,
+      "sha256": "777d42c5cfe679fb0f71133fc330e8e77ff1ef72cb2341181d176c4dd11706e7"
+    },
+    {
+      "path": "baropress-repository/docs/barosys/ui-1100-dark-3d.png",
+      "bytes": 102642,
+      "sha256": "c6db0a538bc0c4b1bf90da828788cec93cfda2b5bddf8af164dc2ea9c63cb7c3"
+    },
+    {
+      "path": "baropress-repository/docs/barosys/ui-1100-dark-graphs.png",
+      "bytes": 40041,
+      "sha256": "e2516e6b89876c4d128771d18f21005da3e7ae9630b239f164fda9e1b33a3050"
+    },
+    {
+      "path": "baropress-repository/docs/barosys/ui-1100-light-3d.png",
+      "bytes": 103711,
+      "sha256": "58fe8e83a531ca5822c700b37ea7f19a5c7c714bd5525daa6e0da6951a42b52c"
+    },
+    {
+      "path": "baropress-repository/docs/barosys/ui-1100-light-graphs.png",
+      "bytes": 40458,
+      "sha256": "4ba738f2c34ebd02584c7065655cdf1f56064473e21e2653f28ac4d4a76f0cf2"
+    },
+    {
+      "path": "baropress-repository/docs/barosys/ui-1366-dark-3d.png",
+      "bytes": 103371,
+      "sha256": "4dec7e1ccbf28693a85fe30c4ef56bcee9f333f84c0b4d5f11799e0548a6db20"
+    },
+    {
+      "path": "baropress-repository/docs/barosys/ui-1366-dark-graphs.png",
+      "bytes": 42303,
+      "sha256": "ed32ed46ee30344399826f9850fcc463b836e29f5eabc014d3787f1f4c8f1db7"
+    },
+    {
+      "path": "baropress-repository/docs/barosys/ui-1366-light-3d.png",
+      "bytes": 104463,
+      "sha256": "5ca863b6c96687f6f258e751f3c0ab56d1eebb1045c491e9d6a9aad85d77d33b"
+    },
+    {
+      "path": "baropress-repository/docs/barosys/ui-1366-light-graphs.png",
+      "bytes": 42712,
+      "sha256": "d4aaedd7659f94a17589466fc3cf8684486572a1dcf90e0415ea7e0f61db4d38"
+    },
+    {
+      "path": "baropress-repository/docs/barosys/ui-comparison-2.png",
+      "bytes": 242546,
+      "sha256": "db03c84e5afc2750040153c56504ce6d4662003aee5bc8cd8965d3ea3ad940e0"
+    },
+    {
+      "path": "baropress-repository/docs/barosys/ui-comparison-4.png",
+      "bytes": 374213,
+      "sha256": "94d753be09ffa544d6e437135976452c4dd3ced9b9c459ab12ed8e7a3d4a6e88"
+    },
+    {
+      "path": "baropress-repository/docs/barosys/ui-new-conditions.png",
+      "bytes": 69928,
+      "sha256": "b02a16f16387f0523e00ab2a7cb35ccaea657affb263e0952afa881a857412cf"
+    },
+    {
+      "path": "baropress-repository/docs/barosys/ui-report.png",
+      "bytes": 334960,
+      "sha256": "82dccda273a1f83b5b67df7f130fb58ca10aeeb6fea6eaa95f401f056a239bdc"
+    },
+    {
+      "path": "baropress-repository/docs/barosys/ui-results.json",
+      "bytes": 750,
+      "sha256": "305be974f0b5660354f403ab6829a015381283893f97cca2d0855c83b0537f1b"
+    },
+    {
+      "path": "baropress-repository/docs/corrections/ALINHAMENTO_FAIXA_ESQUERDA.md",
+      "bytes": 3087,
+      "sha256": "efeafdc44f216833747e4267fc8d3703f0479de68d1ccc4ee6a0deefd9e0a4c2"
+    },
+    {
+      "path": "baropress-repository/docs/corrections/AQUISICAO_30_45_MODALIDADES.md",
+      "bytes": 2667,
+      "sha256": "032928dc48ac2c8d0410c34885fae33102730da131a672240bf8c9c9ff9f0fcb"
+    },
+    {
+      "path": "baropress-repository/docs/corrections/CALIBRACAO_SIMPLIFICADA_0.2.11.md",
+      "bytes": 3949,
+      "sha256": "1cc3e6f43626f00f5d56bd09a2309f8762e3d55da98e919069fce9a9a60ad73b"
+    },
+    {
+      "path": "baropress-repository/docs/corrections/CORRECOES_0.2.10.md",
+      "bytes": 7018,
+      "sha256": "4d48d996203057626024c9a9ec9b38093d7c574df57b06bd26d86372a668e544"
+    },
+    {
+      "path": "baropress-repository/docs/corrections/PRIMEIRO_ACESSO_0.2.13.md",
+      "bytes": 3349,
+      "sha256": "d6c82ba9310b226ef8c1eea8bce843d89c7a78636230c431084883e2983106dd"
+    },
+    {
+      "path": "baropress-repository/docs/corrections/ROLLBACK_FAIXA_ESQUERDA.md",
+      "bytes": 1594,
+      "sha256": "a6295270a0978928cb7a49a8565f257cf1970bb7adca36ddc9184e6d228780e5"
+    },
+    {
+      "path": "baropress-repository/docs/corrections/SEGURANCA_SERIAL_BACKUP_2026-10-26.md",
+      "bytes": 3626,
+      "sha256": "add00214aff1aaf30d0fe73f34e20a45ff93092746b5b9741d1e3be0803688af"
+    },
+    {
+      "path": "baropress-repository/docs/corrections/USUARIOS_LOGIN_ACESSO.md",
+      "bytes": 8986,
+      "sha256": "1224f49100d83d61e12732b3cdae7d36e14f816d553693feec1fb4eab742c2ae"
+    },
+    {
+      "path": "baropress-repository/docs/corrections/alinhamento-faixa-esquerda.png",
+      "bytes": 221723,
+      "sha256": "9901dc420dbba757d94170a25838418a743eca29b290ea9cf3517adc8fd508cd"
+    },
+    {
+      "path": "baropress-repository/docs/corrections/artifacts-0.2.10.json",
+      "bytes": 640,
+      "sha256": "23dce29513930e4860cec63e73b40a4fe293212e3ac1521f4e734977e7883a44"
+    },
+    {
+      "path": "baropress-repository/docs/corrections/artifacts-0.2.11.json",
+      "bytes": 996,
+      "sha256": "49240a6a43897f0afd4b1b365c1e8734c87679362d4d51702d85864ac99f5be6"
+    },
+    {
+      "path": "baropress-repository/docs/corrections/artifacts-0.2.13.json",
+      "bytes": 2935,
+      "sha256": "854ba47bb00a4e94b56d82788402c8451ecf983f79a4f9b6e50d9fece47e731e"
+    },
+    {
+      "path": "baropress-repository/docs/corrections/artifacts-0.2.14.json",
+      "bytes": 1339,
+      "sha256": "539ca7f76d6851a43be1a6efa2dc164405e205d5c568fc209651c05b7f3ae833"
+    },
+    {
+      "path": "baropress-repository/docs/corrections/artifacts-alinhamento-0.2.11.json",
+      "bytes": 1151,
+      "sha256": "aff221716603a2585e26b705471fb3623de312ce5e4234340b2287ddf2cc6e56"
+    },
+    {
+      "path": "baropress-repository/docs/corrections/artifacts-rollback-faixa-esquerda.json",
+      "bytes": 838,
+      "sha256": "188f91d128355d9204ddcf648514d338c77906e40638243f15c8d4682a9ba7be"
+    },
+    {
+      "path": "baropress-repository/docs/corrections/calibracao-ajuda-0.2.11.jpg",
+      "bytes": 25447,
+      "sha256": "90577741d52cbffcb3a661aa1cb857e94833138f7847f4cfb0fb27320ca3febb"
+    },
+    {
+      "path": "baropress-repository/docs/corrections/iam-artifacts-0.2.12.json",
+      "bytes": 3805,
+      "sha256": "c614e7fc15a849fd87d97b2020906847f00cd6fb1adc2c9479cc689152ba0c79"
+    },
+    {
+      "path": "baropress-repository/docs/corrections/iam-artifacts-pre-0.2.12.json",
+      "bytes": 2327,
+      "sha256": "27c6b8d933be5184158989588fc36a97e8abd381f6c40bb4b6f3e5690da2e156"
+    },
+    {
+      "path": "baropress-repository/docs/corrections/iam-artifacts.json",
+      "bytes": 3805,
+      "sha256": "c614e7fc15a849fd87d97b2020906847f00cd6fb1adc2c9479cc689152ba0c79"
+    },
+    {
+      "path": "baropress-repository/docs/corrections/iam-secretaria-agenda.jpg",
+      "bytes": 30761,
+      "sha256": "3588edbc016afda7a4dc2e21226d0d94bf084f957f530e28f99d790909e49b76"
+    },
+    {
+      "path": "baropress-repository/docs/corrections/novo-exame-aquisicao-teste.png",
+      "bytes": 105235,
+      "sha256": "cfed4b90b1b7f5c39592a8c366133f8a870aec07ccdf54c2e7d3b220f9d65ee1"
+    },
+    {
+      "path": "baropress-repository/docs/corrections/novo-exame-condicoes-teste.png",
+      "bytes": 56428,
+      "sha256": "f94e6c2626d99825fa63d15c54ec25b0c618a11578b4f6a9054dfc41480594a9"
+    },
+    {
+      "path": "baropress-repository/docs/corrections/rollback-faixa-esquerda/BAROPRESS_0.2.11_alinhamento_x64-setup.exe.retired",
+      "bytes": 3708677,
+      "sha256": "5e6d49b83ee913887fe51f20e385795b79e61df25f13b5c28c5d8e09a707dd4c"
+    },
+    {
+      "path": "baropress-repository/docs/corrections/rollback-faixa-esquerda/baropress-alinhamento.exe.retired",
+      "bytes": 14668800,
+      "sha256": "e05048996852f1a5d82363d418966e71468422204972459d98def4899c1e7a79"
+    },
+    {
+      "path": "baropress-repository/docs/corrections/rollback-faixa-esquerda/heatmap.py.antes-rollback",
+      "bytes": 16353,
+      "sha256": "d70bcf7bbb98e63cd3476c78160a1bafd8f0a05a33466f26a831dd661262e361"
+    },
+    {
+      "path": "baropress-repository/docs/corrections/rollback-faixa-esquerda/mapa_calor.py.antes-rollback",
+      "bytes": 16353,
+      "sha256": "d70bcf7bbb98e63cd3476c78160a1bafd8f0a05a33466f26a831dd661262e361"
+    },
+    {
+      "path": "baropress-repository/docs/corrections/source-inventory-0.2.10.json",
+      "bytes": 753,
+      "sha256": "f2d321125c5993eca89b5b3dc5b204969d2c7a6ebc2e041efeda7904f06ffb27"
+    },
+    {
+      "path": "baropress-repository/docs/corrections/source-inventory-0.2.11.json",
+      "bytes": 754,
+      "sha256": "21db622d2ebe25ce9cbddc4eab49c4281155e3188805ffdbf3e3989e6893c104"
+    },
+    {
+      "path": "baropress-repository/docs/historia/DECISOES_DE_PROJETO.md",
+      "bytes": 2455,
+      "sha256": "21e235c7ef9178c1da20ae3a8d7b78b2f20d96f5b23016eb28d95f0652f98159"
+    },
+    {
+      "path": "baropress-repository/docs/historia/EVOLUCAO_TECNICA.md",
+      "bytes": 3841,
+      "sha256": "5678d65c9f71c690b5351195ddf225efb229e82b1d8f1778a259fcc48d69c899"
+    },
+    {
+      "path": "baropress-repository/docs/historia/GUIA_GITHUB.md",
+      "bytes": 5956,
+      "sha256": "d1b9fcfc6e6d7d313f4d9d1e5472765602aea3b8d721724d2e17fe850c43d382"
+    },
+    {
+      "path": "baropress-repository/docs/historia/INVENTARIO_DIRETORIOS.md",
+      "bytes": 3333,
+      "sha256": "ee67a2f9d0ccbfb66da0198481bd229b1f41e82f27ea95108c0b2941799f100d"
+    },
+    {
+      "path": "baropress-repository/docs/historia/LINHA_DO_TEMPO.md",
+      "bytes": 3975,
+      "sha256": "8c87641b2953ac0d057ddc666d2c0d5e2c75d7d04169cddf2cf8eac081aa1753"
+    },
+    {
+      "path": "baropress-repository/docs/historia/MANIFESTO_ARQUIVOS_VERSIONADOS.md",
+      "bytes": 55135,
+      "sha256": "dff2c421fb3877ef899300ac6ebeffeb63c1fd0f251f87c879d344e0688290c4"
+    },
+    {
+      "path": "baropress-repository/docs/historia/ORIGENS_E_INTEGRIDADE.md",
+      "bytes": 2918,
+      "sha256": "d6d9e5b7ac8aed83c1266826fb41d15e515358809b848bcad10b6e26ca459460"
+    },
+    {
+      "path": "baropress-repository/docs/historia/README.md",
+      "bytes": 1863,
+      "sha256": "bbcf1a991c982220f87bf5efd8c7f5fafab14ff2ff799f0b5a6dd0a28d8d295a"
+    },
+    {
+      "path": "baropress-repository/docs/maintenance/AUDITORIA_2026-10-20.md",
+      "bytes": 14771,
+      "sha256": "090646043e5696a2b2f5ae850f86375f0238f0d74a4663eafaa7f3e37b4ab2da"
+    },
+    {
+      "path": "baropress-repository/docs/maintenance/ORGANIZACAO.md",
+      "bytes": 4141,
+      "sha256": "54963a689d96029c42c296f9e273a013f9c433b363ff61ee46b3399dcc989ba9"
+    },
+    {
+      "path": "baropress-repository/docs/performance/CHECKUP_0.2.9.md",
+      "bytes": 8332,
+      "sha256": "b4c7a522daf105af28ce6fa90de3a31b61ce9fe18f23c04100b0171d6af42e91"
+    },
+    {
+      "path": "baropress-repository/docs/performance/artifacts-0.2.9.json",
+      "bytes": 240,
+      "sha256": "7d3c32cb280afd798ea30640ae21989e9b1d07aaafd14cb5bcc29b3744fc9889"
+    },
+    {
+      "path": "baropress-repository/docs/performance/cache-cleanup-0.2.9.json",
+      "bytes": 416,
+      "sha256": "4fc7687b5a6666e1e1b19dee2274d80b7da1cecb051474e00963ea5ef5b3d57b"
+    },
+    {
+      "path": "baropress-repository/docs/performance/imports-0.2.9.json",
+      "bytes": 752,
+      "sha256": "01c13dfbc9a592dd94e5d33c9a2867a6fcff0ed113b82e9655423c62aa043b02"
+    },
+    {
+      "path": "baropress-repository/docs/performance/interpolation-0.2.9.json",
+      "bytes": 900,
+      "sha256": "8bd24ccbc8d0dcc824ed4578cc83df43c1819321c782234c1623daad66fceeae"
+    },
+    {
+      "path": "baropress-repository/docs/performance/lists-0.2.9.json",
+      "bytes": 293,
+      "sha256": "6ceb0de77a7ea9a92382dd4d3ccee0115509c4b4b31612aa861b9594c403477f"
+    },
+    {
+      "path": "baropress-repository/docs/performance/npm-audit-0.2.9.json",
+      "bytes": 4469,
+      "sha256": "a8442a1ff3b8ac15df5d6b728737dfb2cc818fa60319c470c17385cdb9a7393e"
+    },
+    {
+      "path": "baropress-repository/docs/performance/npm-audit-production-0.2.9.json",
+      "bytes": 386,
+      "sha256": "87b398a4ba830ac822cebb7fc10fb07a3fb1a87661f7a2ff24739fe25b68e234"
+    },
+    {
+      "path": "baropress-repository/docs/questionnaires/ANAMNESE_BAROPODOMETRICA.md",
+      "bytes": 9123,
+      "sha256": "4c3914b99885986f8bbe85b7d56934d42220db878ecff9289b358ff765df73a7"
+    },
+    {
+      "path": "baropress-repository/docs/questionnaires/anamnese-baropodometrica.json",
+      "bytes": 13425,
+      "sha256": "795f9857bb08b2a9e2d7f1ef01323eede04418504c71577877ca62f59b98b098"
+    },
+    {
+      "path": "baropress-repository/docs/referencias/REFERENCIAS_TECNICAS.md",
+      "bytes": 2246,
+      "sha256": "17d65e570c419ce62deb040ffc6a4e7b8a243313d9a112ed6a06c21f662288a6"
+    },
+    {
+      "path": "baropress-repository/docs/review/REVISAO_ARQUITETURA_UX_0.2.9.md",
+      "bytes": 24203,
+      "sha256": "ebaf27d46af55fcd9187938f733ce93acd9f7d9a70d768a3c987f98accd00722"
+    },
+    {
+      "path": "baropress-repository/docs/validacao/ENSAIOS.md",
+      "bytes": 2313,
+      "sha256": "4b58e1f6d89193ed4890b101a8eaaf3b72a80e1672e6e872ed5a39c568f19260"
+    },
+    {
+      "path": "baropress-repository/docs/validacao/LIMITACOES.md",
+      "bytes": 1681,
+      "sha256": "74129c99187a2c8957a49f9156cd5a87289e02a7152bd01400cca4ad643b406f"
+    },
+    {
+      "path": "baropress-repository/docs/validacao/RESULTADOS.md",
+      "bytes": 2036,
+      "sha256": "4b2a4ff2f8b6cf1d0f31d441426554b8530230bf22b69a395488c0aa97ec4ff8"
+    },
+    {
+      "path": "baropress-repository/docs/validacao/VERIFICACOES_2026-10-26.md",
+      "bytes": 3504,
+      "sha256": "bf25a4e0196ad7a5c1f36afbc11b6019424c20c80e86199b595e13a4bb8ffd04"
+    },
+    {
+      "path": "baropress-repository/firmware/esp32/PROTOCOLO_COMUNICACAO.md",
+      "bytes": 1917,
+      "sha256": "cc474e89d68d87e54bd38c63b3801a3124dcb02d4b51663f9fa17118b86e7137"
+    },
+    {
+      "path": "baropress-repository/firmware/esp32/README.md",
+      "bytes": 2575,
+      "sha256": "6c81f5b706dd2dbb60e4ac6efd3a7c5db5b0fdc1b8fdcd026ff684ebbc857de4"
+    },
+    {
+      "path": "baropress-repository/firmware/esp32/tapete.ino",
+      "bytes": 2189,
+      "sha256": "82a094be4ce70fecbc1d57c73b952d5adb59bf914af168f556b9253cd0a3abad"
+    },
+    {
+      "path": "baropress-repository/hardware/COMPONENTES.md",
+      "bytes": 1334,
+      "sha256": "a1a9e02fe62d45751230639b633fef48d08f064eef5f09a9825df6564deb2ba1"
+    },
+    {
+      "path": "baropress-repository/hardware/MATRIZ_SENSORES.md",
+      "bytes": 1225,
+      "sha256": "3d89088e699f3307392825a853a6bd7f067df3544c4ef8b617311dba73685bfb"
+    },
+    {
+      "path": "baropress-repository/hardware/PINAGEM_ESP32.md",
+      "bytes": 1244,
+      "sha256": "0d22e1efb9e5b419d2f0207f2959f16cb814890b9a8ca94ddf0a7921a0700efe"
+    },
+    {
+      "path": "baropress-repository/hardware/README.md",
+      "bytes": 2164,
+      "sha256": "3c4ca6da94e5b2c76ee4c9f754f196cf60de3d4c2cbe5ad12a0ebebcad18d6a0"
+    },
+    {
+      "path": "baropress-repository/index.html",
+      "bytes": 311,
+      "sha256": "b33e510e98f6f3fdd1038fdc90d7e9ef5691cec27d6541ef5ab87dae1324bda6"
+    },
+    {
+      "path": "baropress-repository/iniciar_baropress.bat",
+      "bytes": 580,
+      "sha256": "5cb8f8a554497f0f3d848b28dcb01eb853c1d7baf1d48f0dacf170a262739ae5"
+    },
+    {
+      "path": "baropress-repository/package-lock.json",
+      "bytes": 128814,
+      "sha256": "8ce4d4ac886b36154de44cae71eff8ee7e04cdfe88a4b55e9f6408afe0fcfcbc"
+    },
+    {
+      "path": "baropress-repository/package.json",
+      "bytes": 889,
+      "sha256": "ff7f8995ce44ecb418f79f0d415c79611cb45f79d694da110c8b31dad423fd1e"
+    },
+    {
+      "path": "baropress-repository/postcss.config.js",
+      "bytes": 68,
+      "sha256": "66b7f2e4108d42359ecc183c1efb8cead02ea91817024011d11b3c8216382223"
+    },
+    {
+      "path": "baropress-repository/prototipos/python-heatmap/README.md",
+      "bytes": 3088,
+      "sha256": "ac49782dad6b76376e9028779daa7d165bf1a4a79b31613e77dc85c49b6f0feb"
+    },
+    {
+      "path": "baropress-repository/prototipos/python-heatmap/heatmap_inicial.py",
+      "bytes": 4577,
+      "sha256": "c1d0e690005a07c76bc40c462c6d7291d86fd3d6950cd187ca70f02c0d7ff76a"
+    },
+    {
+      "path": "baropress-repository/prototipos/python-heatmap/heatmap_interativo.py",
+      "bytes": 15071,
+      "sha256": "edfb2b288d5435f737589ded12f374a5f634991e84c225e99c0066372e0518b1"
+    },
+    {
+      "path": "baropress-repository/prototipos/python-heatmap/iniciar_mapa_original.bat",
+      "bytes": 81,
+      "sha256": "07565736929a0c6c9c4005aaf6a696a7d21784eb357bad1236fb4553ebc0ccaf"
+    },
+    {
+      "path": "baropress-repository/prototipos/python-heatmap/requirements.txt",
+      "bytes": 29,
+      "sha256": "c53e7f28d14ca75625986b9014d51dfc6dde69530aebf7faca8ca5c5b2b39ba0"
+    },
+    {
+      "path": "baropress-repository/scripts/acquisition-preview.html",
+      "bytes": 306,
+      "sha256": "c7c7197f0ebfc86752d426a0ee1231908e7d48d5487faa39504086146bf13bbe"
+    },
+    {
+      "path": "baropress-repository/scripts/acquisition-preview.tsx",
+      "bytes": 2549,
+      "sha256": "f0afb7c3da87f6d13dd2c9b502cb589b36c4bce10a6dcacbda3661df3513e26a"
+    },
+    {
+      "path": "baropress-repository/scripts/audit_inventory.cjs",
+      "bytes": 5428,
+      "sha256": "e9d2459f60b3c5a1a6d755c5f09f94a7bf33d047bd00ed26a476201f02f066ab"
+    },
+    {
+      "path": "baropress-repository/scripts/audit_verify.ps1",
+      "bytes": 1605,
+      "sha256": "70f2ce23e5b395b3788ac74acebd27ce7b890248d8355e466a61d2e84ef3f828"
+    },
+    {
+      "path": "baropress-repository/scripts/barosys-fixture.ts",
+      "bytes": 2793,
+      "sha256": "c7ccd42d5c912fba6328df050db26677ca569075014a1f9f48f603c013bfa41c"
+    },
+    {
+      "path": "baropress-repository/scripts/barosys-preview.html",
+      "bytes": 293,
+      "sha256": "03f562deab985a2f801870735a97dfd958e598410108a432219560a8fe0e9660"
+    },
+    {
+      "path": "baropress-repository/scripts/barosys-preview.tsx",
+      "bytes": 2879,
+      "sha256": "a997574b4d6d6ac7d147caaa6aa8b7520cd9b70025b9ce4ace378ae38b193474"
+    },
+    {
+      "path": "baropress-repository/scripts/benchmark_barosys.cjs",
+      "bytes": 2084,
+      "sha256": "1d60d1b00d4738351b4ae102e231baebd8f6c7e40dd7ad54e9f1a7ddcad2019a"
+    },
+    {
+      "path": "baropress-repository/scripts/benchmark_interpolation.cjs",
+      "bytes": 2806,
+      "sha256": "3243b681331c1f5dc37ccc419f323d958760c6a36569e5c210be73eed6ac5ffe"
+    },
+    {
+      "path": "baropress-repository/scripts/calibration-preview.html",
+      "bytes": 311,
+      "sha256": "b0b528d36bcb05bfa42c29344ffd847d877a722c4f8a66459ddc7b46c77175d0"
+    },
+    {
+      "path": "baropress-repository/scripts/calibration-preview.tsx",
+      "bytes": 1878,
+      "sha256": "cb52946fd444d2a62fae182e9e894143234ed90f3a226be7b8b106674ff79785"
+    },
+    {
+      "path": "baropress-repository/scripts/check_barosys_ui.cjs",
+      "bytes": 5103,
+      "sha256": "810a5fe2ae432f4bfa108084274856c09bda5b4756f48ba5a74c0c622f59a3ec"
+    },
+    {
+      "path": "baropress-repository/scripts/check_project.cjs",
+      "bytes": 2744,
+      "sha256": "5c579ea3d30c0ed82420f4e358c20a85190a6384cc61f178b2dd20bdca5c5a6a"
+    },
+    {
+      "path": "baropress-repository/scripts/gerar_manifesto_arquivos.py",
+      "bytes": 3055,
+      "sha256": "f86e25b9559fe6b3147f8ff90fee9461de296c846056a5cab479ae1329c99afd"
+    },
+    {
+      "path": "baropress-repository/scripts/refresh_barosys_pdf.cjs",
+      "bytes": 1236,
+      "sha256": "8ab6c1f1c0b5a92f514aaeedff871e8b39ccc9d244b5a67cdc9c83affd9585d5"
+    },
+    {
+      "path": "baropress-repository/scripts/set_version.cjs",
+      "bytes": 781,
+      "sha256": "49e4a76b5837cb7c0a900fc5e7a24205aa1153f83f05ae8040bf968963719b8c"
+    },
+    {
+      "path": "baropress-repository/scripts/users-preview.html",
+      "bytes": 295,
+      "sha256": "37fdc4a5ee6e66ceb36915cab1bdcd0935ca7860447aba44167e28b290ced135"
+    },
+    {
+      "path": "baropress-repository/scripts/users-preview.tsx",
+      "bytes": 3719,
+      "sha256": "a2fd12dcd951db16829d07b9f1c9c1770b91b63806bd777339660a6b3560fbf3"
+    },
+    {
+      "path": "baropress-repository/src-tauri/Cargo.lock",
+      "bytes": 116972,
+      "sha256": "904c8fe75be2d54feb0228f408b749424bb2abbbdc1a2901c910cb5ac7201598"
+    },
+    {
+      "path": "baropress-repository/src-tauri/Cargo.toml",
+      "bytes": 502,
+      "sha256": "db7ff4730313123d37cbb29ade9208efec5f4905253dc83f048a2521da46b393"
+    },
+    {
+      "path": "baropress-repository/src-tauri/bin_deps/WebView2Loader.dll",
+      "bytes": 160880,
+      "sha256": "86545b66cdb0603bc26b626fb9ad610cb6e71f28d468f5ea66df23b03dda96d5"
+    },
+    {
+      "path": "baropress-repository/src-tauri/bin_deps/libunwind.dll",
+      "bytes": 204288,
+      "sha256": "8d9f60801f50c0a6cb7beb7fd2e121f98bf39ebe40e6c7e07a8a39fccb817c03"
+    },
+    {
+      "path": "baropress-repository/src-tauri/build.rs",
+      "bytes": 42,
+      "sha256": "4ae2333b11623039cc115e29b696e7ff5cdfcd5b7d628280ddf48fa733e6418d"
+    },
+    {
+      "path": "baropress-repository/src-tauri/capabilities/default.json",
+      "bytes": 161,
+      "sha256": "9e9748e1061de86e11a370a62a5a443320ab2bbc7f688175215e394176a074ff"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/128x128.png",
+      "bytes": 5955,
+      "sha256": "2750f3e9caf582ae715edbe1606ba964d92de32972e52702d5fd2b5fbd1db6c4"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/128x128@2x.png",
+      "bytes": 11347,
+      "sha256": "ba4ee3a4dc5aa127a4292a01d672ba00a46283d4c79acfdf16c3c4495e08c1d9"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/32x32.png",
+      "bytes": 1368,
+      "sha256": "1fc4e9ff714a0621ef406af3439a326eb58982ddd3f53c7d38504c2300d2f166"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/64x64.png",
+      "bytes": 2858,
+      "sha256": "20c4fae3021080b6fd76dab778e2ae4147e4443144ed11752e6f66766c95552f"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/Square107x107Logo.png",
+      "bytes": 4688,
+      "sha256": "0a318ee6af643d97742d55bea46265fb3ca11a1578d04b19e698992bffc8c833"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/Square142x142Logo.png",
+      "bytes": 6573,
+      "sha256": "da8d5c21ec2369c2c2284967c2aea1e02dd6f8d28aaa2a6ce2931800b278b238"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/Square150x150Logo.png",
+      "bytes": 6997,
+      "sha256": "3bde26585f842a33f2262075d9a45f9d5ab2669eeecff109a254c909ef044d2c"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/Square284x284Logo.png",
+      "bytes": 13069,
+      "sha256": "2688a29ca8afff467cc1965c38adabf15a6c906e18cdfa5afc1fdabaedb125e4"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/Square30x30Logo.png",
+      "bytes": 1470,
+      "sha256": "1dcc39294f3807a71156f46fc6d877036819f405105d35fefe1916ed1c8f0dcb"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/Square310x310Logo.png",
+      "bytes": 14538,
+      "sha256": "8eef3c6a25567a58a3cb6f25a642b09b3fd523df47686a405e35d465b865431d"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/Square44x44Logo.png",
+      "bytes": 1930,
+      "sha256": "60602774007b50e8b431d43a70617a120de6ecb2dd4d832065949c3f6f5a0694"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/Square71x71Logo.png",
+      "bytes": 3313,
+      "sha256": "eb8d1116fda0dca12755c38102794c2caeec8f358a5363acd924ec6319637f88"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/Square89x89Logo.png",
+      "bytes": 4069,
+      "sha256": "6b28c38f80c67387f20329ef674eb28f7442719fb56e608e9961f309c59a89c4"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/StoreLogo.png",
+      "bytes": 2187,
+      "sha256": "1edc07ba22e02b017cc57309dc3e3cdd2a932e8e30a8897c34ff460e61073aaf"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/android/mipmap-anydpi-v26/ic_launcher.xml",
+      "bytes": 265,
+      "sha256": "7fe18cc0bcab884b6cd485758b8e5b3665737390fb8a35dabd37149aae83e1ee"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/android/mipmap-hdpi/ic_launcher.png",
+      "bytes": 3420,
+      "sha256": "3853fd36dc9e0e9bc6bb32de50265b505ffc0367becaee8e61b76c1e343b257e"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/android/mipmap-hdpi/ic_launcher_foreground.png",
+      "bytes": 7638,
+      "sha256": "8a1333bb438b0e5b238cfab55e355478bb289751122b2613c172332647a062e3"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/android/mipmap-hdpi/ic_launcher_round.png",
+      "bytes": 3259,
+      "sha256": "e4109dc8ce6f6f482061e74b4dc489c86bdc1ec4d0051de4371300aa83471a09"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/android/mipmap-mdpi/ic_launcher.png",
+      "bytes": 2431,
+      "sha256": "01b69978546de725a04ccce2bfc9981597966a74b55fc207b565d80a4c349f7c"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/android/mipmap-mdpi/ic_launcher_foreground.png",
+      "bytes": 4807,
+      "sha256": "87ebff0621bbd40ecb06d9bab5ab48bc67538e52dad0f78207f5ee5ad2d39ca2"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/android/mipmap-mdpi/ic_launcher_round.png",
+      "bytes": 2072,
+      "sha256": "02d3d2f02b9e887cc590b179188a6b040d811da30256f18716fcb4694aecfc2b"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/android/mipmap-xhdpi/ic_launcher.png",
+      "bytes": 4929,
+      "sha256": "02597d33a92722b9c57a4b75399032646deaacfecd6357ac45e2d8a21c114fa5"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/android/mipmap-xhdpi/ic_launcher_foreground.png",
+      "bytes": 10128,
+      "sha256": "579a17625e43214b6cbf1449426bd4a166cf33514a02f941a191f3d24cd9efc1"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/android/mipmap-xhdpi/ic_launcher_round.png",
+      "bytes": 4344,
+      "sha256": "19c95a6f16a81b6f9486d91ec660fd09f6a2fad4bf8cc02bed8fd6d21da79ab3"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/android/mipmap-xxhdpi/ic_launcher.png",
+      "bytes": 6850,
+      "sha256": "5270c7921fbda3252009be06e1bf5d17c7ac3bf2f17f6248eaaf4cc1fe777c39"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/android/mipmap-xxhdpi/ic_launcher_foreground.png",
+      "bytes": 15550,
+      "sha256": "508d9edc75a63acb562d45515e6995d2c5bce4cfef83d6342c92dd86cdf42642"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/android/mipmap-xxhdpi/ic_launcher_round.png",
+      "bytes": 6467,
+      "sha256": "ed7b6e2c040a60c928b63e8c2cd49bf3f996b35b4c4c0528463a276dd18f8bd5"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/android/mipmap-xxxhdpi/ic_launcher.png",
+      "bytes": 9526,
+      "sha256": "c810343428c8d623f3f33f5797455997bdfa0a046d3be63340233835336b1e53"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/android/mipmap-xxxhdpi/ic_launcher_foreground.png",
+      "bytes": 21395,
+      "sha256": "20594fdfb779dccc1f314d6c57877b08f97574bf91403bf3d70c9d3ee881e570"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/android/mipmap-xxxhdpi/ic_launcher_round.png",
+      "bytes": 9119,
+      "sha256": "5ef3c8daba2c2c6cd73141edd6eaaef362326ab5b0388ae8a4c5230aad720e96"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/android/values/ic_launcher_background.xml",
+      "bytes": 121,
+      "sha256": "6f3825f8b5243e929bee8d1c0d0b8a45ce4aca413a1ea0d672527f3d09a351c0"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/icon.icns",
+      "bytes": 95423,
+      "sha256": "c43d984535da99414066f8f53cde6d3a7e646d1bb91db238b32c1b1b4c4d6a94"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/icon.ico",
+      "bytes": 20761,
+      "sha256": "7e14cfcc0c3e63a96bb1945dc3a27464bef4cc88b417b24d3f630c6fbd2491c7"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/icon.png",
+      "bytes": 3012,
+      "sha256": "ed2c1883c74a358f7b9b25c245bfde836493b499f4bb52eff5ab8757699ec9aa"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/ios/AppIcon-20x20@1x.png",
+      "bytes": 798,
+      "sha256": "dc15eb9d4f2e9beba55136b15323688068a45e28132911697325cce55daeba40"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/ios/AppIcon-20x20@2x-1.png",
+      "bytes": 1783,
+      "sha256": "413f878ac452d6219971dc44429e44ff8139051eb3f121e37816931b25d8549f"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/ios/AppIcon-20x20@2x.png",
+      "bytes": 1783,
+      "sha256": "413f878ac452d6219971dc44429e44ff8139051eb3f121e37816931b25d8549f"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/ios/AppIcon-20x20@3x.png",
+      "bytes": 2497,
+      "sha256": "960688adb294158a0c484e2c8e8aef87823e786da88988ba1271efaa0c36eba7"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/ios/AppIcon-29x29@1x.png",
+      "bytes": 1211,
+      "sha256": "c11d2e5d757719b2b8eaf9a0d5a29c4b48db41cb6fb8857ceb9abe10e4ba3116"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/ios/AppIcon-29x29@2x-1.png",
+      "bytes": 2553,
+      "sha256": "da02059d7c575247b4ffc00dd2bf7a7c9d2729c9f5bdce48773d89f83f5c80a1"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/ios/AppIcon-29x29@2x.png",
+      "bytes": 2553,
+      "sha256": "da02059d7c575247b4ffc00dd2bf7a7c9d2729c9f5bdce48773d89f83f5c80a1"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/ios/AppIcon-29x29@3x.png",
+      "bytes": 3721,
+      "sha256": "14bfd08765a220d9dbaf9c474e13deff1431becce9c08fca42955566947ade76"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/ios/AppIcon-40x40@1x.png",
+      "bytes": 1783,
+      "sha256": "413f878ac452d6219971dc44429e44ff8139051eb3f121e37816931b25d8549f"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/ios/AppIcon-40x40@2x-1.png",
+      "bytes": 3511,
+      "sha256": "767b94ef58c29106b9dc86c1cba7c8af637c202ac6e77a54715980a4751b13e9"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/ios/AppIcon-40x40@2x.png",
+      "bytes": 3511,
+      "sha256": "767b94ef58c29106b9dc86c1cba7c8af637c202ac6e77a54715980a4751b13e9"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/ios/AppIcon-40x40@3x.png",
+      "bytes": 4386,
+      "sha256": "97b5358bcbe7e54cae759e6f056dd610471212bfda8ceb4a7d6d970efae8d54a"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/ios/AppIcon-512@2x.png",
+      "bytes": 47915,
+      "sha256": "484fe2d35c414f5676c036fef1d7e3844e6c6e6acfdbd559cbd52772c8d0454b"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/ios/AppIcon-60x60@2x.png",
+      "bytes": 4386,
+      "sha256": "97b5358bcbe7e54cae759e6f056dd610471212bfda8ceb4a7d6d970efae8d54a"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/ios/AppIcon-60x60@3x.png",
+      "bytes": 7747,
+      "sha256": "b22704e6173f4417067eba2f877c0f3d2aacf69fc2836a4bf2acfbc6f92471bd"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/ios/AppIcon-76x76@1x.png",
+      "bytes": 3014,
+      "sha256": "facd22bd4ab23f3af0998eb2f4c584b317cb395312f07817d672f4faf9c860af"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/ios/AppIcon-76x76@2x.png",
+      "bytes": 6130,
+      "sha256": "4df048cfc22254a8a10f51f3fe132710e9e53f2471fe3cc0c8d827fbaa38de22"
+    },
+    {
+      "path": "baropress-repository/src-tauri/icons/ios/AppIcon-83.5x83.5@2x.png",
+      "bytes": 7256,
+      "sha256": "f00e4f9478085ad18dabc0c86b752625e359517d4b059d90cfeb1836a338d3cc"
+    },
+    {
+      "path": "baropress-repository/src-tauri/installerHooks.nsh",
+      "bytes": 424,
+      "sha256": "8a10865ba3f167eb22d1c5266b179692fc9a164829e39201a94174fc0c868f1b"
+    },
+    {
+      "path": "baropress-repository/src-tauri/migrations/0001_init.sql",
+      "bytes": 5579,
+      "sha256": "9f2a7c046c3aec0003e75cba6851d28c0c9ed4cfa9bb7183e0e07273090c4faa"
+    },
+    {
+      "path": "baropress-repository/src-tauri/migrations/0002_exams_phase5.sql",
+      "bytes": 897,
+      "sha256": "bcdc965a14233c2b70b1f2d8f3b7e1abae91e9a69bc3fb52864cbd9267de1285"
+    },
+    {
+      "path": "baropress-repository/src-tauri/migrations/0003_exam_visualization.sql",
+      "bytes": 136,
+      "sha256": "886bd8e02ce637a725dcf3181680a6bd44811de72c191292a1fb729f2b83cf90"
+    },
+    {
+      "path": "baropress-repository/src-tauri/migrations/0004_exam_trajectory.sql",
+      "bytes": 56,
+      "sha256": "c034009454cde42b334397a93a2a4f858d065caf8f52cba68715932408aa732f"
+    },
+    {
+      "path": "baropress-repository/src-tauri/migrations/0005_questionnaire_sessions.sql",
+      "bytes": 694,
+      "sha256": "3556bcc4af2666e78aebc70b198e43d0edae47cd734cc309c4ff9454e555eb24"
+    },
+    {
+      "path": "baropress-repository/src-tauri/migrations/0006_calibration.sql",
+      "bytes": 1870,
+      "sha256": "0de16e5af09047eae3c4ad1005a9ce6711650b808439bb610d1ff2dbed132f7e"
+    },
+    {
+      "path": "baropress-repository/src-tauri/migrations/0007_exam_patient_snapshot.sql",
+      "bytes": 148,
+      "sha256": "e75d6ea1b68db60e8452ed76917bb480cd2cff485eb1bd5ee84dd291acdaeab3"
+    },
+    {
+      "path": "baropress-repository/src-tauri/migrations/0008_exam_analysis.sql",
+      "bytes": 50,
+      "sha256": "92d2c39eb8978e19f39157b896ddc31176fa7804ed15b3d9a7ed01a633e401a0"
+    },
+    {
+      "path": "baropress-repository/src-tauri/migrations/0009_user_access.sql",
+      "bytes": 454,
+      "sha256": "cb9e191d278897bff056f8b0584f467373b45c23d8cf12fbd44968646536b494"
+    },
+    {
+      "path": "baropress-repository/src-tauri/src/acquisition.rs",
+      "bytes": 24628,
+      "sha256": "e441bc12337cdc0cd8b64fde0760a1424439d63cd3df6e5c716adc884de02935"
+    },
+    {
+      "path": "baropress-repository/src-tauri/src/agenda.rs",
+      "bytes": 13418,
+      "sha256": "a292d2e37fdf300ad870c2938014c5f210f93d50ba66c997cb69492becdaded5"
+    },
+    {
+      "path": "baropress-repository/src-tauri/src/auth.rs",
+      "bytes": 21371,
+      "sha256": "1e6ac4f37e530262e5ff6ac8c30858b50e2e762602c6615d7e39164fb6b21e1c"
+    },
+    {
+      "path": "baropress-repository/src-tauri/src/auth_tests.rs",
+      "bytes": 26454,
+      "sha256": "ceb1baf7e9e73a121673f13351a8d00f3fbedae0f9c8698b43801e8429ca2d05"
+    },
+    {
+      "path": "baropress-repository/src-tauri/src/backup.rs",
+      "bytes": 39668,
+      "sha256": "7b330247c761d63b43c3f687c26876958cfb09f25f0b7f6b0677ebfd37f54ce4"
+    },
+    {
+      "path": "baropress-repository/src-tauri/src/calibration.rs",
+      "bytes": 94477,
+      "sha256": "ab3329ab63a8c9795c030e5904faa6691919f6e580a4be476e8c73f1daed5a1a"
+    },
+    {
+      "path": "baropress-repository/src-tauri/src/command_queue.rs",
+      "bytes": 3444,
+      "sha256": "48ca30ed0773c885aba6e7bcd1f898d1a9c4ccd180269c4926efdef4d4d13d32"
+    },
+    {
+      "path": "baropress-repository/src-tauri/src/db.rs",
+      "bytes": 8289,
+      "sha256": "fff52c9c90872b673cc8a787b70101d042a5868d95d9a01e37ef7b3581af6cc5"
+    },
+    {
+      "path": "baropress-repository/src-tauri/src/exam_analysis.rs",
+      "bytes": 12661,
+      "sha256": "23774dd6edf6e82425a5cacdc38f2b300bc8f4e15541bbe66d69ec2dcf16476c"
+    },
+    {
+      "path": "baropress-repository/src-tauri/src/exam_analysis_tests.rs",
+      "bytes": 11683,
+      "sha256": "2957e392d41ee4afbbda88226fc8a6bb7ee5e27dc89316b20021a059b521f577"
+    },
+    {
+      "path": "baropress-repository/src-tauri/src/exams.rs",
+      "bytes": 47190,
+      "sha256": "543feb4666ab8b7b0a66db27b1eb10de6dbbb2100b226cc7712e87fc5957307b"
+    },
+    {
+      "path": "baropress-repository/src-tauri/src/lib.rs",
+      "bytes": 9005,
+      "sha256": "f7b67efb5d8a3c5b4a80bf5bb97fa74a33ab7fda0f0df5d469686dd14df058ea"
+    },
+    {
+      "path": "baropress-repository/src-tauri/src/main.rs",
+      "bytes": 110,
+      "sha256": "cb8bb5f956de35b78894453a6cd9cbdd98455a9094d01a8f608a73b7276a1700"
+    },
+    {
+      "path": "baropress-repository/src-tauri/src/pagination.rs",
+      "bytes": 4826,
+      "sha256": "aaacfe6351a636064db234641c6c17be98bab6982eb5ecd33257eeb924be3e46"
+    },
+    {
+      "path": "baropress-repository/src-tauri/src/patients.rs",
+      "bytes": 28076,
+      "sha256": "f46759a0cd4287ebb69a9d98ca12d8b5f834f21c2cdac7892bf3b78987e35447"
+    },
+    {
+      "path": "baropress-repository/src-tauri/src/permissions.rs",
+      "bytes": 2145,
+      "sha256": "1f0a8ccce2396493998c75af55578a91346bdcd66237aac88e13bf02c1e89def"
+    },
+    {
+      "path": "baropress-repository/src-tauri/src/questionnaires.rs",
+      "bytes": 25035,
+      "sha256": "35f9db814db7a970ab24481f84981345fd9b07b0e25efbf6ca6db0a7ee7be0dc"
+    },
+    {
+      "path": "baropress-repository/src-tauri/src/support.rs",
+      "bytes": 8891,
+      "sha256": "f3d017572db952f21d37130624ebe2c0a59e30761f9b5b2da89ade9f8ac063ba"
+    },
+    {
+      "path": "baropress-repository/src-tauri/src/users.rs",
+      "bytes": 8705,
+      "sha256": "ab9c18be03f38e6b32b18075750276c3b6f574046de40806d7103e141a2c39a8"
+    },
+    {
+      "path": "baropress-repository/src-tauri/src/workflow_tests.rs",
+      "bytes": 4568,
+      "sha256": "fc3ae329edcaca96024374f6b2e922641f882926ffa9ee17cf5bcd8c3e4faf5a"
+    },
+    {
+      "path": "baropress-repository/src-tauri/tauri.conf.json",
+      "bytes": 1145,
+      "sha256": "eb0d03355675b0135fc0de65695af77e7c6485b2b24e3fb1bba643bae24788df"
+    },
+    {
+      "path": "baropress-repository/src/App.tsx",
+      "bytes": 4941,
+      "sha256": "a7ca6b15010014788b7636e2e33bfdf9dbed7732aacf9879efcb1d5f0de3d212"
+    },
+    {
+      "path": "baropress-repository/src/components/ErrorBoundary.tsx",
+      "bytes": 948,
+      "sha256": "67528cdc445c3e58878aa0b38274083fdcf22bc920794e3b16a890ffc335f411"
+    },
+    {
+      "path": "baropress-repository/src/components/NavigationProtection.tsx",
+      "bytes": 3483,
+      "sha256": "9b4b471e9e51430c57a9e748a0740caff96bdc027f97cc05a18e3b57852c7480"
+    },
+    {
+      "path": "baropress-repository/src/components/Sidebar.tsx",
+      "bytes": 3824,
+      "sha256": "b12024883b65febb8ef63f7ba9a6ff9c278adeaf1c790dbef4f584e456432d26"
+    },
+    {
+      "path": "baropress-repository/src/components/ui/ListPagination.tsx",
+      "bytes": 756,
+      "sha256": "690c5bcebee8a6ba6666f5ff35af596df379cd939d77ffc22c039324ca05edb0"
+    },
+    {
+      "path": "baropress-repository/src/components/ui/Logo.tsx",
+      "bytes": 634,
+      "sha256": "154650b7e0286de2ec39b45b7b11e7fa9c770e314ab4d5d96b6bf057ed4864bf"
+    },
+    {
+      "path": "baropress-repository/src/components/ui/controls.tsx",
+      "bytes": 1228,
+      "sha256": "592d1a050df890a2da855ecad1d6c4d7dd446294efb088bb9a67bf318eb3dd43"
+    },
+    {
+      "path": "baropress-repository/src/components/ui/useDialogFocus.ts",
+      "bytes": 2459,
+      "sha256": "e0b02110c5a04f22c05d8a6c37342cc7a8a38c6426b443aa0cb068307eaa19f2"
+    },
+    {
+      "path": "baropress-repository/src/components/ui/usePagedSearch.ts",
+      "bytes": 741,
+      "sha256": "17835eb2947f8fed4477a73c0beb4e592b72a7d6a5d6e0cbd0a1205c80fe96ae"
+    },
+    {
+      "path": "baropress-repository/src/components/ui/useUnsavedChanges.ts",
+      "bytes": 570,
+      "sha256": "1a51f12018f5f0c93ca931c7d8f31b949010063da460aa3ceba28a9f669fd8f8"
+    },
+    {
+      "path": "baropress-repository/src/features/acquisition/ArduinoSettings.tsx",
+      "bytes": 20328,
+      "sha256": "21f8d18c445683a30e4461de24efc7fd6199e1e9c3453d7e06e673d98a15734a"
+    },
+    {
+      "path": "baropress-repository/src/features/acquisition/MatrixPreview15x15.tsx",
+      "bytes": 7402,
+      "sha256": "35ff381b7d4aee7fb3dd72940bce08058ad2ba78d65df84080a3a46d3d2a26da"
+    },
+    {
+      "path": "baropress-repository/src/features/agenda/AgendaPage.tsx",
+      "bytes": 12314,
+      "sha256": "de6059db40dbf97199419d820f068f1c4fadb0f539c6311d80bbcd3272247651"
+    },
+    {
+      "path": "baropress-repository/src/features/agenda/calendarUtils.ts",
+      "bytes": 1369,
+      "sha256": "148d96f4f16cf920de5f166df724bc294b03679c3ab5c9a8bea8ff6811ad4dc4"
+    },
+    {
+      "path": "baropress-repository/src/features/auth/AccountSettings.tsx",
+      "bytes": 3839,
+      "sha256": "213a7073bb55b6261b8ff4952d9e0c3d7765a629b269591c0645a03c7344c9d7"
+    },
+    {
+      "path": "baropress-repository/src/features/auth/LoginPage.tsx",
+      "bytes": 7525,
+      "sha256": "fd99653a7fb214e490f74d919fc6ab28dd69c5d33d5cde9ac53ceab0c32bf07f"
+    },
+    {
+      "path": "baropress-repository/src/features/auth/PasswordField.tsx",
+      "bytes": 861,
+      "sha256": "e0d30292569efeac5842d2745ff9fb843086c986ad7be7282501cef7a2818bda"
+    },
+    {
+      "path": "baropress-repository/src/features/auth/RecoveryReceipt.tsx",
+      "bytes": 932,
+      "sha256": "61ebc993dabee022e763bda468f09181f1166449332e481070d3ba7ea4dadad3"
+    },
+    {
+      "path": "baropress-repository/src/features/auth/UsersPage.tsx",
+      "bytes": 9506,
+      "sha256": "bbf5a087c151f7456e991ebb61f0e260f19d949a2cf99aba5b4a6797dc0fefd0"
+    },
+    {
+      "path": "baropress-repository/src/features/auth/authValidation.ts",
+      "bytes": 658,
+      "sha256": "228388a4d8ba25a15a0c56e0a2e4109aafbaee4556eafed0edb70f3eb6bec1d0"
+    },
+    {
+      "path": "baropress-repository/src/features/auth/permissions.ts",
+      "bytes": 734,
+      "sha256": "a0dfddb67a3fe2abcc97e6460c42fe40df18e30e9664c7c6b38cefaead73d570"
+    },
+    {
+      "path": "baropress-repository/src/features/auth/sessionActions.ts",
+      "bytes": 1680,
+      "sha256": "ab4357cfa4d2b7d0a38016b01785a848ad80a1b47a10f5e6d9c4616861ef0a95"
+    },
+    {
+      "path": "baropress-repository/src/features/backup/BackupPage.tsx",
+      "bytes": 8484,
+      "sha256": "71088dc60f4d41a0dd23ceacac82d370610f4696d0de04bb6efe9e9b121c93e3"
+    },
+    {
+      "path": "baropress-repository/src/features/backup/exportUtils.ts",
+      "bytes": 1131,
+      "sha256": "d457451b7de4ac105e3c19f10c1b9e8c8a6432d110b2ec4affb22ac85c17b85b"
+    },
+    {
+      "path": "baropress-repository/src/features/baropodometry/BaropodometricHeatmap.tsx",
+      "bytes": 7024,
+      "sha256": "5f31f237c85be9e01d8efcddcbe5c6a316edf5ea710f61609211c3f0fb171009"
+    },
+    {
+      "path": "baropress-repository/src/features/baropodometry/BaropodometryPage.tsx",
+      "bytes": 11799,
+      "sha256": "581a18188186efe8d22ab34cdb5926fbd191ca1c94e750458e5a00300a24b759"
+    },
+    {
+      "path": "baropress-repository/src/features/baropodometry/HeatmapSettingsPanel.tsx",
+      "bytes": 17331,
+      "sha256": "1373cb94b873aca0cb92748b6ddaaa53fb7c16b691c9d360cb61f10c74b5b49b"
+    },
+    {
+      "path": "baropress-repository/src/features/baropodometry/MetricsPanel.tsx",
+      "bytes": 8976,
+      "sha256": "b3cd4af9b2a3433aaa0749460969edf8a7b639af621025809b23f64c0a2d5f66"
+    },
+    {
+      "path": "baropress-repository/src/features/baropodometry/ParameterBar.tsx",
+      "bytes": 15367,
+      "sha256": "02aa686dde113533075b25bcc6f9f7121e166c5159d3ee2df49b1632cc6a3215"
+    },
+    {
+      "path": "baropress-repository/src/features/baropodometry/PressureLegend.tsx",
+      "bytes": 1641,
+      "sha256": "ab062c2c227fd2843ca39d5888f67b1e5c45fcf9aacca29f7af9c0401ac64326"
+    },
+    {
+      "path": "baropress-repository/src/features/calibration/CalibrationHelp.tsx",
+      "bytes": 3001,
+      "sha256": "94a8cf50b59b25754e7df13eece8af3ffb45bc09ba0d60e5cfe6f8ddd55ce5e5"
+    },
+    {
+      "path": "baropress-repository/src/features/calibration/CalibrationPage.tsx",
+      "bytes": 47108,
+      "sha256": "0d72e1f8e5ff1a9db76b2bf890bb7d496720db02da08c56cfa0a8f487850cee9"
+    },
+    {
+      "path": "baropress-repository/src/features/calibration/ClassificationCorrection.tsx",
+      "bytes": 5939,
+      "sha256": "033ad38eb6eb95c99016d7fda3bf85a29ceb9f0dfc07fda94b028f20d93d7ca6"
+    },
+    {
+      "path": "baropress-repository/src/features/calibration/PhysicalResults.tsx",
+      "bytes": 7051,
+      "sha256": "55a3f76c73aade6d0e3a2493818f6622f6c908b8c4654a93658978b58d9e558a"
+    },
+    {
+      "path": "baropress-repository/src/features/calibration/fieldHelp.ts",
+      "bytes": 7626,
+      "sha256": "f06c6d660ebb43d25c0494b8ce73749b0785cfc85c79efb98ffeabe000e6f981"
+    },
+    {
+      "path": "baropress-repository/src/features/calibration/matDefaults.ts",
+      "bytes": 1236,
+      "sha256": "4a5afddaff2577e8dff731c6f7b74fc29c96437237980f6535a3463ca92fe559"
+    },
+    {
+      "path": "baropress-repository/src/features/comparison/ComparisonPage.tsx",
+      "bytes": 11826,
+      "sha256": "09d19ec2ab199ed8e9b523b731647c0711b736cbae46d9604f37f9e5c321b861"
+    },
+    {
+      "path": "baropress-repository/src/features/comparison/comparisonUtils.ts",
+      "bytes": 3774,
+      "sha256": "01969e692ebed3d65b7ffe7c9367069d4cb3ebfe8fba1215d12ff032ba489ecb"
+    },
+    {
+      "path": "baropress-repository/src/features/exams/AnalysisGraphs.tsx",
+      "bytes": 3907,
+      "sha256": "cd10c09a7fdc2f303b6a021f23214621ba4584c2206bd4fe04826ab3e1241fef"
+    },
+    {
+      "path": "baropress-repository/src/features/exams/AnalysisReview.tsx",
+      "bytes": 13369,
+      "sha256": "7092b38cabb7d0261187ddd44733d40666563e07b19bd934b546226d52bff364"
+    },
+    {
+      "path": "baropress-repository/src/features/exams/CancelExamDialog.tsx",
+      "bytes": 2216,
+      "sha256": "9aa78025294a6ebb9eb7f78d308de6aefb58ce2009186e585726900a21dd5279"
+    },
+    {
+      "path": "baropress-repository/src/features/exams/ExamConditionsForm.tsx",
+      "bytes": 3075,
+      "sha256": "242cf26dcceed54c7735588cae00e9e5ed7dd6c1f3e538c77f7717902ba1d8d1"
+    },
+    {
+      "path": "baropress-repository/src/features/exams/ExamDetailsModal.tsx",
+      "bytes": 17548,
+      "sha256": "dd4e9300b39f4efcfce94fa0131471a337e16ca25a16f838a2f13957289f5cfa"
+    },
+    {
+      "path": "baropress-repository/src/features/exams/ExamExportActions.tsx",
+      "bytes": 3814,
+      "sha256": "aac10b2d18dc83a972e9af55f7891e5e15d1624916ad856ba2e4e31478cdebe5"
+    },
+    {
+      "path": "baropress-repository/src/features/exams/ExamReportView.tsx",
+      "bytes": 1999,
+      "sha256": "74bacdf2398c987193eb194269f24e12fe59e79f6f96e34dce83601a91f29533"
+    },
+    {
+      "path": "baropress-repository/src/features/exams/ExamSettingsTab.tsx",
+      "bytes": 3927,
+      "sha256": "8b26e2f932a73db404aa7aaa0b8291b9eb4f33c66d067645bb8c9a532294ad9e"
+    },
+    {
+      "path": "baropress-repository/src/features/exams/ExamVisualizationControls.tsx",
+      "bytes": 1845,
+      "sha256": "6a3a90ebd61816d7e306214f2573ea8571f83c0a0759217a636126a771d0de1e"
+    },
+    {
+      "path": "baropress-repository/src/features/exams/ExamsPage.tsx",
+      "bytes": 13754,
+      "sha256": "17a6186ed5dd9d5f018657fd83fa8c7e8b3e54a0cb187310d7272cbb7584fd2b"
+    },
+    {
+      "path": "baropress-repository/src/features/exams/NewExamPage.tsx",
+      "bytes": 42186,
+      "sha256": "0d0ef88de4f05b9b19e5def2010d3cc6eb4b758f4142dc85ab2985a761a9acba"
+    },
+    {
+      "path": "baropress-repository/src/features/exams/SensorMap3D.tsx",
+      "bytes": 1922,
+      "sha256": "919c50a792f4fddef8a16507eb9608651d49806fe9931f894e490a1407514c0b"
+    },
+    {
+      "path": "baropress-repository/src/features/exams/SequenceLinks.tsx",
+      "bytes": 1289,
+      "sha256": "b51b10e89dfe208432d0bd35861802317ad011aaf6dd8861f884a7c254ad0fad"
+    },
+    {
+      "path": "baropress-repository/src/features/exams/examProcessing.ts",
+      "bytes": 3435,
+      "sha256": "01c23208274ee2f93dfb403b749e1d33dec654d4a2cde7f390959f6db3f106b6"
+    },
+    {
+      "path": "baropress-repository/src/features/exams/examRuntime.ts",
+      "bytes": 4056,
+      "sha256": "87ff126685056bd821d09a513ccf16468505edd52f4a7f1f4a6ffbb27112e804"
+    },
+    {
+      "path": "baropress-repository/src/features/exams/examStore.ts",
+      "bytes": 19948,
+      "sha256": "0c3b2ac696eaebf2f69f06d01c6e93eeb5f925e2cd14d518fc11412284bb6a3c"
+    },
+    {
+      "path": "baropress-repository/src/features/exams/useExamTrajectory.ts",
+      "bytes": 1108,
+      "sha256": "4cdc39499708f4f2a7ad9d7b18d03eceeb2320a072bd30ccbc747b4a17ceee0b"
+    },
+    {
+      "path": "baropress-repository/src/features/logs/LogsPage.tsx",
+      "bytes": 3086,
+      "sha256": "fe78ffe798035427007af3b7143bc73b844ea75db7f3c784d1c92189396186bf"
+    },
+    {
+      "path": "baropress-repository/src/features/patients/PatientCareHistory.tsx",
+      "bytes": 1941,
+      "sha256": "b8b7ebf1bad199965a67668002d806efce9af89a6368e67e392620b5641ba5cc"
+    },
+    {
+      "path": "baropress-repository/src/features/patients/PatientDetails.tsx",
+      "bytes": 22587,
+      "sha256": "ba8ac7b0d3166caa7b75bb50a296c4c7a1f23ae2dfa50fd93a8dddcaa15653de"
+    },
+    {
+      "path": "baropress-repository/src/features/patients/PatientForm.tsx",
+      "bytes": 22313,
+      "sha256": "7e1f943f796fdb914ecffb0490ddf7f97978f6e8fa1c993ca0ff9fb3f57d9c50"
+    },
+    {
+      "path": "baropress-repository/src/features/patients/PatientList.tsx",
+      "bytes": 12637,
+      "sha256": "665beeb9ce74eaee949312401f903876081a24c137cd2d9a3c31e349011480f7"
+    },
+    {
+      "path": "baropress-repository/src/features/patients/PatientsPage.tsx",
+      "bytes": 5804,
+      "sha256": "fd646111920002ae3ba36d058f6546075953cd3900723b14470d912a2feba161"
+    },
+    {
+      "path": "baropress-repository/src/features/patients/patientUtils.ts",
+      "bytes": 5534,
+      "sha256": "ae0879c8aa0616672ed0a58016c10e2fe1472b9b24cf97eefdb83b2a4a2f1bdb"
+    },
+    {
+      "path": "baropress-repository/src/features/questionnaires/QuestionnaireHistory.tsx",
+      "bytes": 963,
+      "sha256": "97607dee83d1f855b5682d1c76dbc29410d28b2a291b826fa88c459e8414bdb5"
+    },
+    {
+      "path": "baropress-repository/src/features/questionnaires/QuestionnairesPage.tsx",
+      "bytes": 13013,
+      "sha256": "0fe96700e6ac815f8fb403bdc5aadeea532ecf54ef6731a8d7fc0121270145af"
+    },
+    {
+      "path": "baropress-repository/src/features/questionnaires/questionnaireUtils.ts",
+      "bytes": 2045,
+      "sha256": "a27b648d1004eac8ef0b01ae5494b99c028f91f62e2ab0336b4b49c5e358c290"
+    },
+    {
+      "path": "baropress-repository/src/features/reports/ReportViewer.tsx",
+      "bytes": 31392,
+      "sha256": "9eb200925a80f248284c3208a5583478527afdd0145ff3c8f351764c60ab4c09"
+    },
+    {
+      "path": "baropress-repository/src/features/reports/reportPdfGenerator.ts",
+      "bytes": 28263,
+      "sha256": "bea6738bc49cfc25caee6d66f9459fba390328013e74116f9f0d1f1a6c43ff26"
+    },
+    {
+      "path": "baropress-repository/src/features/reports/reportUtils.ts",
+      "bytes": 5879,
+      "sha256": "ec3ccd9ea13b1a194335705221e65f9d3749b446f462c207cfd4f9e2ccf7ba74"
+    },
+    {
+      "path": "baropress-repository/src/features/reports/savedValues.ts",
+      "bytes": 592,
+      "sha256": "5505dafa81129ce7a99762a8f31a629b42ec1b60a0c2c4ea7a9d709191846bdd"
+    },
+    {
+      "path": "baropress-repository/src/index.css",
+      "bytes": 1803,
+      "sha256": "b84c865d892d2df899e08b09f2cebc19f90425e96a7997c0ea44ef59527ee121"
+    },
+    {
+      "path": "baropress-repository/src/main.tsx",
+      "bytes": 230,
+      "sha256": "fab9efeb30e2ab3efe2849c376cfbe21ec4b99fb16858d8b95ebafad6e880b99"
+    },
+    {
+      "path": "baropress-repository/src/pages/Dashboard.tsx",
+      "bytes": 4458,
+      "sha256": "cf4880c08a53fa99cba10c5c17b09e60ce9fd13cf7915a0da94b8dc2b896e2c1"
+    },
+    {
+      "path": "baropress-repository/src/pages/Settings.tsx",
+      "bytes": 4897,
+      "sha256": "a3c39523db83a69f59442092799d5c6d4b3f5837df2109080a176223a9e99096"
+    },
+    {
+      "path": "baropress-repository/src/services/acquisition/MockSensorDevice.ts",
+      "bytes": 6765,
+      "sha256": "8b13aa98d8e604e64be535ed4f96e7768ad01f2ec6db6e39267e4fd13707f637"
+    },
+    {
+      "path": "baropress-repository/src/services/acquisition/SensorDevice.ts",
+      "bytes": 603,
+      "sha256": "2aad3f780b8266456dff3c55dae3e771c017ebd6683918ff9a341a68aa9b9860"
+    },
+    {
+      "path": "baropress-repository/src/services/acquisition/SerialSensorDevice.ts",
+      "bytes": 7166,
+      "sha256": "8d007a814f936625eedc865d0e9b3c5c722a0e03eec3d0e2cabce915b5b094f3"
+    },
+    {
+      "path": "baropress-repository/src/services/acquisition/automaticConnection.ts",
+      "bytes": 4174,
+      "sha256": "5b1f252d446ef59424afe6992e40819e67ef54555eb9a9d216248f12d4f4107c"
+    },
+    {
+      "path": "baropress-repository/src/services/acquisition/buffer.ts",
+      "bytes": 2523,
+      "sha256": "f13560329897f7dc8cae8ea6393d43212d5518454c1a006fb6145cdf7633b9d7"
+    },
+    {
+      "path": "baropress-repository/src/services/acquisition/index.ts",
+      "bytes": 214,
+      "sha256": "99a35714fe4883af82bef5154dcbcf14d4a600744296199f03191d989031fdd2"
+    },
+    {
+      "path": "baropress-repository/src/services/acquisition/parser.ts",
+      "bytes": 3550,
+      "sha256": "62f1ec19bce3df54655366736272f924a7adc876e825a3733af2ef9dc1d4e638"
+    },
+    {
+      "path": "baropress-repository/src/services/acquisition/rawStream.ts",
+      "bytes": 1584,
+      "sha256": "61683add6f1cee5dc1fa8a82d996835eef02e3ab4c1a023e5f7e26c5add41eb3"
+    },
+    {
+      "path": "baropress-repository/src/services/acquisition/tare.ts",
+      "bytes": 2957,
+      "sha256": "2938c547bbd9a4edbcb303689d41392d02f224945c32a1e4dbffd9b081862370"
+    },
+    {
+      "path": "baropress-repository/src/services/acquisition/types.ts",
+      "bytes": 1598,
+      "sha256": "8e61807cbb4a0e28651e38196c3955fbccdef9eaff5c6b58fb8be95ef6700c72"
+    },
+    {
+      "path": "baropress-repository/src/services/acquisition/useAutomaticConnection.ts",
+      "bytes": 866,
+      "sha256": "df62bd6d3aa0fa62139e4f74960ecc692ac142c38bf3dc3238cca9009f6fdae3"
+    },
+    {
+      "path": "baropress-repository/src/services/baropodometry/autoAdjustment.ts",
+      "bytes": 3789,
+      "sha256": "9bff35e20bf057ccd2bc7b8067a32e5a3799d271761fe20ebe5ecc4c7a9ba7b0"
+    },
+    {
+      "path": "baropress-repository/src/services/baropodometry/cop.ts",
+      "bytes": 1564,
+      "sha256": "4f8e2b395f0eb267d3c4620ef516121f23c66027118e349e486feb523edd550b"
+    },
+    {
+      "path": "baropress-repository/src/services/baropodometry/heatmap.ts",
+      "bytes": 4087,
+      "sha256": "20af91657b1a2304a43ffefa030328ab18cb5f857e206baf0d73afeb41a2020c"
+    },
+    {
+      "path": "baropress-repository/src/services/baropodometry/index.ts",
+      "bytes": 238,
+      "sha256": "66efd6f4602f1326e4caf2a264a68c18e8781ddbe0dce16530895730707e3fdd"
+    },
+    {
+      "path": "baropress-repository/src/services/baropodometry/interpolation.ts",
+      "bytes": 5787,
+      "sha256": "c23254b8b5c13d19e451ba82841141e70bc37351a5e0fc2cc1fae7ee34f7168a"
+    },
+    {
+      "path": "baropress-repository/src/services/baropodometry/metrics.ts",
+      "bytes": 2031,
+      "sha256": "978ef67558a2e81bb69f6b4e82213ede6090a80983f232ef30566d03ebff017a"
+    },
+    {
+      "path": "baropress-repository/src/services/baropodometry/normalization.ts",
+      "bytes": 1580,
+      "sha256": "95b2b34fb9fa0f13e350deaefffb999992171952bb3da11c3070cccd195b79e9"
+    },
+    {
+      "path": "baropress-repository/src/services/baropodometry/settings.ts",
+      "bytes": 3395,
+      "sha256": "c96729d1f4c5b4d689fc0f57689ded31140c571919d3839f7834d7a11d5cc691"
+    },
+    {
+      "path": "baropress-repository/src/services/baropodometry/trajectory.ts",
+      "bytes": 888,
+      "sha256": "9255e6543f6bd0e8db3d0408f10e4b3f0de86305590a13303f748d0188d54b78"
+    },
+    {
+      "path": "baropress-repository/src/services/baropodometry/types.ts",
+      "bytes": 1763,
+      "sha256": "e70634e9c0bdcc7af688bf5d0afc9f8205a78e350530263fc42437542aa154fa"
+    },
+    {
+      "path": "baropress-repository/src/services/calibration/characterization.ts",
+      "bytes": 1560,
+      "sha256": "6376d9104fac55d2bc77d3f722e853170f1143ede58d4b830c953c588e5738d4"
+    },
+    {
+      "path": "baropress-repository/src/services/calibration/formatting.ts",
+      "bytes": 1610,
+      "sha256": "38f71853a6141471017abe74b883e0897f5e4274dc29cf5216bbebbb48891ea6"
+    },
+    {
+      "path": "baropress-repository/src/services/calibration/math.ts",
+      "bytes": 5532,
+      "sha256": "420a9a63a03c0b4a2d6b38d66ecfe4b3bc6dbdc07a9fa3cb48374db558cfe77a"
+    },
+    {
+      "path": "baropress-repository/src/services/calibration/recorder.ts",
+      "bytes": 2572,
+      "sha256": "33d7dcf7e7c908a2fed42bf5b65c1d08c1b2f01a380d4f9725af82772fd092e3"
+    },
+    {
+      "path": "baropress-repository/src/services/calibration/types.ts",
+      "bytes": 4325,
+      "sha256": "ae9301b270220f1893e01f4d30d1b7e6b4552c026c8eb5cd29e43a0ec486f4ba"
+    },
+    {
+      "path": "baropress-repository/src/services/database/api.ts",
+      "bytes": 10910,
+      "sha256": "264cbd824c7cd708790c9aff44468d83d316eddaa530be164a3fee8989039dff"
+    },
+    {
+      "path": "baropress-repository/src/services/examAnalysis/calculations.ts",
+      "bytes": 9046,
+      "sha256": "4a24b5453319af4246492f6a72a2924700d0e519d7b9e327a7ac7a5217a5ec06"
+    },
+    {
+      "path": "baropress-repository/src/services/examAnalysis/report.ts",
+      "bytes": 5577,
+      "sha256": "8029ec5c281c6edbfbc9fe0ae04ec56207770281c48cb50560261b8c31d66749"
+    },
+    {
+      "path": "baropress-repository/src/services/examAnalysis/types.ts",
+      "bytes": 2802,
+      "sha256": "d3b3aeaf3086b46af4f896c6661714d364bd4c8d30ca91c0688a212179e3eb05"
+    },
+    {
+      "path": "baropress-repository/src/services/examProtocol.ts",
+      "bytes": 802,
+      "sha256": "2fa19f05e6210fe0dd23deb7bd35526dc5ef129720c8e3dda74620c391c5dcf0"
+    },
+    {
+      "path": "baropress-repository/src/services/navigationGuard.ts",
+      "bytes": 1425,
+      "sha256": "1080a8973e80d90e81b8b801a28b04cd894b4546fd065884cc5ed6788a6f391f"
+    },
+    {
+      "path": "baropress-repository/src/services/preferences.ts",
+      "bytes": 1338,
+      "sha256": "e2fdfa5ece31c8a088f9526965824b1233f7f115e8aa98de7a99c3a1d3240587"
+    },
+    {
+      "path": "baropress-repository/src/services/serialWriter.ts",
+      "bytes": 432,
+      "sha256": "5a17fd761cbe36e94f9de5682d7715849de11450910c2155e2d4c40581b29492"
+    },
+    {
+      "path": "baropress-repository/src/services/usePreferencesSync.ts",
+      "bytes": 3714,
+      "sha256": "a0ece021915f74c4eac19a3f1e27d657dbf3aa8b96b88dcdb92f2b3189a1bc72"
+    },
+    {
+      "path": "baropress-repository/src/stores/acquisition.ts",
+      "bytes": 9644,
+      "sha256": "e6d13ca0934ffca0235f63af1abed3a8818d897d8a52a7b4274a39a0e523d699"
+    },
+    {
+      "path": "baropress-repository/src/stores/calibration.ts",
+      "bytes": 5353,
+      "sha256": "5b173501dc102cea885e2c39722928b804cced77b0774ce44cb910812b9971fe"
+    },
+    {
+      "path": "baropress-repository/src/stores/preferences.ts",
+      "bytes": 503,
+      "sha256": "23b1737f25d709464cb4ddcf5073a6e6f5a8853b3737575dc829d78e243a829d"
+    },
+    {
+      "path": "baropress-repository/src/stores/session.ts",
+      "bytes": 2641,
+      "sha256": "7248a3b2224ef481647eb903018ac5b4cbe5af8ff137b93f419ecdfc70444800"
+    },
+    {
+      "path": "baropress-repository/src/stores/visualization.ts",
+      "bytes": 636,
+      "sha256": "9d25d833b1d76334253d20809fe1379384046e514e953561ef8163f1d06ba736"
+    },
+    {
+      "path": "baropress-repository/src/tests/acquisition.test.ts",
+      "bytes": 8806,
+      "sha256": "e82ba1c2857c0ad31b51c11158693b9ab704c9e4f445f62c98f0ab327e4674e5"
+    },
+    {
+      "path": "baropress-repository/src/tests/agenda.test.ts",
+      "bytes": 1220,
+      "sha256": "b306b72215f46f15dae1b1161bef6abf35918d436dd2f54c7b8bb21da8ebaa1f"
+    },
+    {
+      "path": "baropress-repository/src/tests/audit-acquisition.test.ts",
+      "bytes": 2582,
+      "sha256": "44e9672d931e67ed43b47eb8fd1411de6dce019e2601e11c4d0579154e7b2e09"
+    },
+    {
+      "path": "baropress-repository/src/tests/audit-reports.test.ts",
+      "bytes": 1554,
+      "sha256": "f6734ae6925d50d5fbef1f52c591b3c5296e74854ea32f93cd1b76565a351e8d"
+    },
+    {
+      "path": "baropress-repository/src/tests/audit-science.test.ts",
+      "bytes": 1481,
+      "sha256": "e016f8a6caf6c6ad5ea7c416caabbee334651dedbc29fe8de9ec69ae457c0027"
+    },
+    {
+      "path": "baropress-repository/src/tests/audit-session.test.ts",
+      "bytes": 1962,
+      "sha256": "b71be00466876e7bc73b5dfd3ee202ac45186f4e35556516ab2336031c7515e9"
+    },
+    {
+      "path": "baropress-repository/src/tests/auth.test.ts",
+      "bytes": 816,
+      "sha256": "46037dfd895e59cb43e87bb5d5033eacd7d2507a2dc550b40386ab5dad5fce6d"
+    },
+    {
+      "path": "baropress-repository/src/tests/automatic-connection.test.ts",
+      "bytes": 8228,
+      "sha256": "3fc97a1218993096bb40c104a0525720b3ad8ac790f12a4a8efe2d20988a4e3b"
+    },
+    {
+      "path": "baropress-repository/src/tests/backup.test.ts",
+      "bytes": 932,
+      "sha256": "5c9da3b3c391a9c71aaa2a23a7344cd0ebbf8598938878b80abf08504aa57548"
+    },
+    {
+      "path": "baropress-repository/src/tests/baropodometry-settings.test.ts",
+      "bytes": 8219,
+      "sha256": "73b980426a0cf477ec12f5a1aef7bd10dc16fe8401327e4f8ba87cf765dd67c4"
+    },
+    {
+      "path": "baropress-repository/src/tests/baropodometry.test.ts",
+      "bytes": 8765,
+      "sha256": "b50c873fdb7c26cb0708d7612b2dbdb2e083f2a572be1e2ca306a67f85dbb1e0"
+    },
+    {
+      "path": "baropress-repository/src/tests/calibration-defaults.test.ts",
+      "bytes": 1355,
+      "sha256": "e46d3dbf28e1df7e5d7a9a66d512087c5f3c94b8d3747cce815f5fd940925c68"
+    },
+    {
+      "path": "baropress-repository/src/tests/calibration.test.ts",
+      "bytes": 6142,
+      "sha256": "c51a2933da9910939e082a48e2bc78d173e2eed5433203002fd944e740b8185f"
+    },
+    {
+      "path": "baropress-repository/src/tests/comparison.test.ts",
+      "bytes": 3308,
+      "sha256": "b3bec68858f539a9ca31a43b4f63766ed7a9c560035d35e2862bc67a0ee80316"
+    },
+    {
+      "path": "baropress-repository/src/tests/database-api.test.ts",
+      "bytes": 2508,
+      "sha256": "006984b0a515654df6a4fb4d4a13e3fb277fa82093d408d98c35cdb3a2229218"
+    },
+    {
+      "path": "baropress-repository/src/tests/database-cache.test.ts",
+      "bytes": 3250,
+      "sha256": "bfa4777afd90f9163117003b37d3b934b4b1c3cabda51938f7307551a81429e4"
+    },
+    {
+      "path": "baropress-repository/src/tests/exam-analysis.test.ts",
+      "bytes": 6149,
+      "sha256": "c0fd1cae6a4ffa234ac458dd9768b371278f7c9b8e74967b54a339d617168ee6"
+    },
+    {
+      "path": "baropress-repository/src/tests/exam-conditions-ui.test.ts",
+      "bytes": 5017,
+      "sha256": "363d69266bc500923406b7b8b9d66b14e13c1ca20b79120812e553f529a7baa5"
+    },
+    {
+      "path": "baropress-repository/src/tests/exam-protocol.test.ts",
+      "bytes": 6376,
+      "sha256": "dcb06f243682519959c668fd12ef511a30ad93d2c610352f350cfe7e76410d97"
+    },
+    {
+      "path": "baropress-repository/src/tests/exams.test.ts",
+      "bytes": 22475,
+      "sha256": "9970636b20b15f5bf34ddb7ce3eec595396f536db685bd2faa521451d7393883"
+    },
+    {
+      "path": "baropress-repository/src/tests/interpolation-performance.test.ts",
+      "bytes": 2031,
+      "sha256": "de00250693db8a929d95f6e7f833a16415a52a3ae6d28520757b99bb000584a0"
+    },
+    {
+      "path": "baropress-repository/src/tests/navigation.test.ts",
+      "bytes": 2097,
+      "sha256": "37afbfe30f0f9fa71dce317728597a6a326399478edab1797bd3d57461060f3c"
+    },
+    {
+      "path": "baropress-repository/src/tests/patients.test.ts",
+      "bytes": 3712,
+      "sha256": "6971f2937d33c4aa4fb2079e458d13899239bfd49c0a0fe98f49ae064b5468b5"
+    },
+    {
+      "path": "baropress-repository/src/tests/permissions.test.ts",
+      "bytes": 1566,
+      "sha256": "9fde44f6725fc2c0ac64f53b1da0e196230090b7852a51cd6ea9942726d6c8fd"
+    },
+    {
+      "path": "baropress-repository/src/tests/preferences.test.ts",
+      "bytes": 1315,
+      "sha256": "62d6ed0b10e2fad8a8ca1fc4fc4de56bc98850d7594a6c40a8b78d585d0d7472"
+    },
+    {
+      "path": "baropress-repository/src/tests/questionnaires.test.ts",
+      "bytes": 1371,
+      "sha256": "a8898181072575488bc12a1eee3d3f097feceedbc896e1aef581c6453e950702"
+    },
+    {
+      "path": "baropress-repository/src/tests/reports.test.ts",
+      "bytes": 7277,
+      "sha256": "4b981c68b819922f66fa734a18c2f19e48b708ca54cbfe4056c357f9aa0cc26f"
+    },
+    {
+      "path": "baropress-repository/src/tests/serial-status.test.ts",
+      "bytes": 4175,
+      "sha256": "4e1aa331242df3b64969245ee9d1dd98dc474d8a888cd0bf6a0be18e42a63e79"
+    },
+    {
+      "path": "baropress-repository/src/types/index.ts",
+      "bytes": 6911,
+      "sha256": "487132f11861319d2ae6a7ddc6e53c20207d3a6f798b6ae05fcd0052b6ed174a"
+    },
+    {
+      "path": "baropress-repository/tailwind.config.js",
+      "bytes": 1081,
+      "sha256": "427d1bc5c2e6356bdeb67f8fd21f72f92a8369dc5f9bdd32c09655e9efade857"
+    },
+    {
+      "path": "baropress-repository/tsconfig.json",
+      "bytes": 414,
+      "sha256": "d44983209c414650c79b30aa7f97328ec90ce458650d5634246a7a2875ec84fa"
+    },
+    {
+      "path": "baropress-repository/vite.config.ts",
+      "bytes": 494,
+      "sha256": "5f5906bbd1fe9b9334fc5afe5cfb2c961d3dc86cfde30b149fcb7c5322241a7a"
+    },
+    {
+      "path": "baropress-video/.gitignore",
+      "bytes": 49,
+      "sha256": "c7b9b6e5070a2ca3b662d21e856ea96bf95ffd9600d44c8757bdbecf72703ad1"
+    },
+    {
+      "path": "baropress-video/.hyperframes/artifacts/checks/0c39a2e5-c861-4762-9930-ccc26d8e06f3.json",
+      "bytes": 2535,
+      "sha256": "9f1446fc62fcc2369d7c1bdf3d69701fee46e9f9edfbc6c54d6b179d5cd07fca"
+    },
+    {
+      "path": "baropress-video/.hyperframes/artifacts/checks/de521763-4669-476f-8c6a-acf89021f650.json",
+      "bytes": 4321,
+      "sha256": "dc5c5f2058c0cb15b93e0499a07265c5eef6deb3d7c51bb0150e535db5cb96c2"
+    },
+    {
+      "path": "baropress-video/.hyperframes/artifacts/checks/e4ae72cc-af8d-4df6-96eb-1f804a6a94f2.json",
+      "bytes": 7055,
+      "sha256": "7884063d1eb3e644e482431d3bdff9aef78b34f255f40c9860541c97d375eebc"
+    },
+    {
+      "path": "baropress-video/.hyperframes/artifacts/snapshots/05747730-8e48-429f-b3ad-2a5855db738b/.capture-owner.json",
+      "bytes": 41,
+      "sha256": "36d1610ca8bd7f641a60b89fdf431d2c2091bba0352f47063502a291addf0d79"
+    },
+    {
+      "path": "baropress-video/.hyperframes/artifacts/snapshots/05747730-8e48-429f-b3ad-2a5855db738b/beat-01-at-0.3s.png",
+      "bytes": 33713,
+      "sha256": "6a0c5b0de1db655e28fc9890d6d232240bfd0ce762d2966eee33ce261220a5dc"
+    },
+    {
+      "path": "baropress-video/.hyperframes/artifacts/snapshots/05747730-8e48-429f-b3ad-2a5855db738b/beat-02-at-3s.png",
+      "bytes": 71219,
+      "sha256": "d48de60690c1c78e800bf0048523a04d3c49b4881a64b2865601d867fe52028f"
+    },
+    {
+      "path": "baropress-video/.hyperframes/artifacts/snapshots/05747730-8e48-429f-b3ad-2a5855db738b/beat-03-at-6.3s.png",
+      "bytes": 57248,
+      "sha256": "02480f389cddf6fd0d82d80b766db3f706f20368c974b79151ea22259aea2de1"
+    },
+    {
+      "path": "baropress-video/.hyperframes/artifacts/snapshots/05747730-8e48-429f-b3ad-2a5855db738b/beat-04-at-10s.png",
+      "bytes": 108193,
+      "sha256": "d882bb27f671dbc38d84e5fdd6a23ed03a000ddd946df0fbb7939a786d9aff3c"
+    },
+    {
+      "path": "baropress-video/.hyperframes/artifacts/snapshots/05747730-8e48-429f-b3ad-2a5855db738b/beat-05-at-14.3s.png",
+      "bytes": 59623,
+      "sha256": "f5085aee837755e04d478f72417f1ce708be63cda62aea35cfb2649680988db4"
+    },
+    {
+      "path": "baropress-video/.hyperframes/artifacts/snapshots/05747730-8e48-429f-b3ad-2a5855db738b/beat-06-at-20s.png",
+      "bytes": 270647,
+      "sha256": "d22ae0af2a63aabbc5bc2b50ae5c459d5017810ab93b81838ca894399668e284"
+    },
+    {
+      "path": "baropress-video/.hyperframes/artifacts/snapshots/05747730-8e48-429f-b3ad-2a5855db738b/beat-07-at-26.3s.png",
+      "bytes": 61197,
+      "sha256": "056db3547966101e217a6a90c03b468d371b366d757bcf23fe8af411dbfc6a4d"
+    },
+    {
+      "path": "baropress-video/.hyperframes/artifacts/snapshots/05747730-8e48-429f-b3ad-2a5855db738b/beat-08-at-28s.png",
+      "bytes": 87935,
+      "sha256": "c8fa9133e1368b943444b33d8ac1688b92c7b5970aac72a55eb7dcac724c4ac2"
+    },
+    {
+      "path": "baropress-video/.hyperframes/artifacts/snapshots/05747730-8e48-429f-b3ad-2a5855db738b/review-beats.jpg",
+      "bytes": 117443,
+      "sha256": "7dc84bc023f4e3513b0254d23ac3c0e5b4e3b86cd9525cb3e11e4353d9e1ff53"
+    },
+    {
+      "path": "baropress-video/.hyperframes/artifacts/snapshots/05747730-8e48-429f-b3ad-2a5855db738b/review-phone.jpg",
+      "bytes": 79402,
+      "sha256": "77c1b612f03b75c33806031144bd3448239138c38e2190f72788c2fd952e79a1"
+    },
+    {
+      "path": "baropress-video/.hyperframes/artifacts/snapshots/05747730-8e48-429f-b3ad-2a5855db738b/review-seam-01.jpg",
+      "bytes": 42057,
+      "sha256": "e1db17fc5e8d872cb437319787a5209cc0931ee91594072392b17a89b8f9c187"
+    },
+    {
+      "path": "baropress-video/.hyperframes/artifacts/snapshots/05747730-8e48-429f-b3ad-2a5855db738b/review-seam-02.jpg",
+      "bytes": 54471,
+      "sha256": "4ea5aa13ae0ccebdf82cb286e6da9416481bf329d9a095c5ff9b6bd3fcb74c7e"
+    },
+    {
+      "path": "baropress-video/.hyperframes/artifacts/snapshots/05747730-8e48-429f-b3ad-2a5855db738b/review-seam-03.jpg",
+      "bytes": 50271,
+      "sha256": "3f9e39d32c86f9ac37ba11dbc08b772ebb839828e4c29a7526821ffa9ec301bc"
+    },
+    {
+      "path": "baropress-video/.hyperframes/artifacts/snapshots/05747730-8e48-429f-b3ad-2a5855db738b/seam-01-1-at-5.8s.png",
+      "bytes": 71219,
+      "sha256": "d48de60690c1c78e800bf0048523a04d3c49b4881a64b2865601d867fe52028f"
+    },
+    {
+      "path": "baropress-video/.hyperframes/artifacts/snapshots/05747730-8e48-429f-b3ad-2a5855db738b/seam-01-2-at-5.9s.png",
+      "bytes": 71219,
+      "sha256": "d48de60690c1c78e800bf0048523a04d3c49b4881a64b2865601d867fe52028f"
+    },
+    {
+      "path": "baropress-video/.hyperframes/artifacts/snapshots/05747730-8e48-429f-b3ad-2a5855db738b/seam-01-3-at-6s.png",
+      "bytes": 48158,
+      "sha256": "c5efac0cc65b11420bb1dafafd36851a904652f5fe061c3bcd9ea6f38c52371d"
+    },
+    {
+      "path": "baropress-video/.hyperframes/artifacts/snapshots/05747730-8e48-429f-b3ad-2a5855db738b/seam-01-4-at-6.1s.png",
+      "bytes": 48158,
+      "sha256": "c5efac0cc65b11420bb1dafafd36851a904652f5fe061c3bcd9ea6f38c52371d"
+    },
+    {
+      "path": "baropress-video/.hyperframes/artifacts/snapshots/05747730-8e48-429f-b3ad-2a5855db738b/seam-01-5-at-6.2s.png",
+      "bytes": 55541,
+      "sha256": "3199eddd9afa3e729c33406ac7693738f5ae7823daffe2faea9bef1c70b6a9dd"
+    },
+    {
+      "path": "baropress-video/.hyperframes/artifacts/snapshots/05747730-8e48-429f-b3ad-2a5855db738b/seam-02-1-at-13.8s.png",
+      "bytes": 116180,
+      "sha256": "7a576924790c0fda124651e11337def8554fdd70bad29b4a32c40bf3d549be0e"
+    },
+    {
+      "path": "baropress-video/.hyperframes/artifacts/snapshots/05747730-8e48-429f-b3ad-2a5855db738b/seam-02-2-at-13.9s.png",
+      "bytes": 116180,
+      "sha256": "7a576924790c0fda124651e11337def8554fdd70bad29b4a32c40bf3d549be0e"
+    },
+    {
+      "path": "baropress-video/.hyperframes/artifacts/snapshots/05747730-8e48-429f-b3ad-2a5855db738b/seam-02-3-at-14s.png",
+      "bytes": 22021,
+      "sha256": "1dba8c8b3b60521dbaf76b1c06391bf57665475e6d50e57b7c42152abe926b31"
+    },
+    {
+      "path": "baropress-video/.hyperframes/artifacts/snapshots/05747730-8e48-429f-b3ad-2a5855db738b/seam-02-4-at-14.1s.png",
+      "bytes": 33239,
+      "sha256": "4d575b21734ada0e69f2b1f29979322bc01a853b29b87c29172d700b8a9f3a98"
+    },
+    {
+      "path": "baropress-video/.hyperframes/artifacts/snapshots/05747730-8e48-429f-b3ad-2a5855db738b/seam-02-5-at-14.2s.png",
+      "bytes": 34136,
+      "sha256": "b32589cd67bb28b68d89ce875addcf10d1da7a629c3d4f6069cfdf33a81e8909"
+    },
+    {
+      "path": "baropress-video/.hyperframes/artifacts/snapshots/05747730-8e48-429f-b3ad-2a5855db738b/seam-03-1-at-25.8s.png",
+      "bytes": 194115,
+      "sha256": "0631a82cada52bad0aa972458b3b5f6e9ec19cdd91744342b6ce60d537e7bb24"
+    },
+    {
+      "path": "baropress-video/.hyperframes/artifacts/snapshots/05747730-8e48-429f-b3ad-2a5855db738b/seam-03-2-at-25.9s.png",
+      "bytes": 194115,
+      "sha256": "0631a82cada52bad0aa972458b3b5f6e9ec19cdd91744342b6ce60d537e7bb24"
+    },
+    {
+      "path": "baropress-video/.hyperframes/artifacts/snapshots/05747730-8e48-429f-b3ad-2a5855db738b/seam-03-3-at-26s.png",
+      "bytes": 41561,
+      "sha256": "9cfdc909c6e4a581153652a299e0c43f2695ee457c358663b5054190b3e8fd7d"
+    },
+    {
+      "path": "baropress-video/.hyperframes/artifacts/snapshots/05747730-8e48-429f-b3ad-2a5855db738b/seam-03-4-at-26.1s.png",
+      "bytes": 43400,
+      "sha256": "e888c810b5392734d82b62cbc6e07f4fc91af1ece70c9484da15356c5600d564"
+    },
+    {
+      "path": "baropress-video/.hyperframes/artifacts/snapshots/05747730-8e48-429f-b3ad-2a5855db738b/seam-03-5-at-26.2s.png",
+      "bytes": 58446,
+      "sha256": "fc3c950e5c62685ce4e29e4589b3daac6006c200701d59d124ea988e26d0397f"
+    },
+    {
+      "path": "baropress-video/.hyperframes/artifacts/snapshots/bfe8814b-29be-4320-9dae-c7e9a6b53bd6/.capture-owner.json",
+      "bytes": 41,
+      "sha256": "c94eea33a7c00bb4f2513a784ac9cecb3e902ce66e40f3d5b7d1ea06a3179700"
+    },
+    {
+      "path": "baropress-video/.hyperframes/artifacts/snapshots/bfe8814b-29be-4320-9dae-c7e9a6b53bd6/contact-sheet.jpg",
+      "bytes": 104403,
+      "sha256": "8332b8e41aa462a2128044783363879c345cd991c8cbd5bf2da275079f49e0a6"
+    },
+    {
+      "path": "baropress-video/.hyperframes/artifacts/snapshots/bfe8814b-29be-4320-9dae-c7e9a6b53bd6/frame-00-at-14.3s.png",
+      "bytes": 55245,
+      "sha256": "238ae1636f22d905eac04cb129c873b73ff8c35619508bc03a3c7762e5c8bc44"
+    },
+    {
+      "path": "baropress-video/.hyperframes/artifacts/snapshots/bfe8814b-29be-4320-9dae-c7e9a6b53bd6/frame-01-at-16s.png",
+      "bytes": 225501,
+      "sha256": "3157385e67407eb837bafd725ebd1f1461ef9e91a83fe23495db43f2334c75eb"
+    },
+    {
+      "path": "baropress-video/.hyperframes/artifacts/snapshots/bfe8814b-29be-4320-9dae-c7e9a6b53bd6/frame-02-at-20s.png",
+      "bytes": 270647,
+      "sha256": "d22ae0af2a63aabbc5bc2b50ae5c459d5017810ab93b81838ca894399668e284"
+    },
+    {
+      "path": "baropress-video/.hyperframes/artifacts/snapshots/bfe8814b-29be-4320-9dae-c7e9a6b53bd6/frame-03-at-24s.png",
+      "bytes": 194115,
+      "sha256": "0631a82cada52bad0aa972458b3b5f6e9ec19cdd91744342b6ce60d537e7bb24"
+    },
+    {
+      "path": "baropress-video/.hyperframes/history-id",
+      "bytes": 37,
+      "sha256": "1f7e55b517509c10cfa713c2567da0d28337db811c1855932e7371e1c3c0aea2"
+    },
+    {
+      "path": "baropress-video/.hyperframes/history-turns.json",
+      "bytes": 128,
+      "sha256": "f1aa53a8e530081af8d4760129ed701fcef3f7bae0afd0352fba354ab98522c1"
+    },
+    {
+      "path": "baropress-video/.hyperframes/preview/e4461b55946cebef3b146bb503195e85.html",
+      "bytes": 296534,
+      "sha256": "0cc3ccdf1b1537db9ee7fd28b57977382b2d02f42287a0b012831e1372251351"
+    },
+    {
+      "path": "baropress-video/.hyperframes/render-outputs.json",
+      "bytes": 60,
+      "sha256": "8c687ce99dd20d8f40ff4014e49449042d081c9ed98103095cc07e09a5e1d0b3"
+    },
+    {
+      "path": "baropress-video/.hyperframes/video-state.json",
+      "bytes": 81729,
+      "sha256": "3c78d8b8a27d1cc98ef403f88c336816ba70743e0ec66fe597d2372ec9ef1176"
+    },
+    {
+      "path": "baropress-video/.thumbnails/v5_296a1335055e6ee3_7a807e9d01e73aa1_jpeg_source_index.html_1920x1080_1920x1080_1793971137575_0.00.jpg",
+      "bytes": 32072,
+      "sha256": "f0996dd2ba6ba97310b785f0f864314476249f7b9307c4e017820041a2795e8f"
+    },
+    {
+      "path": "baropress-video/.thumbnails/v5_v3_003e61a53a57c18c_98c4d8ef2b5b616f_jpeg_preview_compositions_abertura.html_1920x1080_240x135_1793971135024_3.00.jpg",
+      "bytes": 3687,
+      "sha256": "be8a33afa7ddeec225fd9ad752c58edca853fb587e28a8936fccbfed221cbd68"
+    },
+    {
+      "path": "baropress-video/.thumbnails/v5_v3_020b267b2fe667e7_95eedfcd2df8726d_jpeg_preview_compositions_matriz.html_1920x1080_240x135_1793971135026_3.00.jpg",
+      "bytes": 6051,
+      "sha256": "84a4f1b38df28f9a3c0742e50b9cd27a15b9e5cc7be9293c1c932ce820c84a37"
+    },
+    {
+      "path": "baropress-video/.thumbnails/v5_v3_0e647f1b1509f172_3cb9d20a9d510674_jpeg_preview_compositions_encerramento.html_1920x1080_240x135_1793971135036_3.00.jpg",
+      "bytes": 4134,
+      "sha256": "c3271a2eb46c0a4e48db5999828453c37968a7a43702378ea5273f78ae4f0974"
+    },
+    {
+      "path": "baropress-video/.thumbnails/v5_v3_1039a21068410b3b_22bd4337afb8e240_jpeg_preview_compositions_software.html_1920x1080_240x135_1793971513311_3.00.jpg",
+      "bytes": 5362,
+      "sha256": "b04c96f50bdea73de97768508315bf280d1eef08fce4697244b4e71a2fe8e340"
+    },
+    {
+      "path": "baropress-video/.thumbnails/v5_v3_601f362392321a99_98c4d8ef2b5b616f_jpeg_preview_compositions_abertura.html_1920x1080_240x135_1793971135024_3.00.jpg",
+      "bytes": 3687,
+      "sha256": "be8a33afa7ddeec225fd9ad752c58edca853fb587e28a8936fccbfed221cbd68"
+    },
+    {
+      "path": "baropress-video/.thumbnails/v5_v3_97211ddd6f7e0c41_1be6eddc6bc81a59_jpeg_preview_compositions_hardware.html_1920x1080_240x135_1793971135092_3.00.jpg",
+      "bytes": 5628,
+      "sha256": "7141c0091d576e18204ebee858f10454953ef2aacd27feaf76cd02eba887e2a6"
+    },
+    {
+      "path": "baropress-video/.thumbnails/v5_v3_97211ddd6f7e0c41_64ace45d6fb82f3d_jpeg_preview_compositions_acesso.html_1920x1080_240x135_1793971135086_3.00.jpg",
+      "bytes": 4980,
+      "sha256": "d49676331d45370052e7756a573b72bb1f00060d5cc2dc5dd35259803eb79c6a"
+    },
+    {
+      "path": "baropress-video/.thumbnails/v5_v3_97211ddd6f7e0c41_e540f3a5119fd80b_jpeg_preview_compositions_investimento.html_1920x1080_240x135_1793971135107_3.00.jpg",
+      "bytes": 4662,
+      "sha256": "5999ce01ddcb2442e91728b3cdc263d0eb855056960a89759cc19b8a62cda691"
+    },
+    {
+      "path": "baropress-video/.thumbnails/v5_v3_987d9fb1ab2ec4eb_22bd4337afb8e240_jpeg_preview_compositions_software.html_1920x1080_240x135_1793971513311_3.00.jpg",
+      "bytes": 5362,
+      "sha256": "b04c96f50bdea73de97768508315bf280d1eef08fce4697244b4e71a2fe8e340"
+    },
+    {
+      "path": "baropress-video/.thumbnails/v5_v3_d454daae1dd414b1_95eedfcd2df8726d_jpeg_preview_compositions_matriz.html_1920x1080_240x135_1793971135026_3.00.jpg",
+      "bytes": 6051,
+      "sha256": "84a4f1b38df28f9a3c0742e50b9cd27a15b9e5cc7be9293c1c932ce820c84a37"
+    },
+    {
+      "path": "baropress-video/.thumbnails/v5_v3_e0da7b733a43c603_1be6eddc6bc81a59_jpeg_preview_compositions_hardware.html_1920x1080_240x135_1793971135092_3.00.jpg",
+      "bytes": 5624,
+      "sha256": "0f295e4085ba9500eb4e05e2ad0cc304e32d076d0658457c99882632dca9f763"
+    },
+    {
+      "path": "baropress-video/.thumbnails/v5_v3_e0da7b733a43c603_64ace45d6fb82f3d_jpeg_preview_compositions_acesso.html_1920x1080_240x135_1793971135086_3.00.jpg",
+      "bytes": 4980,
+      "sha256": "d49676331d45370052e7756a573b72bb1f00060d5cc2dc5dd35259803eb79c6a"
+    },
+    {
+      "path": "baropress-video/.thumbnails/v5_v3_e0da7b733a43c603_7861f2a69180f8c7_jpeg_preview_compositions_comparacao.html_1920x1080_240x135_1793971135094_3.00.jpg",
+      "bytes": 5849,
+      "sha256": "42309bd0203788a3be12b08cbd34625c372d16993d24743e89a044c70bbc7bc4"
+    },
+    {
+      "path": "baropress-video/.thumbnails/v5_v3_e0da7b733a43c603_cb85ba1cd7f7ec23_jpeg_preview_compositions_artigo.html_1920x1080_240x135_1793971135103_3.00.jpg",
+      "bytes": 4173,
+      "sha256": "600541a4977c981d4e8ca6224a74f2cb410845347b48fd97bea8dba3701f2eca"
+    },
+    {
+      "path": "baropress-video/.thumbnails/v5_v3_e0da7b733a43c603_dc98d2f9e8eecf03_jpeg_preview_compositions_contexto.html_1920x1080_240x135_1793971135063_3.00.jpg",
+      "bytes": 2857,
+      "sha256": "204e5cc2f15ebffb58402f8174fc845ef1169518e76b2c70560bbe32b172f402"
+    },
+    {
+      "path": "baropress-video/.thumbnails/v5_v3_e0da7b733a43c603_e540f3a5119fd80b_jpeg_preview_compositions_investimento.html_1920x1080_240x135_1793971135107_3.00.jpg",
+      "bytes": 4662,
+      "sha256": "5999ce01ddcb2442e91728b3cdc263d0eb855056960a89759cc19b8a62cda691"
+    },
+    {
+      "path": "baropress-video/.thumbnails/v5_v3_e43a5697d4f2df48_98c4d8ef2b5b616f_jpeg_preview_compositions_abertura.html_1920x1080_240x135_1793971135024_3.00.jpg",
+      "bytes": 3687,
+      "sha256": "be8a33afa7ddeec225fd9ad752c58edca853fb587e28a8936fccbfed221cbd68"
+    },
+    {
+      "path": "baropress-video/.thumbnails/v5_v3_f084e4e174a20f93_3cb9d20a9d510674_jpeg_preview_compositions_encerramento.html_1920x1080_240x135_1793971135036_3.00.jpg",
+      "bytes": 4134,
+      "sha256": "c3271a2eb46c0a4e48db5999828453c37968a7a43702378ea5273f78ae4f0974"
+    },
+    {
+      "path": "baropress-video/AGENTS.md",
+      "bytes": 7691,
+      "sha256": "1a68041fc901ff835682a2a8d6f63c96dbb0b9eef8fb0971e97a79eaf69303d3"
+    },
+    {
+      "path": "baropress-video/CLAUDE.md",
+      "bytes": 7691,
+      "sha256": "1a68041fc901ff835682a2a8d6f63c96dbb0b9eef8fb0971e97a79eaf69303d3"
+    },
+    {
+      "path": "baropress-video/README.md",
+      "bytes": 5026,
+      "sha256": "0f5bd29ef2e7095d250cb46fc9ecffd185d07bac0dedb46a4fde0ba74a8d03e6"
+    },
+    {
+      "path": "baropress-video/REVIEW.md",
+      "bytes": 3638,
+      "sha256": "ef41671de846ef215ab8b1d5db0bdd49179bacea4e0ba52d11442245b3336b4b"
+    },
+    {
+      "path": "baropress-video/ROTEIRO.md",
+      "bytes": 2768,
+      "sha256": "a212e134515650f47e22e492ad563a5acff9e9c51b2d883dc35e64703cf7c5f3"
+    },
+    {
+      "path": "baropress-video/SOURCES.md",
+      "bytes": 1856,
+      "sha256": "a308f08a7364bcdcd9bb09d6ac616b45ba5b238c866e38b6642beec236ff0b66"
+    },
+    {
+      "path": "baropress-video/SPEC.md",
+      "bytes": 2694,
+      "sha256": "fc2af516200497798338a8210a621ec2525e656dfb7270471ce581eb07827a11"
+    },
+    {
+      "path": "baropress-video/ambiente.json",
+      "bytes": 3519,
+      "sha256": "57a79c8978af5d5ecbcf30fe8fa9f675289e6cbcdc05dea27f31752a26bf7d36"
+    },
+    {
+      "path": "baropress-video/ambiente.log",
+      "bytes": 116,
+      "sha256": "cd1c8222aee531359d9d780f921f5d0ba72fa94ba67655dd28b0683b326fc7da"
+    },
+    {
+      "path": "baropress-video/assets/fonts/OFL.txt",
+      "bytes": 4387,
+      "sha256": "0e5fcef5d93bfcae273c11c00f0bb453d3b5491860e1ac8b658767b7577c938f"
+    },
+    {
+      "path": "baropress-video/assets/fonts/outfit-latin.woff2",
+      "bytes": 32292,
+      "sha256": "6c18d579fd87c3776be068b762cbc83fde3acb543d49eabd3ade842eb987e887"
+    },
+    {
+      "path": "baropress-video/assets/shots/arduino.jpg",
+      "bytes": 167734,
+      "sha256": "dde0a293b628884403d90cd9c82ed179ddd37857f6139efb5ad3222e9005aa70"
+    },
+    {
+      "path": "baropress-video/assets/shots/artigo-primeira-pagina.png",
+      "bytes": 322206,
+      "sha256": "efbc18c490496492a49c15926e37c7c66198d9725667974428bd19d69d21ad26"
+    },
+    {
+      "path": "baropress-video/assets/shots/comparacao.png",
+      "bytes": 277222,
+      "sha256": "c085c2bc741056266c906832ea4f2095b26206f4084d21f1e17aeeaa44468554"
+    },
+    {
+      "path": "baropress-video/assets/shots/historico.png",
+      "bytes": 84076,
+      "sha256": "d0df5b0129e8d142c0d433b681c1825c90d73cf146930c91e83d770f9cb7c6f0"
+    },
+    {
+      "path": "baropress-video/assets/shots/indicadores.png",
+      "bytes": 237417,
+      "sha256": "c26a406bc7a230805fe0f6764cce1e521abf2a90a6d843fe175bddb0f5ef7206"
+    },
+    {
+      "path": "baropress-video/assets/shots/mapa.png",
+      "bytes": 181837,
+      "sha256": "5c8d8527a631bf26cab80f3784810e5b98806be6158d5e0daaa1ce042b00d7b0"
+    },
+    {
+      "path": "baropress-video/assets/shots/matriz.jpg",
+      "bytes": 202970,
+      "sha256": "12b425be1dfe935845211186989468b5016dd63c6d8dc906761b952e0a7a9a51"
+    },
+    {
+      "path": "baropress-video/assets/shots/relatorio.png",
+      "bytes": 126203,
+      "sha256": "cf37928b89a8de7fb0af1e19cec2e59306acbf623837f6deaa57dadc00e445e8"
+    },
+    {
+      "path": "baropress-video/assets/shots/tapete-prototipo.jpg",
+      "bytes": 266690,
+      "sha256": "240d5c9325da82d49ee935ba0439e742d301193a913e6b4c934d66c6a2784d0e"
+    },
+    {
+      "path": "baropress-video/assets/shots/tapete.jpg",
+      "bytes": 146133,
+      "sha256": "c719bd1bf32da227cf430cb4d03ba11a24b651c7f270a2b95747022311878509"
+    },
+    {
+      "path": "baropress-video/assets/shots/velostat.jpg",
+      "bytes": 491843,
+      "sha256": "6fe632ed4aab59bbe90b78764d392d76a164c7f8c3b10de70dbf33848ed68caf"
+    },
+    {
+      "path": "baropress-video/assets/source-content.json",
+      "bytes": 16869,
+      "sha256": "3e143ff10527f44703ac28e99f823c2fc1ac8ab3618694ac72a10cdbd73e4a32"
+    },
+    {
+      "path": "baropress-video/assets/style.css",
+      "bytes": 1359,
+      "sha256": "4cc0742968fb29cd10c15e6d83dac3b604861f8dfd9014f7f353b3dfc6003ad9"
+    },
+    {
+      "path": "baropress-video/assets/vendor/GSAP-README.md",
+      "bytes": 6199,
+      "sha256": "66a79667b0538b19634b5a000a9a3debe588c98d390424e73e5d4de847270828"
+    },
+    {
+      "path": "baropress-video/assets/vendor/gsap.min.js",
+      "bytes": 72927,
+      "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb"
+    },
+    {
+      "path": "baropress-video/check-amostra.json",
+      "bytes": 3034,
+      "sha256": "870fc632116f24b8c05f03b368b000365be84999bd28c1503b11013a25ab4574"
+    },
+    {
+      "path": "baropress-video/check-amostra.log",
+      "bytes": 9947,
+      "sha256": "72d16da4d0f8e92db258180cb77aadcfbc5118baf45d6ecc4101f1621ad199e7"
+    },
+    {
+      "path": "baropress-video/check-completo.json",
+      "bytes": 4874,
+      "sha256": "eb8931de0f4d520df381e70a935e590a4df15f9d7b870575ac96a0119ed3e874"
+    },
+    {
+      "path": "baropress-video/check-completo.log",
+      "bytes": 22871,
+      "sha256": "21eac7ce4576fe41ac75c5f93160060872add5f3d2a12ab9601d180360276c78"
+    },
+    {
+      "path": "baropress-video/compositions/abertura.html",
+      "bytes": 23957,
+      "sha256": "41bbb6378950917fcde04987b86c46dad27a7ab0909ce855927780f665ce396b"
+    },
+    {
+      "path": "baropress-video/compositions/acesso.html",
+      "bytes": 916,
+      "sha256": "8dfd7bf038931ace87f6f1ae8f2e7fb767ec601ca241cbee9af01fba122f0733"
+    },
+    {
+      "path": "baropress-video/compositions/artigo.html",
+      "bytes": 1392,
+      "sha256": "efb95c9291a38199259246b920b6a43794e6937a09c09486929281191cd60a67"
+    },
+    {
+      "path": "baropress-video/compositions/comparacao.html",
+      "bytes": 912,
+      "sha256": "ca37d5875bb8509e990ecd593255430dad4f4f28e9d477f78c4dae311ffd4654"
+    },
+    {
+      "path": "baropress-video/compositions/contexto.html",
+      "bytes": 848,
+      "sha256": "c018e381f90a11a4c18dcf59250a80d9a0ad4a0c637df086b4e78510eae65b44"
+    },
+    {
+      "path": "baropress-video/compositions/encerramento.html",
+      "bytes": 24062,
+      "sha256": "9f4de47ec51a79464f661b003e818a1cb2960ab245b7a4afa4463512d92366f8"
+    },
+    {
+      "path": "baropress-video/compositions/hardware.html",
+      "bytes": 1368,
+      "sha256": "ced260c7ff4b37d696185d30e913e5a9439a7010b7301e91f06e1be0e49744e5"
+    },
+    {
+      "path": "baropress-video/compositions/investimento.html",
+      "bytes": 1955,
+      "sha256": "d9e921bdba8ac92f8bba9e0b587493a06af4f85c352a21908c745d6269aa7717"
+    },
+    {
+      "path": "baropress-video/compositions/matriz.html",
+      "bytes": 23289,
+      "sha256": "9ce6ba8c9ba025c87a6d3e6e5bc06cc646608a42a3f5ccd1f9af5a2a04319d64"
+    },
+    {
+      "path": "baropress-video/compositions/proposta.html",
+      "bytes": 904,
+      "sha256": "cb98cda8a00cc49d78dbbe5c2d7713a9de544d82ccc2ebb373950ef2f5f372de"
+    },
+    {
+      "path": "baropress-video/compositions/relatorio.html",
+      "bytes": 922,
+      "sha256": "d20ca910ba9382033c47b927103d702d4b1b212926e88e229a21a88b2febcd08"
+    },
+    {
+      "path": "baropress-video/compositions/software.html",
+      "bytes": 2276,
+      "sha256": "a1781cf80f111e7b8ebd0d774ad867369bc4f529b497dd05e700ce13c7e60f5e"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/checks/4003a7f7-d20d-4d7c-9b29-a11a3dd33178.json",
+      "bytes": 4359,
+      "sha256": "814cb9b1ad87b321d34f6c544c4e707e03b04680ea4d1ee7b14a7eb5777f2ed5"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/checks/c865fe08-e736-4a84-ac01-6b4b0ed243e2.json",
+      "bytes": 6157,
+      "sha256": "f379edb2c006390db69e4fccdcfdf2d977dc52845d8e0ea0ef67efb0d6f35b6b"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/.capture-owner.json",
+      "bytes": 41,
+      "sha256": "0a4bfc686d7dba3d688ee47d6c9c9feed25bdbe26e52f1ad6da571f5674e44cc"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/beat-01-at-0.3s.png",
+      "bytes": 33713,
+      "sha256": "6a0c5b0de1db655e28fc9890d6d232240bfd0ce762d2966eee33ce261220a5dc"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/beat-02-at-3s.png",
+      "bytes": 71219,
+      "sha256": "d48de60690c1c78e800bf0048523a04d3c49b4881a64b2865601d867fe52028f"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/beat-03-at-6.3s.png",
+      "bytes": 37277,
+      "sha256": "7c049dc3a130b1c90f8e49059b6dba00ae3e1564cb3151ab0c22f982298ef080"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/beat-04-at-11s.png",
+      "bytes": 50976,
+      "sha256": "845dcf9eee8daacf978ba00dd0f00be7fd1523bd298c90d0b55bd0697ff319f3"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/beat-05-at-16.3s.png",
+      "bytes": 65349,
+      "sha256": "274cfe3d8ba85fa3d7445665707f713c73dd8bc8eb0386a72a4d655b8389850a"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/beat-06-at-20s.png",
+      "bytes": 81500,
+      "sha256": "526417b1fc278196b303aee1f0e6241e1b5a9d927f766569125b3cd493ee2614"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/beat-07-at-24.3s.png",
+      "bytes": 51278,
+      "sha256": "0ea028da475e5170bef02ff129d49408503eb1cc6fe94570ca40d0848106946c"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/beat-08-at-28s.png",
+      "bytes": 64883,
+      "sha256": "3555e13862b87156420d0417139c66c3a9ec01d78a39d8d7eaecee587865b862"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/beat-09-at-32.3s.png",
+      "bytes": 35210,
+      "sha256": "492f614fabb227214aa7c2dd0bdfb058daa9c7ed0a63d85ac22da340e9ff264b"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/beat-10-at-37s.png",
+      "bytes": 763802,
+      "sha256": "b2f71ae62d8a7b1eaf32d9d6c43f17ceade645178a383534cafaa83d9b5666e5"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/beat-11-at-42.3s.png",
+      "bytes": 57248,
+      "sha256": "02480f389cddf6fd0d82d80b766db3f706f20368c974b79151ea22259aea2de1"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/beat-12-at-49s.png",
+      "bytes": 116180,
+      "sha256": "7a576924790c0fda124651e11337def8554fdd70bad29b4a32c40bf3d549be0e"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/beat-13-at-56.3s.png",
+      "bytes": 55245,
+      "sha256": "238ae1636f22d905eac04cb129c873b73ff8c35619508bc03a3c7762e5c8bc44"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/beat-14-at-65s.png",
+      "bytes": 194115,
+      "sha256": "0631a82cada52bad0aa972458b3b5f6e9ec19cdd91744342b6ce60d537e7bb24"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/beat-15-at-74.3s.png",
+      "bytes": 34221,
+      "sha256": "d5c127266bdcd29c30677e950d9a4530212c2e4b6dbc59d27b416b538438d141"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/beat-16-at-79s.png",
+      "bytes": 340713,
+      "sha256": "a54d33cd6bbf9dc4dd7664aadd3f2a381c44d737cbd2816396a4c200de290d67"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/beat-17-at-84.3s.png",
+      "bytes": 32471,
+      "sha256": "77ae96beed8cb6fcd4ab51540ab369dca12abc0918a7154f4918ec90c7a4028b"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/beat-18-at-88.5s.png",
+      "bytes": 193860,
+      "sha256": "995a7be693563345bede892d0db25892dcdb4f0a29d4865d47153223a88f38e1"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/beat-19-at-93.3s.png",
+      "bytes": 35140,
+      "sha256": "eeb06393981d76c194ca4b0545a833ba5a1b47aa95b72ac99a42271cc74fcdde"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/beat-20-at-97s.png",
+      "bytes": 99265,
+      "sha256": "aa27ba1f160dd26a41ed45be3bd7a6f0c3947b7c8f1a8a09996596bdbf0bfa4e"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/beat-21-at-101.3s.png",
+      "bytes": 61197,
+      "sha256": "056db3547966101e217a6a90c03b468d371b366d757bcf23fe8af411dbfc6a4d"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/beat-22-at-105s.png",
+      "bytes": 87935,
+      "sha256": "c8fa9133e1368b943444b33d8ac1688b92c7b5970aac72a55eb7dcac724c4ac2"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/beat-23-at-109.3s.png",
+      "bytes": 183237,
+      "sha256": "d6e71ba0d1c8e51897dbad2e15645131b324c3422023d563b3292bf05f68f1b1"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/beat-24-at-114.5s.png",
+      "bytes": 225575,
+      "sha256": "52d492239b51809981e741ccf24b1b3d4897bbef755be8d781b8fa370f3c83b1"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/review-beats-1.jpg",
+      "bytes": 236056,
+      "sha256": "e2253d1d2ba1a2cce2be9b5051bb221e800f0640dfe1a9f7668ecd9dd5681613"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/review-beats-2.jpg",
+      "bytes": 120526,
+      "sha256": "066b235a6b76524b057da76c6af63777aa00f5c6954014d219ce9281fdf1a1b1"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/review-phone-1.jpg",
+      "bytes": 159651,
+      "sha256": "ab0cf7c9e97c9cc613489c6e6b693c1457efb53d7923524c8e826332fb207d9e"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/review-phone-2.jpg",
+      "bytes": 78593,
+      "sha256": "35600a5a2bcbe8855933514ee11abae12a0640bbe21bc3c4aefc4bcb23de0ae5"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/review-seam-01.jpg",
+      "bytes": 35748,
+      "sha256": "0b4c9818a0c8672afea5ed84ef10634e09f7fa0074efdf5b026fbcde866cea94"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/review-seam-02.jpg",
+      "bytes": 37214,
+      "sha256": "84ea597a589473809d41a805091579558ff2da61dabe9c322e73de5d2316ccc8"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/review-seam-03.jpg",
+      "bytes": 48041,
+      "sha256": "55a1200a9d47c384f8d8a60015f7ad7c5e364c9a9810cbec41be59ebe21e0219"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/review-seam-04.jpg",
+      "bytes": 42004,
+      "sha256": "592f95bab90fc166f68b1678d55e1f3927e0a4c8ef6762f500a5281cc3695271"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/review-seam-05.jpg",
+      "bytes": 48199,
+      "sha256": "4256255e9ea189ea14934e9d6b663bf11533b177c171df3e3ddab127ca5750f7"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/review-seam-06.jpg",
+      "bytes": 54494,
+      "sha256": "65fbd927e9caa6bbc587d2cb341b0d8292d285a616ecf9e10771f3c40d593874"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/review-seam-07.jpg",
+      "bytes": 49383,
+      "sha256": "3dc4f00719650e491578662a16cb4ff6189fea973fa5a17418357b3a03de194f"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/review-seam-08.jpg",
+      "bytes": 58010,
+      "sha256": "408405d3c9ec8e294e603d53b4d1c17c0cc70a76e1ea8b6415f0bbf54d9e3bd7"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/review-seam-09.jpg",
+      "bytes": 50265,
+      "sha256": "7dfb6cfd5746dd9e48d5da39009d214a58c357a4f3280c44a9fb18a92584d1a2"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/review-seam-10.jpg",
+      "bytes": 45718,
+      "sha256": "81e89cd6f151031526c9b1161a21621a48ab60f54ee044ca36eb45f43724668d"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/review-seam-11.jpg",
+      "bytes": 40054,
+      "sha256": "368b99787a1d85578fc2dd024fa2678229abfa8d4c6702d8e5b32ed10d1a3c40"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-01-1-at-5.8s.png",
+      "bytes": 71219,
+      "sha256": "d48de60690c1c78e800bf0048523a04d3c49b4881a64b2865601d867fe52028f"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-01-2-at-5.9s.png",
+      "bytes": 71219,
+      "sha256": "d48de60690c1c78e800bf0048523a04d3c49b4881a64b2865601d867fe52028f"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-01-3-at-6s.png",
+      "bytes": 20652,
+      "sha256": "f000e90d97da183a8a4d07bbdf5b96c5789ca04aad8a62ee6b5c55a4b9831b8c"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-01-4-at-6.1s.png",
+      "bytes": 35999,
+      "sha256": "2fcc6427cf92f3d7abf8b7de5a120b4fe6f7e6f2c7033fb837567c1e953eac8b"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-01-5-at-6.2s.png",
+      "bytes": 37254,
+      "sha256": "891eb988bbaf70ad4557924fa191be6fdd5bbf5282d6282266f021b6d4896964"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-02-1-at-15.8s.png",
+      "bytes": 50976,
+      "sha256": "845dcf9eee8daacf978ba00dd0f00be7fd1523bd298c90d0b55bd0697ff319f3"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-02-2-at-15.9s.png",
+      "bytes": 50976,
+      "sha256": "845dcf9eee8daacf978ba00dd0f00be7fd1523bd298c90d0b55bd0697ff319f3"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-02-3-at-16s.png",
+      "bytes": 23171,
+      "sha256": "fbb33f489cd713acaa98a6bced0deb8bbe0a29601e7f4b3645d804c16fc5042f"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-02-4-at-16.1s.png",
+      "bytes": 62272,
+      "sha256": "9aed05da953c59362c816c7a5e233189173bfab876ceb870416f24dc7e0b62ab"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-02-5-at-16.2s.png",
+      "bytes": 65612,
+      "sha256": "55052b36de7d06cc2143b392f061a68d07363b6b0b4ee412f89c67b26220ef8d"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-03-1-at-23.8s.png",
+      "bytes": 81500,
+      "sha256": "526417b1fc278196b303aee1f0e6241e1b5a9d927f766569125b3cd493ee2614"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-03-2-at-23.9s.png",
+      "bytes": 81500,
+      "sha256": "526417b1fc278196b303aee1f0e6241e1b5a9d927f766569125b3cd493ee2614"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-03-3-at-24s.png",
+      "bytes": 19448,
+      "sha256": "6b6c22d3c7610e4c06aef6daf0119ee521ee919b500f8bc0d8ade5ee441d041e"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-03-4-at-24.1s.png",
+      "bytes": 48189,
+      "sha256": "aa18abc40b9565501faefef8e53b554957c07c47f13a901c0121932c1cbbdb7c"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-03-5-at-24.2s.png",
+      "bytes": 50891,
+      "sha256": "475c549faa2ce9b5024ef84f017ffac74a553bf8f159e0bf5ae568418be8d838"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-04-1-at-31.8s.png",
+      "bytes": 64883,
+      "sha256": "3555e13862b87156420d0417139c66c3a9ec01d78a39d8d7eaecee587865b862"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-04-2-at-31.9s.png",
+      "bytes": 64883,
+      "sha256": "3555e13862b87156420d0417139c66c3a9ec01d78a39d8d7eaecee587865b862"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-04-3-at-32s.png",
+      "bytes": 20283,
+      "sha256": "95787ce112a2f3c557cf61c954a6dbd9dd78266ea8a0c2dee92c57607d5a191d"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-04-4-at-32.1s.png",
+      "bytes": 34091,
+      "sha256": "be5e708d11b83b4ec62d7f1e7de25a1929698ce45f63c45a772fe9b660bf0f3a"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-04-5-at-32.2s.png",
+      "bytes": 35277,
+      "sha256": "f42812cf4f7d0d58d3db8bd6d74c4b6e4659c0a4328212fe1e396da7e7aad907"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-05-1-at-41.8s.png",
+      "bytes": 631406,
+      "sha256": "0ea897f2ff3a682afa41c3970a9716ac9c1704c37ce8ea74bb5d053aba080173"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-05-2-at-41.9s.png",
+      "bytes": 631406,
+      "sha256": "0ea897f2ff3a682afa41c3970a9716ac9c1704c37ce8ea74bb5d053aba080173"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-05-3-at-42s.png",
+      "bytes": 48158,
+      "sha256": "c5efac0cc65b11420bb1dafafd36851a904652f5fe061c3bcd9ea6f38c52371d"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-05-4-at-42.1s.png",
+      "bytes": 48158,
+      "sha256": "c5efac0cc65b11420bb1dafafd36851a904652f5fe061c3bcd9ea6f38c52371d"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-05-5-at-42.2s.png",
+      "bytes": 55541,
+      "sha256": "3199eddd9afa3e729c33406ac7693738f5ae7823daffe2faea9bef1c70b6a9dd"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-06-1-at-55.8s.png",
+      "bytes": 116180,
+      "sha256": "7a576924790c0fda124651e11337def8554fdd70bad29b4a32c40bf3d549be0e"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-06-2-at-55.9s.png",
+      "bytes": 116180,
+      "sha256": "7a576924790c0fda124651e11337def8554fdd70bad29b4a32c40bf3d549be0e"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-06-3-at-56s.png",
+      "bytes": 22021,
+      "sha256": "1dba8c8b3b60521dbaf76b1c06391bf57665475e6d50e57b7c42152abe926b31"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-06-4-at-56.1s.png",
+      "bytes": 33239,
+      "sha256": "4d575b21734ada0e69f2b1f29979322bc01a853b29b87c29172d700b8a9f3a98"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-06-5-at-56.2s.png",
+      "bytes": 34136,
+      "sha256": "b32589cd67bb28b68d89ce875addcf10d1da7a629c3d4f6069cfdf33a81e8909"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-07-1-at-73.8s.png",
+      "bytes": 194115,
+      "sha256": "0631a82cada52bad0aa972458b3b5f6e9ec19cdd91744342b6ce60d537e7bb24"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-07-2-at-73.9s.png",
+      "bytes": 194115,
+      "sha256": "0631a82cada52bad0aa972458b3b5f6e9ec19cdd91744342b6ce60d537e7bb24"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-07-3-at-74s.png",
+      "bytes": 18547,
+      "sha256": "2ee213dc589cc8722e00fcf4e1de189539da12ef08be12f30f8f716ff9318c23"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-07-4-at-74.1s.png",
+      "bytes": 32919,
+      "sha256": "67c3c82297e12e747b35aca70845b4ea3cd49f7a3c376afaca19a778d62e46c7"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-07-5-at-74.2s.png",
+      "bytes": 34256,
+      "sha256": "ccce807d8bb67323ef6721411c5fee1fa3a79457b75895f6d822f5e0d6cf297f"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-08-1-at-83.8s.png",
+      "bytes": 340713,
+      "sha256": "a54d33cd6bbf9dc4dd7664aadd3f2a381c44d737cbd2816396a4c200de290d67"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-08-2-at-83.9s.png",
+      "bytes": 340713,
+      "sha256": "a54d33cd6bbf9dc4dd7664aadd3f2a381c44d737cbd2816396a4c200de290d67"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-08-3-at-84s.png",
+      "bytes": 19042,
+      "sha256": "7b30f7a3dd3bc211c25747b8d84b61683cc0c041551bf9b5a98b689972ceecd2"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-08-4-at-84.1s.png",
+      "bytes": 31291,
+      "sha256": "99fc75e1fca6f3f3a191912296359573b1e3cb03bc177fad586e2e889af3d97d"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-08-5-at-84.2s.png",
+      "bytes": 32083,
+      "sha256": "a3678925a02e1e54a63f0e9b47801b5c6545c73800689a261d3302f21dab58fd"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-09-1-at-92.8s.png",
+      "bytes": 193860,
+      "sha256": "995a7be693563345bede892d0db25892dcdb4f0a29d4865d47153223a88f38e1"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-09-2-at-92.9s.png",
+      "bytes": 193860,
+      "sha256": "995a7be693563345bede892d0db25892dcdb4f0a29d4865d47153223a88f38e1"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-09-3-at-93s.png",
+      "bytes": 21747,
+      "sha256": "9f861f6c87f9633794498356dfbc58c74f22b3c538d6210a93ae3fa43b3d451d"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-09-4-at-93.1s.png",
+      "bytes": 34143,
+      "sha256": "65f9ecbd2e5ae31db0224cf7691ee7ddcc2ac9919f0cf62ca75d931e90f2a558"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-09-5-at-93.2s.png",
+      "bytes": 35061,
+      "sha256": "94420caa08dc10a8012ac10b1ddab4cd9e3a2c4e9ef80425dca0d9b588287029"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-10-1-at-100.8s.png",
+      "bytes": 99265,
+      "sha256": "aa27ba1f160dd26a41ed45be3bd7a6f0c3947b7c8f1a8a09996596bdbf0bfa4e"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-10-2-at-100.9s.png",
+      "bytes": 99265,
+      "sha256": "aa27ba1f160dd26a41ed45be3bd7a6f0c3947b7c8f1a8a09996596bdbf0bfa4e"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-10-3-at-101s.png",
+      "bytes": 41561,
+      "sha256": "9cfdc909c6e4a581153652a299e0c43f2695ee457c358663b5054190b3e8fd7d"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-10-4-at-101.1s.png",
+      "bytes": 43400,
+      "sha256": "e888c810b5392734d82b62cbc6e07f4fc91af1ece70c9484da15356c5600d564"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-10-5-at-101.2s.png",
+      "bytes": 58446,
+      "sha256": "fc3c950e5c62685ce4e29e4589b3daac6006c200701d59d124ea988e26d0397f"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-11-1-at-108.8s.png",
+      "bytes": 87935,
+      "sha256": "c8fa9133e1368b943444b33d8ac1688b92c7b5970aac72a55eb7dcac724c4ac2"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-11-2-at-108.9s.png",
+      "bytes": 87935,
+      "sha256": "c8fa9133e1368b943444b33d8ac1688b92c7b5970aac72a55eb7dcac724c4ac2"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-11-3-at-109s.png",
+      "bytes": 17811,
+      "sha256": "181f18412e80a4d5966da9b0dcda8b4c0efb7ff103802158f248cadfa8a5c22a"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-11-4-at-109.1s.png",
+      "bytes": 44216,
+      "sha256": "b285fa0a41f288e11c3da9541c2822ad05adedfc7c2792c4db1ab0ab57cbcae4"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/artifacts/snapshots/9bdcccb4-50f7-4846-aba2-942b372cd461/seam-11-5-at-109.2s.png",
+      "bytes": 46671,
+      "sha256": "f83f21309fcf41364d12b23488bf17895b22bb39aca3365973d212e16935b707"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/history-id",
+      "bytes": 37,
+      "sha256": "74c750c6d4d14dc6363de6483fa55d03086bf93916b66edf7c627c3c137d2593"
+    },
+    {
+      "path": "baropress-video/dist/completo/.hyperframes/video-state.json",
+      "bytes": 97667,
+      "sha256": "123fb42192d77b64b48eb27fc4594ea0ee3f7a56fe96ff494f02965332630683"
+    },
+    {
+      "path": "baropress-video/dist/completo/assets/fonts/OFL.txt",
+      "bytes": 4387,
+      "sha256": "0e5fcef5d93bfcae273c11c00f0bb453d3b5491860e1ac8b658767b7577c938f"
+    },
+    {
+      "path": "baropress-video/dist/completo/assets/fonts/outfit-latin.woff2",
+      "bytes": 32292,
+      "sha256": "6c18d579fd87c3776be068b762cbc83fde3acb543d49eabd3ade842eb987e887"
+    },
+    {
+      "path": "baropress-video/dist/completo/assets/shots/arduino.jpg",
+      "bytes": 167734,
+      "sha256": "dde0a293b628884403d90cd9c82ed179ddd37857f6139efb5ad3222e9005aa70"
+    },
+    {
+      "path": "baropress-video/dist/completo/assets/shots/artigo-primeira-pagina.png",
+      "bytes": 322206,
+      "sha256": "efbc18c490496492a49c15926e37c7c66198d9725667974428bd19d69d21ad26"
+    },
+    {
+      "path": "baropress-video/dist/completo/assets/shots/comparacao.png",
+      "bytes": 277222,
+      "sha256": "c085c2bc741056266c906832ea4f2095b26206f4084d21f1e17aeeaa44468554"
+    },
+    {
+      "path": "baropress-video/dist/completo/assets/shots/historico.png",
+      "bytes": 84076,
+      "sha256": "d0df5b0129e8d142c0d433b681c1825c90d73cf146930c91e83d770f9cb7c6f0"
+    },
+    {
+      "path": "baropress-video/dist/completo/assets/shots/indicadores.png",
+      "bytes": 237417,
+      "sha256": "c26a406bc7a230805fe0f6764cce1e521abf2a90a6d843fe175bddb0f5ef7206"
+    },
+    {
+      "path": "baropress-video/dist/completo/assets/shots/mapa.png",
+      "bytes": 181837,
+      "sha256": "5c8d8527a631bf26cab80f3784810e5b98806be6158d5e0daaa1ce042b00d7b0"
+    },
+    {
+      "path": "baropress-video/dist/completo/assets/shots/matriz.jpg",
+      "bytes": 202970,
+      "sha256": "12b425be1dfe935845211186989468b5016dd63c6d8dc906761b952e0a7a9a51"
+    },
+    {
+      "path": "baropress-video/dist/completo/assets/shots/relatorio.png",
+      "bytes": 126203,
+      "sha256": "cf37928b89a8de7fb0af1e19cec2e59306acbf623837f6deaa57dadc00e445e8"
+    },
+    {
+      "path": "baropress-video/dist/completo/assets/shots/tapete-prototipo.jpg",
+      "bytes": 266690,
+      "sha256": "240d5c9325da82d49ee935ba0439e742d301193a913e6b4c934d66c6a2784d0e"
+    },
+    {
+      "path": "baropress-video/dist/completo/assets/shots/tapete.jpg",
+      "bytes": 146133,
+      "sha256": "c719bd1bf32da227cf430cb4d03ba11a24b651c7f270a2b95747022311878509"
+    },
+    {
+      "path": "baropress-video/dist/completo/assets/shots/velostat.jpg",
+      "bytes": 491843,
+      "sha256": "6fe632ed4aab59bbe90b78764d392d76a164c7f8c3b10de70dbf33848ed68caf"
+    },
+    {
+      "path": "baropress-video/dist/completo/assets/source-content.json",
+      "bytes": 16869,
+      "sha256": "3e143ff10527f44703ac28e99f823c2fc1ac8ab3618694ac72a10cdbd73e4a32"
+    },
+    {
+      "path": "baropress-video/dist/completo/assets/style.css",
+      "bytes": 1359,
+      "sha256": "4cc0742968fb29cd10c15e6d83dac3b604861f8dfd9014f7f353b3dfc6003ad9"
+    },
+    {
+      "path": "baropress-video/dist/completo/assets/vendor/GSAP-README.md",
+      "bytes": 6199,
+      "sha256": "66a79667b0538b19634b5a000a9a3debe588c98d390424e73e5d4de847270828"
+    },
+    {
+      "path": "baropress-video/dist/completo/assets/vendor/gsap.min.js",
+      "bytes": 72927,
+      "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb"
+    },
+    {
+      "path": "baropress-video/dist/completo/compositions/abertura.html",
+      "bytes": 23957,
+      "sha256": "41bbb6378950917fcde04987b86c46dad27a7ab0909ce855927780f665ce396b"
+    },
+    {
+      "path": "baropress-video/dist/completo/compositions/acesso.html",
+      "bytes": 916,
+      "sha256": "8dfd7bf038931ace87f6f1ae8f2e7fb767ec601ca241cbee9af01fba122f0733"
+    },
+    {
+      "path": "baropress-video/dist/completo/compositions/artigo.html",
+      "bytes": 1392,
+      "sha256": "efb95c9291a38199259246b920b6a43794e6937a09c09486929281191cd60a67"
+    },
+    {
+      "path": "baropress-video/dist/completo/compositions/comparacao.html",
+      "bytes": 912,
+      "sha256": "ca37d5875bb8509e990ecd593255430dad4f4f28e9d477f78c4dae311ffd4654"
+    },
+    {
+      "path": "baropress-video/dist/completo/compositions/contexto.html",
+      "bytes": 848,
+      "sha256": "c018e381f90a11a4c18dcf59250a80d9a0ad4a0c637df086b4e78510eae65b44"
+    },
+    {
+      "path": "baropress-video/dist/completo/compositions/encerramento.html",
+      "bytes": 24062,
+      "sha256": "9f4de47ec51a79464f661b003e818a1cb2960ab245b7a4afa4463512d92366f8"
+    },
+    {
+      "path": "baropress-video/dist/completo/compositions/hardware.html",
+      "bytes": 1368,
+      "sha256": "ced260c7ff4b37d696185d30e913e5a9439a7010b7301e91f06e1be0e49744e5"
+    },
+    {
+      "path": "baropress-video/dist/completo/compositions/investimento.html",
+      "bytes": 1955,
+      "sha256": "d9e921bdba8ac92f8bba9e0b587493a06af4f85c352a21908c745d6269aa7717"
+    },
+    {
+      "path": "baropress-video/dist/completo/compositions/matriz.html",
+      "bytes": 23289,
+      "sha256": "9ce6ba8c9ba025c87a6d3e6e5bc06cc646608a42a3f5ccd1f9af5a2a04319d64"
+    },
+    {
+      "path": "baropress-video/dist/completo/compositions/proposta.html",
+      "bytes": 904,
+      "sha256": "cb98cda8a00cc49d78dbbe5c2d7713a9de544d82ccc2ebb373950ef2f5f372de"
+    },
+    {
+      "path": "baropress-video/dist/completo/compositions/relatorio.html",
+      "bytes": 922,
+      "sha256": "d20ca910ba9382033c47b927103d702d4b1b212926e88e229a21a88b2febcd08"
+    },
+    {
+      "path": "baropress-video/dist/completo/compositions/software.html",
+      "bytes": 2276,
+      "sha256": "a1781cf80f111e7b8ebd0d774ad867369bc4f529b497dd05e700ce13c7e60f5e"
+    },
+    {
+      "path": "baropress-video/dist/completo/hyperframes.json",
+      "bytes": 353,
+      "sha256": "35a6d4ea79ebe911f0d81705f7aace5d8ff0316b745b0311d56af50c9c237cb7"
+    },
+    {
+      "path": "baropress-video/dist/completo/index.html",
+      "bytes": 3834,
+      "sha256": "d27b8c92eba2d05734764e2a267c30d94805e4b567a6b8d9cb0cc9a44b92586b"
+    },
+    {
+      "path": "baropress-video/dist/completo/meta.json",
+      "bytes": 90,
+      "sha256": "892a69bd0978546071debd81afd821c450f63907bab6850f15fae7a49e478ed6"
+    },
+    {
+      "path": "baropress-video/hyperframes.json",
+      "bytes": 353,
+      "sha256": "35a6d4ea79ebe911f0d81705f7aace5d8ff0316b745b0311d56af50c9c237cb7"
+    },
+    {
+      "path": "baropress-video/index.html",
+      "bytes": 1756,
+      "sha256": "f7f6d012e01ceea5d4419c19888938d88aff822e24448362cdf3b25da008fe98"
+    },
+    {
+      "path": "baropress-video/meta.json",
+      "bytes": 101,
+      "sha256": "7ae90428b7fe11eca6af94b6c2345e51cc1d7525fae65a7fd4b481f14b903b41"
+    },
+    {
+      "path": "baropress-video/package-lock.json",
+      "bytes": 66274,
+      "sha256": "302f46454a54e0ad21303593bf94c506e43138ae52c49af213c629a3c5917640"
+    },
+    {
+      "path": "baropress-video/package.json",
+      "bytes": 1284,
+      "sha256": "43aeb027dfe9aa044f9da95ab317df0ffae75576a8da11d12d9c7a84912f5332"
+    },
+    {
+      "path": "baropress-video/preview-amostra.json",
+      "bytes": 493,
+      "sha256": "f516f79e80e6d501133d1c8a184930e7410d4f419d3a4e35d728c3b89a646ded"
+    },
+    {
+      "path": "baropress-video/preview-amostra.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "baropress-video/render-amostra.log",
+      "bytes": 52008,
+      "sha256": "80682f391ec3a21ccf9c7121f0ee73a30ea2642e99aab282226d3bdb170793c2"
+    },
+    {
+      "path": "baropress-video/renders/baropress-amostra-30s.mp4",
+      "bytes": 3762265,
+      "sha256": "6ca0ee795eee96763b227660e19d75c3422c867cc54069df7327342c2aec9f02"
+    },
+    {
+      "path": "baropress-video/review/amostra-final.jpg",
+      "bytes": 80578,
+      "sha256": "5ab049c3bee3d97ed306caf3775e1b883178e21e24e128b01893bdf431bfabee"
+    },
+    {
+      "path": "baropress-video/review/amostra-storyboard.jpg",
+      "bytes": 117443,
+      "sha256": "7dc84bc023f4e3513b0254d23ac3c0e5b4e3b86cd9525cb3e11e4353d9e1ff53"
+    },
+    {
+      "path": "baropress-video/review/completo-cenas-1.jpg",
+      "bytes": 236056,
+      "sha256": "e2253d1d2ba1a2cce2be9b5051bb221e800f0640dfe1a9f7668ecd9dd5681613"
+    },
+    {
+      "path": "baropress-video/review/completo-cenas-2.jpg",
+      "bytes": 120526,
+      "sha256": "066b235a6b76524b057da76c6af63777aa00f5c6954014d219ce9281fdf1a1b1"
+    },
+    {
+      "path": "baropress-video/review/render-16s.png",
+      "bytes": 336117,
+      "sha256": "5ac695ad22d5b179d75d46e3457a8484f98a3dab5a0df78cdb1bbd585c91bc85"
+    },
+    {
+      "path": "baropress-video/review/render-28s.png",
+      "bytes": 276963,
+      "sha256": "18891c0e2308c45e3f367ba4af36634bc70f3434ab1c3eb3ed56cd7e10eeb2d1"
+    },
+    {
+      "path": "baropress-video/review/video-info.json",
+      "bytes": 399,
+      "sha256": "587318afe82e6720cfbaefebaf7a37e0b24691e29434b0e5963b799c10a26442"
+    },
+    {
+      "path": "baropress-video/scripts/hyperframes.mjs",
+      "bytes": 1919,
+      "sha256": "a879b552c3bfa5d77780e5ce981d099c205d59c17bd96a36fe0abaecb0188dda"
+    },
+    {
+      "path": "baropress-video/scripts/prepare-assets.mjs",
+      "bytes": 1947,
+      "sha256": "0090ef8a0f9c566c400bdd9a0f7dfb3fe7cab927c98005742321f601d60e647c"
+    },
+    {
+      "path": "baropress-video/scripts/prepare-full.mjs",
+      "bytes": 913,
+      "sha256": "b05d0d77866608310bb91c22d936e4750e2024168fe3cc20a51850af6346bc6f"
+    },
+    {
+      "path": "baropress-video/snapshot-amostra.json",
+      "bytes": 16188,
+      "sha256": "9af263f05d7fe7ed5c6e53f112aca4d4e1e0992157f044d44d27bbdd79f0e96a"
+    },
+    {
+      "path": "baropress-video/snapshot-amostra.log",
+      "bytes": 7240,
+      "sha256": "dba99cffc982a97cb9d45fcbe4b6eef0df463b41a63a02f5d48f63e21bf3681b"
+    },
+    {
+      "path": "baropress-video/snapshot-completo.json",
+      "bytes": 56531,
+      "sha256": "3d12729cf10747ae0a5c886000301119ed5a82dc32266170c1593f031ca0181c"
+    },
+    {
+      "path": "baropress-video/snapshot-completo.log",
+      "bytes": 23968,
+      "sha256": "51e906552bf731c495f3d959b2ab439dec0a5573f863c890134b747fe4dd58c6"
+    },
+    {
+      "path": "baropress-video/snapshot-software.json",
+      "bytes": 1542,
+      "sha256": "0eacc7b5ceac429402b15517ca2324ff180f31f8cdd8aa66f224b8af5b17193f"
+    },
+    {
+      "path": "baropress-video/snapshot-software.log",
+      "bytes": 1782,
+      "sha256": "ecca6f8f66d391c288e43f32b0997b9802655abf7fc236ea5b7e8e66967459a5"
+    },
+    {
+      "path": "baropress-video/versions/completo.html",
+      "bytes": 3834,
+      "sha256": "d27b8c92eba2d05734764e2a267c30d94805e4b567a6b8d9cb0cc9a44b92586b"
+    }
+  ],
+  "archive_sha256": "30f01be9d248fb2bc29b5177826d3bd32d3c520c79792cf8a81fb0fe3530886c"
+}
