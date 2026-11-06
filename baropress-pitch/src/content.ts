@@ -29,37 +29,37 @@ export const S: Sc[] = [
   {
     t: 'Como funciona',
     s: '225 posições de leitura integradas a um sistema de aquisição e análise relativa.',
-    n: 'Fluxo em 3 etapas: 1. CAPTURA: Matriz experimental 15×15 com 225 cruzamentos e multiplexação matricial dupla (2× CIs CD74HC4067). 2. PROCESSAMENTO: Microcontrolador ESP32 com conversão analógica ADC de 12 bits (0–4095) e transmissão serial CSV a 115200 baud via USB. 3. VISUALIZAÇÃO: Interface desktop oficial (Tauri/Rust/SQLite) com compensação de tara, mapa de calor com interpolação bicúbica contínua e prontuário local de exames. Ressalva técnica: sinais em escala ADC relativa, sem validação clínica direta de pressão local em kg/cm².',
+    n: 'O funcionamento pode ser entendido em três passos. Primeiro, a matriz registra variações do sinal elétrico em 225 cruzamentos. Depois, o ESP32 organiza essas leituras digitais e as transmite ao computador. Por fim, o software apresenta o mapa e armazena os registros. As cores mostram intensidades relativas do sinal, em contagens ADC. A interpolação suaviza a imagem, mas não cria novos pontos de medição. O diagrama desta cena é ilustrativo. Não estamos mostrando pressão física calibrada em kPa ou kg/cm². A questão técnica para as próximas etapas é demonstrar como essas respostas se relacionam com cargas de referência e com as condições de uso pretendidas.',
   },
   {
     t: 'Do exame ao histórico. Tudo em um único sistema.',
     s: 'Aquisição, visualização, registros e relatórios integrados ao fluxo do profissional.',
-    n: 'Slide 7 — Software Real: Interface desktop oficial (Tauri + Rust + SQLite) centralizada na grande moldura. Alternância automática a cada 3 segundos entre as três etapas principais: Mapa, Indicadores e Histórico.',
+    n: 'No aplicativo, o foco é transformar a aquisição em registros organizados. Na primeira tela, vemos um registro e seu mapa de sinais relativos. A segunda mostra os controles de visualização: ajustar a escala ou o limiar muda a forma de apresentar o sinal, não constitui calibração física. Na terceira, o histórico reúne registros que podem ser consultados posteriormente. Os selos de hardware real identificam a origem da aquisição; não certificam validade clínica. Estas são capturas do software, não um atendimento nem uma validação com pacientes. A demonstração alterna automaticamente, e pode ser pausada para apresentar cada tela com calma. O valor que investigamos é reunir aquisição, visualização e consulta no mesmo fluxo. A utilidade para decisões clínicas ainda precisa ser estudada.',
   },
   {
-    t: 'Não basta observar um resultado. É importante acompanhar a evolução.',
+    t: 'Não basta registrar um momento. É importante organizar informações ao longo do tempo.',
     s: 'Registre, consulte e compare informações coletadas em diferentes momentos.',
-    n: 'Slide 8 — Acompanhamento e Evolução: Módulo oficial de comparação do BAROPRESS. Visualização longitudinal de múltiplos exames (#2, #3, #4 e #9) com métricas quantitativas cronológicas de pico ADC, média, área de contato e distribuição de carga.',
+    n: 'O módulo de comparação permite consultar registros de diferentes momentos lado a lado. A tabela organiza leituras máximas, médias e descritores relativos do sinal. Isso facilita recuperar o que foi registrado, mas diferenças numéricas podem refletir tanto as condições de aquisição quanto o comportamento do sistema. Não demonstram melhora clínica nem eficácia de um tratamento. Nesta etapa, comparamos registros eletrônicos do protótipo; a interpretação futura exige medidas confiáveis e protocolo padronizado.',
   },
   {
     t: 'Informação que vai além da tela.',
     s: 'Organize os resultados em relatórios exportáveis e consulte os registros quando necessário.',
-    n: 'Slide 9 — Relatório Oficial A4: Documento estruturado para exportação em PDF. Contém identificação do exame, origem verificada do sinal (ESP32/Hardware Real), superfície contínua interpolada e indicadores quantitativos.',
+    n: 'Os registros também podem ser organizados em relatórios exportáveis em PDF. Esta captura mostra um trecho real da interface de relatório, com a identificação pessoal ocultada para apresentação pública. O documento reúne origem da aquisição, mapa e indicadores relativos. O selo de hardware real indica de onde veio o sinal, não que a medição tenha sido clinicamente validada. É um relatório de sinais do protótipo, não um laudo diagnóstico. A captura é parcial; não representa a página A4 completa.',
   },
   {
     t: 'Uma proposta de entrada mais acessível.',
-    s: 'Tecnologia para pequenas clínicas e atendimento domiciliar.',
-    n: 'Slide 10 — Investimento: BaroScan, R$ 24.961,25, preço anunciado em catálogo público de distribuidor nacional em outubro/2024. BAROPRESS, R$ 2.990, tapete e software integrados para visualização, registros e acompanhamento. Custo estimado de materiais por unidade: aproximadamente R$ 500. Saldo após materiais: R$ 2.490, equivalente a 83,3% do preço de venda (2.490 / 2.990), antes de montagem, tributos e demais despesas. Não representa lucro líquido nem custo total de produção. Destacar a portabilidade e o acesso para pequenas clínicas e atendimento domiciliar.',
+    s: 'Uma hipótese de investimento menor, com desempenho e viabilidade ainda a validar.',
+    n: 'Os sistemas profissionais existentes mostram que esta categoria tecnológica está estabelecida. Um exemplo é o BaroScan, anunciado pela Podotech por R$ 24.961,25 na consulta de novembro de 2026. Nossa hipótese é desenvolver uma alternativa de entrada com preço-alvo de R$ 2.990. A estimativa preliminar de materiais da bancada é de aproximadamente R$ 500. Isso não é o custo completo de produção, e a diferença de R$ 2.490 não representa lucro validado. Ainda precisamos contabilizar montagem, calibração, testes, impostos, suporte, logística, manutenção, garantia, comercialização e eventuais despesas regulatórias. As barras comparam somente valores; os produtos não têm desempenho ou capacidade clínica equivalentes demonstrados. Antes de comercializar para uso clínico, precisamos comprovar desempenho, investigar demanda e atender aos requisitos aplicáveis.',
   },
   {
     t: 'BAROPRESS',
     s: 'Mais acesso à tecnologia. Mais possibilidades para o cuidado.',
-    n: 'Encerramento: a matriz 15×15 retorna à marca. Assinatura: Montival Lucas & Raphaela Teles.',
+    n: 'Nossa proposta é ampliar as possibilidades de acesso à tecnologia sem antecipar capacidades clínicas. Já construímos o protótipo, integramos o software e documentamos os primeiros ensaios. Buscamos parceiros de ensino, pesquisa e profissionais para revisar a calibração, ampliar os testes e planejar as próximas etapas de validação. Esse é o convite: ajudar a transformar o potencial em desempenho demonstrado e valor comprovado para os usuários.',
   },
   {
-    t: 'Desenvolvimento com base científica.',
-    s: 'O artigo documenta a construção e a avaliação preliminar do BAROPRESS.',
-    n: 'Slide 12 — Artigo do projeto: mostrar a primeira página real do documento fornecido, sem atribuir revista, DOI, autores formais ou data de publicação não confirmados. O estudo relata testes de bancada sem pacientes, cinco massas entre 0,438 e 4,518 kg e três repetições por nível. O sinal respondeu à aplicação de cargas, mas a calibração candidata não atingiu o critério adotado de erro absoluto máximo de 1 N (erro máximo de 8,299 N; sete de nove estimativas disponíveis). Não afirmar mensuração quantitativa de pressão plantar ou validade clínica estabelecida. A publicação foi informada pelo usuário; os dados editoriais ainda não foram verificados, por isso o rótulo escolhido é Artigo do projeto. Referência: BAROPRESS: desenvolvimento e avaliação preliminar de um protótipo de baixo custo para aquisição e distribuição espacial de sinais associados à aplicação de carga. Documento do projeto, 2026.',
+    t: 'Da ideia à pesquisa científica.',
+    s: 'O desenvolvimento e os ensaios preliminares do BAROPRESS foram documentados em artigo científico.',
+    n: 'O BAROPRESS não ficou apenas na ideia. Esta é a primeira página real do artigo que documenta a construção e os testes de bancada, sem pacientes e sem testes clínicos de marcha. Foram cinco níveis de massa, de 0,438 a 4,518 kg, com três repetições por nível. O sinal respondeu à carga, mas a calibração candidata não atingiu o critério adotado de erro absoluto máximo de 1 N: o erro máximo foi de 8,299 N e duas das nove estimativas ficaram indisponíveis. O estudo registra esses limites e não demonstra mensuração quantitativa validada de pressão plantar. Conforme informado pela equipe, o artigo foi aceito para publicação na Práxis Teológica e aguarda DOI. O aceite editorial é um marco acadêmico; não é validação metrológica ou clínica. Essa pesquisa dá base às próximas etapas do desenvolvimento.',
   },
 ]
 
@@ -67,6 +67,9 @@ export const ARTICLE = {
   image: 'shots/artigo-primeira-pagina.png',
   title: 'BAROPRESS: desenvolvimento e avaliação preliminar de um protótipo de baixo custo para aquisição e distribuição espacial de sinais associados à aplicação de carga.',
   reference: 'Documento do projeto · 2026',
+  editorialStatus: 'Artigo aceito para publicação — Práxis Teológica',
+  editorialDetail: 'Aceite informado pela equipe · DOI pendente de atribuição.',
+  url: 'https://docs.google.com/document/d/1TlYKZ2T9QO0IUouwsgtHjVYc3H2Lnzx6/edit',
 }
 
 export const SHOTS: Record<string, string> = {
@@ -101,7 +104,7 @@ export const SHOT_META: Record<string, { title: string; detail: string; tag: str
   'Relatório': {
     title: 'Visualização e Exportação de Relatório PDF',
     detail: 'Documento estruturado com identificação, origem do sinal, superfície interpolada e indicadores quantitativos',
-    tag: 'Laudo A4 Nativo',
+    tag: 'Relatório de sinais · identificação ocultada',
   },
 }
 

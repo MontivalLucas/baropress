@@ -365,7 +365,8 @@ function Scene({
         )}
         {i === 10 && (
           <Rv d={0.42} cls="mt-7 text-[34px] font-semibold text-[#38D8DC]">
-            Vamos levar essa solução para mais profissionais?
+            Buscamos parceiros de ensino, pesquisa e profissionais<br />
+            para as próximas etapas de validação.
           </Rv>
         )}
         {i === 10 && (
@@ -1161,7 +1162,7 @@ function Scene({
               </span>
             </div>
             <div className="mt-4 text-[26px] font-extrabold text-white tracking-wide">MAPA DE CALOR</div>
-            <div className="text-[17px] text-[#94A3B8] font-medium mt-2">Sinais ADC relativos e registros</div>
+            <div className="text-[17px] text-[#94A3B8] font-medium mt-2">Sinais ADC relativos e registros · diagrama ilustrativo</div>
           </Rv>
         </div>
       </>
@@ -1229,9 +1230,9 @@ function Scene({
 
         {/* Janela Oficial do Módulo de Comparação Centralizada na Forma */}
         <Shot
-          src="shots/comparacao-oficial.png"
+          src={SHOTS['Comparação']}
           title="BAROPRESS Desktop — Comparação Longitudinal (Exames #2, #3, #4 e #9)"
-          tag="Módulo de Comparação"
+          tag="Comparação de sinais · sem inferência clínica"
           h={650}
           pos="left-[240px] top-[235px] w-[1440px]"
         />
@@ -1273,8 +1274,8 @@ function Scene({
         {/* Lado Direito: Prévia Oficial A4 Ampliada e com Máximo Protagonismo */}
         <Shot
           src="shots/relatorio-a4.png"
-          title="BAROPRESS Desktop — Relatório Baropodométrico Estático A4"
-          tag="Exportação PDF"
+          title="BAROPRESS Desktop — Trecho do relatório de sinais"
+          tag="Identificação ocultada · captura parcial"
           h={860}
           pos="left-[975px] top-[110px] w-[760px]"
           darkBg={false}
@@ -1343,13 +1344,13 @@ function Scene({
 
             {/* Preço-Alvo Comercial */}
             <div className="mt-[48px]">
-              <div className="text-[24px] text-white/90">Investimento</div>
+              <div className="text-[24px] text-white/90">Preço-alvo hipotético</div>
               <div className="mt-3 flex items-baseline gap-4 whitespace-nowrap">
                 <span className="text-[34px] font-medium">R$</span>
                 <span className="text-[92px] leading-none font-bold tracking-[-0.035em] tabular-nums">2.990</span>
               </div>
               {/* Comprimento proporcional ao valor de venda, na mesma escala da referência */}
-              <div role="img" aria-label="Preço BAROPRESS: R$ 2.990, aproximadamente 12% do preço de referência" className="mt-8 h-[36px] w-[704px] rounded-full bg-white/15 overflow-hidden">
+              <div role="img" aria-label="Preço-alvo hipotético BAROPRESS: R$ 2.990; comparação somente de valores, sem equivalência de desempenho" className="mt-8 h-[36px] w-[704px] rounded-full bg-white/15 overflow-hidden">
                 <motion.div
                   className="h-full origin-left rounded-full bg-[#38D8DC]"
                   style={{ width: `${(2990 / 24961.25) * 100}%` }}
@@ -1364,16 +1365,16 @@ function Scene({
             <div className="mt-auto border-t border-white/30 pt-6">
               <dl className="grid grid-cols-2 gap-8">
                 <div>
-                  <dt className="text-[22px] text-white/90">Custo de materiais</dt>
+                  <dt className="text-[22px] text-white/90">Materiais de bancada</dt>
                   <dd className="mt-1 text-[36px] leading-tight font-semibold tabular-nums">≈ R$ 500</dd>
                 </div>
                 <div>
-                  <dt className="text-[22px] text-white/90">Margem após materiais</dt>
-                  <dd className="mt-1 text-[36px] leading-tight font-semibold tabular-nums">≈ 83,3%</dd>
+                  <dt className="text-[22px] text-white/90">Próxima etapa</dt>
+                  <dd className="mt-1 text-[30px] leading-tight font-semibold">Validar viabilidade</dd>
                 </div>
               </dl>
               <p className="mt-3 text-[20px] leading-[1.35] text-white/90">
-                ≈ R$ 2.490 por unidade, antes de montagem, tributos e demais despesas.
+                Estimativa preliminar; não é custo fabril completo nem lucro validado.
               </p>
             </div>
 
@@ -1384,7 +1385,7 @@ function Scene({
         {/* Fonte do valor de referência */}
         <div className="absolute left-[120px] top-[956px] w-[1680px]">
           <Rv d={0.4} cls="text-[20px] leading-[1.4] text-[#475569]">
-            <span>BaroScan: preço anunciado em catálogo público de distribuidor nacional · outubro/2024.</span>
+            <span>Podotech · podotech.com.br/baroscan · consulta em 06/11/2026. Comparação de valores, sem equivalência técnica ou clínica.</span>
           </Rv>
         </div>
       </>
@@ -1400,15 +1401,19 @@ function Scene({
           <Rv d={0.16} cls="mt-7 max-w-[760px] text-[28px] leading-[1.4] text-[#17243A]">
             {c.s}
           </Rv>
-          <Rv d={0.3} cls="mt-12 text-[32px] font-semibold text-[#2457E7]">
+          <Rv d={0.3} cls="mt-9 text-[30px] font-semibold text-[#2457E7]">
             Ensaios de bancada, sem pacientes.
           </Rv>
-          <Rv d={0.4} cls="mt-5 max-w-[760px] text-[27px] leading-[1.4] text-[#17243A]">
+          <Rv d={0.4} cls="mt-4 max-w-[760px] text-[25px] leading-[1.4] text-[#17243A]">
             O protótipo respondeu à aplicação de cargas. A calibração candidata não atingiu o critério adotado; a aplicação clínica depende de validação.
           </Rv>
-          <Rv d={0.5} cls="mt-14 max-w-[820px] text-[21px] leading-[1.45] text-[#475569]">
+          <Rv d={0.5} cls="mt-7 max-w-[820px] text-[25px] leading-[1.4] text-[#2457E7]">
+            <p className="font-semibold">{ARTICLE.editorialStatus}</p>
+            <p className="mt-2 text-[21px] text-[#475569]">{ARTICLE.editorialDetail}</p>
+          </Rv>
+          <Rv d={0.6} cls="mt-7 max-w-[820px] text-[20px] leading-[1.4] text-[#475569]">
             <p>{ARTICLE.title}</p>
-            <p className="mt-3 font-medium text-[#2457E7]">{ARTICLE.reference}</p>
+            <p className="mt-2">{ARTICLE.reference} · Aceite editorial não comprova validação clínica.</p>
           </Rv>
         </div>
         <Rv d={0.2} cls="absolute left-[1160px] top-[150px] w-[540px]">
