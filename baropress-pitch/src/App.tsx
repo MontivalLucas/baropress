@@ -1,6 +1,6 @@
-import { useEffect, useState, type ReactNode } from 'react'
+import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react'
-import { S, SHOTS, SHOT_META, HW_PHOTOS } from './content'
+import { S, SHOTS, SHOT_META, HW_PHOTOS, ARTICLE } from './content'
 
 let SP = 1
 // Emil Kowalski strong custom easing curves
@@ -73,6 +73,7 @@ export type SlideTheme = {
 }
 
 // DISTRIBUIÇÃO OFICIAL DE FUNDOS (11 SLIDES)
+// A revisão acrescenta a cena 12, mantendo os fundos das onze cenas originais.
 export const SLIDE_THEMES: SlideTheme[] = [
   { variant: 'white-editorial', stageBg: '#FFFFFF' }, // Slide 1: branco
   { variant: 'white-editorial', stageBg: '#F5F8FF' }, // Slide 2: Ice White
@@ -85,6 +86,7 @@ export const SLIDE_THEMES: SlideTheme[] = [
   { variant: 'electric-blue', stageBg: '#2457E7' },   // Slide 9: Electric Blue
   { variant: 'white-editorial', stageBg: '#FFFFFF' }, // Slide 10: branco
   { variant: 'midnight-tech', stageBg: '#0D1830' },   // Slide 11: Midnight Navy (encerramento)
+  { variant: 'white-editorial', stageBg: '#F5F8FF' }, // Slide 12: artigo do projeto
 ]
 
 type G = { x: number; y: number; s: number; m: 'off' | 'flat' | 'heat' | 'logo' }
@@ -110,6 +112,7 @@ const HERO = (i: number, ph: number, evoReal = false): H => {
       { d: P(1355, 540, 410, 470, 0.98), f: '#FFFFFF', st: 'rgba(255,255,255,0.4)', a: off() }, // 9: Electric Blue (Relatório A4)
       { d: P(1390, 592.5, 410, 337.5, 0.95), f: '#2457E7', st: '#2457E7', a: off() }, // 10: branco (Painel Comercial BAROPRESS)
       logoDark, // 11: Midnight Navy
+      { d: P(1430, 540, 360, 460, 0.96), f: BL, st: '#CFDCF8', a: off() }, // 12: suporte orgânico da página do artigo
     ] as H[]
   )[i]
 }
@@ -387,19 +390,17 @@ function Scene({
         {/* Lado Esquerdo: Tipografia e pílulas fiéis ao design de referência */}
         <div className="absolute left-[140px] top-[250px] w-[860px]">
           <Rv cls="font-bold text-[78px] leading-[1.08] tracking-[-0.035em] text-[#0D1830]">
-            <span>O cuidado não acontece</span>
-            <br />
-            <span>em apenas um lugar.</span>
+            {c.t}
           </Rv>
 
           <Rv d={0.16} cls="mt-7 text-[25px] leading-[1.4] text-[#475569] max-w-[720px]">
             <span>
-              De pequenas clínicas a visitas domiciliares, os fisioterapeutas precisam de ferramentas compatíveis com a sua rotina.
+              {c.s}
             </span>
           </Rv>
 
           <div className="mt-14 flex items-center gap-3.5">
-            {['Pequenas clínicas', 'Profissionais independentes', 'Atendimento domiciliar'].map((pill, k) => (
+            {['Avaliação clínica', 'Registro entre sessões', 'Decisão profissional'].map((pill, k) => (
               <Rv
                 key={pill}
                 d={0.3 + k * 0.12}
@@ -409,6 +410,9 @@ function Scene({
               </Rv>
             ))}
           </div>
+          <Rv d={0.54} cls="mt-8 max-w-[740px] text-[27px] leading-[1.35] font-medium text-[#2457E7]">
+            Uma avaliação bem fundamentada apoia decisões terapêuticas mais seguras.
+          </Rv>
         </div>
 
         {/* Lado Direito: Imagem homecare.png com moldura orgânica em dégradé e sombra */}
@@ -456,37 +460,25 @@ function Scene({
         {/* Lado Esquerdo: Conteúdo narrativo fiel à imagem de referência */}
         <div className="absolute left-[140px] top-[240px] w-[1200px]">
           <Rv cls="font-bold text-[74px] leading-[1.1] tracking-[-0.035em] text-white">
-            <span className="whitespace-nowrap">Quando a tecnologia custa caro,</span>
-            <br />
-            <span>o acesso fica limitado.</span>
+            <span className="block max-w-[1150px]">{c.t}</span>
           </Rv>
 
-          <Rv d={0.15} cls="mt-12 text-[15px] font-bold tracking-[0.14em] uppercase text-[#38BDF8]">
-            <span>O PROBLEMA</span>
-          </Rv>
-
-          <Rv d={0.22} cls="mt-3.5 text-[24px] leading-[1.4] text-[#CBD5E1] max-w-[820px]">
+          <Rv d={0.22} cls="mt-9 text-[28px] leading-[1.4] text-[#CBD5E1] max-w-[820px]">
             <span>
-              O alto custo de aquisição inviabiliza a adoção de novas tecnologias para a maioria das clínicas, limitando o diagnóstico avançado.
+              {c.s}
             </span>
           </Rv>
 
           <Rv
             d={0.32}
-            cls="mt-11 w-[630px] rounded-2xl bg-[#111C33]/65 border border-[#38BDF8]/25 p-7 shadow-[0_15px_35px_rgba(0,0,0,0.35)] backdrop-blur-md"
+            cls="mt-10 max-w-[820px] text-[32px] font-medium leading-[1.3] text-[#38D8DC]"
           >
-            <div className="text-[20px] font-medium text-[#60A5FA]">BaroScan</div>
-            <div className="mt-1.5 flex items-baseline gap-4">
-              <span className="tabular-nums text-[58px] font-black tracking-[-0.03em] text-[#38D8DC] leading-none">
-                R$ 24.961,25
-              </span>
-              <span className="text-[16px] font-medium text-[#94A3B8]">preço anunciado</span>
-            </div>
+            Menos acesso a registros instrumentais. Mais dificuldade para quantificar mudanças entre sessões.
           </Rv>
 
-          <Rv d={0.42} cls="mt-16 text-[34px] font-bold tracking-tight flex items-center gap-2.5">
-            <span className="text-white">E para o profissional que</span>
-            <span className="text-[#38D8DC]">está começando? ↗</span>
+          <Rv d={0.42} cls="mt-12 max-w-[920px] text-[34px] font-bold tracking-tight leading-[1.3]">
+            <span className="text-white">Como ampliar o acesso a ferramentas que </span>
+            <span className="text-[#38D8DC]">apoiem o cuidado?</span>
           </Rv>
         </div>
 
@@ -1397,17 +1389,55 @@ function Scene({
       </>
     )
 
+  if (i === 11)
+    return (
+      <>
+        <div className="absolute left-[120px] top-[140px] w-[860px]">
+          <Rv cls="font-bold text-[72px] leading-[1.08] tracking-[-0.035em] text-[#0D1830]">
+            {c.t}
+          </Rv>
+          <Rv d={0.16} cls="mt-7 max-w-[760px] text-[28px] leading-[1.4] text-[#17243A]">
+            {c.s}
+          </Rv>
+          <Rv d={0.3} cls="mt-12 text-[32px] font-semibold text-[#2457E7]">
+            Ensaios de bancada, sem pacientes.
+          </Rv>
+          <Rv d={0.4} cls="mt-5 max-w-[760px] text-[27px] leading-[1.4] text-[#17243A]">
+            O protótipo respondeu à aplicação de cargas. A calibração candidata não atingiu o critério adotado; a aplicação clínica depende de validação.
+          </Rv>
+          <Rv d={0.5} cls="mt-14 max-w-[820px] text-[21px] leading-[1.45] text-[#475569]">
+            <p>{ARTICLE.title}</p>
+            <p className="mt-3 font-medium text-[#2457E7]">{ARTICLE.reference}</p>
+          </Rv>
+        </div>
+        <Rv d={0.2} cls="absolute left-[1160px] top-[150px] w-[540px]">
+          <img
+            src={ARTICLE.image}
+            alt="Primeira página do artigo BAROPRESS, com título, resumo e resultados preliminares dos ensaios de bancada."
+            width={1200}
+            height={1697}
+            className="block w-full h-auto rounded-[4px] shadow-[0_24px_55px_-12px_rgba(13,24,48,0.3)]"
+          />
+        </Rv>
+      </>
+    )
+
   return T(300, 84)
 }
 
+const sceneIndexFromHash = (hash: string) =>
+  Math.max(0, Math.min(S.length - 1, (parseInt(hash.slice(2)) || 1) - 1))
+
 export default function App() {
   const rm = useReducedMotion()
-  const [i, setI] = useState(() => Math.max(0, (parseInt(location.hash.slice(2)) || 1) - 1))
+  const [i, setI] = useState(() => sceneIndexFromHash(location.hash))
   const [ph, setPh] = useState(0)
   const [tab, setTab] = useState('Mapa')
   const [hwIdx, setHwIdx] = useState(0)
   const [evoReal, setEvoReal] = useState(false)
   const [pres, setPres] = useState(false)
+  const presenterRef = useRef<HTMLElement>(null)
+  const [presenterHeight, setPresenterHeight] = useState(0)
   const [sp, setSp] = useState(1)
   const [t0, setT0] = useState(Date.now())
   const [now, setNow] = useState(Date.now())
@@ -1435,8 +1465,9 @@ export default function App() {
 
   useEffect(() => {
     const onHash = () => {
-      const n = (parseInt(location.hash.slice(2)) || 1) - 1
-      setI(Math.max(0, Math.min(S.length - 1, n)))
+      const n = sceneIndexFromHash(location.hash)
+      setI(n)
+      history.replaceState(null, '', '#s' + (n + 1))
     }
     addEventListener('hashchange', onHash)
     return () => removeEventListener('hashchange', onHash)
@@ -1477,6 +1508,7 @@ export default function App() {
   // Atalhos de teclado preservados e estendidos
   useEffect(() => {
     const k = (e: KeyboardEvent) => {
+      if (e.defaultPrevented || (e.key !== 'Escape' && e.target instanceof HTMLElement && e.target.closest('button, input, select, textarea, a, [contenteditable], [role="tab"], [role="region"]'))) return
       if (['ArrowRight', 'ArrowDown', 'PageDown', ' ', 'Enter'].includes(e.key)) {
         e.preventDefault()
         go(i + 1)
@@ -1501,6 +1533,17 @@ export default function App() {
     return () => removeEventListener('keydown', k)
   }, [i, pres, evoReal])
 
+  useEffect(() => {
+    const panel = presenterRef.current
+    if (!panel) {
+      setPresenterHeight(0)
+      return
+    }
+    const observer = new ResizeObserver(() => setPresenterHeight(panel.getBoundingClientRect().height))
+    observer.observe(panel)
+    return () => observer.disconnect()
+  }, [pres])
+
   // Ajuste de escala e enquadramento 16:9 rigoroso com margens de segurança
   useEffect(() => {
     const updateDimensions = () => {
@@ -1508,8 +1551,8 @@ export default function App() {
       setIsFullscreen(isFs)
 
       const bottomBuffer = isFs ? 0 : 54
-      const presBuffer = pres ? 76 : 0
-      const availH = Math.max(360, window.innerHeight - bottomBuffer - presBuffer)
+      const presBuffer = pres ? presenterHeight : 0
+      const availH = Math.max(1, window.innerHeight - bottomBuffer - presBuffer)
       const availW = window.innerWidth
       const s = Math.min(availW / 1920, availH / 1080)
       setSc(Math.max(0.2, s))
@@ -1525,7 +1568,7 @@ export default function App() {
       document.removeEventListener('fullscreenchange', updateDimensions)
       clearInterval(t)
     }
-  }, [pres])
+  }, [pres, presenterHeight])
 
   // Em tela cheia: esconde a barra automaticamente após inatividade
   useEffect(() => {
@@ -1563,7 +1606,7 @@ export default function App() {
   const tr = { duration: 1.1 * SP, ease: EZ_MOVE }
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-[#070D18] overflow-hidden select-none">
+    <div className="fixed inset-0 flex items-center justify-center bg-[#070D18] overflow-hidden select-none" style={{ paddingBottom: pres ? presenterHeight : 0 }}>
       {/* Palco 16:9 perfeitamente centralizado com escala proporcional e fundo temático do slide */}
       <div
         className="relative overflow-hidden shadow-[0_25px_70px_-15px_rgba(0,0,0,0.5)] shrink-0 transition-colors duration-200 ease-out"
@@ -1611,6 +1654,7 @@ export default function App() {
       {/* Barra de navegação inferior flutuante com auto-hide em fullscreen e estilo adaptativo */}
       <nav
         aria-label="Controles da apresentação"
+        style={{ bottom: (pres ? presenterHeight : 0) + 12 }}
         onMouseEnter={() => setIsHoveringNav(true)}
         onMouseLeave={() => setIsHoveringNav(false)}
         className={
@@ -1722,21 +1766,22 @@ export default function App() {
       {/* Painel do Apresentador com fechamento explícito e acessível */}
       {pres && (
         <aside
+          ref={presenterRef}
           role="region"
           aria-label="Painel de notas e cronômetro do apresentador"
           className="fixed inset-x-0 bottom-0 z-30 bg-[#0D1830] text-white px-8 py-3.5 flex items-center justify-between border-t border-slate-800 shadow-2xl backdrop-blur-md"
         >
-          <div className="flex items-center gap-6">
+          <div className="flex min-w-0 flex-1 items-center gap-6">
             <button
               type="button"
               title="Clique para zerar o cronômetro"
               aria-label="Zerar cronômetro da apresentação"
-              className="pressable tabular-nums text-3xl font-bold text-[#38D8DC] hover:text-[#5eead4] transition focus-visible:ring-2 focus-visible:ring-[#38D8DC]"
+              className="pressable shrink-0 tabular-nums text-3xl font-bold text-[#38D8DC] hover:text-[#5eead4] transition focus-visible:ring-2 focus-visible:ring-[#38D8DC]"
               onClick={() => setT0(Date.now())}
             >
               {String(Math.floor(el / 60)).padStart(2, '0')}:{String(el % 60).padStart(2, '0')}
             </button>
-            <span className="text-lg text-slate-200">
+            <span role="region" aria-label="Notas da cena atual" tabIndex={0} className="max-h-[140px] overflow-y-auto text-lg text-slate-200">
               <strong className="text-white tabular-nums">
                 Cena {i + 1}/{S.length}
               </strong>{' '}
@@ -1749,7 +1794,7 @@ export default function App() {
             onClick={() => setPres(false)}
             aria-label="Fechar painel do apresentador"
             title="Fechar apresentador (P ou Esc)"
-            className="pressable flex items-center gap-1.5 rounded-full bg-slate-800 hover:bg-slate-700 px-3 py-1.5 text-xs font-semibold text-slate-200 border border-slate-700 transition focus-visible:ring-2 focus-visible:ring-blue-400 cursor-pointer"
+            className="pressable ml-6 flex shrink-0 items-center gap-1.5 rounded-full bg-slate-800 hover:bg-slate-700 px-3 py-1.5 text-xs font-semibold text-slate-200 border border-slate-700 transition focus-visible:ring-2 focus-visible:ring-blue-400 cursor-pointer"
           >
             <span>✕</span>
             <span>Fechar</span>

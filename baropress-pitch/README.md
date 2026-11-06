@@ -1,6 +1,8 @@
 # BAROPRESS — Pitch
 
-Apresentação web em 11 cenas, com React, Motion, Tailwind CSS e Vite.
+Apresentação web em 12 cenas, com React, Motion, Tailwind CSS e Vite.
+
+A apresentação mantém a abertura original BAROPRESS. A revisão das cenas 2–3 contextualiza a avaliação fisioterapêutica e apresenta a barreira de acesso sem citar concorrentes na introdução. As cenas 4–11 preservam o conteúdo e as composições anteriores; a cena 12 encerra com a primeira página real do artigo do projeto. Fontes, limites científicos e verificações estão em [Revisão narrativa](plans/REVISAO_NARRATIVA_2026-11-05.md).
 
 Site: [baropress.vercel.app](https://baropress.vercel.app).
 

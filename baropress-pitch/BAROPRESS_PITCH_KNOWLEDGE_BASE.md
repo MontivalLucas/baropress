@@ -1,5 +1,7 @@
 # BAROPRESS — Base de Conhecimento do Projeto e Pitch Deck
 
+**Revisão narrativa de 05/11/2026, atualizada em 06/11/2026:** a apresentação atual tem 12 cenas. A abertura original BAROPRESS foi restaurada a pedido do usuário; as cenas 2–3 contextualizam a avaliação e preservam a autonomia do fisioterapeuta. A comparação de preços permanece na cena 10. A cena 12 mostra o artigo do projeto como estudo preliminar de bancada, sem afirmar validade clínica ou publicação editorial verificada. As cenas 4–11 mantêm o conteúdo e as composições. O roteiro abaixo documenta a base anterior; para a narrativa vigente, consultar `src/content.ts` e [o registro desta revisão](plans/REVISAO_NARRATIVA_2026-11-05.md).
+
 > **Documento Oficial de Referência para Inteligências Artificiais e Desenvolvedores**  
 > **Projeto:** BAROPRESS — Sistema Integrado de Baropodometria Experimental de Entrada  
 > **Autores / Desenvolvedores:** Montival Lucas & Raphaela Teles  

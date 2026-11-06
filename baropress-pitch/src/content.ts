@@ -7,14 +7,14 @@ export const S: Sc[] = [
     n: 'A forma azul cresce, vira a placa e revela os 225 pontos: a marca.',
   },
   {
-    t: 'O cuidado não acontece em apenas um lugar.',
-    s: 'De pequenas clínicas a visitas domiciliares, os fisioterapeutas precisam de ferramentas compatíveis com a sua rotina.',
-    n: 'Slide 2 — Público e contexto: do consultório compacto ao atendimento domiciliar. Apresentação com moldura orgânica gradiente e foto autêntica homecare.',
+    t: 'Compreender o apoio orienta o cuidado.',
+    s: 'Dados instrumentais complementam a anamnese e o exame físico. A interpretação e a decisão continuam com o fisioterapeuta.',
+    n: 'Slide 2 — Avaliação e autonomia: uma avaliação bem fundamentada apoia decisões terapêuticas mais seguras. Recursos instrumentais, quando adequadamente validados, acrescentam informações à anamnese e ao exame físico; não substituem o raciocínio clínico. Registros comparáveis ajudam a investigar mudanças entre sessões, sem que qualquer diferença prove melhora clínica. A aplicação clínica do BAROPRESS ainda depende de validação. Referências: Lin, Papi e McGregor, 2019, doi:10.1136/bmjopen-2018-023656; Hébert-Losier e Murray, 2020, doi:10.1016/j.gaitpost.2019.09.027.',
   },
   {
     t: 'Quando a tecnologia custa caro, o acesso fica limitado.',
-    s: 'O alto custo de aquisição inviabiliza a adoção de novas tecnologias para a maioria das clínicas, limitando o diagnóstico avançado.',
-    n: 'Slide 3 — Barreira financeira: referência comercial BaroScan (R$ 24.961,25 preço anunciado). Representação gráfica de custo elevado no painel vertical. Transição: E para o profissional que está começando?',
+    s: 'O investimento em equipamentos pode dificultar o acesso de pequenas clínicas e profissionais autônomos a recursos de avaliação instrumental.',
+    n: 'Slide 3 — Barreira de acesso: custo e tempo de adoção são barreiras relatadas por profissionais ao considerar tecnologias de avaliação instrumental. Isso pode dificultar a obtenção de registros para acompanhar o paciente; não significa que o profissional trate sem conhecimento ou apenas por hipóteses. Não afirmar que a maioria das clínicas brasileiras carece de recursos: não há levantamento local apresentado. Marcas, preços e comparação ficam exclusivamente na cena 10. Transição: como ampliar o acesso a ferramentas que apoiem a avaliação e o acompanhamento? Referência: Lin, Papi e McGregor, 2019, doi:10.1136/bmjopen-2018-023656.',
   },
   {
     t: 'E se essa tecnologia pudesse chegar a mais profissionais?',
@@ -56,7 +56,18 @@ export const S: Sc[] = [
     s: 'Mais acesso à tecnologia. Mais possibilidades para o cuidado.',
     n: 'Encerramento: a matriz 15×15 retorna à marca. Assinatura: Montival Lucas & Raphaela Teles.',
   },
+  {
+    t: 'Desenvolvimento com base científica.',
+    s: 'O artigo documenta a construção e a avaliação preliminar do BAROPRESS.',
+    n: 'Slide 12 — Artigo do projeto: mostrar a primeira página real do documento fornecido, sem atribuir revista, DOI, autores formais ou data de publicação não confirmados. O estudo relata testes de bancada sem pacientes, cinco massas entre 0,438 e 4,518 kg e três repetições por nível. O sinal respondeu à aplicação de cargas, mas a calibração candidata não atingiu o critério adotado de erro absoluto máximo de 1 N (erro máximo de 8,299 N; sete de nove estimativas disponíveis). Não afirmar mensuração quantitativa de pressão plantar ou validade clínica estabelecida. A publicação foi informada pelo usuário; os dados editoriais ainda não foram verificados, por isso o rótulo escolhido é Artigo do projeto. Referência: BAROPRESS: desenvolvimento e avaliação preliminar de um protótipo de baixo custo para aquisição e distribuição espacial de sinais associados à aplicação de carga. Documento do projeto, 2026.',
+  },
 ]
+
+export const ARTICLE = {
+  image: 'shots/artigo-primeira-pagina.png',
+  title: 'BAROPRESS: desenvolvimento e avaliação preliminar de um protótipo de baixo custo para aquisição e distribuição espacial de sinais associados à aplicação de carga.',
+  reference: 'Documento do projeto · 2026',
+}
 
 export const SHOTS: Record<string, string> = {
   'Mapa': 'shots/mapa.png',
