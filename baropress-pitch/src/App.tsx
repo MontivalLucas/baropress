@@ -1240,7 +1240,7 @@ function Scene({
 
         {/* Janela Oficial do Módulo de Comparação Centralizada na Forma */}
         <Shot
-          src={SHOTS['Comparação']}
+          src="shots/comparacao-oficial.png"
           title="BAROPRESS Desktop — Comparação Longitudinal (Exames #2, #3, #4 e #9)"
           tag="Comparação de sinais · sem inferência clínica"
           h={650}

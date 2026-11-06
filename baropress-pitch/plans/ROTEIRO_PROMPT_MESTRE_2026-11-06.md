@@ -92,7 +92,7 @@ No aplicativo, o foco é transformar a aquisição em registros organizados. Na 
 
 **Subtítulo:** Registre, consulte e compare informações coletadas em diferentes momentos.
 
-**Complementos visíveis e identificação das evidências:** Janela identificada como “Comparação de sinais · sem inferência clínica”. Utiliza a captura existente `comparacao.png`, com “Usuário de demonstração” em lugar do nome do operador presente em `comparacao-oficial.png`.
+**Complementos visíveis e identificação das evidências:** Janela identificada como “Comparação de sinais · sem inferência clínica”. A pedido do usuário, mantém a captura original `comparacao-oficial.png`, como na versão anterior à revisão do prompt mestre.
 
 **Fala sugerida:**
 

@@ -115,4 +115,6 @@ Commits lógicos:
 
 Branch publicada: `codex/pitch-problematica-20261106`.
 
+Atualização solicitada após a revisão: preservar as imagens utilizadas anteriormente. Restaurada a referência da cena 8 para `shots/comparacao-oficial.png`, única captura que havia sido trocada. As fotografias de hardware, a imagem de homecare, o conceito do tapete, as demais capturas e a primeira página do artigo já permaneciam nos mesmos arquivos da versão anterior. Esta atualização substitui a opção por `comparacao.png` descrita no registro da fase F; textos e controles revisados foram preservados.
+
 PR em rascunho para revisão: [MontivalLucas/baropress #4](https://github.com/MontivalLucas/baropress/pull/4). O remoto `main` permaneceu no commit inicial `b10923b`. Nenhum merge ou deploy de produção foi realizado.
