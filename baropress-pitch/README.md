@@ -2,6 +2,8 @@
 
 Apresentação web em 11 cenas, com React, Motion, Tailwind CSS e Vite.
 
+Site: [baropress.vercel.app](https://baropress.vercel.app).
+
 ## Desenvolvimento
 
 ```sh
@@ -16,6 +18,7 @@ Importar `MontivalLucas/baropress` e usar `baropress-pitch` como **Root Director
 Framework: **Vite**. Build: `npm run build`. Saída: `dist`.
 Branch de produção: `main`. Nome solicitado do projeto: `baropress`.
 
+Projeto Vercel `baropress` conectado ao repositório `MontivalLucas/baropress`, com raiz `baropress-pitch`.
 A integração GitHub do Vercel publica novos commits de `main` automaticamente.
 Mudanças locais só chegam ao site depois de commit e push.
 
