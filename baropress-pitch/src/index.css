@@ -56,6 +56,14 @@ html, body, #root {
   font-variant-numeric: tabular-nums;
 }
 
+.matrix-cell {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  transition-property: transform, opacity, background-color;
+  transition-timing-function: var(--ease-out);
+}
+
 .pressable {
   cursor: pointer;
   transition:
