@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from 'react'
+import { memo, useEffect, useMemo, useRef, useState, useSyncExternalStore, type ReactNode } from 'react'
 import { motion, AnimatePresence, MotionConfig } from 'motion/react'
 import { S, SHOTS, SHOT_META, HW_PHOTOS, ARTICLE, REFERENCES, SCENE_SECONDS } from './content'
 
@@ -138,8 +138,8 @@ const col = (h: number) =>
     ? '#38D8DC'
     : `rgb(${Math.round(227 - 191 * h)},${Math.round(236 - 137 * h)},${Math.round(253 - 18 * h)})`
 
-function Grid({ g, alt = false }: { g: G; alt?: boolean }) {
-  const isOff = g.m === 'off'
+const Grid = memo(function Grid({ x, y, s, m, alt = false, speed }: G & { alt?: boolean; speed: number }) {
+  const isOff = m === 'off'
   return (
     <motion.div
       className="pointer-events-none absolute z-[2] grid"
@@ -151,52 +151,49 @@ function Grid({ g, alt = false }: { g: G; alt?: boolean }) {
         transformOrigin: '0 0',
       }}
       animate={{
-        x: g.x,
-        y: g.y,
-        scale: isOff ? 0.88 : g.s,
+        x,
+        y,
+        scale: isOff ? 0.88 : s,
         opacity: isOff ? 0 : 1,
       }}
-      transition={{ duration: 1.1 * SP, ease: EZ_MOVE }}
+      transition={{ duration: 1.1 * speed, ease: EZ_MOVE }}
     >
       {Array.from({ length: 225 }, (_, k) => {
         const r = Math.floor(k / 15)
         const c = k % 15
         const d = Math.hypot(r - 7, c - 7)
         const bg =
-          g.m === 'heat'
+          m === 'heat'
             ? col(hv(r, c, alt))
-            : g.m === 'logo'
+            : m === 'logo'
               ? `rgba(255,255,255,${0.3 + hv(r, c, false) * 0.7})`
               : '#C9D9F8'
-        const delay = (g.m === 'heat' ? (r + c) * 0.022 : g.m === 'logo' ? 0.35 + d * 0.018 : d * 0.015) * SP
+        const delay = (m === 'heat' ? (r + c) * 0.022 : m === 'logo' ? 0.35 + d * 0.018 : d * 0.015) * speed
         return (
-          <motion.div
+          <div
             key={k}
-            style={{ width: 22, height: 22, borderRadius: 6 }}
-            animate={{
-              scale: isOff ? 0.35 : 1,
+            className="matrix-cell"
+            style={{
+              transform: `scale(${isOff ? 0.35 : 1})`,
               opacity: isOff ? 0 : 1,
               backgroundColor: bg,
-            }}
-            transition={{
-              scale: { type: 'spring', stiffness: 300, damping: 22, delay },
-              opacity: { duration: 0.35 * SP, delay, ease: EZ_OUT },
-              backgroundColor: { duration: 0.75 * SP, delay },
+              transitionDuration: `${0.5 * speed}s, ${0.35 * speed}s, ${0.75 * speed}s`,
+              transitionDelay: `${delay}s`,
             }}
           />
         )
       })}
     </motion.div>
   )
-}
+})
 
 const Rv = ({ children, d = 0, cls = '' }: { children: ReactNode; d?: number; cls?: string }) => {
   const reducedMotion = useMotionPreference()
   return (
   <motion.div
     className={cls}
-    initial={reducedMotion ? false : { clipPath: 'inset(0 100% 0 0)', filter: 'blur(8px)' }}
-    animate={{ clipPath: 'inset(0 0% 0 0)', filter: 'blur(0px)' }}
+    initial={reducedMotion ? false : { clipPath: 'inset(0 100% 0 0)' }}
+    animate={{ clipPath: 'inset(0 0% 0 0)' }}
     transition={{ duration: 0.75 * SP, delay: (0.45 + d) * SP, ease: EZ_OUT }}
   >
     {children}
@@ -295,9 +292,9 @@ function Shot({
           <motion.div
             key={src}
             className="w-full h-full flex items-center justify-center p-2"
-            initial={{ opacity: 0, scale: 0.96, filter: 'blur(3px)' }}
-            animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-            exit={{ opacity: 0, scale: 0.98, filter: 'blur(2px)' }}
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.98 }}
             transition={{ duration: 0.24 * SP, ease: EZ_OUT }}
           >
             {ok ? (
@@ -696,9 +693,9 @@ function Scene({
                 alt={curHw.label}
                 className="w-full h-full object-contain rounded-2xl"
                 style={{ imageRendering: '-webkit-optimize-contrast' }}
-                initial={{ opacity: 0, scale: 0.98, filter: 'blur(3px)' }}
-                animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-                exit={{ opacity: 0, scale: 0.98, filter: 'blur(2px)' }}
+                initial={{ opacity: 0, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.98 }}
                 transition={{ duration: 0.28 * SP, ease: EZ_OUT }}
               />
             </AnimatePresence>
@@ -731,10 +728,10 @@ function Scene({
                   <div className="w-[38px] h-[38px] flex items-center justify-center shrink-0">
                     <div
                       className={
-                        'rounded-full transition-all duration-300 ' +
+                        'w-[23px] h-[23px] rounded-full border-[2.5px] bg-white flex items-center justify-center transition-[transform,border-color] duration-300 ' +
                         (active
-                          ? 'w-[23px] h-[23px] border-[2.5px] border-[#2457E7] bg-white flex items-center justify-center shadow-sm'
-                          : 'w-[19px] h-[19px] border-[2.5px] border-[#94A3B8] bg-white')
+                          ? 'border-[#2457E7] shadow-sm scale-100'
+                          : 'border-[#94A3B8] scale-[0.8261]')
                       }
                     >
                       {active && <div className="w-[10px] h-[10px] rounded-full bg-[#2457E7]" />}
@@ -746,7 +743,7 @@ function Scene({
                     type="button"
                     onClick={() => setHwIdx(idx)}
                     className={
-                      'pressable flex-1 flex items-center gap-3.5 rounded-2xl p-3 text-left border-2 transition-all duration-300 cursor-pointer ' +
+                      'pressable flex-1 flex items-center gap-3.5 rounded-2xl p-3 text-left border-2 transition-[transform,background-color,color,border-color,box-shadow] duration-300 cursor-pointer ' +
                       (active
                         ? 'bg-gradient-to-r from-[#2457E7] to-[#3B82F6] border-[#2457E7] text-white shadow-[0_12px_26px_rgba(36,87,231,0.32)] translate-x-1'
                         : 'bg-[#F8FAFF] hover:bg-white border-[#E2E8F0] hover:border-[#CFDCF8] text-[#0D1830] shadow-sm')
@@ -1199,7 +1196,7 @@ function Scene({
                 type="button"
                 onClick={() => setTab(k)}
                 className={
-                  'pressable rounded-full px-7 py-2.5 text-[20px] font-semibold transition-all duration-300 cursor-pointer ' +
+                  'pressable rounded-full px-7 py-2.5 text-[20px] font-semibold transition-[transform,background-color,color,box-shadow] duration-300 cursor-pointer ' +
                   (tab === k
                     ? 'bg-[#2457E7] text-white shadow-md'
                     : 'bg-transparent text-[#0D1830] hover:bg-[#F5F8FF]')
@@ -1443,6 +1440,30 @@ function Scene({
 const sceneIndexFromHash = (hash: string) =>
   Math.max(0, Math.min(S.length - 1, (parseInt(hash.slice(2)) || 1) - 1))
 
+function PresentationClock({ startedAt, onReset }: { startedAt: number; onReset: (time: number) => void }) {
+  const [now, setNow] = useState(Date.now)
+  useEffect(() => {
+    setNow(Date.now())
+    const timer = window.setInterval(() => setNow(Date.now()), 500)
+    return () => window.clearInterval(timer)
+  }, [startedAt])
+  const elapsed = Math.max(0, Math.floor((now - startedAt) / 1000))
+  return (
+    <div className="shrink-0">
+      <button
+        type="button"
+        title="Clique para zerar o cronômetro"
+        aria-label="Zerar cronômetro da apresentação"
+        className="pressable shrink-0 tabular-nums text-3xl font-bold text-[#38D8DC] hover:text-[#5eead4] transition focus-visible:ring-2 focus-visible:ring-[#38D8DC]"
+        onClick={() => onReset(Date.now())}
+      >
+        {String(Math.floor(elapsed / 60)).padStart(2, '0')}:{String(elapsed % 60).padStart(2, '0')}
+      </button>
+      <p className="mt-1 text-xs text-slate-300">Roteiro: 10 min</p>
+    </div>
+  )
+}
+
 export default function App() {
   const rm = useMotionPreference()
   const [i, setI] = useState(() => sceneIndexFromHash(location.hash))
@@ -1459,7 +1480,6 @@ export default function App() {
   const [navHeight, setNavHeight] = useState(54)
   const [sp, setSp] = useState(1)
   const [t0, setT0] = useState(Date.now())
-  const [now, setNow] = useState(Date.now())
   const [sc, setSc] = useState(1)
   const [isFullscreen, setIsFullscreen] = useState(false)
   const [isNavVisible, setIsNavVisible] = useState(true)
@@ -1477,6 +1497,32 @@ export default function App() {
   useEffect(() => {
     const t = setTimeout(() => setPh(1), 420)
     return () => clearTimeout(t)
+  }, [])
+
+  // Preparar os mesmos ativos fora da troca de cenas evita decodificar a imagem durante a animação.
+  useEffect(() => {
+    let cancelled = false
+    const sources = [...new Set([
+      ...HW_PHOTOS.map((photo) => photo.src),
+      ...['Mapa', 'Indicadores', 'Histórico'].map((tab) => SHOTS[tab]),
+      'shots/homecare.png', 'shots/tapete-isolado.png',
+      'shots/comparacao-oficial.png', 'shots/relatorio-a4.png', ARTICLE.image,
+    ])]
+    const preload = async () => {
+      for (const src of sources) {
+        if (cancelled) return
+        const image = new Image()
+        image.decoding = 'async'
+        image.src = src
+        try { await image.decode() } catch { /* O componente visível mantém o tratamento de imagem ausente. */ }
+      }
+    }
+    if ('requestIdleCallback' in window) {
+      const idle = window.requestIdleCallback(() => { void preload() }, { timeout: 3000 })
+      return () => { cancelled = true; window.cancelIdleCallback(idle) }
+    }
+    const timer = globalThis.setTimeout(() => { void preload() }, 1000)
+    return () => { cancelled = true; globalThis.clearTimeout(timer) }
   }, [])
 
   useEffect(() => {
@@ -1583,12 +1629,10 @@ export default function App() {
     updateDimensions()
     window.addEventListener('resize', updateDimensions)
     document.addEventListener('fullscreenchange', updateDimensions)
-    const t = setInterval(() => setNow(Date.now()), 500)
 
     return () => {
       window.removeEventListener('resize', updateDimensions)
       document.removeEventListener('fullscreenchange', updateDimensions)
-      clearInterval(t)
     }
   }, [pres, presenterHeight, navHeight])
 
@@ -1623,8 +1667,7 @@ export default function App() {
     return () => window.removeEventListener('mousemove', onMouseMove)
   }, [isFullscreen])
 
-  const h = HERO(i, ph, evoReal)
-  const el = Math.max(0, Math.floor((now - t0) / 1000))
+  const h = useMemo(() => HERO(i, ph, evoReal), [i, ph, evoReal])
   const tr = { duration: 1.1 * SP, ease: EZ_MOVE }
 
   return (
@@ -1652,14 +1695,14 @@ export default function App() {
           />
         </svg>
 
-        <Grid g={h.a} />
-        <Grid g={h.b ?? { ...h.a, m: 'off' }} alt />
+        <Grid {...h.a} speed={SP} />
+        {h.b && h.b.m !== 'off' && <Grid {...h.b} speed={SP} alt />}
 
         <AnimatePresence mode="wait">
           <motion.div
             key={i}
             className="absolute inset-0 z-[3]"
-            exit={{ opacity: 0, filter: 'blur(3px)' }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 0.18 * SP, ease: EZ_OUT }}
           >
             <Scene
@@ -1702,7 +1745,7 @@ export default function App() {
         onMouseEnter={() => setIsHoveringNav(true)}
         onMouseLeave={() => setIsHoveringNav(false)}
         className={
-          'fixed left-1/2 -translate-x-1/2 bottom-3 z-20 flex flex-wrap justify-center w-max max-w-[calc(100vw-24px)] gap-2.5 items-center rounded-2xl sm:rounded-full px-4 py-2 transition-all duration-300 text-sm shadow-xl backdrop-blur-md focus-within:opacity-100 focus-within:translate-y-0 focus-within:pointer-events-auto ' +
+          'fixed left-1/2 -translate-x-1/2 bottom-3 z-20 flex flex-wrap justify-center w-max max-w-[calc(100vw-24px)] gap-2.5 items-center rounded-2xl sm:rounded-full px-4 py-2 transition-[opacity,transform,background-color,border-color] duration-300 text-sm shadow-xl backdrop-blur-md focus-within:opacity-100 focus-within:translate-y-0 focus-within:pointer-events-auto ' +
           (curTheme.variant === 'midnight-tech'
             ? 'bg-[#17243A]/95 border border-[#2B3F63] text-white '
             : 'bg-white/95 border border-[#CFDCF8] text-[#0D1830] ') +
@@ -1741,7 +1784,7 @@ export default function App() {
               aria-label={`Cena ${k + 1}: ${scItem.t}`}
               onClick={() => go(k)}
               className={
-                'pressable h-2.5 rounded-full transition-all focus-visible:ring-2 focus-visible:ring-[#2457E7] ' +
+                'pressable h-2.5 rounded-full transition-[background-color,opacity,transform] focus-visible:ring-2 focus-visible:ring-[#2457E7] ' +
                 (active ? `w-7 ${activeDot}` : `w-2.5 ${inactiveDot}`)
               }
             />
@@ -1836,18 +1879,7 @@ export default function App() {
           className="fixed inset-x-0 bottom-0 z-30 bg-[#0D1830] text-white px-4 sm:px-8 py-3.5 flex items-center justify-between gap-3 border-t border-slate-800 shadow-2xl backdrop-blur-md"
         >
           <div className="flex min-w-0 flex-1 items-center gap-3 sm:gap-6">
-            <div className="shrink-0">
-            <button
-              type="button"
-              title="Clique para zerar o cronômetro"
-              aria-label="Zerar cronômetro da apresentação"
-              className="pressable shrink-0 tabular-nums text-3xl font-bold text-[#38D8DC] hover:text-[#5eead4] transition focus-visible:ring-2 focus-visible:ring-[#38D8DC]"
-              onClick={() => setT0(Date.now())}
-            >
-              {String(Math.floor(el / 60)).padStart(2, '0')}:{String(el % 60).padStart(2, '0')}
-            </button>
-            <p className="mt-1 text-xs text-slate-300">Roteiro: 10 min</p>
-            </div>
+            <PresentationClock startedAt={t0} onReset={setT0} />
             {presenterView === 'notes' ? (
             <span role="region" aria-label="Notas da cena atual" tabIndex={0} className="max-h-[min(140px,30vh)] overflow-y-auto text-base sm:text-lg text-slate-200">
               <strong className="text-white tabular-nums">
