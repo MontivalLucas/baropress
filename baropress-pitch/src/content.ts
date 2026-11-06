@@ -18,13 +18,13 @@ export const S: Sc[] = [
   },
   {
     t: 'E se essa tecnologia pudesse chegar a mais profissionais?',
-    s: 'Superando a barreira do alto custo para democratizar o acesso e criar oportunidades.',
-    n: 'Slide 4 — A oportunidade: superando a barreira do alto custo para democratizar o acesso. Três diretrizes: acessibilidade, mobilidade e acompanhamento. Visualização 3D em perspectiva do tapete eletrônico.',
+    s: 'Uma proposta para reduzir barreiras de investimento e ampliar o acesso à visualização instrumental do apoio plantar.',
+    n: 'Foi a partir dessa dificuldade de acesso que surgiu nossa pergunta: seria possível desenvolver uma alternativa mais acessível, reunindo um tapete sensor e um software próprio? Três diretrizes orientam essa investigação: acessibilidade, mobilidade e organização de registros ao longo do tempo. São objetivos de desenvolvimento, que ainda precisam ser comprovados no uso pretendido. A imagem apresenta um conceito de acabamento, não um equipamento final. A seguir, mostramos o que a equipe já construiu.',
   },
   {
-    t: 'BAROPRESS: Um tapete. Um software. Uma proposta acessível.',
-    s: 'Hardware experimental próprio, integrado a um sistema de visualização e acompanhamento.',
-    n: 'Slide 5 — Apresentação do Hardware: fotografia real da bancada experimental em destaque, com avanço automático a cada 2 segundos pelas 4 etapas de desenvolvimento (malha de cobre, multiplexação, Velostat, ESP32).',
+    t: 'BAROPRESS. Um tapete. Um software. Um caminho para ampliar o acesso.',
+    s: 'Plataforma experimental de aquisição e visualização de sinais associados ao apoio plantar, integrada a um aplicativo desktop.',
+    n: 'Esta é a proposta BAROPRESS: integrar hardware e software para investigar uma alternativa mais acessível de visualização e organização de sinais plantares. As primeiras quatro imagens mostram etapas reais da bancada: a malha de cobre, o Velostat, o circuito de aquisição e o tapete montado. A quinta é um conceito de produto, não o equipamento final. A matriz tem 15 linhas e 15 colunas, totalizando 225 cruzamentos de leitura; não são 225 sensores independentes. O ESP32 e dois multiplexadores fazem a aquisição dos sinais digitais. O aplicativo organiza mapas, registros e relatórios. Já existe integração funcional, mas ainda não demonstramos mensuração quantitativa validada de pressão plantar. Uso clínico futuro depende de desempenho comprovado, estudos apropriados e requisitos regulatórios aplicáveis.',
   },
   {
     t: 'Como funciona',
@@ -145,7 +145,7 @@ export const HW_PHOTOS: HwItem[] = [
   {
     id: 'produto',
     code: 'E',
-    label: 'Produto',
+    label: 'Conceito de produto',
     src: 'shots/tapete-prototipo.jpg',
     spec: 'Conceito de produto final: plataforma portátil fina, acabamento emborrachado resistente e ícone de posicionamento podal.',
   },

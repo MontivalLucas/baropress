@@ -612,11 +612,7 @@ function Scene({
           </Rv>
 
           <Rv d={0.18} cls="mt-7 text-[30px] font-semibold leading-[1.28] tracking-[-0.015em] text-white max-w-[780px]">
-            <span>Superando a barreira do alto custo</span>
-            <br />
-            <span>para democratizar o acesso e criar</span>
-            <br />
-            <span>oportunidades.</span>
+            <span>{c.s}</span>
           </Rv>
 
           <Rv d={0.28} cls="mt-9 text-[20px] font-medium text-white/85 tracking-[-0.01em]">
@@ -651,10 +647,13 @@ function Scene({
           >
             <img
               src="shots/tapete-isolado.png"
-              alt="Tapete Eletrônico Preto com Ícone de Pegadas"
+              alt="Conceito visual de acabamento do tapete BAROPRESS; não representa o equipamento final."
               className="w-full h-full block"
             />
           </div>
+        </Rv>
+        <Rv d={0.4} cls="absolute left-[1200px] top-[880px] text-[22px] font-medium text-white">
+          Conceito de acabamento · em desenvolvimento
         </Rv>
       </>
     )
@@ -666,14 +665,11 @@ function Scene({
       <>
         {/* Cabeçalho Superior com cores em destaque */}
         <div className="absolute left-[120px] top-[70px] w-[1680px]">
-          <Rv cls="font-extrabold text-[54px] leading-tight tracking-[-0.03em]">
-            <span className="text-[#2457E7]">BAROPRESS: </span>
-            <span className="text-[#0D1830]">Um tapete. </span>
-            <span className="text-[#2457E7]">Um software. </span>
-            <span className="text-[#0D1830]">Uma proposta acessível.</span>
+          <Rv cls="font-extrabold text-[50px] leading-tight tracking-[-0.03em] text-[#0D1830]">
+            {c.t}
           </Rv>
           <Rv d={0.12} cls="mt-3 text-[24px] font-medium text-[#475569] tracking-[-0.01em]">
-            <span>Hardware experimental próprio, integrado a um sistema de visualização e acompanhamento.</span>
+            <span>{c.s}</span>
           </Rv>
         </div>
 
@@ -702,7 +698,7 @@ function Scene({
             d={0.3}
             cls="mt-5 w-[980px] rounded-2xl bg-[#F0F5FF] border border-[#D6E4FC] px-7 py-4 text-[19.5px] leading-snug text-[#1E293B] font-medium"
           >
-            <strong className="text-[#2457E7] font-bold">Bancada experimental: </strong>
+            <strong className="text-[#2457E7] font-bold">{curHw.id === 'produto' ? 'Conceito ilustrativo: ' : 'Bancada experimental: '}</strong>
             <span>{curHw.spec}</span>
           </Rv>
         </div>
