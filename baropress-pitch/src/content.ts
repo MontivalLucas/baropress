@@ -72,6 +72,37 @@ export const ARTICLE = {
   url: 'https://docs.google.com/document/d/1TlYKZ2T9QO0IUouwsgtHjVYc3H2Lnzx6/edit',
 }
 
+// Tempos orientativos para fala e demonstração; total de dez minutos.
+export const SCENE_SECONDS = [35, 60, 60, 35, 60, 50, 80, 40, 35, 60, 30, 55] as const
+
+export const REFERENCES = [
+  {
+    title: 'OMS · Rehabilitation: a key strategy in addressing noncommunicable diseases · 2025',
+    url: 'https://www.who.int/publications/m/item/policy-brief',
+    context: 'Estimativa global de 2,6 bilhões de pessoas que poderiam se beneficiar de reabilitação; não estima demanda por baropodometria ou pelo BAROPRESS.',
+  },
+  {
+    title: 'OMS · Rehabilitation · 2024',
+    url: 'https://www.who.int/news-room/fact-sheets/detail/rehabilitation/',
+    context: 'Mais de 50% sem serviços necessários em alguns países de baixa e média renda. Não representa o Brasil nem falta de baropodômetros; dado complementar, não exibido na cena 3.',
+  },
+  {
+    title: 'IWGDF · Guidelines on the prevention of foot ulcers in persons with diabetes · 2023',
+    url: 'https://iwgdfguidelines.org/wp-content/uploads/2023/07/IWGDF-2023-02-Prevention-Guideline.pdf#page=20',
+    context: 'Recomendação 8c, fundamentação, página 20 do PDF: custo e disponibilidade de sistemas validados no contexto de prevenção de recorrência de úlceras e calçados terapêuticos em pessoas com diabetes. Não valida o BAROPRESS.',
+  },
+  {
+    title: 'Podotech · BaroScan · consulta em 06/11/2026',
+    url: 'https://podotech.com.br/baroscan',
+    context: 'Preço público anunciado de R$ 24.961,25. Comparação financeira restrita à cena 10; não demonstra equivalência técnica ou clínica.',
+  },
+  {
+    title: 'Equipe BAROPRESS · Artigo do projeto · 2026',
+    url: ARTICLE.url,
+    context: 'Ensaios preliminares de bancada, sem pacientes. Aceite na Práxis Teológica informado pela equipe, sem carta editorial disponível nesta conferência. DOI pendente; sem validação clínica estabelecida.',
+  },
+] as const
+
 export const SHOTS: Record<string, string> = {
   'Mapa': 'shots/mapa.png',
   'Indicadores': 'shots/indicadores.png',

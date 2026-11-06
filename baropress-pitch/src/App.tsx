@@ -1,8 +1,15 @@
-import { useEffect, useRef, useState, type ReactNode } from 'react'
-import { motion, AnimatePresence, useReducedMotion } from 'motion/react'
-import { S, SHOTS, SHOT_META, HW_PHOTOS, ARTICLE } from './content'
+import { useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from 'react'
+import { motion, AnimatePresence, MotionConfig } from 'motion/react'
+import { S, SHOTS, SHOT_META, HW_PHOTOS, ARTICLE, REFERENCES, SCENE_SECONDS } from './content'
 
 let SP = 1
+const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)')
+const subscribeToMotionPreference = (onChange: () => void) => {
+  motionPreference.addEventListener('change', onChange)
+  return () => motionPreference.removeEventListener('change', onChange)
+}
+const readMotionPreference = () => motionPreference.matches
+const useMotionPreference = () => useSyncExternalStore(subscribeToMotionPreference, readMotionPreference)
 // Emil Kowalski strong custom easing curves
 const EZ_OUT = [0.23, 1, 0.32, 1] as const
 const EZ_MOVE = [0.77, 0, 0.175, 1] as const
@@ -183,16 +190,19 @@ function Grid({ g, alt = false }: { g: G; alt?: boolean }) {
   )
 }
 
-const Rv = ({ children, d = 0, cls = '' }: { children: ReactNode; d?: number; cls?: string }) => (
+const Rv = ({ children, d = 0, cls = '' }: { children: ReactNode; d?: number; cls?: string }) => {
+  const reducedMotion = useMotionPreference()
+  return (
   <motion.div
     className={cls}
-    initial={{ clipPath: 'inset(0 100% 0 0)', filter: 'blur(8px)' }}
+    initial={reducedMotion ? false : { clipPath: 'inset(0 100% 0 0)', filter: 'blur(8px)' }}
     animate={{ clipPath: 'inset(0 0% 0 0)', filter: 'blur(0px)' }}
     transition={{ duration: 0.75 * SP, delay: (0.45 + d) * SP, ease: EZ_OUT }}
   >
     {children}
   </motion.div>
-)
+  )
+}
 
 function Shot({
   src,
@@ -675,10 +685,10 @@ function Scene({
         </div>
 
         {/* Lado Esquerdo: Fotografia real em grande destaque e legenda técnica */}
-        <div className="absolute left-[120px] top-[235px] w-[980px]">
+        <div className="absolute left-[120px] top-[265px] w-[980px]">
           <Rv
             d={0.2}
-            cls="w-[980px] h-[560px] rounded-3xl overflow-hidden bg-[#EAE8E4] border-2 border-[#E2E8F0] shadow-[0_20px_45px_rgba(0,0,0,0.08)] flex items-center justify-center"
+            cls="w-[980px] h-[530px] rounded-3xl overflow-hidden bg-[#EAE8E4] border-2 border-[#E2E8F0] shadow-[0_20px_45px_rgba(0,0,0,0.08)] flex items-center justify-center"
           >
             <AnimatePresence mode="wait">
               <motion.img
@@ -1435,15 +1445,19 @@ const sceneIndexFromHash = (hash: string) =>
   Math.max(0, Math.min(S.length - 1, (parseInt(hash.slice(2)) || 1) - 1))
 
 export default function App() {
-  const rm = useReducedMotion()
+  const rm = useMotionPreference()
   const [i, setI] = useState(() => sceneIndexFromHash(location.hash))
   const [ph, setPh] = useState(0)
   const [tab, setTab] = useState('Mapa')
   const [hwIdx, setHwIdx] = useState(0)
   const [evoReal, setEvoReal] = useState(false)
   const [pres, setPres] = useState(false)
+  const [presenterView, setPresenterView] = useState<'notes' | 'references'>('notes')
+  const [demoPaused, setDemoPaused] = useState(false)
   const presenterRef = useRef<HTMLElement>(null)
+  const navRef = useRef<HTMLElement>(null)
   const [presenterHeight, setPresenterHeight] = useState(0)
+  const [navHeight, setNavHeight] = useState(54)
   const [sp, setSp] = useState(1)
   const [t0, setT0] = useState(Date.now())
   const [now, setNow] = useState(Date.now())
@@ -1454,7 +1468,7 @@ export default function App() {
 
   const curTheme = SLIDE_THEMES[i] ?? SLIDE_THEMES[0]
 
-  SP = rm ? 0.01 : sp
+  SP = rm ? 0 : sp
   const go = (n: number) => {
     setI(Math.max(0, Math.min(S.length - 1, n)))
     setIsNavVisible(true)
@@ -1481,12 +1495,12 @@ export default function App() {
 
   // Avanço automático das etapas do hardware a cada 2.5s no Slide 5
   useEffect(() => {
-    if (i !== 4) return
+    if (i !== 4 || rm || demoPaused) return
     const timer = setInterval(() => {
       setHwIdx((prev) => (prev + 1) % HW_PHOTOS.length)
     }, 2500)
     return () => clearInterval(timer)
-  }, [i, hwIdx])
+  }, [i, hwIdx, rm, demoPaused])
 
   // Reset para Etapa A ao navegar para o Slide 5
   useEffect(() => {
@@ -1495,7 +1509,7 @@ export default function App() {
 
   // Avanço automático das abas do software a cada 3s no Slide 7 (Mapa -> Indicadores -> Histórico)
   useEffect(() => {
-    if (i !== 6) return
+    if (i !== 6 || rm || demoPaused) return
     const softwareTabs = ['Mapa', 'Indicadores', 'Histórico']
     const timer = setInterval(() => {
       setTab((prev) => {
@@ -1504,7 +1518,7 @@ export default function App() {
       })
     }, 3000)
     return () => clearInterval(timer)
-  }, [i, tab])
+  }, [i, tab, rm, demoPaused])
 
   // Reset para 'Mapa' ao navegar para o Slide 7
   useEffect(() => {
@@ -1526,6 +1540,7 @@ export default function App() {
           ? document.exitFullscreen()
           : document.documentElement.requestFullscreen()
       } else if (e.key === 'p' || e.key === 'P') {
+        setPresenterView('notes')
         setPres((p) => !p)
       } else if (e.key === 'Escape') {
         if (pres) {
@@ -1540,13 +1555,14 @@ export default function App() {
   }, [i, pres, evoReal])
 
   useEffect(() => {
-    const panel = presenterRef.current
-    if (!panel) {
-      setPresenterHeight(0)
-      return
+    const updateHeights = () => {
+      setPresenterHeight(presenterRef.current?.getBoundingClientRect().height ?? 0)
+      setNavHeight(navRef.current?.getBoundingClientRect().height ?? 54)
     }
-    const observer = new ResizeObserver(() => setPresenterHeight(panel.getBoundingClientRect().height))
-    observer.observe(panel)
+    const observer = new ResizeObserver(updateHeights)
+    if (presenterRef.current) observer.observe(presenterRef.current)
+    if (navRef.current) observer.observe(navRef.current)
+    updateHeights()
     return () => observer.disconnect()
   }, [pres])
 
@@ -1556,12 +1572,12 @@ export default function App() {
       const isFs = Boolean(document.fullscreenElement)
       setIsFullscreen(isFs)
 
-      const bottomBuffer = isFs ? 0 : 54
+      const bottomBuffer = isFs ? 0 : navHeight + 24
       const presBuffer = pres ? presenterHeight : 0
       const availH = Math.max(1, window.innerHeight - bottomBuffer - presBuffer)
       const availW = window.innerWidth
       const s = Math.min(availW / 1920, availH / 1080)
-      setSc(Math.max(0.2, s))
+      setSc(s)
     }
 
     updateDimensions()
@@ -1574,7 +1590,7 @@ export default function App() {
       document.removeEventListener('fullscreenchange', updateDimensions)
       clearInterval(t)
     }
-  }, [pres, presenterHeight])
+  }, [pres, presenterHeight, navHeight])
 
   // Em tela cheia: esconde a barra automaticamente após inatividade
   useEffect(() => {
@@ -1608,13 +1624,16 @@ export default function App() {
   }, [isFullscreen])
 
   const h = HERO(i, ph, evoReal)
-  const el = Math.floor((now - t0) / 1000)
+  const el = Math.max(0, Math.floor((now - t0) / 1000))
   const tr = { duration: 1.1 * SP, ease: EZ_MOVE }
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-[#070D18] overflow-hidden select-none" style={{ paddingBottom: pres ? presenterHeight : 0 }}>
+    <MotionConfig reducedMotion={rm ? 'always' : 'never'}>
+    <div className="fixed inset-0 flex items-center justify-center bg-[#070D18] overflow-hidden select-none" style={{ paddingBottom: (pres ? presenterHeight : 0) + (isFullscreen ? 0 : navHeight + 24) }}>
       {/* Palco 16:9 perfeitamente centralizado com escala proporcional e fundo temático do slide */}
       <div
+        role="region"
+        aria-label="Palco da apresentação"
         className="relative overflow-hidden shadow-[0_25px_70px_-15px_rgba(0,0,0,0.5)] shrink-0 transition-colors duration-200 ease-out"
         style={{
           width: 1920,
@@ -1659,12 +1678,13 @@ export default function App() {
 
       {/* Barra de navegação inferior flutuante com auto-hide em fullscreen e estilo adaptativo */}
       <nav
+        ref={navRef}
         aria-label="Controles da apresentação"
         style={{ bottom: (pres ? presenterHeight : 0) + 12 }}
         onMouseEnter={() => setIsHoveringNav(true)}
         onMouseLeave={() => setIsHoveringNav(false)}
         className={
-          'fixed left-1/2 -translate-x-1/2 bottom-3 z-20 flex gap-2.5 items-center rounded-full px-4 py-2 transition-all duration-300 text-sm shadow-xl backdrop-blur-md ' +
+          'fixed left-1/2 -translate-x-1/2 bottom-3 z-20 flex flex-wrap justify-center w-max max-w-[calc(100vw-24px)] gap-2.5 items-center rounded-2xl sm:rounded-full px-4 py-2 transition-all duration-300 text-sm shadow-xl backdrop-blur-md focus-within:opacity-100 focus-within:translate-y-0 focus-within:pointer-events-auto ' +
           (curTheme.variant === 'midnight-tech'
             ? 'bg-[#17243A]/95 border border-[#2B3F63] text-white '
             : 'bg-white/95 border border-[#CFDCF8] text-[#0D1830] ') +
@@ -1741,7 +1761,7 @@ export default function App() {
         <button
           type="button"
           aria-label="Alternar modo apresentador (Atalho: P)"
-          onClick={() => setPres(!pres)}
+          onClick={() => { setPresenterView('notes'); setPres(!pres || presenterView !== 'notes') }}
           className={
             'pressable px-2.5 py-1 rounded-full font-medium transition-colors focus-visible:ring-2 focus-visible:ring-[#2457E7] ' +
             (pres
@@ -1753,6 +1773,26 @@ export default function App() {
         >
           Apresentador
         </button>
+        <button
+          type="button"
+          aria-label="Consultar referências da apresentação"
+          aria-expanded={pres && presenterView === 'references'}
+          onClick={() => { setPresenterView('references'); setPres(!pres || presenterView !== 'references') }}
+          className="pressable rounded-full px-2.5 py-1 font-medium hover:bg-[#2457E7] hover:text-white"
+        >
+          Referências
+        </button>
+        {(i === 4 || i === 6) && (
+          <button
+            type="button"
+            aria-pressed={Boolean(rm || demoPaused)}
+            disabled={Boolean(rm)}
+            onClick={() => setDemoPaused((paused) => !paused)}
+            className="pressable rounded-full px-2.5 py-1 font-medium hover:bg-[#2457E7] hover:text-white disabled:opacity-70 disabled:cursor-default"
+          >
+            {rm ? 'Troca manual' : demoPaused ? 'Retomar demonstração' : 'Pausar demonstração'}
+          </button>
+        )}
         <select
           aria-label="Velocidade das animações"
           value={sp}
@@ -1774,10 +1814,11 @@ export default function App() {
         <aside
           ref={presenterRef}
           role="region"
-          aria-label="Painel de notas e cronômetro do apresentador"
-          className="fixed inset-x-0 bottom-0 z-30 bg-[#0D1830] text-white px-8 py-3.5 flex items-center justify-between border-t border-slate-800 shadow-2xl backdrop-blur-md"
+          aria-label="Painel de notas, referências e cronômetro do apresentador"
+          className="fixed inset-x-0 bottom-0 z-30 bg-[#0D1830] text-white px-4 sm:px-8 py-3.5 flex items-center justify-between gap-3 border-t border-slate-800 shadow-2xl backdrop-blur-md"
         >
-          <div className="flex min-w-0 flex-1 items-center gap-6">
+          <div className="flex min-w-0 flex-1 items-center gap-3 sm:gap-6">
+            <div className="shrink-0">
             <button
               type="button"
               title="Clique para zerar o cronômetro"
@@ -1787,12 +1828,28 @@ export default function App() {
             >
               {String(Math.floor(el / 60)).padStart(2, '0')}:{String(el % 60).padStart(2, '0')}
             </button>
-            <span role="region" aria-label="Notas da cena atual" tabIndex={0} className="max-h-[140px] overflow-y-auto text-lg text-slate-200">
+            <p className="mt-1 text-xs text-slate-300">Roteiro: 10 min</p>
+            </div>
+            {presenterView === 'notes' ? (
+            <span role="region" aria-label="Notas da cena atual" tabIndex={0} className="max-h-[min(140px,30vh)] overflow-y-auto text-base sm:text-lg text-slate-200">
               <strong className="text-white tabular-nums">
-                Cena {i + 1}/{S.length}
+                Cena {i + 1}/{S.length} · orientação: {SCENE_SECONDS[i]} s
               </strong>{' '}
               — {S[i].n}
             </span>
+            ) : (
+              <section tabIndex={0} role="region" aria-label="Referências e contexto das fontes" className="max-h-[min(260px,35vh)] overflow-y-auto text-sm sm:text-base select-text">
+                <h2 className="font-semibold text-lg mb-3">Referências e limites de interpretação</h2>
+                <ol className="list-decimal pl-5 space-y-3">
+                  {REFERENCES.map((reference) => (
+                    <li key={reference.url}>
+                      <a href={reference.url} target="_blank" rel="noreferrer" className="text-[#38D8DC] underline underline-offset-4">{reference.title}</a>
+                      <p className="mt-1 text-slate-200">{reference.context}</p>
+                    </li>
+                  ))}
+                </ol>
+              </section>
+            )}
           </div>
 
           <button
@@ -1800,7 +1857,7 @@ export default function App() {
             onClick={() => setPres(false)}
             aria-label="Fechar painel do apresentador"
             title="Fechar apresentador (P ou Esc)"
-            className="pressable ml-6 flex shrink-0 items-center gap-1.5 rounded-full bg-slate-800 hover:bg-slate-700 px-3 py-1.5 text-xs font-semibold text-slate-200 border border-slate-700 transition focus-visible:ring-2 focus-visible:ring-blue-400 cursor-pointer"
+            className="pressable flex shrink-0 items-center gap-1.5 rounded-full bg-slate-800 hover:bg-slate-700 px-3 py-1.5 text-xs font-semibold text-slate-200 border border-slate-700 transition focus-visible:ring-2 focus-visible:ring-blue-400 cursor-pointer"
           >
             <span>✕</span>
             <span>Fechar</span>
@@ -1808,5 +1865,6 @@ export default function App() {
         </aside>
       )}
     </div>
+    </MotionConfig>
   )
 }
