@@ -1,8 +1,15 @@
-import { useEffect, useRef, useState, type ReactNode } from 'react'
-import { motion, AnimatePresence, useReducedMotion } from 'motion/react'
-import { S, SHOTS, SHOT_META, HW_PHOTOS, ARTICLE } from './content'
+import { useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from 'react'
+import { motion, AnimatePresence, MotionConfig } from 'motion/react'
+import { S, SHOTS, SHOT_META, HW_PHOTOS, ARTICLE, REFERENCES, SCENE_SECONDS } from './content'
 
 let SP = 1
+const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)')
+const subscribeToMotionPreference = (onChange: () => void) => {
+  motionPreference.addEventListener('change', onChange)
+  return () => motionPreference.removeEventListener('change', onChange)
+}
+const readMotionPreference = () => motionPreference.matches
+const useMotionPreference = () => useSyncExternalStore(subscribeToMotionPreference, readMotionPreference)
 // Emil Kowalski strong custom easing curves
 const EZ_OUT = [0.23, 1, 0.32, 1] as const
 const EZ_MOVE = [0.77, 0, 0.175, 1] as const
@@ -183,16 +190,19 @@ function Grid({ g, alt = false }: { g: G; alt?: boolean }) {
   )
 }
 
-const Rv = ({ children, d = 0, cls = '' }: { children: ReactNode; d?: number; cls?: string }) => (
+const Rv = ({ children, d = 0, cls = '' }: { children: ReactNode; d?: number; cls?: string }) => {
+  const reducedMotion = useMotionPreference()
+  return (
   <motion.div
     className={cls}
-    initial={{ clipPath: 'inset(0 100% 0 0)', filter: 'blur(8px)' }}
+    initial={reducedMotion ? false : { clipPath: 'inset(0 100% 0 0)', filter: 'blur(8px)' }}
     animate={{ clipPath: 'inset(0 0% 0 0)', filter: 'blur(0px)' }}
     transition={{ duration: 0.75 * SP, delay: (0.45 + d) * SP, ease: EZ_OUT }}
   >
     {children}
   </motion.div>
-)
+  )
+}
 
 function Shot({
   src,
@@ -351,25 +361,22 @@ function Scene({
   // Cena 1 (Abertura) & Cena 11 (Encerramento)
   if (i === 0 || i === 10) {
     return (
-      <div className="absolute inset-x-0 text-center" style={{ top: i ? 525 : 545 }}>
-        <Rv cls={`font-bold text-[88px] leading-none tracking-[-0.04em] ${titleCls}`}>
+      <div className="absolute left-[190px] right-[190px] text-center" style={{ top: i ? 525 : 545 }}>
+        <Rv cls={`font-bold ${i ? 'text-[88px]' : 'text-[76px]'} leading-[1.06] tracking-[-0.035em] text-balance ${titleCls}`}>
           <span>{c.t}</span>
         </Rv>
-        <Rv d={0.22} cls={`mt-5 text-[30px] font-medium ${subCls}`}>
+        <Rv d={0.22} cls={`mt-5 mx-auto max-w-[1200px] text-[30px] leading-[1.4] font-medium ${subCls}`}>
           {c.s}
         </Rv>
         {i === 0 && (
-          <Rv d={0.42} cls="mt-8 inline-flex items-center gap-3 rounded-full bg-[#F5F8FF] border border-[#CFDCF8] px-7 py-3 text-[22px] font-semibold text-[#2457E7] shadow-sm">
-            <span>Matriz 15×15 (225 sensores)</span>
-            <span>·</span>
-            <span>ESP32</span>
-            <span>·</span>
-            <span>Software Desktop Oficial</span>
+          <Rv d={0.42} cls="mt-8 text-[26px] font-semibold tracking-[0.08em] text-[#2457E7]">
+            BAROPRESS
           </Rv>
         )}
         {i === 10 && (
           <Rv d={0.42} cls="mt-7 text-[34px] font-semibold text-[#38D8DC]">
-            Vamos levar essa solução para mais profissionais?
+            Buscamos parceiros de ensino, pesquisa e profissionais<br />
+            para as próximas etapas de validação.
           </Rv>
         )}
         {i === 10 && (
@@ -388,8 +395,8 @@ function Scene({
     return (
       <>
         {/* Lado Esquerdo: Tipografia e pílulas fiéis ao design de referência */}
-        <div className="absolute left-[140px] top-[250px] w-[860px]">
-          <Rv cls="font-bold text-[78px] leading-[1.08] tracking-[-0.035em] text-[#0D1830]">
+        <div className="absolute left-[120px] top-[160px] w-[860px]">
+          <Rv cls="font-bold text-[74px] leading-[1.08] tracking-[-0.035em] text-[#0D1830]">
             {c.t}
           </Rv>
 
@@ -399,19 +406,24 @@ function Scene({
             </span>
           </Rv>
 
-          <div className="mt-14 flex items-center gap-3.5">
-            {['Avaliação clínica', 'Registro entre sessões', 'Decisão profissional'].map((pill, k) => (
-              <Rv
-                key={pill}
-                d={0.3 + k * 0.12}
-                cls="rounded-full bg-white border border-[#D5E2F8] px-7 py-3.5 text-[20px] font-medium text-[#1E293B] shadow-[0_2px_8px_rgba(0,0,0,0.04)]"
-              >
-                {pill}
-              </Rv>
-            ))}
-          </div>
-          <Rv d={0.54} cls="mt-8 max-w-[740px] text-[27px] leading-[1.35] font-medium text-[#2457E7]">
-            Uma avaliação bem fundamentada apoia decisões terapêuticas mais seguras.
+          <Rv d={0.3} cls="mt-10 max-w-[820px]">
+            <div className="grid grid-cols-2 gap-8 text-[23px] leading-[1.35] text-[#17243A]">
+              <div>
+                <h2 className="font-semibold text-[#2457E7]">Avaliação clínica</h2>
+                <p className="mt-2">Histórico, observação e testes funcionais.</p>
+              </div>
+              <div>
+                <h2 className="font-semibold text-[#2457E7]">Informações instrumentais</h2>
+                <p className="mt-2">Registros e medidas complementares, quando validados.</p>
+              </div>
+            </div>
+            <svg aria-hidden="true" className="mt-4 w-full h-[42px]" viewBox="0 0 820 42" fill="none">
+              <path d="M195 0 V15 Q195 25 205 25 H615 Q625 25 625 15 V0 M410 25 V42" stroke="#2457E7" strokeWidth="2" />
+            </svg>
+            <p className="text-center text-[28px] font-semibold text-[#0D1830]">Decisão do profissional</p>
+          </Rv>
+          <Rv d={0.54} cls="mt-7 max-w-[780px] text-[25px] leading-[1.35] font-medium text-[#2457E7]">
+            A tecnologia amplia as informações. A decisão continua com o fisioterapeuta.
           </Rv>
         </div>
 
@@ -458,7 +470,7 @@ function Scene({
     return (
       <>
         {/* Lado Esquerdo: Conteúdo narrativo fiel à imagem de referência */}
-        <div className="absolute left-[140px] top-[240px] w-[1200px]">
+        <div className="absolute left-[120px] top-[185px] w-[1200px]">
           <Rv cls="font-bold text-[74px] leading-[1.1] tracking-[-0.035em] text-white">
             <span className="block max-w-[1150px]">{c.t}</span>
           </Rv>
@@ -473,12 +485,15 @@ function Scene({
             d={0.32}
             cls="mt-10 max-w-[820px] text-[32px] font-medium leading-[1.3] text-[#38D8DC]"
           >
-            Menos acesso a registros instrumentais. Mais dificuldade para quantificar mudanças entre sessões.
+            Sistemas validados de medição plantar têm custo e disponibilidade como desafios.
           </Rv>
 
-          <Rv d={0.42} cls="mt-12 max-w-[920px] text-[34px] font-bold tracking-tight leading-[1.3]">
+          <Rv d={0.42} cls="mt-9 max-w-[920px] text-[34px] font-bold tracking-tight leading-[1.3]">
             <span className="text-white">Como ampliar o acesso a ferramentas que </span>
             <span className="text-[#38D8DC]">apoiem o cuidado?</span>
+          </Rv>
+          <Rv d={0.52} cls="mt-8 max-w-[1000px] text-[21px] leading-[1.4] text-[#CBD5E1]">
+            Contexto: prevenção de recorrência de úlceras em pessoas com diabetes e calçados terapêuticos.
           </Rv>
         </div>
 
@@ -607,11 +622,7 @@ function Scene({
           </Rv>
 
           <Rv d={0.18} cls="mt-7 text-[30px] font-semibold leading-[1.28] tracking-[-0.015em] text-white max-w-[780px]">
-            <span>Superando a barreira do alto custo</span>
-            <br />
-            <span>para democratizar o acesso e criar</span>
-            <br />
-            <span>oportunidades.</span>
+            <span>{c.s}</span>
           </Rv>
 
           <Rv d={0.28} cls="mt-9 text-[20px] font-medium text-white/85 tracking-[-0.01em]">
@@ -646,10 +657,13 @@ function Scene({
           >
             <img
               src="shots/tapete-isolado.png"
-              alt="Tapete Eletrônico Preto com Ícone de Pegadas"
+              alt="Conceito visual de acabamento do tapete BAROPRESS; não representa o equipamento final."
               className="w-full h-full block"
             />
           </div>
+        </Rv>
+        <Rv d={0.4} cls="absolute left-[1200px] top-[880px] text-[22px] font-medium text-white">
+          Conceito de acabamento · em desenvolvimento
         </Rv>
       </>
     )
@@ -661,22 +675,19 @@ function Scene({
       <>
         {/* Cabeçalho Superior com cores em destaque */}
         <div className="absolute left-[120px] top-[70px] w-[1680px]">
-          <Rv cls="font-extrabold text-[54px] leading-tight tracking-[-0.03em]">
-            <span className="text-[#2457E7]">BAROPRESS: </span>
-            <span className="text-[#0D1830]">Um tapete. </span>
-            <span className="text-[#2457E7]">Um software. </span>
-            <span className="text-[#0D1830]">Uma proposta acessível.</span>
+          <Rv cls="font-extrabold text-[50px] leading-tight tracking-[-0.03em] text-[#0D1830]">
+            {c.t}
           </Rv>
           <Rv d={0.12} cls="mt-3 text-[24px] font-medium text-[#475569] tracking-[-0.01em]">
-            <span>Hardware experimental próprio, integrado a um sistema de visualização e acompanhamento.</span>
+            <span>{c.s}</span>
           </Rv>
         </div>
 
         {/* Lado Esquerdo: Fotografia real em grande destaque e legenda técnica */}
-        <div className="absolute left-[120px] top-[235px] w-[980px]">
+        <div className="absolute left-[120px] top-[265px] w-[980px]">
           <Rv
             d={0.2}
-            cls="w-[980px] h-[560px] rounded-3xl overflow-hidden bg-[#EAE8E4] border-2 border-[#E2E8F0] shadow-[0_20px_45px_rgba(0,0,0,0.08)] flex items-center justify-center"
+            cls="w-[980px] h-[530px] rounded-3xl overflow-hidden bg-[#EAE8E4] border-2 border-[#E2E8F0] shadow-[0_20px_45px_rgba(0,0,0,0.08)] flex items-center justify-center"
           >
             <AnimatePresence mode="wait">
               <motion.img
@@ -697,7 +708,7 @@ function Scene({
             d={0.3}
             cls="mt-5 w-[980px] rounded-2xl bg-[#F0F5FF] border border-[#D6E4FC] px-7 py-4 text-[19.5px] leading-snug text-[#1E293B] font-medium"
           >
-            <strong className="text-[#2457E7] font-bold">Bancada experimental: </strong>
+            <strong className="text-[#2457E7] font-bold">{curHw.id === 'produto' ? 'Conceito ilustrativo: ' : 'Bancada experimental: '}</strong>
             <span>{curHw.spec}</span>
           </Rv>
         </div>
@@ -1160,7 +1171,7 @@ function Scene({
               </span>
             </div>
             <div className="mt-4 text-[26px] font-extrabold text-white tracking-wide">MAPA DE CALOR</div>
-            <div className="text-[17px] text-[#94A3B8] font-medium mt-2">Sinais ADC relativos e registros</div>
+            <div className="text-[17px] text-[#94A3B8] font-medium mt-2">Sinais ADC relativos e registros · diagrama ilustrativo</div>
           </Rv>
         </div>
       </>
@@ -1230,7 +1241,7 @@ function Scene({
         <Shot
           src="shots/comparacao-oficial.png"
           title="BAROPRESS Desktop — Comparação Longitudinal (Exames #2, #3, #4 e #9)"
-          tag="Módulo de Comparação"
+          tag="Comparação de sinais · sem inferência clínica"
           h={650}
           pos="left-[240px] top-[235px] w-[1440px]"
         />
@@ -1272,8 +1283,8 @@ function Scene({
         {/* Lado Direito: Prévia Oficial A4 Ampliada e com Máximo Protagonismo */}
         <Shot
           src="shots/relatorio-a4.png"
-          title="BAROPRESS Desktop — Relatório Baropodométrico Estático A4"
-          tag="Exportação PDF"
+          title="BAROPRESS Desktop — Trecho do relatório de sinais"
+          tag="Identificação ocultada · captura parcial"
           h={860}
           pos="left-[975px] top-[110px] w-[760px]"
           darkBg={false}
@@ -1342,13 +1353,13 @@ function Scene({
 
             {/* Preço-Alvo Comercial */}
             <div className="mt-[48px]">
-              <div className="text-[24px] text-white/90">Investimento</div>
+              <div className="text-[24px] text-white/90">Preço-alvo hipotético</div>
               <div className="mt-3 flex items-baseline gap-4 whitespace-nowrap">
                 <span className="text-[34px] font-medium">R$</span>
                 <span className="text-[92px] leading-none font-bold tracking-[-0.035em] tabular-nums">2.990</span>
               </div>
               {/* Comprimento proporcional ao valor de venda, na mesma escala da referência */}
-              <div role="img" aria-label="Preço BAROPRESS: R$ 2.990, aproximadamente 12% do preço de referência" className="mt-8 h-[36px] w-[704px] rounded-full bg-white/15 overflow-hidden">
+              <div role="img" aria-label="Preço-alvo hipotético BAROPRESS: R$ 2.990; comparação somente de valores, sem equivalência de desempenho" className="mt-8 h-[36px] w-[704px] rounded-full bg-white/15 overflow-hidden">
                 <motion.div
                   className="h-full origin-left rounded-full bg-[#38D8DC]"
                   style={{ width: `${(2990 / 24961.25) * 100}%` }}
@@ -1363,16 +1374,16 @@ function Scene({
             <div className="mt-auto border-t border-white/30 pt-6">
               <dl className="grid grid-cols-2 gap-8">
                 <div>
-                  <dt className="text-[22px] text-white/90">Custo de materiais</dt>
+                  <dt className="text-[22px] text-white/90">Materiais de bancada</dt>
                   <dd className="mt-1 text-[36px] leading-tight font-semibold tabular-nums">≈ R$ 500</dd>
                 </div>
                 <div>
-                  <dt className="text-[22px] text-white/90">Margem após materiais</dt>
-                  <dd className="mt-1 text-[36px] leading-tight font-semibold tabular-nums">≈ 83,3%</dd>
+                  <dt className="text-[22px] text-white/90">Próxima etapa</dt>
+                  <dd className="mt-1 text-[30px] leading-tight font-semibold">Validar viabilidade</dd>
                 </div>
               </dl>
               <p className="mt-3 text-[20px] leading-[1.35] text-white/90">
-                ≈ R$ 2.490 por unidade, antes de montagem, tributos e demais despesas.
+                Estimativa preliminar; não é custo fabril completo nem lucro validado.
               </p>
             </div>
 
@@ -1383,7 +1394,7 @@ function Scene({
         {/* Fonte do valor de referência */}
         <div className="absolute left-[120px] top-[956px] w-[1680px]">
           <Rv d={0.4} cls="text-[20px] leading-[1.4] text-[#475569]">
-            <span>BaroScan: preço anunciado em catálogo público de distribuidor nacional · outubro/2024.</span>
+            <span>Comparação de valores, sem equivalência técnica ou clínica. Estimativas comerciais do BAROPRESS: equipe, 2026.</span>
           </Rv>
         </div>
       </>
@@ -1399,15 +1410,19 @@ function Scene({
           <Rv d={0.16} cls="mt-7 max-w-[760px] text-[28px] leading-[1.4] text-[#17243A]">
             {c.s}
           </Rv>
-          <Rv d={0.3} cls="mt-12 text-[32px] font-semibold text-[#2457E7]">
+          <Rv d={0.3} cls="mt-9 text-[30px] font-semibold text-[#2457E7]">
             Ensaios de bancada, sem pacientes.
           </Rv>
-          <Rv d={0.4} cls="mt-5 max-w-[760px] text-[27px] leading-[1.4] text-[#17243A]">
+          <Rv d={0.4} cls="mt-4 max-w-[760px] text-[25px] leading-[1.4] text-[#17243A]">
             O protótipo respondeu à aplicação de cargas. A calibração candidata não atingiu o critério adotado; a aplicação clínica depende de validação.
           </Rv>
-          <Rv d={0.5} cls="mt-14 max-w-[820px] text-[21px] leading-[1.45] text-[#475569]">
+          <Rv d={0.5} cls="mt-7 max-w-[820px] text-[25px] leading-[1.4] text-[#2457E7]">
+            <p className="font-semibold">{ARTICLE.editorialStatus}</p>
+            <p className="mt-2 text-[21px] text-[#475569]">{ARTICLE.editorialDetail}</p>
+          </Rv>
+          <Rv d={0.6} cls="mt-7 max-w-[820px] text-[20px] leading-[1.4] text-[#475569]">
             <p>{ARTICLE.title}</p>
-            <p className="mt-3 font-medium text-[#2457E7]">{ARTICLE.reference}</p>
+            <p className="mt-2">{ARTICLE.reference} · Aceite editorial não comprova validação clínica.</p>
           </Rv>
         </div>
         <Rv d={0.2} cls="absolute left-[1160px] top-[150px] w-[540px]">
@@ -1429,15 +1444,19 @@ const sceneIndexFromHash = (hash: string) =>
   Math.max(0, Math.min(S.length - 1, (parseInt(hash.slice(2)) || 1) - 1))
 
 export default function App() {
-  const rm = useReducedMotion()
+  const rm = useMotionPreference()
   const [i, setI] = useState(() => sceneIndexFromHash(location.hash))
   const [ph, setPh] = useState(0)
   const [tab, setTab] = useState('Mapa')
   const [hwIdx, setHwIdx] = useState(0)
   const [evoReal, setEvoReal] = useState(false)
   const [pres, setPres] = useState(false)
+  const [presenterView, setPresenterView] = useState<'notes' | 'references'>('notes')
+  const [demoPaused, setDemoPaused] = useState(false)
   const presenterRef = useRef<HTMLElement>(null)
+  const navRef = useRef<HTMLElement>(null)
   const [presenterHeight, setPresenterHeight] = useState(0)
+  const [navHeight, setNavHeight] = useState(54)
   const [sp, setSp] = useState(1)
   const [t0, setT0] = useState(Date.now())
   const [now, setNow] = useState(Date.now())
@@ -1447,8 +1466,9 @@ export default function App() {
   const [isHoveringNav, setIsHoveringNav] = useState(false)
 
   const curTheme = SLIDE_THEMES[i] ?? SLIDE_THEMES[0]
+  const sceneReferences = REFERENCES.filter((reference) => S[i].references.includes(reference.id))
 
-  SP = rm ? 0.01 : sp
+  SP = rm ? 0 : sp
   const go = (n: number) => {
     setI(Math.max(0, Math.min(S.length - 1, n)))
     setIsNavVisible(true)
@@ -1475,12 +1495,12 @@ export default function App() {
 
   // Avanço automático das etapas do hardware a cada 2.5s no Slide 5
   useEffect(() => {
-    if (i !== 4) return
+    if (i !== 4 || rm || demoPaused) return
     const timer = setInterval(() => {
       setHwIdx((prev) => (prev + 1) % HW_PHOTOS.length)
     }, 2500)
     return () => clearInterval(timer)
-  }, [i, hwIdx])
+  }, [i, hwIdx, rm, demoPaused])
 
   // Reset para Etapa A ao navegar para o Slide 5
   useEffect(() => {
@@ -1489,7 +1509,7 @@ export default function App() {
 
   // Avanço automático das abas do software a cada 3s no Slide 7 (Mapa -> Indicadores -> Histórico)
   useEffect(() => {
-    if (i !== 6) return
+    if (i !== 6 || rm || demoPaused) return
     const softwareTabs = ['Mapa', 'Indicadores', 'Histórico']
     const timer = setInterval(() => {
       setTab((prev) => {
@@ -1498,7 +1518,7 @@ export default function App() {
       })
     }, 3000)
     return () => clearInterval(timer)
-  }, [i, tab])
+  }, [i, tab, rm, demoPaused])
 
   // Reset para 'Mapa' ao navegar para o Slide 7
   useEffect(() => {
@@ -1520,6 +1540,7 @@ export default function App() {
           ? document.exitFullscreen()
           : document.documentElement.requestFullscreen()
       } else if (e.key === 'p' || e.key === 'P') {
+        setPresenterView('notes')
         setPres((p) => !p)
       } else if (e.key === 'Escape') {
         if (pres) {
@@ -1534,13 +1555,14 @@ export default function App() {
   }, [i, pres, evoReal])
 
   useEffect(() => {
-    const panel = presenterRef.current
-    if (!panel) {
-      setPresenterHeight(0)
-      return
+    const updateHeights = () => {
+      setPresenterHeight(presenterRef.current?.getBoundingClientRect().height ?? 0)
+      setNavHeight(navRef.current?.getBoundingClientRect().height ?? 54)
     }
-    const observer = new ResizeObserver(() => setPresenterHeight(panel.getBoundingClientRect().height))
-    observer.observe(panel)
+    const observer = new ResizeObserver(updateHeights)
+    if (presenterRef.current) observer.observe(presenterRef.current)
+    if (navRef.current) observer.observe(navRef.current)
+    updateHeights()
     return () => observer.disconnect()
   }, [pres])
 
@@ -1550,12 +1572,12 @@ export default function App() {
       const isFs = Boolean(document.fullscreenElement)
       setIsFullscreen(isFs)
 
-      const bottomBuffer = isFs ? 0 : 54
+      const bottomBuffer = isFs ? 0 : navHeight + 24
       const presBuffer = pres ? presenterHeight : 0
       const availH = Math.max(1, window.innerHeight - bottomBuffer - presBuffer)
       const availW = window.innerWidth
       const s = Math.min(availW / 1920, availH / 1080)
-      setSc(Math.max(0.2, s))
+      setSc(s)
     }
 
     updateDimensions()
@@ -1568,7 +1590,7 @@ export default function App() {
       document.removeEventListener('fullscreenchange', updateDimensions)
       clearInterval(t)
     }
-  }, [pres, presenterHeight])
+  }, [pres, presenterHeight, navHeight])
 
   // Em tela cheia: esconde a barra automaticamente após inatividade
   useEffect(() => {
@@ -1602,13 +1624,16 @@ export default function App() {
   }, [isFullscreen])
 
   const h = HERO(i, ph, evoReal)
-  const el = Math.floor((now - t0) / 1000)
+  const el = Math.max(0, Math.floor((now - t0) / 1000))
   const tr = { duration: 1.1 * SP, ease: EZ_MOVE }
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-[#070D18] overflow-hidden select-none" style={{ paddingBottom: pres ? presenterHeight : 0 }}>
+    <MotionConfig reducedMotion={rm ? 'always' : 'never'}>
+    <div className="fixed inset-0 flex items-center justify-center bg-[#070D18] overflow-hidden select-none" style={{ paddingBottom: (pres ? presenterHeight : 0) + (isFullscreen ? 0 : navHeight + 24) }}>
       {/* Palco 16:9 perfeitamente centralizado com escala proporcional e fundo temático do slide */}
       <div
+        role="region"
+        aria-label="Palco da apresentação"
         className="relative overflow-hidden shadow-[0_25px_70px_-15px_rgba(0,0,0,0.5)] shrink-0 transition-colors duration-200 ease-out"
         style={{
           width: 1920,
@@ -1647,18 +1672,37 @@ export default function App() {
               evoReal={evoReal}
               setEvoReal={setEvoReal}
             />
+            <footer
+              role="note"
+              aria-label={`Referências da cena ${i + 1}`}
+              className={`absolute left-[120px] right-[120px] bottom-[28px] z-10 flex flex-wrap gap-x-6 gap-y-1 text-[21px] leading-[1.3] ${curTheme.variant === 'white-editorial' ? 'text-[#475569]' : 'text-white/90'}`}
+            >
+              {sceneReferences.map((reference) => (
+                <a
+                  key={reference.id}
+                  href={reference.url}
+                  title={reference.title}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="underline decoration-current/40 underline-offset-4 hover:decoration-current focus-visible:outline-current"
+                >
+                  {reference.citation}
+                </a>
+              ))}
+            </footer>
           </motion.div>
         </AnimatePresence>
       </div>
 
       {/* Barra de navegação inferior flutuante com auto-hide em fullscreen e estilo adaptativo */}
       <nav
+        ref={navRef}
         aria-label="Controles da apresentação"
         style={{ bottom: (pres ? presenterHeight : 0) + 12 }}
         onMouseEnter={() => setIsHoveringNav(true)}
         onMouseLeave={() => setIsHoveringNav(false)}
         className={
-          'fixed left-1/2 -translate-x-1/2 bottom-3 z-20 flex gap-2.5 items-center rounded-full px-4 py-2 transition-all duration-300 text-sm shadow-xl backdrop-blur-md ' +
+          'fixed left-1/2 -translate-x-1/2 bottom-3 z-20 flex flex-wrap justify-center w-max max-w-[calc(100vw-24px)] gap-2.5 items-center rounded-2xl sm:rounded-full px-4 py-2 transition-all duration-300 text-sm shadow-xl backdrop-blur-md focus-within:opacity-100 focus-within:translate-y-0 focus-within:pointer-events-auto ' +
           (curTheme.variant === 'midnight-tech'
             ? 'bg-[#17243A]/95 border border-[#2B3F63] text-white '
             : 'bg-white/95 border border-[#CFDCF8] text-[#0D1830] ') +
@@ -1735,7 +1779,7 @@ export default function App() {
         <button
           type="button"
           aria-label="Alternar modo apresentador (Atalho: P)"
-          onClick={() => setPres(!pres)}
+          onClick={() => { setPresenterView('notes'); setPres(!pres || presenterView !== 'notes') }}
           className={
             'pressable px-2.5 py-1 rounded-full font-medium transition-colors focus-visible:ring-2 focus-visible:ring-[#2457E7] ' +
             (pres
@@ -1747,6 +1791,26 @@ export default function App() {
         >
           Apresentador
         </button>
+        <button
+          type="button"
+          aria-label="Consultar referências da apresentação"
+          aria-expanded={pres && presenterView === 'references'}
+          onClick={() => { setPresenterView('references'); setPres(!pres || presenterView !== 'references') }}
+          className="pressable rounded-full px-2.5 py-1 font-medium hover:bg-[#2457E7] hover:text-white"
+        >
+          Referências
+        </button>
+        {(i === 4 || i === 6) && (
+          <button
+            type="button"
+            aria-pressed={Boolean(rm || demoPaused)}
+            disabled={Boolean(rm)}
+            onClick={() => setDemoPaused((paused) => !paused)}
+            className="pressable rounded-full px-2.5 py-1 font-medium hover:bg-[#2457E7] hover:text-white disabled:opacity-70 disabled:cursor-default"
+          >
+            {rm ? 'Troca manual' : demoPaused ? 'Retomar demonstração' : 'Pausar demonstração'}
+          </button>
+        )}
         <select
           aria-label="Velocidade das animações"
           value={sp}
@@ -1768,10 +1832,11 @@ export default function App() {
         <aside
           ref={presenterRef}
           role="region"
-          aria-label="Painel de notas e cronômetro do apresentador"
-          className="fixed inset-x-0 bottom-0 z-30 bg-[#0D1830] text-white px-8 py-3.5 flex items-center justify-between border-t border-slate-800 shadow-2xl backdrop-blur-md"
+          aria-label="Painel de notas, referências e cronômetro do apresentador"
+          className="fixed inset-x-0 bottom-0 z-30 bg-[#0D1830] text-white px-4 sm:px-8 py-3.5 flex items-center justify-between gap-3 border-t border-slate-800 shadow-2xl backdrop-blur-md"
         >
-          <div className="flex min-w-0 flex-1 items-center gap-6">
+          <div className="flex min-w-0 flex-1 items-center gap-3 sm:gap-6">
+            <div className="shrink-0">
             <button
               type="button"
               title="Clique para zerar o cronômetro"
@@ -1781,12 +1846,28 @@ export default function App() {
             >
               {String(Math.floor(el / 60)).padStart(2, '0')}:{String(el % 60).padStart(2, '0')}
             </button>
-            <span role="region" aria-label="Notas da cena atual" tabIndex={0} className="max-h-[140px] overflow-y-auto text-lg text-slate-200">
+            <p className="mt-1 text-xs text-slate-300">Roteiro: 10 min</p>
+            </div>
+            {presenterView === 'notes' ? (
+            <span role="region" aria-label="Notas da cena atual" tabIndex={0} className="max-h-[min(140px,30vh)] overflow-y-auto text-base sm:text-lg text-slate-200">
               <strong className="text-white tabular-nums">
-                Cena {i + 1}/{S.length}
+                Cena {i + 1}/{S.length} · orientação: {SCENE_SECONDS[i]} s
               </strong>{' '}
               — {S[i].n}
             </span>
+            ) : (
+              <section tabIndex={0} role="region" aria-label="Referências e contexto das fontes" className="max-h-[min(260px,35vh)] overflow-y-auto text-sm sm:text-base select-text">
+                <h2 className="font-semibold text-lg mb-3">Referências e limites de interpretação</h2>
+                <ol className="list-decimal pl-5 space-y-3">
+                  {REFERENCES.map((reference) => (
+                    <li key={reference.url}>
+                      <a href={reference.url} target="_blank" rel="noreferrer" className="text-[#38D8DC] underline underline-offset-4">{reference.title}</a>
+                      <p className="mt-1 text-slate-200">{reference.context}</p>
+                    </li>
+                  ))}
+                </ol>
+              </section>
+            )}
           </div>
 
           <button
@@ -1794,7 +1875,7 @@ export default function App() {
             onClick={() => setPres(false)}
             aria-label="Fechar painel do apresentador"
             title="Fechar apresentador (P ou Esc)"
-            className="pressable ml-6 flex shrink-0 items-center gap-1.5 rounded-full bg-slate-800 hover:bg-slate-700 px-3 py-1.5 text-xs font-semibold text-slate-200 border border-slate-700 transition focus-visible:ring-2 focus-visible:ring-blue-400 cursor-pointer"
+            className="pressable flex shrink-0 items-center gap-1.5 rounded-full bg-slate-800 hover:bg-slate-700 px-3 py-1.5 text-xs font-semibold text-slate-200 border border-slate-700 transition focus-visible:ring-2 focus-visible:ring-blue-400 cursor-pointer"
           >
             <span>✕</span>
             <span>Fechar</span>
@@ -1802,5 +1883,6 @@ export default function App() {
         </aside>
       )}
     </div>
+    </MotionConfig>
   )
 }
