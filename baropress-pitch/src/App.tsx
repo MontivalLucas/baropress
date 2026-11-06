@@ -493,7 +493,6 @@ function Scene({
             <span className="text-[#38D8DC]">apoiem o cuidado?</span>
           </Rv>
           <Rv d={0.52} cls="mt-8 max-w-[1000px] text-[21px] leading-[1.4] text-[#CBD5E1]">
-            IWGDF, 2023 · Recomendação 8c, fundamentação, p. 20 do PDF.<br />
             Contexto: prevenção de recorrência de úlceras em pessoas com diabetes e calçados terapêuticos.
           </Rv>
         </div>
@@ -1395,7 +1394,7 @@ function Scene({
         {/* Fonte do valor de referência */}
         <div className="absolute left-[120px] top-[956px] w-[1680px]">
           <Rv d={0.4} cls="text-[20px] leading-[1.4] text-[#475569]">
-            <span>Podotech · podotech.com.br/baroscan · consulta em 06/11/2026. Comparação de valores, sem equivalência técnica ou clínica.</span>
+            <span>Comparação de valores, sem equivalência técnica ou clínica. Estimativas comerciais do BAROPRESS: equipe, 2026.</span>
           </Rv>
         </div>
       </>
@@ -1467,6 +1466,7 @@ export default function App() {
   const [isHoveringNav, setIsHoveringNav] = useState(false)
 
   const curTheme = SLIDE_THEMES[i] ?? SLIDE_THEMES[0]
+  const sceneReferences = REFERENCES.filter((reference) => S[i].references.includes(reference.id))
 
   SP = rm ? 0 : sp
   const go = (n: number) => {
@@ -1672,6 +1672,24 @@ export default function App() {
               evoReal={evoReal}
               setEvoReal={setEvoReal}
             />
+            <footer
+              role="note"
+              aria-label={`Referências da cena ${i + 1}`}
+              className={`absolute left-[120px] right-[120px] bottom-[28px] z-10 flex flex-wrap gap-x-6 gap-y-1 text-[21px] leading-[1.3] ${curTheme.variant === 'white-editorial' ? 'text-[#475569]' : 'text-white/90'}`}
+            >
+              {sceneReferences.map((reference) => (
+                <a
+                  key={reference.id}
+                  href={reference.url}
+                  title={reference.title}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="underline decoration-current/40 underline-offset-4 hover:decoration-current focus-visible:outline-current"
+                >
+                  {reference.citation}
+                </a>
+              ))}
+            </footer>
           </motion.div>
         </AnimatePresence>
       </div>

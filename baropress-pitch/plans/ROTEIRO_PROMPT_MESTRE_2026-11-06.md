@@ -2,6 +2,8 @@
 
 Revisão de 06/11/2026. Duração orientativa: dez minutos, incluindo pausas e demonstrações. As notas são apoio para fala, não narração automática; o tempo real depende de ensaio oral.
 
+Todas as cenas exibem suas fontes no rodapé, com citações visíveis e links para os documentos. As referências completas e seus limites de interpretação também continuam acessíveis pelo painel “Referências”.
+
 ## Cena 1 — 35 segundos
 
 **Título:** Para quem sente dor ao caminhar, cada passo importa.
