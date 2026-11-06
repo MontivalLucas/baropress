@@ -2,19 +2,19 @@ export type Sc = { t: string; s?: string; n: string }
 
 export const S: Sc[] = [
   {
-    t: 'BAROPRESS',
-    s: 'A tecnologia deve acompanhar o profissional.',
-    n: 'A forma azul cresce, vira a placa e revela os 225 pontos: a marca.',
+    t: 'Para quem sente dor ao caminhar, cada passo importa.',
+    s: 'Alterações no apoio plantar podem estar associadas a desconforto, dificuldades de marcha e limitações funcionais.',
+    n: 'Imagine uma pessoa que sente dor ao caminhar. Para ela, ficar em pé ou percorrer uma pequena distância pode se tornar um desafio. Na fisioterapia, compreender o apoio dos pés faz parte de uma investigação que considera a história, os sintomas e a função de cada pessoa. Alterações no apoio podem estar associadas ao desconforto, mas não explicam sozinhas todas as suas causas. É nesse cuidado que informações instrumentais confiáveis podem acrescentar uma perspectiva. Nossa história começa nessa necessidade humana.',
   },
   {
-    t: 'Compreender o apoio orienta o cuidado.',
-    s: 'Dados instrumentais complementam a anamnese e o exame físico. A interpretação e a decisão continuam com o fisioterapeuta.',
-    n: 'Slide 2 — Avaliação e autonomia: uma avaliação bem fundamentada apoia decisões terapêuticas mais seguras. Recursos instrumentais, quando adequadamente validados, acrescentam informações à anamnese e ao exame físico; não substituem o raciocínio clínico. Registros comparáveis ajudam a investigar mudanças entre sessões, sem que qualquer diferença prove melhora clínica. A aplicação clínica do BAROPRESS ainda depende de validação. Referências: Lin, Papi e McGregor, 2019, doi:10.1136/bmjopen-2018-023656; Hébert-Losier e Murray, 2020, doi:10.1016/j.gaitpost.2019.09.027.',
+    t: 'Avaliar melhor para decidir com mais informação.',
+    s: 'A análise instrumental, quando validada, pode complementar a avaliação clínica e o acompanhamento do apoio plantar.',
+    n: 'O fisioterapeuta reúne a história do paciente, observa seus movimentos, realiza o exame físico e aplica testes funcionais. É esse raciocínio clínico que orienta o cuidado. Uma ferramenta instrumental adequada pode acrescentar registros e medidas que nem sempre são fáceis de quantificar apenas pela observação. Esses dados precisam ser confiáveis e interpretados junto aos achados clínicos. Comparar registros pode ajudar a investigar mudanças, mas uma diferença não prova melhora ou eficácia de um tratamento. A decisão continua com o profissional. No caso do BAROPRESS, a aplicação clínica ainda depende de validação. Com esse papel complementar em mente, precisamos discutir também o acesso à tecnologia.',
   },
   {
-    t: 'Quando a tecnologia custa caro, o acesso fica limitado.',
-    s: 'O investimento em equipamentos pode dificultar o acesso de pequenas clínicas e profissionais autônomos a recursos de avaliação instrumental.',
-    n: 'Slide 3 — Barreira de acesso: custo e tempo de adoção são barreiras relatadas por profissionais ao considerar tecnologias de avaliação instrumental. Isso pode dificultar a obtenção de registros para acompanhar o paciente; não significa que o profissional trate sem conhecimento ou apenas por hipóteses. Não afirmar que a maioria das clínicas brasileiras carece de recursos: não há levantamento local apresentado. Marcas, preços e comparação ficam exclusivamente na cena 10. Transição: como ampliar o acesso a ferramentas que apoiem a avaliação e o acompanhamento? Referência: Lin, Papi e McGregor, 2019, doi:10.1136/bmjopen-2018-023656.',
+    t: 'A tecnologia avançou. O acesso ainda é um desafio.',
+    s: 'Equipamentos especializados podem exigir investimentos difíceis para pequenos consultórios, profissionais autônomos e instituições com orçamento limitado.',
+    n: 'Tecnologias de avaliação plantar já existem, mas adquirir um equipamento especializado pode exigir um investimento difícil para uma operação menor. A diretriz IWGDF de 2023 reconhece que sistemas validados de mensuração plantar são relativamente caros e que a tecnologia e a expertise necessárias ainda não estão amplamente disponíveis. Esse argumento aparece em um contexto específico: calçados terapêuticos e prevenção de recorrência de úlceras em pessoas com diabetes. Não é uma estatística sobre clínicas brasileiras, nem prova de falta de tratamento. Ele ajuda a reconhecer uma barreira e uma pergunta de pesquisa: como investigar alternativas mais acessíveis, preservando os requisitos de qualidade e segurança? Fonte: IWGDF 2023, fundamentação da recomendação 8c, página 20 do PDF.',
   },
   {
     t: 'E se essa tecnologia pudesse chegar a mais profissionais?',

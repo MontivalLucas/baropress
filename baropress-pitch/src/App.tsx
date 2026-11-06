@@ -351,20 +351,16 @@ function Scene({
   // Cena 1 (Abertura) & Cena 11 (Encerramento)
   if (i === 0 || i === 10) {
     return (
-      <div className="absolute inset-x-0 text-center" style={{ top: i ? 525 : 545 }}>
-        <Rv cls={`font-bold text-[88px] leading-none tracking-[-0.04em] ${titleCls}`}>
+      <div className="absolute left-[190px] right-[190px] text-center" style={{ top: i ? 525 : 545 }}>
+        <Rv cls={`font-bold ${i ? 'text-[88px]' : 'text-[76px]'} leading-[1.06] tracking-[-0.035em] text-balance ${titleCls}`}>
           <span>{c.t}</span>
         </Rv>
-        <Rv d={0.22} cls={`mt-5 text-[30px] font-medium ${subCls}`}>
+        <Rv d={0.22} cls={`mt-5 mx-auto max-w-[1200px] text-[30px] leading-[1.4] font-medium ${subCls}`}>
           {c.s}
         </Rv>
         {i === 0 && (
-          <Rv d={0.42} cls="mt-8 inline-flex items-center gap-3 rounded-full bg-[#F5F8FF] border border-[#CFDCF8] px-7 py-3 text-[22px] font-semibold text-[#2457E7] shadow-sm">
-            <span>Matriz 15×15 (225 sensores)</span>
-            <span>·</span>
-            <span>ESP32</span>
-            <span>·</span>
-            <span>Software Desktop Oficial</span>
+          <Rv d={0.42} cls="mt-8 text-[26px] font-semibold tracking-[0.08em] text-[#2457E7]">
+            BAROPRESS
           </Rv>
         )}
         {i === 10 && (
@@ -388,8 +384,8 @@ function Scene({
     return (
       <>
         {/* Lado Esquerdo: Tipografia e pílulas fiéis ao design de referência */}
-        <div className="absolute left-[140px] top-[250px] w-[860px]">
-          <Rv cls="font-bold text-[78px] leading-[1.08] tracking-[-0.035em] text-[#0D1830]">
+        <div className="absolute left-[120px] top-[160px] w-[860px]">
+          <Rv cls="font-bold text-[74px] leading-[1.08] tracking-[-0.035em] text-[#0D1830]">
             {c.t}
           </Rv>
 
@@ -399,19 +395,24 @@ function Scene({
             </span>
           </Rv>
 
-          <div className="mt-14 flex items-center gap-3.5">
-            {['Avaliação clínica', 'Registro entre sessões', 'Decisão profissional'].map((pill, k) => (
-              <Rv
-                key={pill}
-                d={0.3 + k * 0.12}
-                cls="rounded-full bg-white border border-[#D5E2F8] px-7 py-3.5 text-[20px] font-medium text-[#1E293B] shadow-[0_2px_8px_rgba(0,0,0,0.04)]"
-              >
-                {pill}
-              </Rv>
-            ))}
-          </div>
-          <Rv d={0.54} cls="mt-8 max-w-[740px] text-[27px] leading-[1.35] font-medium text-[#2457E7]">
-            Uma avaliação bem fundamentada apoia decisões terapêuticas mais seguras.
+          <Rv d={0.3} cls="mt-10 max-w-[820px]">
+            <div className="grid grid-cols-2 gap-8 text-[23px] leading-[1.35] text-[#17243A]">
+              <div>
+                <h2 className="font-semibold text-[#2457E7]">Avaliação clínica</h2>
+                <p className="mt-2">Histórico, observação e testes funcionais.</p>
+              </div>
+              <div>
+                <h2 className="font-semibold text-[#2457E7]">Informações instrumentais</h2>
+                <p className="mt-2">Registros e medidas complementares, quando validados.</p>
+              </div>
+            </div>
+            <svg aria-hidden="true" className="mt-4 w-full h-[42px]" viewBox="0 0 820 42" fill="none">
+              <path d="M195 0 V15 Q195 25 205 25 H615 Q625 25 625 15 V0 M410 25 V42" stroke="#2457E7" strokeWidth="2" />
+            </svg>
+            <p className="text-center text-[28px] font-semibold text-[#0D1830]">Decisão do profissional</p>
+          </Rv>
+          <Rv d={0.54} cls="mt-7 max-w-[780px] text-[25px] leading-[1.35] font-medium text-[#2457E7]">
+            A tecnologia amplia as informações. A decisão continua com o fisioterapeuta.
           </Rv>
         </div>
 
@@ -458,7 +459,7 @@ function Scene({
     return (
       <>
         {/* Lado Esquerdo: Conteúdo narrativo fiel à imagem de referência */}
-        <div className="absolute left-[140px] top-[240px] w-[1200px]">
+        <div className="absolute left-[120px] top-[185px] w-[1200px]">
           <Rv cls="font-bold text-[74px] leading-[1.1] tracking-[-0.035em] text-white">
             <span className="block max-w-[1150px]">{c.t}</span>
           </Rv>
@@ -473,12 +474,16 @@ function Scene({
             d={0.32}
             cls="mt-10 max-w-[820px] text-[32px] font-medium leading-[1.3] text-[#38D8DC]"
           >
-            Menos acesso a registros instrumentais. Mais dificuldade para quantificar mudanças entre sessões.
+            Sistemas validados de medição plantar têm custo e disponibilidade como desafios.
           </Rv>
 
-          <Rv d={0.42} cls="mt-12 max-w-[920px] text-[34px] font-bold tracking-tight leading-[1.3]">
+          <Rv d={0.42} cls="mt-9 max-w-[920px] text-[34px] font-bold tracking-tight leading-[1.3]">
             <span className="text-white">Como ampliar o acesso a ferramentas que </span>
             <span className="text-[#38D8DC]">apoiem o cuidado?</span>
+          </Rv>
+          <Rv d={0.52} cls="mt-8 max-w-[1000px] text-[21px] leading-[1.4] text-[#CBD5E1]">
+            IWGDF, 2023 · Recomendação 8c, fundamentação, p. 20 do PDF.<br />
+            Contexto: prevenção de recorrência de úlceras em pessoas com diabetes e calçados terapêuticos.
           </Rv>
         </div>
 
