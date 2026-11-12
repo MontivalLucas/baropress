@@ -72,7 +72,7 @@ export const S: Sc[] = [
     t: 'Da ideia à pesquisa científica.',
     references: ['article'],
     s: 'O desenvolvimento e os ensaios preliminares do BAROPRESS foram documentados em artigo científico.',
-    n: 'O BAROPRESS não ficou apenas na ideia. Esta é a primeira página real do artigo que documenta a construção e os testes de bancada, sem pacientes e sem testes clínicos de marcha. Foram cinco níveis de massa, de 0,438 a 4,518 kg, com três repetições por nível. O sinal respondeu à carga, mas a calibração candidata não atingiu o critério adotado de erro absoluto máximo de 1 N: o erro máximo foi de 8,299 N e duas das nove estimativas ficaram indisponíveis. O estudo registra esses limites e não demonstra mensuração quantitativa validada de pressão plantar. Conforme informado pela equipe, o artigo está in press na Revista Internacional de Ciências da Saúde e Sociedade (RICSS), em 2026. A situação editorial é um marco acadêmico, mas não comprova validação metrológica ou clínica. Essa pesquisa dá base às próximas etapas do desenvolvimento.',
+    n: 'O BAROPRESS não ficou apenas na ideia. Esta é a primeira página real do artigo que documenta a construção e os testes de bancada, sem pacientes e sem testes clínicos de marcha. Foram cinco níveis de massa, de 0,438 a 4,518 kg, com três repetições por nível. O sinal respondeu à carga, mas a calibração candidata não atingiu o critério adotado de erro absoluto máximo de 1 N: o erro máximo foi de 8,299 N e duas das nove estimativas ficaram indisponíveis. O estudo registra esses limites e não demonstra mensuração quantitativa validada de pressão plantar. Conforme informado pela equipe, o artigo está in press na Revista Internacional de Ciências da Saúde e Sociedade (RICSS), em 2026. A situação editorial é um marco acadêmico, mas não comprova validação metrológica ou clínica. Essa pesquisa dá base às próximas etapas do desenvolvimento. Os QR codes deste slide levam aos perfis de LinkedIn da equipe, para quem quiser acompanhar o projeto ou conversar sobre futuras colaborações.',
   },
 ]
 
@@ -83,6 +83,21 @@ export const ARTICLE = {
   editorialStatus: 'Artigo in press — RICSS (2026)',
   editorialDetail: 'Revista Internacional de Ciências da Saúde e Sociedade · informação editorial fornecida pela equipe.',
 }
+
+export const TEAM_LINKEDIN = [
+  {
+    name: 'Montival Lucas',
+    handle: 'linkedin.com/in/montival-lucas',
+    url: 'https://www.linkedin.com/in/montival-lucas/',
+    qr: 'qr-linkedin-montival-lucas.svg',
+  },
+  {
+    name: 'Raphaela Teles',
+    handle: 'linkedin.com/in/raphaelateles',
+    url: 'https://www.linkedin.com/in/raphaelateles/',
+    qr: 'qr-linkedin-raphaela-teles.svg',
+  },
+] as const
 
 // Tempos orientativos para fala e demonstração; total de dez minutos.
 export const SCENE_SECONDS = [35, 60, 60, 35, 60, 50, 80, 40, 35, 60, 30, 55] as const

@@ -1,6 +1,6 @@
 import { memo, useEffect, useMemo, useRef, useState, useSyncExternalStore, type ReactNode } from 'react'
 import { motion, AnimatePresence, MotionConfig } from 'motion/react'
-import { S, SHOTS, SHOT_META, HW_PHOTOS, ARTICLE, REFERENCES, SCENE_SECONDS } from './content'
+import { S, SHOTS, SHOT_META, HW_PHOTOS, ARTICLE, TEAM_LINKEDIN, REFERENCES, SCENE_SECONDS } from './content'
 
 let SP = 1
 const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -119,7 +119,7 @@ const HERO = (i: number, ph: number, evoReal = false): H => {
       { d: P(1355, 540, 410, 470, 0.98), f: '#FFFFFF', st: 'rgba(255,255,255,0.4)', a: off() }, // 9: Electric Blue (Relatório A4)
       { d: P(1390, 592.5, 410, 337.5, 0.95), f: '#2457E7', st: '#2457E7', a: off() }, // 10: branco (Painel Comercial BAROPRESS)
       logoDark, // 11: Midnight Navy
-      { d: P(1430, 540, 360, 460, 0.96), f: BL, st: '#CFDCF8', a: off() }, // 12: suporte orgânico da página do artigo
+      { d: P(1540, 312, 245, 285, 0.96), f: BL, st: '#CFDCF8', a: off() }, // 12: suporte orgânico da página do artigo
     ] as H[]
   )[i]
 }
@@ -1400,29 +1400,23 @@ function Scene({
   if (i === 11)
     return (
       <>
-        <div className="absolute left-[120px] top-[140px] w-[860px]">
-          <Rv cls="font-bold text-[72px] leading-[1.08] tracking-[-0.035em] text-[#0D1830]">
+        <div className="absolute left-[120px] top-[96px] w-[1120px]">
+          <Rv cls="font-bold text-[70px] leading-[1.08] tracking-[-0.035em] text-[#0D1830]">
             {c.t}
           </Rv>
-          <Rv d={0.16} cls="mt-7 max-w-[760px] text-[28px] leading-[1.4] text-[#17243A]">
+          <Rv d={0.16} cls="mt-5 max-w-[1030px] text-[28px] leading-[1.4] text-[#17243A]">
             {c.s}
           </Rv>
-          <Rv d={0.3} cls="mt-9 text-[30px] font-semibold text-[#2457E7]">
-            Ensaios de bancada, sem pacientes.
+          <Rv d={0.3} cls="mt-8 max-w-[1020px]">
+            <p className="text-[30px] font-semibold text-[#2457E7]">{ARTICLE.editorialStatus}</p>
+            <p className="mt-2 text-[21px] leading-[1.35] text-[#475569]">{ARTICLE.editorialDetail}</p>
           </Rv>
-          <Rv d={0.4} cls="mt-4 max-w-[760px] text-[25px] leading-[1.4] text-[#17243A]">
+          <Rv d={0.43} cls="mt-7 max-w-[1030px] text-[24px] leading-[1.4] text-[#17243A]">
+            <strong className="font-semibold">Ensaios preliminares de bancada, sem pacientes.</strong>{' '}
             O protótipo respondeu à aplicação de cargas. A calibração candidata não atingiu o critério adotado; a aplicação clínica depende de validação.
           </Rv>
-          <Rv d={0.5} cls="mt-7 max-w-[820px] text-[25px] leading-[1.4] text-[#2457E7]">
-            <p className="font-semibold">{ARTICLE.editorialStatus}</p>
-            <p className="mt-2 text-[21px] text-[#475569]">{ARTICLE.editorialDetail}</p>
-          </Rv>
-          <Rv d={0.6} cls="mt-7 max-w-[820px] text-[20px] leading-[1.4] text-[#475569]">
-            <p>{ARTICLE.title}</p>
-            <p className="mt-2">{ARTICLE.reference} · Aceite editorial não comprova validação clínica.</p>
-          </Rv>
         </div>
-        <Rv d={0.2} cls="absolute left-[1160px] top-[150px] w-[540px]">
+        <Rv d={0.2} cls="absolute right-[190px] top-[90px] w-[326px]">
           <img
             src={ARTICLE.image}
             alt="Primeira página do artigo BAROPRESS, com título, resumo e resultados preliminares dos ensaios de bancada."
@@ -1431,6 +1425,49 @@ function Scene({
             className="block w-full h-auto rounded-[4px] shadow-[0_24px_55px_-12px_rgba(13,24,48,0.3)]"
           />
         </Rv>
+        <div className="absolute left-[120px] right-[120px] top-[574px] h-px bg-[#CFDCF8]" />
+        <div className="absolute left-[120px] right-[120px] top-[592px]">
+          <div className="flex items-baseline justify-between gap-10">
+            <Rv d={0.47} cls="text-[42px] font-bold tracking-[-0.025em] text-[#0D1830]">
+              Conecte-se com a equipe
+            </Rv>
+            <Rv d={0.55} cls="text-[22px] text-[#475569]">
+              Aponte a câmera para o QR code ou clique no perfil.
+            </Rv>
+          </div>
+          <div className="mt-6 grid grid-cols-2 gap-9">
+            {TEAM_LINKEDIN.map((contact, index) => (
+              <Rv key={contact.url} d={0.6 + index * 0.13}>
+                <a
+                  href={contact.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Abrir LinkedIn de ${contact.name} em uma nova aba`}
+                  className="group pressable flex h-[268px] items-center gap-8 rounded-[18px] border border-[#CFDCF8] bg-white px-6 hover:border-[#2457E7] focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-[#2457E7]"
+                >
+                  <img
+                    src={contact.qr}
+                    alt={`QR code do LinkedIn de ${contact.name}`}
+                    width={218}
+                    height={218}
+                    draggable={false}
+                    className="h-[218px] w-[218px] shrink-0"
+                  />
+                  <div className="min-w-0 flex-1">
+                    <h3 className="text-[38px] font-bold leading-[1.15] tracking-[-0.025em] text-[#0D1830]">{contact.name}</h3>
+                    <p className="mt-3 text-[23px] leading-[1.3] text-[#475569]">{contact.handle}</p>
+                    <span className="mt-7 inline-flex items-center gap-3 text-[23px] font-semibold text-[#2457E7] group-hover:underline group-hover:underline-offset-4">
+                      Acessar LinkedIn
+                      <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M5 12h14m-6-6 6 6-6 6" />
+                      </svg>
+                    </span>
+                  </div>
+                </a>
+              </Rv>
+            ))}
+          </div>
+        </div>
       </>
     )
 
