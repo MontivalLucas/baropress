@@ -72,17 +72,16 @@ export const S: Sc[] = [
     t: 'Da ideia à pesquisa científica.',
     references: ['article'],
     s: 'O desenvolvimento e os ensaios preliminares do BAROPRESS foram documentados em artigo científico.',
-    n: 'O BAROPRESS não ficou apenas na ideia. Esta é a primeira página real do artigo que documenta a construção e os testes de bancada, sem pacientes e sem testes clínicos de marcha. Foram cinco níveis de massa, de 0,438 a 4,518 kg, com três repetições por nível. O sinal respondeu à carga, mas a calibração candidata não atingiu o critério adotado de erro absoluto máximo de 1 N: o erro máximo foi de 8,299 N e duas das nove estimativas ficaram indisponíveis. O estudo registra esses limites e não demonstra mensuração quantitativa validada de pressão plantar. Conforme informado pela equipe, o artigo foi aceito para publicação na Práxis Teológica e aguarda DOI. O aceite editorial é um marco acadêmico; não é validação metrológica ou clínica. Essa pesquisa dá base às próximas etapas do desenvolvimento.',
+    n: 'O BAROPRESS não ficou apenas na ideia. Esta é a primeira página real do artigo que documenta a construção e os testes de bancada, sem pacientes e sem testes clínicos de marcha. Foram cinco níveis de massa, de 0,438 a 4,518 kg, com três repetições por nível. O sinal respondeu à carga, mas a calibração candidata não atingiu o critério adotado de erro absoluto máximo de 1 N: o erro máximo foi de 8,299 N e duas das nove estimativas ficaram indisponíveis. O estudo registra esses limites e não demonstra mensuração quantitativa validada de pressão plantar. Conforme informado pela equipe, o artigo está in press na Revista Internacional de Ciências da Saúde e Sociedade (RICSS), em 2026. A situação editorial é um marco acadêmico, mas não comprova validação metrológica ou clínica. Essa pesquisa dá base às próximas etapas do desenvolvimento.',
   },
 ]
 
 export const ARTICLE = {
   image: 'shots/artigo-primeira-pagina.png',
   title: 'BAROPRESS: desenvolvimento e avaliação preliminar de um protótipo de baixo custo para aquisição e distribuição espacial de sinais associados à aplicação de carga.',
-  reference: 'Documento do projeto · 2026',
-  editorialStatus: 'Artigo aceito para publicação — Práxis Teológica',
-  editorialDetail: 'Aceite informado pela equipe · DOI pendente de atribuição.',
-  url: 'https://docs.google.com/document/d/1TlYKZ2T9QO0IUouwsgtHjVYc3H2Lnzx6/edit',
+  reference: 'RICSS · In press, 2026',
+  editorialStatus: 'Artigo in press — RICSS (2026)',
+  editorialDetail: 'Revista Internacional de Ciências da Saúde e Sociedade · informação editorial fornecida pela equipe.',
 }
 
 // Tempos orientativos para fala e demonstração; total de dez minutos.
@@ -119,10 +118,9 @@ export const REFERENCES = [
   },
   {
     id: 'article',
-    citation: 'Equipe BAROPRESS (2026) · Desenvolvimento e avaliação preliminar · Artigo do projeto',
-    title: 'Equipe BAROPRESS · Artigo do projeto · 2026',
-    url: ARTICLE.url,
-    context: 'Ensaios preliminares de bancada, sem pacientes. Aceite na Práxis Teológica informado pela equipe, sem carta editorial disponível nesta conferência. DOI pendente; sem validação clínica estabelecida.',
+    citation: 'BAROPRESS: desenvolvimento e avaliação preliminar de um protótipo de baixo custo para aquisição e distribuição espacial de sinais associados à aplicação de carga. Revista Internacional de Ciências da Saúde e Sociedade (RICSS). In press, 2026.',
+    title: 'BAROPRESS: desenvolvimento e avaliação preliminar de um protótipo de baixo custo para aquisição e distribuição espacial de sinais associados à aplicação de carga. Revista Internacional de Ciências da Saúde e Sociedade (RICSS). In press, 2026.',
+    context: 'Ensaios preliminares de bancada, sem pacientes. Publicação in press na RICSS em 2026, conforme informação da equipe. Sem validação clínica estabelecida.',
   },
 ] as const
 

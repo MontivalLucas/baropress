@@ -1720,18 +1720,22 @@ export default function App() {
               aria-label={`Referências da cena ${i + 1}`}
               className={`absolute left-[120px] right-[120px] bottom-[28px] z-10 flex flex-wrap gap-x-6 gap-y-1 text-[21px] leading-[1.3] ${curTheme.variant === 'white-editorial' ? 'text-[#475569]' : 'text-white/90'}`}
             >
-              {sceneReferences.map((reference) => (
-                <a
-                  key={reference.id}
-                  href={reference.url}
-                  title={reference.title}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="underline decoration-current/40 underline-offset-4 hover:decoration-current focus-visible:outline-current"
-                >
-                  {reference.citation}
-                </a>
-              ))}
+              {sceneReferences.map((reference) =>
+                reference.id === 'article' ? (
+                  <span key={reference.id}>{reference.citation}</span>
+                ) : (
+                  <a
+                    key={reference.id}
+                    href={reference.url}
+                    title={reference.title}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="underline decoration-current/40 underline-offset-4 hover:decoration-current focus-visible:outline-current"
+                  >
+                    {reference.citation}
+                  </a>
+                )
+              )}
             </footer>
           </motion.div>
         </AnimatePresence>
@@ -1892,8 +1896,12 @@ export default function App() {
                 <h2 className="font-semibold text-lg mb-3">Referências e limites de interpretação</h2>
                 <ol className="list-decimal pl-5 space-y-3">
                   {REFERENCES.map((reference) => (
-                    <li key={reference.url}>
-                      <a href={reference.url} target="_blank" rel="noreferrer" className="text-[#38D8DC] underline underline-offset-4">{reference.title}</a>
+                    <li key={reference.id}>
+                      {reference.id === 'article' ? (
+                        <span>{reference.title}</span>
+                      ) : (
+                        <a href={reference.url} target="_blank" rel="noreferrer" className="text-[#38D8DC] underline underline-offset-4">{reference.title}</a>
+                      )}
                       <p className="mt-1 text-slate-200">{reference.context}</p>
                     </li>
                   ))}
