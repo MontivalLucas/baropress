@@ -22,6 +22,13 @@ const J0 = Array(16).fill(0)
 const P = (cx: number, cy: number, rx: number, ry: number, a = 0.5523, j: number[] = J0) =>
   `M${cx},${cy - ry} C${cx + a * rx + j[0]},${cy - ry + j[1]} ${cx + rx + j[2]},${cy - a * ry + j[3]} ${cx + rx},${cy} C${cx + rx + j[4]},${cy + a * ry + j[5]} ${cx + a * rx + j[6]},${cy + ry + j[7]} ${cx},${cy + ry} C${cx - a * rx + j[8]},${cy + ry + j[9]} ${cx - rx + j[10]},${cy + a * ry + j[11]} ${cx - rx},${cy} C${cx - rx + j[12]},${cy - a * ry + j[13]} ${cx - a * rx + j[14]},${cy - ry + j[15]} ${cx},${cy - ry}Z`
 
+// Geometria compartilhada pelas duas cenas de demonstração do software.
+const SOFTWARE_DISPLAY = {
+  path: P(960, 600, 955, 465, 0.97),
+  pos: 'left-[240px] top-[240px] w-[1440px]',
+  height: 720,
+} as const
+
 const createOrganicBlob = (cx: number, cy: number, rx: number, ry: number, inset = 0) => {
   const rX = rx - inset
   const rY = ry - inset
@@ -114,10 +121,10 @@ const HERO = (i: number, ph: number, evoReal = false): H => {
       { d: P(1460, 540, 330, 330, 0.5523, JB), f: '#1E47C7', st: 'rgba(255,255,255,0.25)', a: off() }, // 4: Electric Blue
       { d: P(1515, 575, 345, 335, 0.94), f: '#F8FAFF', st: '#CFDCF8', a: off() }, // 5: branco
       { d: P(360, 445, 175, 175, 0.93), f: '#0A1326', st: '#2457E7', a: { x: 219, y: 304, s: 0.68, m: 'heat' } }, // 6: Midnight Navy (Captura - Matriz 15x15)
-      { d: P(960, 560, 780, 370, 0.96), f: '#F8FAFF', st: '#CFDCF8', a: off() }, // 7: branco (Software Real - Janela Centralizada)
-      { d: P(960, 560, 780, 370, 0.96), f: '#F8FAFF', st: '#CFDCF8', a: off(), b: off() }, // 8: Ice White (Comparação - Janela Centralizada)
-      { d: P(1355, 540, 410, 470, 0.98), f: '#FFFFFF', st: 'rgba(255,255,255,0.4)', a: off() }, // 9: Electric Blue (Relatório A4)
-      { d: P(1390, 592.5, 410, 337.5, 0.95), f: '#2457E7', st: '#2457E7', a: off() }, // 10: branco (Painel Comercial BAROPRESS)
+      { d: SOFTWARE_DISPLAY.path, f: '#F8FAFF', st: '#CFDCF8', a: off() }, // 7: branco (Software Real)
+      { d: SOFTWARE_DISPLAY.path, f: '#F8FAFF', st: '#CFDCF8', a: off(), b: off() }, // 8: Ice White (Comparação)
+      { d: P(1395, 520, 515, 445, 0.97), f: '#FFFFFF', st: 'rgba(255,255,255,0.4)', a: off() }, // 9: Electric Blue (Prévia do PDF)
+      { d: P(1530, 595, 380, 440, 0.95), f: '#E4ECFF', st: '#BDD0FB', a: off() }, // 10: branco (apoio visual externo aos painéis)
       logoDark, // 11: Midnight Navy
       { d: P(1540, 312, 245, 285, 0.96), f: BL, st: '#CFDCF8', a: off() }, // 12: suporte orgânico da página do artigo
     ] as H[]
@@ -208,6 +215,7 @@ function Shot({
   h,
   pos,
   darkBg = true,
+  chrome = true,
   onClose,
 }: {
   src: string
@@ -216,6 +224,7 @@ function Shot({
   h: number
   pos: string
   darkBg?: boolean
+  chrome?: boolean
   onClose?: () => void
 }) {
   const [ok, set] = useState(true)
@@ -231,7 +240,8 @@ function Shot({
       }
       style={{ height: h }}
     >
-      {/* Window Chrome com controles compactos e acessíveis */}
+      {/* Capturas do aplicativo podem exibir sua própria barra nativa. */}
+      {chrome && (
       <div
         className={
           'flex items-center justify-between px-4 py-2 text-[13px] font-medium border-b shrink-0 ' +
@@ -286,6 +296,8 @@ function Shot({
           )}
         </div>
       </div>
+
+      )}
 
       <div className="relative flex-1 overflow-hidden">
         <AnimatePresence mode="wait">
@@ -358,8 +370,8 @@ function Scene({
   // Cena 1 (Abertura) & Cena 11 (Encerramento)
   if (i === 0 || i === 10) {
     return (
-      <div className="absolute left-[190px] right-[190px] text-center" style={{ top: i ? 525 : 545 }}>
-        <Rv cls={`font-bold ${i ? 'text-[88px]' : 'text-[76px]'} leading-[1.06] tracking-[-0.035em] text-balance ${titleCls}`}>
+      <div className="absolute left-[190px] right-[190px] text-center" style={{ top: i ? 522 : 545 }}>
+        <Rv cls={`font-bold ${i ? 'text-[88px]' : 'text-[76px]'} ${i ? 'leading-none' : 'leading-[1.06]'} tracking-[-0.035em] text-balance ${titleCls}`}>
           <span>{c.t}</span>
         </Rv>
         <Rv d={0.22} cls={`mt-5 mx-auto max-w-[1200px] text-[30px] leading-[1.4] font-medium ${subCls}`}>
@@ -1179,42 +1191,42 @@ function Scene({
     const meta = SHOT_META[tab] ?? SHOT_META['Mapa']
     return (
       <>
-        {/* Cabeçalho Superior: Título, Subtítulo e Seletor com as 3 abas oficiais */}
-        <div className="absolute left-[160px] right-[160px] top-[75px] flex items-center justify-between z-[4]">
-          <div>
-            <Rv cls="font-bold text-[48px] leading-[1.1] tracking-[-0.03em] text-[#0D1830]">
-              <span>Do exame ao histórico. Tudo em um único sistema.</span>
-            </Rv>
-            <Rv d={0.12} cls="mt-2 text-[22px] font-medium text-[#475569] tracking-[-0.01em]">
-              <span>Aquisição, visualização, registros e relatórios integrados ao fluxo do profissional.</span>
-            </Rv>
-          </div>
-          <div className="flex gap-2.5 bg-white/95 p-1.5 rounded-full border border-[#CFDCF8] shadow-sm shrink-0">
-            {['Mapa', 'Indicadores', 'Histórico'].map((k) => (
-              <button
-                key={k}
-                type="button"
-                onClick={() => setTab(k)}
-                className={
-                  'pressable rounded-full px-7 py-2.5 text-[20px] font-semibold transition-[transform,background-color,color,box-shadow] duration-300 cursor-pointer ' +
-                  (tab === k
-                    ? 'bg-[#2457E7] text-white shadow-md'
-                    : 'bg-transparent text-[#0D1830] hover:bg-[#F5F8FF]')
-                }
-              >
-                {k}
-              </button>
-            ))}
-          </div>
+        {/* Texto e controles independentes, com espaço de respiro antes da captura. */}
+        <div className="absolute left-[160px] top-[70px] w-[1180px] z-[4]">
+          <Rv cls="font-bold text-[52px] leading-[1.1] tracking-[-0.03em] text-[#0D1830]">
+            <span>{c.t}</span>
+          </Rv>
+          <Rv d={0.12} cls="mt-2 text-[24px] font-medium text-[#475569] tracking-[-0.01em]">
+            <span>{c.s}</span>
+          </Rv>
+        </div>
+        <div className="absolute right-[160px] top-[153px] z-[4] flex gap-2 bg-white/95 p-1.5 rounded-full border border-[#CFDCF8] shadow-sm" role="group" aria-label="Visualizações do software">
+          {['Mapa', 'Indicadores', 'Histórico'].map((k) => (
+            <button
+              key={k}
+              type="button"
+              onClick={() => setTab(k)}
+              aria-pressed={tab === k}
+              className={
+                'pressable rounded-full px-7 py-2.5 text-[20px] font-semibold transition-all duration-300 cursor-pointer ' +
+                (tab === k
+                  ? 'bg-[#2457E7] text-white shadow-md'
+                  : 'bg-transparent text-[#0D1830] hover:bg-[#F5F8FF]')
+              }
+            >
+              {k}
+            </button>
+          ))}
         </div>
 
-        {/* Janela do Software Centralizada na Grande Moldura da Cena */}
+        {/* A moldura revela a barra nativa já presente na captura. */}
         <Shot
           src={SHOTS[tab]}
           title={`BAROPRESS Desktop — ${meta.title}`}
           tag={meta.tag}
-          h={650}
-          pos="left-[240px] top-[235px] w-[1440px]"
+          h={SOFTWARE_DISPLAY.height}
+          pos={SOFTWARE_DISPLAY.pos}
+          chrome={false}
         />
       </>
     )
@@ -1224,67 +1236,67 @@ function Scene({
   if (i === 7)
     return (
       <>
-        {/* Cabeçalho: Título original preservado e novo subtítulo de acompanhamento */}
-        <div className="absolute left-[160px] right-[160px] top-[75px] z-[4]">
+        {/* Mesma geometria e hierarquia da demonstração anterior. */}
+        <div className="absolute left-[160px] right-[160px] top-[70px] z-[4]">
           <Rv cls="font-bold text-[48px] leading-[1.1] tracking-[-0.03em] text-[#0D1830]">
             <span>{c.t}</span>
           </Rv>
-          <Rv d={0.12} cls="mt-2 text-[22px] font-medium text-[#475569] tracking-[-0.01em]">
+          <Rv d={0.12} cls="mt-2 text-[24px] font-medium text-[#475569] tracking-[-0.01em]">
             <span>{c.s}</span>
           </Rv>
         </div>
 
-        {/* Janela Oficial do Módulo de Comparação Centralizada na Forma */}
+        {/* Captura nativa de comparação preservada integralmente. */}
         <Shot
           src="shots/comparacao-oficial.png"
           title="BAROPRESS Desktop — Comparação Longitudinal (Exames #2, #3, #4 e #9)"
-          tag="Comparação de sinais · sem inferência clínica"
-          h={650}
-          pos="left-[240px] top-[235px] w-[1440px]"
+          tag="Módulo de Comparação"
+          h={SOFTWARE_DISPLAY.height}
+          pos={SOFTWARE_DISPLAY.pos}
+          chrome={false}
         />
       </>
     )
 
-  // Cena 9 — Do mapa ao relatório (Electric Blue · A4 Protagonista)
+  // Cena 9 — Do mapa ao relatório (Electric Blue · prévia do documento)
   if (i === 8)
     return (
       <>
-        {/* Lado Esquerdo: Título, Benefício e os 3 Tópicos de Fluxo */}
-        <div className="absolute left-[140px] top-[180px] w-[760px]">
+        {/* O fluxo de exportação sustenta a narrativa ao lado da prévia real. */}
+        <div className="absolute left-[140px] top-[200px] w-[760px]">
           <Rv cls="font-bold text-[72px] leading-[1.08] tracking-[-0.035em] text-white">
-            <span>Informação que vai</span>
+            <span>Da visualização</span>
             <br />
-            <span>além da tela.</span>
+            <span>ao relatório.</span>
           </Rv>
 
-          <Rv d={0.16} cls="mt-8 text-[25px] leading-[1.38] font-medium text-white/90 max-w-[700px] tracking-[-0.015em]">
-            <span>Organize os resultados em relatórios exportáveis e consulte os registros quando necessário.</span>
+          <Rv d={0.16} cls="mt-8 text-[27px] leading-[1.4] font-medium text-white/90 max-w-[715px] tracking-[-0.015em]">
+            <span>{c.s}</span>
           </Rv>
 
-          {/* 3 Tópicos de Palavras em Substituição ao Card Extenso */}
-          <div className="mt-14 flex items-center gap-4">
-            <Rv d={0.3} cls="rounded-2xl bg-white border border-white/80 px-7 py-4 text-[23px] font-extrabold text-[#0D1830] shadow-[0_12px_28px_rgba(0,0,0,0.18)]">
-              MAPA
+          <div className="mt-14 flex items-center gap-3.5" aria-label="Mapa, relatório e exportação PDF">
+            <Rv d={0.3} cls="rounded-xl bg-white/15 border border-white/35 px-5 py-3.5 text-[22px] font-semibold text-white">
+              Mapa
             </Rv>
-            <span className="text-[30px] font-black text-white/75">›</span>
-            <Rv d={0.38} cls="rounded-2xl bg-white border border-white/80 px-7 py-4 text-[23px] font-extrabold text-[#0D1830] shadow-[0_12px_28px_rgba(0,0,0,0.18)]">
+            <span aria-hidden="true" className="text-[26px] font-medium text-white/70">›</span>
+            <Rv d={0.38} cls="rounded-xl bg-white/15 border border-white/35 px-5 py-3.5 text-[22px] font-semibold text-white">
               Relatório
             </Rv>
-            <span className="text-[30px] font-black text-white/75">›</span>
-            <Rv d={0.46} cls="rounded-2xl bg-white border border-white/80 px-7 py-4 text-[23px] font-extrabold text-[#0D1830] shadow-[0_12px_28px_rgba(0,0,0,0.18)]">
+            <span aria-hidden="true" className="text-[26px] font-medium text-white/70">›</span>
+            <Rv d={0.46} cls="rounded-xl bg-white/15 border border-white/35 px-5 py-3.5 text-[22px] font-semibold text-white">
               Exportação PDF
             </Rv>
           </div>
         </div>
 
-        {/* Lado Direito: Prévia Oficial A4 Ampliada e com Máximo Protagonismo */}
+        {/* A captura fornecida é uma prévia parcial real da página, em proporção 784:610. */}
         <Shot
           src="shots/relatorio-a4.png"
-          title="BAROPRESS Desktop — Trecho do relatório de sinais"
-          tag="Identificação ocultada · captura parcial"
-          h={860}
-          pos="left-[975px] top-[110px] w-[760px]"
+          title="BAROPRESS — Prévia do relatório experimental"
+          h={660}
+          pos="left-[1000px] top-[190px] w-[810px]"
           darkBg={false}
+          chrome={false}
         />
       </>
     )
@@ -1308,7 +1320,7 @@ function Scene({
           {/* PAINEL 1: REFERÊNCIA DE MERCADO (Fundo Ice White, Texto Midnight Navy) */}
           <Rv
             d={0.24}
-            cls="w-[820px] h-[675px] rounded-[32px] bg-[#F8FAFC] border-2 border-[#DCE7FC] p-[56px] flex flex-col text-[#0D1830]"
+            cls="w-[820px] h-[635px] rounded-[32px] bg-[#F8FAFC] border-2 border-[#DCE7FC] p-[56px] flex flex-col text-[#0D1830] shadow-[0_12px_40px_-20px_rgba(13,24,48,0.15)]"
           >
             {/* Título do Produto */}
             <div>
@@ -1324,7 +1336,7 @@ function Scene({
                 <span className="text-[92px] leading-none font-bold tracking-[-0.035em] tabular-nums">24.961,25</span>
               </div>
               {/* Barras com a mesma escala de preço: BaroScan é a referência de 100% */}
-              <div role="img" aria-label="Preço BaroScan: R$ 24.961,25, barra de referência completa" className="mt-8 h-[36px] w-[704px] rounded-full bg-[#DCE7FC] overflow-hidden">
+              <div role="img" aria-label="Preço BaroScan: R$ 24.961,25, barra de referência completa" className="mt-8 h-[30px] w-full rounded-full bg-[#DCE7FC] overflow-hidden">
                 <motion.div
                   className="h-full w-full origin-left rounded-full bg-[#0D1830]"
                   initial={{ scaleX: 0 }}
@@ -1333,19 +1345,20 @@ function Scene({
                 />
               </div>
             </div>
-
-
+            <div className="mt-auto border-t border-[#DCE7FC] pt-6 text-[22px] leading-[1.42] text-[#475569]">
+              Equipamento comercial usado como referência de investimento.
+            </div>
           </Rv>
 
           {/* PAINEL 2: BAROPRESS (Fundo Electric Blue, Texto Branco) */}
           <Rv
             d={0.34}
-            cls="w-[820px] h-[675px] rounded-[32px] bg-[#2457E7] p-[56px] flex flex-col text-white shadow-[0_24px_50px_-10px_rgba(36,87,231,0.25)]"
+            cls="w-[820px] h-[635px] rounded-[32px] bg-[#2457E7] p-[56px] flex flex-col text-white shadow-[0_24px_50px_-10px_rgba(36,87,231,0.25)]"
           >
             {/* Título do Produto */}
             <div>
               <h3 className="text-[44px] font-bold tracking-[-0.025em]">BAROPRESS</h3>
-              <p className="mt-2 text-[26px] text-white/90">Tapete + software</p>
+              <p className="mt-2 text-[26px] text-white/90">Tapete + software experimental</p>
             </div>
 
             {/* Preço-Alvo Comercial */}
@@ -1356,7 +1369,7 @@ function Scene({
                 <span className="text-[92px] leading-none font-bold tracking-[-0.035em] tabular-nums">2.990</span>
               </div>
               {/* Comprimento proporcional ao valor de venda, na mesma escala da referência */}
-              <div role="img" aria-label="Preço-alvo hipotético BAROPRESS: R$ 2.990; comparação somente de valores, sem equivalência de desempenho" className="mt-8 h-[36px] w-[704px] rounded-full bg-white/15 overflow-hidden">
+              <div role="img" aria-label="Preço-alvo hipotético BAROPRESS: R$ 2.990; comparação somente de valores, sem equivalência de desempenho" className="mt-8 h-[30px] w-full rounded-full bg-white/15 overflow-hidden">
                 <motion.div
                   className="h-full origin-left rounded-full bg-[#38D8DC]"
                   style={{ width: `${(2990 / 24961.25) * 100}%` }}
@@ -1389,7 +1402,7 @@ function Scene({
         </div>
 
         {/* Fonte do valor de referência */}
-        <div className="absolute left-[120px] top-[956px] w-[1680px]">
+        <div className="absolute left-[120px] top-[916px] w-[1680px]">
           <Rv d={0.4} cls="text-[20px] leading-[1.4] text-[#475569]">
             <span>Comparação de valores, sem equivalência técnica ou clínica. Estimativas comerciais do BAROPRESS: equipe, 2026.</span>
           </Rv>
