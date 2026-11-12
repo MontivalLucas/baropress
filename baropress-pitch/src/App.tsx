@@ -367,78 +367,102 @@ function Scene({
     </div>
   )
 
-  // Cena 1 (Abertura) & Cena 11 (Encerramento)
-  if (i === 0 || i === 10) {
+  // Cena 1 — abertura: a marca se expande antes da mensagem principal.
+  if (i === 0) {
     return (
-      <div className="absolute left-[190px] right-[190px] text-center" style={{ top: i ? 522 : 545 }}>
-        <Rv cls={`font-bold ${i ? 'text-[88px]' : 'text-[76px]'} ${i ? 'leading-none' : 'leading-[1.06]'} tracking-[-0.035em] text-balance ${titleCls}`}>
+      <>
+        <svg aria-hidden="true" className="pointer-events-none absolute inset-0" width="1920" height="1080">
+          <motion.circle
+            cx="960" cy="310" r="240" fill="none" stroke="#D6E2FA" strokeWidth="2"
+            strokeDasharray="3 16"
+            initial={{ opacity: 0 }} animate={{ opacity: 0.9 }}
+            transition={{ duration: 1.25 * SP, delay: 0.18 * SP }}
+          />
+          <motion.path
+            d="M 751 193 A 240 240 0 0 1 1169 193"
+            fill="none" stroke="#38D8DC" strokeWidth="4" strokeLinecap="round"
+            initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
+            transition={{ duration: 1.35 * SP, delay: 0.28 * SP, ease: EZ_OUT }}
+          />
+          <motion.circle
+            cx="751" cy="193" r="7" fill="#2457E7"
+            initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.65 * SP, delay: 0.45 * SP, ease: EZ_OUT }}
+          />
+          <motion.circle
+            cx="1169" cy="193" r="7" fill="#38D8DC"
+            initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.65 * SP, delay: 1.05 * SP, ease: EZ_OUT }}
+          />
+        </svg>
+
+        <div className="absolute left-[160px] top-[549px] w-[1600px] text-center">
+          <Rv d={0.2} cls="font-bold text-[72px] leading-[1.085] tracking-[-0.042em] text-[#0D1830]">
+            <span className="block">O cuidado é especializado.</span>
+            <span className="block text-[#2457E7]">O acesso à tecnologia, nem sempre.</span>
+          </Rv>
+          <Rv d={0.4} cls="mt-7 mx-auto max-w-[1310px] text-[27px] leading-[1.45] font-medium text-[#40536E]">
+            {c.s}
+          </Rv>
+          <Rv d={0.64} cls="mt-7 flex items-center justify-center gap-4 text-[22px] font-bold tracking-[0.13em] text-[#2457E7]">
+            <span className="inline-block h-[3px] w-[48px] bg-[#38D8DC]" />
+            BAROPRESS
+            <span className="inline-block h-[3px] w-[48px] bg-[#38D8DC]" />
+          </Rv>
+        </div>
+      </>
+    )
+  }
+
+  // Cena 11 — encerramento, com a composição original.
+  if (i === 10) {
+    return (
+      <div className="absolute left-[190px] right-[190px] top-[522px] text-center">
+        <Rv cls={`font-bold text-[88px] leading-none tracking-[-0.035em] text-balance ${titleCls}`}>
           <span>{c.t}</span>
         </Rv>
         <Rv d={0.22} cls={`mt-5 mx-auto max-w-[1200px] text-[30px] leading-[1.4] font-medium ${subCls}`}>
           {c.s}
         </Rv>
-        {i === 0 && (
-          <Rv d={0.42} cls="mt-8 text-[26px] font-semibold tracking-[0.08em] text-[#2457E7]">
-            BAROPRESS
-          </Rv>
-        )}
-        {i === 10 && (
-          <Rv d={0.42} cls="mt-7 text-[34px] font-semibold text-[#38D8DC]">
-            Buscamos parceiros de ensino, pesquisa e profissionais<br />
-            para as próximas etapas de validação.
-          </Rv>
-        )}
-        {i === 10 && (
-          <Rv d={0.58} cls="mt-8 text-[24px] font-medium text-[#94A3B8]">
-            Montival Lucas &amp; Raphaela Teles · TCC de Engenharia de Computação · protótipo experimental
-          </Rv>
-        )}
+        <Rv d={0.42} cls="mt-7 text-[34px] font-semibold text-[#38D8DC]">
+          Buscamos parceiros de ensino, pesquisa e profissionais<br />
+          para as próximas etapas de validação.
+        </Rv>
+        <Rv d={0.58} cls="mt-8 text-[24px] font-medium text-[#94A3B8]">
+          Montival Lucas &amp; Raphaela Teles · TCC de Engenharia de Computação · protótipo experimental
+        </Rv>
       </div>
     )
   }
 
-  // Cena 2 — O cuidado não acontece em apenas um lugar (White Editorial · Ice White)
+  // Cena 2 — o investimento como barreira de acesso (White Editorial · Ice White)
   if (i === 1) {
     const outerBlobD = createOrganicBlob(1420, 520, 360, 360, 0)
     const innerBlobD = createOrganicBlob(1420, 520, 360, 360, 24)
     return (
       <>
-        {/* Lado Esquerdo: Tipografia e pílulas fiéis ao design de referência */}
-        <div className="absolute left-[120px] top-[160px] w-[860px]">
-          <Rv cls="font-bold text-[74px] leading-[1.08] tracking-[-0.035em] text-[#0D1830]">
+        <div className="absolute left-[120px] top-[157px] w-[890px]">
+          <Rv cls="font-bold text-[69px] leading-[1.08] tracking-[-0.04em] text-[#0D1830]">
             {c.t}
           </Rv>
 
-          <Rv d={0.16} cls="mt-7 text-[25px] leading-[1.4] text-[#475569] max-w-[720px]">
-            <span>
-              {c.s}
-            </span>
+          <Rv d={0.2} cls="mt-8 text-[27px] leading-[1.4] text-[#40536E] max-w-[810px]">
+            {c.s}
           </Rv>
 
-          <Rv d={0.3} cls="mt-10 max-w-[820px]">
-            <div className="grid grid-cols-2 gap-8 text-[23px] leading-[1.35] text-[#17243A]">
-              <div>
-                <h2 className="font-semibold text-[#2457E7]">Avaliação clínica</h2>
-                <p className="mt-2">Histórico, observação e testes funcionais.</p>
-              </div>
-              <div>
-                <h2 className="font-semibold text-[#2457E7]">Informações instrumentais</h2>
-                <p className="mt-2">Registros e medidas complementares, quando validados.</p>
-              </div>
+          <Rv d={0.42} cls="mt-12 max-w-[820px]">
+            <div className="flex items-center gap-7 rounded-[26px] border border-[#C8D8F4] bg-white/95 px-9 py-7 shadow-[0_18px_45px_-26px_rgba(36,87,231,0.28)]">
+              <span className="h-[76px] w-[5px] shrink-0 rounded-full bg-[#2457E7]" aria-hidden="true" />
+              <p className="text-[34px] leading-[1.21] font-bold tracking-[-0.025em] text-[#2457E7]">
+                Como tornar essa tecnologia acessível a mais profissionais?
+              </p>
             </div>
-            <svg aria-hidden="true" className="mt-4 w-full h-[42px]" viewBox="0 0 820 42" fill="none">
-              <path d="M195 0 V15 Q195 25 205 25 H615 Q625 25 625 15 V0 M410 25 V42" stroke="#2457E7" strokeWidth="2" />
-            </svg>
-            <p className="text-center text-[28px] font-semibold text-[#0D1830]">Decisão do profissional</p>
-          </Rv>
-          <Rv d={0.54} cls="mt-7 max-w-[780px] text-[25px] leading-[1.35] font-medium text-[#2457E7]">
-            A tecnologia amplia as informações. A decisão continua com o fisioterapeuta.
           </Rv>
         </div>
 
-        {/* Lado Direito: Imagem homecare.png com moldura orgânica em dégradé e sombra */}
+        {/* A fotografia mantém o contexto humano dentro da forma orgânica que acompanha o morphing. */}
         <Rv d={0.2} cls="pointer-events-none absolute inset-0">
-          <svg width="1920" height="1080" className="absolute inset-0">
+          <svg aria-hidden="true" width="1920" height="1080" className="absolute inset-0">
             <defs>
               <linearGradient id="blobGradSlide2" x1="100%" y1="0%" x2="0%" y2="100%">
                 <stop offset="0%" stopColor="#C5D8FE" />
@@ -450,14 +474,12 @@ function Scene({
               </clipPath>
             </defs>
 
-            {/* Forma orgânica externa com dégradé azul e drop shadow */}
             <path
               d={outerBlobD}
               fill="url(#blobGradSlide2)"
               style={{ filter: 'drop-shadow(0 25px 45px rgba(37,99,235,0.22))' }}
             />
 
-            {/* Foto homecare.png enquadrada com precisão na curva orgânica interna */}
             <image
               href="shots/homecare.png"
               x="1000"
@@ -469,145 +491,115 @@ function Scene({
             />
           </svg>
         </Rv>
+
+        {/* Uma conexão interrompida materializa a barreira sem introduzir números ou preços. */}
+        <Rv d={0.52} cls="pointer-events-none absolute left-[1180px] top-[743px] w-[522px]">
+          <div className="rounded-[25px] border border-white/35 bg-[#0D1830]/90 px-8 py-6 text-white shadow-[0_24px_48px_-16px_rgba(13,24,48,0.42)] backdrop-blur-md">
+            <div className="flex items-center justify-between text-[18px] font-semibold tracking-[0.025em]">
+              <span>Tecnologia disponível</span>
+              <span>Acesso limitado</span>
+            </div>
+            <div className="mt-5 flex items-center gap-4" aria-hidden="true">
+              <span className="h-[12px] w-[12px] shrink-0 rounded-full bg-[#38D8DC] shadow-[0_0_14px_rgba(56,216,220,0.6)]" />
+              <motion.span
+                className="h-[3px] w-[160px] origin-left rounded-full bg-[#38D8DC]"
+                initial={{ scaleX: 0 }} animate={{ scaleX: 1 }}
+                transition={{ duration: 1.05 * SP, delay: 0.8 * SP, ease: EZ_MOVE }}
+              />
+              <span className="h-[32px] w-[6px] shrink-0 rounded-full bg-white" />
+              <span className="flex-1 border-t-[3px] border-dashed border-white/40" />
+              <span className="h-[12px] w-[12px] shrink-0 rounded-full border-[3px] border-white/70" />
+            </div>
+            <p className="mt-4 text-[21px] font-medium leading-[1.3] text-[#DDEAFE]">
+              O investimento pode interromper esse caminho.
+            </p>
+          </div>
+        </Rv>
       </>
     )
   }
 
-  // Cena 3 — Quando a tecnologia custa caro, o acesso fica limitado (Midnight Tech · Midnight Navy)
+  // Cena 3 — oportunidade de investigação técnica (Midnight Tech).
   if (i === 2) {
     const capsuleD = P(1560, 540, 130, 380, 0.9)
     return (
       <>
-        {/* Lado Esquerdo: Conteúdo narrativo fiel à imagem de referência */}
-        <div className="absolute left-[120px] top-[185px] w-[1200px]">
-          <Rv cls="font-bold text-[74px] leading-[1.1] tracking-[-0.035em] text-white">
-            <span className="block max-w-[1150px]">{c.t}</span>
+        <div className="absolute left-[120px] top-[196px] w-[1120px]">
+          <Rv cls="max-w-[1100px] font-bold text-[78px] leading-[1.08] tracking-[-0.04em] text-white">
+            {c.t}
+          </Rv>
+          <Rv d={0.2} cls="mt-10 max-w-[920px] text-[30px] leading-[1.42] text-[#C8D6EC]">
+            {c.s}
           </Rv>
 
-          <Rv d={0.22} cls="mt-9 text-[28px] leading-[1.4] text-[#CBD5E1] max-w-[820px]">
-            <span>
-              {c.s}
-            </span>
+          <Rv d={0.38} cls="mt-12 max-w-[975px]">
+            <div className="flex items-center gap-5 border-l-[5px] border-[#38D8DC] pl-7 text-[23px] font-semibold tracking-[-0.012em] text-white">
+              <span>Investigar</span>
+              <span className="h-px w-[38px] bg-[#38D8DC]/70" aria-hidden="true" />
+              <span>Testar</span>
+              <span className="h-px w-[38px] bg-[#38D8DC]/70" aria-hidden="true" />
+              <span>Compreender limites</span>
+            </div>
           </Rv>
 
-          <Rv
-            d={0.32}
-            cls="mt-10 max-w-[820px] text-[32px] font-medium leading-[1.3] text-[#38D8DC]"
-          >
-            Sistemas validados de medição plantar têm custo e disponibilidade como desafios.
-          </Rv>
-
-          <Rv d={0.42} cls="mt-9 max-w-[920px] text-[34px] font-bold tracking-tight leading-[1.3]">
-            <span className="text-white">Como ampliar o acesso a ferramentas que </span>
-            <span className="text-[#38D8DC]">apoiem o cuidado?</span>
-          </Rv>
-          <Rv d={0.52} cls="mt-8 max-w-[1000px] text-[21px] leading-[1.4] text-[#CBD5E1]">
-            Contexto: prevenção de recorrência de úlceras em pessoas com diabetes e calçados terapêuticos.
+          <Rv d={0.56} cls="mt-12 max-w-[890px] text-[31px] leading-[1.35] font-semibold tracking-[-0.02em] text-[#38D8DC]">
+            O próximo passo é transformar esse desafio em uma proposta.
           </Rv>
         </div>
 
-        {/* Lado Direito: Ilustração neon de barreira financeira na cápsula */}
-        <Rv d={0.25} cls="pointer-events-none absolute inset-0">
-          <svg width="1920" height="1080" className="absolute inset-0">
+        {/* A cápsula evolui da barreira para um campo de sinais em investigação. */}
+        <Rv d={0.24} cls="pointer-events-none absolute inset-0">
+          <svg aria-hidden="true" width="1920" height="1080" className="absolute inset-0">
             <defs>
-              <linearGradient id="barGradS3" x1="0%" y1="100%" x2="0%" y2="0%">
-                <stop offset="0%" stopColor="rgba(36, 87, 231, 0.45)" />
-                <stop offset="100%" stopColor="rgba(56, 216, 220, 0.9)" />
-              </linearGradient>
               <clipPath id="capsuleClipS3">
                 <path d={capsuleD} />
               </clipPath>
+              <linearGradient id="signalScanS3" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="#38D8DC" stopOpacity="0" />
+                <stop offset="50%" stopColor="#38D8DC" stopOpacity="0.23" />
+                <stop offset="100%" stopColor="#38D8DC" stopOpacity="0" />
+              </linearGradient>
             </defs>
-
-            {/* Brilho de contorno ciano da cápsula */}
             <path
-              d={capsuleD}
-              fill="none"
-              stroke="#38D8DC"
-              strokeWidth="1.2"
-              strokeOpacity="0.6"
-              style={{ filter: 'drop-shadow(0 0 8px rgba(56, 216, 220, 0.45))' }}
+              d={capsuleD} fill="none" stroke="#38D8DC" strokeWidth="2"
+              strokeOpacity="0.62"
+              style={{ filter: 'drop-shadow(0 0 10px rgba(56,216,220,0.4))' }}
             />
-
-            {/* Elementos internos recortados na cápsula */}
             <g clipPath="url(#capsuleClipS3)">
-              {/* Linhas verticais de grade suave */}
-              <line x1="1490" y1="160" x2="1490" y2="920" stroke="rgba(56, 216, 220, 0.08)" strokeDasharray="4 6" />
-              <line x1="1540" y1="160" x2="1540" y2="920" stroke="rgba(56, 216, 220, 0.1)" strokeDasharray="4 6" />
-              <line x1="1580" y1="160" x2="1580" y2="920" stroke="rgba(56, 216, 220, 0.1)" strokeDasharray="4 6" />
-              <line x1="1630" y1="160" x2="1630" y2="920" stroke="rgba(56, 216, 220, 0.08)" strokeDasharray="4 6" />
-
-              {/* Linha horizontal de base */}
-              <line x1="1445" y1="710" x2="1675" y2="710" stroke="rgba(56, 216, 220, 0.35)" strokeWidth="1.5" />
-
-              {/* 7 Barras ascendentes em degradê e borda neon ciano */}
-              <rect x="1460" y="675" width="14" height="35" rx="3" fill="url(#barGradS3)" stroke="#38D8DC" strokeWidth="1.5" />
-              <rect x="1482" y="650" width="14" height="60" rx="3" fill="url(#barGradS3)" stroke="#38D8DC" strokeWidth="1.5" />
-              <rect x="1504" y="620" width="14" height="90" rx="3" fill="url(#barGradS3)" stroke="#38D8DC" strokeWidth="1.5" />
-              <rect x="1526" y="580" width="14" height="130" rx="3" fill="url(#barGradS3)" stroke="#38D8DC" strokeWidth="1.5" />
-              <rect x="1548" y="525" width="14" height="185" rx="3" fill="url(#barGradS3)" stroke="#38D8DC" strokeWidth="1.5" />
-              <rect x="1570" y="465" width="14" height="245" rx="3" fill="url(#barGradS3)" stroke="#38D8DC" strokeWidth="1.5" />
-              <rect x="1592" y="395" width="14" height="315" rx="3" fill="url(#barGradS3)" stroke="#38D8DC" strokeWidth="1.5" />
-
-              {/* Flechas verticais de alta pressão / custo */}
-              <g style={{ filter: 'drop-shadow(0 0 8px rgba(56, 216, 220, 0.7))' }}>
-                <line x1="1520" y1="380" x2="1520" y2="265" stroke="#38D8DC" strokeWidth="3" strokeLinecap="round" />
-                <polygon points="1520,250 1511,272 1529,272" fill="#38D8DC" />
-              </g>
-
-              <g style={{ filter: 'drop-shadow(0 0 6px rgba(56, 216, 220, 0.5))' }}>
-                <line x1="1475" y1="460" x2="1475" y2="330" stroke="rgba(56, 216, 220, 0.7)" strokeWidth="2.5" strokeLinecap="round" />
-                <polygon points="1475,320 1468,336 1482,336" fill="#38D8DC" />
-              </g>
-
-              <g opacity="0.6">
-                <line x1="1585" y1="360" x2="1585" y2="290" stroke="#38D8DC" strokeWidth="2" strokeLinecap="round" />
-                <polygon points="1585,282 1580,294 1590,294" fill="#38D8DC" />
-              </g>
-
-              {/* 4 Moedas flutuantes "R$" com brilho neon */}
-              <g transform="translate(1468, 595)" opacity="0.75">
-                <circle cx="0" cy="0" r="22" fill="#0D1A33" stroke="#38D8DC" strokeWidth="1.8" />
-                <text x="0" y="6" fill="#38D8DC" fontSize="14" fontWeight="900" textAnchor="middle" fontFamily="sans-serif">R$</text>
-              </g>
-
-              <g transform="translate(1580, 310)">
-                <circle cx="0" cy="0" r="34" fill="#0D1A33" stroke="#38D8DC" strokeWidth="2.5" style={{ filter: 'drop-shadow(0 0 10px rgba(56,216,220,0.5))' }} />
-                <circle cx="0" cy="0" r="28" fill="none" stroke="rgba(56, 216, 220, 0.4)" strokeWidth="1" />
-                <text x="0" y="8" fill="#38D8DC" fontSize="20" fontWeight="900" textAnchor="middle" fontFamily="sans-serif">R$</text>
-              </g>
-
-              <g transform="translate(1485, 490)">
-                <circle cx="0" cy="0" r="30" fill="#0D1A33" stroke="#38D8DC" strokeWidth="2.2" style={{ filter: 'drop-shadow(0 0 8px rgba(56,216,220,0.4))' }} />
-                <circle cx="0" cy="0" r="24" fill="none" stroke="rgba(56, 216, 220, 0.4)" strokeWidth="1" />
-                <text x="0" y="7" fill="#38D8DC" fontSize="19" fontWeight="900" textAnchor="middle" fontFamily="sans-serif">R$</text>
-              </g>
-
-              {/* Moeda principal central */}
-              <g transform="translate(1545, 410)">
-                <circle cx="0" cy="0" r="50" fill="#0A162D" stroke="#38D8DC" strokeWidth="3.5" style={{ filter: 'drop-shadow(0 0 16px rgba(56,216,220,0.7))' }} />
-                <circle cx="0" cy="0" r="42" fill="none" stroke="rgba(56, 216, 220, 0.5)" strokeWidth="1.5" />
-                <text x="0" y="12" fill="#FFFFFF" fontSize="32" fontWeight="900" textAnchor="middle" fontFamily="sans-serif">R$</text>
-              </g>
-            </g>
-
-            {/* Flecha ascendente em zigue-zague cortando a cápsula */}
-            <g style={{ filter: 'drop-shadow(0 0 14px rgba(56, 216, 220, 0.85))' }}>
-              <polyline
-                points="1455,615 1495,545 1530,575 1660,370"
-                fill="none"
-                stroke="#38D8DC"
-                strokeWidth="5.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+              <path d="M 1560 165 V915 M 1435 540 H1685" stroke="#3E6796" strokeWidth="1" strokeDasharray="5 15" opacity="0.38" />
+              {Array.from({ length: 91 }, (_, k) => {
+                const column = k % 7
+                const row = Math.floor(k / 7)
+                const intensity = Math.exp(-(((column - 3) / 2.6) ** 2 + ((row - 6) / 4) ** 2))
+                return (
+                  <circle
+                    key={k}
+                    cx={1460 + column * 33}
+                    cy={245 + row * 49}
+                    r={3 + intensity * 3.7}
+                    fill={intensity > 0.55 ? '#38D8DC' : '#77A9FA'}
+                    opacity={0.25 + intensity * 0.7}
+                  />
+                )
+              })}
+              <motion.rect
+                x="1435" y="250" width="250" height="110"
+                fill="url(#signalScanS3)"
+                animate={{ y: [0, 460, 0] }}
+                transition={{
+                  duration: 8 * SP,
+                  repeat: SP === 0 ? 0 : Infinity,
+                  ease: 'easeInOut',
+                }}
               />
-              <path
-                d="M 1660,370 L 1622,382 M 1660,370 L 1645,408"
-                fill="none"
-                stroke="#38D8DC"
-                strokeWidth="5.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+              <motion.path
+                d="M 1438 697 C 1461 697 1470 638 1490 638 S 1527 741 1545 695 S 1586 600 1606 666 S 1651 698 1684 615"
+                fill="none" stroke="#38D8DC" strokeWidth="4"
+                strokeLinecap="round" strokeLinejoin="round"
+                style={{ filter: 'drop-shadow(0 0 7px rgba(56,216,220,0.6))' }}
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{ pathLength: 1, opacity: 0.9 }}
+                transition={{ duration: 1.6 * SP, delay: 0.55 * SP, ease: EZ_MOVE }}
               />
             </g>
           </svg>

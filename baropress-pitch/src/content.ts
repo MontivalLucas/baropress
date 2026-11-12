@@ -3,22 +3,22 @@ export type Sc = { t: string; s?: string; n: string; references: ReferenceId[] }
 
 export const S: Sc[] = [
   {
-    t: 'Para quem sente dor ao caminhar, cada passo importa.',
-    references: ['who-policy', 'article'],
-    s: 'Alterações no apoio plantar podem estar associadas a desconforto, dificuldades de marcha e limitações funcionais.',
-    n: 'Imagine uma pessoa que sente dor ao caminhar. Para ela, ficar em pé ou percorrer uma pequena distância pode se tornar um desafio. Na fisioterapia, compreender o apoio dos pés faz parte de uma investigação que considera a história, os sintomas e a função de cada pessoa. Alterações no apoio podem estar associadas ao desconforto, mas não explicam sozinhas todas as suas causas. É nesse cuidado que informações instrumentais confiáveis podem acrescentar uma perspectiva. Nossa história começa nessa necessidade humana.',
+    t: 'O cuidado é especializado. O acesso à tecnologia, nem sempre.',
+    references: [],
+    s: 'A análise instrumental do apoio plantar pode complementar a avaliação de fisioterapeutas e outros profissionais da saúde. O investimento em equipamentos especializados, porém, pode dificultar o acesso a essas ferramentas.',
+    n: 'Na fisioterapia, o conhecimento do profissional é fundamental para avaliar e acompanhar cada pessoa. Tecnologias de análise do apoio plantar podem acrescentar informações ao exame clínico, desde que tenham desempenho adequado para o uso pretendido. Mas profissionais autônomos e consultórios menores nem sempre conseguem incorporar equipamentos especializados à rotina. Foi nessa distância entre o potencial da tecnologia e a possibilidade de acesso que encontramos a motivação para o projeto.',
   },
   {
-    t: 'Avaliar melhor para decidir com mais informação.',
-    references: ['who-rehabilitation', 'article'],
-    s: 'A análise instrumental, quando validada, pode complementar a avaliação clínica e o acompanhamento do apoio plantar.',
-    n: 'O fisioterapeuta reúne a história do paciente, observa seus movimentos, realiza o exame físico e aplica testes funcionais. É esse raciocínio clínico que orienta o cuidado. Uma ferramenta instrumental adequada pode acrescentar registros e medidas que nem sempre são fáceis de quantificar apenas pela observação. Esses dados precisam ser confiáveis e interpretados junto aos achados clínicos. Comparar registros pode ajudar a investigar mudanças, mas uma diferença não prova melhora ou eficácia de um tratamento. A decisão continua com o profissional. No caso do BAROPRESS, a aplicação clínica ainda depende de validação. Com esse papel complementar em mente, precisamos discutir também o acesso à tecnologia.',
+    t: 'A tecnologia existe. Mas o alto custo ainda limita o acesso.',
+    references: [],
+    s: 'Equipamentos profissionais de análise plantar podem exigir investimentos elevados e representar uma barreira para profissionais autônomos, consultórios menores e instituições com orçamento limitado.',
+    n: 'Existem equipamentos profissionais capazes de registrar informações sobre o apoio plantar. Alguns, porém, exigem investimentos elevados. Para quem está começando um consultório ou precisa distribuir o orçamento entre diferentes recursos, essa aquisição pode ser difícil de priorizar. Não estamos dizendo que todos os equipamentos tenham o mesmo custo, nem que essa seja uma realidade de todos os profissionais. A questão que nos move é simples: como investigar formas de tornar essa tecnologia acessível a mais pessoas, sem perder de vista o cuidado e a qualidade das informações?',
   },
   {
-    t: 'A tecnologia avançou. O acesso ainda é um desafio.',
+    t: 'Ampliar o acesso também exige pesquisa.',
     references: ['iwgdf'],
-    s: 'Equipamentos especializados podem exigir investimentos difíceis para pequenos consultórios, profissionais autônomos e instituições com orçamento limitado.',
-    n: 'Tecnologias de avaliação plantar já existem, mas adquirir um equipamento especializado pode exigir um investimento difícil para uma operação menor. A diretriz IWGDF de 2023 reconhece que sistemas validados de mensuração plantar são relativamente caros e que a tecnologia e a expertise necessárias ainda não estão amplamente disponíveis. Esse argumento aparece em um contexto específico: calçados terapêuticos e prevenção de recorrência de úlceras em pessoas com diabetes. Não é uma estatística sobre clínicas brasileiras, nem prova de falta de tratamento. Ele ajuda a reconhecer uma barreira e uma pergunta de pesquisa: como investigar alternativas mais acessíveis, preservando os requisitos de qualidade e segurança? Fonte: IWGDF 2023, fundamentação da recomendação 8c, página 20 do PDF.',
+    s: 'Uma alternativa de menor investimento precisa ser desenvolvida, testada e analisada com transparência sobre seus limites técnicos.',
+    n: 'Reduzir a barreira de investimento é uma motivação importante, mas não basta criar um equipamento mais barato. É preciso investigar como ele responde à carga, sua repetibilidade, seus limites e as condições em que poderia ser utilizado. Como referência de contexto, a diretriz IWGDF de 2023 aponta desafios de custo e disponibilidade de sistemas validados em uma aplicação específica: prevenção de recorrência de úlceras em pessoas com diabetes e calçados terapêuticos. Isso não é um dado sobre todos os consultórios brasileiros e não valida o nosso protótipo. É nessa combinação de acessibilidade com investigação responsável que se abre a oportunidade apresentada a seguir.',
   },
   {
     t: 'E se essa tecnologia pudesse chegar a mais profissionais?',
